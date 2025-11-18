@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>12.0</LangVersion>
+    <OutputPath>$(SolutionDir)\bin</OutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RawPath>$(IGXLROOT)</RawPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RawPath)' != ''">
+    <LastSegment>$([System.IO.Path]::GetFileName($(RawPath)))</LastSegment>
+    <CleanVersion>$([System.String]::Copy('$(LastSegment)').Replace('.', '_'))</CleanVersion>
+    <SymbolName>IGXL_$(CleanVersion)</SymbolName>
+    <DefineConstants>$(DefineConstants);$(SymbolName)</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Igxl.Interfaces.Public, Version=1.0.0.0, Culture=neutral, PublicKeyToken=86781fa52e072ff9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(IGXLROOT)\bin\Igxl.Interfaces.Public.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="SetupLoadClass.cs">
+      <SubType>IG-XL</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Csra\Csra.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <UsingTask AssemblyFile=".\RunDspGeneratorTask.dll" TaskName="GeneratorTask" />
+    <PropertyGroup>
+        <BuildDependsOn>
+			RunDspGeneratorTaskTarget;
+            $(BuildDependsOn);
+        </BuildDependsOn>
+    </PropertyGroup>
+    <Target Name="RunDspGeneratorTaskTarget">
+        <GeneratorTask DspAssemblyProjectPath="$(ProjectDir)$(ProjectFileName)">
+        </GeneratorTask>
+    </Target>
+</Project>

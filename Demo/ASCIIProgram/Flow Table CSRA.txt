@@ -1,0 +1,51 @@
+DTFlowtableSheet,version=3.0:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1	Flow Table																																					
+						Flow Domain:																																
+			Gate			Command				Limits		Datalog Display Results			Bin Number		Sort Number			Action			Group				Device			Debug		CT Profile Data						
+	Label	Enable	Job	Part	Env	Opcode	Parameter	TName	TNum	LoLim	HiLim	Datalog Display Scale	Units	Format	Pass	Fail	Pass	Fail	Result	Pass	Fail	State	Specifier	Sense	Condition	Name	Sense	Condition	Name	Assume	Sites	Elapsed Time (s)	Background Type	Serialize	Resource Lock	Flow Step Locked	Comment	
+						Test	LoadSetups																															
+						Test	Continuity_CSRA	Continuity																														
+						Use-Limit				-0.8	-0.2					9		9	Fail																			
+						Test	Leakage_CSRA	Leakage																														
+						Use-Limit				-0.000025	0.000025	u	A			8		8	Fail																			
+						Use-Limit				-0.000025	0.000025	u	A			8		8	Fail																			
+						Test	Icc_static_CSRA	Icc_static																														
+						Use-Limit				0.02	0.08	m	A			5		5	Fail																			
+						Test	Icc_flag_static_CSRA	Icc_flag_static																														
+						Use-Limit		Icc_Lo		=0*mA	=75*mA	m	A			5		5	Fail																			
+						Use-Limit		Icc_Hi		=0*mA	=75*mA	m	A			5		5	Fail																			
+						Test	Icc_flag_dynamic_CSRA	Icc_flag_dynamic											Fail																			
+						Use-Limit				=10*mA	=40*mA	m	A			5		5	Fail																			
+						Test	Functional_CSRA	Functional_CS								3		3	Fail																			
+						Test	FunctionalRead_CSRA	FunctionalRead_CS								4		4	Fail																			
+						Use-Limit		FunctionalReadValue		128	128					4		4	Fail																			
+						Test	FrequencyRead_CSRA	FrequencyRead_CS								5		5	Fail																			
+						Use-Limit		Frequency		1995000	2005000					5		5	Fail																			
+						Test	VminSearch_CSRA																															
+						Use-Limit		Vmin		0	6					6		6	Fail																			
+						Test	DigitalTrim_LinearStopTrip_CSRA																															
+						Use-Limit				128	128					7		7	Fail																			
+						Test	DigitalTrim_LinearStopTarget_CSRA																															
+						Use-Limit				128	128					7		7	Fail																			
+						Test	DigitalTrim_LinearFullTrip_CSRA																															
+						Use-Limit				128	128					7		7	Fail																			
+						Test	DigitalTrim_LinearFullTarget_CSRA																															
+						Use-Limit				128	128					7		7	Fail																			
+						Test	DigitalTrim_BinaryTrip_CSRA																															
+						Use-Limit				127	129					7		7	Fail																			
+						Test	DigitalTrim_BinaryTarget_CSRA																															
+						Use-Limit				127	129					7		7	Fail																			
+						set-device									1		1		Pass																			
+																																						
+						Test	VminSearchRev_CSRA																															
+						Use-Limit		VminRev		0	6					6		6	Fail																			
+						Test	Icc_static_CS	Icc_static																														
+						Use-Limit				0.02	0.08					5		5	Fail																			
+						Test	Icc_flag_dynamic_CS	Icc_flag_dynamic											Fail																			
+						Use-Limit				=10*mA	=40*mA					5		5	Fail																			
+						Test	Functional_CS									3		3	Fail																			
+		Scan				Test	FunctionalScan_CS																															
+		Pop				Test	Icc_pop_dynamic_CS																															
+						Use-Limit				=10*mA	=40*mA					5		50	Fail																			
+						Test	SineTest_CS																															
+						Test	SineTestPLD_CS																															
+						set-device									1		1		Pass																			

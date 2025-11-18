@@ -1,0 +1,14 @@
+DTDCSpecSheet,version=3.0:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1	DC Specs												
+													
+			Selectors			Commercial			Zero_Spec				
+	Symbol	Value	vcc_min	vcc_max	vcc_nom	Typ	Min	Max	Typ	Min	Max	Comment	
+	vcc_value	#N/A	Min	Max	Typ	5	4.5	5.5	0	0	0		
+	vih	#N/A	Min	Max	Typ	4.95	4.95	4.95	0	0	0		
+	vil	#N/A	Min	Max	Typ	0.4	0.4	0.4	0	0	0		
+	voh	#N/A	Min	Max	Typ	2	2	2	0	0	0		
+	vol	#N/A	Min	Max	Typ	1	1	1	0	0	0		
+	vt	#N/A	Min	Max	Typ	1.5	1.5	1.5	0	0	0		
+	icc_output_high	#N/A	Max	Max	Max	0	0	=65*mA	0	0	0		
+	icc_output_low	#N/A	Max	Max	Max	0	0	=20*mA	0	0	0		
+	sample_size	#N/A	Typ	Typ	Typ	10	10	10	0	0	0		
+	sample_time	#N/A	Typ	Typ	Typ	=1*ms	=1*ms	=1*ms	0	0	0		

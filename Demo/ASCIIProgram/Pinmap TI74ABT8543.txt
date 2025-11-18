@@ -1,0 +1,57 @@
+DTPinMap,version=2.1:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1	Pin Map				
+			USL Tag:		
+	Group Name	Pin Name	Type	Comment	
+		a1	I/O		
+		a2	I/O		
+		a3	I/O		
+		a4	I/O		
+		a5	I/O		
+		a6	I/O		
+		a7	I/O		
+		a8	I/O		
+		gnd	Gnd		
+		b1	I/O		
+		b2	I/O		
+		b3	I/O		
+		b4	I/O		
+		b5	I/O		
+		b6	I/O		
+		b7	I/O		
+		b8	I/O		
+		nLEAB	Input		
+		nOEAB	Input		
+		nLEBA	Input		
+		nOEBA	Input		
+		vcc	Power		
+	ctrls	nLEAB	Input		
+	ctrls	nOEAB			
+	ctrls	nLEBA			
+	ctrls	nOEBA			
+	porta	a1	I/O		
+	porta	a2			
+	porta	a3			
+	porta	a4			
+	porta	a5			
+	porta	a6			
+	porta	a7			
+	porta	a8			
+	portb	b1	I/O		
+	portb	b2			
+	portb	b3			
+	portb	b4			
+	portb	b5			
+	portb	b6			
+	portb	b7			
+	portb	b8			
+	ports	porta	I/O		
+	ports	portb			
+	all_pins	ctrls	I/O		
+	all_pins	ports			
+	scan_in	a1	I/O		
+	scan_in	a2			
+	scan_in	a3			
+	scan_in	a4			
+	scan_out	b1	I/O		
+	scan_out	b2			
+	scan_out	b3			
+	scan_out	b4			

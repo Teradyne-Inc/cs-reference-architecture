@@ -1,0 +1,8 @@
+DTGlobalSpecSheet,version=2.0:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1	Global Specs				
+					
+	Symbol	Job	Value	Comment	
+	Vcl_default		-1	Detector clamp voltage low	
+	Vch_default		6	Detector clamp voltage high	
+	Vph_default		5		
+	gl_IFoldLevel		1		
+	gl_Tdelay		0.005		

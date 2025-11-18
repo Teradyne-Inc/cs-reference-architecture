@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>12.0</LangVersion>
+    <OutputPath>$(SolutionDir)\bin</OutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RawPath>$(IGXLROOT)</RawPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RawPath)' != ''">
+    <LastSegment>$([System.IO.Path]::GetFileName($(RawPath)))</LastSegment>
+    <CleanVersion>$([System.String]::Copy('$(LastSegment)').Replace('.', '_'))</CleanVersion>
+    <SymbolName>IGXL_$(CleanVersion)</SymbolName>
+    <DefineConstants>$(DefineConstants);$(SymbolName)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PortBridgeEnabled Condition="Exists('..\PortBridgeEnabled.txt')">true</PortBridgeEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PortBridgeEnabled Condition=" '$(PortBridgeEnabled)' == '' ">false</PortBridgeEnabled>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(PortBridgeEnabled)' == 'true' ">
+    <DefineConstants>$(DefineConstants);PORTBRIDGE_ENABLED</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(PortBridgeEnabled)' == 'true' ">
+    <Reference Include="Teradyne.PortBridge">
+      <HintPath>$(PBROOT)\Teradyne.PortBridge.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Igxl.Interfaces.Public">
+      <HintPath>$(IGXLROOT)\bin\Igxl.Interfaces.Public.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Csra_Analyzer" Condition="Exists('..\..\dep\Analyzer')">
+      <Version>1.0.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

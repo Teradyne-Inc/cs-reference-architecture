@@ -1,0 +1,30 @@
+DTChanMap,version=2.6:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1:dataformat=pogo2	Channel Map						
+							
+	DIB ID:			View Mode:	Signal		
+	USL Tag:						
+	Device Under Test		Tester Channel				
+	Pin Name	Package Pin	Type	Site 0	Site 1	Comment	
+	a1		I/O	19.e308	19.a353		
+	a2		I/O	19.g306	19.c351		
+	a3		I/O	19.e306	19.a351		
+	a4		I/O	19.g304	19.c349		
+	a5		I/O	19.e304	19.a349		
+	a6		I/O	19.g302	19.c347		
+	a7		I/O	19.e302	19.a347		
+	a8		I/O	19.g313	19.c358		
+	gnd		Gnd				
+	b1		I/O	19.g324	19.c369		
+	b2		I/O	19.e326	19.a371		
+	b3		I/O	19.g326	19.c371		
+	b4		I/O	19.e328	19.a373		
+	b5		I/O	19.g328	19.c373		
+	b6		I/O	19.e330	19.a375		
+	b7		I/O	19.g330	19.c375		
+	b8		I/O	19.e319	19.a364		
+	nLEAB		I/O	19.e313	19.a358		
+	nOEAB		I/O	19.g308	19.c353		
+	nLEBA		I/O	19.g319	19.c364		
+	nOEBA		I/O	19.e324	19.a369		
+	clk_src		I/O	19.g335	19.a241		
+	clk_cap		I/O	19.g337	19.a239		
+	vcc		DCVS	13.e301	13.c387		
