@@ -1,9 +1,0 @@
-DTTimesetBasicSheet,version=2.3:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1	Time Sets (Basic)																	
-																		
-	Timing Mode:	Single		Master Timeset Name:														
-	Time Domain:			Strobe Ref Setup Name:														
-																		
-		Cycle	Pin/Group			Data		Drive				Compare				Edge Resolution		
-	Time Set	Period	Name	Clock Period	Setup	Src	Fmt	On	Data	Return	Off	Mode	Open	Close	Ref Offset	Mode	Comment	
-	time_specTool	=_period1	ports			PAT	NR		=0*ns		=0*ns	Edge	=_time_func1			Machine		
-	time_specTool	=_period1	ctrls			PAT	NR		=0*ns		=0*ns	Off				Machine		

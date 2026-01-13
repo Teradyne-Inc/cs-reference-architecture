@@ -1,3 +1,0 @@
-Harness Version: 1.13.0
-Public Language Binary Version: 2.3.0.0
-IGXL Version: 11.00.01
