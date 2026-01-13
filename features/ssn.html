@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>SSN - Streaming Scan Network | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="SSN - Streaming Scan Network | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/ssn.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ssn---streaming-scan-network">SSN - Streaming Scan Network</h1>
+
+<p>For Streaming Scan Network, the <strong>STIL</strong> patterns often comes in a pack of files with 5 or more types:</p>
+<ul>
+<li>Test Setup Pattern
+<ul>
+<li>used to precondition DUT into scan test mode, setup clock, etc.</li>
+<li>This specific pattern is usually common to multiple SSN tests and can be executed separately</li>
+</ul>
+</li>
+<li>SSN Setup Pattern
+<ul>
+<li>used to config the <strong>SSN BUS</strong> by configuring each node on the bus, nodes include but not limited to :
+<ul>
+<li><strong>SSH</strong> : Streaming Scan Host</li>
+<li><strong>SMUX</strong>: path branching multiplexer</li>
+</ul>
+</li>
+<li>config is typically done through <strong>iJTAG</strong> via <strong>ICL</strong> command - Instrument Connectivity Language</li>
+<li>Each <strong>SSH</strong> or <strong>SMUX</strong> have their individual ICL interface and can be programmed by IJTAG</li>
+<li>in case of OCComp, a particular SSH can be turned off by config the <strong>disable_contribution_bit</strong> of that SSH, this is crucial for fail diagnosis.</li>
+</ul>
+</li>
+<li>SSN Payload Pattern
+<ul>
+<li>contains only the data on the <strong>SSN BUS</strong></li>
+<li>Contains both SCAN IN  and SCAN OUT pins data</li>
+<li>scan data are weaved/scrambled on the entire BUS and packed back to back without clear boundary of shift or capture</li>
+<li>each SSH on the bus will take data at certain cycles on certain BUS pins and reconstruct the scan load following a certain algorithm, similarly for the scan unload.</li>
+<li>the algorithm to figure out a certain bit at a certain cycle on a certain pin corresponding to which <strong>EDT</strong> (Embedded Deterministic Test) is available to ATE via a <strong>csv</strong> file.</li>
+<li>The SSN bus operation can be reconfigured from one SSN test to another by means of the SSN setup pattern. The algorithm is passed to the device by means of <strong>iJTAG</strong> and to the tester via <strong>csv</strong> file, therefore the <strong>csv</strong> files are unique per pattern and might be uniform or different</li>
+</ul>
+</li>
+<li>SSN End Pattern
+<ul>
+<li>optionally used to reset the SSH on the active SSN BUS</li>
+<li>can optionally read the status registers on each SSH
+<ul>
+<li>this is the case where OCComp test results are fetched through the <strong>iJTAG</strong> port.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Test End Pattern
+<ul>
+<li>used to conclude the test mode, restore the DUT, really case dependent.</li>
+</ul>
+</li>
+</ul>
+<h2 id="flavors">Flavors</h2>
+<h3 id="onchipcompare-occomp">OnChipCompare (OCComp)</h3>
+<p>If the DUT contains multiple identical cores or EDTs, the actual data that goes into each identical EDT is also identical. Therefore, it makes sense to send only one copy of the <strong>stimulus data</strong> and configure all the SSHs within the group of identical EDTs to pick the data from the same slot on the SSN BUS. Similarly, the <strong>Expected data</strong> and <strong>Mask data</strong> should also be identical. Instead of letting the ATE perform the comparison, the SSH (with OCComp capability) can take the Expected and Mask data and perform the comparison individually for each core. Once a mismatch is observed, the status will be recorded by <strong>SSH</strong> and can be fetched later via <strong>iJTAG</strong>; this particular mismatch status is called a <strong>Sticky_Bit</strong>.
+The Pass/Fail status for each core and each scan compared data (scan cell) is or-ed among all the identical EDT of the same group if they contribute.
+The cumulative Pass/Fail status is then propagated on the SSN BUS and observed by the ATE on the SSN bus OUT pins
+Only part of the data on SSN bus OUT pins are actual cumulative Pass/Fail status.</p>
+<p>The mapping information for the locations of the <strong>contribution_bit</strong> or <strong>sticky_bit</strong> is also available in the form of a <strong>CSV</strong> file, which is generated alongside the <strong>ATP</strong> file from the <strong>STIL</strong> file. Currently, obtaining the failed core information is a manual process. By using a code library provided on EK (originally authored by Chris Cassidy), users can parse the CSV file and determine the failed cores by providing the failed cycle numbers on the JTAG TDO pin after bursting the ssn_end pattern.</p>
+<p>Example of a STIL file section that is used for generating the OCComp meta data(*_ssn.csv)</p>
+<details>
+  <summary>STIL File Example</summary>
+<pre><code class="lang-cs">  Ann {*   Begin_Active_Ssh_Section *}
+  Ann {*     instance                                            = {subsystemB/corec_i2/identical_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     icl_instance                                        = {subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     bus_width                                           = 4 *}
+  Ann {*     packet_size                                         = 64 *}
+  Ann {*     bits_per_packet                                     = 32 *}
+  Ann {*     capture_packets                                     = 7 *}
+  Ann {*     packets_per_capture_pulse                           = 1 *}
+  Ann {*     edt_update_transition_words                         = 0 *}
+  Ann {*     edt_update_launch_word                              = 0 *}
+  Ann {*     scan_enable_transition_packets                      = 0 *}
+  Ann {*     scan_enable_launch_packet                           = 0 *}
+  Ann {*     initial_bit0_position                               = 0 *}
+  Ann {*     initial_bit0_position_of_packet                     = 0 *}
+  Ann {*     cycles_until_first_packet                           = 12 *}
+  Ann {*     delay_cycles_in_packet                              = 0 *}
+  Ann {*     offset                                              = 14 *}
+  Ann {*     extra_shift_packets                                 = 0 *}
+  Ann {*     delay_packets                                       = 0 *}
+  Ann {*     clock_multiplier                                    = 1 *}
+  Ann {*     clock_divider                                       = 1 *}
+  Ann {*     on_chip_compare                                     = on *}
+  Ann {*     on_chip_compare_capture_group_count                 = 2 *}
+  Ann {*     on_chip_compare_capture_group                       = 2 *}
+  Ann {*     on_chip_compare_capture_global_group_count          = 3 *}
+  Ann {*     on_chip_compare_capture_global_group                = 2 *}
+  Ann {*     min_shift_clock_low_width                           = 8 *}
+  Ann {*     min_capture_clock_low_width                         = 8 *}
+  Ann {*     total_shift_count                                   = 36 *}
+  Ann {*     from_scan_out_bits                                  = 8 *}
+  Ann {*   End_Active_Ssh_Section *}
+  Ann {*   Begin_Active_Ssh_Section *}
+  Ann {*     instance                                            = {subsystemB/corec_i1/identical_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     icl_instance                                        = {subsystemB.corec_i1.identical_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     bus_width                                           = 4 *}
+  Ann {*     packet_size                                         = 64 *}
+  Ann {*     bits_per_packet                                     = 32 *}
+  Ann {*     capture_packets                                     = 7 *}
+  Ann {*     packets_per_capture_pulse                           = 1 *}
+  Ann {*     edt_update_transition_words                         = 0 *}
+  Ann {*     edt_update_launch_word                              = 0 *}
+  Ann {*     scan_enable_transition_packets                      = 0 *}
+  Ann {*     scan_enable_launch_packet                           = 0 *}
+  Ann {*     initial_bit0_position                               = 0 *}
+  Ann {*     initial_bit0_position_of_packet                     = 0 *}
+  Ann {*     cycles_until_first_packet                           = 10 *}
+  Ann {*     delay_cycles_in_packet                              = 0 *}
+  Ann {*     offset                                              = 12 *}
+  Ann {*     extra_shift_packets                                 = 0 *}
+  Ann {*     delay_packets                                       = 0 *}
+  Ann {*     clock_multiplier                                    = 1 *}
+  Ann {*     clock_divider                                       = 1 *}
+  Ann {*     on_chip_compare                                     = on *}
+  Ann {*     on_chip_compare_capture_group_count                 = 2 *}
+  Ann {*     on_chip_compare_capture_group                       = 2 *}
+  Ann {*     on_chip_compare_capture_global_group_count          = 3 *}
+  Ann {*     on_chip_compare_capture_global_group                = 2 *}
+  Ann {*     min_shift_clock_low_width                           = 8 *}
+  Ann {*     min_capture_clock_low_width                         = 8 *}
+  Ann {*     total_shift_count                                   = 36 *}
+  Ann {*     representative_ssh                                  = {subsystemB/corec_i2/identical_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     from_scan_out_bits                                  = 8 *}
+  Ann {*   End_Active_Ssh_Section *}
+  Ann {*   Begin_Active_Ssh_Section *}
+  Ann {*     instance                                            = {subsystemB/coreb_i1/unique_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     icl_instance                                        = {subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst} *}
+  Ann {*     bus_width                                           = 4 *}
+  Ann {*     packet_size                                         = 64 *}
+  Ann {*     bits_per_packet                                     = 32 *}
+  Ann {*     capture_packets                                     = 7 *}
+  Ann {*     packets_per_capture_pulse                           = 1 *}
+  Ann {*     edt_update_transition_words                         = 0 *}
+  Ann {*     edt_update_launch_word                              = 0 *}
+  Ann {*     scan_enable_transition_packets                      = 0 *}
+  Ann {*     scan_enable_launch_packet                           = 0 *}
+  Ann {*     initial_bit0_position                               = 0 *}
+  Ann {*     initial_bit0_position_of_packet                     = 0 *}
+  Ann {*     cycles_until_first_packet                           = 8 *}
+  Ann {*     delay_cycles_in_packet                              = 8 *}
+  Ann {*     offset                                              = 18 *}
+  Ann {*     extra_shift_packets                                 = 0 *}
+  Ann {*     delay_packets                                       = 0 *}
+  Ann {*     clock_multiplier                                    = 1 *}
+  Ann {*     clock_divider                                       = 1 *}
+  Ann {*     on_chip_compare                                     = on *}
+  Ann {*     on_chip_compare_capture_group_count                 = 1 *}
+  Ann {*     on_chip_compare_capture_group                       = 1 *}
+  Ann {*     on_chip_compare_capture_global_group_count          = 3 *}
+  Ann {*     on_chip_compare_capture_global_group                = 1 *}
+  Ann {*     min_shift_clock_low_width                           = 8 *}
+  Ann {*     min_capture_clock_low_width                         = 8 *}
+  Ann {*     total_shift_count                                   = 36 *}
+  Ann {*     from_scan_out_bits                                  = 8 *}
+  Ann {*   End_Active_Ssh_Section *}
+</code></pre>
+</details>
+If ALL the SSH are off then no OCComp meta data(*_ssn.csv) is created
+<p><code>Ann {*     on_chip_compare                                     = off *}</code></p>
+<h3 id="testercompare-tc">TesterCompare (TC)</h3>
+<p>For SSN payload STIL patterns, it is almost certain that a CSV file will be generated alongside the ATP file. This CSV file contains the algorithm that describes how the pin and cycle data are rotated and mapped to each core (in IG-XL 11.0; in the future, the mapping will need to be at the SSH level rather than the core level).</p>
+<p>In the case of grouped identical core OCComp test patterns, there is no way to identify which SSH instance in the group is causing a bit on the scan-out bus to flip. As a result, the per-core pass/fail result cannot be derived from the scan-out fail pin or cycles. In the STIL file, within the <code>Active_Ssh_Section</code>, there will be a <code>representative_ssh</code> that indicates which SSH/ICL instance is representing the group on the SSN bus if that SSH/ICL instance is sharing the pin/cycle slots with other SSH/ICL instances. In this case, only the representative SSH will be listed in the TC section <code>Ann {* TESSENT_PRAGMA ssn_mapping -begin/end *}</code> with the pin/cycle rotation information. This is useful for diagnosis because the user needs to disable all but one SSH that shares the same representative SSH.</p>
+<p>However, for unique cores, it is more efficient to let the tester perform the comparison. In this case, IG-XL will parse the CSV file, capture the fail bits (pin/cycle), and generate the failed core information natively. The API to retrieve the result is:</p>
+<pre><code class="lang-cs">var ssnResults = TheHdw.Digital.Patgen.ReadScanNetworkResults();
+</code></pre>
+<p>Example of stil file section that generate the TesterCompare meta data(*_ssn_mapfile.csv)</p>
+<details>
+  <summary>STIL File Example</summary>
+<pre><code class="lang-cs">  Ann {* TESSENT_PRAGMA ssn_mapping -begin *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 0 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 0 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 0 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 0 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 1 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 1 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 1 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 1 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 2 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 2 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 2 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 2 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 3 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 3 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 3 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 3 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 4 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 4 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 4 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 4 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 5 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 5 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 5 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 5 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 6 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 6 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 6 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 6 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 7 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 7 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 7 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 7 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 8 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 8 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 8 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 8 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 9 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 9 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 9 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 9 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/corec_i2&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 10 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 10 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 10 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 10 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 11 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 11 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 11 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 11 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 12 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 12 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 12 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 12 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 13 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 13 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 13 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 13 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 14 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 14 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 14 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 14 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 15 -design_port &quot;gpo_0&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 15 -design_port &quot;gpo_1&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 15 -design_port &quot;gpo_2&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -datapath_id top -cycle_repetition 16 -cycle_mod 15 -design_port &quot;gpo_3&quot; -ssh_icl_instance subsystemB.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst -core_instance &quot;subsystemB/coreb_i1&quot; *}
+  Ann {* TESSENT_PRAGMA ssn_mapping -end *}
+</code></pre>
+</details>
+<h3 id="combo-tc--occomp">Combo (TC + OCComp)</h3>
+<p>From a device DFT perspective, it does not make sense to generate tests that are either OCComp only or TC only. It is possible that the device does not have any identical cores at all, in which case all patterns would be TC only. However, it is very unlikely that a device would have only identical cores, so in practice, only OCComp test patterns would rarely be provided.</p>
+<p>This means that in a real customer project, SSN patterns are either:</p>
+<ul>
+<li>TC only, only the TesterCompare meta data(*_ssn_mapfile.csv) is created</li>
+<li>TC + OCComp combo, in that case 2 csv files will be created, the TesterCompare meta data(<em>_ssn_mapfile.csv) and the OCCComp (</em>_ssn.csv)</li>
+</ul>
+<p>IG-XL can always parse the TC portion natively, but currently handling the OCComp we have to use the code lib discussed above.
+This is the main reason we need a unified solution to cover both case in <strong>CSRA</strong>.</p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="implementation-steps">Implementation steps</h3>
+<ul>
+<li><p>Drop 1</p>
+<ul>
+<li>implement inital support for OCComp and TC</li>
+<li>OCComp CSV support only</li>
+</ul>
+</li>
+<li><p>Drop 2</p>
+<ul>
+<li>implement inital support for OCComp/TC combo</li>
+<li>OCComp pattern Tags support</li>
+<li>implement DeviceInfo class</li>
+</ul>
+</li>
+<li><p>Drop 3</p>
+<ul>
+<li>implement <code>per-chain sticky bit</code> requirments</li>
+<li>TBD</li>
+</ul>
+</li>
+</ul>
+<h3 id="one-super-class">One super class</h3>
+<p>Similar to TheHdw, which is the portal to all tester instruments, and TheExec, which is the interface to all software controls, we propose to use one super object to handle all DUT related info so that test results can have a traceable history.
+At a high level, we propose something like <code>DeviceInfo</code> as shown in below:
+<img src="media/ssn-one-super-class.png" alt="Class diagram showing TheDUT as a superclass containing DeviceInfo structure with Pattern and IclInstance properties for SSN data organization">
+Essentially it is a sparse matrix that can be indexed by core/ssh and pattern:
+<img src="media/ssn-sparse-matrix.jpg" alt="Matrix visualization showing sparse data structure indexed by core/SSH and pattern for efficient SSN data storage"></p>
+<p>The thought is that, during flow run we will need to update the elements by pattern index, and at the end we will need to gather pass/fail result by cores, where each <strong>core</strong> is essentially a list of icl/ssh instances.</p>
+<pre><code class="lang-cs">    // ssh/icl instance can be indexed by pattern or by core/icl instance
+    //DeviceInfo.Pattern[&quot;identical&quot;].IclInstance[&quot;coreb_i1&quot;]...;  // during test, index by pattern first then by icl
+    //DeviceInfo.IclInstance[&quot;coreb_i1&quot;].Pattern[&quot;identical&quot;]...;  // during binning, index by icl/core then by pattern
+    //DeviceInfo.Pattern[&quot;identical&quot;].IclInstance[&quot;coreb_i1&quot;] and DeviceInfo.IclInstance[&quot;coreb_i1&quot;].Pattern[&quot;identical&quot;] are pointing to the same object.
+
+    // Access per core test result example:
+    foreach(var ssh in DeviceInfo.Core[&quot;SubsystemA&quot;]) {
+        //DeviceInfo.IclInstance[ssh].Results...
+    }
+</code></pre>
+<ul>
+<li>Currently(IG-XL 11.0), after each ssn pattern set burst, instead of just one pass/fail patgen result, there will be per core/ssh pass fail results returned by Tester Compare and by On-Chip Compare. Thus we need something like:</li>
+</ul>
+<pre><code class="lang-cs">DeviceInfo.Pattern[PatSet].UpdateTesterCompareResults();  // for Tester Compare
+DeviceInfo.Pattern[PatSet].UpdateOnChipCompareResults();  // for On-Chip Compare
+</code></pre>
+<p><img src="media/ssn-pattern.png" alt="Code structure diagram showing TheDUT.Pattern[PatSetName] indexing method for accessing pattern-specific SSN configuration data"></p>
+<pre><code class="lang-cs">// after pattern burst, read the TesterCompare ssn results:
+var ssnTcResults = TheHdw.Digital.Patgen.ReadScanNetworkResults();
+DeviceInfo.UpdateTesterCompareResults(ssnPatternSet, ssnTcResults);
+// alternatively:
+DeviceInfo.Pattern[ssnPatternSet.Value].UpdateTesterCompareResults(ssnTcResults);
+// code for updating OCComp test result is TBD
+</code></pre>
+<ul>
+<li><p>Elements shall be able to be indexed by icl/ssh instance firstly as well:
+<img src="media/ssn-iclInstances.png" alt="Architecture diagram showing TheDUT.IclInstance[SshIclName] indexing approach for accessing SSH ICL instance-specific data"></p>
+</li>
+<li><p>Finally, the per pattern per ssh element will have the detailed info such as contribution/sticky bits and pass/fail/masked flags.
+<img src="media/ssn-perPattern-perSSH-element.png" alt="Data structure diagram showing per-pattern SSH information including contribution bits, sticky bit, and pass/fail status as well as 'IsMasked' status for individual SSH instances"> <img src="media/ssn-OCCompInfo.png" alt="OnChip Compare status visualization displaying accumulated test results and sticky bit information for scan network validation"></p>
+</li>
+<li><p>The full list of properties is <strong>[TBD]</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PatternName</td>
+<td>string</td>
+<td>name of pattern/set for this element</td>
+</tr>
+<tr>
+<td>CoreName</td>
+<td>string</td>
+<td>name of the core which this icl/ssh belongs to in this pattern</td>
+</tr>
+<tr>
+<td>SshIclInstanceName</td>
+<td>string</td>
+<td>name of the ssh/icl instance, should use ssh? TBD</td>
+</tr>
+<tr>
+<td>representative ssh</td>
+<td>string</td>
+<td>name of the representative ssh for this ssh, blank if this ssh is on TC</td>
+</tr>
+<tr>
+<td>OCComp enabled</td>
+<td>bool</td>
+<td><code>true</code> if <code>on_chip_compare = on</code> (in stil)</td>
+</tr>
+<tr>
+<td>ContributionPin</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>ContributionLabel</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>ContributionOffset</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>StickyPin</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>StickyLabel</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>StickyOffset</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>StickyCycle</td>
+<td>string</td>
+<td>empty string if <code>on_chip_compare = off</code></td>
+</tr>
+<tr>
+<td>OCComp Masked</td>
+<td><code>site&lt;bool&gt;</code></td>
+<td>= <code>true</code> if disable_contribution_bit is asserted</td>
+</tr>
+<tr>
+<td>OCComp Failed</td>
+<td><code>site&lt;bool&gt;</code></td>
+<td>= <code>true</code> if sticky_bit failed</td>
+</tr>
+<tr>
+<td>TC Represented</td>
+<td>bool</td>
+<td>= <code>true</code> if this ssh/icl has a representative ssh</td>
+</tr>
+<tr>
+<td>TC Masked</td>
+<td><code>site&lt;bool&gt;</code></td>
+<td>= <code>true</code> if ssh/icl is masked by IG-XL (mask is at core level)</td>
+</tr>
+<tr>
+<td>TC Failed</td>
+<td><code>site&lt;bool&gt;</code></td>
+<td>= true if ReadScanNetwork() report failure (fail is at core level)</td>
+</tr>
+<tr>
+<td>fail_cycle</td>
+<td></td>
+<td>TBD</td>
+</tr>
+<tr>
+<td>fail_pin</td>
+<td></td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Example:
+<img src="media/ssn-icl_element-example.jpg" alt="Code example showing ICL element properties structure with instance names, SSH configuration, and pattern-specific attributes for SSN test setup"></p>
+</li>
+<li><p>The object shall be initialized during validation:</p>
+</li>
+</ul>
+<pre><code class="lang-cs">// during validation, read and process the csv files
+// Create an On Chip Compare object tied to the tested pattern/set
+TheHdw.Digital.AddOnChipCompare(ssnPatternSet.Value);
+var occPatInfo = TheHdw.Digital.OnChipCompare(ssnPatternSet.Value);
+
+// Read the CSV files associated with the Sticky Pattern and the Contribution Pattern
+occPatInfo.ReadCSV(stickyCsv);
+occPatInfo.ReadCSV(contribCsv);
+
+//Set the Contribution Pattern to track what pattern to modify during re-bursting
+TheHdw.Digital.OnChipCompare(ssnPatternSet.Value).SetContributionPattern(contribPatName);
+DeviceInfo.UpdateOnChipComparePatternInfo(ssnPatternSet.Value, occPatInfo);
+
+// for Tester Compare:
+var tcCores = TheHdw.Digital.ScanNetworks[ssnPatternSet.Value].CoreNames;
+DeviceInfo.UpdateTesterComparePatternInfo(ssnPatternSet.Value, tcCores);
+</code></pre>
+<ul>
+<li><p>The OCComp part will be changed to something similar with TC.</p>
+</li>
+<li><p>The TC part may be changed after 11.0 due to need for ssh/icl level of details.</p>
+</li>
+<li><h3 id="partial-good-binning">Partial Good Binning</h3>
+</li>
+</ul>
+<p>At the end of Test flow, customer would need to know the test result on a per core basis, and bin to different grade base on a rule set by customer.
+<img src="media/ssn-partial-good.jpg" alt="Flowchart diagram illustrating partial good binning logic for determining device pass/fail status based on per-core test results"></p>
+<pre><code class="lang-cs">// per ssh/icl pass/fail result for a pattern
+foreach (var ssh in DeviceInfo.Pattern[ssnPatternSet.Value].IclInstances) {
+    TheExec.Flow.TestLimit(ssh.FailedFlag, PinName: ssh.InstanceName, ForceResults: tlLimitForceResults.Flow);
+}
+// per device core pass/fail result for binning
+foreach (var core in DeviceInfo.Cores) {
+    TheExec.Flow.TestLimit(core.TestResults(), PinName: core.Name, ForceResults: tlLimitForceResults.Flow);
+}
+</code></pre>
+<ul>
+<li><h3 id="site-generic">Site Generic</h3>
+</li>
+</ul>
+<p>Last but not least, the DeviceInfo object should do everything possible to comply to <strong>Site Generic</strong>. i.e. the pass/fail flag shall be <code>Site&lt;bool&gt;</code>, <code>.IsMasked</code> shall be <code>Site&lt;bool&gt;</code>... But for non-unique info like InstanceName and PatternName, they shall be READONLY strings or other generic types.</p>
+<ul>
+<li><h3 id="sample-code">Sample Code</h3>
+</li>
+</ul>
+<pre><code class="lang-cs">// WORKING ZONE
+</code></pre>
+<h3 id="independent-class-per-flavor">Independent class per Flavor</h3>
+<p>As for now this will not be implemented since we belief using one class handling all three types will be more beneficial.</p>
+<h2 id="debug-tools">Debug Tools</h2>
+<h3 id="failing-core-identification">Failing Core Identification</h3>
+<p>Currently there is no good debug tools support in IG-XL for SSN. Some features are planned in the future, but it has not decided yet, which and how they would look like.
+We will used CSRA to do some prototyping to bring in ideas we have in mind in order to do a proof of concept.</p>
+<h4 id="core-status-display">Core Status Display</h4>
+<p>The intention is to have a graphical way to show the status of each core and also allow to easily disable and enable cores.</p>
+<p>Here are simple examples how we could show a high level summary for a single site. It is just to illustrate how the debug information could be shown, the naming of the differnt cell is not fix yet:</p>
+<p><img src="media/ssn-table-core-summary-1.png" alt="Single-site Core Status Display"></p>
+<p>as well as for multi site:</p>
+<p><img src="media/ssn-table-core-summary-all.png" alt="Multi-site Core Status Display"></p>
+<p>There some more ideas we have discussed, but we are currently not planning to implement them. We keep them here for documentation purposes.
+In addition more detailed information about failing cores could be provide in a result table:</p>
+<p><img src="media/ssn-core-debug-status.png" alt="Core level test result table showing detailed failure information with pass/fail indicators for individual SSN test cores"></p>
+<p>but this should be either replace by an graphical implementation or used to provide additional data.</p>
+<p>It would be also nice to show the core status, in this case, all cores are still enabled.</p>
+<p><img src="media/ssn-debug-all-cores-enabled.png" alt="All Cores Enabled, Core 5 Failed"></p>
+<p>Show core status, similar to above, but now core 5 is disabled.</p>
+<p><img src="media/ssn-debug-core-5-disabled.png" alt="Core 5 Disabled"></p>
+<p>An alternative solution could be a debug display looking similar than the graphical results view in IG-XL.</p>
+<p><img src="media/ssn-ig-xl-graphical-results-view.png" alt="ssn result view"></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><p>When dealing with ssn, Siemens created many new concepts along with a lot of new names/acronyms. To help user read this article easier, we also prepared a <a href="ssn/ssn_glossary.html">Glossary for ssn</a>.</p>
+</li>
+<li><p>Another interesting difference(from traditional scan pattern) is how should a ssn scan pattern be executed and why. Here is another page that may help you get an answer: <a href="ssn/ssn_flow.html">ssn TestFlow</a></p>
+</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

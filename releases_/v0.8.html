@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.8 - 2025-09-01 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.8 - 2025-09-01 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/releases_/v0.8.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v08---2025-09-01">v0.8 - 2025-09-01</h1>
+
+<h2 id="breaking-changes">Breaking Changes</h2>
+<p>Renamed <code>TheLib.Validation</code> to <code>TheLib.Validate</code>.</p>
+<pre><code class="lang-csharp">// previously
+TheLib.Validation.Pins(readPins, out _pins, nameof(readPins));
+TheLib.Validation.Pattern(pattern, out _patternInfo, nameof(pattern));
+TheLib.Validation.GreaterOrEqual(startIndex, 1, nameof(startIndex));
+
+// now
+TheLib.Validate.Pins(readPins, out _pins, nameof(readPins));
+TheLib.Validate.Pattern(pattern, out _patternInfo, nameof(pattern));
+TheLib.Validate.GreaterOrEqual(startIndex, 1, nameof(startIndex));
+</code></pre>
+<p><strong>Impact:</strong> Potential renaming necessary.</p>
+<h2 id="bug">Bug</h2>
+<h3 id="fixing-the-bug-in-acquiremeasure">Fixing the bug in Acquire.Measure</h3>
+<p>Fix the failure of the <code>.AddRange</code> method (for <code>PinSite&lt;Samples&lt;double&gt;&gt;</code>) by sequentially iterating through each measurement and reordering them based on the pin order defined in <code>Pins</code> G�� a temporary solution until <code>.AddRange</code> can be used.</p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="add-extractrange-feature-to-pins-class">Add <code>ExtractRange()</code> feature to <code>Pins</code> class</h3>
+<p>Retrieve a subset of (consecutive) pins from the collection.</p>
+<pre><code class="lang-c#">Pins _pins = new(&quot;pinA, pinB, pinC&quot;);
+Pins theFirst= Pins(pins).ExtractRange(0, 1);
+</code></pre>
+<p>Users can now use index based subsets or implement serial operations, iterating through all available pins.</p>
+<h3 id="added-argument-validation-test-blocks">Added Argument Validation Test blocks</h3>
+<p>Created argument validation test blocks in line with definition(s) within the C#RA documentation. Available argument validation methods are:</p>
+<p><strong>InRange</strong> - Checks if a numeric value is between two bounds.</p>
+<p><strong>GreaterOrEqual</strong> - Checks if a numeric value is greater or equal to a bound.</p>
+<p><strong>LessOrEqual</strong> - Checks if a numeric value is less or equal to bound.</p>
+<p><strong>Pattern</strong> - Checks for valid pattern spec and creates PatternInfo() object.</p>
+<p><strong>Pins</strong> - Checks for valid pin spec and creates Pins() object.</p>
+<p><strong>MethodDelegate</strong> - Checks for valid method spec and creates delegate object.</p>
+<p><strong>MultiCondition</strong> - checks for multicondition validity and creates the data array.</p>
+<p><strong>Enum</strong> - Checks string against provided Enum and returns enum value if applicable.</p>
+<pre><code class="lang-c#">TheLib.Validate.InRange(clampVoltage, -2.0, 6.0, nameof(clampVoltage));
+TheLib.Validate.GreaterOrEqual(clampVoltage, threshold, nameof(clampVoltage));
+TheLib.Validate.LessOrEqual(clampVoltage, threshold, nameof(clampVoltage));
+
+TheLib.Validate.Pattern(Pattern, nameof(Pattern), out PatternInfo patternInfo);
+TheLib.Validate.Enum(stringEnum, nameof(stringEnum), out enum enumValue);
+TheLib.Validate.Pins(pinList, nameof(pinList), out Pins pins);
+
+TheLib.Validate.MultiCondition(string values, s =&gt; type.Parse(s), nameof(values), out type[] conditions, int? numConditions);
+TheLib.Validate.MethodHandle(fullyQualifiedMethodName, nameof(fullyQualifiedMethodName), out MethodHandle&lt;T&gt; method);
+</code></pre>
+<p><strong>Impact:</strong> This will allow for the user to deploy argument validation on Common test methods, resulting in a much quicker way of identifying invalid arguments.</p>
+<h3 id="added-fail-validation-block">Added Fail() Validation block</h3>
+<p>Fail() validation block is intended to raise an unconditional validation error when called.</p>
+<pre><code class="lang-c#">TheLib.Validate.Fail(problemReasonResolutionMethod, nameof(Argument));
+</code></pre>
+<p><strong>Impact:</strong> Provides a method that users can utilize when working with arguments that do not have existing validation methods.</p>
+<h3 id="added-istrue-to-available-argument-validation-methods">Added IsTrue() to available Argument Validation Methods</h3>
+<p>IsTrue() is a generic validation check that can't be connected to a single parameter only (like illegal combination of parameters).</p>
+<pre><code class="lang-c#">TheLib.Validate.IsTrue(condition, problemReasonResolutionMessage, nameof(condition));
+</code></pre>
+<p><strong>Impact:</strong> This is meant to be a fallback for ANY checks. Allows for argument validation where the check cannot be connected to a single parameter.</p>
+<h3 id="generate-visual-studio-solution-file-for-the-demo-project">Generate Visual Studio Solution file for the Demo project</h3>
+<p>Added a new command script <code>_LoadDemoProgram.cmd</code> that generates a Visual Studio solution file <code>Demo_Generated.sln</code> in the Demo directory.</p>
+<pre><code>_LoadDemoProgram.cmd
+</code></pre>
+<h3 id="implement-layer-for-multiple-transaction-handlers">Implement layer for multiple transaction handlers</h3>
+<p>TransactionService now allows to add multiple transaction handlers and to switch usage between them.</p>
+<p>Currently no impact for the user, as this is just the layer without functionality.</p>
+<h3 id="implemented-empty-transactionservice-methods">Implemented empty TransactionService methods</h3>
+<p>Implementation of all methods for future use in TransactionService. Currently only the methods without functionality exist, this will be implemented later.</p>
+<pre><code class="lang-c#">N/A - examples will be available in future merges when functionality is implemented.
+</code></pre>
+<p>No impact for the user in this early implementation phase.</p>
+<h3 id="remove-workaround-for-functionaltestlimit-bug">Remove workaround for FunctionalTestLimit bug</h3>
+<p>FunctionalTestLimit threw an exception if multiple sites and usage of site generics. As workaround conversion to SiteBoolean was implemented. This was fixed in IG-XL V11 Alpha Kit, thus workaround was removed.</p>
+<pre><code class="lang-c#">N/A
+</code></pre>
+<p>There is no impact for the user, no changes in the API.</p>
+<h4 id="implementation-of-continuityparametricserial">Implementation of Continuity.Parametric.Serial</h4>
+<p>A testing method is added that performs continuity testing on pins sequentially.
+The branch includes the test method, unit tests, and documentation.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

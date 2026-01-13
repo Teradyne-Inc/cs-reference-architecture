@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Single- and MultiCondition | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Single- and MultiCondition | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/single-multi-condition.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="single--and-multicondition">Single- and MultiCondition</h1>
+
+<p>Data broadcast to tester channels is a fundamental principle in IG-XL: whether the same voltage setting needs to be sent to multiple pins, the drivers will take care of that and handle the broadcasting transparent to the user in the background. True is also: broadcast isn't an option whenever different settings are needed.</p>
+<p>On the user interface, such different settings often result in exuberant code to determine and manage these conditions in test code plus <code>For</code> loops to apply them. Trying to be smart and optimizing the number of calls required adds even more complexity, resulting in error prone code that is hard to test and maintain.</p>
+<p>C# Reference Architecture uses a common concept for handling single- and multi condition data across pins and pin groups, consistently implemented in areas that need this functionality. A set test blocks and other features allows for aa abstraction level similar to the single-condition case, removing friction and clutter from the user.</p>
+<h2 id="pinlists-and-pingroups">PinLists and PinGroups</h2>
+<p>IG-XL supports the concept of Pins, PinGroups and PinLists. For this feature it is important to understand the differences:</p>
+<ul>
+<li>Pins are the atomic units found on the PinMap and ChanMap sheet. They typically resolve to a single tester channel for every DUT site.</li>
+<li>PinGroups are collections of Pins (and other pin groups, nesting is supported), also defined on the PinMap sheet. Only pins of a common type can be part of a PinGroup, which is verified during validation.</li>
+<li>PinLists are loose collections of Pins, PinGroups and other PinLists and typically handled in comma separated strings (CSV). Arbitrary nesting and types are supported. PinLists can either be expressed as a <code>string</code> or by using the <code>PinList</code> type (which is mostly an alias of <code>string</code>). Pin based instrument drivers typically accept pin lists as input and will resolve to hardware resources internally. PinLists are not formally defined in IG-XL or validated by default, they are rather used as literals on sheets (like TestInstance) or hardcoded in code.</li>
+</ul>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This feature exclusively applies first level splitting of comma separated value lists (CSV). Each of the resulting elements is considered a separate entity (be it Pin or PinGroup) for the multi condition case. No further resolution of PinGroups is attempted. Condition counts not matching the split element count result in an error.</p>
+</div>
+<h2 id="functionality">Functionality</h2>
+<p>For reference, the single condition scenarios present when a single parameter is sent to a single pin:</p>
+<p><img src="media/single-condition-one-pin.png" alt="Diagram showing single condition scenario with one parameter applied to a single pin, illustrating the simplest parameter-to-pin mapping"></p>
+<p>Even when multiple pins are targeted, it's still a single condition case:</p>
+<p><img src="media/single-condition-multi-pin.png" alt="Diagram showing single condition scenario with one parameter broadcasted to multiple pins, maintaining single condition behavior across pin groups"></p>
+<p>Specific conditions for different pins is the typical scenario for the multi-condition case:</p>
+<p><img src="media/multi-condition-multi-pin-specific.png" alt="Diagram showing multi-condition scenario with specific different parameters applied to different pins, demonstrating typical per-pin parameter mapping"></p>
+<p>All cases when the number of pins matches the number of conditions must be correctly handled by the multi-condition scenario. That includes the 1 pins / 1 condition case, even if that's close to the single pin / single condition scenario. Note that in this case the parameter is provided as a collection with a single element vs. a scalar value:</p>
+<p><img src="media/multi-condition-single-pin-uniform.png" alt="Diagram showing multi-condition scenario with single pin receiving single condition as collection element, illustrating boundary case handling"></p>
+<p>The multi-condition scenario still supports uniform parameters - if one is provided, it's shared across all pins:</p>
+<p><img src="media/multi-condition-multi-pin-uniform.png" alt="Diagram showing multi-condition scenario with uniform parameter shared across multiple pins, demonstrating supported uniform broadcasting behavior"></p>
+<p>Multi-condition cases, where the number of parameters provided does not match the pin group count and isn't uniform (1) are unsupported:</p>
+<p><img src="media/multi-condition-multi-pin-missing.png" alt="Diagram showing unsupported multi-condition scenario with insufficient parameters for pin count, illustrating validation error case"></p>
+<p><img src="media/multi-condition-multi-pin-excessive.png" alt="Diagram showing unsupported multi-condition scenario with excessive parameters exceeding pin count, illustrating parameter mismatch error"></p>
+<p>Even the case where the number of parameters would theoretically match the flattened pin count is not allowed. Use flat pin lists in that case instead:</p>
+<p><img src="media/multi-condition-multi-pin-unsupported.png" alt="Diagram showing unsupported multi-condition scenario where parameter count matches flattened pin count but violates grouping rules"></p>
+<h2 id="single-condition-test-method">Single Condition Test Method</h2>
+<p>Let's assume this (fictitious and simplified) test method:</p>
+<pre><code class="lang-cs">[TestClass(Creation.TestInstance)]
+public class SingleConditionTesting : TestCodeBase {
+
+	Pins _pins;
+
+	[TestMethod, CustomValidation]
+	public void ForceV(PinList pinList, double forceVoltage, double voltageRange, double currentRange) {
+
+		if (TheExec.Flow.IsValidating) {
+			_pins = new(pinList);
+		}
+
+		if (ShouldRunBody) {
+			TheLib.Setup.Dc.ForceV(_pins, forceVoltage, voltageRange, currentRange);
+		}
+	}
+}
+</code></pre>
+<p>During validation, the <code>Pins</code> object is created and persistently stored. It is used in the <code>Body</code> of the test method in the sole test block to force a voltage.</p>
+<h2 id="multi-condition-test-method">Multi Condition Test Method</h2>
+<p>The same concept applied to a multi-condition case results in the following test method:</p>
+<pre><code class="lang-cs">[TestClass(Creation.TestInstance)]
+public class MultiConditionTesting : TestCodeBase {
+
+    Pins[] _pinGroups;
+    double[] _forceVoltages;
+    double[] _voltageRanges;
+    double[] _currentRanges;
+
+    [TestMethod, CustomValidation]
+    public void ForceV(PinList pinList, string forceVoltages, string voltageRanges, string currentRanges) {
+
+        if (TheExec.Flow.IsValidating) {
+            _pinGroups = TheLib.Validate.SplitMultiCondition(pinList, p =&gt; new Pins(p));
+            _forceVoltages = TheLib.Validate.SplitMultiCondition(forceVoltages, double.Parse, _pinGroups.Length);
+            _voltageRanges = TheLib.Validate.SplitMultiCondition(voltageRanges, double.Parse, _pinGroups.Length);
+            _currentRanges = TheLib.Validate.SplitMultiCondition(currentRanges, double.Parse, _pinGroups.Length);
+        }
+
+        if (ShouldRunBody) {
+            TheLib.Setup.Dc.ForceV(_pinGroups, _forceVoltages, _voltageRanges, _currentRanges);
+        }
+    }
+}
+</code></pre>
+<p>Because the options for instance --&gt; test method argument types are limited (arrays or lists are not available), data collections must be passed as string. Comma separated value lists (CSV) are commonly used in IG-XL for this use case, like for pin lists.</p>
+<p>These strings must be parsed, which is done during validation time in dedicated <code>Validation</code> blocks. Besides splitting and parsing, that can also check for a matching element count (uniform ==&gt; 1, multi-condition ==&gt; must match reference) and raise a validation error otherwise.</p>
+<p>The strings are converted into specifically typed arrays, while a fitting parser can be specified to support flexible types. Those arrays are stored in the test method, so that the parsing isn't affecting test time.</p>
+<h2 id="multi-condition-test-block">Multi Condition Test Block</h2>
+<p>The test block <code>ForceV</code> called to perform the action in the <code>Body</code> section of the test method above uses the exact same use model as in the single condition case. It's offered as an overload:</p>
+<pre><code class="lang-cs">public static void ForceV(Pins[] pinGroups, double[] forceVoltage, double[] voltageRange, double[] currentRange) {
+	if (forceVoltage.Length == 1 &amp;&amp; voltageRange.Length == 1 &amp;&amp; currentRange.Length == 1) {
+		TheLib.Setup.Dc.ForceV(Pins.Join(pinGroups), forceVoltage[0], voltageRange[0], currentRange[0]);
+	} else {
+		for (int i = 0; i &lt; pinGroups.Length; i++) {
+			TheLib.Setup.Dc.ForceV(pinGroups[i], forceVoltage.SingleOrAt(i), voltageRange.SingleOrAt(i), currentRange.SingleOrAt(i));
+		}
+	}
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Test Blocks follow best practices by calling through the official <code>TheLib</code> path instead of directly referencing the implementation, even when implementations are placed side-by-side. This showcases recommended practice when users copy the code for custom implementations in their own projects.</p>
+</div>
+<p>First, it determines if all provided parameters are uniform (array length == 1). In that case it can combine the pins from all pin groups and call the single condition test bock only once.</p>
+<p>Otherwise, the single condition test block is called per pin group with it's associated parameters. To support a mix of uniform and specific parameters, the <code>.SingleOrAt()</code> extension method is used for a concise syntax, returning the index element (specific case) or the single element if only one exists (uniform case).</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>It may be surprising why a single condition case is prominently offered and specially treated here - can't user simply use the single-condition flavor of the test block instead?</p>
+<p>Real test methods will have a series of test blocks that are required to perform a specific test, and only some of the test method's parameters may need to have specific conditions per pin. And since test blocks may not require all of the test methods parameters for functionality, it can't be determined at design time which will for a truly flexible multi-condition test method.</p>
+<p>The proposed concept buries that logic under the hood but offers optimized performance in either case. The increased design effort is covered by a standardized design pattern, that can be simply followed by test block authors.</p>
+<p><img src="media/single-multi-condition-decided_inside_block.png" alt="Architecture diagram showing decision logic embedded inside test blocks, optimizing performance while following standardized design patterns"></p>
+</div>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<h3 id="listt-or-t-arrays"><code>List&lt;T&gt;</code> or <code>T[]</code> arrays</h3>
+<p>For the resolved value collections, either <code>List&lt;T&gt;</code> or <code>T[]</code> arrays objects could be used.</p>
+<ul>
+<li><code>List&lt;T&gt;</code> are part of GenericCollections, a powerful set of types that are prominently supported. They offer dynamic extension or shrinking at the cost of a slight performance and memory footprint overhead.</li>
+<li><code>T[]</code> arrays are fixed size collections with the best performance but no (direct) support for dynamic size changes. They could be considered inferior by strong VBA veterans as that was the only choice for collections there, and may have been associated with clumsy implementations.</li>
+</ul>
+<p>Since both offer the advanced collection and LINQ use model in .NET, and the benefit of dynamic resizing is not very relevant in this use case, arrays are selected.</p>
+<p>This decision shall not be interpreted as a general preference for collection objects in the C#RA project. .NET offers a variety of collection types as part of the <code>System.Collection.Generic</code> namespace, but these are not meant as a replacement for regular arrays. The decision for the best type should be made on a case-by-case basis, the following guidelines might help:</p>
+<ul>
+<li>fast access &amp; minimum footprint? → <code>T[]</code> arrays</li>
+<li>dynamic size? → <code>List&lt;T&gt;</code></li>
+<li>fast insert/delete? → <code>LinkedList&lt;T&gt;</code></li>
+<li>unique elements? → <code>HashSet&lt;T&gt;</code>, <code>SortedSet&lt;T&gt;</code></li>
+<li>fast lookup? → <code>Dictionary&lt;K, V&gt;</code>, <code>HashSet&lt;T&gt;</code></li>
+<li>FIFO? → <code>Queue&lt;T&gt;</code></li>
+<li>LIFO? → <code>Stack&lt;T&gt;</code></li>
+</ul>
+<h3 id="array-size--general-test-block-parameter-validation">Array size / general test block parameter validation</h3>
+<p>Argument bounds checking and validation is a general recommendation for good and robust software. However, the additional code executed can add significant overhead to runtime. IG-XL uses the concept of validation to perform checks on information that is static for the test program runs upfront. This is true for sheet data, config limitations and can be extended to test code by using the <code>[CustomValidation]</code> attribute. It is however an opt-in model, with a due diligence requirement for test code authors to perform checks on critical inputs. Those are not enforced or guaranteed by the system.</p>
+<p>In favor of performant test execution, C# Reference Architecture uses extensive validation time checking in test modes and avoids additional argument checking in test blocks. Specifically, in this case, multi-condition array arguments are checked for length <code>==</code> pin group count (specific) or <code>== 1</code> (uniform) at validation time. Inside the test blocks only a check for <code>== 1</code> is required to discern the two.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

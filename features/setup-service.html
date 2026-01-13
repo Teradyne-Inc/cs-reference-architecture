@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Setup Service | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Setup Service | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/setup-service.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="setup-service">Setup Service</h1>
+
+<p>Much of the test coverage of typical devices can be achieved with only a handful test methods, which are applied with varying parameters. What's typically very specific to a device and test solution however is the required setup to execute such tests.</p>
+<p>The <strong>SetupService</strong> provides a generic solution for defining, applying and verifying the correct setup for tester, interface hardware and device. It offers means to manage setups, built-in logic for efficient use as well as auditing and diagnosis capability.</p>
+<h2 id="problem-statement">Problem Statement</h2>
+<p><strong>&quot;Managing tester, interface hardware and device setups is a common challenge for test solutions. It gets in the way of common code, adds overhead to test programs, a significant test time optimization burden and can be the source of hardware reliability problems if not done correctly. The diverse nature of various possible setup aspects makes a generic solution tricky.&quot;</strong></p>
+<h2 id="traditional-approaches">Traditional Approaches</h2>
+<p>The problem isn't new, and so are the various attempts that have been made to address it.</p>
+<h3 id="fully-specify-all-setups">Fully Specify All Setups</h3>
+<p>A safe path may seem to fully specify all setup requirements for all tests. Aside from bloating the test program, this approach can add significant overhead to execution - even applying the same settings like programming an instrument to the same output voltage, will cost test execution time.</p>
+<p>Trying to add parameters to standardized test methods that allow for flexible pre-setup options (like utility bits to switch on &amp; off, digital hold states, preconditioning patterns, instrument connects, ...) quickly becomes overwhelming - too diverse are the options that may exist.</p>
+<h3 id="incremental-setups">Incremental Setups</h3>
+<p>Partly alleviated is that problem with test methods that are designed for an incremental approach: in a series of similar tests the correct setup would only have to be applied once and could then be reused. Only the setup part would be device specific, while the actual tests can be generic and avoid any overhead caused by redundant setups.</p>
+<p>Unfortunately such an approach makes the test sequence highly susceptible to changes further up in the flow and issues introduced by sequence changes. Problems may show up in completely unrelated areas of the test program, and identifying the correct place for a fix might be tricky.</p>
+<p>Another downside is the lack of explicitness. Users unfamiliar with the test program may find it difficult to determine which setup is applied and if it's the correct one.</p>
+<p>Overall, this approach defies basic principles of modularity and separation of concerns.</p>
+<h3 id="full-setups-for-debug-incremental-for-production">Full Setups for Debug, Incremental for Production</h3>
+<p>Combining the two may seem like the best of two worlds, with full support for flexibility in a debug scenario and a tailored &amp; efficient solution for production. An <code>if(!production) { ... }</code> statement would enclose those settings that are not required in an optimized flow.</p>
+<p>As it turns out, maintaining two scenarios often causes increased maintenance effort, which is often given up as production needs tighten. The two different paths through the test programs start to diverge, quickly to a point where the debug option isn't usable anymore.</p>
+<h3 id="default-setups">Default Setups</h3>
+<p>Agreeing on a common set of conditions that's good for most of the tests can limit the overhead. Once implemented, all tests would be assume that setup to be applied as they start. Any deviations they need from that they could apply, but would have to make sure to revert before they end. Violations may not be easy to locate, but once isolated, are straight-forward to fix.</p>
+<p>In reality however, agreeing on such a common setup may be difficult depending on the device / interface / setup complexity. Parameters without a clearly dominating state would still require lots of switching, which in case of relays may result in increased hardware wear impacting system reliability.</p>
+<p>None of the concepts above suit well for common library based test methods, as they trade-off customization needs with execution performance.</p>
+<h2 id="the-smart-way">The Smart Way</h2>
+<p>All the described ideas above try to optimize for a certain scenario at the cost of the other. The <strong>SetupService</strong> resolves that by combining them and using logic to find the most efficient way transparently for the user.</p>
+<p><img src="media/setup-service.png" alt="Setup Service architecture diagram showing the flow between different setup strategies and their optimization logic for efficient test execution"></p>
+<h3 id="named-setups">Named Setups</h3>
+<p>Named <strong>setups</strong> are defined and centrally maintained for a specific test program. To apply a <strong>setup</strong>, it is only required to provide the identifier, and the service will know what do to. Participating test methods can use a single <code>string</code> type argument simplifying the idea of commonly usable library functions, as the specific setup aspects are encapsulated in a generic container.</p>
+<p>This concept is consistent with how levels and timing context is handled, they also combine a variety of different conditions under a single identifier.</p>
+<p>Setups can be defined in code or may be read in from separate setup files (JSON) once before validation.</p>
+<h3 id="versatile-settings">Versatile Settings</h3>
+<p>A <strong>setup</strong> is a collection of <strong>settings</strong>, which follow a common structure while offering the most versatile functionality:</p>
+<ul>
+<li><strong>Feature</strong> - the instrument / DIB / device feature it controls.</li>
+<li><strong>Pins</strong> - the pin names this setting applies to (if any).</li>
+<li><strong>Value</strong> - the setting value. Strictly and specifically typed (like <code>double</code> for a force voltage setting or <code>tlUtilBitState</code> for an utility bit state).</li>
+<li><strong>Set delegate</strong> - the code required to apply this setting to the instrument / DIB / device</li>
+<li><strong>Read delegate</strong> - the code required to retrieve the actual setting state from the instrument / DIB / device. Optional - may not always be possible.</li>
+</ul>
+<p>Different values for the same feature on different pins are realized by the creation of dedicated settings. These are implemented by following a strong interface implementation / inheritance model. Common functionality is provided centrally &amp; generically and shared with the specific implementation. This avoids copy / paste or consistency issues, admittedly at the slight cost of a non-trivial implementation:</p>
+<p><img src="media/setup-service_setting-inheritance.png" alt="Class inheritance diagram showing setup service settings implementation with central generic functionality and specific pin-based implementations"></p>
+<h3 id="fully-specified-incrementally-applied">Fully Specified, Incrementally Applied</h3>
+<p>The setups retain a cached state per feature, so that they can determine if a setting needs to be re-applied or not. Incremental &amp; partial setups are supported, and the logic is smart enough to only apply the minimum needed to the system. Settings that are defined for multiple pins will on-the-fly determine the subset of pins that require a change, pins already programmed to the target value are omitted and the remaining ones are programmed in a single statement. If all pins are at the target value already, no programming statement is issued.</p>
+<h3 id="audit-mode">Audit Mode</h3>
+<p>Determining the deltas to be programmed is made efficiently by comparing the target setting with cached values. No expensive hardware reads are performed for that. If however, settings are modified by bypassing the cache, the mechanism would break.</p>
+<p>To detect that, an <strong>Audit Mode</strong> is available. Once enabled, actual hardware reads are performed to confirm caches' correctness as the test program executes. Identified violations are reported.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>For certain instrument settings, comparing driver readback against the cache isn't trivial. The reason may be cal factors being applied, quantization effects or instrument ranges automatically picking the next available hardware range on arbitrary inputs. Using tolerances and instrument / feature specific logic for the comparison would be unreliable and error prone.</p>
+<p>The <strong>DoubleReadCompare</strong> feature adds a different compare strategy to these settings. In AuditMode, the driver value is read back twice, first as-is and then again after re-applying the target value. In case both reads match, the expected value was obviously already present in the hardware. Otherwise the cache was out of sync - regardless of how the value is altered on the way when being sent to that specific driver node.</p>
+<p>The implementation of this feature is transparent to the user and automatically applied for those settings in SetupService that require it.</p>
+</div>
+<p>The <strong>Audio Mode</strong> is intended to be used prior to releases or correlation runs, since the hardware readback adds significant overhead. <strong>Audit Mode</strong> runs could be required by process or enforced in dev-ops pipelines.</p>
+<h3 id="resolve-a-cache-conflict">Resolve a Cache Conflict</h3>
+<p>Three ways exist to resolve a cache conflict:</p>
+<ul>
+<li>Manually Revert the changed setting at the end of the test method. This option is preferred if the setting is rather unique in the program.</li>
+<li>Change the code to apply the setting via an additional <strong>Setup</strong> instead of manually. Setups can be small and incremental, and multiple can be applied within a test method.</li>
+<li>Notify the <strong>SetupService</strong> about the change by calling the static method <code>.SetCache()</code> on any setting. Only the cache is being updated without interacting with hardware.</li>
+</ul>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>In case of cache conflicts, it's critical to apply the resolution within the offending test. Otherwise a dependency between tests would be created, and changing the sequence or adding other tests in-between could break the model.</p>
+</div>
+<h3 id="confirm-the-system-is-in-the-expected-state-future-enhancement">Confirm the System is in the Expected State (Future Enhancement)</h3>
+<p>Some users have asked for a way to confirm a specific setup at the moment a measurement is being made or a pattern is started. This is to make sure that no critical condition is altered after incremental edits to released test programs and rounds of test time optimizations. This check would only compare the hardware state with the expectation and report any deviations, and also be run per request as part of a release process.</p>
+<p>Such a feature (&quot;TCM - Test Condition Monitor&quot;) had been requested by multiple customers in the past independently from a <strong>SetupService</strong>, but the infrastructure could support both use cases easily.</p>
+<h3 id="validation-future-enhancement">Validation (Future Enhancement)</h3>
+<p>The Validation feature of the SetupService ensures the integrity and correctness of user-defined setups. During the validation process, the service performs the following checks:</p>
+<ul>
+<li>Pin Existence: Verifies that all pins specified in the setups are defined on the pinmap sheet.</li>
+<li>Instrument Type Consistency: Ensures that within each setting of a setup, all referenced pins belong to the same instrument type.</li>
+<li>Value Range Verification: Confirms that all specified values, where possible, are within the acceptable ranges of the setting.</li>
+<li>Duplicate Setup Detection: Identifies and flags duplicate setups to prevent redundancy.</li>
+</ul>
+<h2 id="use-model">Use Model</h2>
+<p>Assume the case where two different instrument parameters need to be controlled via setups: utility bits and DCVI force voltages. Defining a first setup in code could be done by:</p>
+<h3 id="defining-setups">Defining Setups</h3>
+<pre><code class="lang-cs">Setup normal = new(&quot;Normal&quot;);
+normal.Add(new Csra.Setting.TheHdw.Utility.Pins.State(tlUtilBitState.Off, [&quot;K2&quot;, &quot;K3&quot;, &quot;K5&quot;, &quot;K6&quot;]));
+normal.Add(new Csra.Setting.TheHdw.Utility.Pins.State(tlUtilBitState.On, [&quot;K1&quot;, &quot;K4&quot;, &quot;K7&quot;]));
+normal.Add(new Csra.Setting.TheHdw.Dcvi.Pins.Voltage(0.990, [&quot;dcvi1&quot;]));
+normal.Add(new Csra.Setting.TheHdw.Dcvi.Pins.Voltage(2.850, [&quot;dcvi2&quot;, &quot;dcvi3&quot;]));
+Services.Setup.Add(normal);
+</code></pre>
+<p>In this example, a <code>Setup</code> called <code>Normal</code> is created. Certain utility bits are specified to be <code>Off</code>, while others need to be <code>On</code>. Two different voltage levels are defined for the three DCVI pins <code>dcvi1</code>,  <code>dcvi2</code> and <code>dcvi3</code>.</p>
+<p>In the same way, a second setup called <code>TestMode</code> is created with different settings.</p>
+<pre><code class="lang-cs">Setup testMode = new(&quot;TestMode&quot;);
+testMode.Add(new Csra.Setting.TheHdw.Utility.Pins.State(tlUtilBitState.Off, [&quot;K1&quot;, &quot;K2&quot;, &quot;K3&quot;]));
+testMode.Add(new Csra.Setting.TheHdw.Utility.Pins.State(tlUtilBitState.On, [&quot;K4&quot;, &quot;K5&quot;, &quot;K6&quot;, &quot;K7&quot;]));
+testMode.Add(new Csra.Setting.TheHdw.Dcvi.Pins.Voltage(2.2, [&quot;dcvi2&quot;]));
+Services.Setup.Add(testMode);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Setups don't have to be &quot;complete&quot; or &quot;consistent&quot; with others. Like the <code>TestMode</code> setup only cares about the voltage on <code>dcvi2</code> but ignores both <code>dcvi1</code> and <code>dcvi3</code>.</p>
+<p>Adding a specific setting to a setup means that the given values only relate to the pins listed. Other pins or other features don't matter here and are neither touched nor concerned.</p>
+</div>
+<h3 id="applying-setups">Applying Setups</h3>
+<p>Within a test method, setups can easily be applied:</p>
+<pre><code class="lang-cs">[TestMethod]
+public void Services.Setup1() { // Test #1
+	Services.Setup.Apply(&quot;Normal&quot;);
+	// do some DUT testing
+}
+</code></pre>
+<p>In verbose mode, the <code>Services.Setup.Apply()</code> is chatty, reporting to the output window what it did:</p>
+<p><img src="media/setup-service-tm1.png" alt="Console output showing SetupService verbose mode applying Normal setup, displaying sequence of settings and actions taken for utility bits and pin configurations"></p>
+<p>All defined <strong>settings</strong> of the <strong>setup</strong> <code>Normal</code> are applied in the specified sequence. For the first setting (turn utility bits off), no actions are needed as they are off already.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>After a post-job-reset, most instrument parameters are reset to a known default state. For settings resembling tester instrument features, the <strong>SetupService</strong> is aware of these defaults and automatically updates (resets) it's caches at the beginning of a test program run.</p>
+</div>
+<p>Now lets's assume the next test in our example requires the <strong>setup</strong> <code>TestMode</code> to be applied:</p>
+<pre><code class="lang-cs">[TestMethod]
+public void SetupService2() { // Test #2
+	Services.Setup.Apply(&quot;TestMode&quot;);
+	// do some DUT testing
+}
+</code></pre>
+<p>Only the differing settings are being sent to the hardware:</p>
+<p><img src="media/setup-service-tm2.png" alt="Console output showing SetupService optimized operation, applying only differing settings to hardware for improved efficiency"></p>
+<p>If the third test now calls for the same <strong>setup</strong> <code>TestMode</code>:</p>
+<pre><code class="lang-cs">[TestMethod]
+public void SetupService3() { // Test #3 (reusing same setup)
+	Services.Setup.Apply(&quot;TestMode&quot;);
+	// do some DUT testing
+}
+</code></pre>
+<p>no more action is needed - all settings are already where they need to be and no hardware programming is done:</p>
+<p><img src="media/setup-service-tm3.png" alt="Console output showing SetupService cache hit scenario where no hardware programming is needed as all settings are already correctly configured"></p>
+<p>The fourth case performs some direct hardware modifications before re-applying <strong>setup</strong> <code>TestMode</code> again:</p>
+<pre><code class="lang-cs">[TestMethod]
+public void SetupService4() { // Test #4 (same setup, but some hardware changed)
+	TheHdw.Utility.Pins(&quot;K1&quot;).State = tlUtilBitState.On;
+	TheHdw.DCVI.Pins(&quot;dcvi2&quot;).Voltage.Value = 1.9;
+	Services.Setup.Apply(&quot;TestMode&quot;);
+	// do some DUT testing
+}
+</code></pre>
+<p>Now the cache is confused as it didn't get notified of the hardware state changes made behind it's back. It still believes no action is needed:</p>
+<p><img src="media/setup-service-tm4.png" alt="Console output showing SetupService cache confusion scenario where direct hardware modifications bypass the cache, resulting in incorrect state assumptions"></p>
+<p>However, when using <strong>Audit Mode</strong> to re-apply <strong>setup</strong> <code>TestMode</code>:</p>
+<pre><code class="lang-cs">[TestMethod]
+public void SetupService5() { // Test #5 (audit mode finds such changed)
+	Services.Setup.AuditMode = true;
+	Services.Setup.Apply(&quot;TestMode&quot;);
+	// do some DUT testing
+}
+</code></pre>
+<p>the discrepancies are detected and flagged:</p>
+<p><img src="media/setup-service-tm5.png" alt="Console output showing SetupService Audit Mode detecting and flagging hardware state discrepancies between expected and actual configurations"></p>
+<h3 id="applying-multiple-or-combining-setups">Applying Multiple or Combining Setups</h3>
+<p>Users may decide to group related settings in separate setups, and then apply multiple to get the tester / device / interface hardware into the desired state. This may help with maintainability and reduce the total number required when combinations are needed.</p>
+<p>The method <code>Services.Setup.Apply()</code> accepts a list of comma separated values, which are applied in the specified sequence. Redundant or conflicting settings (<code>Gate</code> off and then on again in a subsequent setup) are executed as specified, because it could be the intention of the author to preserve that order, for instance to apply a device reset.</p>
+<h2 id="side-effects-and-other-aspects">Side Effects and Other Aspects</h2>
+<p>In IG-XL, persistently stored data causes cross-process communication overhead when running in blue button debug mode: the data has to be serialized to keep the DRH and the Excel process in sync. IG-XL automatically takes care of that, but a design focusing on minimum required data volume and simple structures helps minimize the impact.</p>
+<p>A looming risk of features that bury complex functionality under the hood and expose an &quot;always and automatically do the right thing&quot; use model is debuggability. Designed for the &quot;Happy Day Scenario&quot;, it may get tricky for users to trouble-shoot and figure out what's going on if things don't play out as intended. The verbose mode should provide valuable insight in such cases, but additional debug features may need to be considered as users run into challenges or identify additional requirements.</p>
+<p>Certain events happen throughout the life-time of an IG-XL job, which the <strong>SetupService</strong> must reliably tie in to: settings need to be initialized once and will need retain it's information with the life-time of the job. A post-job-reset will affect instrument settings, which the <strong>SetupService</strong> cache has to get notified off. A robust design here is essential for reliable functionality under all conditions.</p>
+<p>Finally, more formal report outputs may be desired for the audit mode feature. Customer engagement will help identify requirements, but the design is open and extensible for additional functionality.</p>
+<h2 id="supported-features">Supported Features</h2>
+<p>The selection of features is made based on priority and relevance for typical test programs. A brute-force code reflection based query of all existing nodes in the IG-XL driver language is difficult due to complexity (~800 nodes for DCVI alone), redundant and convoluted language implementation.</p>
+<p>Detailed information on the supported features per instrument and their implementation strategy is shown on the following pages. The structure closely follows the IG-XL driver language, with a separate table per base node (the SetupService <strong>is</strong> platform specific)</p>
+<ul>
+<li><a href="setup-service/setup-service_dcvi.html">DCVI instrument nodes</a></li>
+<li><a href="setup-service/setup-service_dcvs.html">DCVS instrument nodes</a></li>
+<li><a href="setup-service/setup-service_digital.html">Digital instrument nodes</a></li>
+<li><a href="setup-service/setup-service_ppmu.html">PPMU instrument nodes</a></li>
+<li><a href="setup-service/setup-service_utility.html">Utility instrument nodes</a></li>
+</ul>
+<p>The required types for the settings use there are listed here:</p>
+<ul>
+<li><a href="setup-service/setup-service_setting_types.html">Setting Types</a></li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The per instrument catalog does not reflect a final state - functionality is added on a by-need basis. This is a work-in-progress area.</p>
+</div>
+<h2 id="implementation">Implementation</h2>
+<p>A conceptual description of the implemented code will follow (<a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/689">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/689</a>).</p>
+<h2 id="unit-testing">Unit Testing</h2>
+<p>The core functionality of the SetupService has far-going unit test coverage. However - designed for an open and extensible use model - unit test coverage for those extensions is required as well. For consistent coverage, the following strategy is defined:</p>
+<ul>
+<li><p><code>Setting_Xyz : Setting&lt;Xyz&gt;</code></p>
+<ul>
+<li><code>Serialize()</code>
+<ul>
+<li>enums: test all, invalid (cast)</li>
+<li>numeric types: test corner cases (-maxneg, small neg, 0, happy day pos, maxpos)</li>
+<li><code>string</code>: normal, large, veryvery large, string.empty, null, (Unicode? No)</li>
+<li><code>bool</code>: <code>true</code>/<code>false</code></li>
+</ul>
+</li>
+<li><code>Compare()</code>
+<ul>
+<li>equal, smaller, larger</li>
+<li>corner / special, tricky cases</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Feature : Setting_Xyz</code></p>
+<ul>
+<li>Constructor
+<ul>
+<li>all args find their way to the object?</li>
+<li>initstate set, unit, settling and initMode set ---&gt; really?</li>
+<li><code>SetAction</code> / <code>ReadFunc</code> defined?</li>
+<li><code>_staticCache</code> connected?</li>
+</ul>
+</li>
+<li><code>SetAction</code>
+<ul>
+<li>set corner cases from above and read back via test harness</li>
+</ul>
+</li>
+<li><code>ReadFunc</code>
+<ul>
+<li>set happy day via SetAction IG-XL / readback ---&gt; set another happy day / readback</li>
+</ul>
+</li>
+<li><code>Set</code>
+<ul>
+<li>set happy day / readback --&gt; set another happy day / readback</li>
+<li>check cache</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<p>n/a</p>
+<h2 id="open-questions">Open Questions</h2>
+<ul>
+<li>likely should integrate with the <code>Pins</code> objects. But that'll cause a dependency. Is that what we want? Implications?
+<ul>
+<li><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/189">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/189</a></li>
+</ul>
+</li>
+<li>add validation support. Bounds checking might be possible. Should we propose defining the <strong>setups</strong> at validation? Prior to that?
+<ul>
+<li><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/190">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/190</a></li>
+</ul>
+</li>
+<li>add site capability (different values per site for scenarios where that is needed)
+<ul>
+<li><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/192">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/192</a></li>
+</ul>
+</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

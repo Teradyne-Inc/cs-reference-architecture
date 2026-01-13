@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Documentation | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Documentation | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/documentation.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="documentation">Documentation</h1>
+
+<p>Good intentions for great documentation exist in every project, but often enough this task falls off the table. <em>&quot;Functionality first and then documentation&quot;</em> is a flawed process, and we want to do better here.</p>
+<p>In fact, this team is starting off with documentation, by creating design docs like this before implementing. Maybe - along with a focus on unit testing - we're just inventing a new trend <strong>Test and Documentation Driven Development (TDDD)</strong> here!</p>
+<h2 id="documentation--source-code--">Documentation = Source Code + ???</h2>
+<p>To avoid mismatches and outdated information, documentation must live very close to the source code and take context information into account. Where things change, documentation update requirements need to be obvious, easy to implement and ideally well supported with tools.</p>
+<p>The same processes to collaborate, review and track issues is used as for the product code itself. The documentation generation process is fully autonomous, running as part of the product build &amp; test pipeline. Checks automatically flag violations or discrepancies, guaranteeing complete, consistent and correct documentation for the user.</p>
+<h2 id="xml-comments">XML Comments</h2>
+<p>The <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/">XML Documentation feature</a> is used for any publicly accessible interface:</p>
+<ul>
+<li>automatically enables <a href="https://learn.microsoft.com/en-us/visualstudio/ide/using-intellisense?view=vs-2022">IntelliSense</a> features when using them</li>
+<li>checked for consistency (exists? required fields filled? arguments specified correctly? return type described?) at the build process</li>
+<li>single source of truth API documentation</li>
+<li>travels with the code, is always in sync</li>
+<li>written and maintained by the code author</li>
+</ul>
+<h3 id="tags-to-use">Tags to Use</h3>
+<p>In C#RA, only those tags are used which source information into the IntelliSense service. That is a small subset of the ones existing. On the top level, these are:</p>
+<ul>
+<li><code>&lt;summary&gt;</code> - one or two brief sentence to describe the function</li>
+<li><code>&lt;param&gt;</code> - for every parameter: describe the parameter, include critical aspects (&quot;zero based index&quot;, &quot;non-empty string&quot;, ...)</li>
+<li><code>&lt;returns&gt;</code> - for non-<code>void</code> methods: describe the return value</li>
+<li><code>&lt;typeparam&gt;</code> - for generic methods: describe the meaning / functionality of the type</li>
+</ul>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>C#RA does not use the other tags supported for XML API documentation, like <code>&lt;remarks&gt;</code>, <code>&lt;exception&gt;</code>, <code>&lt;example&gt;</code>. Such further-going information is provided via <a href="documentation.html#api-doc-extension-overwrites">API doc extensions</a>. The XML features to structure such rich documentation are limited, and would significantly inflate the source code.</p>
+</div>
+<p>Use the following guidelines to create consistent and efficient XML documentation:</p>
+<ul>
+<li>✔️ <strong>Do</strong> use grammatically correct sentences in English language and end them with period (<code>.</code>). Parameter and return value descriptions may omit the verb if the use is obvious (<code>/// &lt;param name=&quot;name&quot;&gt;The pin name.&lt;/param&gt;</code>).</li>
+<li>✔️ <strong>Do</strong> use the <code>&lt;cref&gt;</code> tag when referring other types - doing this will provide context aware rename support (<code>Ctrl-R-R</code>) and issue a compiler warning on mismatch.</li>
+<li>✔️ <strong>Do</strong> use normal, English capitalization.</li>
+<li>✔️ <strong>Do</strong> use indicative instead of imperative mood in summary and other places (<code>/// Creates a new object.</code> instead of <code>/// Create a new object.</code>)</li>
+<li>✔️ <strong>Do</strong> add brief inline comments right at code features that might be unexpected to clarify it was a deliberate choice. Otherwise, code should strive for being self-explaining.</li>
+<li>❌ <strong>Don't</strong> use formatting or line breaks - they will be filtered out in Intellisense and make the text unreadable.</li>
+<li>❌ <strong>Don't</strong> use abbreviations or acronyms without need.</li>
+<li>❌ <strong>Don't</strong> repeat information about types or optional defaults. This information is automatically extracted from code and may get outdated if that changes.</li>
+<li>❌ <strong>Don't</strong> provide excessive information here, that should rather go into the prose documentation (Overwrite) pages.</li>
+<li>❌ <strong>Don't</strong> make excessive use of inline comments explaining the functionality. This information should go into the XML or override API comment section, so that it can be consumed for IntelliSense and the published documentation.</li>
+</ul>
+<p>Here is a good example of how to <strong>not</strong> do it:</p>
+<p><img src="media/for-each-site-massive-pop-up.png" alt="Screenshot showing excessive XML documentation pop-up overwhelming the code editor interface"></p>
+<h2 id="docfx">DocFX</h2>
+<p><a href="https://dotnet.github.io/docfx/index.html">DocFX</a> is used to publish to <a href="https://solid-adventure-nv3z2qy.pages.github.io/">GitHub Pages</a>. It's the state-of-the-art solution for .NET projects, created by Microsoft for their Microsoft Learn library. It's open-source and easily deployable through GitHub Actions.</p>
+<h3 id="feature-pages-and-more-markdown">Feature Pages and More (Markdown)</h3>
+<p>Pages like this one is <a href="https://solid-adventure-nv3z2qy.pages.github.io/features/documentation.html">directly shown as a GitHub Page</a>.</p>
+<p>For a consistent style follow these guidelines:</p>
+<ul>
+<li>✔️ <strong>Do</strong> target the &quot;interested novice&quot; for the right tradeoff between assuming too much prior knowledge and excessive explanations. Assume the reader has experience in the domain, but hasn't yet mastered the topic you're describing (why would they read that otherwise?).</li>
+<li>✔️ <strong>Do</strong> create a page outline before you fill in details. Use (hierarchical) headlines to structure your content.</li>
+<li>✔️ <strong>Do</strong> make use of pictures, animations, tables &amp; mermaid diagrams. Shoot for the most compact way to convey your content (&quot;one picture says more than 1000 words&quot;).</li>
+<li>✔️ <strong>Do</strong> consider all user types in the target audience, which includes humans and LLMs. While LLMs can understand markdown structured content like tables or mermaid diagrams well, comprehension of bitmap images is much less reliable, and should not be the only place critical information is conveyed. Describe such content in the <code>Alt-Text</code> field of image links, and aim for a crisp 1-3 sentence summary.</li>
+<li>✔️ <strong>Do</strong> set a high standard for documentation. It is essential for users to successfully utilize the product.</li>
+<li>✔️ <strong>Do</strong> compare how other, similar nodes are documented and follow their style.</li>
+<li>✔️ <strong>Do</strong> use double-<code>**</code> (=<strong>bold</strong>) highlighting sparingly, avoid italics (<code>*</code> / <code>_</code>) and bold+italics (<code>***</code> / <code>___</code>) for legibility and a consistent look and feel.</li>
+<li>✔️ <strong>Do</strong> insert empty lines between different content types (headlines, flow text, bullet item groups, tables, ...) or paragraphs. The HTML renderer may not reliably work otherwise.</li>
+<li>❌ <strong>Don't</strong> use more than one first level <code># Top Headline</code> in your document. It should be the first line on your page and correlate with the file name</li>
+<li>❌ <strong>Don't</strong> try to format markdown documents by using HTML tags or other means. The idea of markdown is to contain content only marked up with the content type (normal paragraph, headline, code, bullet list, highlighted text, ... ) and let the renderer do the formatting for a consistent output.</li>
+<li>❌ <strong>Don't</strong> casually introduce a new style / language because you have a better idea. If you must, update similar nodes to follow the same style, or reach out to the owners of that code. But look for team agreement first.</li>
+</ul>
+<h3 id="api-documentation">API Documentation</h3>
+<p>DocFX can understand the source code structure and extract <a href="https://solid-adventure-nv3z2qy.pages.github.io/api/index.html">API documentation</a> pages per member or type, enriched with information contained in the XML comments. That way code &amp; API documentation is always in sync.</p>
+<h3 id="api-doc-extension-overwrites">API Doc Extension (Overwrites)</h3>
+<p>Overwrites complement this with extended user documentation, directly written in prose Markdown. They contain further details, rich media and code examples via snippet references, which are automatically extracted from actual source code files being tested in the pipeline.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>UIDs create the link between an overwrite markdown file and the API node to merge the content in. Figuring out these UIDs is not trivial via the DocFX built-in features, but we're considering alternative tools to help here. Validating the correct use of UIDs and flag broken links - like in the case of API node renames - are also areas for custom tools to provide added value.</p>
+</div>
+<p>The following structure is followed for overwrites, which is blended into <strong>Details</strong> section of the API doc. All sections use level-5 (<code>#####</code>) headlines for consistency with the rest of the generated doc:</p>
+<table>
+<thead>
+<tr>
+<th>Paragraph</th>
+<th>Content</th>
+<th>Test<br>Method</th>
+<th>Test<br>Block</th>
+<th>Service</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Test Technique</code></td>
+<td>An introductory paragraph describing a typical use case this is intended for:<br>- what are we testing on the device (background)?<br>- what is a typical HW connection block diagram for testing using this test method (picture)?<br>- what are typical value ranges and modes that are being programmed and what are the typical measured values expected for that typical block diagram?<br>- what are things that can go wrong and cause unexpected values?</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>Implementation</code></td>
+<td>Summarize the implemented logic and sequence. Mention hierarchies if applicable.</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❓</td>
+</tr>
+<tr>
+<td><code>Platform Specifics</code></td>
+<td>Describe relevant information that is specific to some platforms only.</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❓</td>
+</tr>
+<tr>
+<td><code>Pre Conditions</code></td>
+<td>List any (unexpected) conditions that need to exist for successful operation.</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❓</td>
+</tr>
+<tr>
+<td><code>Post Conditions</code></td>
+<td>List any (unexpected) left-overs that are worth noting.</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❓</td>
+</tr>
+<tr>
+<td><code>Limitations</code></td>
+<td>List if and where the feature is deviating from the overall expectable use model.</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❓</td>
+</tr>
+<tr>
+<td><code>Examples</code></td>
+<td>Show typical use cases, add some meaningful context code applicable (not only a single line).</td>
+<td>❌</td>
+<td>✔️</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>Code Reference</code></td>
+<td>Reference the actual source code.</td>
+<td>✔️</td>
+<td>❓</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-publishing">Output Publishing</h3>
+<p>The output is published to a dynamic web page, nicely formatted and with cross-reference links automatically applied. Rich Search is available. All pages support direct editing, by clicking on the pen symbol 🖉 users can apply changes right on the web page and submit a pull request with the chances to the repo maintainers.</p>
+<p>Additionally, static HTML is produced to be included in the release package shipped to users.</p>
+<h2 id="inline-commenting-guidelines">Inline Commenting Guidelines</h2>
+<p>Because this library is shipped as source code to aid hardware debugging and serve as a reference implementation, inline comments can play a specific, valuable role in those use cases. To avoid conflicts with the primary documentation strategies (API reference &amp; user manual), they need to be used strategically.</p>
+<p>It is important to remember that inline comments are not extracted into the compiled documentation package, nor are they visible to users via IntelliSense at design time. They are not available to readers unless they navigate to the implementation and inspect the source code.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>The Golden Rule: Prioritize writing self-explanatory code. Do not add inline comments describing what the code is doing. Comment only when logic is unexpected to explain why a specific design choice was made.</p>
+</div>
+<ul>
+<li>✔️ <strong>Do</strong> add inline comments specifically for the debug &amp; code customization use cases. Focus and limit the information to what is important in these scenarios. Information that has a broader relevance, like for plain users, needs to go on the API / user doc level.</li>
+<li>✔️ <strong>Do</strong> maintain conciseness: Treat inline comments as a &quot;last resort.&quot; Use them only if the information cannot be conveyed through clean code structure or if it does not belong in the public API/User documentation.</li>
+<li>✔️ <strong>Do</strong> explain hardware or system constraints: Use explicit comments to highlight counter-intuitive logic dictated by the hardware (e.g., <code>for (int i = 1; i &lt;= hdwObjects.Count; i++) // hardware index is 1-based; 0 is reserved</code>).</li>
+<li>✔️ <strong>Do</strong> highlight side effects: Warn future developers if a seemingly harmless action triggers a hardware consequence (e.g., stalling the pipeline, auto-clearing a buffer on read, etc.).</li>
+<li>✔️ <strong>Do</strong> reference external documentation: If complex details are already documented, link to the relevant section of the API or User Guide rather than re-explaining it in the source code.</li>
+<li>✔️ <strong>Do</strong> mark critical sections: Clearly label code that handles safety interlocks or prevents physical hardware damage.</li>
+<li>❌ <strong>Don't</strong> clutter: The source code should remain scanneable. Maintain a high ratio of functional code to comments.</li>
+<li>❌ <strong>Don't</strong> state the obvious: Do not translate code syntax into English (e.g., avoid <code>// Increment counter</code> or <code>// Check if valid</code>).</li>
+<li>❌ <strong>Don't</strong> duplicate: Do not copy-paste details from the XML API reference or User Manual and also avoid redundancies in content. This creates a &quot;double maintenance&quot; burden and inevitably leads to conflicting information.</li>
+<li>❌ <strong>Don't</strong> excuse poor structure: Do not use comments to explain &quot;clever&quot; or messy code. If the logic requires a paragraph of text to be understood, refactor the code (e.g., by renaming variables or extracting methods) instead of commenting it.</li>
+</ul>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<h3 id="myinfo">MyInfo</h3>
+<p>It is not currently planned to directly incorporate the C#RA documentation into MyInfo. A process to support automatic API documentation from XML comments is planned, but not yet available. Manually generating the documentation and keep it in sync with the code would result in significant overhead, and the authoring tools are not broadly accessible to application engineers.</p>
+<p>However, since the focus lies on the content and that's where the vast majority of the effort is spent, it is expected that this can be easily transferred to MyInfo if and when that is needed.</p>
+<h3 id="additional-xml-tags">Additional XML Tags</h3>
+<p>The use of <code>&lt;exception&gt;</code> tag was considered as it would be suported by VisualStudio IntelliSense. Since the <code>AlertService</code> centralizes the exception handling, no exceptions are raised from the code directly. That'll get in the way of the triple-slash <code>///</code> comment wizard automatically listing any exception in the method. Without that and no compiler warning either, it would be unlikely for the code base to end up with a consistent and complete way to list exceptions. Instead, exceptional cases would be listed in extended documentation along with other limitations or constraints.</p>
+<p>The use of advanced XML tags right in the source code was considered as alternative to prose Markdown documentation being merged via overwrites. XML doc supports a wide range of additional tags like <code>&lt;remarks&gt;</code>, <code>&lt;example&gt;</code>, <code>&lt;see&gt;</code>, <code>&lt;seealso&gt;</code>, <code>&lt;code&gt;</code>, ... which however significantly bloat the source code itself. Because the product is being shipped as source code, and is intended for users to be accessibly and intuitive, it was decided to limit XML tag use only to those that are directly reflected in IntelliSense.</p>
+<p>Limited formatting options and access to media like images and animations and the lack of a snippet reference mechanism from verified code were additional counter-arguments.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

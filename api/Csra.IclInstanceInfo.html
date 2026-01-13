@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class IclInstanceInfo | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class IclInstanceInfo | C# Reference Architecture ">
+      
+      <meta name="description" content="Class to store the attributes of an icl instance, part of  for a ScanNetwork pattern(set).">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_IclInstanceInfo.md&amp;value=---%0Auid%3A%20Csra.IclInstanceInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.IclInstanceInfo">
+
+
+
+  <h1 id="Csra_IclInstanceInfo" data-uid="Csra.IclInstanceInfo" class="text-break">
+Class IclInstanceInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Class to store the attributes of an icl instance, part of <a class="xref" href="Csra.ScanNetworkPatternInfo.html">ScanNetworkPatternInfo</a> for a ScanNetwork pattern(set).</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class IclInstanceInfo</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">IclInstanceInfo</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Csra_IclInstanceInfo__ctor_" data-uid="Csra.IclInstanceInfo.#ctor*"></a>
+
+  <h3 id="Csra_IclInstanceInfo__ctor_System_String_" data-uid="Csra.IclInstanceInfo.#ctor(System.String)">
+  IclInstanceInfo(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creating a new <a class="xref" href="Csra.IclInstanceInfo.html">IclInstanceInfo</a> object from the combined instance name: $&quot;{ssh-icl-instance}@{core-instance}&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IclInstanceInfo(string iclAndCoreInstanceNames)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>iclAndCoreInstanceNames</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The hybrid instance name following this format: &quot;{ssh_icl_instance}@{core_instance}&quot;.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_IclInstanceInfo__ctor_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This hybrid instance name is retrieved from IGXL API: TheHdw.Digital.ScanNetworks[ScanNetworkMapping].InstanceNames.</p>
+</div>
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo__ctor_" data-uid="Csra.IclInstanceInfo.#ctor*"></a>
+
+  <h3 id="Csra_IclInstanceInfo__ctor_System_String_System_String_System_String_System_Boolean_System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Int32__System_Nullable_System_Double__System_String_System_String_" data-uid="Csra.IclInstanceInfo.#ctor(System.String,System.String,System.String,System.Boolean,System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Double},System.String,System.String)">
+  IclInstanceInfo(string, string, string, bool, int?, string, string, int?, string, string, int?, double?, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creating a new <a class="xref" href="Csra.IclInstanceInfo.html">IclInstanceInfo</a> object which is a member of a collection in <a class="xref" href="Csra.ScanNetworkPatternInfo.html">ScanNetworkPatternInfo</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IclInstanceInfo(string sshInstanceName, string sshIclInstanceName, string coreInstanceName, bool isOnChipCompare = false, int? tckRatio = null, string contribPin = null, string contribLabel = null, int? contribOffset = null, string stickyPin = null, string stickyLabel = null, int? stickyOffset = null, double? stickyCycle = null, string globalGroupID = null, string representativeSsh = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sshInstanceName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the ssh-instance, <code>representative_ssh</code> use this instance name as reference.</p>
+</dd>
+    <dt><code>sshIclInstanceName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the ssh-icl-instance, ssn mapping section use this name as reference.</p>
+</dd>
+    <dt><code>coreInstanceName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the core-instance that this ssh-icl-instance is associated with.</p>
+</dd>
+    <dt><code>isOnChipCompare</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Optional. The attribute that indicates if OnChipCompare is enabled for this instance.<br>
+<code>true</code>: OnChipCompare = on; <code>false</code>: OnChipCompare = off;</p>
+</dd>
+    <dt><code>tckRatio</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. The speed ratio between the Scan Cycles over the Jtag Cycles.</p>
+</dd>
+    <dt><code>contribPin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Pin name for modifying the <code>disable_contribution_bit</code>.</p>
+</dd>
+    <dt><code>contribLabel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Pattern label for locating the <code>disable_contribution_bit</code>.</p>
+</dd>
+    <dt><code>contribOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. Offset of the <code>disable_contribution_bit</code> relative to the <code>ContribLabel</code>.</p>
+</dd>
+    <dt><code>stickyPin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Pin name for retrieving the <code>sticky_bit</code> status.</p>
+</dd>
+    <dt><code>stickyLabel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Label for locating the <code>sticky_bit</code>.</p>
+</dd>
+    <dt><code>stickyOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. Offset of the <code>sticky_bit</code> relative to the <code>stickyLabel</code>.</p>
+</dd>
+    <dt><code>stickyCycle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Absolute cycle of the <code>sticky_bit</code> in the <code>ssn_end_pattern</code>.</p>
+</dd>
+    <dt><code>globalGroupID</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Capture Global Group ID for this ssh-icl-instance.</p>
+</dd>
+    <dt><code>representativeSsh</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the ssh-instance that represent this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_IclInstanceInfo__ctor_System_String_System_String_System_String_System_Boolean_System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Int32__System_Nullable_System_Double__System_String_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Users typically do not need to create new icl instances by calling this constructor manually.
+Instead, please use the <a class="xref" href="Csra.ScanNetworkPatternInfo.html">ScanNetworkPatternInfo</a> to create and manage all icl instances.</p>
+</div>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Csra_IclInstanceInfo_ContribLabel_" data-uid="Csra.IclInstanceInfo.ContribLabel*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_ContribLabel" data-uid="Csra.IclInstanceInfo.ContribLabel">
+  ContribLabel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the label for the disable-contribution-bit in the ssn_setup pattern. Only valid if OnChipCompare is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ContribLabel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_ContribOffset_" data-uid="Csra.IclInstanceInfo.ContribOffset*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_ContribOffset" data-uid="Csra.IclInstanceInfo.ContribOffset">
+  ContribOffset
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the offset of the disable-contribution-bit relative to the contribution label. Only valid if OnChipCompare is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? ContribOffset { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_ContribPin_" data-uid="Csra.IclInstanceInfo.ContribPin*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_ContribPin" data-uid="Csra.IclInstanceInfo.ContribPin">
+  ContribPin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the PIN for the disable-contribution-bits in the ssn_setup pattern. Only valid if OnChipCompare is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ContribPin { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_CoreInstanceName_" data-uid="Csra.IclInstanceInfo.CoreInstanceName*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_CoreInstanceName" data-uid="Csra.IclInstanceInfo.CoreInstanceName">
+  CoreInstanceName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the core instance that this icl instance belongs to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CoreInstanceName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_GlobalGroupID_" data-uid="Csra.IclInstanceInfo.GlobalGroupID*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_GlobalGroupID" data-uid="Csra.IclInstanceInfo.GlobalGroupID">
+  GlobalGroupID
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the capture-global-group ID that this icl instance belongs to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GlobalGroupID { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_IclInstanceName_" data-uid="Csra.IclInstanceInfo.IclInstanceName*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_IclInstanceName" data-uid="Csra.IclInstanceInfo.IclInstanceName">
+  IclInstanceName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the icl instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string IclInstanceName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_IsOnChipCompare_" data-uid="Csra.IclInstanceInfo.IsOnChipCompare*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_IsOnChipCompare" data-uid="Csra.IclInstanceInfo.IsOnChipCompare">
+  IsOnChipCompare
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether OnChipCompare is enabled on this icl instance. <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> means this icl needs TesterCompare.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsOnChipCompare { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_ModifyVectorData_" data-uid="Csra.IclInstanceInfo.ModifyVectorData*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_ModifyVectorData" data-uid="Csra.IclInstanceInfo.ModifyVectorData">
+  ModifyVectorData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Substring of the disable-contribution-bit to be patched. Only used when OnChipCompare is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Site&lt;string&gt; ModifyVectorData { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_SshInstanceName_" data-uid="Csra.IclInstanceInfo.SshInstanceName*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_SshInstanceName" data-uid="Csra.IclInstanceInfo.SshInstanceName">
+  SshInstanceName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the ssh instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SshInstanceName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_StickyCycle_" data-uid="Csra.IclInstanceInfo.StickyCycle*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_StickyCycle" data-uid="Csra.IclInstanceInfo.StickyCycle">
+  StickyCycle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the absolute cycle (module cycle) of the sticky-bit in the ssn_end pattern. Only valid if OnChipCompare is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? StickyCycle { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_StickyPin_" data-uid="Csra.IclInstanceInfo.StickyPin*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_StickyPin" data-uid="Csra.IclInstanceInfo.StickyPin">
+  StickyPin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the PIN for the sticky-bit in the ssn_end pattern. Only valid if OnChipCompare is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string StickyPin { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_IclInstanceInfo_SetDisableContributionBit_" data-uid="Csra.IclInstanceInfo.SetDisableContributionBit*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_SetDisableContributionBit_System_Char_" data-uid="Csra.IclInstanceInfo.SetDisableContributionBit(System.Char)">
+  SetDisableContributionBit(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets or clears the disable-contribution-bit for all sites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDisableContributionBit(char value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>The new state of the disable-contribution-bit that applies to all sites.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_SetDisableContributionBit_" data-uid="Csra.IclInstanceInfo.SetDisableContributionBit*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_SetDisableContributionBit_System_Int32_System_Char_" data-uid="Csra.IclInstanceInfo.SetDisableContributionBit(System.Int32,System.Char)">
+  SetDisableContributionBit(int, char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets or clears the disable-contribution-bit for a specified site.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDisableContributionBit(int site, char value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>site</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The identifier of the site for which the disable contribution bit is being modified.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>The new state of the disable-contribution-bit.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_IclInstanceInfo_SetDisableContributionBit_" data-uid="Csra.IclInstanceInfo.SetDisableContributionBit*"></a>
+
+  <h3 id="Csra_IclInstanceInfo_SetDisableContributionBit_Teradyne_Igxl_Interfaces_Public_Site_System_Char__" data-uid="Csra.IclInstanceInfo.SetDisableContributionBit(Teradyne.Igxl.Interfaces.Public.Site{System.Char})">
+  SetDisableContributionBit(Site&lt;char&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/IclInstanceInfo.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets or clears the disable-contribution-bit for each site.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDisableContributionBit(Site&lt;char&gt; value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>&gt;</dt>
+    <dd><p>The new states of the disable-contribution-bit for each site.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

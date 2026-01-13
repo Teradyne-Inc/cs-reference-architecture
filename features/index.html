@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Features &amp; Implementation | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Features &amp; Implementation | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="features--implementation">Features &amp; Implementation</h1>
+
+<!-- Derived from [principles and requirements](../principles/index.md), a comprehensive list of features comprise the backbone of the **C# Reference Architecture**. -->
+<p>Derived from principles and requirements, a comprehensive list of features comprise the backbone of the <strong>C# Reference Architecture</strong>.</p>
+<p>Design decisions made are documented with alternative options stated. The decision making process is captured, so that when requirements change, the logic chain can be revised to confirm choices made are still the best option on the table.</p>
+<p>The feedback loop is closed by comparing the results (features) with the postulated principles and requirements derived from them.</p>
+<p><img src="../media/principles_features.png" alt="Circular diagram showing the relationship between principles and features, illustrating how design decisions flow from principles to implemented features"></p>
+<h2 id="clean">Clean</h2>
+<ul>
+<li><a href="alert-service.html">Alert Service</a> - centralized messaging and exception handling</li>
+<li><a href="behavior-service.html">Behavior Service</a> - when logic gets a personality</li>
+<li><a href="code-structure.html">Code Structure</a> - organize the source code entities</li>
+<li><a href="custom-validation.html">Custom Validation</a> - improve usability through argument checking</li>
+<li><a href="documentation.html">Documentation</a> - one-stop-shop for information seekers</li>
+<li><a href="extensibility.html">Extensibility</a> - embrace incompleteness</li>
+<li><a href="external-libraries.html">External Libraries</a> - tap into others' IP</li>
+<li><a href="instrument-specific.html">Instrument Specific Features</a> - access to specialized hardware benefits</li>
+<li><a href="methodhandle-type.html"><code>MethodHandle</code> Type</a> - delegate the work</li>
+<li><a href="modularity.html">Modularity</a> - users can mix and match</li>
+<li><a href="multi-target-igxl.html">Multi-Target IG-XL Support</a> - flexibility for different versions of IG-XL</li>
+<li><a href="offline-features.html">Offline Features</a> - upvalue engineering time</li>
+<li><a href="persistent-data-storage.html">Persistent Data Storage</a> - save and reuse information within and beyond job runs</li>
+<li><a href="pins-type.html"><code>Pins</code> type</a> - context aware objects for pin lists</li>
+<li><a href="platform-independence.html">Platform Independence</a> - remove friction and enhance fluidity between different testers</li>
+<li><a href="search-trim.html">Search &amp; Trim</a> - a straightforward approach to a challenging test technique</li>
+<li><a href="setup-service.html">Setup Service</a> - manage device &amp; tester setups and automate efficient transitions between</li>
+<li><a href="single-multi-condition.html">Single- &amp; MultiCondition</a> - flexibility for uniform and specific test conditions</li>
+<li><a href="ssn.html">SSN</a> - Streaming Scan Network, Siemens' next gen Scan Technology</li>
+<li><a href="test-abstraction.html">Test Abstraction</a> - reduce complexity by encapsulating details</li>
+<li><a href="transaction-service.html">Transaction Service</a> - being fluent in devices' dialects</li>
+<li><a href="unit-integration-testing.html">Unit- &amp; Integration Testing</a> - control quality and minimize defects</li>
+<li><a href="versioning-compatibility.html">Versioning &amp; Compatibility</a> - manage how functionality develops over time</li>
+</ul>
+<h2 id="work-in-progress">Work in Progress</h2>
+<ul>
+<li><a href="characterization-support.html">Characterization Support</a> - easily determine margins and process capability</li>
+<li><a href="copilot-friendliness.html">Copilot Friendliness</a> - great output requires decent input</li>
+<li><a href="legacy-templates.html">Legacy Templates</a> - a successful use model re-imagined</li>
+<li><a href="patterninfo-type.html"><code>PatternInfo</code> type</a> - context aware objects for pattern &amp; vector data</li>
+<li><a href="stepping.html">Stepping</a> - Pre / Body / Post flow debug</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

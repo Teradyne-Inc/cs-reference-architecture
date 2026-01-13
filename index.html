@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>C# Reference Architecture | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="C# Reference Architecture | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="c-reference-architecture">C# Reference Architecture</h1>
+
+<img src="media/logo_150.png" alt="C#RA Logo" style="float: left; margin-right: 25px; margin-bottom: 15px;">
+<p>As device complexity continues to grow, developing test programs has become increasingly challenging. With shorter product life cycles and accelerated time-to-market demands, traditional manual coding approaches are no longer sustainable. New methodologies emphasizing reuse and automation are essential.</p>
+<p>The <strong>C# Reference Architecture</strong> (C#RA) addresses these challenges by streamlining the creation and maintenance of test programs. It offers a robust, performance-oriented library of validated implementations that reflect recommended practice in test development.</p>
+<div style="clear:both;"></div>
+<h2 id="the-library">The Library</h2>
+<p>At the heart of C#RA is a powerful abstraction layer known as <a href="https://solid-adventure-nv3z2qy.pages.github.io/features/code-structure_test-blocks.html"><strong>Test Blocks</strong></a>, which enables the development of concise, generic, reusable, and intuitive test code. These blocks are designed to be modular, high-performing, and immediately understandable - minimizing the need to consult documentation.</p>
+<p>The provided <a href="https://solid-adventure-nv3z2qy.pages.github.io/features/code-structure_test-methods.html"><strong>Test Methods</strong></a> illustrate effective and proven solutions for common test scenarios, available in both offline and online runnable demo programs. By intentionally avoiding exhaustive coverage of every edge case, the examples remain clean and approachable - making them easy to adopt and extend.</p>
+<p>This balance allows teams to address more specific requirements while maintaining a consistent and scalable development approach.</p>
+<pre><code class="lang-cs">TheLib.Setup.LevelsAndTiming.Apply(true);
+Services.Setup.Apply(setup);
+if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+TheLib.Setup.Dc.Connect(_pins);
+
+TheLib.Setup.Dc.SetForceAndMeter(_pins, TLibOutputMode.ForceCurrent, current, current, clampVoltage, Measure.Voltage, voltageRange);
+TheLib.Execute.Wait(waitTime);
+_meas = TheLib.Acquire.Dc.Measure(_pins);
+
+TheLib.Setup.Dc.Disconnect(_pins);
+if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+TheLib.Datalog.TestParametric(_meas, current);
+</code></pre>
+<p>Comprehensive <a href="https://solid-adventure-nv3z2qy.pages.github.io/">documentation</a> complements the codebase, offering insights into the <a href="https://solid-adventure-nv3z2qy.pages.github.io/principles/index.html">requirements process</a>, <a href="https://solid-adventure-nv3z2qy.pages.github.io/features/index.html">design decisions</a> and providing <a href="https://solid-adventure-nv3z2qy.pages.github.io/api/Csra.html">API help</a> for deeper understanding where necessary.</p>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>C#RA is built with automation at its foundation. Automated unit and integration testing, documentation generation, and packaging workflows ensure consistent quality and reduce the risk of human error.</p>
+<p>The project follows an agile development model, allowing for rapid iteration and continuous delivery through monthly releases.</p>
+<p>These capabilities are extended to users, enabling seamless integration into their own workflows - supporting both quality assurance and timely delivery.</p>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Download and unzip the latest <a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases">release</a></li>
+<li>Review the documentation: <code>/doc/index.html</code> or <a href="https://solid-adventure-nv3z2qy.pages.github.io/">online</a></li>
+<li>Understand the system requirements and prerequisites: <code>Documentation &gt; Getting Started</code> or <a href="https://solid-adventure-nv3z2qy.pages.github.io/getting-started/index.html">online</a></li>
+<li>Explore the included demo program: <code>/Demo</code> or <a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/tree/main/src/Demo">online</a></li>
+<li>Integrate C#RA into your test project: <code>Documentation &gt; Getting Started &gt; Installation</code> or <a href="?https://solid-adventure-nv3z2qy.pages.github.io/getting-started/installation.html">online</a></li>
+<li>Start building better test programs - faster and more reliably!</li>
+</ol>
+<h2 id="releases">Releases</h2>
+<table>
+<thead>
+<tr>
+<th>Release Version</th>
+<th>Publish Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.13">v0.13</a></td>
+<td>2025-11-14</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.12">v0.12</a></td>
+<td>2025-10-17</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.11">v0.11</a></td>
+<td>2025-10-10</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.10">v0.10</a></td>
+<td>2025-10-02</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.9">v0.9</a></td>
+<td>2025-09-26</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.8">v0.8</a></td>
+<td>2025-09-01</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.7">v0.7</a></td>
+<td>2025-08-01</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.6">v0.6</a></td>
+<td>2025-07-01</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.5">v0.5</a></td>
+<td>2025-06-02</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.4">v0.4</a></td>
+<td>2025-05-09</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.3.0">v0.3</a></td>
+<td>2025-04-01</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.2.0">v0.2</a></td>
+<td>2025-03-10</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/releases/tag/v0.1.0">v0.1</a></td>
+<td>2025-02-21</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

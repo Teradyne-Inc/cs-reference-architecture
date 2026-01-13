@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Search | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Search | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_TheLib_Acquire_Search.md&amp;value=---%0Auid%3A%20Csra.TheLib.Acquire.Search%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.TheLib.Acquire.Search">
+
+
+
+  <h1 id="Csra_TheLib_Acquire_Search" data-uid="Csra.TheLib.Acquire.Search" class="text-break">
+Class Search  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a>.<a class="xref" href="Csra.TheLib.html">TheLib</a>.<a class="xref" href="Csra.TheLib.Acquire.html">Acquire</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Search : ILib.IAcquire.ISearch</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Search</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Csra.Interfaces.ILib.html">ILib</a>.<a class="xref" href="Csra.Interfaces.ILib.IAcquire.html">IAcquire</a>.<a class="xref" href="Csra.Interfaces.ILib.IAcquire.ISearch.html">ISearch</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Double_System_Double_System_Double_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Double__Teradyne_Igxl_Interfaces_Public_Site___0___System_Func___0_System_Boolean__System_Double_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Double,System.Double,System.Double,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Double},Teradyne.Igxl.Interfaces.Public.Site{``0}},System.Func{``0,System.Boolean},System.Double)">
+  BinarySearch&lt;Tout&gt;(double, double, double, bool, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a floating point binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing
+<code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the trip criteria's inflection point.
+The number of steps executed equals log2((<code class="paramref">inTo</code> -<code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>), rounded up
+to the next integer. The search ends when the minimum delta is reached, the reported result lies within <code class="paramref">inMinDelta</code> from
+the ideal result, matching criteria's direction. If no transition was found, the method returns <code class="paramref">inNotFoundResult</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;double&gt; BinarySearch&lt;Tout&gt;(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, double inNotFoundResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Determines whether the logic is inverted. <code>false</code> means higher input values increase the likelihood of
+meeting the trip criteria. <code>true</code> means lower input values do.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>The input value resulting in an output fulfilling the trip criteria and be closest to it's inflection point. The worst case
+deviation from the exact input is (<code class="paramref">inMinDelta</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Double_System_Double_System_Double_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Double__Teradyne_Igxl_Interfaces_Public_Site___0___System_Func___0_System_Boolean__System_Double_Teradyne_Igxl_Interfaces_Public_Site___0___" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Double,System.Double,System.Double,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Double},Teradyne.Igxl.Interfaces.Public.Site{``0}},System.Func{``0,System.Boolean},System.Double,Teradyne.Igxl.Interfaces.Public.Site{``0}@)">
+  BinarySearch&lt;Tout&gt;(double, double, double, bool, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, double, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a floating point binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing
+<code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the trip criteria's inflection point.
+The number of steps executed equals log2((<code class="paramref">inTo</code> -<code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>), rounded up
+to the next integer. The search ends when the minimum delta is reached, the reported result lies within <code class="paramref">inMinDelta</code> from
+the ideal result, matching criteria's direction. Additionally provides the output value of the input step found. If no transition was found,
+the method returns <code class="paramref">inNotFoundResult</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;double&gt; BinarySearch&lt;Tout&gt;(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, double inNotFoundResult, out Site&lt;Tout&gt; outResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Determines whether the logic is inverted. <code>false</code> means higher input values increase the likelihood of
+meeting the trip criteria. <code>true</code> means lower input values do.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>outResult</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>The input value resulting in an output fulfilling the trip criteria and be closest to it's inflection point. The worst case
+deviation from the exact input is (<code class="paramref">inMinDelta</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Double_System_Double_System_Double_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Double__Teradyne_Igxl_Interfaces_Public_Site___0_____0_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Double,System.Double,System.Double,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Double},Teradyne.Igxl.Interfaces.Public.Site{``0}},``0)">
+  BinarySearch&lt;Tout&gt;(double, double, double, bool, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt;, Tout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a floating point binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing
+<code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the (numeric) target. The number of
+steps executed equals log2((<code class="paramref">inTo</code> - <code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>), rounded up to the next
+integer. The search ends when the minimum delta is reached, the reported result lies within +/- <code class="paramref">inMinDelta</code> from the
+ideal result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;double&gt; BinarySearch&lt;Tout&gt;(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.
+Must be &gt;0.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A flag indicating whether the output is inverted, meaning increasing output values are a result of decreasing
+input values.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value for which the corresponding input condition is searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target. The worst case delta to the exact input is +/-
+(<code class="paramref">inMinDelta</code> / 2) if it can be reached given the search range.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Double_System_Double_System_Double_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Double__Teradyne_Igxl_Interfaces_Public_Site___0_____0_Teradyne_Igxl_Interfaces_Public_Site___0___" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Double,System.Double,System.Double,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Double},Teradyne.Igxl.Interfaces.Public.Site{``0}},``0,Teradyne.Igxl.Interfaces.Public.Site{``0}@)">
+  BinarySearch&lt;Tout&gt;(double, double, double, bool, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a floating point binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing
+<code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the (numeric) target. The number of
+steps executed equals log2((<code class="paramref">inTo</code> - <code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>), rounded up to the next
+integer. The search ends when the minimum delta is reached, the reported result lies within +/- <code class="paramref">inMinDelta</code> from the ideal
+result. Additionally provides the output value for the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;double&gt; BinarySearch&lt;Tout&gt;(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func&lt;Site&lt;double&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;Tout&gt; outResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A flag indicating whether the output is inverted, meaning increasing output values are a result of decreasing
+input values.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value for which the corresponding input condition is searched.</p>
+</dd>
+    <dt><code>outResult</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value for the input found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target. The worst case delta to the exact input is +/-
+(<code class="paramref">inMinDelta</code> / 2) if it can be reached given the search range.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Int32_System_Int32_System_Int32_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__Teradyne_Igxl_Interfaces_Public_Site___0___System_Func___0_System_Boolean__System_Int32_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Int32,System.Int32,System.Int32,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Int32},Teradyne.Igxl.Interfaces.Public.Site{``0}},System.Func{``0,System.Boolean},System.Int32)">
+  BinarySearch&lt;Tout&gt;(int, int, int, bool, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs an integer binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing <code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the trip criteria's inflection point. The
+number of steps executed does not exceed log2((<code class="paramref">inTo</code> -<code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>),
+rounded up to the next integer. The search ends when the input value closest to the transition point (within the specified <code class="paramref">inMinDelta</code> resolution), but matching the criteria is reached. If no transition was found, the method returns <code class="paramref">inNotFoundResult</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;int&gt; BinarySearch&lt;Tout&gt;(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, int inNotFoundResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Determines whether the logic is inverted. <code>false</code> means higher input values increase the likelihood of
+meeting the trip criteria. <code>true</code> means lower input values do.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The input value resulting in an output fulfilling the trip criteria and be closest to it's inflection point. The worst case
+deviation from the exact input is (<code class="paramref">inMinDelta</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Int32_System_Int32_System_Int32_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__Teradyne_Igxl_Interfaces_Public_Site___0___System_Func___0_System_Boolean__System_Int32_Teradyne_Igxl_Interfaces_Public_Site___0___" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Int32,System.Int32,System.Int32,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Int32},Teradyne.Igxl.Interfaces.Public.Site{``0}},System.Func{``0,System.Boolean},System.Int32,Teradyne.Igxl.Interfaces.Public.Site{``0}@)">
+  BinarySearch&lt;Tout&gt;(int, int, int, bool, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, int, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs an integer binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing <code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the trip criteria's inflection point. The
+number of steps executed does not exceed log2((<code class="paramref">inTo</code> -<code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>),
+rounded up to the next integer. The search ends when the input value closest to the transition point (within the specified <code class="paramref">inMinDelta</code> resolution), but matching the criteria is reached. If no transition was found, the method returns <code class="paramref">inNotFoundResult</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;int&gt; BinarySearch&lt;Tout&gt;(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, int inNotFoundResult, out Site&lt;Tout&gt; outResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Determines whether the logic is inverted. <code>false</code> means higher input values increase the likelihood of
+meeting the trip criteria. <code>true</code> means lower input values do.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>outResult</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The input value resulting in an output fulfilling the trip criteria and be closest to it's inflection point. The worst case
+deviation from the exact input is (<code class="paramref">inMinDelta</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Int32_System_Int32_System_Int32_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__Teradyne_Igxl_Interfaces_Public_Site___0_____0_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Int32,System.Int32,System.Int32,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Int32},Teradyne.Igxl.Interfaces.Public.Site{``0}},``0)">
+  BinarySearch&lt;Tout&gt;(int, int, int, bool, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt;, Tout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs an integer binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing <code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the target. The number of steps executed does
+not exceed log2((<code class="paramref">inTo</code> - <code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>), rounded up to the next integer. The
+search ends when the best input value (within the specified <code class="paramref">inMinDelta</code> resolution) is reached.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;int&gt; BinarySearch&lt;Tout&gt;(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.
+Must be &gt;0.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A flag indicating whether the output is inverted, meaning increasing output values are a result of decreasing
+input values.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value for which the corresponding input condition is searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target. The worst case delta to the exact input is +/-
+(<code class="paramref">inMinDelta</code> / 2) if it can be reached given the search range.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_BinarySearch_" data-uid="Csra.TheLib.Acquire.Search.BinarySearch*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_BinarySearch__1_System_Int32_System_Int32_System_Int32_System_Boolean_System_Func_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__Teradyne_Igxl_Interfaces_Public_Site___0_____0_Teradyne_Igxl_Interfaces_Public_Site___0___" data-uid="Csra.TheLib.Acquire.Search.BinarySearch``1(System.Int32,System.Int32,System.Int32,System.Boolean,System.Func{Teradyne.Igxl.Interfaces.Public.Site{System.Int32},Teradyne.Igxl.Interfaces.Public.Site{``0}},``0,Teradyne.Igxl.Interfaces.Public.Site{``0}@)">
+  BinarySearch&lt;Tout&gt;(int, int, int, bool, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs an integer binary search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> by executing <code class="paramref">oneMeasurement</code> at each step. Determines the input resulting in an output closest to the target. The number of steps executed does
+not exceed log2((<code class="paramref">inTo</code> - <code class="paramref">inFrom</code>) / <code class="paramref">inMinDelta</code>), rounded up to the next integer. The
+search ends when the best input value (within the specified <code class="paramref">inMinDelta</code> resolution) is reached.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;int&gt; BinarySearch&lt;Tout&gt;(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func&lt;Site&lt;int&gt;, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;Tout&gt; outResult)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The lower boundary of the search range. Must be less than <code class="paramref">inTo</code>.</p>
+</dd>
+    <dt><code>inTo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The upper boundary of the search range. Must be greater than <code class="paramref">inFrom</code></p>
+</dd>
+    <dt><code>inMinDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum allowable difference between successive input values, used to determine when the search should stop.</p>
+</dd>
+    <dt><code>invertingLogic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A flag indicating whether the output is inverted, meaning increasing output values are a result of decreasing
+input values.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value for which the corresponding input condition is searched.</p>
+</dd>
+    <dt><code>outResult</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value for the input found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target. The worst case delta to the exact input is +/-
+(<code class="paramref">inMinDelta</code> / 2) if it can be reached given the search range.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearFullFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearFullFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearFullFromIncCount__1___0___0_System_Int32_System_Action___0__" data-uid="Csra.TheLib.Acquire.Search.LinearFullFromIncCount``1(``0,``0,System.Int32,System.Action{``0})">
+  LinearFullFromIncCount&lt;Tin&gt;(Tin, Tin, int, Action&lt;Tin&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. The ramp ends after <code class="paramref">inCount</code> measurements are completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LinearFullFromIncCount&lt;Tin&gt;(Tin inFrom, Tin inIncrement, int inCount, Action&lt;Tin&gt; oneMeasurement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;Tin&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearFullFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearFullFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearFullFromToCount__1___0___0_System_Int32_System_Action___0__" data-uid="Csra.TheLib.Acquire.Search.LinearFullFromToCount``1(``0,``0,System.Int32,System.Action{``0})">
+  LinearFullFromToCount&lt;Tin&gt;(Tin, Tin, int, Action&lt;Tin&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. The ramp ends after <code class="paramref">inCount</code> measurements are
+completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Tin LinearFullFromToCount&lt;Tin&gt;(Tin inFrom, Tin inTo, int inCount, Action&lt;Tin&gt; oneMeasurement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;Tin&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Tin</span></dt>
+    <dd><p>The calculated increment, for later use in the processing step (ignore if not needed).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearFullFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearFullFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearFullFromToInc__1___0___0___0_System_Action___0__" data-uid="Csra.TheLib.Acquire.Search.LinearFullFromToInc``1(``0,``0,``0,System.Action{``0})">
+  LinearFullFromToInc&lt;Tin&gt;(Tin, Tin, Tin, Action&lt;Tin&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. The ramp ends with the last input less or equal <code class="paramref">inTo</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LinearFullFromToInc&lt;Tin&gt;(Tin inFrom, Tin inTo, Tin inIncrement, Action&lt;Tin&gt; oneMeasurement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;Tin&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean})">
+  LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the first input meeting the <code class="paramref">outTripCriteria</code>.
+The ramp stops prematurely when the trip criteria is met on all sites, or after <code class="paramref">inCount</code> measurements are completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__Teradyne_Igxl_Interfaces_Public_Site_System_Int32___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean},Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@)">
+  LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, out Site&lt;int&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the first input meeting the <code class="paramref">outTripCriteria</code>.
+The ramp stops prematurely when the trip criteria is met on all sites, or after <code class="paramref">inCount</code> measurements are completed.
+Additionally provides the index of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, out Site&lt;int&gt; tripIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>tripIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__Teradyne_Igxl_Interfaces_Public_Site_System_Int32___Teradyne_Igxl_Interfaces_Public_Site___1___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean},Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@,Teradyne.Igxl.Interfaces.Public.Site{``1}@)">
+  LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, out Site&lt;int&gt;, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the first input meeting the <code class="paramref">outTripCriteria</code>.
+The ramp stops prematurely when the trip criteria is met on all sites, or after <code class="paramref">inCount</code> measurements are completed.
+Additionally provides the index and output value of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, out Site&lt;int&gt; tripIndex, out Site&lt;Tout&gt; tripOut)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>tripIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+    <dt><code>tripOut</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1)">
+  LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L180"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the input resulting in an output closest to the (numeric)
+<code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or after <code class="paramref">inCount</code> measurements are completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_Teradyne_Igxl_Interfaces_Public_Site_System_Int32___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1,Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@)">
+  LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;int&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the input resulting in an output closest to the (numeric)
+<code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or after <code class="paramref">inCount</code> measurements are completed. Additionally provides the index of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;int&gt; closestIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+    <dt><code>closestIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromIncCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_Teradyne_Igxl_Interfaces_Public_Site_System_Int32___Teradyne_Igxl_Interfaces_Public_Site___1___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromIncCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1,Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@,Teradyne.Igxl.Interfaces.Public.Site{``1}@)">
+  LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;int&gt;, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the input resulting in an output closest to the (numeric)
+<code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or after <code class="paramref">inCount</code> measurements are completed. Additionally provides the index and output value of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromIncCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;int&gt; closestIndex, out Site&lt;Tout&gt; closestOut)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total number of steps to execute.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+    <dt><code>closestIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+    <dt><code>closestOut</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean})">
+  LinearStopFromToCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. Determines the first input meeting the
+<code class="paramref">outTripCriteria</code>. The ramp stops prematurely when the trip criteria is met on all sites, or after
+<code class="paramref">inCount</code> measurements are completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__Teradyne_Igxl_Interfaces_Public_Site_System_Int32___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean},Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@)">
+  LinearStopFromToCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, out Site&lt;int&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. Determines the first input meeting the
+<code class="paramref">outTripCriteria</code>. The ramp stops prematurely when the trip criteria is met on all sites, or after
+<code class="paramref">inCount</code> measurements are completed. Additionally provides the index of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, out Site&lt;int&gt; tripIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>tripIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__Teradyne_Igxl_Interfaces_Public_Site_System_Int32___Teradyne_Igxl_Interfaces_Public_Site___1___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean},Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@,Teradyne.Igxl.Interfaces.Public.Site{``1}@)">
+  LinearStopFromToCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, out Site&lt;int&gt;, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L261"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. Determines the first input meeting the
+<code class="paramref">outTripCriteria</code>. The ramp stops prematurely when the trip criteria is met on all sites, or after
+<code class="paramref">inCount</code> measurements are completed. Additionally provides the index and output value of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, out Site&lt;int&gt; tripIndex, out Site&lt;Tout&gt; tripOut)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>tripIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+    <dt><code>tripOut</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1)">
+  LinearStopFromToCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. Determines the input resulting in an output closest to the
+(numeric) <code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or after <code class="paramref">inCount</code> measurements are completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_Teradyne_Igxl_Interfaces_Public_Site_System_Int32___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1,Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@)">
+  LinearStopFromToCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;int&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. Determines the input resulting in an output closest to the
+(numeric) <code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or after <code class="paramref">inCount</code> measurements are completed. Additionally provides the index of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;int&gt; closestIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+    <dt><code>closestIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToCount_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToCount__2___0___0_System_Int32___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_Teradyne_Igxl_Interfaces_Public_Site_System_Int32___Teradyne_Igxl_Interfaces_Public_Site___1___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToCount``2(``0,``0,System.Int32,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1,Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@,Teradyne.Igxl.Interfaces.Public.Site{``1}@)">
+  LinearStopFromToCount&lt;Tin, Tout&gt;(Tin, Tin, int, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;int&gt;, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search between <code class="paramref">inFrom</code> and <code class="paramref">inTo</code> with <code class="paramref">inCount</code> inputs. Executes
+<code class="paramref">oneMeasurement</code> at each step including the end points. Determines the input resulting in an output closest to the
+(numeric) <code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or after <code class="paramref">inCount</code> measurements are completed. Additionally provides the index and output value of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToCount&lt;Tin, Tout&gt;(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;int&gt; closestIndex, out Site&lt;Tout&gt; closestOut)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>inTo</code> <span class="xref">Tin</span></dt>
+    <dd><p>The end point of the linear input ramp.</p>
+</dd>
+    <dt><code>inCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of equally spaced steps to execute, including both endpoints exactly.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+    <dt><code>closestIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+    <dt><code>closestOut</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToInc__2___0___0___0___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc``2(``0,``0,``0,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean})">
+  LinearStopFromToInc&lt;Tin, Tout&gt;(Tin, Tin, Tin, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L302"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the first input meeting the <code class="paramref">outTripCriteria</code>.
+The ramp stops prematurely when the trip criteria is met on all sites, or with the last input less or equal <code class="paramref">inTo</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToInc&lt;Tin, Tout&gt;(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">Tin</span></dt>
+    <dd></dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToInc__2___0___0___0___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__Teradyne_Igxl_Interfaces_Public_Site_System_Int32___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc``2(``0,``0,``0,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean},Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@)">
+  LinearStopFromToInc&lt;Tin, Tout&gt;(Tin, Tin, Tin, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, out Site&lt;int&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L306"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the first input meeting the <code class="paramref">outTripCriteria</code>.
+The ramp stops prematurely when the trip criteria is met on all sites, or with the last input less or equal <code class="paramref">inTo</code>.
+Additionally provides the index of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToInc&lt;Tin, Tout&gt;(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, out Site&lt;int&gt; tripIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">Tin</span></dt>
+    <dd></dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>tripIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToInc__2___0___0___0___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1___System_Func___1_System_Boolean__Teradyne_Igxl_Interfaces_Public_Site_System_Int32___Teradyne_Igxl_Interfaces_Public_Site___1___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc``2(``0,``0,``0,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},System.Func{``1,System.Boolean},Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@,Teradyne.Igxl.Interfaces.Public.Site{``1}@)">
+  LinearStopFromToInc&lt;Tin, Tout&gt;(Tin, Tin, Tin, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Func&lt;Tout, bool&gt;, out Site&lt;int&gt;, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the first input meeting the <code class="paramref">outTripCriteria</code>.
+The ramp stops prematurely when the trip criteria is met on all sites, or with the last input less or equal <code class="paramref">inTo</code>.
+Additionally provides the index and output value of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToInc&lt;Tin, Tout&gt;(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Func&lt;Tout, bool&gt; outTripCriteria, out Site&lt;int&gt; tripIndex, out Site&lt;Tout&gt; tripOut)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">Tin</span></dt>
+    <dd></dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTripCriteria</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tout, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>A delegate indicating the output meets the condition required for the input value searched.</p>
+</dd>
+    <dt><code>tripIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+    <dt><code>tripOut</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The first input value resulting in an output satisfying the trip criteria.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToInc__2___0___0___0___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc``2(``0,``0,``0,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1)">
+  LinearStopFromToInc&lt;Tin, Tout&gt;(Tin, Tin, Tin, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the input resulting in an output closest to the (numeric)
+<code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or with the last input less or
+equal <code class="paramref">inTo</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToInc&lt;Tin, Tout&gt;(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">Tin</span></dt>
+    <dd></dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToInc__2___0___0___0___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_Teradyne_Igxl_Interfaces_Public_Site_System_Int32___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc``2(``0,``0,``0,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1,Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@)">
+  LinearStopFromToInc&lt;Tin, Tout&gt;(Tin, Tin, Tin, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;int&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L293"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the input resulting in an output closest to the (numeric)
+<code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or with the last input less or
+equal <code class="paramref">inTo</code>. Additionally provides the index of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToInc&lt;Tin, Tout&gt;(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;int&gt; closestIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">Tin</span></dt>
+    <dd></dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+    <dt><code>closestIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Search_LinearStopFromToInc_" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Search_LinearStopFromToInc__2___0___0___0___0___0_System_Func___0_Teradyne_Igxl_Interfaces_Public_Site___1_____1_Teradyne_Igxl_Interfaces_Public_Site_System_Int32___Teradyne_Igxl_Interfaces_Public_Site___1___" data-uid="Csra.TheLib.Acquire.Search.LinearStopFromToInc``2(``0,``0,``0,``0,``0,System.Func{``0,Teradyne.Igxl.Interfaces.Public.Site{``1}},``1,Teradyne.Igxl.Interfaces.Public.Site{System.Int32}@,Teradyne.Igxl.Interfaces.Public.Site{``1}@)">
+  LinearStopFromToInc&lt;Tin, Tout&gt;(Tin, Tin, Tin, Tin, Tin, Func&lt;Tin, Site&lt;Tout&gt;&gt;, Tout, out Site&lt;int&gt;, out Site&lt;Tout&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/Acquire/Search.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear search from <code class="paramref">inFrom</code> by increasing with <code class="paramref">inIncrement</code>. Executes <code class="paramref">oneMeasurement</code> at each step including the start point. Determines the input resulting in an output closest to the (numeric)
+<code class="paramref">outTarget</code>. The ramp stops prematurely when the target output is surpassed on all sites, or with the last input less or
+equal <code class="paramref">inTo</code>. Additionally provides the index and output value of the input step found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Site&lt;Tin&gt; LinearStopFromToInc&lt;Tin, Tout&gt;(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func&lt;Tin, Site&lt;Tout&gt;&gt; oneMeasurement, Tout outTarget, out Site&lt;int&gt; closestIndex, out Site&lt;Tout&gt; closestOut)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inFrom</code> <span class="xref">Tin</span></dt>
+    <dd><p>The starting point of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">Tin</span></dt>
+    <dd></dd>
+    <dt><code>inIncrement</code> <span class="xref">Tin</span></dt>
+    <dd><p>The input increment value for every step.</p>
+</dd>
+    <dt><code>inOffset</code> <span class="xref">Tin</span></dt>
+    <dd><p>The offset to correct the calculated input value. Use negative values to compensate propagation delays for output
+switching.</p>
+</dd>
+    <dt><code>inNotFoundResult</code> <span class="xref">Tin</span></dt>
+    <dd><p>The return value for the case when the trip criteria was never found.</p>
+</dd>
+    <dt><code>oneMeasurement</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;Tin, <span class="xref">Site</span>&lt;Tout&gt;&gt;</dt>
+    <dd><p>The action to execute for every measurement.</p>
+</dd>
+    <dt><code>outTarget</code> <span class="xref">Tout</span></dt>
+    <dd><p>The (numeric) target output value to be searched.</p>
+</dd>
+    <dt><code>closestIndex</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>Output - contains the index of the input step found.</p>
+</dd>
+    <dt><code>closestOut</code> <span class="xref">Site</span>&lt;Tout&gt;</dt>
+    <dd><p>Output - contains the output value of the input step found.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;Tin&gt;</dt>
+    <dd><p>The input value resulting in an output closest to the target.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>Tin</code></dt>
+    <dd><p>The type of the input condition for the device.</p>
+</dd>
+    <dt><code>Tout</code></dt>
+    <dd><p>The type of the device's output.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

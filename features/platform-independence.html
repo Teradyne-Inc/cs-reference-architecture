@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Platform Independence | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Platform Independence | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/platform-independence.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="platform-independence">Platform Independence</h1>
+
+<p>To achieve platform independence, meaning identical test coverage and results on multiple, possibly very incompatible testers, it's required to introduce commonality <strong>somewhere</strong>. And there are multiple places in a typical <a href="test-abstraction.html">test abstraction stack-up</a> where that could be done.</p>
+<p><img src="media/stackup.png" alt="Test abstraction stack diagram showing layers from tester hardware up through test methods, illustrating where platform independence can be implemented"></p>
+<h2 id="hardware-abstraction-layer">Hardware Abstraction Layer</h2>
+<blockquote>
+<p><em>&quot;A hardware abstraction layer (HAL) is a software layer that provides a consistent interface between hardware components and higher-level software, isolating the operating system or applications from the specifics of the hardware.&quot;</em></p>
+</blockquote>
+<p>TesterAPI (FlexTest) creates an interface by abstracting the Public API on IG-XL based testers. On other testers, it is intended to achieve the same, but an additional language / runtime translation layer may be required to interface to C++ / Java based or other platforms.</p>
+<p><img src="media/testerapi.png" alt="TesterAPI architecture diagram showing hardware abstraction layer providing consistent interface across different tester platforms including IG-XL"></p>
+<p>Since TesterAPI offers a common interface, the layers above can be common for all platforms - the same test program can run everywhere.</p>
+<h2 id="uniform-test-methods">Uniform Test Methods</h2>
+<p>Enforcing a common and exclusive interface to the tester hardware poses some challenges - which may be hard to overcome:</p>
+<ul>
+<li><p>an identical user interface for all testers is difficult for features that only exist on some, and constrains the feature set to the common denominator. Offering any specific functionality on the top level would violate platform agnosticism, as code that uses them is now not anymore generic. Underneath though, specific features can be accessed, if they can be contained and have no implications on the user level (like parameters that need to be set).</p>
+</li>
+<li><p>every additional layer introduces overhead and a level of indirection. For users who focus on a single platform only, that complexity could be a negative factor, without any apparent benefit.</p>
+</li>
+</ul>
+<p>Overall, test programs following that approach will have a competitive disadvantage over specifically implemented ones using the hardware and software features directly.</p>
+<p>However, platform independence is still present at the test definition layer in this model. Platform specific implementations for the Test Method and Test Block levels may offer a common interface, but utilize hardware &amp; software features natively.</p>
+<p><img src="media/uniform_test_methods.png" alt="Diagram showing uniform test methods approach with platform-specific implementations providing common interface while utilizing native hardware features"></p>
+<p>In that scenario it's not the same test program that runs on any platform, but a test program covering the same functionality can be generated. Since they are directly comparable, the two approaches can be used to compare results and benchmark performance.</p>
+<h2 id="combining-the-benefits">Combining the Benefits</h2>
+<p>As it's often the case, sweet spots may exist between the extreme positions. At the cost of some redundancy, both paths can be combined, offering more flexibility.</p>
+<p><img src="media/ufp_no_testerapi.png" alt="Architecture diagram showing UltraFlex platforms without TesterAPI, combining both abstraction approaches for increased flexibility at cost of some redundancy"></p>
+<p>Some testers (like UltraFlex and UltraFlex+) which share a majority of the platform specific API, it may be possible to create a common, specific implementation that handles (little) platform specifics inside. It is expected that this can be achieved without compromising performance and complexity.</p>
+<p><img src="media/ufp_uf_no_testerapi.png" alt="Platform architecture diagram showing shared implementation between UltraFlex and UltraFlex+ platforms, handling platform specifics internally without compromising performance"></p>
+<p>As additional benefit, there would now be a way to compare and benchmark the platform independent vs. specific implementation under realistic scenarios. That would take much of the guesswork out of test time critical projects, which are not yet where they need to be. Such insight could be helpful to identify specific areas to scrutinize in a TTR activity.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

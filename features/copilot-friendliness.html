@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Copilot Friendliness | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Copilot Friendliness | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/copilot-friendliness.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="copilot-friendliness">Copilot Friendliness</h1>
+
+<ul>
+<li>xxx</li>
+</ul>
+<h2 id="brainstorming">Brainstorming</h2>
+<ul>
+<li><p>What could we do to make this easily digestible for our Copilot / AI?</p>
+<ul>
+<li>Comments, comments, comments. Tell the AI all of the unstated assumptions and goals you have. Mixing English and code in the training data helps the AI learn the relationship.</li>
+</ul>
+</li>
+<li><p>We're going to have documentation, explaining the context of the code. That'll be as XML comments right at the public API nodes, as well as prose documentation (markdown), which will reference in code snippet examples. Can your engine intake such mixed-media inputs?</p>
+<ul>
+<li>yes</li>
+<li>So the following is outdated content, but the format is very much what we'll have:
+<a href="https://crispy-adventure-kqje5zq.pages.github.io/architecture.html">https://crispy-adventure-kqje5zq.pages.github.io/architecture.html</a>.
+Can this be fed in? Like directly, without converting to anything?
+<ul>
+<li>Can this be fed in?
+Robust libraries exist for ingesting all sorts of standard formats like HTML, Markdown, JSON, XML, PDF, Word, code, etc. Format is no problem. The thing to keep in mind is that a code-generating model will be given English prompts describing what the user wants and will be expected to output code that implements the user's intent. To make this happen, we need training data that helps the model learn this English-code association. So in the GitHub document you linked, it would be better if the text that describes the code examples is clearly grouped together with the code and separated from everything else. This grouping can be done anyway way that's convenient, such as the HTML h2 header &quot;Singleton Classes for Blocks&quot; containing the text and matching code. If this HTML section contains other text that doesn't describe the code example, this makes it harder for us to process it into English-code training examples. It's this pairing that matters, not the exact mechanism by which the code and its description are paired. Make sense?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Are we working on Copilot functionality that I can ask to create common programming tasks? Like ChatGPT, but who is aware of the IG-XL specifics, and can create meaningful test &amp; dsp code?</p>
+<ul>
+<li>No. We were told by Apps that automating tedious processes like characterization is more important than generating code. Also, we lacked training data. I expect this reference architecture will be a big enabler so we can finally progress on code generation.</li>
+</ul>
+</li>
+<li><p>Are we considering VS integrated functionality that can help me code right in the IDE? Like GH Copilot, but with awareness of our IG-XL knowledge and not only limited to the code it sees in my VS project?</p>
+<ul>
+<li>Yes, this is a prime candidate for C# test code generation use mode.</li>
+</ul>
+</li>
+<li><p>We may have some degrees of freedom to make those things potentially easier. Or if it is only to avoid making them extra-hard. And we're just about to get started, so now would be the right time to consider ...</p>
+<ul>
+<li>In a lot of cases, if the text description is short, comments in the code might be the easiest and most robust way to associate the code with a description.</li>
+</ul>
+</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

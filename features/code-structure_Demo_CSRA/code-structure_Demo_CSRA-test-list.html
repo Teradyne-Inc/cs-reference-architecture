@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Demo_CSRA Test List | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Demo_CSRA Test List | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/code-structure_Demo_CSRA/code-structure_Demo_CSRA-test-list.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="demo_csra-test-list">Demo_CSRA Test List</h1>
+
+<p>The test methods offered as part of the <strong>Demo_CSRA</strong> project are implemented in a simple test program using the SN74ABT8543 octal bus transceiver device. Happy Day scenarios, where the test instances are parameterized with typical values build a reference and allow diagnosis in offline and online scenarios.</p>
+<p>The hardware setup is compatible with the ADU training class on the UltraFLEX+ platform.</p>
+<p><img src="../media/SN74ABT8543.png" alt=""></p>
+<h2 id="test-group-continuity">Test Group <code>Continuity</code></h2>
+<h3 id="test-continuity_parametric_parallel">Test <code>Continuity_Parametric_Parallel</code></h3>
+<p>A standard implementation of a parallel parametric continuity test using the test method <code>Demo_CSRA.Continuity.Parametric.Parallel</code>. It measures the substrate diode of digital I/O pins to determine open and short fails on all pins in parallel. The expected measurement result is in the range of ~550mV.</p>
+<p>Detailed information about the test method can be found here: <em>API Documentation &gt; Demo_CSRA &gt; Continuity &gt; Parametric</em>.</p>
+<p><img src="../media/happy-day-continuity-parametric-parallel-schematic.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;all_pins&quot;</code></td>
+<td>all digital I/O pins</td>
+</tr>
+<tr>
+<td><code>current</code></td>
+<td><code>double</code></td>
+<td><code>=-100*uA</code></td>
+<td>-100µA is a safe current for this device, providing reliable detection of the diode's forward voltage drop</td>
+</tr>
+<tr>
+<td><code>clampVoltage</code></td>
+<td><code>double</code></td>
+<td><code>= -1.5*V</code></td>
+<td>-1.5V provides reliable detection of open contact - absolute maximum ratings allow exceeding input voltage range of -0.5V ... +5.5V if current clamp ratings (&lt;18/50mA) are maintained</td>
+</tr>
+<tr>
+<td><code>voltageRange</code></td>
+<td><code>double</code></td>
+<td><code>-1.5</code></td>
+<td>next fitting range to support the clamp voltage</td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td>PPMU instruments typically settle well in &lt;1ms in low capacitance load environments</td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td>SetupService is not used here</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-continuity_parametric_serial">Test <code>Continuity_Parametric_Serial</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Continuity.Parametric.Serial</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;all_pins&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>current</code></td>
+<td><code>double</code></td>
+<td><code>=-100*uA</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampVoltage</code></td>
+<td><code>double</code></td>
+<td><code>= -1.5*V</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>voltageRange</code></td>
+<td><code>double</code></td>
+<td><code>-1.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-continuity_supply_baseline">Test <code>Continuity_Supply_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Continuity.Supply.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceVoltage</code></td>
+<td><code>double</code></td>
+<td><code>0.6</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currentRange</code></td>
+<td><code>double</code></td>
+<td><code>0.02</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.005</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-supplycurrent">Test Group <code>SupplyCurrent</code></h2>
+<h3 id="test-supplycurrent_static_baseline">Test <code>SupplyCurrent_Static_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.SupplyCurrent.Static.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValue</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRange</code></td>
+<td><code>double</code></td>
+<td><code>0.2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValue</code></td>
+<td><code>double</code></td>
+<td><code>0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;InitIccStaticTest&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-supplycurrent_dynamic_baseline">Test <code>SupplyCurrent_Dynamic_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.SupplyCurrent.Dynamic.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValue</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRange</code></td>
+<td><code>double</code></td>
+<td><code>0.2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValue</code></td>
+<td><code>double</code></td>
+<td><code>0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Dyn_icc_flag.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stops</code></td>
+<td><code>int</code></td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-resistance">Test Group <code>Resistance</code></h2>
+<h3 id="test-resistance_contact_baseline">Test <code>Resistance_Contact_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Resistance.Contact.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;all_pins&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceMode</code></td>
+<td><code>string</code></td>
+<td><code>&quot;1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceFirstValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.01</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceSecondValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.02</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValueOfForcePin</code></td>
+<td><code>double</code></td>
+<td><code>-1.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureFirstRange</code></td>
+<td><code>double</code></td>
+<td><code>3.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureSecondRange</code></td>
+<td><code>double</code></td>
+<td><code>3.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-resistance_rdson_baseline">Test <code>Resistance_RdsOn_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Resistance.RdsOn.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceMode</code></td>
+<td><code>string</code></td>
+<td><code>&quot;1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.04</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRange</code></td>
+<td><code>double</code></td>
+<td><code>-1.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>labelOfStoredVoltage</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-resistance_rdson_twopinsoneforceonemeasure">Test <code>Resistance_RdsOn_TwoPinsOneForceOneMeasure</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Resistance.RdsOn.TwoPinsOneForceOneMeasure</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;clk_cap&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceMode</code></td>
+<td><code>string</code></td>
+<td><code>&quot;1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValueOfForcePin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measurePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;clk_cap&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRange</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>labelOfStoredVoltage</code></td>
+<td><code>string</code></td>
+<td><code>&quot;2.5&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;InitClkSrcSetHi&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-resistance_rdson_twopinsdeltaforcedeltameasure">Test <code>Resistance_RdsOn_TwoPinsDeltaForceDeltaMeasure</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Resistance.RdsOn.TwoPinsDeltaForceDeltaMeasure</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;clk_cap&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceMode</code></td>
+<td><code>string</code></td>
+<td><code>&quot;1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceFirstValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceSecondValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.002</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValueOfForcePin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measurePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;clk_cap&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureFirstRange</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureSecondRange</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;InitClkSrcSetHi&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-resistance_rdson_threepinsoneforcetwomeasure">Test <code>Resistance_RdsOn_ThreePinsOneForceTwoMeasure</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Resistance.RdsOn.ThreePinsOneForceTwoMeasure</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;TMS&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceCurrentPin</code></td>
+<td><code>double</code></td>
+<td><code>-5E-05</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValueOfForcePin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureFirstPin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;TMS&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRangeFirstPin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureSecondPin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;TDI&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRangeSecondPin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-resistance_rdson_fourpinstwoforcetwomeasure">Test <code>Resistance_RdsOn_FourPinsTwoForceTwoMeasure</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Resistance.RdsOn.FourPinsTwoForceTwoMeasure</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forceFirstPin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;TMS&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValueFirstPin</code></td>
+<td><code>double</code></td>
+<td><code>-5E-05</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValueOfForceFirstPin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceSecondPin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValueSecondPin</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValueOfForceSecondPin</code></td>
+<td><code>double</code></td>
+<td><code>0.2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureFirstPin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;TMS&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureSecondPin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;TDI&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRangeFirstPin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRangeSecondPin</code></td>
+<td><code>double</code></td>
+<td><code>6.5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-leakage">Test Group <code>Leakage</code></h2>
+<h3 id="test-leakage_parallel_baseline">Test <code>Leakage_Parallel_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Leakage.Parallel.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>voltage</code></td>
+<td><code>double</code></td>
+<td><code>=_vcc_value</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currentRange</code></td>
+<td><code>double</code></td>
+<td><code>0.00002</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.005</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;InitLeakageTest&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-leakage_parallel_preconditioning">Test <code>Leakage_Parallel_Preconditioning</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Leakage.Parallel.Preconditioning</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\init_enable_BA_hiz.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>voltage</code></td>
+<td><code>double</code></td>
+<td><code>=_vcc_value</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>currentRange</code></td>
+<td><code>double</code></td>
+<td><code>0.00002</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.005</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-functional">Test Group <code>Functional</code></h2>
+<h3 id="test-functional_staticpattern_baseline">Test <code>Functional_StaticPattern_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Functional.StaticPattern.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_func.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>testFunctional</code></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-functional_read_baseline">Test <code>Functional_Read_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Functional.Read.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_func.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>readPins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;a1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>startIndex</code></td>
+<td><code>int</code></td>
+<td><code>8</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bitLength</code></td>
+<td><code>int</code></td>
+<td><code>8</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>wordLength</code></td>
+<td><code>int</code></td>
+<td><code>8</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>msbFirst</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>testFunctional</code></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>testValues</code></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-parametric">Test Group <code>Parametric</code></h2>
+<h3 id="test-parametric_patternhandshake_baseline">Test <code>Parametric_PatternHandshake_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Parametric.PatternHandshake.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_pattern_handshake.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stopFlag</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>numberOfStops</code></td>
+<td><code>int</code></td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>executableClass</code></td>
+<td><code>string</code></td>
+<td><code>&quot;Demo_CSRA.CustomCode.PatternHandshakeBaselineClass&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>testFunctional</code></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-parametric_singlecondition_preconditionpattern">Test <code>Parametric_SingleCondition_PreConditionPattern</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Parametric.SingleCondition.PreconditionPattern</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceMode</code></td>
+<td><code>string</code></td>
+<td><code>&quot;ForceCurrent&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.005</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValue</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>preconditionPat</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_init_dataflow_A_to_B.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureWhat</code></td>
+<td><code>string</code></td>
+<td><code>&quot;Voltage&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRange</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sampleSize</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measPinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-parametric_singlecondition_baseline">Test <code>Parametric_SingleCondition_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Parametric.SingleCondition.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceMode</code></td>
+<td><code>string</code></td>
+<td><code>&quot;ForceCurrent&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValue</code></td>
+<td><code>double</code></td>
+<td><code>-0.005</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValue</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureWhat</code></td>
+<td><code>string</code></td>
+<td><code>&quot;Voltage&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRange</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sampleSize</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measPinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;InitParametricSingleConditionBaseline&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-parametric_multicondition_preconditionpattern">Test <code>Parametric_MultiCondition_PreconditionPattern</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Parametric.MultiCondition.PreconditionPattern</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;porta,portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceModes</code></td>
+<td><code>string</code></td>
+<td><code>&quot;ForceVoltage,ForceCurrent&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValues</code></td>
+<td><code>string</code></td>
+<td><code>&quot;5,-0.0005&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValues</code></td>
+<td><code>string</code></td>
+<td><code>&quot;0.002,6.5&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>preconditionPat</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\init_enable_AB_low.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureModes</code></td>
+<td><code>string</code></td>
+<td><code>&quot;Voltage&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRanges</code></td>
+<td><code>string</code></td>
+<td><code>&quot;5&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sampleSizes</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measPinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-parametric_multicondition_baseline">Test <code>Parametric_MultiCondition_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Parametric.MultiCondition.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;porta,portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceModes</code></td>
+<td><code>string</code></td>
+<td><code>&quot;ForceVoltage,ForceCurrent&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forceValues</code></td>
+<td><code>string</code></td>
+<td><code>&quot;5,-0.0005&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampValues</code></td>
+<td><code>string</code></td>
+<td><code>&quot;0.002,6.5&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureModes</code></td>
+<td><code>string</code></td>
+<td><code>&quot;Voltage&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureRanges</code></td>
+<td><code>string</code></td>
+<td><code>&quot;5&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sampleSizes</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measPinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-search">Test Group <code>Search</code></h2>
+<h3 id="test-search_functional_linearfull">Test <code>Search_Functional_LinearFull</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Search.Functional.LinearFull</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_func.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forcePins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>double</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>20</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-search_functional_linearstop">Test <code>Search_Functional_LinearStop</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Search.Functional.LinearStop</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_func.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forcePins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>double</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>20</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-search_functional_binary">Test <code>Search_Functional_Binary</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Search.Functional.Binary</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_func.PAT&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>forcePins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;vcc&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>double</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>minDelta</code></td>
+<td><code>double</code></td>
+<td><code>0.2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>invertedOutput</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-search_parametric_linearfull">Test <code>Search_Parametric_LinearFull</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Search.Parametric.LinearFull</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;b1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measurePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;a1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>double</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>100</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td><code>double</code></td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampCurrent</code></td>
+<td><code>double</code></td>
+<td><code>0.01</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;initSearchParametric&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-search_parametric_linearstop">Test <code>Search_Parametric_LinearStop</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Search.Parametric.LinearStop</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forcePins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;b1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measurePin</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;a1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>double</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>double</code></td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>100</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>threshold</code></td>
+<td><code>double</code></td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>clampCurrent</code></td>
+<td><code>double</code></td>
+<td><code>0.01</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;initSearchParametric&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-timing">Test Group <code>Timing</code></h2>
+<h3 id="test-timing_frequency_baseline">Test <code>Timing_Frequency_Baseline</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Timing.Frequency.Baseline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\demo_freqCnt_clk.patx&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pinList</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;portb&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>waitTime</code></td>
+<td><code>double</code></td>
+<td><code>0.001</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>measureWindow</code></td>
+<td><code>double</code></td>
+<td><code>0.05</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>eventSource</code></td>
+<td><code>string</code></td>
+<td><code>&quot;1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>eventSlope</code></td>
+<td><code>string</code></td>
+<td><code>&quot;0&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-group-digitaltrim">Test Group <code>DigitalTrim</code></h2>
+<h3 id="test-digitaltrim_linearstoptrip_csra">Test <code>DigitalTrim_LinearStopTrip_CSRA</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Trim.Digital.LinearStopTrip</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Digital_trim_fake.pat&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>int</code></td>
+<td><code>255</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>256</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-digitaltrim_linearstoptarget_csra">Test <code>DigitalTrim_LinearStopTarget_CSRA</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Trim.Digital.LinearStopTarget</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Digital_trim_fake_hram.pat&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>capPins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;a1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>int</code></td>
+<td><code>255</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>256</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td><code>int</code></td>
+<td><code>128</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-digitaltrim_linearfulltrip_csra">Test <code>DigitalTrim_LinearFullTrip_CSRA</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Trim.Digital.LinearFullTrip</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Digital_trim_fake.pat&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>int</code></td>
+<td><code>255</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>256</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-digitaltrim_linearfulltarget_csra">Test <code>DigitalTrim_LinearFullTarget_CSRA</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Trim.Digital.LinearFullTarget</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Digital_trim_fake_hram.pat&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>capPins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;a1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>int</code></td>
+<td><code>255</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>int</code></td>
+<td><code>256</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td><code>int</code></td>
+<td><code>128</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-digitaltrim_binarytrip_csra">Test <code>DigitalTrim_BinaryTrip_CSRA</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Trim.Digital.BinaryTrip</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Digital_trim_fake.pat&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>int</code></td>
+<td><code>255</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>minDelta</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>invertedOutput</code></td>
+<td><code>bool</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-digitaltrim_binarytarget_csra">Test <code>DigitalTrim_BinaryTarget_CSRA</code></h3>
+<ul>
+<li><code>TODO</code> add a link to the test method documentation here.</li>
+<li><code>TODO</code> add a brief description of the test implementation.</li>
+<li><code>TODO</code> add a simple block diagram with the relevant pins &amp; instruments.</li>
+</ul>
+<p>A standard implementation of a <code>TODO</code> test using the test method <code>Demo_CSRA.Trim.Digital.BinaryTarget</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td><code>Pattern</code></td>
+<td><code>&quot;.\Patterns\Digital_trim_fake_hram.pat&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>capPins</code></td>
+<td><code>PinList</code></td>
+<td><code>&quot;a1&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>int</code></td>
+<td><code>255</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>minDelta</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>invertedOutput</code></td>
+<td><code>bool</code></td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td><code>int</code></td>
+<td><code>128</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><code>string</code></td>
+<td><code>&quot;&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

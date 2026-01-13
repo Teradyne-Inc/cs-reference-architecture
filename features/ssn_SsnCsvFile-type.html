@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>SsnCsvFile Type | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="SsnCsvFile Type | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/ssn_SsnCsvFile-type.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ssncsvfile-type"><code>SsnCsvFile</code> Type</h1>
+
+<p>In order to manage the <code>*_ssn.csv</code> file that is generated along with <code>*.atp</code> file during pattern conversion by ATEGEN from Test Insight, we carefully designed a <code>Type</code> named <code>SsnCsvFile</code> with following features:</p>
+<ul>
+<li>Reads the <code>ssn.csv</code> file and extract only useful information.</li>
+<li>Validates the information that it is not violating any rules set by our implementation.</li>
+<li>Handles different versions of <code>ssn.csv</code> file since <code>SSN</code> is an evolving technology.</li>
+<li>Complies to ALL <strong>CSRA</strong> rules:
+<ul>
+<li>✔️ Is Extensible</li>
+<li>✔️ Is Backward Compatible</li>
+<li>✔️ Is Tested</li>
+<li>✔️ Is Documented (this doc!)</li>
+</ul>
+</li>
+</ul>
+<h2 id="background-about-the-ssncsv-file">Background about the <code>ssn.csv</code> file</h2>
+<p>Here is an example of a Legacy <code>*_ssn.csv</code> file:</p>
+<table>
+<thead>
+<tr>
+<th>//ID</th>
+<th>Core instance</th>
+<th>Ssh instance</th>
+<th>Icl instance</th>
+<th>Group ID</th>
+<th>Num bits</th>
+<th>Contrib pin</th>
+<th>Contrib offset</th>
+<th>Contrib label</th>
+<th>Sticky pin</th>
+<th>Sticky offset</th>
+<th>Sticky cycle</th>
+<th>Sticky label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>subsystemB/corec_i1</td>
+<td>subsystemB/corec_i1/identical_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>subsystemB.corec_i1.identical_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>2</td>
+<td>1</td>
+<td>ijtag_tdi</td>
+<td>809</td>
+<td>disable_contribution0</td>
+<td>ijtag_tdo</td>
+<td>39</td>
+<td>16717</td>
+<td>sticky_status0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>subsystemA/corec_i2</td>
+<td>subsystemA/corec_i2/identical_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>subsystemA.corec_i2.identical_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>3</td>
+<td>1</td>
+<td>ijtag_tdi</td>
+<td>433</td>
+<td>disable_contribution0</td>
+<td>ijtag_tdo</td>
+<td>24</td>
+<td>16702</td>
+<td>sticky_status0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>subsystemA/corec_i1</td>
+<td>subsystemA/corec_i1/identical_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>subsystemA.corec_i1.identical_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>3</td>
+<td>1</td>
+<td>ijtag_tdi</td>
+<td>248</td>
+<td>disable_contribution0</td>
+<td>ijtag_tdo</td>
+<td>16</td>
+<td>16694</td>
+<td>sticky_status0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>subsystemA/coreb_i1</td>
+<td>subsystemA/coreb_i1/unique_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>subsystemA.coreb_i1.unique_core_rtl_tessent_ssn_scan_host_1_inst</td>
+<td>1</td>
+<td>1</td>
+<td>ijtag_tdi</td>
+<td>63</td>
+<td>disable_contribution0</td>
+<td>ijtag_tdo</td>
+<td>8</td>
+<td>16686</td>
+<td>sticky_status0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The first row is a header.</li>
+<li>Each row contains attributes of one <code>ssh-icl-instance</code>.</li>
+<li>Each column is considered one attribute of <code>ssh-icl-instances</code> and the name of that attribute is defined in the header row.</li>
+</ul>
+<p>For ssn On-Chip Compare, we need to make sure that some of the attributes should be uniform across all <code>ssh-icl-instances</code> and some others must have distinctive value among all.</p>
+<p>And for instance-specific attributes we shall be able to look them up, so we use a <code>Dictionary&lt;instanceID, Dictionary&lt;attributeName, attributeValue&gt;&gt;</code>, but for uniformed attributes we do not need to store them under each <code>ssh-icl-instances</code> in the <code>Dictionary</code>. Therefore we decide to create the <code>SsnCsvFile</code> <code>type</code> of below structure:</p>
+<h2 id="proposal">Proposal</h2>
+<p><img src="media/ssn-CsvFile.png" alt="This is a proposed CsvFile Class with 4 different types of attributes"></p>
+<blockquote>
+<p>There are 4 types of attributes that stores in an <code>ssn.csv</code> file:</p>
+<ol>
+<li>Single appearance attribute.
+<ul>
+<li>there is only one case currently, which is the SsnCsv version and is on the first line with leading double-slash<code>//</code>.</li>
+<li>default version is v1.0 if the first line is otherwise, this is to keep compatibility with legacy <code>ssn.csv</code> files.</li>
+</ul>
+</li>
+<li>Attributes whose values are uniform across all instances.
+<ul>
+<li>e.g. <code>Contrib label</code> and <code>Tck ratio</code> shall be the same across all instances.</li>
+<li>validation will be performed upon parsing the SsnCsv file.</li>
+<li>Attribute's value will be stored at object level as well as in the per <code>ssh-icl-instance</code> Dictionary.</li>
+</ul>
+</li>
+<li>Attributes whose values must be unique across all instances.
+<ul>
+<li>e.g. <code>ssh instance</code> and <code>icl instance</code> shall be distinct across all instances.</li>
+<li>validation will be performed upon parsing the SsnCsv file.</li>
+<li>Attribute's value will be stored in the per <code>ssh-icl-instance</code> Dictionary.</li>
+</ul>
+</li>
+<li>Attributes whose values have no rules
+<ul>
+<li>e.g. <code>Group ID</code> and <code>Core Instance</code> can share same value across instances.</li>
+<li>Attribute's value will be stored in the per <code>ssh-icl-instance</code> Dictionary.</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="definitionconstructor">Definition(Constructor)</h3>
+<pre><code class="lang-cs">/// &lt;summary&gt;
+/// Construct a new &lt;see cref=&quot;SsnCsvFile&quot;/&gt; object and load the specified OnChipCompare _ssn.csv file.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;fileName&quot;&gt;The path to the ssn.csv file name&lt;/param&gt;
+/// &lt;param name=&quot;instanceKey&quot;&gt;The key attribute for indexing the ssh-icl-instances,
+/// Must be an attribute that has distinct values for each line.
+/// Default is the first column which is 'ID'&lt;/param&gt;
+public SsnCsvFile(string fileName, string instanceKey = &quot;//ID&quot;)
+</code></pre>
+<h3 id="properties">Properties</h3>
+<pre><code class="lang-cs">#region Properties
+public string CsvVersion { get; private set; } = string.Empty; // The version of the ssn setup csv file. It shall appear in the first line of the csv file, which starts with &quot;//SSN instances&quot;. Default to &quot;v1.0&quot; if not specified.
+public string ContribPin { get; private set; } = string.Empty; // The pin name of the contribution bits in the ssn setup pattern.
+public string ContribLabel { get; private set; } = string.Empty; // The label for the contribution bits in the ssn setup pattern.
+public string StickyPin { get; private set; } = string.Empty; // The pin name of the sticky bits in the ssn end pattern.
+public string StickyLabel { get; private set; } = string.Empty; // The label for the sticky bits in the ssn end pattern.
+public string TckRatio { get; private set; } = string.Empty; // The TCK ratio of the ssn pattern.
+                                                        // it is used to determine the length of the contribution bits in the ssn setup pattern and length of sticky bits in the ssn end pattern.
+                                                        // in v1.0, the name was &quot;Num bits&quot;, in v2025.7 it is changed to &quot;Tck ratio&quot;.
+public Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt; SshInstances { get; private set; } = new(); // Dictionary of ssh instances, where the keyAttribute is the instance name and the value is a dictionary of attributes and their values.
+#endregion
+</code></pre>
+<h3 id="methods">Methods</h3>
+<blockquote>
+<p>There is no public methods so far.
+Private methods are serving the constructor function only. Data validation is performed upon loading the file and creating the object, once it is created, this object serves as the unbiased data source for use with other ssn related C#RA codes.</p>
+</blockquote>
+<h3 id="example">Example</h3>
+<pre><code class="lang-cs">// Load the SSN Setup csv file.
+var ssnSetupCsv = new SsnCsvFile(ssnSetupCsvFileName);
+// get global attributes:
+string _contribPin = ssnSetupCsv.ContribPin;
+string _contribLabel = ssnSetupCsv.ContribLabel;
+var _tckRatio = int.TryParse(ssnSetupCsv.TckRatio, out var tckRatio) ? tckRatio : 0;
+// get per-instance attributes:
+foreach (var instance in ssnSetupCsv.SshInstances) {
+    // get attributes
+    var globalGroupID = instance.Value.ContainsKey(&quot;Group ID&quot;) ? instance.Value[&quot;Group ID&quot;] : string.Empty;
+}
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

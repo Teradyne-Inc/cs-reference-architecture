@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SettingBase&lt;T&gt; | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SettingBase&lt;T&gt; | C# Reference Architecture ">
+      
+      <meta name="description" content="Base class for all Services.Setup settings.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_Setting_SettingBase_1.md&amp;value=---%0Auid%3A%20Csra.Setting.SettingBase%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.Setting.SettingBase`1">
+
+
+
+  <h1 id="Csra_Setting_SettingBase_1" data-uid="Csra.Setting.SettingBase`1" class="text-break">
+Class SettingBase&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a>.<a class="xref" href="Csra.Setting.html">Setting</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base class for all Services.Setup settings.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public abstract class SettingBase&lt;T&gt; : ISetting</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The setting's type.</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SettingBase&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Csra.Interfaces.ISetting.html">ISetting</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Csra.Setting.Custom-1.html">Custom&lt;T&gt;</a></div>
+      <div><a class="xref" href="Csra.Setting.Setting_Enum-1.html">Setting_Enum&lt;T&gt;</a></div>
+      <div><a class="xref" href="Csra.Setting.Setting_FlaggedEnum-1.html">Setting_FlaggedEnum&lt;T&gt;</a></div>
+      <div><a class="xref" href="Csra.Setting.Setting_bool.html">Setting_bool</a></div>
+      <div><a class="xref" href="Csra.Setting.Setting_double.html">Setting_double</a></div>
+      <div><a class="xref" href="Csra.Setting.Setting_int.html">Setting_int</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Csra_Setting_SettingBase_1__pins" data-uid="Csra.Setting.SettingBase`1._pins">
+  _pins
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;string&gt; _pins</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Csra_Setting_SettingBase_1__unit" data-uid="Csra.Setting.SettingBase`1._unit">
+  _unit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string _unit</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_Setting_SettingBase_1_Apply_" data-uid="Csra.Setting.SettingBase`1.Apply*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Apply" data-uid="Csra.Setting.SettingBase`1.Apply">
+  Apply()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Applies the setting to the hardware, in case and only for those pins that need it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Apply()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_CompareValue_" data-uid="Csra.Setting.SettingBase`1.CompareValue*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_CompareValue__0__0_" data-uid="Csra.Setting.SettingBase`1.CompareValue(`0,`0)">
+  CompareValue(T, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compares two values of the setting's type. Override if special treatment is needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool CompareValue(T a, T b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <span class="xref">T</span></dt>
+    <dd><p>The first value for the comparison.</p>
+</dd>
+    <dt><code>b</code> <span class="xref">T</span></dt>
+    <dd><p>The second value for the comparision.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns 'true' if equal; otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_Diff_" data-uid="Csra.Setting.SettingBase`1.Diff*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Diff" data-uid="Csra.Setting.SettingBase`1.Diff">
+  Diff()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads the hardware state and compares it to the setting/cached value. Target and actual status are output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Diff()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_Dump_" data-uid="Csra.Setting.SettingBase`1.Dump*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Dump" data-uid="Csra.Setting.SettingBase`1.Dump">
+  Dump()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L234"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dumps the setting to the log output target.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dump()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_Export_" data-uid="Csra.Setting.SettingBase`1.Export*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Export_System_String_" data-uid="Csra.Setting.SettingBase`1.Export(System.String)">
+  Export(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Exports the setting to a file at the specified path. The file format is implementation specific, but should be human readable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Export(string path)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The file system path where the setups will be exported.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_Indent_" data-uid="Csra.Setting.SettingBase`1.Indent*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Indent_System_Int32_" data-uid="Csra.Setting.SettingBase`1.Indent(System.Int32)">
+  Indent(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Indent(int level)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>level</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_Init_" data-uid="Csra.Setting.SettingBase`1.Init*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Init_Csra_InitMode_" data-uid="Csra.Setting.SettingBase`1.Init(Csra.InitMode)">
+  Init(InitMode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs the specified initialization to the setting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Init(InitMode initMode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>initMode</code> <a class="xref" href="Csra.InitMode.html">InitMode</a></dt>
+    <dd><p>The init mode.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_ParseEnum_" data-uid="Csra.Setting.SettingBase`1.ParseEnum*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_ParseEnum__1_System_String_" data-uid="Csra.Setting.SettingBase`1.ParseEnum``1(System.String)">
+  ParseEnum&lt;TEnum&gt;(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static TEnum ParseEnum&lt;TEnum&gt;(string value) where TEnum : struct</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TEnum</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEnum</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_ReadFunc_" data-uid="Csra.Setting.SettingBase`1.ReadFunc*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_ReadFunc_System_String_" data-uid="Csra.Setting.SettingBase`1.ReadFunc(System.String)">
+  ReadFunc(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract T[] ReadFunc(string pin)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>T[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SerializeValue_" data-uid="Csra.Setting.SettingBase`1.SerializeValue*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SerializeValue__0_" data-uid="Csra.Setting.SettingBase`1.SerializeValue(`0)">
+  SerializeValue(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serializes the setting's value to a string. Override if special treatment is needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual string SerializeValue(T value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to serialize.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string representation of value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SetAction_" data-uid="Csra.Setting.SettingBase`1.SetAction*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SetAction_System_String__0_" data-uid="Csra.Setting.SettingBase`1.SetAction(System.String,`0)">
+  SetAction(string, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void SetAction(string pinList, T value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SetArguments_" data-uid="Csra.Setting.SettingBase`1.SetArguments*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SetArguments__0_System_String_" data-uid="Csra.Setting.SettingBase`1.SetArguments(`0,System.String)">
+  SetArguments(T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hands the setting's argument parameters to the base class. Typically used for custom settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetArguments(T value, string key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to call setAction.</p>
+</dd>
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A key to feed the cache.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SetArguments_" data-uid="Csra.Setting.SettingBase`1.SetArguments*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SetArguments__0_System_String_System_Boolean_" data-uid="Csra.Setting.SettingBase`1.SetArguments(`0,System.String,System.Boolean)">
+  SetArguments(T, string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hands the setting's argument parameters to the base class. Typically used for instrument-related settings with or without pin relation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetArguments(T value, string pinList, bool hasPins)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The target value of this setting.</p>
+</dd>
+    <dt><code>pinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>hasPins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SetBehavior_" data-uid="Csra.Setting.SettingBase`1.SetBehavior*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SetBehavior__0_System_String_Csra_InitMode_System_Boolean_" data-uid="Csra.Setting.SettingBase`1.SetBehavior(`0,System.String,Csra.InitMode,System.Boolean)">
+  SetBehavior(T, string, InitMode, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hands the setting's behavior parameters to the base class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetBehavior(T initValue, string unit, InitMode initMode, bool doubleReadCompare)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>initValue</code> <span class="xref">T</span></dt>
+    <dd><p>The value this setting is being initialized to by the system.</p>
+</dd>
+    <dt><code>unit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The unit string for the setting's value.</p>
+</dd>
+    <dt><code>initMode</code> <a class="xref" href="Csra.InitMode.html">InitMode</a></dt>
+    <dd><p>The event that initialization of this setting in the system.</p>
+</dd>
+    <dt><code>doubleReadCompare</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SetCacheInternal_" data-uid="Csra.Setting.SettingBase`1.SetCacheInternal*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SetCacheInternal__0_System_String_System_Collections_Generic_Dictionary_System_String__0__" data-uid="Csra.Setting.SettingBase`1.SetCacheInternal(`0,System.String,System.Collections.Generic.Dictionary{System.String,`0})">
+  SetCacheInternal(T, string, Dictionary&lt;string, T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the value for specified pins in the cache. Used to make SetupService aware of manual hardware changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void SetCacheInternal(T value, string pinList, Dictionary&lt;string, T&gt; cache)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The new value (typically what the hardware has manually be set to).</p>
+</dd>
+    <dt><code>pinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>cache</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, T&gt;</dt>
+    <dd><p>A reference to that static cache object per setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_SetContext_" data-uid="Csra.Setting.SettingBase`1.SetContext*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_SetContext_System_Boolean_System_Collections_Generic_Dictionary_System_String__0__" data-uid="Csra.Setting.SettingBase`1.SetContext(System.Boolean,System.Collections.Generic.Dictionary{System.String,`0})">
+  SetContext(bool, Dictionary&lt;string, T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hands the setting's context parameters to the base class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetContext(bool readFuncDefined, Dictionary&lt;string, T&gt; staticCache)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>readFuncDefined</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>staticCache</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, T&gt;</dt>
+    <dd><p>The handle to the static cache object for the setting's type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_ToString_" data-uid="Csra.Setting.SettingBase`1.ToString*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_ToString" data-uid="Csra.Setting.SettingBase`1.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L226"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a string representation of the setting in a human-readable form.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string representation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Setting_SettingBase_1_Validate_" data-uid="Csra.Setting.SettingBase`1.Validate*"></a>
+
+  <h3 id="Csra_Setting_SettingBase_1_Validate" data-uid="Csra.Setting.SettingBase`1.Validate">
+  Validate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Setting/SettingBase.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates the setting's value. Override needed per setting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Validate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

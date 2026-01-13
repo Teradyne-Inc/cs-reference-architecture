@@ -1,0 +1,4657 @@
+{
+  "source_base_path": "D:/a/cs-reference-architecture/cs-reference-architecture/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.AlertOutputTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.AlertOutputTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.AlertOutputTarget",
+      "Summary": "<p sourcefile=\"api/Csra.AlertOutputTarget.yml\" sourcestartlinenumber=\"1\">The available output targets for Alert Service messages.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.BiDictionary-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.BiDictionary-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.BiDictionary<TKey, TValue>",
+      "Summary": "<p sourcefile=\"api/Csra.BiDictionary-2.yml\" sourcestartlinenumber=\"1\">Represents a bidirectional dictionary that allows lookups in both directions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.CSRATransactionConfig.Port.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.CSRATransactionConfig.Port.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.CSRATransactionConfig.Port",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.CSRATransactionConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.CSRATransactionConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.CSRATransactionConfig",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.CoreInstanceTestResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.CoreInstanceTestResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.CoreInstanceTestResult",
+      "Summary": "<p sourcefile=\"api/Csra.CoreInstanceTestResult.yml\" sourcestartlinenumber=\"1\">Class to store the test result of a core instance, part of <xref href=\"Csra.ScanNetworkPatternResults\" data-throw-if-not-resolved=\"false\"></xref> of a ScanNetwork pattern(set).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.DcParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.DcParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.DcParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.DigitalPinsLevelsParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.DigitalPinsLevelsParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.DigitalPinsLevelsParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.DigitalPinsParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.DigitalPinsParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.DigitalPinsParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.DigitalPinsTimingParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.DigitalPinsTimingParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.DigitalPinsTimingParameters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.ExtensionMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.ExtensionMethods.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.ExtensionMethods",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.IExecutable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.IExecutable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.IExecutable",
+      "Summary": "<p sourcefile=\"api/Csra.IExecutable.yml\" sourcestartlinenumber=\"1\">Defines a contract that a customer needs to fulfill to use with TestBlock (e.g. RunPatternConditionalStop).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.IGComponentManagerParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.IGComponentManagerParser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.IGComponentManagerParser",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.IclInstanceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.IclInstanceInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.IclInstanceInfo",
+      "Summary": "<p sourcefile=\"api/Csra.IclInstanceInfo.yml\" sourcestartlinenumber=\"1\">Class to store the attributes of an icl instance, part of <xref href=\"Csra.ScanNetworkPatternInfo\" data-throw-if-not-resolved=\"false\"></xref> for a ScanNetwork pattern(set).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.IclInstanceTestResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.IclInstanceTestResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.IclInstanceTestResult",
+      "Summary": "<p sourcefile=\"api/Csra.IclInstanceTestResult.yml\" sourcestartlinenumber=\"1\">Class to store the metadata and test result of an icl instance, part of <xref href=\"Csra.ScanNetworkPatternResults\" data-throw-if-not-resolved=\"false\"></xref> of a ScanNetwork pattern(set).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.InitMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.InitMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.InitMode",
+      "Summary": "<p sourcefile=\"api/Csra.InitMode.yml\" sourcestartlinenumber=\"1\">Events in the lifetime of a Setup that will cause a reset of the hardware state.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.InstrumentDomain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.InstrumentDomain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.InstrumentDomain",
+      "Summary": "<p sourcefile=\"api/Csra.InstrumentDomain.yml\" sourcestartlinenumber=\"1\">Functional domain available by the instrument.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.InstrumentFeature.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.InstrumentFeature.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.InstrumentFeature",
+      "Summary": "<p sourcefile=\"api/Csra.InstrumentFeature.yml\" sourcestartlinenumber=\"1\">Logical features provided through the instrument driver.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.InstrumentType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.InstrumentType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.InstrumentType",
+      "Summary": "<p sourcefile=\"api/Csra.InstrumentType.yml\" sourcestartlinenumber=\"1\">Physical instrument types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.IAlertService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.IAlertService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.IAlertService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.IBehaviorService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.IBehaviorService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.IBehaviorService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IAcquire.IDc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IAcquire.IDc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IAcquire.IDc",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IAcquire.IDc.yml\" sourcestartlinenumber=\"1\">The interface for the Dc branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IAcquire.IDigital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IAcquire.IDigital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IAcquire.IDigital",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IAcquire.IDigital.yml\" sourcestartlinenumber=\"1\">The interface for the Digital branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IAcquire.IScanNetwork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IAcquire.IScanNetwork.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IAcquire.IScanNetwork",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IAcquire.IScanNetwork.yml\" sourcestartlinenumber=\"1\">The interface for the ScanNetwork branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IAcquire.ISearch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IAcquire.ISearch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IAcquire.ISearch",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IAcquire.ISearch.yml\" sourcestartlinenumber=\"1\">The interface for the Search branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IAcquire.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IAcquire.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IAcquire",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IAcquire.yml\" sourcestartlinenumber=\"1\">The interface for the Acquire branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IDatalog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IDatalog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IDatalog",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IDatalog.yml\" sourcestartlinenumber=\"1\">The interface for the Datalog branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IExecute.IDigital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IExecute.IDigital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IExecute.IDigital",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IExecute.IDigital.yml\" sourcestartlinenumber=\"1\">The interface for the Digital branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IExecute.IScanNetwork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IExecute.IScanNetwork.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IExecute.IScanNetwork",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IExecute.IScanNetwork.yml\" sourcestartlinenumber=\"1\">The interface for the ScanNetwork branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IExecute.ISearch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IExecute.ISearch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IExecute.ISearch",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IExecute.ISearch.yml\" sourcestartlinenumber=\"1\">The interface for the Search branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IExecute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IExecute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IExecute",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.IExecute.yml\" sourcestartlinenumber=\"1\">The interface for the Execute branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.ISetup.IDc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.ISetup.IDc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.ISetup.IDc",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.ISetup.IDc.yml\" sourcestartlinenumber=\"1\">The interface for the Dc branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.ISetup.IDigital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.ISetup.IDigital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.ISetup.IDigital",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.ISetup.IDigital.yml\" sourcestartlinenumber=\"1\">The interface for the Digital branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.ISetup.ILevelsAndTiming.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.ISetup.ILevelsAndTiming.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.ISetup.ILevelsAndTiming",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.ISetup.ILevelsAndTiming.yml\" sourcestartlinenumber=\"1\">The interface for the LevelsAndTiming branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.ISetup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.ISetup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.ISetup",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.ISetup.yml\" sourcestartlinenumber=\"1\">The interface for the Setup branch.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.IValidate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.IValidate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib.IValidate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ILib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ILib.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ILib",
+      "Summary": "<p sourcefile=\"api/Csra.Interfaces.ILib.yml\" sourcestartlinenumber=\"1\">The interface for the EntryPoint.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.IServiceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.IServiceBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.IServiceBase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.IServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.IServices.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.IServices",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ISetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ISetting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ISetting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ISetupService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ISetupService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ISetupService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.IStorageService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.IStorageService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.IStorageService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ITransactionConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ITransactionConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ITransactionConfig",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.ITransactionService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.ITransactionService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces.ITransactionService",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Interfaces.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Interfaces",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Kelvin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Kelvin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Kelvin",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Measure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Measure.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Measure",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.MethodHandle-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.MethodHandle-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.MethodHandle<T>",
+      "Summary": "<p sourcefile=\"api/Csra.MethodHandle-1.yml\" sourcestartlinenumber=\"1\">Provides a flexible and type-safe mechanism for dynamically resolving and invoking delegates\nbased on the execution context (e.g., debug vs. production).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.MethodHandleTargetAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.MethodHandleTargetAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.MethodHandleTargetAttribute",
+      "Summary": "<p sourcefile=\"api/Csra.MethodHandleTargetAttribute.yml\" sourcestartlinenumber=\"1\">Indicates that the target method is intended to be referenced via a method handle, such as a delegate.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.PatternInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.PatternInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.PatternInfo",
+      "Summary": "<p sourcefile=\"api/Csra.PatternInfo.yml\" sourcestartlinenumber=\"1\">Class to store information about a pattern.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Pins.Pin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Pins.Pin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Pins.Pin",
+      "Summary": "<p sourcefile=\"api/Csra.Pins.Pin.yml\" sourcestartlinenumber=\"1\">Pin class - individual hardware pins with features.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Pins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Pins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Pins",
+      "Summary": "<p sourcefile=\"api/Csra.Pins.yml\" sourcestartlinenumber=\"1\">Pins class - a collection of Pin objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.ScanNetworkDatalogOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.ScanNetworkDatalogOption.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.ScanNetworkDatalogOption",
+      "Summary": "<p sourcefile=\"api/Csra.ScanNetworkDatalogOption.yml\" sourcestartlinenumber=\"1\">Specifies the options for logging ScanNetwork test results from object <xref href=\"Csra.ScanNetworkPatternResults\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.ScanNetworkPatternInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.ScanNetworkPatternInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.ScanNetworkPatternInfo",
+      "Summary": "<p sourcefile=\"api/Csra.ScanNetworkPatternInfo.yml\" sourcestartlinenumber=\"1\">Class to store ScanNetwork information about a ScanNetwork pattern(set).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.ScanNetworkPatternResults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.ScanNetworkPatternResults.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.ScanNetworkPatternResults",
+      "Summary": "<p sourcefile=\"api/Csra.ScanNetworkPatternResults.yml\" sourcestartlinenumber=\"1\">Class to store the per core/icl instance test results of a ScanNetwork pattern(set).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Services.Alert.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Services.Alert.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Services.Alert",
+      "Summary": "<p sourcefile=\"api/Csra.Services.Alert.yml\" sourcestartlinenumber=\"1\">AlertService - centralized info / warning / error alerting.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Services.Behavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Services.Behavior.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Services.Behavior",
+      "Summary": "<p sourcefile=\"api/Csra.Services.Behavior.yml\" sourcestartlinenumber=\"1\">BehaviorService - when logic gets a personality.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Services.Setup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Services.Setup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Services.Setup",
+      "Summary": "<p sourcefile=\"api/Csra.Services.Setup.yml\" sourcestartlinenumber=\"1\">Services.Setup - centralized test configuration management.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Services.Storage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Services.Storage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Services.Storage",
+      "Summary": "<p sourcefile=\"api/Csra.Services.Storage.yml\" sourcestartlinenumber=\"1\">StorageService - centralized persistent data storage.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Services.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Services.Transaction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Services.Transaction",
+      "Summary": "<p sourcefile=\"api/Csra.Services.Transaction.yml\" sourcestartlinenumber=\"1\">Services.Transaction.- being fluent in devices' dialects</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Services.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Services",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.Custom-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.Custom-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.Custom<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.SettingBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.SettingBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.SettingBase<T>",
+      "Summary": "<p sourcefile=\"api/Csra.Setting.SettingBase-1.yml\" sourcestartlinenumber=\"1\">Base class for all Services.Setup settings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.Setting_Enum-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.Setting_Enum-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.Setting_Enum<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.Setting_FlaggedEnum-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.Setting_FlaggedEnum-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.Setting_FlaggedEnum<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.Setting_bool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.Setting_bool.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.Setting_bool",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.Setting_double.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.Setting_double.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.Setting_double",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.Setting_int.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.Setting_int.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.Setting_int",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.CurrentLoad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.CurrentLoad.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.CurrentLoad",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.Mode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.Mode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.Mode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.ComplianceRange_Negative.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.ComplianceRange_Negative.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.ComplianceRange_Negative",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.ComplianceRange_Positive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.ComplianceRange_Positive.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.ComplianceRange_Positive",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Connect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Connect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.Connect",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Current.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Current.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.Current",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.CurrentRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.CurrentRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.CurrentRange",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Timeout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Timeout.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Timeout",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Gate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Gate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.Gate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Mode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Mode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.Mode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.NominalBandwidth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.NominalBandwidth.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.NominalBandwidth",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Voltage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.Voltage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.Voltage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.VoltageRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.VoltageRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins.VoltageRange",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvi.Pins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvi.Pins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.BleederResistor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.BleederResistor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.BleederResistor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Connect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Connect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.Connect",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.Level.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.Level.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.Level",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.Level.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.Level.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.Level",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.FoldLimit.Level.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.FoldLimit.Level.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.FoldLimit.Level",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.FoldLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.FoldLimit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.FoldLimit",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.Level.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.Level.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.Level",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": null,
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.CurrentRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.CurrentRange",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Gate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Gate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.Gate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Mode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Mode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.Mode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Voltage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.Voltage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.Voltage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.VoltageRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.VoltageRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins.VoltageRange",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Dcvs.Pins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Dcvs.Pins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Connect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Connect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Connect",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.InitState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.InitState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.InitState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.DriverMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.DriverMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.DriverMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Ioh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Ioh.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Ioh",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Iol.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Iol.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Iol",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vch",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vcl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vcl.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vcl",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vih.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vih.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vih",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vil.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vil.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vil",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Voh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Voh.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Voh",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vol.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vol.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vol",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels.Value_Vt",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.Levels.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.Levels",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.StartState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.StartState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins.StartState",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Digital.Pins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Digital.Pins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.ClampVHi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.ClampVHi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Ppmu.Pins.ClampVHi",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.ClampVLo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.ClampVLo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Ppmu.Pins.ClampVLo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.Connect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.Connect.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Ppmu.Pins.Connect",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.ForceV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.ForceV.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Ppmu.Pins.ForceV",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.Gate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.Gate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Ppmu.Pins.Gate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Ppmu.Pins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Ppmu.Pins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.SetSettlingTimer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.SetSettlingTimer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.SetSettlingTimer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.SettleWait.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.SettleWait.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.SettleWait",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Utility.Pins.State.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Utility.Pins.State.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Utility.Pins.State",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Utility.Pins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Utility.Pins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Utility.Pins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.Wait.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.Wait.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw.Wait",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.TheHdw.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.TheHdw.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting.TheHdw",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Setup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Setup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Setup",
+      "Summary": "<p sourcefile=\"api/Csra.Setup.yml\" sourcestartlinenumber=\"1\">Setup - a named collection of settings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.SsnCsvFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.SsnCsvFile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.SsnCsvFile",
+      "Summary": "<p sourcefile=\"api/Csra.SsnCsvFile.yml\" sourcestartlinenumber=\"1\">Class to parse information from an ssn.csv file. Only for use in constructor method of <xref href=\"Csra.ScanNetworkPatternInfo\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TLibDiffLvlValType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TLibDiffLvlValType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TLibDiffLvlValType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TLibOutputMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TLibOutputMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TLibOutputMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Acquire.Dc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Acquire.Dc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Acquire.Dc",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Acquire.Digital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Acquire.Digital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Acquire.Digital",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Acquire.ScanNetwork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Acquire.ScanNetwork.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Acquire.ScanNetwork",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Acquire.Search.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Acquire.Search.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Acquire.Search",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Acquire.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Acquire.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Acquire",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Datalog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Datalog.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Datalog",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Execute.Digital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Execute.Digital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Execute.Digital",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Execute.ScanNetwork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Execute.ScanNetwork.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Execute.ScanNetwork",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Execute.Search.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Execute.Search.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Execute.Search",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Execute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Execute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Execute",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Setup.Dc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Setup.Dc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Setup.Dc",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Setup.Digital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Setup.Digital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Setup.Digital",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Setup.LevelsAndTiming.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Setup.LevelsAndTiming.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Setup.LevelsAndTiming",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Setup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Setup.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Setup",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.Validate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.Validate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib.Validate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TheLib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TheLib.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TheLib",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.TransactionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.TransactionType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.TransactionType",
+      "Summary": "<p sourcefile=\"api/Csra.TransactionType.yml\" sourcestartlinenumber=\"1\">Transaction type to use with the TransactionService.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Continuity.Parametric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Continuity.Parametric.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Continuity.Parametric",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Continuity.Supply.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Continuity.Supply.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Continuity.Supply",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Continuity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Continuity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Continuity",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.CustomCode.PatternHandshakeBaselineClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.CustomCode.PatternHandshakeBaselineClass.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.CustomCode.PatternHandshakeBaselineClass",
+      "Summary": "<p sourcefile=\"api/Demo_CSRA.CustomCode.PatternHandshakeBaselineClass.yml\" sourcestartlinenumber=\"1\">To use PatternHandshakeBaselineClass in a TestMethod, it is specified by the user on the flowsheet via fully-qualified-name</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.CustomCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.CustomCode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.CustomCode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.CustomerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.CustomerExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.CustomerExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.ExecInterposeClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.ExecInterposeClass.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.ExecInterposeClass",
+      "Summary": "<p sourcefile=\"api/Demo_CSRA.ExecInterposeClass.yml\" sourcestartlinenumber=\"1\">This class contains empty Exec Interpose functions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Functional.Read.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Functional.Read.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Functional.Read",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Functional.StaticPattern.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Functional.StaticPattern.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Functional.StaticPattern",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Functional.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Functional.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Functional",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Leakage.Groups.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Leakage.Groups.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Leakage.Groups",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Leakage.Parallel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Leakage.Parallel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Leakage.Parallel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Leakage.Serial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Leakage.Serial.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Leakage.Serial",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Leakage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Leakage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Leakage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Parametric.MultiCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Parametric.MultiCondition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Parametric.MultiCondition",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Parametric.PatternHandshake.IPatternHandshakeBaselineExecutable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Parametric.PatternHandshake.IPatternHandshakeBaselineExecutable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Parametric.PatternHandshake.IPatternHandshakeBaselineExecutable",
+      "Summary": "<p sourcefile=\"api/Demo_CSRA.Parametric.PatternHandshake.IPatternHandshakeBaselineExecutable.yml\" sourcestartlinenumber=\"1\">The interface implements IExecutable and should be implemented by the class\nthat is passed to the TestMethod by its fully-qualified name.\nResult must be cleared before use otherwise it contains results from previous runs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Parametric.PatternHandshake.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Parametric.PatternHandshake.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Parametric.PatternHandshake",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Parametric.SingleCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Parametric.SingleCondition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Parametric.SingleCondition",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Parametric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Parametric.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Parametric",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Resistance.Contact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Resistance.Contact.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Resistance.Contact",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Resistance.RdsOn.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Resistance.RdsOn.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Resistance.RdsOn",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Resistance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Resistance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Resistance",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.ScanNetwork.ScanNetworkPattern.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.ScanNetwork.ScanNetworkPattern.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.ScanNetwork.ScanNetworkPattern",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.ScanNetwork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.ScanNetwork.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.ScanNetwork",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Search.Functional.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Search.Functional.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Search.Functional",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Search.Parametric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Search.Parametric.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Search.Parametric",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Search.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Search.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Search",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Showcase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Showcase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Showcase",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.SupplyCurrent.Dynamic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.SupplyCurrent.Dynamic.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.SupplyCurrent.Dynamic",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.SupplyCurrent.Static.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.SupplyCurrent.Static.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.SupplyCurrent.Static",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.SupplyCurrent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.SupplyCurrent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.SupplyCurrent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Timing.Frequency.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Timing.Frequency.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Timing.Frequency",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Timing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Timing.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Timing",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Trim.Digital.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Trim.Digital.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Trim.Digital",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Trim.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Trim.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Trim",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/alert-service.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/alert-service.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/behavior-service.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/behavior-service.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/behavior-service/behavior-service_features.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/behavior-service/behavior-service_features.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/behavior-service/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/behavior-service/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/behavior-service/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/characterization-support.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/characterization-support.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_Demo_CSRA.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_Demo_CSRA.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_Demo_CSRA/code-structure_Demo_CSRA-test-list.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_Demo_CSRA/code-structure_Demo_CSRA-test-list.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/code-structure_Demo_CSRA/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_Demo_CSRA/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/code-structure_Demo_CSRA/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_enums.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_extension-methods.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_extension-methods.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_services.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_services.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_test-blocks.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_test-blocks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_test-blocks/code-structure_test-blocks_hierarchy.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_test-blocks/code-structure_test-blocks_hierarchy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/code-structure_test-blocks/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_test-blocks/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/code-structure_test-blocks/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_test-methods.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_test-methods.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_test-methods/code-structure_test-methods_hierarchy.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_test-methods/code-structure_test-methods_hierarchy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/code-structure_test-methods/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_test-methods/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/code-structure_test-methods/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/code-structure_types.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/code-structure_types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/copilot-friendliness.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/copilot-friendliness.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/custom-validation.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/custom-validation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/documentation.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/documentation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/extensibility.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/extensibility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/external-libraries.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/external-libraries.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/instrument-specific.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/instrument-specific.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/legacy-templates.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/legacy-templates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/SN74ABT8543.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/SN74ABT8543.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/alert-service_error-sheet.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/alert-service_error-sheet.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/alert-service_flow-instance-highlight.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/alert-service_flow-instance-highlight.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/continuity-parametric-parallel-schematic.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/continuity-parametric-parallel-schematic.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/digital-transaction-paths.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/digital-transaction-paths.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/digital-transaction-portbridge-extension.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/digital-transaction-portbridge-extension.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/file-exists-build-flag.gif",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/file-exists-build-flag.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/for-each-site-massive-pop-up.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/for-each-site-massive-pop-up.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/happy-day-continuity-parametric-parallel-schematic.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/happy-day-continuity-parametric-parallel-schematic.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/multi-condition-multi-pin-excessive.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/multi-condition-multi-pin-excessive.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/multi-condition-multi-pin-missing.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/multi-condition-multi-pin-missing.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/multi-condition-multi-pin-specific.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/multi-condition-multi-pin-specific.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/multi-condition-multi-pin-uniform.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/multi-condition-multi-pin-uniform.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/multi-condition-multi-pin-unsupported.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/multi-condition-multi-pin-unsupported.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/multi-condition-single-pin-uniform.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/multi-condition-single-pin-uniform.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/obsolete.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/obsolete.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/pins-type-grouped.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/pins-type-grouped.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/pins-type-serial.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/pins-type-serial.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-binary-uni.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-binary-uni.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-binary.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-binary.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-conditionlist-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-conditionlist-1.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-conditionlist-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-conditionlist-2.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-conditionlist-3.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-conditionlist-3.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-conditionlist-4.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-conditionlist-4.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-conditionlist-5.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-conditionlist-5.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-delegate-by-name.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-delegate-by-name.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-flat.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-flat.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-linear-full.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-linear-full.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/search-linear.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/search-linear.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service-tm1.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service-tm1.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service-tm2.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service-tm2.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service-tm3.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service-tm3.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service-tm4.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service-tm4.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service-tm5.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service-tm5.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/setup-service_setting-inheritance.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/setup-service_setting-inheritance.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/single-condition-multi-pin.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/single-condition-multi-pin.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/single-condition-one-pin.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/single-condition-one-pin.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/single-multi-condition-decided_inside_block.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/single-multi-condition-decided_inside_block.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-CsvFile.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-CsvFile.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-OCCompInfo.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-OCCompInfo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-core-debug-status.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-core-debug-status.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-debug-all-cores-enabled.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-debug-all-cores-enabled.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-debug-core-5-disabled.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-debug-core-5-disabled.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-iclInstances.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-iclInstances.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-icl_element-example.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-icl_element-example.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-ig-xl-graphical-results-view.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-ig-xl-graphical-results-view.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-one-super-class.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-one-super-class.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-partial-good.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-partial-good.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-pattern.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-pattern.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-perPattern-perSSH-element.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-perPattern-perSSH-element.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-sparse-matrix.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-sparse-matrix.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-table-core-summary-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-table-core-summary-1.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ssn-table-core-summary-all.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ssn-table-core-summary-all.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/stackup.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/stackup.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/stackup_hal.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/stackup_hal.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/stackup_mixed.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/stackup_mixed.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/storage_api.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/storage_api.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/storage_database.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/storage_database.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/storage_gv.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/storage_gv.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/test-class-object-access-compiler-checks.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/test-class-object-access-compiler-checks.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/test-method-hierarchy.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/test-method-hierarchy.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/test-methods-instance-sheet.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/test-methods-instance-sheet.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/testerapi.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/testerapi.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/trap_on_call.gif",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/trap_on_call.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ufp_no_testerapi.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ufp_no_testerapi.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/ufp_uf_no_testerapi.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/ufp_uf_no_testerapi.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/uniform_test_methods.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/uniform_test_methods.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit-integration-test-pyramid.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit-integration-test-pyramid.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit-test-disconnect-path.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit-test-disconnect-path.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit-test-disconnect-template.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit-test-disconnect-template.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit-test-disconnect.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit-test-disconnect.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit-test-template-path.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit-test-template-path.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit-test-template.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit-test-template.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/media/unit_test_performance.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/media/unit_test_performance.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/methodhandle-type.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/methodhandle-type.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/modularity.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/modularity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/multi-target-igxl.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/multi-target-igxl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/offline-features.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/offline-features.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/patterninfo-type.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/patterninfo-type.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/persistent-data-storage.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/persistent-data-storage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/pins-type.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/pins-type.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/platform-independence.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/platform-independence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/search-trim.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/search-trim.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service/setup-service_dcvi.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/setup-service_dcvi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service/setup-service_dcvs.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/setup-service_dcvs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service/setup-service_digital.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/setup-service_digital.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service/setup-service_ppmu.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/setup-service_ppmu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service/setup-service_setting_types.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/setup-service_setting_types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/setup-service/setup-service_utility.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/setup-service_utility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/setup-service/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/setup-service/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/setup-service/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/single-multi-condition.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/single-multi-condition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/ssn.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/ssn.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-OnChip-Compare-1.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-OnChip-Compare-1.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-OnChip-Compare-2.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-OnChip-Compare-2.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-OnChip-Compare-3.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-OnChip-Compare-3.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-cycle-repetition.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-cycle-repetition.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-edt.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-edt.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-mapfile-csv.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-mapfile-csv.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-multi-ssh.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-multi-ssh.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-payload-pattern.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-payload-pattern.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-rotation-off.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-rotation-off.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-ssh.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-ssh.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-ssn-csv.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-ssn-csv.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-tester-compare-fail-identification.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-tester-compare-fail-identification.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "features/ssn/media/ssn-tester-compare-mapping.png",
+      "output": {
+        "resource": {
+          "relative_path": "features/ssn/media/ssn-tester-compare-mapping.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/ssn/ssn_flow.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/ssn/ssn_flow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/ssn/ssn_glossary.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/ssn/ssn_glossary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/ssn/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/ssn/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/ssn/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/ssn_SsnCsvFile-type.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/ssn_SsnCsvFile-type.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/stepping.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/stepping.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/test-abstraction.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/test-abstraction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "features/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "features/toc.html"
+        },
+        ".json": {
+          "relative_path": "features/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/transaction-service.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/transaction-service.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/unit-integration-testing.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/unit-integration-testing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/versioning-compatibility.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/versioning-compatibility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/debug.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/debug.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/doc-contribution.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/doc-contribution.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/download.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/download.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/installation.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/installation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/request-feature.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/request-feature.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "getting-started/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/toc.html"
+        },
+        ".json": {
+          "relative_path": "getting-started/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/use-test-method.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/use-test-method.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/usings.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/usings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/write-test-block.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/write-test-block.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/write-test-method.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/write-test-method.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/add-existing-project.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/add-existing-project.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/add-reference-igxl.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/add-reference-igxl.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/add-reference-vs.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/add-reference-vs.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/logo_150.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/logo_150.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/logo_black.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/logo_black.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/logo_dark.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/logo_dark.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/logo_white.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/logo_white.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/principles_features.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/principles_features.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/reference-explorer.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/reference-explorer.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/reference-sheet-explorer.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/reference-sheet-explorer.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/select-csproj.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/select-csproj.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/select-dll.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/select-dll.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/select-project.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/select-project.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/solution-explorer.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/solution-explorer.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "media/unicorn.png",
+      "output": {
+        "resource": {
+          "relative_path": "media/unicorn.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png",
+      "output": {
+        "resource": {
+          "relative_path": "overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pdf/additional-information/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "pdf/additional-information/toc.html"
+        },
+        ".json": {
+          "relative_path": "pdf/additional-information/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "pdf/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "pdf/toc.html"
+        },
+        ".json": {
+          "relative_path": "pdf/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "releases_/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/toc.html"
+        },
+        ".json": {
+          "relative_path": "releases_/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.10.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.10.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.11.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.11.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.12.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.12.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.13.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.13.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.4.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.5.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.5.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.6.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.6.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.7.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.7.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.8.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.8.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.9.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.9.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "training/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "training/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "training/slidev/media/TerLogo_white_free_3313.png",
+      "output": {
+        "resource": {
+          "relative_path": "training/slidev/media/TerLogo_white_free_3313.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "training/slidev/media/TerLogo_white_free_442.png",
+      "output": {
+        "resource": {
+          "relative_path": "training/slidev/media/TerLogo_white_free_442.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "training/slidev/media/add-existing-project.png",
+      "output": {
+        "resource": {
+          "relative_path": "training/slidev/media/add-existing-project.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "training/slidev/media/logo-csra.svg",
+      "output": {
+        "resource": {
+          "relative_path": "training/slidev/media/logo-csra.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "training/slidev/media/principles_features.png",
+      "output": {
+        "resource": {
+          "relative_path": "training/slidev/media/principles_features.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "training/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "training/toc.html"
+        },
+        ".json": {
+          "relative_path": "training/toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

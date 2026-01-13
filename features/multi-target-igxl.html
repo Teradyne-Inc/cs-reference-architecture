@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Multi-Target Support for Different IG-XL Versions | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Multi-Target Support for Different IG-XL Versions | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/multi-target-igxl.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="multi-target-support-for-different-ig-xl-versions">Multi-Target Support for Different IG-XL Versions</h1>
+
+<p>As more internal and external users adopt the C#RA, limiting development to a single IG-XL version has become increasingly impractical:</p>
+<ul>
+<li>New IG-XL features requested for the C#RA project remain inaccessible unless the entire team upgrades to a newer version.</li>
+<li>Ideally, such features should be verified as soon as they’re implemented—to provide early feedback to the designers and reduce technical debt promptly.</li>
+<li>Without official support for multiple IG-XL versions, everyone must migrate simultaneously:
+<ul>
+<li>All collaborators and contributors</li>
+<li>All users who want to continue receiving updates</li>
+<li>IG-XL Test Harness (which must match the version)</li>
+<li>Self-hosted runners</li>
+<li>Online testers</li>
+</ul>
+</li>
+</ul>
+<p>Since we can't always dictate when users switch IG-XL versions—or whether they switch at all—C#RA must support targeting multiple IG-XL versions concurrently.</p>
+<h2 id="strategy">Strategy</h2>
+<p>Official support for any version essentially means testing that it works as expected. While this shouldn't require significant extra functionality, a support claim without a verification proof is meaningless.</p>
+<p>As a result, all supported IG-XL versions must receive equivalent test coverage. Although development may focus on a specific version, test automation should run across all supported versions, ideally in parallel to maintain short cycle times. The same applies to online testing and performance profiling to ensure full confidence.</p>
+<h3 id="compiler-directives">Compiler Directives</h3>
+<p>Incompatible API changes require conditional compilation to ensure successful builds. The simplest solution is using compiler directives (#if) to enable or disable code blocks based on preprocessor symbols:</p>
+<pre><code class="lang-cs">#if IGXL_10_60_01_uflx
+    TheExec.AddOutput(&quot;important message&quot;, ColorConstants.vbRed, true);
+#else
+    TheExec.AddOutput(&quot;important message&quot;, ColorConstants.Red, true);
+#endif
+</code></pre>
+<p>This structure enables the legacy syntax (<code>ColorConstants.vbRed</code>) for IG-XL 10.60.01 and uses the new one (<code>ColorConstants.Red</code>) for all other versions. Since IG-XL 10.60.01 is the only pre-11.00 version still in use, this is a safe approach here. Other scenarios might require finer granularity for different versions.</p>
+<h3 id="ig-xl-version-specific-preprocessor-symbols">IG-XL Version-Specific Preprocessor Symbols</h3>
+<p>IG-XL does not natively provide version-based preprocessor symbols in its test and DSP code templates, but this can be added manually in the <code>.csproj</code> files:</p>
+<pre><code class="lang-xml">  &lt;!-- This section is added for multi-target support of IG-XL versions. It'll create a preprocessor symbol to allow wrapping incompatible IG-XL code within #if directives --&gt;
+  &lt;PropertyGroup&gt;
+    &lt;RawPath&gt;$(IGXLROOT)&lt;/RawPath&gt; &lt;!-- Get the environment variable --&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;PropertyGroup Condition=&quot;'$(RawPath)' != ''&quot;&gt; &lt;!-- Only run the symbol-building logic if IGXLROOT is defined --&gt;
+    &lt;LastSegment&gt;$([System.IO.Path]::GetFileName($(RawPath)))&lt;/LastSegment&gt; &lt;!-- Get the last segment of the path (e.g., 10.60.01_uflx) --&gt;
+    &lt;CleanVersion&gt;$([System.String]::Copy('$(LastSegment)').Replace('.', '_'))&lt;/CleanVersion&gt; &lt;!-- Replace dots with underscores --&gt;
+    &lt;SymbolName&gt;IGXL_$(CleanVersion)&lt;/SymbolName&gt; &lt;!-- Construct the symbol name --&gt;
+    &lt;DefineConstants&gt;$(DefineConstants);$(SymbolName)&lt;/DefineConstants&gt; &lt;!-- Append the new symbol to DefineConstants --&gt;
+  &lt;/PropertyGroup&gt;  
+</code></pre>
+<p>This injects a version-specific symbol like <code>IGXL_10_60_01_uflx</code>, which can be used in <code>#if</code> directives. In case a symbol is not defined (= a different version is currently installed), the wrapped code is ignored.</p>
+<p>Logical operators such as <code>&amp;&amp;</code>, <code>||</code>, and <code>!</code> can be used to build flexible branching logic.</p>
+<p>If this approach proves reliable and beneficial, IG-XL may consider incorporating it into its templates. For now, all relevant C# project files in C#RA have been updated manually.</p>
+<h3 id="cleaning-up-outdated-versions">Cleaning Up Outdated Versions</h3>
+<p>As development shifts to newer IG-XL versions, support for outdated ones should be removed promptly. Eliminating obsolete code paths keeps the codebase clean, maintainable, and easier to navigate.</p>
+<h3 id="unit-testing">Unit Testing</h3>
+<p>Unit Testing with the IG-XL Test Harness is based on the idea that IG-XL does not need to be installed on the target machine. That however means that the <code>IGXLROOT</code> environment variable wouldn't defined either.</p>
+<p>To make the above mechanics usable in this scenario, a version compatible <code>IGXLROOT</code> environment variable must be created before launching the unit tests. Then, the same mechanism can be used to control version divergent code execution flows also in the tests.</p>
+<h2 id="costs--effort">Costs &amp; Effort</h2>
+<p>The effort to implement and maintain multi-version support can be grouped into the following categories:</p>
+<ul>
+<li>Duplicate logic or implementation for version-specific features</li>
+<li>Increased friction during development and verification</li>
+<li>Maintenance of more complex code structures and cluttered language</li>
+<li>Setup of additional VDIs for alternate IG-XL versions for all team members</li>
+<li>Duplication of offline unit test runs</li>
+<li>Duplication of online regression test handling</li>
+<li>Version-specific performance and result analysis</li>
+<li>Structural documentation updates to support version differences</li>
+</ul>
+<p>Many of these costs can be mitigated through automation and process improvements. It's an upfront investment in one milestone that quickly pays off with a smoother workflow moving forward.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Even with solid tooling and automation, every officially supported IG-XL version adds recurring cost and maintenance overhead. New versions should be added cautiously, and outdated versions dropped as soon as feasible.</p>
+</div>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<h3 id="separate-projects">Separate Projects</h3>
+<p>Duplicating the entire code base for what is expected to only be marginal differences in a small number of places would be a gross violation of the single source of truth principle. The cost of maintenance and likelihood (certainty!) to introduce issues would be enormous.</p>
+<h3 id="interface-abstraction">Interface Abstraction</h3>
+<p>Using interface abstraction to isolate diverging APIs was considered. However, because of the size of the IG-XL PublicAPI and the relatively small diverging areas as well as the transient nature of most differences, this approach was deemed impractical.</p>
+<h3 id="code-generation">Code Generation</h3>
+<p>Code generation to handle syntax differences would introduce high complexity and poor maintainability. It would also be difficult to encapsulate (hide) effectively from end users.</p>
+<h3 id="pre-build-scripting-or-file-swapping">Pre-Build Scripting or File Swapping</h3>
+<p>This approach shares the same mechanics as <code>#if</code> directives but places the logic outside the source files. This separation would make it harder to track and maintain. Keeping the logic inline in source code ensures clarity and transparency.</p>
+<h3 id="public-api-version-symbols">Public API Version Symbols</h3>
+<p>IG-XL’s Public API has its own versioning scheme, which always increments with each IG-XL release—regardless of language changes. While technically feasible, these versions are less familiar and intuitive for most users. Using them would increase the risk of mistakes.</p>
+<p>However, users with specific needs can implement their own version-based symbols using the same <code>.csproj</code> mechanism shown above.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

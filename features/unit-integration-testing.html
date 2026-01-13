@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Unit- &amp; Integration Testing | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Unit- &amp; Integration Testing | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/unit-integration-testing.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="unit---integration-testing">Unit- &amp; Integration Testing</h1>
+
+<p>In today's software development landscape, simply writing code isn't enough to meet customer expectations. Users rightfully demand that software is thoroughly verified before deployment. This mind-shift is driven by ever-increasing complexity and software savvy-ness of almost any product, and ATE systems specifically.</p>
+<p>Without that, a reliable system is hard to achieve.</p>
+<h2 id="objective">Objective</h2>
+<p>Within the C#RA project, the following goals need to be achieved:</p>
+<ul>
+<li>achieve great coverage (strive for 100%, make trade-offs only where not possible, not if &quot;too much effort&quot;)</li>
+<li>provide earliest possible feedback to users</li>
+<li>provide an environment that makes writing and maintaining test efficient</li>
+<li>provide a test case framework that can easily be used to reproduce issues</li>
+<li>reproduce issues found in a unit or integration test before fixing it to confirm the fix is effective and recurrence is prevented</li>
+</ul>
+<h2 id="test-strategies">Test Strategies</h2>
+<p>Various options exist for software testing, and they come with pro's and con's.</p>
+<p><img src="media/unit-integration-test-pyramid.png" alt="Testing pyramid diagram showing the relationship between unit tests, integration tests, and end-to-end tests with cost and coverage implications"></p>
+<p>Software testing doesn't come for free. As IG-XL prominently states &quot;weeks of pure test runtime is performed for every build&quot;. That's achieved by massive parallelism of test hardware, so that the results are available in ~ 6 hours. Even that means that fails possibly requiring rework are often detected on the next working day, impacting schedule and adding friction when having to multiplex between tasks. The engineering effort to maintain all this is significant.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Strictly typed languages (like C#) enable the compiler and the IDE to detect and flag code issues right at design time. That's the fastest and most efficient way to improve quality possible. Type mismatches, calls to non-existent functions, uninitialized objects, ambiguities and to some extent null reference errors are reliably prevented. The likelihood for code to run correctly at the first attempt is significantly improved.</p>
+<p>There's always some cost, and proponents of loosely typed languages will cite a longer learning curve and higher efforts instead of &quot;quickly get something done&quot; as downsides. Especially for large projects with a focus on reliability these can be seen as investments that'll quickly reward.</p>
+<p>Strictly typed languages help at the foundation of the pyramid by already removing the need for test coverage of many functional aspects of the software - it wouldn't be allowed to build if violated.</p>
+</div>
+<h3 id="unit-tests">Unit Tests</h3>
+<p>In the pyramid above, the bottom is considered the preference. Unit testing means a focus on granular functional entities (=units) to be verified independently from a larger context or system where they would be embedded in.</p>
+<p>Instead, the code is isolated and any dependencies are simulated. When using IG-XL Test Harness, test code <strong>only thinks</strong> it's talking to IG-XL's public API, but instead it's accessing a simplified copy (=mock) of that with little to no functionality. That makes the tests run faster on machines that don't even need IG-XL (and Excel and Oasis) installed.</p>
+<p>By focusing on small &amp; granular code entities (single methods, classes, types), it's easier to reach corner cases that'll utilize the different behaviors and allow comparing against expectations.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Try to achieve as much test coverage as possible with unit tests. It's the most efficient option.</p>
+</div>
+<h4 id="ig-xl_testharness">IG-XL_TestHarness</h4>
+<p><a href="https://github.teradyne.com/SEMITEST-Products/IGNET_TestHarness">IG-XL Test-Harness</a> is a product, which mocks the IG-XL interfaces, so that test methods can be executed within MSTest, and no need to have IG-XL / Excel running or even installed. By simulating IG-XL's functionality, the Test-Harness enables the use of Test Explorer and makes 'dotnet test' functional, providing a seamless integration with the .NET testing tools.</p>
+<blockquote>
+<p>Add details how to write unit tests here</p>
+</blockquote>
+<h3 id="offline-integration-tests">Offline Integration Tests</h3>
+<p>Certain functionality requires IG-XL to be present, even an offline scenario can be sufficient. Examples are for instance where the mechanics of a test method can't be simulated without changing it.</p>
+<blockquote>
+<p>Add details how to write offline tests here</p>
+</blockquote>
+<h3 id="online-integration-tests">Online Integration Tests</h3>
+<p>Some verification may require actual tester hardware or device responses. These tests have to be run asynchronously, because tester hardware isn't exclusively available.</p>
+<p>The current plan is to have this executed daily on weekdays @ noon China time. The process is mostly automated, but requires a manual kick-off.</p>
+<blockquote>
+<p>Add information about which can be automatic and which are manual, and how to write them</p>
+</blockquote>
+<h3 id="online--offline-test-cases">Online / Offline Test Cases</h3>
+<p>Some feature verification can't be executed via automation as it may be interuptive or require system or context changes that are either impossible or very difficult to do. These tests are done in test case workbooks, which users derive from the demo job based on ADU hardware.</p>
+<p>Ideally, this category is empty.</p>
+<blockquote>
+<p>Add details how to create test cases and if &amp; where to maintain.</p>
+</blockquote>
+<h2 id="implementation--execution-matrix">Implementation &amp; Execution Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Test type</th>
+<th>Implemented in</th>
+<th>Running on / at</th>
+<th>Results will</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit tests using IG-XL Test Harness</td>
+<td>XXX project</td>
+<td>GitHub cloud runner at every push &amp; pull request</td>
+<td>block a merge on fails</td>
+</tr>
+<tr>
+<td>Offline Integration Tests using IG-XL</td>
+<td>YYY project</td>
+<td>self hosted runner at every push &amp; pull request</td>
+<td>block a merge on fails</td>
+</tr>
+<tr>
+<td>Online Integration Tests using IG-XL</td>
+<td>ZZZ project</td>
+<td>tester EV-??? / daily @ noon China time</td>
+<td>be emailed? result in issues?</td>
+</tr>
+<tr>
+<td>Online Integration Tests using IG-XL (semi-auto)</td>
+<td>QQQ project</td>
+<td>tester EV-??? / daily @ noon China time</td>
+<td>be posted in DocFX pages? Manually processed?</td>
+</tr>
+<tr>
+<td>Online Test cases</td>
+<td>local copy of the demo workbook</td>
+<td>authors discretion</td>
+<td>be manually analyzed and captured as issues if needed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<h3 id="autotest--autotestpro">AutoTest / AutoTestPro</h3>
+<p><a href="https://github.com/TER-SEMITEST-InnerSource/auto-test-igxl">AutoTest</a> is an approach, developed as a proof-of-concept where IG-XL takes the lead in executing all the tests. In this setup, IG-XL is responsible for running the test code and logging the results to a log window. This approach does not integrate with MSTest or the Test Explorer, meaning that standard .NET testing tools, such as dotnet test, are not compatible with it. While AutoTest provides a way to execute tests directly within Excel, it lacks the integration with the broader .NET testing ecosystem.</p>
+<p><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture">AutoTestPro</a> is a hybrid solution that combines the strengths of both the AutoTest and Test-Harness approaches. In this method, MSTest is used in conjunction with the Test Explorer to manage and display test results, while also starting and interacting with the Excel process to execute the test code.</p>
+<p>This option was selected for the C#RA in it's initial phase as it allows quick coverage ramp with foreseeable efforts, as that model had been used in other, large-scale projects before. After the IG-XL Test Harness product had further matured, the team switched over to that option. Migrating the existing tests was done in a consolidated, but not insignificant effort.</p>
+<h2 id="transition-phase">Transition phase</h2>
+<p>In the first phase of this project unit-tests were written with the <strong>AutoTestPro</strong> approach. Which was very successful to get the team going. Currently there are ~1000 unit-tests written for the <strong>C#RA</strong> project.</p>
+<p>Meanwhile the <strong>Test-Harness</strong> product matured and the C#RA project will be one of the first Teradyne internal projects that will take advantage of it and be a tester of its capability and its use.</p>
+<p>Because the previous approach needed a special infrastructure to work and the Test-Harness is much easier to use, a new structure for unit-tests needs to be implemented.</p>
+<h3 id="architecture">Architecture</h3>
+<p>The goal of unit-testing is that we aim 100 % line coverage for all future versions of C#RA. Therefore, we need a structure to easily maintain and extend it.</p>
+<p>The <strong>Test Explorer</strong> of Visual Studio, is grouping unit-tests by <strong>Project, Namespace, Class and Method</strong>.</p>
+<p>The <a href="code-structure.html">code-structure</a> shows that <strong>Test Methods</strong>, <strong>Test Blocks</strong>, <strong>Services</strong>, <strong>Types</strong>, <strong>Extension Methods</strong> are the things that need to be unit-tested. Test Methods and Types do not have a version, but Test Blocks, Services and Extension Methods are versioned.</p>
+<p>To show the customer how to write unit-tests with Test-Harness and C#RA a unit-test project called <strong>TestMethods_UT</strong> will be introduced, that project only tackles unit-tests for <strong>Test Methods</strong>. A separate project is needed for <strong>Types</strong> and one project per version <strong>Vx_UT</strong>. All of those project will be placed in the <strong>UT</strong> folder inside of /src.</p>
+<pre><code>└── 📁UT
+    └── 📁TestMethods_UT
+        └── 📁Continuity_UT
+            └── Parametric_UT.cs
+        └── TestMethods_UT.csproj
+    └── 📁VersionAgnostic_UT
+        └── Pins_UT.cs
+        └── VersionAgnostic_UT.csproj
+    └── 📁V1_UT
+        └── 📁ExtensionMethods_UT
+            └── SingleOrAt_UT.cs
+        └── 📁Services_UT
+            └── AlertService_UT.cs
+        └── 📁TheLib_UT
+            └── 📁Setup_UT
+                └── 📁Dc_UT
+                    └── Connect_UT.cs
+        └── V1_UT.csproj
+</code></pre>
+<hr>
+<blockquote>
+<h1 id="historic-data">Historic Data</h1>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>The main issue is that the test code for IG-XL needs to be executed within an Excel process, but <a href="https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest">MSTest</a>, the testing framework, operates in a separate process. MSTest provides the test explorer to select single, or multiple tests to run, it also displays the results. Both processes are trying to control the execution, which creates a conflict.</p>
+<h2 id="architecture-1">Architecture</h2>
+<p>The architecture of this solution is designed to handle the complexities of integrating MSTest with Excel for unit testing. It involves multiple projects and shared components to ensure flexibility and efficiency in both single/multiple run and pipeline run workflows.</p>
+<h3 id="unittestsetup-shared">UnitTestSetup (shared)</h3>
+<p>has the Setup TestClass which does the communication between MSTest and IG-XL.</p>
+<h3 id="unittestbase-shared">UnitTestBase (shared)</h3>
+<p>is the base class for every unit-test class that will be executed by IG-XL.</p>
+<h3 id="unittestpipeline-shared">UnitTestPipeline (shared)</h3>
+<p>consists of one method, that will trigger IgxlTestHost to call every method via reflection that is a TestMethod.</p>
+<h3 id="unittest-shared">UnitTest (shared)</h3>
+<p>is where every user will write the unit-tests.</p>
+<h3 id="mstesthostpipeline-mstest">MsTestHostPipeline (MSTest)</h3>
+<p>is a MSTest project that will call the single TestMethod from UnitTestPipeline. It imports the UnitTestPipeline, UnitTestBase and UnitTestSetup projects.</p>
+<h3 id="mstesthost-mstest">MsTestHost (MSTest)</h3>
+<p>is a MSTest project that gives you the ability to call each unit-test individually or in groups. It imports the UnitTest, UnitTestBase and UnitTestSetup projects.</p>
+<h3 id="igxltesthost-ig-xl">IgxlTestHost (IG-XL)</h3>
+<p>is an IG-XL project that has the infrastructure to call selected or all unit-test via reflection, depending on different aspects. It imports the UnitTest, UnitTestPipeline and UnitTestBase projects.</p>
+<h2 id="workflow">Workflow</h2>
+<p>In the context of integrating MSTest with Excel for unit testing, two distinct workflows have been developed to address different testing needs and optimize performance: the single/multiple run workflow and the pipeline run workflow. By having both workflows, you can choose the most appropriate method based on the specific requirements and context of your testing, ensuring both efficiency and reliability.</p>
+<h3 id="singlemultiple-run">Single/Multiple Run</h3>
+<p>In this approach, the IG-XL flow executes a single test. This ensures that each test is executed in a fresh environment, which can be particularly useful for debugging or when running a small number of tests. However, this method introduces overhead, as the IG-XL flow needs to be initialized and terminated multiple times. While this overhead can be acceptable for smaller test sets, it may become inefficient for larger test suites and especially for pipeline runs.</p>
+<pre><code class="lang-mermaid">sequenceDiagram
+
+    loop for every selected test
+        MSTest-&gt;&gt;vba: Run(fullyQualifiedTestClassName, testName)
+        vba--&gt;&gt;cs: clear persistent data
+        vba-&gt;&gt;cs: Run Test Program
+        cs-&gt;&gt;cs: Execute Test
+        cs--&gt;&gt;vba: write persistent data
+        vba-&gt;&gt;MSTest: return Pass/Fail
+        MSTest-&gt;&gt;vba: GetErrorMessage // only if there was a failed test
+        vba-&gt;&gt;MSTest: return ErrorMessage
+    end
+    Box Visual Studio
+    participant MSTest
+    end
+    Box Excel
+    participant vba
+    participant cs
+    end
+</code></pre>
+<h3 id="pipeline">Pipeline</h3>
+<p>In this approach, the IG-XL flow is started once at the beginning of the test run and remains active throughout the entire testing session. All tests are executed within this single instance of IG-XL, and the results are collected and returned to MSTest at the end. By reducing the overhead to a one-time cost, this workflow significantly improves efficiency, making it ideal for running a large number of tests or for automated testing environments.</p>
+<pre><code class="lang-mermaid">sequenceDiagram
+
+    MSTest-&gt;&gt;vba: Run(fullyQualifiedTestClassName, testName)
+    vba--&gt;&gt;cs: clear persistent data
+    vba-&gt;&gt;cs: Run Test Program
+    loop Reflection
+        cs-&gt;&gt;cs: Execute Test
+    end
+    cs--&gt;&gt;vba: write persistent data
+    vba-&gt;&gt;MSTest: return Pass/Fail
+    MSTest-&gt;&gt;vba: GetTotalTests
+    vba-&gt;&gt;MSTest: return TotalTests
+    MSTest-&gt;&gt;vba: GetFailedTests
+    vba-&gt;&gt;MSTest: return FailedTests
+    MSTest-&gt;&gt;vba: GetErrorMessage // only if there was a failed test
+    vba-&gt;&gt;MSTest: return ErrorMessage
+    Box Visual Studio
+    participant MSTest
+    end
+    Box Excel
+    participant vba
+    participant cs
+    end
+</code></pre>
+<h2 id="use-model">Use-Model</h2>
+<p>To utilize this architecture, users only need to focus on writing their unit tests within the UnitTest shared project. The process is straightforward and user-friendly:</p>
+<h3 id="locate-the-template-class">Locate the Template Class</h3>
+<p>In the UnitTest shared project, there is a template class provided with simple test cases.</p>
+<p><img src="media/unit-test-template-path.png" alt="Solution Explorer showing UnitTest shared project structure with template class location highlighted"></p>
+<p><img src="media/unit-test-template.png" alt="Code editor showing unit test template class with basic test case structure and example methods"></p>
+<h3 id="copy-and-paste">Copy and Paste</h3>
+<p>Users can copy and paste the entire template class into their own test file (e.g. 'Disconnect_Test.cs'). The file name should be the method name that you want to test with a specified postfix of '_Test'.</p>
+<p><img src="media/unit-test-disconnect-path.png" alt="Solution Explorer showing renamed unit test file structure with Disconnect_Test.cs highlighted in the proper namespace hierarchy"></p>
+<p>Change the namespace according to the hierarchy of the method you want to test. (e.g. 'TestLib.Setup.Dc.Disconnect()'). Also change the class name to match the file name (e.g. 'Disconnect_Test.cs').</p>
+<p><img src="media/unit-test-disconnect-template.png" alt="Code editor showing customized unit test template for Disconnect method with updated namespace and class name matching file structure"></p>
+<h3 id="customize">Customize</h3>
+<p>Modify the copied template to suit your specific testing needs. Add or change test methods, inputs, and expected outcomes as required.</p>
+<p><img src="media/unit-test-disconnect.png" alt="Complete unit test implementation showing customized test methods with specific inputs, expected outcomes, and testing logic for the Disconnect functionality"></p>
+<p>This approach simplifies the process of writing unit tests, ensuring that users can quickly get started without needing to understand the underlying complexities of the architecture. By following these steps, users can efficiently create and manage their unit tests, leveraging the robust framework provided by the architecture.</p>
+<h2 id="performance">Performance</h2>
+<p>To ensure the robustness and efficiency of the architecture, extensive stress testing was conducted with varying sizes of unit tests. The tests included sets of 1k, 5k, 10k, 20k, 30k, 50k and 115k unit tests. The results demonstrated that the architecture could handle large volumes of tests efficiently.</p>
+<p>There was a consistent overhead of approximately 300 seconds, regardless of the number of tests. This overhead is associated with the initialization and management of IG-XL.</p>
+<p>The total execution time scales linearly with the test count. In this case, ~10ms were consumed per test, which can be considered to have realistic &amp; representative complexity.</p>
+<p><img src="media/unit_test_performance.png" alt="Performance graph showing linear scaling of unit test execution times from 1k to 115k tests, demonstrating consistent ~10ms per test execution"></p>
+</blockquote>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

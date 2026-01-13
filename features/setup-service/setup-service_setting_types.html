@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>SetupService: Setting Types | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="SetupService: Setting Types | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/setup-service/setup-service_setting_types.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="setupservice-setting-types">SetupService: Setting Types</h1>
+
+<p>To fulfill the requirements for the <strong>SetupService</strong>, each data type is implemented as a specifically typed <code>Setting&lt;T&gt;</code>.</p>
+<p>The table below lists all types needed for the implementation of DCVI, DCVS, PPMU, Digital and Utility as currently defined (commit #5164760dff54efec76ef2cfc2823a08b9177ea04).</p>
+<h2 id="base-types">Base Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>ImplementationName</th>
+<th>MS status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>double</code></td>
+<td><code>SettingDouble</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>SettingInt</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><code>SettingBool</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>enum</code></td>
+<td>Table Enums</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enums">Enums</h2>
+<table>
+<thead>
+<tr>
+<th>EnumType</th>
+<th>ImplementationName</th>
+<th>MS status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tlUtilityBitState</code></td>
+<td><code>SettingUtilityBitState</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlOnOff</code></td>
+<td><code>SettingOnOff</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>ChInitState</code></td>
+<td><code>SettingChInitState</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>ChStartState</code></td>
+<td><code>SettingChStartState</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDriverMode</code></td>
+<td><code>SettingDriverMode</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlPPMUMode</code></td>
+<td><code>SettingPPMUMode</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVIConnectWhat</code></td>
+<td><code>SettingDCVIConnectWhat</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVGate</code></td>
+<td><code>SettingDCVGate</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVIMode</code></td>
+<td><code>SettingDCVIMode</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVIBleederResistor</code></td>
+<td><code>SettingDCVIBleederResistor</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVIFoldCurrentLimitBehavior</code></td>
+<td><code>SettingDCVIFoldCurrentLimitBehavior</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVSOnOffAuto</code></td>
+<td><code>SettingDCVSOnOffAuto</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVSConnectWhat</code></td>
+<td><code>SettingDCVSConnectWhat</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVSMode</code></td>
+<td><code>SettingDCVSMode</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVSMeterMode</code></td>
+<td><code>SettingDCVSMeterMode</code></td>
+<td>✔️</td>
+</tr>
+<tr>
+<td><code>tlDCVSCurrentLimitBehavior</code></td>
+<td><code>SettingDCVSCurrentLimitBehavior</code></td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

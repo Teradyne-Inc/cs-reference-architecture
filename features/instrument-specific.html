@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Instrument Specific Features | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Instrument Specific Features | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/instrument-specific.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="instrument-specific-features">Instrument Specific Features</h1>
+
+<p>The C# reference architecture introduces a unified conceptual model for managing data associated with one or multiple conditions applicable to pins and pin groups. This methodological approach facilitates a level of abstraction comparable to that found in single-condition scenarios, thereby contributing to process optimization and simplifying user interaction with the system. Eliminating friction and redundancies from the workflow is a key objective of this architecture, ensuring an efficient and intuitive framework for application development.</p>
+<p>However, in practice, the need arises to implement specific settings for certain instruments, where configuration parameters can no longer be considered common values across all instances of the process. This diversity in technical requirements may lead to increased complexity in function structure and an overload of user calls. As a result, it is necessary to develop a solution that systematically and intelligibly manages these variables.</p>
+<p>The proposed concept aims to address this challenge through a well-structured methodology that allows the definition and application of non-uniform configuration parameters in an intuitive and efficient manner. The implementation of a coherent mechanism for managing these variables contributes to error reduction, improved maintenance, and increased accessibility in the use of instruments integrated into the C# reference architecture. This approach not only optimizes technical processes but also strengthens the system’s flexibility and scalability, providing developers with a robust framework for managing data in variable conditions.</p>
+<h2 id="the-concept-of-implementation">The Concept of Implementation</h2>
+<p>The implementation of the concept requires a structured approach to ensure that parameterization is managed efficiently and in a scalable manner. This involves defining a dedicated class that contains all the necessary parameters for the process, ensuring a clear separation between configuration logic and test execution. In this paradigm, parameter invocation is performed via an instantiated object of the class, utilized during the validation phase of the test block.</p>
+<p>This methodology offers several fundamental advantages. Firstly, it ensures data integrity and organization in a coherent manner, preventing uncontrolled access to internal settings and reducing the risk of errors during implementation. Secondly, the proposed solution facilitates the expansion and adaptability of the architecture, allowing the addition of new parameters without disrupting the existing structure. This aspect is essential for maintaining system flexibility, particularly in scenarios where configuration requirements evolve with the integration of new instruments.</p>
+<p>Through this approach, the goal is to optimize user interaction with the system and reduce operational complexity, providing a robust framework for developing scalable solutions that can be easily integrated into the existing architecture. Thus, the implementation of the concept enhances the organization and management of parameters from the perspective of the future development of the technical infrastructure.</p>
+<h2 id="user-interface">User Interface</h2>
+<p>The analysis of settings and their applicability represents a fundamental element in optimizing the interaction between the user and the system. In this context, the table presented below serves to provide a clear correlation between the parameters existing in the user interface and the configurations applied at the instrument level, thus ensuring precise alignment with the initialization process of each variable.</p>
+<p>A systematic approach to these settings not only enables efficient utilization of available resources but also standardizes how variables are manipulated and integrated into operational processes. By identifying the relationships between configuration parameters and their impact on the functioning of the instruments, a robust optimization methodology can be developed, thereby reducing error risks and enhancing system reliability.</p>
+<p>Therefore, the structure of the presented table not only offers a concise description but also serves as a reference point for users in the configuration process, contributing to a clear and coherent experience.</p>
+<h3 id="table-for-setupdc">Table for Setup.Dc</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>PPMU</th>
+<th>DCVI</th>
+<th>DCVS</th>
+<th>Purpose</th>
+<th>Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gate</td>
+<td>bool</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the gate for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>TLibOutputMode</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the operating mode for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>Voltage</td>
+<td>double</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the output voltage for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>VoltageAlt</td>
+<td>double</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>Sets the alternate output voltage for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>Current</td>
+<td>double</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the output current for the specified pins.</td>
+<td>For DCVS, the 'current' option includes both source and sink for Foldlimit.</td>
+</tr>
+<tr>
+<td>VoltageRange</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the voltage range for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>CurrentRange</td>
+<td>double</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the current range for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>ForceBandwidth</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the output compensation bandwidth for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>MeterMode</td>
+<td>Measure</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the meter mode for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>MeterVoltageRange</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the meter voltage range for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>MeterCurrentRange</td>
+<td>double</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the meter current range for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>MeterBandwidth</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>Sets the meter filter for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>SourceFoldLimit</td>
+<td>double</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>Sets the source fold limit for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>SinkFoldLimit</td>
+<td>double</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>Sets the sink fold limit for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>SourceOverloadLimit</td>
+<td>double</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>Sets the source overload limit for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>SinkOverloadLimit</td>
+<td>double</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>Sets the sink overload limit for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>VoltageAltOutput</td>
+<td>bool</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>Sets the output DAC used to force voltage (true for alternate or false for main).</td>
+<td></td>
+</tr>
+<tr>
+<td>BleederResistor</td>
+<td>bool</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>Sets the bleeder resistor’s connection state for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>ComplianceBoth</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>Sets both compliance ranges for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>CompliancePositive</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>Sets the positive compliance range for the specified pins.</td>
+<td>Both can be set through the variable 'ComplianceBoth'.</td>
+</tr>
+<tr>
+<td>ComplianceNegative</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>Sets the negative compliance range for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>ClampHiV</td>
+<td>double</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>Sets the high voltage clamp value for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>ClampLoV</td>
+<td>double</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>Sets the low voltage clamp value for the specified pins.</td>
+<td></td>
+</tr>
+<tr>
+<td>HighAccuracy</td>
+<td>bool</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>Sets the enabled state of the high accuracy measure voltage.</td>
+<td></td>
+</tr>
+<tr>
+<td>SettlingTime</td>
+<td>double</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td>Sets the required additional settling time for the high accuracy measure voltage mode.</td>
+<td></td>
+</tr>
+<tr>
+<td>HardwareAverage</td>
+<td>double</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>Sets the meter hardware average value for the specified pins.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-for-setupdigital">Table for Setup.Digital</h3>
+<h4 id="table-for-setupdigitalmodifypins">Table for Setup.Digital.ModifyPins()</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Support</th>
+<th>Purpose</th>
+<th>Observations</th>
+<th>API Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlarmType</td>
+<td>tlHSDMAlarm</td>
+<td>✓</td>
+<td>Sets the alarm type for the specified pins.</td>
+<td>Should be set together with AlarmBehavior</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>AlarmBehavior</td>
+<td>tlAlarmBehavior</td>
+<td>✓</td>
+<td>Sets the alarm behavior for the specified pins.</td>
+<td>Should be set together with AlarmType</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>DisableCompare</td>
+<td>bool</td>
+<td>✓</td>
+<td>Disables the comparators for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>DisableDrive</td>
+<td>bool</td>
+<td>✓</td>
+<td>Disables the drivers for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>InitState</td>
+<td>ChInitState</td>
+<td>✓</td>
+<td>Sets the initial state of the pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>StartState</td>
+<td>ChStartState</td>
+<td>✓</td>
+<td>Sets the start state of the pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>CalibrationExcluded</td>
+<td>bool</td>
+<td>✓</td>
+<td>Sets the specified pins to be excluded from job dependent calibration</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Calibration</td>
+</tr>
+<tr>
+<td>CalibrationHighAccuracy</td>
+<td>bool</td>
+<td>✓</td>
+<td>Enables or disables calibration high accuracy mode for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Calibration</td>
+</tr>
+</tbody>
+</table>
+<h4 id="table-for-setupdigitalmodifypinslevels">Table for Setup.Digital.ModifyPinsLevels()</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Support</th>
+<th>Purpose</th>
+<th>Observations</th>
+<th>API Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DifferentialLevelsType</td>
+<td>ChDiffPinLevel</td>
+<td>✓</td>
+<td>Sets the differential levels type for the specified pins</td>
+<td>Should be set together with DifferentialLevelsValue</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>DifferentialLevelsValue</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the specified differential pin level type for the specified pins</td>
+<td>Should be set together with DifferentialLevelsType</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>DifferentialLevelsValuesType</td>
+<td><strong>==TLibDiffLvlValType[]==</strong></td>
+<td>✓</td>
+<td>Sets the differential levels values type for the specified pins</td>
+<td>Should be set together with DifferentialLevelsValues</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>DifferentialLevelsValues</td>
+<td>double[]</td>
+<td>✓</td>
+<td>Sets the specified differential pin levels values type for the specified pins</td>
+<td>Should be set together with DifferentialLevelsValuesType</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>LevelsDriverMode</td>
+<td>tlDriverMode</td>
+<td>✓</td>
+<td>Sets the driver mode for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>LevelsType</td>
+<td>ChPinLevel</td>
+<td>✓</td>
+<td>Sets the level type for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>LevelsValue</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the value for the specified level type on the specified pins</td>
+<td>Should be set together with LevelsType</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>LevelsValuePerSite</td>
+<td>SiteDouble</td>
+<td>✓</td>
+<td>Sets the value for the specified level type for the specified pins on each site</td>
+<td>Should be set together with LevelsType</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>LevelsValues</td>
+<td>PinListData</td>
+<td>✓</td>
+<td>Sets the value for the specified level value for each specified site and each specified pin</td>
+<td>Should be set together with LevelsType</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+</tbody>
+</table>
+<h4 id="table-for-setupdigitalmodifypinstiming">Table for Setup.Digital.ModifyPinsTiming()</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Support</th>
+<th>Purpose</th>
+<th>Observations</th>
+<th>API Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TimingClockOffset</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the offset value between a DQS bus and a DUT clock in a DDR Protocol Aware test program for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingClockPeriod</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the current value for the period for the specified clock pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingDisableAllEdges</td>
+<td>bool</td>
+<td>✓</td>
+<td>Disables all edges (drive and compare) for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingEdgeSet</td>
+<td>string</td>
+<td>✓</td>
+<td>Sets the edgeset name for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingEdgeVal</td>
+<td>chEdge</td>
+<td>✓</td>
+<td>Sets the timing edge for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingEdgeEnabled</td>
+<td>bool</td>
+<td>✓</td>
+<td>Sets the enabled state for the specified pins and timing edge</td>
+<td>Should be set together with TimingEdgeEdgeSet and TimingEdgeVal</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingEdgeTime</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the edge value for the specified pins and timing edge</td>
+<td>Should be set together with TimingEdgeEdgeSet and TimingEdgeVal</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingRefOffset</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the offset value between the specified source synchronous reference (clock) pin and its data pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingSetup1xDiagnosticCapture</td>
+<td>string</td>
+<td>✓</td>
+<td>Sets up special dual-bit diagnostic capture in CMEM fail capture (LFVM) memory using the 1X pin setup for the specified pins and Time Sets sheet name</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingSrcSyncDataDelay</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the strobe reference data delay for individual source synchronous data pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingOffsetType</td>
+<td>tlOffsetType</td>
+<td>✓</td>
+<td>Sets the timing offset type for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingOffsetValue</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the timing offset value for the specified pins</td>
+<td>Should be set together with TimingOffsetType</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingOffsetEnabled</td>
+<td>bool</td>
+<td>✓</td>
+<td>Sets the timing offset enabled state for the specified pins</td>
+<td>Should be set together with TimingOffsetType</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingOffsetSelectedPerSite</td>
+<td>SiteLong</td>
+<td>✓</td>
+<td>Sets the active offset index value for the specified pins on each site</td>
+<td>Should be set together with TimingOffsetType</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingOffsetValuePerSiteIndex</td>
+<td>int</td>
+<td>✓</td>
+<td>Set the timing offset index value. The valid index range is 0-7</td>
+<td>Should be set together with TimingOffsetType and TimingOffsetValuePerSiteValue</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>TimingOffsetValuePerSiteValue</td>
+<td>SiteDouble</td>
+<td>✓</td>
+<td>Sets the current value for the offset at a specific index location that is to be applied to the timing values for the specified pins on each site</td>
+<td>Should be set together with TimingOffsetType and TimingOffsetValuePerSiteIndex</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>AutoStrobeEnabled</td>
+<td>AutoStrobeEnableSel</td>
+<td>✓</td>
+<td>Enable state of the AutoStrobe engine for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).AutoStrobe</td>
+</tr>
+<tr>
+<td>AutoStrobeNumSteps</td>
+<td>int</td>
+<td>✓</td>
+<td>Sets the number of steps on the AutoStrobe engines for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).AutoStrobe</td>
+</tr>
+<tr>
+<td>AutoStrobeSamplesPerStep</td>
+<td>int</td>
+<td>✓</td>
+<td>Sets the number of samples per step on the AutoStrobe engines for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).AutoStrobe</td>
+</tr>
+<tr>
+<td>AutoStrobeStartTime</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the start time on the AutoStrobe engines for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).AutoStrobe</td>
+</tr>
+<tr>
+<td>AutoStrobeStepTime</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the step time on the AutoStrobe engines for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).AutoStrobe</td>
+</tr>
+<tr>
+<td>FreeRunningClockEnabled</td>
+<td>bool</td>
+<td>✓</td>
+<td>Sets the enable state of the free-running clock for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).FreeRunningClock</td>
+</tr>
+<tr>
+<td>FreeRunningClockFrequency</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the frequency of the free-running clock for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).FreeRunningClock</td>
+</tr>
+<tr>
+<td>FreqCtrEnable</td>
+<td>FreqCtrEnableSel</td>
+<td>✓</td>
+<td>Sets the frequency counter’s enable state for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>FreqCtrEventSlope</td>
+<td>FreqCtrEventSlopeSel</td>
+<td>✓</td>
+<td>Sets the frequency counter’s event slope for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>FreqCtrEventSource</td>
+<td>FreqCtrEventSrcSel</td>
+<td>✓</td>
+<td>Sets the frequency counter’s event source for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>FreqCtrInterval</td>
+<td>double</td>
+<td>✓</td>
+<td>Sets the duration of time to capture the frequency counter data for the specified pins</td>
+<td></td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+</tbody>
+</table>
+<h4 id="not-offered-for-setupdigitalmodifypins">Not Offered for Setup.Digital.ModifyPins</h4>
+<p>Irrelevant commands are filtered out based on these criteria:</p>
+<ul>
+<li>The API must be compatible with <strong>UltraPin2200</strong>.</li>
+<li>The API must fit the &quot;setup&quot; definition (like read-only ones, which more like &quot;acquire&quot;).</li>
+<li>The API cannot be no return value actions like <code>.Start()</code>, <code>.Stop()</code>, <code>.Save()</code>, <code>.Restore()</code> and so on (&quot;execution&quot; commands).</li>
+<li>The API commands' parameters are too complex, cannot support currently, like pattern data modify commands.</li>
+</ul>
+<h5 id="table-for-not-offered-for-setupdigitalmodifypins">Table for not offered for Setup.Digital.ModifyPins</h5>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Observations</th>
+<th>API Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClearFail</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>Connect</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>Connected</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>Disconnect</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>FailCount</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>FailCountLimit</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>FailCountLimitReached</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>FailCountOnly</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>Failed</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>FailedPerSiteArray</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>GetFailCountArray</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>LockState</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>put_FailCountLimit</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList)</td>
+</tr>
+<tr>
+<td>FindEdge</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).AutoStrobe</td>
+</tr>
+<tr>
+<td>Exclude</td>
+<td>&quot;Avoid using this method when creating test programs using the UltraPin2200 on an UltraFLEXplus.&quot; -- MyInfo</td>
+<td>TheHdw.Digital.Pins(PinList).Calibration</td>
+</tr>
+<tr>
+<td>Trace</td>
+<td>&quot;Avoid using this method when creating test programs using the UltraPin2200 on an UltraFLEXplus.&quot; -- MyInfo</td>
+<td>TheHdw.Digital.Pins(PinList).Calibration.DIB</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).CMEM</td>
+</tr>
+<tr>
+<td>FailIndexList</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).CMEM</td>
+</tr>
+<tr>
+<td>ModuleCycleData</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).CMEM</td>
+</tr>
+<tr>
+<td>StoredCycleData</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).CMEM</td>
+</tr>
+<tr>
+<td>StoredFailCount</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).CMEM</td>
+</tr>
+<tr>
+<td>PeakingMode</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>Restore</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>TerminationMode</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).DifferentialLevels</td>
+</tr>
+<tr>
+<td>IsRunning</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).FreeRunningClock</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).FreeRunningClock</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).FreeRunningClock</td>
+</tr>
+<tr>
+<td>Clear</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>MeasureFrequency</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>Read</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>SetupFreqCounter</td>
+<td>used only on the UltraPin1600</td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>Start</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).FreqCtr</td>
+</tr>
+<tr>
+<td>CapturedFailCycleInfo</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).HRAM</td>
+</tr>
+<tr>
+<td>PatData</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).HRAM</td>
+</tr>
+<tr>
+<td>PinData</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).HRAM</td>
+</tr>
+<tr>
+<td>PinPF</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).HRAM</td>
+</tr>
+<tr>
+<td>ReadDataBits</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).HRAM</td>
+</tr>
+<tr>
+<td>ReadDataWord</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).HRAM</td>
+</tr>
+<tr>
+<td>Move</td>
+<td>not used with the UltraPin1600 and UltraPin2200</td>
+<td>TheHdw.Digital.Pins(PinList).Jitter</td>
+</tr>
+<tr>
+<td>DifferentialModeEnabled</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>PeakingMode</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>Restore</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>TerminationMode</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Levels</td>
+</tr>
+<tr>
+<td>GetVectorData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>GetVectorScanData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>GetVectorState</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>ModifyVectorBlockData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>ModifyVectorBlockDataNSite</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>ModifyVectorData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>ModifyVectorDataNSite</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>ModifyVectorScanData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>ModifyVectorScanDataNSite</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>SetDataWords</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>SetDataWordsPerSite</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>SetVectorData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>SetVectorScanData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>SetVectorState</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName)</td>
+</tr>
+<tr>
+<td>AllocateScanOffset</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName).NonContiguousModify</td>
+</tr>
+<tr>
+<td>AllocateVectorOffset</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName).NonContiguousModify</td>
+</tr>
+<tr>
+<td>Deallocate</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName).NonContiguousModify</td>
+</tr>
+<tr>
+<td>IsAllocated</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName).NonContiguousModify</td>
+</tr>
+<tr>
+<td>ModifyScanData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName).NonContiguousModify</td>
+</tr>
+<tr>
+<td>ModifyVectorData</td>
+<td>Too complex, not support currently</td>
+<td>TheHdw.Digital.Pins(PinList).Patterns(PatName).NonContiguousModify</td>
+</tr>
+<tr>
+<td>DataPins</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).SourceSync</td>
+</tr>
+<tr>
+<td>PinType</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).SourceSync</td>
+</tr>
+<tr>
+<td>ReferencePin</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).SourceSync</td>
+</tr>
+<tr>
+<td>EdgeSet</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>LateExpect</td>
+<td>used only on the HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>RestoreCMEMFailCaptureMap</td>
+<td>Action command</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>StrobeRefSetupName</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).Timing</td>
+</tr>
+<tr>
+<td>Amplitude</td>
+<td>used only on the HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Timing.Jitter.Insertion</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>used only on the HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Timing.Jitter.Insertion</td>
+</tr>
+<tr>
+<td>Period</td>
+<td>used only on the HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Timing.Jitter.Insertion</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).Timing.Offset</td>
+</tr>
+<tr>
+<td>Min</td>
+<td>Read-only</td>
+<td>TheHdw.Digital.Pins(PinList).Timing.Offset</td>
+</tr>
+<tr>
+<td>DefineSetup</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins.Tracker</td>
+</tr>
+<tr>
+<td>Offset</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins.Tracker</td>
+</tr>
+<tr>
+<td>Reset</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins.Tracker</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins.Tracker</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Tracker.History</td>
+</tr>
+<tr>
+<td>MaxVal</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Tracker.History</td>
+</tr>
+<tr>
+<td>MinVal</td>
+<td>used only on the UltraPin4000 and HPM</td>
+<td>TheHdw.Digital.Pins(PinList).Tracker.History</td>
+</tr>
+</tbody>
+</table>
+<p>From the user's perspective, the instantiation process is optimized to include only the necessary settings, thereby avoiding system overload with unnecessary parameters. This approach not only improves resource management but also facilitates a more intuitive interaction with the infrastructure. After instantiation, the parameter is transferred via the function, ensuring a clear and coherent organization of the process.</p>
+<p>Example of the user interface</p>
+<pre><code class="lang-cs">    private DcParameters _modifySettings;
+
+    [TestMethod, Steppable, CustomValidation]
+    public void Baseline(PinList pinList,..., double clampHi, double clampLo, double bandwidthSetting) {
+
+        if (TheExec.Flow.IsValidating) {
+            _modifySettings = new DcParameters() {
+                ClampHiV = clampHi,
+                ClampLoV = clampLo,
+                ForceBandwidth = bandwidthSetting
+            };
+        }
+
+        if (ShouldRunBody) {
+            TheLib.Setup.Dc.Modify(_pins, _modifySettings);
+        }
+    }
+</code></pre>
+<pre><code class="lang-cs">    private DigitalParameters _digModifySettings;
+
+    [TestMethod, Steppable, CustomValidation]
+    public void Baseline(PinList pinList,..., bool disableDrive, ChInitState initState, ChStartState startState) {
+
+        if (TheExec.Flow.IsValidating) {
+            _digModifySettings = new DigitalParameters() {
+                disableDrive = false,
+                initState = ChInitState.Hi,
+                startState = ChStartState.Hi
+            };
+        }
+
+        if (ShouldRunBody) {
+            TheLib.Setup.Digital.Modify(_pins, _digModifySettings);
+        }
+    }
+</code></pre>
+<h2 id="implementation">Implementation</h2>
+<p>In this context, parameter definition is carried out within a dedicated class that serves as a container for the settings required by each individual instrument. This approach enables a clear separation between data retrieval and configuration logic or test execution functionality, thereby contributing to an optimized process management.</p>
+<p>In the context of calling method Modify, the code execution process involves verifying the specific setting associated with the instrument, thereby ensuring strict compliance with predefined configuration requirements. This verification serves as a control mechanism, determining whether the necessary parameter has been defined to allow its modification within the instrument's functionality.</p>
+<pre><code class="lang-cs">    // Setup.Dc
+    internal static void Modify(Pins pins, DcParameters parameters) {
+        if (pins.ContainsFeature(InstrumentFeature.Ppmu, out string ppmuPins)) {
+            ModifyPpmu(ppmuPins, parameters);
+        }
+        if (pins.ContainsFeature(InstrumentFeature.Dcvi, out string dcviPins)) {
+            ModifyDcvi(dcviPins, parameters);
+        }
+        if (pins.ContainsFeature(InstrumentFeature.Dcvs, out string dcvsPins)) {
+            ModifyDcvs(dcvsPins, parameters);
+        }
+    }
+
+    private static void ModifyPpmu(string pins, DcParameters ppmuParameters) {
+        if (ppmuParameters.ClampHiV.HasValue) ppmu.ClampVHi.Value = ppmuParameters.ClampHiV.Value;
+        if (ppmuParameters.ClampLoV.HasValue) ppmu.ClampVLo.Value = ppmuParameters.ClampLoV.Value;
+    }
+
+
+    private static void ModifyDcvi(string pins, DcParameters dcviParameters) {
+        if (dcviParameters.ForceBandwidth.HasValue) dcvi.NominalBandwidth.Value = dcviParameters.ForceBandwidth.Value;
+    }
+
+    private static void ModifyDcvs(string pins, DcParameters dcvsParameters) {
+        if (dcvsParameters.ForceBandwidth.HasValue) dcvs.BandwidthSetting.Value = dcvsParameters.ForceBandwidth.Value;
+    }
+</code></pre>
+<pre><code class="lang-cs">    // Setup.Digital
+    internal static void Modify(Pins pins, DigitalParameters parameters) =&gt; TheLib.Setup.Digital.Modify(pins,..., 
+        parameters.disableDrive, parameters.initState, parameters.startState);
+    internal static void Modify(Pins pins,..., bool disableDrive, ChInitState initState, ChStartState startState) {
+        if (pins.ContainsFeature(InstrumentFeature.Digital, out string digitalPins)) {
+            if (initState.HasValue) TheHdw.Digital.Pins(digitalPins).InitialState = initState.Value;
+            if (startState.HasValue) TheHdw.Digital.Pins(digitalPins).StartState = startState.Value;
+        }
+    }
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Alert Service | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Alert Service | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/alert-service.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="alert-service">Alert Service</h1>
+
+<p>For a consistent user experience, centralizing messages in a common service is helpful: a common look and feel can be warranted, and changes need to be implemented only in a single place to update the entire system.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Alerts should be used with care to avoid overwhelming the user, and only be presented in extra-ordinary, special cases. Don't use the <strong>Alert Service</strong> for verbose mode logging of regular operation steps without offering a way to disable them.</p>
+<p>A test program running in production mode where everything goes according to plan should not produce any alerts!</p>
+</div>
+<h2 id="info-alerts">Info Alerts</h2>
+<p>Informative alerts are intended for messages with a positive / neutral information content. Anything relevant that should be highlighted to the user, for example a special operation mode, even if it was deliberately selected.</p>
+<pre><code class="lang-cs">Services.Alert.Info(&quot;Test time profiling active&quot;);
+
+// INFO: Test time profiling active [OnProgramStarted]
+</code></pre>
+<p>Info alerts are labeled with <code>INFO: </code> and have the calling method listed at the end. Black color / regular style font is used in the OutputWindow.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Basic <code>CallerMemberName</code> tracing allows the retrieval of a calling method's name at zero overhead cost. More thorough stack analysis would allow showing the fully qualified name of the method and other, potentially useful information, but at a cost of ~10ms per call this was considered too expensive for broad use.</p>
+</div>
+<h2 id="warning-alerts">Warning Alerts</h2>
+<p>Use warnings for non-fatal, but likely problematic or unexpected situations that can be recovered. An example would be the lack of calibration factors, so that defaults have to be assumed.</p>
+<pre><code class="lang-cs">Services.Alert.Warning($&quot;calibration file '{calFile}' not found - using defaults&quot;);
+
+// WARNING: calibration file 'cal.json' not found - using defaults [ImportCalData]
+</code></pre>
+<p>Warning alerts are labeled with <code>WARNING: </code> and have the calling method listed at the end. Dark blue color / regular style font is used in the OutputWindow.</p>
+<p>Warnings do not trigger any other further action, like propagating the state to IG-XL, turn off any instruments, end flows or bin a device. From an IG-XL perspective, warnings are no different than info alerts.</p>
+<h2 id="error-alerts">Error Alerts</h2>
+<p>Error alerts should be used for fatal, non-recoverable situations that disallow further, possibly dangerous execution of a test program.</p>
+<p>In normal program runs, Error alerts are logged and then propagated to IG-XL by throwing an exception and having that propagate to the IG-XL Error service, following the recommended practice for .NET test code. IG-XL will  handle the error, and bin out devices correctly as set up. When issued during validation, the IG-XL validation service is notified, resulting in validation to fail.</p>
+<p>In both cases, execution does not stop immediately, but is gracefully and safely terminated by IG-XL.</p>
+<pre><code class="lang-cs">Services.Alert.Error($&quot;can't apply 'UtilityBitState' to pin '{pin}'&quot;);
+
+// ERROR: can't apply 'UtilityBitState' to pin 'AnaIn' [Apply]
+</code></pre>
+<p>Where needed, the type of the exception thrown can be specified, to assist users in their trouble-shooting:</p>
+<pre><code class="lang-cs">Services.Alert.Error&lt;ArgumentException&gt;(&quot;'index' can not be negative&quot;);
+
+// ERROR - RegisterCollection: 'index' can not be negative [this[]]
+</code></pre>
+<p>Error alerts are labeled with <code>ERROR: </code> and have the calling method listed at the end. Red color / bold style font is used in the OutputWindow.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>For improved readability and a consistent look and feel, enclose any mentioned objects, variables, values, ... in single quotes <code>'</code>:</p>
+<pre><code class="lang-cs">Services.Alert.Error($&quot;can't apply 'UtilityBitState' to pin '{pin}'&quot;);
+
+Services.Alert.Warning($&quot;calibration file '{calFile}' not found - using defaults&quot;);
+</code></pre>
+<p>Since this is free text, the use of <code>'</code> single quotes can't be enforced by the method, so it'll depend on code authors to make sure this is followed.</p>
+</div>
+<h3 id="context-for-info--warning--error-alerts">Context for Info / Warning / Error Alerts</h3>
+<p>AlertService uses the <code>CallerMemberName</code> feature to get context of the calling method without requiring the user to manually specify (and maintain!) the source. It works with an optional argument decorated with the <code>[CallerMemberName]</code> attribute, which the compiler automatically fills out on the caller side. Compared to reflection / stack exploration, this feature works very robust and is essentially free of overhead.</p>
+<pre><code class="lang-cs">/// &lt;summary&gt;
+/// Sends an Info Alert message to the selected output target(s). Use for positive / neutral information relevant to the user.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;info&quot;&gt;The Info Alert message.&lt;/param&gt;
+/// &lt;param name=&quot;doNotSpecify&quot;&gt;DO NOT SPECIFY - the name of the calling method is automatically inserted by the compiler.&lt;/param&gt;
+internal static void Info(string info, [CallerMemberName] string doNotSpecify = &quot;&quot;) {
+    LogMessage(_infoTarget, GetMessage(&quot;INFO&quot;, info, doNotSpecify, false), (ColorConstants)0x7f0000, false);
+}
+</code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Users will need to understand they should not manually specify this information. In that case, the compiler feature would be overwritten - no big harm, but the feature is then bypassed. To avoid that, the argument is called <code>doNotSpecify</code> and a clear XML API doc info is added.</p>
+</div>
+<h3 id="interactive-debug">Interactive Debug</h3>
+<p>In interactive debug scenarios, code execution is trapped at the offending statement. That way the context like local variables can be analyzed, the execution pointer dragged, EnC changes applied and execution continued:</p>
+<p><img src="media/trap_on_call.gif" alt="Animated GIF showing interactive debugging with code execution trapped at an error statement, allowing inspection of local variables and context"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This feature is pending confirmation within IG-XL. This behavior was captured in a .NET console application. The same experiment in IG-XL test code resulted in an &quot;Unable to set the next statement. The attempt to unwind the callstack failed.&quot; error.</p>
+</div>
+<h2 id="log-alerts">Log Alerts</h2>
+<p>Log alerts are intended for rating-free output of data dumps or outputs for debug or troubleshooting purposes. The message is sent as-is, without any labels or formatting applied.</p>
+<pre><code class="lang-cs">Services.Alert.Log($&quot;{myMeasurement:}&quot;);
+
+// outA: 1.225, 1.199, 1.203, 1,212
+</code></pre>
+<p>Logs to the OutputWindow can optionally be RGB color formatted and optionally use a bold style. Only in monospaced environments (text datalog window, file), text location formatting / ASCII art can be used, the OutputWindow does not support that with the proportional font that can't be changed.</p>
+<h2 id="output-targets">Output Targets</h2>
+<p>Three possible output targets are available for the user, where simultaneous outputs to multiple types is supported per user selection. Only the default (= minimum) outputs can not be de-selected.</p>
+<table>
+<thead>
+<tr>
+<th>Alert Type</th>
+<th>OutputWindow</th>
+<th>Text/Stdf Datalog</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Log</td>
+<td>🔒 always</td>
+<td>🔳 optional</td>
+<td>🔳 optional</td>
+</tr>
+<tr>
+<td>Info</td>
+<td>🔒 always</td>
+<td>🔳 optional</td>
+<td>🔳 optional</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>🔒 always</td>
+<td>🔒 always</td>
+<td>🔳 optional</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>🔳 optional<br>(already logged by IG-XL)</td>
+<td>🔳 optional<br>(already logged by IG-XL)</td>
+<td>🔳 optional</td>
+</tr>
+</tbody>
+</table>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>For unhandled exceptions, IG-XL will always write message including calling context to the Output Window and the Text Datalog. This behavior is independent from the AlertService and can not be changed. It would therefore be redundant if the AlertService wrote the same information again. Consequently these two output targets are disabled for errors by default.</p>
+<p>This also avoids error logs to be shown even in the case of exceptions handled in a <code>try ... catch</code> clause. Users may enable these output targets if they wish additional information.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The service does not offer a way to globally suppress logs - the sender should instead take care about that. This design choice was made on purpose to avoid test time hits by having the logger perform potentially costly tasks to create an alert (collect data, compose output string) if it is never shown, and therefore goes unnoticed. Supporting a &quot;disable all&quot; could invite hidden overhead and unnoticed, but important alerts.</p>
+</div>
+<h2 id="time-stamp-headers">Time Stamp Headers</h2>
+<p>Per system-wide setting, a time-stamp can be added in front of Info / Warning / Error Alerts. Can be overridden for individual alerts, off by default.</p>
+<h2 id="validation-fails">Validation Fails</h2>
+<p>A dedicated approach is offered to flag fails of custom validation features to IG-XL to the system. While technically, raising an exception would also prevent validation to succeed, the IG-XL supported API <code>TheExec.DataManager.WriteTemplateArgumentError</code> allows collecting multiple validation fails and linking them to their sources. When <code>AlertService.Error()</code> is called from within validation, it will automatically use that API internally:</p>
+<pre><code class="lang-cs">[TestMethod, CustomValidation]
+public void TestMethod1(int posValue, double negValue) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (posValue &lt; 0) Services.Alert.Error(&quot;value must be positive&quot;, 1);
+        if (negValue &gt;= 0) Services.Alert.Error(&quot;value must be negative&quot;, 2);
+        if(someOtherCondition) Services.Alert.Error(&quot;some other problem&quot;);
+        return;
+    }
+
+    // some test code
+}
+</code></pre>
+<p>IG-XL will collectively display these on the Errors sheet:</p>
+<p><img src="media/alert-service_error-sheet.png" alt="IG-XL Errors sheet displaying validation failures with error messages and method context information"></p>
+<p>Validation is marked unsuccessful and the offered links lead directly to the offending test method arguments:</p>
+<p><img src="media/alert-service_flow-instance-highlight.png" alt="Flow instance view highlighting specific test method arguments with validation errors, showing direct links to offending input cells"></p>
+<p>The one-based argument index is used to highlight the correct input cell on the TestInstances / FlowBasic sheet. If not provided (defaults to <code>0</code>), like when the validation check isn't tied to a single argument, the argument list cell (<code>Arg0</code>) is marked.</p>
+<p>Validation fails are only reported to the IG-XL Validation System, but not logged anywhere else. Code execution will continue through the test of the validation sequence to allow collecting all validation errors.</p>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<p>For a more consistent log it was considered to require <code>context</code> specified for every Error / Warning / Info through a non-optional parameter. Users could specify the service, test block, test method ... to help identify the error source. Practically however, inconsistencies increased with some ambiguity specified in the message vs. in that context parameter. Since the <code>[CallerMemberName]</code> is available, it was decided that this (automatic) mechanism provides sufficient and reliable context information to alert messages.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

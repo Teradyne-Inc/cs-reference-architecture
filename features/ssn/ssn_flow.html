@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>SSN Pattern&#39;s Special TestFlow | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="SSN Pattern&#39;s Special TestFlow | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/ssn/ssn_flow.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ssn-patterns-special-testflow">SSN Pattern's Special TestFlow</h1>
+
+<h2 id="1-non-diagnosis-testflow-if-all-ssh-are-occomp--off-tester-compare-flow">1. Non-Diagnosis TestFlow if all ssh are OCComp = off (Tester Compare Flow)</h2>
+<pre><code class="lang-mermaid">stateDiagram-v2
+s1 : Tester Compare Flow
+s1.1 : Setup for Initial Burst
+s1.2 : Burst pattern(set)
+s1.3 : Get failed core(ssh/icl) instance list
+s1.4 : Is CMEM full?
+s1.5 : Mask failed core(ssh/icl) instance
+s1.6 : Summarize all failed cores
+
+[*] --&gt; s1
+state s1 {
+[*] --&gt; s1.1
+s1.1 --&gt; s1.2
+s1.2 --&gt; s1.3
+s1.3 --&gt; s1.4
+s1.4 --&gt; s1.5 : Yes
+s1.5 --&gt; s1.2
+s1.4 --&gt; s1.6 : No
+s1.6 --&gt; [*]
+}
+</code></pre>
+<h3 id="11-setup-initial-burst">1.1 Setup Initial Burst</h3>
+<pre><code class="lang-cs">// shall be encapsulated in C#RA, something like:
+// TheLib.Setup.ssn.SetupCmemForInitialBurst();
+TheHdw.Digital.CMEM.CentralFields = tlCMEMCaptureFields.AbsoluteCycle | tlCMEMCaptureFields.PatternName;
+TheHdw.Digital.CMEM.SetCaptureConfig(-1, CmemCaptType.Fail, tlCMEMCaptureSource.PassFailData, true, false);
+TheHdw.Digital.CMEM.CaptureLimitMode = tlDigitalCMEMCaptureLimitMode.Enable;
+TheHdw.Digital.CMEM.CaptureLimit = maxFailsPerPin;
+</code></pre>
+<h3 id="12-burst-patternset">1.2 Burst pattern(set)</h3>
+<pre><code class="lang-cs">TheHdw.Patterns(ssnPatternSet).ExecuteSet(tlPatternSetResultType.Functional);
+</code></pre>
+<h3 id="13-get-failed-coresshicl-instance-list">1.3 Get failed core(ssh/icl) instance list</h3>
+<pre><code class="lang-cs">var ssnTcResults = TheHdw.Digital.Patgen.ReadScanNetworkResults();
+var failedCoreList = ssnTcResults.FailedCores;
+</code></pre>
+<h3 id="14-is-cmem-full-15-mask-n-reburst-16-conclude">1.4 Is CMEM full? <a href="#15-mask-failed-coresshicl-instance-and-goto-12-burst-patternset">1.5 Mask-n-Reburst</a>, <a href="#16-tc-flow-complete">1.6 Conclude</a></h3>
+<pre><code class="lang-cs">
+</code></pre>
+<h3 id="15-mask-failed-coresshicl-instance-and-goto-12-burst-patternset">1.5 Mask failed core(ssh/icl) instance and goto <a href="#12-burst-patternset">1.2 burst pattern(set)</a></h3>
+<pre><code class="lang-cs">var ssnPattern = TheHdw.Digital.ScanNetworks[ssnMapfileName];
+ssnPattern.CoreMasks.AddPerSite(failedCoreList);
+ssnPattern.CoreMasks.Apply();
+</code></pre>
+<h3 id="16-tc-flow-complete">1.6 TC Flow Complete</h3>
+<h2 id="2-non-diagnosis-testflow-if-all-ssh-are-occomp--on-on-chip-compare-flow">2. Non-Diagnosis TestFlow if all ssh are OCComp = on (On-Chip Compare Flow)</h2>
+<pre><code class="lang-mermaid">stateDiagram-v2
+s2 : On-Chip Compare Flow
+s2.1 : Setup for Initial Burst
+s2.2 : Burst pattern(set)
+s2.3 : Get failed core(ssh/icl) instance list
+
+[*] --&gt; s2 
+state s2{
+[*] --&gt; s2.1
+s2.1 --&gt; s2.2
+s2.2 --&gt; s2.3
+s2.3 --&gt; [*]
+}
+</code></pre>
+<h3 id="21-setup-initial-burst">2.1 Setup Initial Burst</h3>
+<p>The difference between TC and OCComp is that in OCComp user only cares about sticky_bit status. (all the sticky_bits)
+So before the Initial Burst of the pattern, it is better to <strong>Mask</strong> all output pins except the JTAG tdo pin.</p>
+<h3 id="22-burst-patternset">2.2 Burst Pattern(set)</h3>
+<h3 id="23-get-failed-coresshicl-instance-list-by-sticky_bit-on-tdo-pin">2.3 Get failed core(ssh/icl) instance list (by sticky_bit on tdo pin)</h3>
+<h3 id="24-occomp-flow-complete">2.4 OCComp Flow Complete</h3>
+<h2 id="3-tc--occomp-joint-flow-none-diagnosis">3. TC + OCComp Joint Flow (None-Diagnosis)</h2>
+<pre><code class="lang-mermaid">stateDiagram-v2
+s3 : TC + OCComp Joint Flow
+s3.1 : Setup for Initial Burst (Mask all OCComp representative_ssh)
+s3.2 : Burst pattern(set)
+s3.3 : Get TC failed core(ssh/icl) instance list
+s3.4 : Is CMEM full?
+s3.5 : Mask TC failed core(ssh/icl) instance
+s3.6 : Get OCComp failed core(ssh/icl) instance list
+s3.7 : Are all TC core(ssh/icl) instances Masked?
+s3.8 : Mask all compare pins except JTAG tdo
+s3.9 : Summarize all failed cores
+
+[*] --&gt; s3
+state s3 {
+[*] --&gt; s3.1
+s3.1 --&gt; s3.2
+s3.2 --&gt; s3.3
+s3.3 --&gt; s3.4
+s3.4 --&gt; s3.7 : Yes
+s3.7 --&gt; s3.8 : yes
+s3.7 --&gt; s3.5 : No
+s3.5 --&gt; s3.2
+s3.8 --&gt;s3.2
+s3.4 --&gt; s3.6 : No
+s3.6 --&gt; s3.9
+s3.9 --&gt; [*]
+}
+</code></pre>
+<h3 id="31-setup-initial-burst">3.1 Setup Initial Burst</h3>
+<p>In this case, all representative_ssh instances shall be TC masked before Initial Burst since we don't want them to consume CMEM, and we don't need them to determine any OCComp ssh-icl-instance's pass fail status.</p>
+<h3 id="32-burst-patternset">3.2 Burst Pattern(set)</h3>
+<h3 id="33-get-tc-failed-coresshicl-instance-list">3.3 Get TC failed core(ssh/icl) instance list</h3>
+<h3 id="34-is-cmem-full-35-mask-tc-n-reburst-36-get-occomp-failed-cores">3.4 Is CMEM full? <a href="#35-mask-failed-coresshicl-instance-and-goto-32-burst-patternset">3.5 Mask-TC-n-Reburst</a>, <a href="#36-get-occomp-failed-coresshicl-instance-list-by-sticky_bit-on-tdo-pin">3.6 Get OCComp failed cores</a></h3>
+<p>If CMEM is NOT full, it means that all sticky_bit fails on JTAG tdo pin are captured completely.</p>
+<h3 id="35-mask-failed-coresshicl-instance-and-goto-32-burst-patternset">3.5 Mask failed core(ssh/icl) instance and goto <a href="#32-burst-patternset">3.2 Burst pattern(set)</a></h3>
+<pre><code class="lang-cs">var ssnPattern = TheHdw.Digital.ScanNetworks[ssnMapfileName];
+ssnPattern.CoreMasks.AddPerSite(failedCoreList);
+ssnPattern.CoreMasks.Apply();
+</code></pre>
+<p>in case that all TC core instances are masked and yet still the CMEM is full, it is possible that none-scan compares are eating up the CMEM. in which case we need to mask all output pins except the tdo pins just like what we do in <a href="#21-setup-initial-burst">2.1 Setup for OCComp Initial Burst</a></p>
+<pre><code class="lang-cs">
+</code></pre>
+<h3 id="36-get-occomp-failed-coresshicl-instance-list-by-sticky_bit-on-tdo-pin">3.6 Get OCComp failed core(ssh/icl) instance list (by sticky_bit on tdo pin)</h3>
+<pre><code class="lang-cs">
+</code></pre>
+<h3 id="37-tcoccomp-joint-flow-complete">3.7 TC+OCComp Joint Flow complete</h3>
+<h2 id="4-diagnosis-flow">4. Diagnosis Flow</h2>
+<p>Failures may be captured in:</p>
+<ul>
+<li>Internal scan chains if target core</li>
+<li>Wrapper chain of child core</li>
+</ul>
+<p><img src="media/ssn-multi-ssh.png" alt="alt text">
+Failures from targeted core and child cores must be diagnosed together</p>
+<p>And since TC + OCComp Joint Flow can cover the first two cases, we will only implement the TC + OCComp Joint Flow. So, the Diagnosis Flow shall be:</p>
+<pre><code class="lang-mermaid">stateDiagram-v2
+s3 : SSN SCAN None-Diagnosis Flow
+s3.x : See ___TC + OCComp Joint Flow (None-Diagnosis)___
+s4 : SSN SCAN Diagnosis Flow
+s4.p : Parallel Diagnosis Flow
+s4.s : Serial Diagnosis Flow
+
+s4.1p : Enable as much failed cores as possible from the To-Be-Diagnosed List
+s4.1s : Enable the next failed core in the To-Be-Diagnosed List
+s4.2p : Setup Datalog for SCAN Diagnosis (DTR/STR)
+s4.2s : Setup Datalog for SCAN Diagnosis (DTR/STR)
+s4.3p : ReBurst Pattern(set)
+s4.3s : ReBurst Pattern(set)
+
+
+[*] --&gt; s3
+state s3 {
+    [*] --&gt; s3.x
+    s3.x --&gt; [*]
+}
+
+s3 --&gt; s4 : need to get failed __ssh_icl_instance__ list before Diagnosis Flow
+state s4 {
+    [*] --&gt; s4.p : Option 1, Test as many failed cores as possible for each reburst 
+    s4.p --&gt; [*]
+    [*] --&gt; s4.s : Option 2, Test one failed core at a time for each reburst 
+    s4.s --&gt; [*]
+}
+
+state s4.p {
+    [*] --&gt; s4.1p
+    s4.1p --&gt; s4.2p
+    s4.2p --&gt; s4.3p
+    s4.3p --&gt; s4.1p : if the To-Be-Diagnosed List is NOT empty
+    s4.3p --&gt; [*] : if the To-Be-Diagnosed List is empty
+}
+
+state s4.s {
+    [*] --&gt; s4.1s
+    s4.1s --&gt; s4.2s
+    s4.2s --&gt; s4.3s
+    s4.3s --&gt; s4.1s  : if the To-Be-Diagnosed List is NOT empty
+    s4.3s --&gt; [*]  : if the To-Be-Diagnosed List is empty
+}
+
+</code></pre>
+<blockquote>
+<p>💡 <strong>Completing <a href="#3-tc--occomp-joint-flow-none-diagnosis">TC + OCComp Joint Flow</a> is required before Diagnosis Flow</strong></p>
+</blockquote>
+<h3 id="41-setup-device-for-diagnosing-failed-cores">4.1 Setup Device for Diagnosing Failed Core(s)</h3>
+<ul>
+<li>Serial Reburst: one failed core at a time</li>
+<li>Parallel Reburst: as many failed cores as possible per burst</li>
+</ul>
+<h3 id="42-setup-datalog-for-scan-diagnosis">4.2 Setup Datalog for SCAN Diagnosis</h3>
+<p>DTR and CONDITION_LIST of STR need to be configured before bursting the pattern</p>
+<h3 id="43-burst-patternset">4.3 Burst Pattern(set)</h3>
+<p>(nothing special)</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

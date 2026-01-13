@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Test Abstraction | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Test Abstraction | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/test-abstraction.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="test-abstraction">Test Abstraction</h1>
+
+<p>For very simple devices decades ago, implementing the test solution entirely with custom code programming hardware level directly was a reasonable approach. It provided good performance in a resource constrained environment at acceptable efforts.</p>
+<p>That model doesn't scale - certainly not at the rate of how device complexity increases. Test solutions have become massive, and the effort to implement them is hardly manageable without a revised approach.</p>
+<p>Modular concepts and code reuse can significantly reduce the overall effort, but requires the introduction of abstraction layers in a test solution stack-up.</p>
+<h2 id="test-solution-stack-up">Test Solution Stack-Up</h2>
+<p><img src="media/stackup.png" alt="Test solution stack diagram showing layered architecture from tester hardware through platform APIs up to test methods and test programs"></p>
+<h3 id="platform-specific-api">Platform Specific API</h3>
+<p>At the lowest level, the native programming interface of the tester hardware is located. It is typically very specific to a tester model, but allows accessing all features and unlocking inherent performance. It may not be easy to use or intuitive, and while test code directly using that may achieve great performance, but can be hard to create and maintain.</p>
+<p>Specifically when <a href="platform-independence.html">platform independence</a> is desired, inserting a hardware abstraction layer can be helpful. It would translate hardware specific calls into a generic interface that is available on multiple platforms.</p>
+<p><img src="media/stackup_hal.png" alt="Stack diagram with hardware abstraction layer (HAL) inserted between platform API and test blocks, providing generic interface for cross-platform compatibility"></p>
+<p>More flexibility is possible when the hardware abstraction layer is not exclusively used - allowing access to unique architectural features for best performance, but utilizing the HAL in areas where that makes sense.
+<img src="media/stackup_mixed.png" alt="Mixed architecture stack diagram showing flexible approach with both HAL and direct platform API access, balancing generic interface with platform-specific performance optimization"></p>
+<h3 id="test-blocks-tester-architecture-abstraction">Test Blocks <em>(&quot;Tester Architecture Abstraction&quot;)</em></h3>
+<p>The next level of abstraction is achieved by grouping hardware calls into higher level language constructs covering functional tester areas that are often used together. This can simplify common tasks on a specific tester, and also encapsulate a possibly beneficial execution order optimized for the intended use case.</p>
+<p>Block abstraction allows for concise test code, with a focus on listing the logical steps required to perform a basic continuity test:</p>
+<pre><code class="lang-cs">using static Demo.TestLib;
+
+[TestMethod]
+public void SimpleContinuity(string digPins, string powerPins, double forceCurrent) {
+
+    // setup
+    string allPins = Utils.MergePinLists(digPins, powerPins);
+    Connect(allPins);
+    Setup.ForceV(powerPins, 0 * V);
+    Setup.ForceI(digPins, forceCurrent, Measure.Voltage, 2 * V, forceCurrent);
+    Setup.Gate(allPins, true);
+
+    // measure
+    TheHdw.Wait(1 * ms);
+    PinSite&lt;double&gt; meas = Acquire.ReadMeter(digPins);
+
+    // reset
+    Setup.Gate(allPins, false);
+    DisConnect(allPins);
+
+    // datalog
+    Datalog.TestParametric(meas, &quot;V&quot;);
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Note how the sequence of steps performed is highly visible with self-explaining syntax highlighting the intention (<code>Connect</code>, <code>Setup</code>, <code>Acquire</code>, <code>Datalog</code>, ...). The implementation is buried within these functions, which the user can see, step through or modify (copy &amp; customize) if needed.</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The PublicAPI call <code>TheHdw.Wait(1 * ms);</code> did not slip in by accident. If a call to wherever is suitable for the intended abstraction level, and it's purpose &amp; functionality is apparent, there's nothing wrong with that.</p>
+</div>
+<h3 id="test-methods-test-technique-abstraction">Test Methods <em>(&quot;Test Technique Abstraction&quot;)</em></h3>
+<p>This level covers the implementations of test concepts, specific to certain device features or functional blocks. Test methods can be parameterized, but a tradeoff needs to be found between generic (many parameters, complicated, overhead) and specific (barely reusable, requires many of them, hard to maintain).</p>
+<p>Test Methods should clearly reflect the high level information flow and functional logic of a test technique implementation. It's the level at which device and tester actions are engaged without going into the last technical detail. By covering the &quot;how&quot;, the &quot;what&quot; becomes visible and comprehensible, for the code authors, the maintainers and the production engineers chasing yield problems.</p>
+<p>To achieve that, the code needs to be brief, self explaining and provide a good overview of how a pass / fail decision is being made. A constant abstraction level is maintained, and jumps between high-level and detailed hardware calls is avoided.</p>
+<h3 id="test-definitions--test-implementation-abstraction">Test Definitions  <em>(&quot;Test Implementation Abstraction&quot;)</em></h3>
+<p>At the top level, test specifications defines what has to be tested, how that needs to be done, the consecutive order to execute and what to do with devices based on the results. If done formally, that information may be used by a program generator to automatically create, instruct or use the components underneath.</p>
+<p>Ideally, test definitions don't contain any tester / platform dependence. They are generic and free from tester specific terminology.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

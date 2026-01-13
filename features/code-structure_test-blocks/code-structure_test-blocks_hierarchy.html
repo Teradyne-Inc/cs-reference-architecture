@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>TheLib | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="TheLib | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/code-structure_test-blocks/code-structure_test-blocks_hierarchy.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="thelib">TheLib</h1>
+
+<h2 id="acquire">Acquire</h2>
+<ul>
+<li>Dc
+<ul>
+<li><code>public PinSite&lt;double&gt; Measure(Pins pins, Measure? meterMode = null)</code></li>
+<li><code>public PinSite&lt;double&gt; Measure(Pins pins, int sampleSize, double? sampleRate = null, Measure? meterMode = null)</code></li>
+<li><code>public PinSite&lt;Samples&lt;double&gt;&gt; MeasureSamples(Pins pins, int sampleSize, double? sampleRate = null, Measure? meterMode = null)</code></li>
+<li><code>public PinSite&lt;double&gt; ReadCaptured(Pins pins, string signalName)</code></li>
+<li><code>public PinSite&lt;Samples&lt;double&gt;&gt; ReadCapturedSamples(Pins pins, string signalName)</code></li>
+<li><code>public PinSite&lt;double&gt; ReadMeasured(Pins pins, int sampleSize, double? sampleRate = null)</code></li>
+<li><code>public PinSite&lt;Samples&lt;double&gt;&gt; ReadMeasuredSamples(Pins pins, int sampleSize, double? sampleRate = null)</code></li>
+<li><code>public void Strobe(Pins pins)</code></li>
+<li><code>public void StrobeSamples(Pins pins, int sampleSize, double? sampleRate = null)</code></li>
+</ul>
+</li>
+<li>Digital
+<ul>
+<li><code>public Site&lt;bool&gt; PatternResults()</code></li>
+<li><code>public PinSite&lt;Samples&lt;int&gt;&gt; Read(Pins pins, int startIndex = 0, int cycle = 0)</code></li>
+<li><code>public PinSite&lt;Samples&lt;int&gt;&gt; ReadWords(Pins pins, int startIndex, int length, int wordSize, tlBitOrder bitOrder)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="datalog">Datalog</h2>
+<ul>
+<li><code>public void TestParametric(Site&lt;int&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></li>
+<li><code>public void TestParametric(Site&lt;double&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></li>
+<li><code>public void TestParametric(PinSite&lt;int&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></li>
+<li><code>public void TestParametric(PinSite&lt;double&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></li>
+<li><code>public void TestParametric(Site&lt;Samples&lt;int&gt;&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, bool sameLimitForAllSamples = false)</code></li>
+<li><code>public void TestParametric(Site&lt;Samples&lt;double&gt;&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, bool sameLimitForAllSamples = false)</code></li>
+<li><code>public void TestParametric(PinSite&lt;Samples&lt;int&gt;&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, bool sameLimitForAllSamples = false)</code></li>
+<li><code>public void TestParametric(PinSite&lt;Samples&lt;double&gt;&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, bool sameLimitForAllSamples = false)</code></li>
+<li><code>public void TestFunctional(Site&lt;bool&gt; result, string pattern = &quot;&quot;)</code></li>
+</ul>
+<h2 id="execute">Execute</h2>
+<ul>
+<li>Dc
+<ul>
+<li><code>public PinSite&lt;double&gt; CalcResistance(PinSite&lt;double&gt; voltage, PinSite&lt;double&gt; current)</code></li>
+<li><code>public PinSite&lt;double&gt; CalcResistance(PinSite&lt;double&gt; voltage, PinSite&lt;double&gt; current, PinSite&lt;double&gt; voltage2)</code></li>
+<li><code>public PinSite&lt;double&gt; CalcResistance(PinSite&lt;double&gt; voltage1, PinSite&lt;double&gt; current1, PinSite&lt;double&gt; voltage2, PinSite&lt;double&gt; current2)</code></li>
+</ul>
+</li>
+<li>Digital
+<ul>
+<li><code>public void StartPattern(PatternInfo patternInfo)</code></li>
+<li><code>public void StartPattern(SiteVariant sitePatterns)</code></li>
+<li><code>public void RunPattern(PatternInfo patternInfo)</code></li>
+<li><code>public void RunPattern(SiteVariant sitePatterns)</code></li>
+<li><code>public void WaitPatternDone(PatternInfo patternInfo)</code></li>
+<li><code>public void ForcePatternHalt(PatternInfo patternInfo)</code></li>
+<li><code>public void ForcePatternHalt()</code></li>
+<li><code>public List&lt;PinSite&lt;double&gt;&gt; RunPatternConditionalStop(PatternInfo pattern, int numberOfStops, Func&lt;PatternInfo, int, List&lt;PinSite&lt;double&gt;&gt;&gt; func)</code></li>
+<li><code>public void ContinueToConditionalStop(PatternInfo pattern, Action action)</code></li>
+</ul>
+</li>
+<li><code>public void Wait(double time, bool staticWait = false, double timeout = 100 * ms)</code></li>
+<li><code>public void CallByName(string name, string args)</code></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>Ac
+<ul>
+<li><code>public void Connect(string pins)</code></li>
+<li><code>public void Disconnect(string pins)</code></li>
+</ul>
+</li>
+<li>Dc
+<ul>
+<li><code>public void ConnectAllPins()</code></li>
+<li><code>public void Connect(Pins pins, bool? gateOn = null)</code></li>
+<li><code>public void Disconnect(Pins pins, bool? gateOn = null)</code></li>
+<li><code>public void Force(string pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue)</code></li>
+<li><code>public void ForceI(Pins pins, double forceCurrent, double? clampVoltage = null)</code></li>
+<li><code>public void ForceI(Pins pins, double forceCurrent, double clampVoltage, double currentRange, TLibOutputMode? outputMode = null, double? voltageRange = null)</code></li>
+<li><code>public void ForceV(Pins pins, double forceVoltage)</code></li>
+<li><code>public void ForceV(Pins pins, double forceVoltage, double voltageRange, double currentRange)</code></li>
+<li><code>public void ForceV(Pins pins, double forceVoltage, double voltageRange, double currentRange, double? currentClamp = null, TLibOutputMode? outputMode = null)</code></li>
+<li><code>public void ForceHiZ(Pins pins, double? clampValue = null)</code></li>
+<li><code>public void SetMeter(Pins pins, Measure meterMode, double rangeValue, double? filterValue = null, double? hardwareAverage = null, double? outputRangeValue = null)</code></li>
+</ul>
+</li>
+<li>Digital
+<ul>
+<li><code>public void Connect(Pins pins)</code></li>
+<li><code>public void Disconnect(Pins pins)</code></li>
+<li><code>public void ReadAll()</code></li>
+<li><code>public void ReadFails()</code></li>
+<li><code>public void ReadStoredVectors()</code></li>
+<li><code>public void ReadHram(int captureLimit, CaptType captureType, TrigType triggerType, bool waitForEvent, int preTriggerCycleCount)</code></li>
+</ul>
+</li>
+<li>Rf
+<ul>
+<li><code>public void Connect(string pins)</code></li>
+<li><code>public void Disconnect(string pins)</code></li>
+</ul>
+</li>
+<li><code>public void ApplyLevelsTiming()</code></li>
+</ul>
+<h2 id="validation">Validation</h2>
+<ul>
+<li><code>public Func&lt;PatternInfo, int, List&lt;PinSite&lt;double&gt;&gt;&gt; SetStopAction(string name)</code></li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

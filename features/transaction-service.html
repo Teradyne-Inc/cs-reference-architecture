@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Transaction Service | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Transaction Service | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/transaction-service.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="transaction-service">Transaction Service</h1>
+
+<p>Manually implementing device communication using hardcoded patterns or custom-designed digital source and capture signals is both labor-intensive and increasingly outdated, particularly for high-complexity (&quot;big-D&quot;) devices. Modern design workflows that incorporate device testing enable this complexity to be abstracted into standardized data communication protocols, with low-level signal manipulation (bit-bashing) handled transparently by the underlying system.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The setup part of Transaction Service communication is deferred to a later point. In the first tier, the APIs for the transactions themselves are offered. A generic setup use model is added at a later point, until then users are deferred to instrument specific language for this task.</p>
+</div>
+<h2 id="portbridge">PortBridge</h2>
+<p>On IG-XL based platforms, PortBride is the product providing that abstraction use model for test programs. It's highly flexible and configurable on the user level, and interacts with hardware features like ProtocolAware or PatternModify in the most efficient way.</p>
+<p>PortBridge is an optional product, which users may or may not choose to use. Licensing cost is only one aspect; in some cases, customers rely on custom infrastructure that has matured over years and is tightly integrated into their design processes to work with multiple competitive tester platforms.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>C#RA needs to support setups with or without PortBridge, at least from a use model perspective. Functionality and capability may differ, meaning that C#RA does not have to back-fill all PortBridge features in setups choosing to go without. Basic functionality should be covered though.</p>
+<p>In case of PortBridge being available in a configuration, users may still want to decide to implement with or without on a by-test basis.</p>
+</div>
+<h2 id="use-model">Use Model</h2>
+<h3 id="register-map">Register Map</h3>
+<p>Typically, the device's address space is marked up with speaking names for registers (entire memory locations at the device's native bit width, i.e. 32bit) and fields (usually a sub-set of a single register, like 8 bits used for a 256 step voltage reference trim). That information is defined in the chip design tools and commonly available in an interchangeable data format like XML. The test program reads this register map definition in order to allow interacting with the device via meaningful descriptors.</p>
+<p>Register Maps may be used to apply device hardware abstraction. For example could the string <code>VREF_TRIM</code> generally refer to the voltage reference trim code field even if located at different physical memory locations in different devices. By using the abstract name to access that data, the same code / transaction language may be used for any device following that scheme.</p>
+<p>Register Maps typically contain the following information:</p>
+<ul>
+<li>register: name and address</li>
+<li>field: name, register, start bit (LSB), bit width (sometimes bit order / masking and multi-register-span info)</li>
+<li>default / reset values (sometimes these may differ)</li>
+</ul>
+<p>The TransactionService is designed in a generic way to open up support for non-<code>int</code> situations, which will become prevalent once IG-XL enables SiteGenerics support for those, too. This is currently planned for IG-XL 11.10.</p>
+<h3 id="shadow-register">Shadow Register</h3>
+<p>Shadow registers are register data structures mirrored to the tester computer memory reflecting the device's memory structure. It can be considered a cache.</p>
+<p>The shadow register provides site-aware capability. This can be achieved by maintaining a full copy per site. Alternatively, because the vast majority of information will typically not need this capability, the shadow register may be considered site-agnostic and only the site-aware activity is deferred into a dedicated, separate structure.</p>
+<h3 id="multiple-ports">Multiple Ports</h3>
+<p>Some devices may have multiple register maps, be it to facilitate separate physical memory blocks or different access ports or protocols. C#RA supports this case, with an (optional) port argument in the transaction calls. If left empty, the (configurable) default port is used. This helps with a simplified use model for the common scenario of a single port device.</p>
+<h3 id="data-paths">Data Paths</h3>
+<p>The following paths exist for data at runtime of a test program:</p>
+<p><img src="media/digital-transaction-paths.png" alt="Flowchart diagram showing digital transaction data paths between TestCode, Shadow Register, and Hardware Register components with bidirectional arrows"></p>
+<p>To easily distinguish the entities, clear naming notations are used. All operations work transparently for the selected sites.</p>
+<h4 style="color: #D966EC;">TestCode <--> Shadow Register: <code>Get</code> / <code>Set</code> Notation</h4>
+<p>I/O operations with the Shadow Register can be executed at any time without physical device interaction. These operations are often executed in bulk for increased efficiency.</p>
+<h5 id="getfield">GetField</h5>
+<ul>
+<li><code>Site&lt;T&gt; GetField&lt;T&gt;(string register, string field, string port = &quot;&quot;);</code> - read (bit masked &amp; shifted) data from a shadow register field</li>
+</ul>
+<h5 id="setfield">SetField</h5>
+<ul>
+<li><code>void SetField&lt;T&gt;(string register, string field, T data, string port = &quot;&quot;);</code> - write site-uniform (bit masked &amp; shifted) data into a shadow register field</li>
+<li><code>void SetFieldPerSite&lt;T&gt;(string register, string field, Site&lt;T&gt; data, string port = &quot;&quot;);</code> - write site-specific (bit masked &amp; shifted) data into a shadow register field</li>
+</ul>
+<h5 id="getregister">GetRegister</h5>
+<ul>
+<li><code>Site&lt;T&gt; GetRegister&lt;T&gt;(string register, string port = &quot;&quot;);</code> - read data from a shadow register</li>
+</ul>
+<h5 id="setregister">SetRegister</h5>
+<ul>
+<li><code>void SetRegister&lt;T&gt;(string register, T data, string port = &quot;&quot;);</code> - write site-uniform data into a shadow register</li>
+<li><code>void SetRegisterPerSite&lt;T&gt;(string register, Site&lt;T&gt; data, string port = &quot;&quot;);</code> - write site-specific data into a shadow register</li>
+</ul>
+<h4 style="color: #1CED00;">Shadow Register <--> DUT: <code>Pull</code> / <code>Push</code> / <code>Execute</code> Notation</h4>
+<p>Actual device communication is handled via a digital / pattern subsystem allowing I/O operations on a register basis.</p>
+<h5 id="pullregister">PullRegister</h5>
+<ul>
+<li><code>void PullRegister(string register, string port = &quot;&quot;);</code> - transfer data from the device into the shadow register</li>
+</ul>
+<h5 id="pushregister">PushRegister</h5>
+<ul>
+<li><code>void PushRegister(string register, string port = &quot;&quot;);</code> - transfer data from the shadow register to the device</li>
+</ul>
+<h4 style="color: #EFFF5C;">TestCode <--> DUT: <code>Read</code> / <code>Expect</code> / <code>Write</code> Notation</h4>
+<p>Direct DUT transactions are often implemented via digital transaction instruction language and executed as part of patterns / modules. These commands are offered to complete the use model, they may be helpful in debugging or troubleshooting scenarios.</p>
+<h5 id="readregister">ReadRegister</h5>
+<ul>
+<li><code>Site&lt;T&gt; ReadRegister&lt;T&gt;(string register, string port = &quot;&quot;);</code> - read data from a device register</li>
+</ul>
+<h5 id="expectregister">ExpectRegister</h5>
+<ul>
+<li><code>Site&lt;bool&gt; ExpectRegister&lt;T&gt;(string register, T data, string port = &quot;&quot;);</code> - read data from a device register and compare with a site-uniform expectation</li>
+<li><code>Site&lt;bool&gt; ExpectRegisterPerSite&lt;T&gt;(string register, Site&lt;T&gt; data, string port = &quot;&quot;);</code> - read data from a device register cond compare with a site-specific expectation</li>
+</ul>
+<h5 id="writeregister">WriteRegister</h5>
+<ul>
+<li><code>void WriteRegister&lt;T&gt;(string register, T data, string port = &quot;&quot;);</code> - write site-uniform data into a device register</li>
+<li><code>void WriteRegisterPerSite&lt;T&gt;(string register, Site&lt;T&gt; data, string port = &quot;&quot;);</code> - write site-specific data into a device register</li>
+</ul>
+<h4 style="color: #FF0000;">Execute Transactions</h4>
+<p>Complete transaction modules including multiple write and read operations can be executed with a single command. Note that the write direction sends shadow register data to the device, where the read direction retrieves device data directly into test code.</p>
+<h5 id="execute">Execute</h5>
+<ul>
+<li><code>void Execute(string module, string port = &quot;&quot;);</code> - execute a transaction file (without reads)</li>
+</ul>
+<h5 id="executeread">ExecuteRead</h5>
+<ul>
+<li><code>List&lt;Site&lt;T&gt;&gt; ExecuteRead&lt;T&gt;(string module, int readCount, string port = &quot;&quot;);</code> - execute a transaction file including reads</li>
+</ul>
+<h4 style="color: #53DEFF;">Re-Initialize the ShadowRegister and Others</h4>
+<p>Commonly at Start-of-Test, or when specific use cases exist, the shadow register content needs to be re-initialized.</p>
+<h5 id="reinitregister--reinitall">ReInitRegister / ReInitAll</h5>
+<ul>
+<li><code>void ReInitRegister(string register, string port = &quot;&quot;);</code> - set a shadow register to it's default / init value</li>
+<li><code>void ReInitPort(string port);</code> - set all shadow registers of a port to their default / init values</li>
+<li><code>void ReInitAll();</code> - set all shadow registers of all ports to their default / init values</li>
+<li><code>string DefaultPort {get; set;}</code> - read/write the default port to be used when omitted in the methods above</li>
+</ul>
+<h2 id="implementation">Implementation</h2>
+<p>The use of PortBridge will add an external dependency to C#RA - and the fact that this needs to be conditional makes things not easier.</p>
+<p>The model for <a href="external-libraries.html#conditional-dependencies">conditional dependencies</a> in C#RA is followed with these specifics:</p>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Term for PortBridge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>custom MSBuild property</td>
+<td><code>PortBridgeEnabled</code></td>
+</tr>
+<tr>
+<td>indicator file</td>
+<td><code>PortBridgeEnabled.txt</code> located in VS solution folder</td>
+</tr>
+<tr>
+<td>compiler constant</td>
+<td><code>PORTBRIDGE_ENABLED</code></td>
+</tr>
+</tbody>
+</table>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>By default, the repo does not have the <code>PortBridgeEnabled.txt</code> file in the <code>src</code> folder, thus not enabling this feature. The use model follows an opt-in approach, where users actively select additional, optional features they want to use.</p>
+<p><code>PortBridgeEnabled.txt</code> has been added to <code>.gitignore</code> so that collaborators can permanently change their local coding environment without the risk to propagate this into the repository.</p>
+</div>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<p>The following options were considered but could not prevail due to the reasons stated.</p>
+<h3 id="port-object-retrieved-from-dictionary--very-simplified-transactionservice">Port Object Retrieved from Dictionary (= very simplified TransactionService)</h3>
+<pre><code class="lang-cs">// setup
+Services.Transaction.SetupPort(&quot;portA&quot;, settingA, ... , ... , ...);
+
+// single call
+Services.Transaction.Port[&quot;portA&quot;].SetRegister&lt;T&gt;(string register, T data)
+
+// multiple calls
+var port = Services.Transaction.Port[&quot;portA&quot;];
+port.SetRegister&lt;T&gt;(string register, T data);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Ups</th>
+<th>Downsides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close to IG-XL syntax</td>
+<td>need to introduce <code>TransactionService</code><strong>and</strong> <code>TransactionPort</code> type</td>
+</tr>
+<tr>
+<td></td>
+<td>types can't be versioned</td>
+</tr>
+<tr>
+<td></td>
+<td>and unit testing would be more complicated</td>
+</tr>
+<tr>
+<td></td>
+<td>no easy way to handle default ports</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fully-object-oriented">Fully Object Oriented</h3>
+<pre><code class="lang-cs">// setup
+var port = new TransactionPort(setting, ,... , ... , ...);
+Services.Storage.Add(port, &quot;portA&quot;);
+
+// regular call
+TransactionPort port = Services.Storage.TryGet(&quot;portA&quot;);
+port.SetRegister();
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Ups</th>
+<th>Downsides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>very much the &quot;.NET Way&quot;</td>
+<td>strong dependency from <code>StorageService</code></td>
+</tr>
+<tr>
+<td></td>
+<td>(public) object could have been messed with or replaced with something else</td>
+</tr>
+<tr>
+<td></td>
+<td>types can't be versioned</td>
+</tr>
+<tr>
+<td></td>
+<td>no easy way to handle default ports</td>
+</tr>
+</tbody>
+</table>
+<h3 id="encode-port-in-register-identifier">Encode Port in Register Identifier</h3>
+<pre><code class="lang-cs">// setup
+Services.Transaction.SetupPort(&quot;portA&quot;, settingA, ... , ... , ...);
+
+// regular call - require &quot;portA@reg123&quot; register definition, with pre-@ part optional
+Services.Transaction.SetRegister&lt;T&gt;(string register, T data)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Ups</th>
+<th>Downsides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eliminate port information from transaction method signatures</td>
+<td>potentially expensive string processing in every call</td>
+</tr>
+<tr>
+<td>easy to handle default</td>
+<td>port and register information doesn't typically exist in this format</td>
+</tr>
+</tbody>
+</table>
+<h2 id="questions">Questions</h2>
+<ul>
+<li>How to read / define the register map?</li>
+<li>Required to support register spanning fields and crazy encodings (inverted bits, strange order)?</li>
+<li>What PB version do we support? Multiple?</li>
+<li>control file location - is the <code>src</code> folder the best place?</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

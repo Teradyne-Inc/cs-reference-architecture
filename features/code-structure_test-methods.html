@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Test Methods | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Test Methods | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/code-structure_test-methods.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="test-methods">Test Methods</h1>
+
+<p>Test Methods in C#RA are built from test blocks as a reference implementation for common use cases. They show recommended practice, serve as self-documenting examples and can directly be (re-)used if they fit in the target scenario.</p>
+<p>They are however not trying to be everybody's darling with a superset of functionality to make them suitable also for corner cases or uncommon combination of requirements (that place is already taken by Template.xla). Instead, users are encouraged to &quot;roll their own&quot;, taking peeks from our implementations, copy &amp; paste code and customize to their needs. Preferably in building their own &quot;library&quot; of customer specific, but reusable test methods that work great for the device families and derivatives needed.</p>
+<p>That approach helps preventing the test methods offered as part of the C# Reference Architecture from getting bloated and hard to maintain. They are updated as IG-XL progresses and features evolve, so that they are a role model how to best use the product. Incompatible updates are avoided, but if inevitable, the changes are well and pro-actively documented.</p>
+<p>Being called from the test instance sheet, a few special conditions apply to IG-XL test methods:</p>
+<ul>
+<li>need to be <code>[TestMethod]</code>s inside <code>[TestClass]</code>es</li>
+<li>can't use overloads</li>
+<li>fully qualified name always visible on the instance sheet (no concept of using exists)</li>
+<li>no type-ahead, only a drop-down to browse in alphabetical order</li>
+<li>not called from within code (exclusively from flow / instance sheet)</li>
+</ul>
+<p><img src="media/test-methods-instance-sheet.png" alt="IG-XL instance sheet screenshot showing test methods called from flow/instance sheet rather than from within code, demonstrating external invocation pattern"></p>
+<p><strong>Test Methods represent the latest recommended implementation patterns. Users are encouraged to copy and customize these reference implementations to their specific needs.</strong></p>
+<h2 id="language-hierarchy">Language Hierarchy</h2>
+<p>In order to minimize friction for users locating test methods they need, and for authors to offer a clear place to add new ones, the following hierarchy is used as <a href="code-structure_test-methods/code-structure_test-methods_hierarchy.html">defined &amp; maintained here</a>:</p>
+<p><img src="media/test-method-hierarchy.png" alt="Hierarchical tree diagram showing test method organization structure with four-level categorization for efficient location and placement of test methods"></p>
+<p>Test methods are <strong>always</strong> placed in a four-level hierarchical structure along this scheme:</p>
+<ol>
+<li>Entry Point</li>
+<li>Test Category</li>
+<li>Test Class</li>
+<li>Test Method</li>
+</ol>
+<h3 id="entry-point">Entry Point</h3>
+<p>The entry point is called <code>Csra</code>.</p>
+<p>All test methods offered by the C#RA are found under this node.</p>
+<h3 id="test-category">Test Category</h3>
+<p>The first level grouping reflects device block or test strategy related groups commonly found in test programs. Often, development is broken down to these functional concepts, dedicated team members with specific experience implement and use sub-flows following this structure.</p>
+<p>Prominently providing this grouping can help readers or other non-authors involved with the test program as they can see the intention (&quot;leakage&quot; vs. &quot;functional-parametric&quot;), even though such grouping may result in overlap and redundancy in the offerings. The C#RA team opted for the not-so-easy path to improve usability and readability.</p>
+<p>It is understood that this categorization will never be 100% clear and perfect, with categories being cross-cutting and blurring test techniques, methodologies or features. It was however the best of all other alternatives considered.</p>
+<p>For new branches, subject matter experts are consulted to create a meaningful scheme fitting into the other categories (for their peers <strong>and</strong> for those who won't use it). Overall, it is considered okay if the number of test categories grows, but excessiveness is to be avoided. Similarly, the various domains should be consistently represented, with neither flooding the space.</p>
+<p>Test Categories are implemented as sub namespaces.</p>
+<h3 id="test-class">Test Class</h3>
+<p>Test classes resemble the next level of grouping. They are named to describe the commonalities of the contained test methods but distinctive enough to set them apart from the others in the same test category. The name of that isn't repeated in the class name, even if that ends up being rather generic or ambiguous (<code>Read</code>) - it will only be visible on the instance sheet as part of the fully qualified name together with the test category.</p>
+<p>Because IG-XL creates test class objects for the execution of a test method, the class footprint matters. They avoid large numbers of test methods or little functional or algorithmic overlap in the implementation. Class level fields should typically sharable between the test methods, or they are supersets.</p>
+<p>When in doubt, prefer separate, more specific test classes. The number of test classes within a test group is uncritical, but consider alphabetical sorting when offering similar ones that only differ in a detail (<code>SupplyAbc</code> &amp; <code>SupplyDef</code> is preferred over <code>AbcSupply</code> &amp; <code>DefSupply</code>).</p>
+<p>Even though technically possible in C#, test classes don't repeat the name of their parent test category (namespaces).</p>
+<h3 id="test-method">Test Method</h3>
+<p>Test methods finally are the entities called from the flow. Some test concepts / classes will have few or even only a single test method, while others require multitudes. The name reflects the specific purpose but is brief and clear. Multiple test methods clearly differentiate their functionality by their names.</p>
+<p><code>Baseline</code> is used for test methods that cover many (most) use cases and have no more descriptive, industry known name. In the case of more than one test methods in a test class, <code>Baseline</code> refers to the clearly dominant &amp; common, or the most straight-forward use case. Others are named so that they clearly indicate how they differ from that (<code>Leakage.Parallel.Baseline</code> &amp; <code>.Preconditioning</code>).</p>
+<h3 id="alternatives-considered">Alternatives Considered</h3>
+<p>Originally, a flat hierarchy was considered without adding a sub-namespace. It became quickly clear that the necessary grouping to avoid ambiguities would then sneak into the test class names, saving no screen space but giving away an opportunity to create structure in the implementation.</p>
+<p>The following alternatives for method names <code>Baseline</code> were rejected:</p>
+<ul>
+<li><code>Base</code> - too close to inheriting from base classes</li>
+<li><code>Basic</code> - could be confused with VisualBasic</li>
+<li><code>Default</code> - means using something that is explicitly specified elsewhere</li>
+<li><code>Simple</code> - incorrect as the common case might not be the simple one</li>
+</ul>
+<h3 id="open-items">Open Items</h3>
+<p>The topic of handling incompatible updates in test methods is an ongoing consideration:</p>
+<ul>
+<li>Test methods are callable from test instance sheets, where name length and discoverability matter</li>
+<li>Users typically want the latest recommended implementations when upgrading</li>
+<li>Compatible additions (new overloads, optional parameters) can be made freely</li>
+<li>For incompatible changes, users can copy previous implementations to their own library if needed</li>
+</ul>
+<h2 id="code-architecture">Code Architecture</h2>
+<blockquote>
+<p>to be defined</p>
+</blockquote>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

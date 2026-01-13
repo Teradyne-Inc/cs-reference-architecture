@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ILib.ISetup.IDigital | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ILib.ISetup.IDigital | C# Reference Architecture ">
+      
+      <meta name="description" content="The interface for the Digital branch.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_Interfaces_ILib_ISetup_IDigital.md&amp;value=---%0Auid%3A%20Csra.Interfaces.ILib.ISetup.IDigital%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.Interfaces.ILib.ISetup.IDigital">
+
+
+
+  <h1 id="Csra_Interfaces_ILib_ISetup_IDigital" data-uid="Csra.Interfaces.ILib.ISetup.IDigital" class="text-break">
+Interface ILib.ISetup.IDigital  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L484"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a>.<a class="xref" href="Csra.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The interface for the Digital branch.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ILib.ISetup.IDigital</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_Connect_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.Connect*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_Connect_Csra_Pins_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.Connect(Csra.Pins)">
+  Connect(Pins)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L490"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Connect digital pins to the digital driver and comparator</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Connect(Pins pins)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>Pins to be connected, must contain digital pins</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_Disconnect_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.Disconnect*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_Disconnect_Csra_Pins_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.Disconnect(Csra.Pins)">
+  Disconnect(Pins)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L496"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disconnect digital pins from the digital driver and comparator</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Disconnect(Pins pins)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>Pins to be disconnected, must contain digital pins</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_FrequencyCounter_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.FrequencyCounter*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_FrequencyCounter_Csra_Pins_System_Double_Teradyne_Igxl_Interfaces_Public_FreqCtrEventSrcSel_Teradyne_Igxl_Interfaces_Public_FreqCtrEventSlopeSel_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.FrequencyCounter(Csra.Pins,System.Double,Teradyne.Igxl.Interfaces.Public.FreqCtrEventSrcSel,Teradyne.Igxl.Interfaces.Public.FreqCtrEventSlopeSel)">
+  FrequencyCounter(Pins, double, FreqCtrEventSrcSel, FreqCtrEventSlopeSel)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L505"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the digital instrument frequency counter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FrequencyCounter(Pins pins, double measureWindow, FreqCtrEventSrcSel eventSource, FreqCtrEventSlopeSel eventSlope)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>Digital pin(s) to be measured.</p>
+</dd>
+    <dt><code>measureWindow</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Time to measure the frequency.</p>
+</dd>
+    <dt><code>eventSource</code> <span class="xref">FreqCtrEventSrcSel</span></dt>
+    <dd><p>The frequency counters comparator threshold.</p>
+</dd>
+    <dt><code>eventSlope</code> <span class="xref">FreqCtrEventSlopeSel</span></dt>
+    <dd><p>The frequency counters event slope.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPins_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPins*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPins_Csra_Pins_Csra_DigitalPinsParameters_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPins(Csra.Pins,Csra.DigitalPinsParameters)">
+  ModifyPins(Pins, DigitalPinsParameters)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L538"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Selectively program or modify any digital instrument pins parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ModifyPins(Pins pins, DigitalPinsParameters parameters)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>The pins to set.</p>
+</dd>
+    <dt><code>parameters</code> <a class="xref" href="Csra.DigitalPinsParameters.html">DigitalPinsParameters</a></dt>
+    <dd><p>The object through which each parameter can be set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPins_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPins*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPins_Csra_Pins_System_Nullable_Teradyne_Igxl_Interfaces_Public_tlHSDMAlarm__System_Nullable_Teradyne_Igxl_Interfaces_Public_tlAlarmBehavior__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_Teradyne_Igxl_Interfaces_Public_ChInitState__System_Nullable_Teradyne_Igxl_Interfaces_Public_ChStartState__System_Nullable_System_Boolean__System_Nullable_System_Boolean__" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPins(Csra.Pins,System.Nullable{Teradyne.Igxl.Interfaces.Public.tlHSDMAlarm},System.Nullable{Teradyne.Igxl.Interfaces.Public.tlAlarmBehavior},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Teradyne.Igxl.Interfaces.Public.ChInitState},System.Nullable{Teradyne.Igxl.Interfaces.Public.ChStartState},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+  ModifyPins(Pins, tlHSDMAlarm?, tlAlarmBehavior?, bool?, bool?, ChInitState?, ChStartState?, bool?, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L552"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Selectively program or modify any digital instrument Pins parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ModifyPins(Pins pins, tlHSDMAlarm? alarmType = null, tlAlarmBehavior? alarmBehavior = null, bool? disableCompare = null, bool? disableDrive = null, ChInitState? initState = null, ChStartState? startState = null, bool? calibrationExcluded = null, bool? calibrationHighAccuracy = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>The pins to set.</p>
+</dd>
+    <dt><code>alarmType</code> <span class="xref">tlHSDMAlarm</span>?</dt>
+    <dd><p>Optional. Sets the alarm type for the specified pins.</p>
+</dd>
+    <dt><code>alarmBehavior</code> <span class="xref">tlAlarmBehavior</span>?</dt>
+    <dd><p>Optional. Sets the alarm behavior for the specified pins.</p>
+</dd>
+    <dt><code>disableCompare</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Disables the comparators for the specified pins</p>
+</dd>
+    <dt><code>disableDrive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Disables the drivers for the specified pins</p>
+</dd>
+    <dt><code>initState</code> <span class="xref">ChInitState</span>?</dt>
+    <dd><p>Optional. Sets the initial state of the pins</p>
+</dd>
+    <dt><code>startState</code> <span class="xref">ChStartState</span>?</dt>
+    <dd><p>Optional. Sets the start state of the pins</p>
+</dd>
+    <dt><code>calibrationExcluded</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Sets the specified pins to be excluded from job dependent calibration</p>
+</dd>
+    <dt><code>calibrationHighAccuracy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Enables or disables calibration high accuracy mode for the specified pins</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsLevels_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsLevels*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsLevels_Csra_Pins_Csra_DigitalPinsLevelsParameters_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsLevels(Csra.Pins,Csra.DigitalPinsLevelsParameters)">
+  ModifyPinsLevels(Pins, DigitalPinsLevelsParameters)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L561"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Selectively program or modify any digital instrument pins levels parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ModifyPinsLevels(Pins pins, DigitalPinsLevelsParameters parameters)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>The pins to set.</p>
+</dd>
+    <dt><code>parameters</code> <a class="xref" href="Csra.DigitalPinsLevelsParameters.html">DigitalPinsLevelsParameters</a></dt>
+    <dd><p>The object through which each parameter can be set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsLevels_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsLevels*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsLevels_Csra_Pins_System_Nullable_Teradyne_Igxl_Interfaces_Public_ChDiffPinLevel__System_Nullable_System_Double__Csra_TLibDiffLvlValType___System_Double___System_Nullable_Teradyne_Igxl_Interfaces_Public_tlDriverMode__System_Nullable_Teradyne_Igxl_Interfaces_Public_ChPinLevel__System_Nullable_System_Double__Teradyne_Igxl_Interfaces_Public_SiteDouble_Teradyne_Igxl_Interfaces_Public_PinListData_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsLevels(Csra.Pins,System.Nullable{Teradyne.Igxl.Interfaces.Public.ChDiffPinLevel},System.Nullable{System.Double},Csra.TLibDiffLvlValType[],System.Double[],System.Nullable{Teradyne.Igxl.Interfaces.Public.tlDriverMode},System.Nullable{Teradyne.Igxl.Interfaces.Public.ChPinLevel},System.Nullable{System.Double},Teradyne.Igxl.Interfaces.Public.SiteDouble,Teradyne.Igxl.Interfaces.Public.PinListData)">
+  ModifyPinsLevels(Pins, ChDiffPinLevel?, double?, TLibDiffLvlValType[], double[], tlDriverMode?, ChPinLevel?, double?, SiteDouble, PinListData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L576"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Selectively program or modify any digital instrument pins levels parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ModifyPinsLevels(Pins pins, ChDiffPinLevel? differentialLevelsType = null, double? differentialLevelsValue = null, TLibDiffLvlValType[] differentialLevelsValuesType = null, double[] differentialLevelsValues = null, tlDriverMode? levelsDriverMode = null, ChPinLevel? levelsType = null, double? levelsValue = null, SiteDouble levelsValuePerSite = null, PinListData levelsValues = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>The pins to set.</p>
+</dd>
+    <dt><code>differentialLevelsType</code> <span class="xref">ChDiffPinLevel</span>?</dt>
+    <dd><p>Optional. Sets the differential levels type for the specified pins</p>
+</dd>
+    <dt><code>differentialLevelsValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the specified differential pin level type for the specified pins</p>
+</dd>
+    <dt><code>differentialLevelsValuesType</code> <a class="xref" href="Csra.TLibDiffLvlValType.html">TLibDiffLvlValType</a>[]</dt>
+    <dd><p>Optional. Sets the differential levels values type for the specified pins</p>
+</dd>
+    <dt><code>differentialLevelsValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>Optional. Sets the specified differential pin levels values type for the specified pins</p>
+</dd>
+    <dt><code>levelsDriverMode</code> <span class="xref">tlDriverMode</span>?</dt>
+    <dd><p>Optional. Sets the driver mode for the specified pins</p>
+</dd>
+    <dt><code>levelsType</code> <span class="xref">ChPinLevel</span>?</dt>
+    <dd><p>Optional. Sets the level type for the specified pins</p>
+</dd>
+    <dt><code>levelsValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the value for the specified level type on the specified pins</p>
+</dd>
+    <dt><code>levelsValuePerSite</code> <span class="xref">SiteDouble</span></dt>
+    <dd><p>Optional. Sets the value for the specified level type for the specified pins on each site</p>
+</dd>
+    <dt><code>levelsValues</code> <span class="xref">PinListData</span></dt>
+    <dd><p>Optional. Sets the value for the specified level value for each specified site and each specified pin</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsTiming_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsTiming*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsTiming_Csra_Pins_Csra_DigitalPinsTimingParameters_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsTiming(Csra.Pins,Csra.DigitalPinsTimingParameters)">
+  ModifyPinsTiming(Pins, DigitalPinsTimingParameters)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L585"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Selectively program or modify any digital instrument pins timing parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ModifyPinsTiming(Pins pins, DigitalPinsTimingParameters parameters)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>The pins to set.</p>
+</dd>
+    <dt><code>parameters</code> <a class="xref" href="Csra.DigitalPinsTimingParameters.html">DigitalPinsTimingParameters</a></dt>
+    <dd><p>The object through which each parameter can be set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsTiming_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsTiming*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ModifyPinsTiming_Csra_Pins_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_String_System_Nullable_Teradyne_Igxl_Interfaces_Public_chEdge__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_String_System_Nullable_System_Double__System_Nullable_Teradyne_Igxl_Interfaces_Public_tlOffsetType__System_Nullable_System_Double__System_Nullable_System_Boolean__Teradyne_Igxl_Interfaces_Public_SiteLong_System_Nullable_System_Int32__Teradyne_Igxl_Interfaces_Public_SiteDouble_System_Nullable_Teradyne_Igxl_Interfaces_Public_AutoStrobeEnableSel__System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_Teradyne_Igxl_Interfaces_Public_FreqCtrEnableSel__System_Nullable_Teradyne_Igxl_Interfaces_Public_FreqCtrEventSlopeSel__System_Nullable_Teradyne_Igxl_Interfaces_Public_FreqCtrEventSrcSel__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ModifyPinsTiming(Csra.Pins,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.String,System.Nullable{Teradyne.Igxl.Interfaces.Public.chEdge},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.String,System.Nullable{System.Double},System.Nullable{Teradyne.Igxl.Interfaces.Public.tlOffsetType},System.Nullable{System.Double},System.Nullable{System.Boolean},Teradyne.Igxl.Interfaces.Public.SiteLong,System.Nullable{System.Int32},Teradyne.Igxl.Interfaces.Public.SiteDouble,System.Nullable{Teradyne.Igxl.Interfaces.Public.AutoStrobeEnableSel},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{Teradyne.Igxl.Interfaces.Public.FreqCtrEnableSel},System.Nullable{Teradyne.Igxl.Interfaces.Public.FreqCtrEventSlopeSel},System.Nullable{Teradyne.Igxl.Interfaces.Public.FreqCtrEventSrcSel},System.Nullable{System.Double})">
+  ModifyPinsTiming(Pins, double?, double?, bool?, string, chEdge?, bool?, double?, double?, string, double?, tlOffsetType?, double?, bool?, SiteLong, int?, SiteDouble, AutoStrobeEnableSel?, int?, int?, double?, double?, bool?, double?, FreqCtrEnableSel?, FreqCtrEventSlopeSel?, FreqCtrEventSrcSel?, double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L624"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Selectively program or modify any digital instrument pins timing parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ModifyPinsTiming(Pins pins, double? timingClockOffset = null, double? timingClockPeriod = null, bool? timingDisableAllEdges = null, string timingEdgeSet = null, chEdge? timingEdgeVal = null, bool? timingEdgeEnabled = null, double? timingEdgeTime = null, double? timingRefOffset = null, string timingSetup1xDiagnosticCapture = null, double? timingSrcSyncDataDelay = null, tlOffsetType? timingOffsetType = null, double? timingOffsetValue = null, bool? timingOffsetEnabled = null, SiteLong timingOffsetSelectedPerSite = null, int? timingOffsetValuePerSiteIndex = null, SiteDouble timingOffsetValuePerSiteValue = null, AutoStrobeEnableSel? autoStrobeEnabled = null, int? autoStrobeNumSteps = null, int? autoStrobeSamplesPerStep = null, double? autoStrobeStartTime = null, double? autoStrobeStepTime = null, bool? freeRunningClockEnabled = null, double? freeRunningClockFrequency = null, FreqCtrEnableSel? freqCtrEnable = null, FreqCtrEventSlopeSel? freqCtrEventSlope = null, FreqCtrEventSrcSel? freqCtrEventSource = null, double? freqCtrInterval = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>The pins to set.</p>
+</dd>
+    <dt><code>timingClockOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the offset value between a DQS bus and a DUT clock in a DDR Protocol Aware test program for
+the specified pins</p>
+</dd>
+    <dt><code>timingClockPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the current value for the period for the specified clock pins</p>
+</dd>
+    <dt><code>timingDisableAllEdges</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Disables all edges (drive and compare) for the specified pins</p>
+</dd>
+    <dt><code>timingEdgeSet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Sets the edgeset name for the specified pins</p>
+</dd>
+    <dt><code>timingEdgeVal</code> <span class="xref">chEdge</span>?</dt>
+    <dd><p>Optional. Sets the timing edge for the specified pins</p>
+</dd>
+    <dt><code>timingEdgeEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Sets the enabled state for the specified pins and timing edge</p>
+</dd>
+    <dt><code>timingEdgeTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the edge value for the specified pins and timing edge</p>
+</dd>
+    <dt><code>timingRefOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the offset value between the specified source synchronous reference (clock) pin and its data
+pins</p>
+</dd>
+    <dt><code>timingSetup1xDiagnosticCapture</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. Sets up special dual-bit diagnostic capture in CMEM fail capture (LFVM) memory using
+the 1X
+pin setup for the specified pins and Time Sets sheet name</p>
+</dd>
+    <dt><code>timingSrcSyncDataDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the strobe reference data delay for individual source synchronous data pins</p>
+</dd>
+    <dt><code>timingOffsetType</code> <span class="xref">tlOffsetType</span>?</dt>
+    <dd><p>Optional. Sets the timing offset type for the specified pins</p>
+</dd>
+    <dt><code>timingOffsetValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the timing offset value for the specified pins</p>
+</dd>
+    <dt><code>timingOffsetEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Sets the timing offset enabled state for the specified pins</p>
+</dd>
+    <dt><code>timingOffsetSelectedPerSite</code> <span class="xref">SiteLong</span></dt>
+    <dd><p>Optional. Sets the active offset index value for the specified pins on each site</p>
+</dd>
+    <dt><code>timingOffsetValuePerSiteIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. Set the timing offset index value. The valid index range is 0-7</p>
+</dd>
+    <dt><code>timingOffsetValuePerSiteValue</code> <span class="xref">SiteDouble</span></dt>
+    <dd><p>Optional. Sets the current value for the offset at a specific index location that is to be
+applied to the timing values for the specified pins on each site</p>
+</dd>
+    <dt><code>autoStrobeEnabled</code> <span class="xref">AutoStrobeEnableSel</span>?</dt>
+    <dd><p>Optional. Enable state of the AutoStrobe engine for the specified pins</p>
+</dd>
+    <dt><code>autoStrobeNumSteps</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. Sets the number of steps on the AutoStrobe engines for the specified pins</p>
+</dd>
+    <dt><code>autoStrobeSamplesPerStep</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. Sets the number of samples per step on the AutoStrobe engines for the specified
+pins</p>
+</dd>
+    <dt><code>autoStrobeStartTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the start time on the AutoStrobe engines for the specified pins</p>
+</dd>
+    <dt><code>autoStrobeStepTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the step time on the AutoStrobe engines for the specified pins</p>
+</dd>
+    <dt><code>freeRunningClockEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Sets the enable state of the free-running clock for the specified pins</p>
+</dd>
+    <dt><code>freeRunningClockFrequency</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the frequency of the free-running clock for the specified pins</p>
+</dd>
+    <dt><code>freqCtrEnable</code> <span class="xref">FreqCtrEnableSel</span>?</dt>
+    <dd><p>Optional. Sets the frequency counter’s enable state for the specified pins</p>
+</dd>
+    <dt><code>freqCtrEventSlope</code> <span class="xref">FreqCtrEventSlopeSel</span>?</dt>
+    <dd><p>Optional. Sets the frequency counter’s event slope for the specified pins</p>
+</dd>
+    <dt><code>freqCtrEventSource</code> <span class="xref">FreqCtrEventSrcSel</span>?</dt>
+    <dd><p>Optional. Sets the frequency counter’s event source for the specified pins</p>
+</dd>
+    <dt><code>freqCtrInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sets the duration of time to capture the frequency counter data for the specified pins</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ReadAll_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadAll*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ReadAll" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadAll">
+  ReadAll()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L510"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the tester to read all the vector data using HRAM.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReadAll()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ReadFails_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadFails*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ReadFails" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadFails">
+  ReadFails()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L515"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the tester to read the failing vector data using HRAM.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReadFails()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ReadHram_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadHram*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ReadHram_System_Int32_Teradyne_Igxl_Interfaces_Public_CaptType_Teradyne_Igxl_Interfaces_Public_TrigType_System_Boolean_System_Int32_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadHram(System.Int32,Teradyne.Igxl.Interfaces.Public.CaptType,Teradyne.Igxl.Interfaces.Public.TrigType,System.Boolean,System.Int32)">
+  ReadHram(int, CaptType, TrigType, bool, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L531"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the tester for HRAM read back.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReadHram(int captureLimit, CaptType captureType, TrigType triggerType, bool waitForEvent, int preTriggerCycleCount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>captureLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Maximum number of vectors to be captured</p>
+</dd>
+    <dt><code>captureType</code> <span class="xref">CaptType</span></dt>
+    <dd><p>Cycle type to be captured by HRAM, options are all, fail or stv</p>
+</dd>
+    <dt><code>triggerType</code> <span class="xref">TrigType</span></dt>
+    <dd><p>Type of trigger for capture cycles, optiona are fail, first or never</p>
+</dd>
+    <dt><code>waitForEvent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Sets whether the trigger waits for a cycle, vector or loop event</p>
+</dd>
+    <dt><code>preTriggerCycleCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of cycles to capture before the trigger cycle.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_ISetup_IDigital_ReadStoredVectors_" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadStoredVectors*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDigital_ReadStoredVectors" data-uid="Csra.Interfaces.ILib.ISetup.IDigital.ReadStoredVectors">
+  ReadStoredVectors()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L520"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the tester to read the data from vectors containing the STV statement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReadStoredVectors()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

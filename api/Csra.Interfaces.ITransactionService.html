@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ITransactionService | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ITransactionService | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_Interfaces_ITransactionService.md&amp;value=---%0Auid%3A%20Csra.Interfaces.ITransactionService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.Interfaces.ITransactionService">
+
+
+
+  <h1 id="Csra_Interfaces_ITransactionService" data-uid="Csra.Interfaces.ITransactionService" class="text-break">
+Interface ITransactionService  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a>.<a class="xref" href="Csra.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITransactionService : IServiceBase</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Csra.Interfaces.IServiceBase.html#Csra_Interfaces_IServiceBase_Reset">IServiceBase.Reset()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_Interfaces_ITransactionService_ConfigureHandler_" data-uid="Csra.Interfaces.ITransactionService.ConfigureHandler*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ConfigureHandler_Csra_Interfaces_ITransactionConfig_" data-uid="Csra.Interfaces.ITransactionService.ConfigureHandler(Csra.Interfaces.ITransactionConfig)">
+  ConfigureHandler(ITransactionConfig)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the handler for the current transaction type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ConfigureHandler(ITransactionConfig config)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>config</code> <a class="xref" href="Csra.Interfaces.ITransactionConfig.html">ITransactionConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_Execute_" data-uid="Csra.Interfaces.ITransactionService.Execute*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_Execute_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.Execute(System.String,System.String)">
+  Execute(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Execute a transaction module, pushing data from the shadow register to the DUT (without reads).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Execute(string module, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>module</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the transaction module.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_ExecuteRead_" data-uid="Csra.Interfaces.ITransactionService.ExecuteRead*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ExecuteRead__1_System_String_System_Int32_System_String_" data-uid="Csra.Interfaces.ITransactionService.ExecuteRead``1(System.String,System.Int32,System.String)">
+  ExecuteRead&lt;T&gt;(string, int, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Executes a transaction file, pushing data from the shadow register to the DUT and reading data from
+the DUT to the code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;Site&lt;T&gt;&gt; ExecuteRead&lt;T&gt;(string module, int readCount, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>module</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the module.</p>
+</dd>
+    <dt><code>readCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of results to read after execution.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<span class="xref">Site</span>&lt;T&gt;&gt;</dt>
+    <dd><p>A list of values read from the DUT during execution.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_ExpectRegisterPerSite_" data-uid="Csra.Interfaces.ITransactionService.ExpectRegisterPerSite*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ExpectRegisterPerSite__1_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Interfaces.ITransactionService.ExpectRegisterPerSite``1(System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
+  ExpectRegisterPerSite&lt;T&gt;(string, Site&lt;T&gt;, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the register matches the expected data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Site&lt;bool&gt; ExpectRegisterPerSite&lt;T&gt;(string register, Site&lt;T&gt; data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The data to be compared to the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>True if the register content matches the data.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_ExpectRegister_" data-uid="Csra.Interfaces.ITransactionService.ExpectRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ExpectRegister__1_System_String___0_System_String_" data-uid="Csra.Interfaces.ITransactionService.ExpectRegister``1(System.String,``0,System.String)">
+  ExpectRegister&lt;T&gt;(string, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads a register from the DUT and checks if the content matches the expected data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Site&lt;bool&gt; ExpectRegister&lt;T&gt;(string register, T data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">T</span></dt>
+    <dd><p>The data to be compared to the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>True if the register content matches the data.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_GetField_" data-uid="Csra.Interfaces.ITransactionService.GetField*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_GetField__1_System_String_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.GetField``1(System.String,System.String,System.String)">
+  GetField&lt;T&gt;(string, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a field from the shadow register.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Site&lt;T&gt; GetField&lt;T&gt;(string register, string field, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the field.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The value of the field.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_GetRegister_" data-uid="Csra.Interfaces.ITransactionService.GetRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_GetRegister__1_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.GetRegister``1(System.String,System.String)">
+  GetRegister&lt;T&gt;(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a register from the shadow register.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Site&lt;T&gt; GetRegister&lt;T&gt;(string register, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The content of the register.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_Init_" data-uid="Csra.Interfaces.ITransactionService.Init*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_Init_Csra_TransactionType_" data-uid="Csra.Interfaces.ITransactionService.Init(Csra.TransactionType)">
+  Init(TransactionType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the transaction service for a specific transaction type. This must be called before any other transaction methods are used.
+Multiple transaction types can be initialized, but only one can be active at a time.
+To switch the active transaction type, call Init again with the desired type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Init(TransactionType transactionType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionType</code> <a class="xref" href="Csra.TransactionType.html">TransactionType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_PullRegister_" data-uid="Csra.Interfaces.ITransactionService.PullRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_PullRegister_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.PullRegister(System.String,System.String)">
+  PullRegister(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pulls a register from the DUT to the shadow register.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PullRegister(string register, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_PushRegister_" data-uid="Csra.Interfaces.ITransactionService.PushRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_PushRegister_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.PushRegister(System.String,System.String)">
+  PushRegister(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pushes a register from the shadow register to the DUT.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PushRegister(string register, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_ReInitAll_" data-uid="Csra.Interfaces.ITransactionService.ReInitAll*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ReInitAll" data-uid="Csra.Interfaces.ITransactionService.ReInitAll">
+  ReInitAll()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets all registers to their default / init values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReInitAll()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_Interfaces_ITransactionService_ReInitAll_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method resets the state of all components, ensuring they are in their initial
+configuration.</p>
+</div>
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_ReInitRegister_" data-uid="Csra.Interfaces.ITransactionService.ReInitRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ReInitRegister_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.ReInitRegister(System.String,System.String)">
+  ReInitRegister(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets a single shadow register to it's default / init value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReInitRegister(string register, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_ReadRegister_" data-uid="Csra.Interfaces.ITransactionService.ReadRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_ReadRegister__1_System_String_System_String_" data-uid="Csra.Interfaces.ITransactionService.ReadRegister``1(System.String,System.String)">
+  ReadRegister&lt;T&gt;(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads a register from the DUT.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Site&lt;T&gt; ReadRegister&lt;T&gt;(string register, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The content of the register read from the DUT.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_RemoveHandler_" data-uid="Csra.Interfaces.ITransactionService.RemoveHandler*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_RemoveHandler_Csra_TransactionType_" data-uid="Csra.Interfaces.ITransactionService.RemoveHandler(Csra.TransactionType)">
+  RemoveHandler(TransactionType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the handler for the specified transaction type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveHandler(TransactionType transactionType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>transactionType</code> <a class="xref" href="Csra.TransactionType.html">TransactionType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_SetFieldPerSite_" data-uid="Csra.Interfaces.ITransactionService.SetFieldPerSite*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_SetFieldPerSite__1_System_String_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Interfaces.ITransactionService.SetFieldPerSite``1(System.String,System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
+  SetFieldPerSite&lt;T&gt;(string, string, Site&lt;T&gt;, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets a field in the shadow register (site-specific).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetFieldPerSite&lt;T&gt;(string register, string field, Site&lt;T&gt; data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the field.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The data to be set.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_SetField_" data-uid="Csra.Interfaces.ITransactionService.SetField*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_SetField__1_System_String_System_String___0_System_String_" data-uid="Csra.Interfaces.ITransactionService.SetField``1(System.String,System.String,``0,System.String)">
+  SetField&lt;T&gt;(string, string, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets a field in the shadow register (site-uniform).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetField&lt;T&gt;(string register, string field, T data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the field.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">T</span></dt>
+    <dd><p>The data to be set.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_SetRegisterPerSite_" data-uid="Csra.Interfaces.ITransactionService.SetRegisterPerSite*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_SetRegisterPerSite__1_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Interfaces.ITransactionService.SetRegisterPerSite``1(System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
+  SetRegisterPerSite&lt;T&gt;(string, Site&lt;T&gt;, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets a register in the shadow register (site-specific).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetRegisterPerSite&lt;T&gt;(string register, Site&lt;T&gt; data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The data to be set.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_SetRegister_" data-uid="Csra.Interfaces.ITransactionService.SetRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_SetRegister__1_System_String___0_System_String_" data-uid="Csra.Interfaces.ITransactionService.SetRegister``1(System.String,``0,System.String)">
+  SetRegister&lt;T&gt;(string, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets a register in the shadow register (site-uniform).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetRegister&lt;T&gt;(string register, T data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">T</span></dt>
+    <dd><p>The data to be set.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_WriteRegisterPerSite_" data-uid="Csra.Interfaces.ITransactionService.WriteRegisterPerSite*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_WriteRegisterPerSite__1_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Interfaces.ITransactionService.WriteRegisterPerSite``1(System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
+  WriteRegisterPerSite&lt;T&gt;(string, Site&lt;T&gt;, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes data to a register in the DUT (site-specific).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void WriteRegisterPerSite&lt;T&gt;(string register, Site&lt;T&gt; data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">Site</span>&lt;T&gt;</dt>
+    <dd><p>The data to be written to the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ITransactionService_WriteRegister_" data-uid="Csra.Interfaces.ITransactionService.WriteRegister*"></a>
+
+  <h3 id="Csra_Interfaces_ITransactionService_WriteRegister__1_System_String___0_System_String_" data-uid="Csra.Interfaces.ITransactionService.WriteRegister``1(System.String,``0,System.String)">
+  WriteRegister&lt;T&gt;(string, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Services/ITransactionService.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes data to a register in the DUT (site-uniform).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void WriteRegister&lt;T&gt;(string register, T data, string port = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>register</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the register.</p>
+</dd>
+    <dt><code>data</code> <span class="xref">T</span></dt>
+    <dd><p>The data to be written to the register.</p>
+</dd>
+    <dt><code>port</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the port to use for transaction, if empty default or first port is used.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type defined for this port.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

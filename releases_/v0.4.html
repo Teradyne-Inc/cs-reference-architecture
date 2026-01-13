@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.4 - 2025-05-09 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.4 - 2025-05-09 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/releases_/v0.4.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v04---2025-05-09">v0.4 - 2025-05-09</h1>
+
+<h2 id="breaking-changes">Breaking Changes</h2>
+<h3 id="class-renaming">Class Renaming</h3>
+<p>The class <code>SetupX</code> has been renamed to <code>Setup</code>.</p>
+<pre><code class="lang-c#">// Old class reference
+SetupX setup = new SetupX(&quot;xx&quot;);
+
+// New class reference
+Setup setup = new Setup(&quot;xx&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the new class name <code>Setup</code> instead of <code>SetupX</code>.</p>
+<h3 id="class-renaming-1">Class Renaming</h3>
+<p>The class <code>StpHdw</code> has been renamed to <code>Setting.TheHdw</code>.</p>
+<pre><code class="lang-c#">// Old class reference
+SetupX normal = new(&quot;Normal&quot;);
+normal.Add(new StpHdw.Utility.Pins.State(tlUtilBitState.Off, [&quot;K2&quot;, &quot;K3&quot;, &quot;K5&quot;, &quot;K6&quot;]));
+
+// New class reference
+Setup normal = new(&quot;Normal&quot;);
+normal.Add(new Setting.TheHdw.Utility.Pins.State(tlUtilBitState.Off, [&quot;K2&quot;, &quot;K3&quot;, &quot;K5&quot;, &quot;K6&quot;]));
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the new class name <code>Setting.TheHdw</code> instead of <code>StpHdw</code>.</p>
+<h3 id="enum-renaming">Enum Renaming</h3>
+<p>The enums <code>Feature</code> and <code>Type</code> of the Pins object has been moved outside of the Pins object and renamed to <code>InstrumentFeature</code> and <code>InstrumentType</code>.</p>
+<pre><code class="lang-c#">// Old enum reference
+var feature = Pins.Feature.Ppmu;
+var type = Pins.Type.UVS256;
+
+// New enum reference
+var feature = InstrumentFeature.Ppmu;
+var type = InstrumentType.UVS256;
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the new enum names <code>InstrumentFeature</code> and <code>InstrumentType</code> instead of <code>Feature</code> and <code>Type</code>.</p>
+<h3 id="method-renaming">Method Renaming</h3>
+<p>Services that previously had a <code>Clear</code> method have renamed it to <code>Reset</code>.
+Services that did not have a <code>Clear</code> method now have a <code>Reset</code> method.
+The <code>Reset</code> method will reset all states of the services.</p>
+<pre><code class="lang-c#">// Old method reference
+service.Clear();
+
+// New method reference
+service.Reset();
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to use the <code>Reset</code> method for all services.</p>
+<h3 id="method-renaming-1">Method Renaming</h3>
+<p>The method <code>ApplyLevelsTiming</code> has been split into two methods named <code>LevelsAndTiming.Apply</code> and <code>LevelsAndTiming.ApplyWithPinStates</code>.</p>
+<pre><code class="lang-c#">// Old method reference
+TheLib.ApplyLevelsTiming(xxx);
+
+// New method reference
+TheLib.LevelsAndTiming.ApplyWithPinStates(xxx);
+TheLib.LevelsAndTiming.Apply(xxx);
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the new method name <code>ApplyWithPinStates</code> or <code>Apply</code> instead of <code>ApplyLevelsTiming</code>.</p>
+<h3 id="namespace-renaming">Namespace Renaming</h3>
+<p>The namespace <code>ReferenceArchitecture</code> has been renamed to <code>Csra</code>.</p>
+<pre><code class="lang-c#">// Old namespace reference
+using static ReferenceArchitecture.V1.Api;
+
+// New namespace reference
+using static Csra.V1.Api;
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the new namespace <code>Csra</code> instead of <code>ReferenceArchitecture</code>. The IG-XL instance sheet needs to be updated as well to use <code>Csra</code>.</p>
+<h3 id="parameter-update">Parameter Update</h3>
+<p>The method <code>Connect</code> now has a parameter <code>gateOn</code> with a default value of <code>true</code> and <code>Disconnect</code> has a parameter <code>gateOff</code> with a default value of <code>true</code> instead of a nullable parameter.</p>
+<pre><code class="lang-c#">// Old method signatures
+TheLib.Setup.Dc.Connect(Pins pins, bool? gateOn = null);
+TheLib.Setup.Dc.Disconnect(Pins pins, Boolean? gateOn = null);
+
+// New method signatures with default parameter value
+TheLib.Setup.Dc.Connect(Pins pins, bool gateOn = true);
+TheLib.Setup.Dc.Disconnect(Pins pins, bool gateOff = true);
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to handle the <code>gateOff</code> and <code>gateOn</code> parameter as a non-nullable boolean, which defaults to true.</p>
+<h3 id="project-renaming">Project Renaming</h3>
+<p>The C# project has been renamed from ADU to Demo.</p>
+<pre><code class="lang-c#">// Old project reference
+using ADU;
+
+// New project reference
+using Demo;
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their project references and namespaces from ADU to Demo to ensure compatibility with the new project structure.</p>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<h3 id="dcvi-instrument-voltage-clamp-setting">DCVI Instrument Voltage Clamp Setting</h3>
+<p>Fixed an issue where the clamp setting for a DCVI instrument was missing. The fix ensures that the clamp setting is now correctly applied.</p>
+<p><strong>Impact:</strong> Users can now correctly set the clamp for the instrument, ensuring proper functionality and preventing potential errors.</p>
+<h3 id="dcvs-instrument-sink-limit-restrictions">DCVS Instrument Sink Limit restrictions</h3>
+<p>Fixed an issue where it was possible to set the DCVS instrument outside of its sink limits. The fix ensures that values are now clamped at the maximum limits.</p>
+<p><strong>Impact:</strong> Users can no longer set the DCVS instrument to values outside of its defined limits, ensuring proper functionality and preventing potential errors.</p>
+<h3 id="initialization-timing-in-drivermode">Initialization Timing in DriverMode</h3>
+<p>Fixed an issue where the value in the setting <code>Setting.TheHdw.Digital.Pins.Levels.DriverMode</code> was incorrectly initialized at <code>Creation</code> time instead of during a <code>OnProgramStarted</code> event. This change ensures the value now accurately reflects the hardware behavior.</p>
+<p><strong>Impact:</strong> Users do not need to take any action. The fix ensures the value initialization now correctly aligns with the hardware behavior, eliminating potential timing issues.</p>
+<h3 id="referencearchitecture-properties">ReferenceArchitecture Properties</h3>
+<p>Fixed an issue where the ReferenceArchitecture has copied the IG-XL dll locally instead of using the IGXLROOT environment variable, as Teradyne suggests.</p>
+<p><strong>Impact:</strong> Users do not need to set the property manually to false.</p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="default-value-change">Default Value Change</h3>
+<p>The default value of the <code>RespectSettlingTimeDefault</code> property of the <code>SetupService</code> has been change from <code>true</code> to <code>false</code>. This change eliminates potential wait time between calls, reducing timing issues.</p>
+<p><strong>Impact:</strong> Users need to be aware of the change in default behavior, which now avoids potential timing issues by not adding wait time between calls.</p>
+<h3 id="method-addition">Method Addition</h3>
+<p>A new method <code>SetForceAndMeter</code> has been added to consolidate the functionality of <code>SetForce</code> and <code>SetMeter</code>.</p>
+<pre><code class="lang-c#">// Old method calls
+TheLib.Setup.Dc.ForceI(Pins pins, double forceCurrent, double? clampVoltage = null);
+// or 
+TheLib.Setup.Dc.ForceV(Pins pins, double forceVoltage, double? clampCurrent = null);
+TheLib.Setup.Dc.SetMeter(Pins pins, Measure meterMode, double rangeValue, double? filterValue = null, int? hardwareAverage = null, double? outputRangeValue = null);
+
+// New method call
+TheLib.Setup.Dc.SetForceAndMeter(Pins pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue, Measure meterMode, double measureRange);
+</code></pre>
+<p><strong>Impact:</strong> Users can now use the <code>SetForceAndMeter</code> method for convenience, while the existing <code>SetForce</code> and <code>SetMeter</code> methods remain available.</p>
+<h3 id="mock-injection-support">Mock Injection Support</h3>
+<p>Added functionality to enable mock injection, allowing users to write unit tests for their code using C#RA. This feature supports mocking <code>TheLib</code>, <code>AlertService</code>, <code>SetupService</code>, <code>StorageService</code>.</p>
+<pre><code class="lang-c#">// bla
+SetupCsraMoq(ILib lib = null, IAlertService alert = null, IStorageService storage = null, ISetupService setup = null)
+
+// Example of mock injection
+var mockTheLib = new Mock&lt;ITheLib&gt;();
+SetupCsraMoq(mockTheLib.Object);
+
+TheLib.Setup.Dc.Connect(pins, true);
+mockTheLib.Verify(lib =&gt; lib.Setup.Dc.Connect(pins,true), Times.Once);
+</code></pre>
+<p><strong>Impact:</strong> Users can now easily create mock objects for unit testing, enhancing their ability to write comprehensive unit tests and improving test coverage and reliability of their code.</p>
+<h3 id="new-setting-support">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvi.Pins.ComplianceRange_Negative</code> and <code>TheHdw.Dcvi.Pins.ComplianceRange_Positive</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.ComplianceRange_Negative(-2, [&quot;pinName&quot;]));
+example.Add(new Setting.TheHdw.Dcvi.Pins.ComplianceRange_Positive(1, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-1">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvs.Pins.BleederResistor</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvs.Pins.BleederResistor(tlDCVSOnOffAuto.On, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-2">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.DriverMode</code> settings that can be used to configure the device.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.DriverMode(tlDriverMode.HiZ, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-3">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Ioh</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Ioh(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-4">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Iol</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Iol(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-5">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Vch</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Vch(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-6">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Vcl</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Vcl(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-7">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Vih</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Vih(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-8">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Vil</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Vil(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-9">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Voh</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Voh(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-10">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Vol</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Vol(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-11">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Digital.Pins.Levels.Value_Vt</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Digital.Pins.Levels.Value_Vt(0.3, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="setupservice-customer-setting">SetupService Customer Setting</h3>
+<p>The <code>SetupService</code> now supports customers in setting up their own settings.</p>
+<p><strong>Impact:</strong> Users can now customize their settings using the <code>SetupService</code>, providing greater flexibility and control.</p>
+<h3 id="string-handling">String Handling</h3>
+<p>The apply-method of the SetupService now supports a comma-separated list as a string, in addition to a normal string.</p>
+<pre><code class="lang-c#">// Old method calls
+SetupService.Apply(&quot;setup1&quot;);
+SetupService.Apply(&quot;setup2&quot;);
+
+// New method call
+SetupService.Apply(&quot;setup1, setup2&quot;); // valid
+</code></pre>
+<p><strong>Impacts:</strong> Users can now pass a comma-separated list to the method, allowing for more flexible data handling.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

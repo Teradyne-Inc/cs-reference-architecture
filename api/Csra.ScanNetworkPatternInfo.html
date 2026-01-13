@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ScanNetworkPatternInfo | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ScanNetworkPatternInfo | C# Reference Architecture ">
+      
+      <meta name="description" content="Class to store ScanNetwork information about a ScanNetwork pattern(set).">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_ScanNetworkPatternInfo.md&amp;value=---%0Auid%3A%20Csra.ScanNetworkPatternInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.ScanNetworkPatternInfo">
+
+
+
+  <h1 id="Csra_ScanNetworkPatternInfo" data-uid="Csra.ScanNetworkPatternInfo" class="text-break">
+Class ScanNetworkPatternInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Class to store ScanNetwork information about a ScanNetwork pattern(set).</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class ScanNetworkPatternInfo</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ScanNetworkPatternInfo</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Csra_ScanNetworkPatternInfo__ctor_" data-uid="Csra.ScanNetworkPatternInfo.#ctor*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo__ctor_Teradyne_Igxl_Interfaces_Public_Pattern_" data-uid="Csra.ScanNetworkPatternInfo.#ctor(Teradyne.Igxl.Interfaces.Public.Pattern)">
+  ScanNetworkPatternInfo(Pattern)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L331"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Construct a new <a class="xref" href="Csra.ScanNetworkPatternInfo.html">ScanNetworkPatternInfo</a> object and load the specified pattern(set).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanNetworkPatternInfo(Pattern patternSetName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>patternSetName</code> <span class="xref">Pattern</span></dt>
+    <dd><p>Specifies the ScanNetwork pattern(set) to load. This can be the name of a pattern file or a pattern set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo__ctor_" data-uid="Csra.ScanNetworkPatternInfo.#ctor*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo__ctor_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_" data-uid="Csra.ScanNetworkPatternInfo.#ctor(Teradyne.Igxl.Interfaces.Public.Pattern,System.String)">
+  ScanNetworkPatternInfo(Pattern, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L323"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Construct a new <a class="xref" href="Csra.ScanNetworkPatternInfo.html">ScanNetworkPatternInfo</a> object and load the specified pattern(set).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanNetworkPatternInfo(Pattern patternSetName, string concatenatedPatternCsvFileName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>patternSetName</code> <span class="xref">Pattern</span></dt>
+    <dd><p>Specifies the ScanNetwork pattern(set) to load. This can be the name of a pattern file or a pattern set.</p>
+</dd>
+    <dt><code>concatenatedPatternCsvFileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Specifies the Csv file that comes with the concatenated(set+payload+end) ScanNetwork pattern.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo__ctor_" data-uid="Csra.ScanNetworkPatternInfo.#ctor*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo__ctor_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_System_String_" data-uid="Csra.ScanNetworkPatternInfo.#ctor(Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.String)">
+  ScanNetworkPatternInfo(Pattern, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Construct a new <a class="xref" href="Csra.ScanNetworkPatternInfo.html">ScanNetworkPatternInfo</a> object and load the specified pattern(set).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanNetworkPatternInfo(Pattern patternSetName, string setupPatternCsvFileName, string endPatternCsvFileName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>patternSetName</code> <span class="xref">Pattern</span></dt>
+    <dd><p>Specifies the ScanNetwork pattern(set) to load. This can be the name of a pattern file or a pattern set.</p>
+</dd>
+    <dt><code>setupPatternCsvFileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Specifies the Csv file that comes with the ScanNetwork_setup pattern.</p>
+</dd>
+    <dt><code>endPatternCsvFileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Specifies the Csv file that comes with the ScanNetwork_end pattern</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Csra_ScanNetworkPatternInfo_CoreInstance_" data-uid="Csra.ScanNetworkPatternInfo.CoreInstance*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_CoreInstance" data-uid="Csra.ScanNetworkPatternInfo.CoreInstance">
+  CoreInstance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>[<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/readonly">readonly</a>] The dictionary that contains the names of all the cores that are tested in this pattern,
+and the names of icl instances under each core instance.<br>
+The key of the dictionary is the name of the core instance
+and the value is the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> of icl instances that belong to the core.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, List&lt;string&gt;&gt; CoreInstance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_IclInstance_" data-uid="Csra.ScanNetworkPatternInfo.IclInstance*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_IclInstance" data-uid="Csra.ScanNetworkPatternInfo.IclInstance">
+  IclInstance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>[<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/readonly">readonly</a>] The dictionary that contains the information of every ICL instance that are tested in this pattern.<br>
+The key is the name of the ICL instance and the value is the associated SshIclInstanceInfo object
+that contains all the configuration and attributes of that ICL instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, IclInstanceInfo&gt; IclInstance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Csra.IclInstanceInfo.html">IclInstanceInfo</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_PatternSetName_" data-uid="Csra.ScanNetworkPatternInfo.PatternSetName*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_PatternSetName" data-uid="Csra.ScanNetworkPatternInfo.PatternSetName">
+  PatternSetName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>[<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/readonly">readonly</a>] The name of the pattern(set) in IGXL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PatternSetName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_ScanNetworkMapping_" data-uid="Csra.ScanNetworkPatternInfo.ScanNetworkMapping*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_ScanNetworkMapping" data-uid="Csra.ScanNetworkPatternInfo.ScanNetworkMapping">
+  ScanNetworkMapping
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>[<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/readonly">readonly</a>] The name of the ScanNetwork map file(csv).
+This name is used for masking certain time slots on scan out pins by applying TesterCompare Masks.
+TesterCompare related methods are all under: <code>TheHdw.Digital.ScanNetwork[ScanNetworkMapping]</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ScanNetworkMapping { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_SetupPatternFileName_" data-uid="Csra.ScanNetworkPatternInfo.SetupPatternFileName*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_SetupPatternFileName" data-uid="Csra.ScanNetworkPatternInfo.SetupPatternFileName">
+  SetupPatternFileName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>[<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/readonly">readonly</a>] The name of the pattern file that contains the contribution bits.
+This pattern will be modified during OCComp Diagnosis reburst.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SetupPatternFileName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_ScanNetworkPatternInfo_ClearAllDisableContributionBits_" data-uid="Csra.ScanNetworkPatternInfo.ClearAllDisableContributionBits*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_ClearAllDisableContributionBits" data-uid="Csra.ScanNetworkPatternInfo.ClearAllDisableContributionBits">
+  ClearAllDisableContributionBits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L518"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears all disable_contribution_bits, resetting the state to its default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearAllDisableContributionBits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_ScanNetworkPatternInfo_ClearAllDisableContributionBits_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method affects the internal state by removing any flags that disable
+contributions. It should be used when a full reset of contribution settings is required.</p>
+</div>
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_EnableAllContribution_" data-uid="Csra.ScanNetworkPatternInfo.EnableAllContribution*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_EnableAllContribution" data-uid="Csra.ScanNetworkPatternInfo.EnableAllContribution">
+  EnableAllContribution()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L524"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;EnableAllContribution is deprecated. Use ClearAllDisableContributionBits instead.&quot;)]
+public void EnableAllContribution()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_ExecuteDiagnosisCoresConcurrent_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteDiagnosisCoresConcurrent*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_ExecuteDiagnosisCoresConcurrent_Csra_ScanNetworkPatternResults_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteDiagnosisCoresConcurrent(Csra.ScanNetworkPatternResults)">
+  ExecuteDiagnosisCoresConcurrent(ScanNetworkPatternResults)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L452"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Execute diagnosis rebursts for failed cores concurrently until all failed cores are diagnosed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteDiagnosisCoresConcurrent(ScanNetworkPatternResults nonDiagnosisResults)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nonDiagnosisResults</code> <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_ExecuteDiagnosisCoresSequential_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteDiagnosisCoresSequential*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_ExecuteDiagnosisCoresSequential_Csra_ScanNetworkPatternResults_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteDiagnosisCoresSequential(Csra.ScanNetworkPatternResults)">
+  ExecuteDiagnosisCoresSequential(ScanNetworkPatternResults)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Execute diagnosis rebursts for failed cores sequentially until all failed cores are diagnosed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteDiagnosisCoresSequential(ScanNetworkPatternResults nonDiagnosisResults)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>nonDiagnosisResults</code> <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_ExecuteDiagnosisReburst_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteDiagnosisReburst*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_ExecuteDiagnosisReburst_System_Boolean_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteDiagnosisReburst(System.Boolean)">
+  ExecuteDiagnosisReburst(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L486"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteDiagnosisReburst(bool debugWriteComment = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>debugWriteComment</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_ExecuteNonDiagnosisBurst_" data-uid="Csra.ScanNetworkPatternInfo.ExecuteNonDiagnosisBurst*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_ExecuteNonDiagnosisBurst" data-uid="Csra.ScanNetworkPatternInfo.ExecuteNonDiagnosisBurst">
+  ExecuteNonDiagnosisBurst()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L369"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Execute the ScanNetwork pattern(set) in non-diagnosis mode with reburst until no more reburst is needed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteNonDiagnosisBurst()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_GetScanNetworkPatternResults_" data-uid="Csra.ScanNetworkPatternInfo.GetScanNetworkPatternResults*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_GetScanNetworkPatternResults" data-uid="Csra.ScanNetworkPatternInfo.GetScanNetworkPatternResults">
+  GetScanNetworkPatternResults()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L394"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a> object that contains the test results of the latest execution of this pattern.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanNetworkPatternResults GetScanNetworkPatternResults()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a></dt>
+    <dd><p>A <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a> object that contains the test results of the latest execution of this pattern.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_MuteAllExcept_" data-uid="Csra.ScanNetworkPatternInfo.MuteAllExcept*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_MuteAllExcept_Teradyne_Igxl_Interfaces_Public_Site_System_Collections_Generic_List_System_String___System_Boolean_" data-uid="Csra.ScanNetworkPatternInfo.MuteAllExcept(Teradyne.Igxl.Interfaces.Public.Site{System.Collections.Generic.List{System.String}},System.Boolean)">
+  MuteAllExcept(Site&lt;List&lt;string&gt;&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L533"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets all disable_contribution_bits except for those icl-instances specified in the contributingSshList parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MuteAllExcept(Site&lt;List&lt;string&gt;&gt; contributingSshList, bool debugWriteComment = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>contributingSshList</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>(Per site)List of ssh instances that should remain 'contributing' for diagnosis.</p>
+</dd>
+    <dt><code>debugWriteComment</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>For debug use</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_SetAllDisableContributionBits_" data-uid="Csra.ScanNetworkPatternInfo.SetAllDisableContributionBits*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_SetAllDisableContributionBits" data-uid="Csra.ScanNetworkPatternInfo.SetAllDisableContributionBits">
+  SetAllDisableContributionBits()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L507"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets all disable_contribution_bits in the ScanNetwork_setup pattern, disabling all OnChipCompare icl-instances from contributing to the ScanNetwork
+bus output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAllDisableContributionBits()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_SetupDiagnosisForCore_" data-uid="Csra.ScanNetworkPatternInfo.SetupDiagnosisForCore*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_SetupDiagnosisForCore_Teradyne_Igxl_Interfaces_Public_Site_System_Collections_Generic_List_System_String___System_Boolean_" data-uid="Csra.ScanNetworkPatternInfo.SetupDiagnosisForCore(Teradyne.Igxl.Interfaces.Public.Site{System.Collections.Generic.List{System.String}},System.Boolean)">
+  SetupDiagnosisForCore(Site&lt;List&lt;string&gt;&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L466"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Prepare the instrument for diagnosis of specified cores: Mask non-relevant ssh-icl-instances; Set disable contribution bits for non-relevant OCComp icl-instances.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetupDiagnosisForCore(Site&lt;List&lt;string&gt;&gt; coreList, bool debugWriteComment = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>coreList</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>debugWriteComment</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternInfo_SetupNonDiagnosisBurst_" data-uid="Csra.ScanNetworkPatternInfo.SetupNonDiagnosisBurst*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternInfo_SetupNonDiagnosisBurst" data-uid="Csra.ScanNetworkPatternInfo.SetupNonDiagnosisBurst">
+  SetupNonDiagnosisBurst()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Prepare the instrument for non-diagnosis burst: Mask representative ssh instances; Enable all contribution bits; Set CMEM to capture sticky bits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetupNonDiagnosisBurst()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

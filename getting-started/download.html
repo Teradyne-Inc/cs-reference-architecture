@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Download &amp; Extract | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Download &amp; Extract | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/getting-started/download.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="download--extract">Download &amp; Extract</h1>
+
+<p>To begin using the C#RA library, you'll first need to download and extract the package. This package includes the core source code, a demo project to help you get started quickly, and offline documentation for reference. Follow the steps below to set up your environment.</p>
+<ul>
+<li>Visit the <a href="https://eknowledge.teradyne.com/wps/portal/eknowledge/?urile=wcm:oid:93c75fc8-9c34-4034-9d98-c0554d835fc8">C#RA page</a> on eKnowledge.</li>
+<li>Download the latest C#RA package.</li>
+<li>Unzip the contents to a location of your choice.</li>
+</ul>
+<h2 id="content-of-the-zip">Content of the ZIP:</h2>
+<pre><code>└── 📁Csra # Source code of the library
+└── 📁Demo # Sample project demonstrating usage
+└── 📁docs # Offline HTML documentation
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You can create a Git repository for the <code>Csra</code> folder and link it as a submodule in your main project repository.</p>
+</div>
+<h2 id="demo-project">Demo Project</h2>
+<p>For reference purpose a demo project is part of the release package. It shows how to use a <code>TestMethod</code> or a <code>TestBlock</code> from a 3rd party project.</p>
+<pre><code>└── 📁Demo
+   └── 📁ASCIIProgram # IG-XL files
+   └── 📁Demo_CS # Sample project demonstrating c# usage without C#RA
+   └── 📁Demo_CS_DSP # Sample project demonstrating c# dsp usage without C#RA
+   └── 📁Demo_CSRA # Sample project demonstrating c# usage with C#RA
+   └── 📁Patterns # Pattern files
+   ├── _LoadDemoProgram.cmd # Generate Visual Studio Solution and loads IG-XL via IGLinkCL
+   ├── Demo.igxlProj # IG-XL project
+   └── SimulatedConfig.txt # For simulating purposes
+</code></pre>
+<p>To start IG-XL, just click on the <code>_LoadDemoProgram.cmd</code> file. Once IG-XL is started, open <code>Datalog</code> window and hit <code>Validate Job</code> and <code>Run</code> at the <code>IG-XL Main</code> tab.</p>
+<p>To debug the Test Program, click <code>Visual Studio</code> (Connected Mode) at the <code>IG-XL Tools</code> tab. Once Visual Studio is up, add breakpoints and hit <code>Run</code> again.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

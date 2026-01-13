@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.5 - 2025-06-02 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.5 - 2025-06-02 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/releases_/v0.5.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v05---2025-06-02">v0.5 - 2025-06-02</h1>
+
+<h2 id="breaking-changes">Breaking Changes</h2>
+<h3 id="update-outputmode-for-forcev-and-forcei-methods">Update outputMode for ForceV and ForceI methods</h3>
+<p>For the ForceV and ForceI methods, outputMode has been modified to use the Bool type instead of TLibOutputMode.</p>
+<p>Explanation: Allowing settings such as &quot;ForceCurrent&quot; or &quot;HighImpedance&quot; in ForceV calls does not make sense. Now, switching to ForceVoltage is permitted, or the output mode change can be omitted if it was previously set, adjusting only the voltage. A similar behavior occurs in the ForceI method.</p>
+<h3 id="enums-moving">Enums Moving</h3>
+<p>The enums <code>Kelvin</code>, <code>Measure</code>, <code>TLibOutputMode</code> has been moved from <code>Csra</code> to <code>Csra.V1</code> namespace.</p>
+<pre><code class="lang-c#">// Old namespace reference
+using Csra;
+
+// New namespace reference
+using Csra.V1;
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the namespace <code>Csra.V1</code> instead of <code>Csra</code> when using those enums.</p>
+<h3 id="interface-moving">Interface Moving</h3>
+<p>The interface <code>ISetting</code> has been moved from <code>Csra</code> to <code>Csra.V1</code> namespace.</p>
+<pre><code class="lang-c#">// Old namespace reference
+using Csra;
+
+// New namespace reference
+using Csra.V1;
+</code></pre>
+<p><strong>Impact:</strong> Users need to update their code to reference the namespace <code>Csra.V1</code> instead of <code>Csra</code> when using the <code>ISetting</code> interface.</p>
+<h3 id="support-pingroups">Support Pingroups</h3>
+<p>The <code>SetupService</code> now supports pingroups.</p>
+<pre><code class="lang-c#">// Example of usage
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior(tlDCVIFoldCurrentLimitBehavior.GateOff, &quot;pinName&quot;));
+
+Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior.SetCache(tlDCVIFoldCurrentLimitBehavior.GateOff, &quot;pinName&quot;);
+</code></pre>
+<p><strong>Impact:</strong> The syntax for instantiating new settings has slightly changed. Instead of a 'List<string>' of pins, now a single string as comma separated list is used. The string can contain single pins as well as pingroups. This syntax change also affects the 'SetCache()' method of each setting.</string></p>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<h3 id="adding-forced-value-to-datalog">Adding Forced Value to Datalog</h3>
+<p>Parametric datalog did not show ForeValue - fixed.</p>
+<h3 id="bug-fix-for-current-range-application">Bug fix for current range application</h3>
+<p>The current value setting for DCVS depends on the current range value, which was omitted when using the Force method. In the ForceV and ForceI methods, it is included as an optional parameter.
+However, through the Force method, it cannot set the range value. Modifications have been made so that the range value is always applied without altering the method structure or its call.</p>
+<h3 id="checking-if-pinlist-is-null-or-empty-in-singlecondition-and-multicondition">Checking if PinList is null or empty in SingleCondition and MultiCondition.</h3>
+<p>The condition has been modified to check whether PinList  is empty or null in these blocks.</p>
+<h3 id="fixing-the-duplicate-forcevoltage-error-and-missing-forcehiz-in-switch">Fixing the duplicate ForceVoltage error and missing ForceHiZ in switch</h3>
+<p>An error was identified in the switch logic used to separate ForceVoltage, ForceCurrent, and ForceHiZ, where ForceHiZ was not correctly included, and ForceVoltage appeared twice. The modification resolves this issue by correcting the switch branching, ensuring the proper distribution of values.</p>
+<h3 id="remove-startstate-assignments-in-levelsandtimingapplywithpinstates">Remove <code>StartState</code> Assignments in <code>.LevelsAndTiming.ApplyWithPinStates</code></h3>
+<p>Assignments to <code>StartState</code> have been removed for all pin groups (<code>initPinsHi</code>, <code>initPinsLo</code>, and <code>initPinsHiZ</code>). The method now only sets the <code>InitState</code>, aligning with the intended behavior described in the documentation.</p>
+<h3 id="setuplevelsandtimingapplywithpinstates-now-programs-inits-states-before-ramping-levels-up-or-down">Setup.LevelsAndTiming.ApplyWithPinStates now programs inits states before ramping levels up or down</h3>
+<p><strong>Impact:</strong>
+ApplyRepeatableSequences uses the init states to determine if levels are powered up or down
+ApplyWithPinStates() now prorams the init states before the levels are being ramped up or down.
+This change will only be visible for the parameter &quot;levelRampSequence = True&quot;</p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="add-testblocks-for-search">Add TestBlocks for Search</h3>
+<p>Generic test blocks to allow building test methods for search &amp; trim, using linear full, linear stop or binary search algorithms.</p>
+<pre><code class="lang-c#">if (ShouldRunBody) {
+    TheLib.Setup.Dc.ForceV(_inputPins, voltageFrom);
+    TheLib.Setup.Dc.ForceHiZ(_outputPins);
+    double increment = TheLib.Acquire.Search.LinearFullFromToSteps&lt;double&gt;(voltageFrom, voltageTo, stepCount, ForceAndRead);
+    _tripVoltage = TheLib.Execute.Search.LinearFullProcess(measurements, voltageFrom, increment, 0, -999, m =&gt; m &gt; outputThreshold);
+} 
+
+void ForceAndRead(double inValue) {
+    TheLib.Setup.Dc.ForceV(_inputPins, inValue);
+    TheHdw.SettleWait(stepSettleTime);
+    measurements.Add(TheLib.Acquire.Dc.Measure(_outputPins));
+}
+</code></pre>
+<p><strong>Impact:</strong> New functionality for integrated and performance optimized search and trim tests.</p>
+<h3 id="implementation-of-the-modify-test-block">Implementation of the 'Modify()' test block</h3>
+<p>A new test block <strong>TheLib.Setup.DC.Modify()</strong> has been implemented, allowing the incremental modification of DC instrument properties.</p>
+<pre><code class="lang-c#">
+    private DcParameters _modifySettings;
+
+    [TestMethod, Steppable, CustomValidation]
+    public void Baseline(PinList pinList,..., double clampHi, double clampLo, double bandwidthSetting) {
+
+        if (TheExec.Flow.IsValidating) {
+            _modifySettings = new DcParameters() {
+                ClampHiV = clampHi,
+                ClampLoV = clampLo,
+                BandwidthSet = bandwidthSetting
+            };
+        }
+
+        if (ShouldRunBody) {
+            TheLib.Setup.Dc.Modify(_pins, _modifySettings);
+        }
+    }
+</code></pre>
+<p><strong>Impact:</strong> The user has the ability to modify a series of properties in accordance with the necessary settings in the test block.</p>
+<h3 id="new-setting-support">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvi.Pins.BleederResistor.CurrentLoad</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.BleederResistor.CurrentLoad(0.01, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-1">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvi.Pins.BleederResistor.Mode</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.BleederResistor.Mode(tlDCVIBleederResistor.Auto, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-2">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Behavior(tlDCVIFoldCurrentLimitBehavior.GateOff, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-3">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvi.Pins.FoldCurrentLimit.Timeout</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit.Timeout(0.2, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-4">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvi.Pins.NominalBandwidth</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvi.Pins.NominalBandwidth(10, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-5">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.Level</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit.Level(0.01, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-6">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.Level</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.OverloadLimit.Level(0.01, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-7">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.Level</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit.Level(0.01, [&quot;pinName&quot;]));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-8">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.SetSettlingTimer</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.SetSettlingTimer(0.1));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="new-setting-support-9">New Setting Support</h3>
+<p>The <code>SetupService</code> now supports <code>TheHdw.SettleWait</code> settings that can be used to configure the instruments.</p>
+<pre><code class="lang-c#">// Example of using the new setting
+Setup example = new(&quot;Normal&quot;);
+example.Add(new Setting.TheHdw.SettleWait(0.1));
+SetupService.Add(example);
+SetupService.Apply(&quot;Normal&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can now utilize the new setting to customize the <code>SetupService</code> according to their needs.</p>
+<h3 id="testmethod-added">TestMethod Added</h3>
+<p><code>Linear</code> and <code>LinearFull</code> TestMethod has been added.</p>
+<p>Impact: Users can now use the Search.Linear or Search.LinearFull at the TestInstance sheet.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

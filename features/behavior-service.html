@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Behavior Service | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Behavior Service | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/behavior-service.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="behavior-service">Behavior Service</h1>
+
+<p>Test programs often reflect a wide range of expectations, habits, and preferences — varying not only between teams, but sometimes even between individuals. What feels &quot;right&quot; for one group might be suboptimal or even undesirable for another. There isn’t always a single &quot;correct&quot; or &quot;preferred&quot; way — sometimes, the only solution is to support multiple flavors.</p>
+<p>Such behaviors typically have a global scope: they remain consistent throughout the lifetime of a test program. They should be configurable from the outside, without requiring changes to source code — both to protect against unintended side effects and to comply with qualification and auditing standards. Think of a behavior selection as a kind of &quot;Run Mode Option&quot; or &quot;User Preference&quot; — chosen once, respected throughout, and changed only when explicitly stated.</p>
+<p><a href="behavior-service/behavior-service_features.html">A list of all implemented <strong>BehaviorService</strong> features can be found here.</a></p>
+<h2 id="ig-xl-options">IG-XL Options</h2>
+<p>IG-XL does not natively provide a single, central &amp; common behavior chooser model. Settings - even system-wide - are distributed in multiple different places:</p>
+<ul>
+<li>language APIs (<code>PinListData.GlobalSort</code>, ...)</li>
+<li>assembly attributes (<code>[assembly: RunDspGenerateLegacy]</code>, ...)</li>
+<li>turd files (<code>*.dlex</code>, ...)</li>
+<li>RunOptions (DoAll, ...)</li>
+<li>IG-XL Settings (Waveform Display defaults, ...)</li>
+<li>Oasis (Offline Response Engine, ...)</li>
+<li>EnableWords (for custom, runtime only settings)</li>
+<li>...</li>
+</ul>
+<p>None of these options provide a satisfying model for C#RA specific behavior selection, as they are either not user-extensible or sufficiently capable for the requirements.</p>
+<h2 id="use-cases">Use Cases</h2>
+<p>As the C#RA and it's user base grows, requests for alternative use models are voiced. To date, the following have been captured:</p>
+<ul>
+<li>Parametric Datalogging: use offline readings from drivers vs. send always passing (halfway between limits) values</li>
+<li>FlowLimits vs. LimitSets</li>
+<li>PortBridge vs. no PortBridge</li>
+<li>the use of PatternTags</li>
+<li>AuditMode for SetupService</li>
+<li>Profiling data collection</li>
+<li>Telemetry data collection</li>
+</ul>
+<p>It is expected that the BehaviorService can help in all of these cases. In some areas however, additional functionality may be required, specifically when there's design-time dependencies that need to be respected, like the conditional referencing for external libraries like PortBridge.</p>
+<h2 id="use-model">Use model</h2>
+<p>As all the other Services in C#RA BehaviorService is centrally available for all test code to interact with stored information. To facilitate Behavior selection the service allows specific <strong>values</strong> to be stored, updated and retrieved for arbitrary <strong>features</strong>. These features can be considered the keys in a dictionary, which supports a strictly typed use model for an exclusive (but extensible) list of data types.</p>
+<h3 id="coupling--dependencies--defaults">Coupling / Dependencies &amp; Defaults</h3>
+<p>The proposed use model limits coupling to a minimum and avoids dependencies by using string based keys for the features.</p>
+<pre><code class="lang-cs">Services.Behavior.SetFeature(&quot;MaxRetries&quot;, 5);
+Services.Behavior.SetFeature(&quot;Timeout&quot;, 30.0);
+Services.Behavior.SetFeature(&quot;EnableLogging&quot;, true);
+Services.Behavior.SetFeature(&quot;ApiEndpoint&quot;, &quot;https://api.example.com&quot;);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Using the <code>.SetFeature()</code> method will add that feature entry if it didn't exist, or overwrite the previously stored value. To find out if a certain feature has already been defined, use the <code>IEnumerable Features</code> property, which allows to access the entire collection of keys with LINQ methods like <code>.Contains()</code>, <code>.Count()</code> and more.</p>
+</div>
+<p>All clients of the BehaviorService must implement the concept of a preferred default, which is used if a feature is not defined. The service will in that case return the default for the data type, which must be correctly handled.</p>
+<pre><code class="lang-cs">Console.WriteLine($&quot;max retries: {Services.Behavior.GetFeature&lt;int&gt;(&quot;MaxRetries&quot;)}&quot;);
+Console.WriteLine($&quot;hallway lights on: {Services.Behavior.GetFeature&lt;bool&gt;(&quot;HallwayLightsOn&quot;)}&quot;);
+
+// max retries: 5
+// hallway lights on: False
+</code></pre>
+<h3 id="data-types">Data Types</h3>
+<p>The following data types are supported. Extension is possible but the list is on purpose limited to an exclusive set for robustness and a simple use model:</p>
+<ul>
+<li><code>int</code></li>
+<li><code>double</code></li>
+<li><code>bool</code></li>
+<li><code>string</code></li>
+</ul>
+<p>The BehaviorService is strictly typed, and will retain the original data type for storage and retrieval. Attempts to store a non-supported type, or to read back into a different type than what was used for storage will result in an exception.</p>
+<h3 id="file-export--import">File Export / Import</h3>
+<p>For test program external definitions, the BehaviorService supports file import and export capability using the following syntax:</p>
+<ul>
+<li>one line per <strong>feature</strong>, format <code>&lt;feature&gt;|&lt;type&gt;|&lt;value&gt;</code></li>
+<li><strong>feature</strong> names can be arbitrary strings, including white space, but not the character <code>|</code></li>
+<li><strong>type</strong> is the system type name (not the language type)</li>
+<li><strong>value</strong> can be any content, including empty or <code>|</code> characters, but obviously no line breaks</li>
+<li><strong>value</strong> is parsed to the target type, an exception is thrown in case that fails</li>
+<li>string <strong>values</strong> can't be <code>null</code> and are trimmed on storage and retrieval</li>
+</ul>
+<pre><code>MaxRetries|Int32|5
+Timeout|Double|30
+EnableLogging|Boolean|True
+ApiEndpoint|String|https://api.example.com
+</code></pre>
+<p>File import works incremental, thus only overwrites (sets) the features found. To make sure previous definitions are cleared, use the <code>.Reset()</code> method.</p>
+<pre><code class="lang-cs">Services.Behavior.FilePath = &quot;c:\\temp\\behavior.txt&quot;;
+Services.Behavior.Export();
+Services.Behavior.Reset();
+Services.Behavior.Import();
+</code></pre>
+<h3 id="feature-naming--scoping">Feature Naming &amp; Scoping</h3>
+<p>Although this can't be enforced by the SetupService, it's strongly recommended to use a wise naming scheme for the features. With a global scope, special attention should be given to avoid ambiguity or context issues for users. Features named <code>TimeOut</code> or <code>Logging</code> are very likely too generic and not indicative enough for users what specific behavior is actually controlled (namespace pollution).</p>
+<p>To avoid that, a dot notation hierarchy is proposed, with the domain at the beginning and more specifics separated with <code>.</code> characters:</p>
+<ul>
+<li><code>ParametricDatalog.Limits</code>: <code>FlowLimits</code> / <code>LimitSets</code> ( type <code>string</code>)</li>
+<li><code>ParametricDatalog.OfflinePassValues</code>: <code>false</code> / <code>true</code> (type <code>bool</code>)</li>
+<li><code>Services.Setup.AuditMode</code>: <code>false</code> / <code>true</code> (type <code>bool</code>)</li>
+</ul>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<h3 id="standard-file-format">Standard File Format</h3>
+<p>The use of XML or JSON file formats was considered for the import / export capability. However, these don't (natively) support generics with type information, so that data readback can be done in a specifically typed way. Instead, everything would be <code>object</code> or <code>string</code>. Attempting to determine the type from the data would be ambiguous for like <code>3</code> which would be interpreted as <code>string</code>, <code>int</code> or <code>double</code>. Specifying the type could be done in JSON or XML, but would then require custom parsers, neglecting the benefits of a standard file format.</p>
+<h3 id="support-custom-defaults-for-the-features">Support Custom Defaults for the Features</h3>
+<p>A generic <strong>BehaviorService</strong> can't both be independent from the client's use cases AND support feature specific defaults at the same time. The avoidance of close coupling is considered critical given how C#RA is planned to extend into areas like RF, optional library extensions (PortBridge), SSN, ...</p>
+<p>The defaults are identical to the type's default. Changing that globally, for instance to support the case of pattern threading from <code>false</code> to <code>true</code> might address the desire for one, but cause headaches for others. Carefully estimating, 50% of the users would be unhappy regardless ...</p>
+<p>There are two ways to solve this, probably more after careful consideration. Specifically in this example - the idea is generic - the following could be done:</p>
+<ul>
+<li>invert the logic - call the behavior feature <code>SharedPatgen</code></li>
+<li>use the <code>string</code> type with speaking titles for either option and freely define how <code>&quot;&quot; </code>is interpreted</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

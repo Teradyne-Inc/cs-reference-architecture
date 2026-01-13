@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ILib.IValidate | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ILib.IValidate | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_Interfaces_ILib_IValidate.md&amp;value=---%0Auid%3A%20Csra.Interfaces.ILib.IValidate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Csra.Interfaces.ILib.IValidate">
+
+
+
+  <h1 id="Csra_Interfaces_ILib_IValidate" data-uid="Csra.Interfaces.ILib.IValidate" class="text-break">
+Interface ILib.IValidate  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Csra.html">Csra</a>.<a class="xref" href="Csra.Interfaces.html">Interfaces</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ILib.IValidate</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_Dc_" data-uid="Csra.Interfaces.ILib.IValidate.Dc*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})">
+  Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate arguments within Test Method Templates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Dc(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null, double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, bool? voltageAltOutput = null, bool? bleederResistor = null, double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null, double? clampHiV = null, double? clampLoV = null, bool? highAccuracy = null, double? settlingTime = null, double? hardwareAverage = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>Pins parameter to be validated.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Gate parameter to be validated.</p>
+</dd>
+    <dt><code>mode</code> <a class="xref" href="Csra.TLibOutputMode.html">TLibOutputMode</a>?</dt>
+    <dd><p>Optional. Mode parameter to be validated.</p>
+</dd>
+    <dt><code>voltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Voltage parameter to be validated.</p>
+</dd>
+    <dt><code>voltageAlt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. VoltageAlt parameter to be validated.</p>
+</dd>
+    <dt><code>current</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Current parameter to be validated.</p>
+</dd>
+    <dt><code>voltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Voltage Range parameter to be validated.</p>
+</dd>
+    <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Current Range parameter to be validated.</p>
+</dd>
+    <dt><code>forceBandwidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Force Bandwidth parameter to be validated.</p>
+</dd>
+    <dt><code>meterMode</code> <a class="xref" href="Csra.Measure.html">Measure</a>?</dt>
+    <dd><p>Optional. Meter Mode parameter to be validated.</p>
+</dd>
+    <dt><code>meterVoltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Meter Voltage Range parameter to be validated.</p>
+</dd>
+    <dt><code>meterCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Meter Current Range parameter to be validated.</p>
+</dd>
+    <dt><code>meterBandwidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Meter Bandwidth parameter to be validated.</p>
+</dd>
+    <dt><code>sourceFoldLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Source Fold Limit parameter to be validated.</p>
+</dd>
+    <dt><code>sinkFoldLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sink Fold Limit parameter to be validated.</p>
+</dd>
+    <dt><code>sourceOverloadLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Source Overload Limit parameter to be validated.</p>
+</dd>
+    <dt><code>sinkOverloadLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Sink Overload Limit parameter to be validated.</p>
+</dd>
+    <dt><code>voltageAltOutput</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Voltage Alt Output parameter to be validated.</p>
+</dd>
+    <dt><code>bleederResistor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. Bleeder Resistor parameter to be validated.</p>
+</dd>
+    <dt><code>complianceBoth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Compliance Both parameter to be validated.</p>
+</dd>
+    <dt><code>compliancePositive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Compliance Positive parameter to be validated.</p>
+</dd>
+    <dt><code>complianceNegative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Compliance Negative parameter to be validated.</p>
+</dd>
+    <dt><code>clampHiV</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Clamp High V parameter to be validated.</p>
+</dd>
+    <dt><code>clampLoV</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Clamp Low V parameter to be validated.</p>
+</dd>
+    <dt><code>highAccuracy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. High Accuracy parameter to be validated.</p>
+</dd>
+    <dt><code>settlingTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Settling Time parameter to be validated.</p>
+</dd>
+    <dt><code>hardwareAverage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Hardware Average parameter to be validated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_Enum_" data-uid="Csra.Interfaces.ILib.IValidate.Enum*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_Enum__1_System_String_System_String___0__" data-uid="Csra.Interfaces.ILib.IValidate.Enum``1(System.String,System.String,``0@)">
+  Enum&lt;T&gt;(string, string, out T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the provided string can be parsed to the specified enum type and create the enum value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Enum&lt;T&gt;(string value, string argumentName, out T enumValue) where T : struct, Enum</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to parse for. Case-Insensitive, specify only the enum member part.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+    <dt><code>enumValue</code> <span class="xref">T</span></dt>
+    <dd><p>The enumeration value to output in the event that the provided value was successfully parsed in the
+provided enumeration.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>value</code> was found within the provided Enumeration and successfully parsed; otherwise,
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The existing Enumeration to be parsed.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_Fail_" data-uid="Csra.Interfaces.ILib.IValidate.Fail*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_Fail_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.Fail(System.String,System.String)">
+  Fail(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raises an unconditional validation error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Fail(string problemReasonResolutionMessage, string argumentName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>problemReasonResolutionMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Validation failure message clearly describing the problem, reason, and resolution message.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_GetObjectByClassName_" data-uid="Csra.Interfaces.ILib.IValidate.GetObjectByClassName*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_GetObjectByClassName__1_System_String___0__" data-uid="Csra.Interfaces.ILib.IValidate.GetObjectByClassName``1(System.String,``0@)">
+  GetObjectByClassName&lt;T&gt;(string, out T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates an instance of the class passed by its fully-qualified name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GetObjectByClassName&lt;T&gt;(string fullyQualifiedClassName, out T instance) where T : class</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fullyQualifiedClassName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Fully qualified name of the class to be instantiated.</p>
+</dd>
+    <dt><code>instance</code> <span class="xref">T</span></dt>
+    <dd><p>Object to be created if the fullyQualifiedClassName is found to be valid.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>fullyqualifiedClassName</code> was found to match an existing class and the new object was created;
+otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Type of the returned object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_GreaterOrEqual_" data-uid="Csra.Interfaces.ILib.IValidate.GreaterOrEqual*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_GreaterOrEqual__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.GreaterOrEqual``1(``0,``0,System.String)">
+  GreaterOrEqual&lt;T&gt;(T, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a numeric value is greater or equal to a bound.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GreaterOrEqual&lt;T&gt;(T value, T boundary, string argumentName) where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be checked against the provided boundary.</p>
+</dd>
+    <dt><code>boundary</code> <span class="xref">T</span></dt>
+    <dd><p>The boundary that the value must be greater than or equal to.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>value</code> is greater than or equal to the provided boundary; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type specified for the provided parameters.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_GreaterThan_" data-uid="Csra.Interfaces.ILib.IValidate.GreaterThan*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_GreaterThan__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.GreaterThan``1(``0,``0,System.String)">
+  GreaterThan&lt;T&gt;(T, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a numeric value is greater than the provided boundary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GreaterThan&lt;T&gt;(T value, T boundary, string argumentName) where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be checked against the provided boundary.</p>
+</dd>
+    <dt><code>boundary</code> <span class="xref">T</span></dt>
+    <dd><p>The boundary that the value must be greater than.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the 'value' is greater than the provided boundary; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type specified for the provided parameters.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_InRange_" data-uid="Csra.Interfaces.ILib.IValidate.InRange*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_InRange__1___0___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.InRange``1(``0,``0,``0,System.String)">
+  InRange&lt;T&gt;(T, T, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a numeric value is within a range (including).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool InRange&lt;T&gt;(T value, T from, T to, string argumentName) where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be checked against the provided upper and lower threshold.</p>
+</dd>
+    <dt><code>from</code> <span class="xref">T</span></dt>
+    <dd><p>The lower threshold.</p>
+</dd>
+    <dt><code>to</code> <span class="xref">T</span></dt>
+    <dd><p>The upper threshold.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>value</code> is within the provided range; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type specified for the provided parameters.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_IsTrue_" data-uid="Csra.Interfaces.ILib.IValidate.IsTrue*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_IsTrue_System_Boolean_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.IsTrue(System.Boolean,System.String,System.String)">
+  IsTrue(bool, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks for whether <code>condition</code> == <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTrue(bool condition, string problemReasonResolutionMessage, string argumentName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>condition</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Condition to be checked.</p>
+</dd>
+    <dt><code>problemReasonResolutionMessage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Validation failure message describing the <code>problem</code>, <code>reason</code>, and <code>resolution</code>.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the condition == <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>; Otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_LessOrEqual_" data-uid="Csra.Interfaces.ILib.IValidate.LessOrEqual*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_LessOrEqual__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.LessOrEqual``1(``0,``0,System.String)">
+  LessOrEqual&lt;T&gt;(T, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a numeric value is less or equal to a bound.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LessOrEqual&lt;T&gt;(T value, T boundary, string argumentName) where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be checked against the provided boundary.</p>
+</dd>
+    <dt><code>boundary</code> <span class="xref">T</span></dt>
+    <dd><p>The boundary that the value must be greater than or equal to.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>value</code> is less than or equal to the provided boundary; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type specified for the provided parameters.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_LessThan_" data-uid="Csra.Interfaces.ILib.IValidate.LessThan*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_LessThan__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.LessThan``1(``0,``0,System.String)">
+  LessThan&lt;T&gt;(T, T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a numeric value is less than the provided boundary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LessThan&lt;T&gt;(T value, T boundary, string argumentName) where T : IComparable&lt;T&gt;</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be checked against the provided boundary.</p>
+</dd>
+    <dt><code>boundary</code> <span class="xref">T</span></dt>
+    <dd><p>The boundary that the value must be less than.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>value</code> is less than the provided boundary; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type specified for the provided parameters.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_MultiCondition_" data-uid="Csra.Interfaces.ILib.IValidate.MultiCondition*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_MultiCondition__1_System_String_System_Func_System_String___0__System_String___0____System_Nullable_System_Int32__" data-uid="Csra.Interfaces.ILib.IValidate.MultiCondition``1(System.String,System.Func{System.String,``0},System.String,``0[]@,System.Nullable{System.Int32})">
+  MultiCondition&lt;T&gt;(string, Func&lt;string, T&gt;, string, out T[], int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks multi-condition validity and creates the data array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MultiCondition&lt;T&gt;(string csv, Func&lt;string, T&gt; parser, string argumentName, out T[] conditions, int? referenceCount = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>csv</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Comma separated values to split and parse.</p>
+</dd>
+    <dt><code>parser</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, T&gt;</dt>
+    <dd><p>Delegate used to parse comma separated list.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+    <dt><code>conditions</code> T[]</dt>
+    <dd><p>Output Array of parsed values sourced from the provided string.</p>
+</dd>
+    <dt><code>referenceCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. If specified, the reference count to verify. Will report an error if the resulting array size is &gt;1
+(SingleCondition) and does not match (MultiCondition).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the output array was successfully created; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The target (output) type of the parser function.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_MultiCondition_" data-uid="Csra.Interfaces.ILib.IValidate.MultiCondition*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_MultiCondition__1_System_String_System_String___0____System_Nullable_System_Int32__" data-uid="Csra.Interfaces.ILib.IValidate.MultiCondition``1(System.String,System.String,``0[]@,System.Nullable{System.Int32})">
+  MultiCondition&lt;TEnum&gt;(string, string, out TEnum[], int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks multi-condition validity and creates the data array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool MultiCondition&lt;TEnum&gt;(string csv, string argumentName, out TEnum[] conditions, int? referenceCount = null) where TEnum : struct, Enum</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>csv</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Comma separated values to split and parse. Case-Insensitive, specify only the enum member part.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+    <dt><code>conditions</code> TEnum[]</dt>
+    <dd><p>Output Array of parsed values sourced from the provided string.</p>
+</dd>
+    <dt><code>referenceCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>Optional. If specified, the reference count to verify. Will report an error if the resulting array size is &gt;1
+(SingleCondition) and does not match (MultiCondition).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the output array was successfully created; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEnum</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_Pattern_" data-uid="Csra.Interfaces.ILib.IValidate.Pattern*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_Pattern_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_Csra_PatternInfo__System_Boolean_" data-uid="Csra.Interfaces.ILib.IValidate.Pattern(Teradyne.Igxl.Interfaces.Public.Pattern,System.String,Csra.PatternInfo@,System.Boolean)">
+  Pattern(Pattern, string, out PatternInfo, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks for valid pattern spec and creates patternInfo object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pattern</code> <span class="xref">Pattern</span></dt>
+    <dd><p>The pattern file to check.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+    <dt><code>patternInfo</code> <a class="xref" href="Csra.PatternInfo.html">PatternInfo</a></dt>
+    <dd><p>A new <a class="xref" href="Csra.PatternInfo.html">PatternInfo</a> object containing the provided pattern.</p>
+</dd>
+    <dt><code>threading</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Optional. Indicate whether threading should be used. Validation will fail if threading is not supported by the pattern.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>pattern</code> exists and creates the new PatternInfo() object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IValidate_Pins_" data-uid="Csra.Interfaces.ILib.IValidate.Pins*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IValidate_Pins_Teradyne_Igxl_Interfaces_Public_PinList_System_String_Csra_Pins__" data-uid="Csra.Interfaces.ILib.IValidate.Pins(Teradyne.Igxl.Interfaces.Public.PinList,System.String,Csra.Pins@)">
+  Pins(PinList, string, out Pins)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks for C#RA supported pin spec and creates the object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Pins(PinList pinlist, string argumentName, out Pins pins)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pinlist</code> <span class="xref">PinList</span></dt>
+    <dd><p>The pinlist to be checked.</p>
+</dd>
+    <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
+</dd>
+    <dt><code>pins</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>A new <a class="xref" href="Csra.Pins.html">Pins</a> object containing all of the resovled pins.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <code>pinList</code> was comprised of valid pins and creates the Pins() object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

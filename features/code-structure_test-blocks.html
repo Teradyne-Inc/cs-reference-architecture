@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Code Structure - Test Blocks | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Code Structure - Test Blocks | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/code-structure_test-blocks.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="code-structure---test-blocks">Code Structure - Test Blocks</h1>
+
+<p>Test Blocks are the main feature of this project, providing an abstraction layer in how users interact with the IG-XL based (future also other!) testers. They introduce a whole new use model with a learning curve users have to master first in order to become productive customizing and crafting their own test methods.</p>
+<p>That experience and any created work can not be jeopardized by frequent, incompatible changes. Compatibility is a concern and is addressed so that existing code doesn't break, but updates and improvements are possible once the user understands and embraces rework requirements.</p>
+<p>The goal for the Test Block API is a structured and user-friendly tree model similar to nested static classes. The main objectives are to ensure that the API is mockable, extendable, and easy to use.</p>
+<p><strong>Test Blocks provide a structured API that is subject to <a href="versioning-compatibility.html">compatibility management</a>. The implementation follows best practices to minimize breaking changes while allowing for necessary improvements.</strong></p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Because of their purely functional and stateless nature, test blocks may be called from other test blocks. This can be to avoid code duplication as well if there are superset designs, and may be required if private support methods are not sufficient.</p>
+</div>
+<h2 id="language-hierarchy">Language Hierarchy</h2>
+<p>The test block calling syntax is designed to be both intuitive and self-documenting. The language object conveys user intent — from broad, high-level domains to detailed, specific instructions — which makes the flow and sequence of code within a test method easy to follow. This clarity not only helps readers understand other's code but also assists developers in navigating a large and potentially unfamiliar API. The level depth adapts to the complexity of the branch or the specificity of the block method:</p>
+<ol>
+<li><strong>Entry point</strong>: <code>TheLib</code></li>
+<li><strong>Action</strong> category: <code>Setup</code>, <code>Acquire</code>, <code>Execute</code>, <code>Datalog</code> ...</li>
+<li><strong>Domain</strong> category: <code>Dc</code>, <code>Digital</code>, <code>Ac</code>, <code>Rf</code> ... or test block methods</li>
+<li>Further category - or test block methods</li>
+<li>...</li>
+</ol>
+<h2 id="code-architecture">Code Architecture</h2>
+<p>Two architectural approaches are considered: a static tree structure and a tree of multiple singletons. In both cases, the API tree is separated from the method implementations. The API consists of branches that reference a separate implementation section, keeping the API structure distinct from its functional logic. This separation improves modularity and maintainability.</p>
+<p>The findings, the reasoning behind the chosen approach, and the key design trade-offs are listed here.</p>
+<h3 id="static-approach">Static Approach</h3>
+<p>The static approach is pretty straight forward. It is possible to place all of the API in a single class file or separate into multiple files with partial classes.</p>
+<pre><code class="lang-c#">namespace Csra {
+    public static partial class TheLib {
+        public static partial class Acquire {
+            public static void Meter() =&gt; Implementation.AcquireBlocks.Meter();
+        }
+        public static partial class Setup {
+            public static partial class Dc {
+                public static void Connect(string pins, bool gate) =&gt; Implementation.Setup.DcBlocks.Connect(pins, gate);
+                public static void ForceI(string pins, double current) =&gt; Implementation.Setup.DcBlocks.ForceI(pins, current);
+                public static void ForceV(string pins, double voltage) =&gt; Implementation.Setup.DcBlocks.ForceV(pins, voltage);
+            }
+            public static void ApplyLevelsTiming() =&gt; Implementation.SetupBlocks.ApplyLevelsTiming();
+        }
+    }
+}
+</code></pre>
+<h3 id="singleton-approach">Singleton Approach</h3>
+<p>The singleton approach is a bit more complicated. The singleton approach uses nested interfaces that are declared in a separate file. In the next chapter the two approaches will be compared.</p>
+<pre><code class="lang-c#">namespace Csra {
+
+    public static class Api {
+        private static ILib _theLib = null;
+
+        public static void MockInjection(ILib mockedObject) =&gt; _theLib = mockedObject;
+
+        public static ILib TheLib =&gt; _theLib ??= new TheLib_();
+        public static ILib.ISetup Setup =&gt; TheLib.Setup;
+        public static ILib.IAcquire Acquire =&gt; TheLib.Acquire;
+
+        private class TheLib_ : ILib {
+
+            private static Setup_ _setup = null;
+            private static Acquire_ _acquire = null;
+
+            public ILib.ISetup Setup =&gt; _setup ??= new Setup_();
+
+            public ILib.IAcquire Acquire =&gt; _acquire ??= new Acquire_();
+
+            private sealed class Setup_ : ILib.ISetup {
+                private static Dc_ _dc = null;
+                public ILib.ISetup.IDc Dc =&gt; _dc ??= new Dc_();
+                public void ApplyLevelsTiming() =&gt; Implementations.TestBlocks.SetupBlocks.ApplyLevelsTiming();
+                private sealed class Dc_ : ILib.ISetup.IDc {
+                    public void Connect(string pins, bool gate) =&gt; Implementations.TestBlocks.Setup.DcBlocks.Connect(pins, gate);
+                    public void ForceI(string pins, double current) =&gt; Implementations.TestBlocks.Setup.DcBlocks.ForceI(pins, current);
+                    public void ForceV(string pins, double voltage) =&gt; Implementations.TestBlocks.Setup.DcBlocks.ForceV(pins, voltage);
+                }
+            }
+            private class Acquire_ : ILib.IAcquire {
+                public void Meter() =&gt; Implementations.TestBlocks.AcquireBlocks.Meter();
+            }
+        }
+    } 
+}
+</code></pre>
+<pre><code class="lang-c#">namespace Csra.Interfaces {
+
+    public interface ILib {
+        public ISetup Setup { get; }
+        public IAcquire Acquire { get; }
+        public interface ISetup {
+            public IDc Dc { get; }
+            public void ApplyLevelsTiming();
+            public interface IDc {
+                public void Connect(string pins, bool gate);
+                public void ForceV(string pins, double voltage);
+                public void ForceI(string pins, double current);
+            }
+        }
+        public interface IAcquire {
+            public void Meter();
+        }
+    }
+}
+</code></pre>
+<h3 id="comparison-goals">Comparison Goals</h3>
+<p>To effectively compare the two architectural approaches, I established several key goals that the API must meet:</p>
+<ul>
+<li><p><strong>Easy to Use</strong> - The API should support efficient traversal of the object tree, allowing users to navigate through the hierarchical structure with ease.</p>
+</li>
+<li><p><strong>Extensible</strong> - The API should be designed to allow for easy extension, like Extension-Methods.</p>
+</li>
+<li><p><strong>Mockable</strong> - The API should be easily mockable to facilitate unit testing and ensure that different components can be tested in isolation.</p>
+</li>
+</ul>
+<h4 id="easy-to-use">Easy to Use</h4>
+<p>Both approaches allow a nice way of calling methods in the API tree. The debugging experience is exactly the same for both approaches. The entry node of the singleton approach is the only difference.</p>
+<pre><code class="lang-c#"># static
+TheLib.Setup.Dc.ForceV(&quot;dig&quot;, 2.9);
+
+# singleton
+Api.TheLib.Setup.Dc.ForceV(&quot;dig&quot;, 2.9);
+</code></pre>
+<p>To overcome this syntax issue, it is possible to use static import, it allows you to access static members of a class without needing to qualify them with the class name.</p>
+<pre><code class="lang-c#"># singleton with static import
+using static Csra.Api;
+...
+TheLib.Setup.Dc.ForceV(&quot;dig&quot;, 2.9);
+</code></pre>
+<h4 id="extensible">Extensible</h4>
+<p>If a customer wants to extend the capability of the C# Reference Architecture, it should be far easy to extend methods. The static approach allows you to write custom methods in a separate file <strong>but</strong> inside the cs-reference-architecture project. There could be issues when trying to update cs-reference-architecture in the future.</p>
+<pre><code class="lang-c#"># static
+## Needs to be in the same project as the API, but not in the same file
+namespace Csra {
+    public static partial class TestBlock {
+        public static partial class Setup {
+            public static partial class Dc {
+                public static void CustomMethod(string pins) {
+                    // This is doing custom things
+                }
+            }
+        }
+    }
+}
+
+## it can be used like
+TestBlock.Setup.Dc.CustomMethod(&quot;hi&quot;);
+</code></pre>
+<p>Using ExtensionMethods adds the ability to define those methods in a separate project but make it accessible through the API.</p>
+<pre><code class="lang-c#"># singleton
+## can be in the customer project
+public static class Extensions {
+    public static void CustomMethod(this Csra.Interfaces.ILib.ISetup.IDc dc, string pins) {
+        // This is doing custom things
+    }
+}
+
+## it can be used like
+using static Csra.Api;
+...
+TheLib.Setup.Dc.CustomMethod(&quot;hi&quot;);
+</code></pre>
+<h4 id="mockable">Mockable</h4>
+<p>The cs-reference-architecture is unit-tested, a customer will use those Test Blocks in their custom code. User written unit-test code should not depend on the C# Reference Architecture and therefore mocking those calls is required.</p>
+<p>While the static approach does not support to be mocked, the singleton approach supports those almost out of the box. The MSTest project needs to import <code>Moq</code> to mock C# Reference Architecture.</p>
+<pre><code class="lang-c#">#singleton
+#CustomerCode
+public void DoWhatYouWant(string pins, bool gate) {
+    if (gate) {
+        // do custom things
+    }
+    TheLib.Setup.Dc.Connect(pins, gate);
+    if (TheHdw.DCVS.Pins(pins).Gate) {
+        // do other things
+    }
+}
+...
+#MSTest
+[TestMethod]
+public void TestDcConnectMock() {
+    Mock&lt;Csra.Interfaces.ILib&gt; mockTestBlock = new Mock&lt;Csra.Interfaces.ILib&gt;() { DefaultValue = DefaultValue.Mock };
+    MockInjection(mockTestBlock.Object); // Inject the mocked object, so TestBlock is using the mocked object instead of the real deal
+    DoWhatYouWant(&quot;dig&quot;, false);
+    mockTestBlock.Verify(x =&gt; x.Setup.Dc.Connect(&quot;dig&quot;, false), Times.Once); // make sure that Setup.Dc.Connect was called with these arguments
+    // Assert custom things
+    // Assert other things
+    MockInjection(null); // cleanup mocking after the TestMethod
+}
+</code></pre>
+<p>This gives the user the ability to test their custom code isolated from the C# Reference Architecture.</p>
+<h3 id="conclusion-on-architecture">Conclusion on Architecture</h3>
+<p>The singleton approach has the capability of mocking which the static does not have and supports way nicer extension methods. The versioning and object tree traversal are fairly similar. Consequently, the singleton approach is selected.</p>
+<h2 id="instrument-independence--feature-tolerance">Instrument Independence &amp; Feature Tolerance</h2>
+<p>Instead of programming instrument features directly, test blocks use a <code>TheLib.Action.Domain</code> notation, with the domain relating to generic instrument capabilities rather than types. For example most of the instrument have some basic DC capability, and that way this can be controlled commonly with a single call.</p>
+<p>Inside the block, driver calls have to be routed to the specific instrument language nodes in IG-XL, and the <code>Pins</code> type helps extracting the relevant pins for these in an efficient way.</p>
+<h3 id="principles-for-test-blocks">Principles for Test Blocks</h3>
+<ol>
+<li><p>Test Blocks tolerate pins that don't offer the feature required. They will extract the sub-pin list required to program the hardware and quietly ignore others. This allows for simpler and instrument / platform agnostic code at the test method level. Not requiring runtime checks for &quot;any pins left over&quot; improves execution performance.</p>
+</li>
+<li><p>Test Method authors are advised to make use of validation to check that the provided pins support the expected type and no pins of unsupported types are provided. C#RA provided Test Methods lead by example and implement that.</p>
+</li>
+<li><p>Because correct parameter validation can't be guaranteed in user code, test blocks issue an <code>Services.Alert.Warning</code> if the provided pin list doesn't contain any supported pins. This would result in quietly performing no action at all, which is considered an untypical and potentially dangerous case which should be highlighted. This check can be implemented in test blocks at little execution time cost.</p>
+</li>
+<li><p>Scenarios that do require this case may suppress the warning with a conditional call of the test block. The <code>if (_pins.ContainsFeature(Pins.Feature.Digital)) TheLib.Setup.Digital.Disconnect(_pins)</code> both prevents that warning and documents the intention in the code. The concept is similar to the <code>pragma</code> compiler statements, only that these don't apply to run-time.</p>
+</li>
+</ol>
+<h3 id="implementation">Implementation</h3>
+<p>A block only supporting a single instrument type would extract the relevant pins to perform a driver call and issue the warning in the <code>else</code> path:</p>
+<pre><code class="lang-cs">internal static void Connect(Pins pins) {
+    if (pins.ContainsFeature(Pins.Feature.Digital, out string pinList)) {
+        TheHdw.Digital.Pins(pinList).Connect();
+    } else {
+        Services.Alert.Warning(&quot;None of the pins contain 'Digital' features - no action performed&quot;, &quot;Setup&quot;);
+    }
+}
+</code></pre>
+<p>Blocks supporting different instrument types need a little extra logic to determine that case:</p>
+<pre><code class="lang-cs">internal static void ForceV(Pins pins, double forceVoltage) {
+    bool noAction = true;
+    if (pins.ContainsFeature(Pins.Feature.Ppmu, out string ppmuPins)) {
+        TheHdw.PPMU.Pins(ppmuPins).ForceV(forceVoltage);
+        noAction = false;
+    }
+    if (pins.ContainsFeature(Pins.Feature.Dcvi, out string dcviPins)) {
+        TheHdw.DCVI.Pins(dcviPins).Voltage.Value = forceVoltage;
+        noAction = false;
+    }
+    if (pins.ContainsFeature(Pins.Feature.Dcvs, out string dcvsPins)) {
+        TheHdw.DCVS.Pins(dcvsPins).Voltage.Value = forceVoltage;
+        noAction = false;
+    }
+    if(noAction) {
+        Services.Alert.Warning(&quot;None of the pins contain 'DC' features - no action performed&quot;, &quot;Setup&quot;);
+    }
+}
+</code></pre>
+<p>The code for Test Methods remains simple but adds explicit highlighting of (legitimate) scenarios where no-action test blocks are supported:</p>
+<pre><code class="lang-cs">[TestClass(Creation.TestInstance)]
+[Serializable]
+public class Parallel : TestCodeBase {
+
+    private Pins _pins;
+    private PinSite&lt;double&gt; _meas;
+    private PatternInfo _pattern;
+    private bool _digitalPresent;
+
+    /// &lt;summary&gt;
+    /// Measures the current at the bias voltage applied to the pins of a device.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;pinList&quot;&gt;List of pin or pin group names to measure.&lt;/param&gt;
+    /// &lt;param name=&quot;voltage&quot;&gt;The force voltage value.&lt;/param&gt;
+    /// &lt;param name=&quot;currentRange&quot;&gt;The current range for measurement.&lt;/param&gt;
+    /// &lt;param name=&quot;waitTime&quot;&gt;The wait time after forcing.&lt;/param&gt;
+    /// &lt;param name=&quot;setup&quot;&gt;The name of the setup set to be applied through the setup service.&lt;/param&gt;
+    #region Baseline
+    [TestMethod, Steppable, CustomValidation]
+    public void Baseline(PinList pinList, double voltage, double currentRange, double waitTime, string setup = &quot;&quot;) {
+
+        if (TheExec.Flow.IsValidating) {
+            _pins ??= new Pins(pinList);
+            _digitalPresent = _pins.ContainsFeature(Pins.Feature.Digital);
+            // add validation to check if any of the pins support DC
+        }
+
+        if (ShouldRunPreBody) {
+            TheLib.Setup.ApplyLevelsTiming();
+            Services.Setup.Apply(setup);
+            if (_digitalPresent) TheLib.Setup.Digital.Disconnect(_pins);
+            TheLib.Setup.Dc.Connect(_pins, true);
+        }
+
+        if (ShouldRunBody) {
+            TheLib.Setup.Dc.ForceV(_pins, voltage, voltage, currentRange);
+            TheLib.Execute.Wait(waitTime);
+            _meas = TheLib.Acquire.Dc.Measure(_pins);
+        }
+
+        if (ShouldRunPostBody) {
+            TheLib.Setup.Dc.Disconnect(_pins, false);
+            if (_digitalPresent) TheLib.Setup.Digital.Connect(_pins);
+            TheLib.Datalog.TestParametric(_meas, voltage);
+        }
+    }
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The flag <code>_digitalPresent</code> may be determined at validation time, but isn't expensive even if called at run time. The pins type uses cached information on pin types and features, and may even internally cache this information going forward if profiling results indicate a benefit.</p>
+</div>
+<p>Validation checks are making sure the test method isn't called with pins it does not support (exact syntax to be determined).</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

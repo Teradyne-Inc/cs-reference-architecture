@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Custom Validation | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Custom Validation | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/custom-validation.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="custom-validation">Custom Validation</h1>
+
+<p>IG-XL offers convenient test instance validation via the <code>CustomValidation</code> attribute for test methods. During validation, every test instance using a test method decorated that way is called with its correct context. While no hardware can (and should!) be programmed in that phase, this mechanism can be used to:</p>
+<ul>
+<li>check input values for valid range (like voltages, currents)</li>
+<li>check pins / patterns / method delegates / setups are valid</li>
+<li>verify the requested combination of inputs is supported</li>
+<li>perform time consuming object initialization and input processing once only</li>
+</ul>
+<pre><code class="lang-cs">[TestMethod, Steppable, CustomValidation]
+public void Baseline(PinList pinList, double voltage, double currentRange, double waitTime, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        // perform validation only tasks
+    }
+
+    ...
+}
+</code></pre>
+<h2 id="object-initialization">Object Initialization</h2>
+<p>Test parameterization is done in IG-XL by the flow controller handing the parameters into the test method at runtime. In IG-XL, that data is cached, and locally made available within the test method that way. While this is performance optimized for the case when data is used &quot;as-is&quot;, some overhead may occur when it needs to be converted or processed before it can be used.</p>
+<p>To avoid that, such processing can be done once only during validation and preserved for subsequent use. Because the input is static (= the same in every run), pre-processing results can be stored in class using test classes persistence:</p>
+<pre><code class="lang-cs">[TestClass(Creation.TestInstance)]
+public class Read : TestCodeBase {
+
+    PatternInfo _patternInfo;
+    Pins _pins;
+    tlBitOrder _bitOrder;
+
+    [TestMethod, Steppable, CustomValidation]
+    public void Baseline(Pattern pattern, PinList readPins, int startIndex, int bitLength, int wordLength, bool msbFirst, bool testFunctional,
+        bool testValues, string setup = &quot;&quot;) {
+
+        if (TheExec.Flow.IsValidating) {
+            _pins = new Pins(readPins);
+            _patternInfo = new(pattern, true);
+            _bitOrder = msbFirst ? tlBitOrder.MsbFirst : tlBitOrder.LsbFirst;
+        }
+
+        ...
+    }
+}
+</code></pre>
+<h2 id="parameter--context-checking">Parameter &amp; Context Checking</h2>
+<p>In many cases constraints exist for parameters, like min/max levels, pin counts, pattern existence ... and well-designed, reusable TestMethods should offer helpful messages when these are not properly met. IG-XL supports test instance argument validation error reporting, and <a href="alert-service.html#validation-fails">that mechanism</a> can be used for custom test methods:</p>
+<p><img src="media/alert-service_flow-instance-highlight.png" alt="Flow instance validation view showing highlighted validation errors with direct links to specific test method arguments that failed custom validation checks"></p>
+<p>The following blocks are offered for validation at <code>TheLib.Validate</code> as a starting point. This list may not be complete, and over time, additional validation features may (will!) surface, and the design goal is that these can easily be added following the common use model and utilizing the infrastructure created here.</p>
+<h3 id="validating-a-single-parameter">Validating a Single Parameter</h3>
+<p>These blocks offer validation of specific parameters, and support test instance parameter cell highlighting in case of a fail:</p>
+<table>
+<thead>
+<tr>
+<th>Argument Specific Test Blocks</th>
+<th>Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool InRange&lt;T&gt;(T value, T from, T to, string argumentName)</code></td>
+<td>checks if a numeric value is between two bounds (including)</td>
+</tr>
+<tr>
+<td><code>bool GreaterOrEqual&lt;T&gt;(T value, T boundary, string argumentName)</code></td>
+<td>checks if a numeric value is greater or equal to a bound</td>
+</tr>
+<tr>
+<td><code>bool LessOrEqual&lt;T&gt;(T value, T boundary, string argumentName)</code></td>
+<td>checks if a numeric value is less or equal to a bound</td>
+</tr>
+<tr>
+<td><code>bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo)</code></td>
+<td>checks for valid pattern spec and creates the object (preferred over <code>new PatternInfo()</code>)</td>
+</tr>
+<tr>
+<td><code>bool Pins(PinList pinList, string argumentName, out Pins pins)</code></td>
+<td>checks for C#RA supported pin spec and creates the object (preferred over <code>new Pins()</code>)</td>
+</tr>
+<tr>
+<td><code>bool MethodHandle&lt;T&gt;(string fullyQualifiedName, string argumentName, out MethodHandle&lt;T&gt; delegate) where T : Delegate</code></td>
+<td>checks for valid method handle spec and creates the object (used to be <code>GetDelegate</code>, preferred over <code>new MethodHandle&lt;T&gt;()</code>)</td>
+</tr>
+<tr>
+<td><code>bool MultiCondition&lt;T&gt;(string csv, Func&lt;string, T&gt; parser, string argumentName, out T[] conditions, int? referenceCount = null)</code></td>
+<td>checks multi-condition validity and creates the data array (used to be <code>SplitMultiCondition</code>)</td>
+</tr>
+<tr>
+<td><code>bool Enum&lt;T&gt;(string value, string argumentName, out T enumValue) where T : Enum</code></td>
+<td>checks if a string value can be parsed to the specified enum type and creates the enum value</td>
+</tr>
+<tr>
+<td><code>bool Setup(string setup, string argumentName)</code></td>
+<td>checks if a setup with that name exists</td>
+</tr>
+</tbody>
+</table>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>In order to flag the correct test method argument, IG-XL needs to be informed which one caused the fail via the <code>argumentName</code>. This is achieved through reflection performing a method argument look-up. For a robust solution, that doesn't break in case of a rename, use the <code>nameof()</code> operator.</p>
+<p>By requiring an <code>argumentName</code> in these methods, users are nudged to use them for checks that are tied to dedicated arguments. The methods however will quietly tolerate empty strings and still correctly fail validation - and highlight that fact in the validation error message shown.</p>
+</div>
+<h3 id="validating-combinations-of-parameters-or-other-scenarios">Validating Combinations of Parameters or Other Scenarios</h3>
+<p>Validation checks that can't be connected to a single parameter only, like an illegal combination of parameters, which would be fine by themselves, or a certain system context to be available can also be validated. In that case a meaningful validation fail message needs to be provided to the user, clearly describing the <strong>problem</strong>, <strong>reason</strong> and <strong>resolution</strong> options:</p>
+<table>
+<thead>
+<tr>
+<th>Argument Agnostic Test Blocks</th>
+<th>Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool IsTrue(bool condition, string problemReasonResolutionMessage, string argumentName)</code></td>
+<td>checks for condition == <code>true</code> (fallback for ANY checks)</td>
+</tr>
+<tr>
+<td><code>void Fail(string problemReasonResolutionMessage, string argumentName)</code></td>
+<td>raises an unconditional validation error</td>
+</tr>
+</tbody>
+</table>
+<p>All validation methods report potential issues directly to IG-XL, which collects them for a collided validation error report. To support dependent checks (<em>&quot;only if pins are valid, check if any of type XYZ are in there&quot;</em>), they return a boolean result for success.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The language node <code>TheLib.Validate</code> was previously called <code>TheLib.Validation</code> - the rename aligns it with the test block action categorization described in the <a href="code-structure_test-blocks.html#language-hierarchy">test block language hierarchy</a>.</p>
+</div>
+<p>Applied to the test method above, the validation section could look like:</p>
+<pre><code class="lang-cs">[TestClass(Creation.TestInstance)]
+public class Read : TestCodeBase {
+
+    PatternInfo _patternInfo;
+    Pins _pins;
+    tlBitOrder _bitOrder;
+
+    [TestMethod, Steppable, CustomValidation]
+    public void Baseline(Pattern pattern, PinList readPins, int startIndex, int bitLength, int wordLength, bool msbFirst, bool testFunctional,
+        bool testValues, string setup = &quot;&quot;) {
+
+        if (TheExec.Flow.IsValidating) {
+            TheLib.Validate.Pins(readPins, out _pins, nameof(readPins));
+            TheLib.Validate.Pattern(pattern, out _patternInfo, nameof(pattern));
+            TheLib.Validate.GreaterOrEqual(startIndex, 1, nameof(startIndex));
+            TheLib.Validate.GreaterOrEqual(bitLength, 1, nameof(bitLength));
+            TheLib.Validate.InRange(wordLength, 1, 32, nameof(wordLength));
+            TheLib.Validate.Setup(setup, nameof(setup));
+            _bitOrder = msbFirst ? tlBitOrder.MsbFirst : tlBitOrder.LsbFirst;
+        }
+
+        ...
+    }
+}
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.7 - 2025-08-01 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.7 - 2025-08-01 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/releases_/v0.7.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v07---2025-08-01">v0.7 - 2025-08-01</h1>
+
+<h2 id="breaking-changes">Breaking Changes</h2>
+<h3 id="binarysearch-test-blocks-changed-now-dedicated-implementations-for-double-and-int">BinarySearch test blocks changed, now dedicated implementations for <code>double</code> and <code>int</code>.</h3>
+<p>Different strategies mandated going away from generic implementations and making them type specific again. Now, there's an option for floating point and fixed point each. The floating point is implemented for <code>double</code>, correctly handles corner cases and is optimized for performance and memory footprint. The fixed point option uses <code>int</code> and correctly handles scaling the search intervals towards the (fixed point) resolution.</p>
+<p><strong>Impact:</strong> Users may review and update their implementations.</p>
+<h3 id="remove-respectsettlingtime-argument">Remove RespectSettlingTime Argument</h3>
+<p>RespectSettlingTime parameter of all features was removed, as instruments already do a settlewait after applying settings. Users may need to adjust their code to get it working again.</p>
+<pre><code class="lang-c#">// Old
+dcvisetup.Add(new Setting.TheHdw.Dcvi.Pins.ComplianceRange_Positive(0.01, &quot;dcvi1, dcvi2&quot;, true));
+// New
+dcvisetup.Add(new Setting.TheHdw.Dcvi.Pins.ComplianceRange_Positive(0.01, &quot;dcvi1, dcvi2&quot;));
+</code></pre>
+<p>This change may improve testtime.</p>
+<h3 id="support-update-ig-xl-version">Support Update: IG-XL Version</h3>
+<p>Support for <strong>IG-XL CI3 Kits (11.00)</strong> has been discontinued.
+<strong>IG-XL Kit 11.00 Alpha 4</strong> is now the officially supported release. This version introduces a more stable foundation for ongoing development and testing.</p>
+<h3 id="refactor-patterninfo-object">Refactor PatternInfo-object</h3>
+<p><code>Name</code> property is now readonly. Change setter of <code>ThreadingEnabled</code> from private to public.</p>
+<h3 id="rename-instrument-type">Rename Instrument Type</h3>
+<p>Renamed UP5000 -&gt; UPHP.</p>
+<p><strong>Impact:</strong> Potential renaming necessary.</p>
+<h3 id="substitute-getdelegate-testblock-with-methodhandle-type">Substitute <code>GetDelegate</code> TestBlock with <code>MethodHandle</code> Type</h3>
+<pre><code class="lang-c#">// previously
+TheLib.Validation.GetDelegate&lt;T&gt;(&quot;methodName&quot;);
+
+// now
+new MethodHandle&lt;T&gt;(&quot;fullyQualifiedName&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Substitute every use of <code>GetDelegate</code> with <code>MethodHandle</code>.</p>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<h3 id="fixing-the-bug-in-setforceandmeter">Fixing the bug in SetForceAndMeter</h3>
+<p>When calling <code>SetForceAndMeter</code> with the <code>Measure.Voltage</code> measurement configuration, the user will enter a voltage value for the <code>measureRange</code> variable.
+In the <code>ppmu.ForceVMeasureV()</code> configuration for PPMU, <code>measureRange</code> was previously used as the input, however, the method requires <code>MeasureCurrentRange</code>. Therefore, in this case, the setting was updated to use <code>ppmu.MeasureCurrentRange.Max</code></p>
+<p>The configuration for <code>MeasureCurrentRange</code> is still available through method <code>Modify()</code>.</p>
+<h3 id="implementation-changes-for-ppmu-in-modify">Implementation changes for PPMU in Modify</h3>
+<p>The current changes allow parameters such as <code>voltage</code> or <code>current</code> to be set for PPMU without requiring the value for <code>mode</code> or <code>meterMode</code>.</p>
+<p>The user is not affected by these changes, the function call remains the same.</p>
+<h3 id="remove-workaround-for-ig-xl-bug">Remove workaround for IG-XL bug</h3>
+<p>SetupService setups can now be created/added in <code>OnProgramValidated</code> if IG-XL version is 11.</p>
+<p>Usage with IG-XL 10.60.01:</p>
+<pre><code class="lang-c#">        [TestMethod]
+        public void SetupLoad() {
+   
+            SetupService.Reset();
+
+            Setup initLeakage = new Setup(&quot;InitLeakageTest&quot;);
+            initLeakage.Add(new Setting.TheHdw.Digital.Pins.InitState(ChInitState.Hi, &quot;nLEAB, nOEAB&quot;));
+            initLeakage.Add(new Setting.TheHdw.Digital.Pins.InitState(ChInitState.Lo, &quot;nLEBA, nOEBA&quot;));
+            initLeakage.Add(new Setting.TheHdw.Digital.Pins.InitState(ChInitState.Off, &quot;porta&quot;));
+            SetupService.Add(initLeakage);
+        }
+</code></pre>
+<p>Usage with IG-XL 11.00.00:</p>
+<pre><code class="lang-c#">        [ExecInterpose_OnProgramValidated(255)]
+        public static void OnProgramValidated() {
+           Setup initLeakage = new Setup(&quot;InitLeakageTest&quot;);
+           initLeakage.Add(new Setting.TheHdw.Digital.Pins.InitState(ChInitState.Hi, new List&lt;string&gt; { &quot;nLEAB&quot;,&quot;nOEAB&quot; }));
+           initLeakage.Add(new Setting.TheHdw.Digital.Pins.InitState(ChInitState.Lo, new List&lt;string&gt; { &quot;nLEBA&quot;,&quot;nOEBA&quot; }));
+           initLeakage.Add(new Setting.TheHdw.Digital.Pins.InitState(ChInitState.Off, new List&lt;string&gt; { &quot;porta&quot; }));
+           SetupService.Add(initLeakage);
+        }
+</code></pre>
+<p><strong>Impact:</strong> Move SetupService setup from flow to validation.</p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="add-offline-passing-mode-to-testparametric-blocks">Add offline passing mode to <code>TestParametric</code> blocks</h3>
+<p>Parametric tests can now be forced to pass offline, by datalogging values mid-way between the specified test limits. Any measurements or calculation results fed in are (offline only!) ignored and substituted with values that will never fail. A <code>BehaviorService</code> feature has been added to allowing opt-in to this new mode.</p>
+<pre><code class="lang-c#">BehaviorService.SetFeature(&quot;Datalog.Parametric.OfflinePassResults&quot;, true);
+TheLib.Datalog.TestParametric(result, 3 * V, &quot;V&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users can opt-in to this new use model, allowing flow path mechanics that are closer to reality.</p>
+<h3 id="1-add-6-digital-trim-tests">1. Add 6 digital trim tests:</h3>
+<ul>
+<li><code>Trim.Digital.LinearStopTrip</code>: Use linear stop search with trip criteria to find where the test pattern result change from fail to pass.</li>
+<li><code>Trim.Digital.LinearStopTarget</code>: Use linear stop search with target value to find which test step's output is closest to the target by capturing HRAM data.</li>
+<li><code>Trim.Digital.LinearFullTrip</code>: Use linear full search with trip criteria to find where the test pattern result change from fail to pass.</li>
+<li><code>Trim.Digital.LinearFullTarget</code>: Use linear full search with target value to find which test step's output is closest to the target by capturing HRAM data.</li>
+<li><code>Trim.Digital.BinaryTrip</code>: Use binary search with trip criteria to find where the test pattern result change from  fail to pass.</li>
+<li><code>Trim.Digital.BinaryTarget</code>: Use binary search with target value to find which test step's output is closest to the target by capturing HRAM data.</li>
+</ul>
+<h3 id="2-modify-linearstopfromtocount">2. Modify <code>LinearStopFromToCount</code>:</h3>
+<p>Change <code>LinearStopFromToCount</code> to compatible with <code>Site&lt;int&gt;</code> when using the <code>target</code> parameter.</p>
+<p><strong>Impact:</strong> No impact.</p>
+<h3 id="add-behaviorservice">Add <code>BehaviorService</code></h3>
+<p>BehaviorService manages configurable, program-wide behavior settings - allowing test programs to adapt to different user preferences or operational modes without modifying source code.</p>
+<pre><code class="lang-c#">BehaviorService.SetFeature(&quot;MaxRetries&quot;, 5);
+BehaviorService.SetFeature(&quot;Timeout&quot;, 30.0);
+BehaviorService.SetFeature(&quot;EnableLogging&quot;, true);
+BehaviorService.SetFeature(&quot;ApiEndpoint&quot;, &quot;https://api.example.com&quot;);
+</code></pre>
+<p><strong>Impact:</strong> Users benefit from a single, standardized way to address a common need, that is typically solved by a variety of  incompatible strategies scattered throughout the test program.</p>
+<h3 id="add-pinsarrangepinsitet">Add <code>Pins.ArrangePinSite&lt;T&gt;()</code></h3>
+<p>Combines multiple <code>PinSite&lt;T&gt;</code> instances into a single <code>PinSite&lt;T&gt;</code> by following this <code>Pins</code> object's sequence. Excessive objects are quietly ignored, missing ones result in a runtime exception.</p>
+<pre><code class="lang-c#">PinSite&lt;int&gt; one = new PinSite&lt;int&gt;([&quot;dig, dcvi&quot;]);
+PinSite&lt;int&gt; two = new PinSite&lt;int&gt;([&quot;dcvs1, dcvs2&quot;]);
+Pins pins = new(&quot;dig, dcvs1, dcvi, dcvs2&quot;);
+
+PinSite&lt;int&gt; arranged = pins.ArrangePinSite([one, two]);
+</code></pre>
+<p><strong>Impact:</strong> Removes the limitation where measurement &amp; readback test blocks were limited to a single instrument type only.</p>
+<h3 id="add-binarysearch-test-blocks-for-integer-dut-inputs">Add BinarySearch test blocks for integer DUT inputs</h3>
+<p>Binary searches for floating point and integer inputs require slightly different treatment to avoid rounding issues and corner cases. This task adds <code>int</code> type searches to the existing ones for <code>double</code>, following the exact same use model and method signature.</p>
+<pre><code class="lang-c#">Site&lt;int&gt; result = TheLib.Acquire.Search.BinarySearch(0, 100, inMinDelta, false, NonInverting, v =&gt; v &gt;= outTarget, -9999, out var outResult);
+</code></pre>
+<p><strong>Impact:</strong> Users now have tailored and optimized binary search algorithms for <code>int</code> and <code>double</code> inputs.</p>
+<h3 id="add-cra-version-readout-api">Add C#RA version readout API</h3>
+<p>Users can now read the C#RA version via language in code.</p>
+<pre><code class="lang-c#">Console.WriteLine(Csra.Info.Version);
+</code></pre>
+<p><strong>Impact:</strong> Improved maintability and version tracking capability.</p>
+<h3 id="add-conditional-portbridge-initialization-to-demo-program">Add conditional PortBridge initialization to Demo program</h3>
+<p><strong>Impact:</strong> Users can optionally run the Demo program in a scenario with or without PortBridge.</p>
+<h3 id="add-portbridge-library-integration">Add PortBridge library integration</h3>
+<p>PortBridge comes as a separate product that can optionally be used in IG-XL based test programs. C#RA supports scenarios with or without this library. In this first step the mechanics of a conditional reference is added, along with a compiler directive to mask calls so that they don't prevent builds when the library isn't available.</p>
+<pre><code class="lang-c#">#if PORTBRIDGE_ENABLED
+    /// do fancy PortBridge stuff
+#endif
+</code></pre>
+<p><strong>Impact:</strong> C#RA authors and users get conditional access to PortBridge language features.</p>
+<h3 id="change-steps-notation-to-count-in-linearsearch-test-blocks">Change <code>steps</code> notation to <code>count</code> in LinearSearch test blocks</h3>
+<p>The term <code>steps</code> is indicative for intervals, whereas the way it's used in the linear search test blocks it's being used for the number of overall measurements taken (count). The name change intends to remove ambiguity users have reported - note that no functional change applies. Also see <a href="https://en.wikipedia.org/wiki/Off-by-one_error">https://en.wikipedia.org/wiki/Off-by-one_error</a></p>
+<pre><code class="lang-c#">LinearFullFromToCount&lt;Tin&gt;(Tin inFrom, Tin inTo, int inCount, Action&lt;Tin&gt; oneMeasurement)
+</code></pre>
+<p><strong>Impact:</strong> Improved clarity for users when requesting step counts in linear search test blocks.</p>
+<h3 id="change-the-input-parameter-of-the-frequencytiming-test-method">Change the input parameter of the <code>Frequency.Timing()</code> test method</h3>
+<p>Adjust the input parameters of the <code>Frequency.Timing()</code> test method to align it with other test methods, and allow IG-XL to verify if the specified pattern exists.</p>
+<pre><code class="lang-c#">//Old 
+public void Baseline(string pattern, string measurePins, double waitTime = 0, double measureWindow = 10 * ms, string config = &quot;&quot;) 
+//New 
+public void Baseline(Pattern pattern, PinList pinList, double waitTime = 0, double measureWindow = 10 * ms, string setup = &quot;&quot;) 
+</code></pre>
+<p><strong>Impact:</strong> The test program verifies during validation whether the specified pattern exists.</p>
+<h3 id="extend-testmethod-argument-list">Extend TestMethod Argument List</h3>
+<p>Adding <code>source</code> and <code>slope</code> parameters to the <code>Timing.Frequency.Baseline</code> TestMethod.
+Removing the default values from the <code>FrequencyCounter</code> Setup TestBlock.</p>
+<p><strong>Impact:</strong> User can specify the <code>source</code> and <code>slope</code> for the frequency read in the TestMethod params instead of in the TestBlock.</p>
+<h3 id="implement-parametric-search">Implement Parametric Search</h3>
+<p>The following search methods have been implemented:</p>
+<ul>
+<li><code>LinearFull</code> (<em>The measurements across the entire range are traversed without being evaluated during the linear search, after which the device input condition for which the output pin exceeds the threshold value is provided.</em>);</li>
+<li><code>LinearStop</code> (<em>The measurements across the range are traversed with an evaluation performed at each iteration, and the search is stopped once the objective has been reached (on all sites). The device input condition for which the output pin exceeds the threshold value is then provided.</em>);</li>
+</ul>
+<h3 id="implement-setupdigitalmodifyxxx-blocks">Implement Setup.Digital.ModifyXXX blocks</h3>
+<p>The following ModifyXXX methods have been implemented:</p>
+<ul>
+<li><code>ModifyPins</code>: Selectively program or modify any digital instrument Pins parameter.</li>
+<li><code>ModifyPinsLevels</code>: Selectively program or modify any digital instrument pins levels parameter.</li>
+<li><code>ModifyPinsTiming</code>: Selectively program or modify any digital instrument pins timing parameter.</li>
+</ul>
+<h3 id="rework-pinsiteaddrange">Rework PinSiteAddRange</h3>
+<p>Adding the capability to read more than one instrument in the methods implemented in <strong>Acquire.Dc</strong>, once the <code>.AddRange()</code> (from IG-XL 11) becomes available.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

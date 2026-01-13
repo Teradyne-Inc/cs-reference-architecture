@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Pins Type | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Pins Type | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/pins-type.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="pins-type"><code>Pins</code> Type</h1>
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>The <code>Pins</code> type is currently being reworked. The proposed instrument &amp; platform support changes are shown here and implemented on the legacy design, and will be ported to the new model once that is available.</p>
+</div>
+<p>The default way to handle pins, pin groups and lists of these (even nested) is by comma separated strings: these come in from the instance sheet into test methods (choice of supported types is limited here), and is consistently consumed by the PublicAPI features and instrument drivers.</p>
+<p>Aside from the performance questions for string handling (overrated ... string manipulation has a bad reputation for being slow, but that's typically when lots of incremental changes are done in loops, but single operations on short strings won't break the bank), there's another aspect to it. For a particular setting to reach a dedicated instrument, the following steps need to be performed:</p>
+<ul>
+<li>call PublicAPI driver</li>
+<li>resolve (nested) pin lists, groups and aliases</li>
+<li>identify instrument channels according to site mask</li>
+<li>send data to instruments</li>
+</ul>
+<p>IG-XL is pretty capable in handling these steps efficiently. Caching and optimizations under the hood allow broadcasting the data in parallel to all targeted hardware resources.</p>
+<p>In the case of instrument-agnostic language (goal for our Test Blocks), these additional steps are required <strong>ahead</strong> of the PublicAPI call for efficient operation:</p>
+<ul>
+<li>resolve (nested) pin lists, groups and aliases</li>
+<li>determine instrument type (only for generic code)</li>
+<li>re-group common instrument types into sub-pin-lists</li>
+</ul>
+<p>Without that, routing the calls to the specific instruments would have to be done individually. In addition to the (expensive) look-up of the instrument type at runtime, this would result in a complete serial execution:</p>
+<p><img src="media/pins-type-serial.png" alt="Diagram showing serial execution pattern with individual pin processing, illustrating expensive runtime lookups and sequential instrument routing"></p>
+<p>Caching the instrument types upfront (validation, first-run) allows for optimized combination of alike pins, minimizing the overhead to the bare minimum:</p>
+<p><img src="media/pins-type-grouped.png" alt="Diagram showing optimized grouped execution pattern with cached instrument types, demonstrating efficient combination of similar pins with minimal overhead"></p>
+<h2 id="value-based-comparison">Value-Based Comparison</h2>
+<p>The <code>Pins</code> type supports value-based equality comparison. This is particularly useful when comparing pin configurations across different test scenarios or validating expected vs. actual pin sets.</p>
+<ul>
+<li><strong>Pin Equality:</strong> Two <code>Pin</code> objects are considered equal if their <code>Name</code> properties are equal.</li>
+<li><strong>Pins Equality:</strong> Two <code>Pins</code> collections are considered equal if they contain the same sequence of <code>Pin</code> objects (by name), in the same order.</li>
+</ul>
+<p>This behavior is implemented by overriding <code>Equals</code> and <code>GetHashCode</code> in both <code>Pin</code> and <code>Pins</code> to be used reliably in collections like dictionaries or hash sets, and ensures consistent behavior in unit tests and validation logic.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The comparison is <strong>order-sensitive</strong>. That means [A, B] is not equal to [B, A].</p>
+</div>
+<p>This design choice aligns with the typical use cases in test development, where the pin order is relevant for calculations or datalog.</p>
+<h2 id="instrument-families">Instrument Families</h2>
+<p>How do we find out which pins can be commonly talked to with the same language statement? Well, that depends ...</p>
+<h3 id="instrument-types">Instrument Types</h3>
+<p>IG-XL itself offers a common API to different (physical) instrument types within the same family. For instance, there's a DC30, DC75, DC80, UltraVI80 for the UltraFLEX and an UltraVI264 for UltraFLEX+ all using the same language node <code>TheHdw.Dcvi...</code>. Common features that exist on all can easily be accessed with identical calls. Features unique to a specific instrument must still be available on that common node, but will produce a runtime exception if not backed up by the target instrument (like a certain voltage / current range, bleeder resistor, ...).</p>
+<h3 id="instrument-features">Instrument Features</h3>
+<p>Within a physical instrument, multiple (logical) instruments can exist. All digital instruments for instance have a PPMU per channel in addition to the PinElectronic feature. DCVI instruments bring DiffMeter and DCTime features, which all have a separate language node. In some cases this is cross-cutting, so does PPMU features exist on digital instruments, as well those primarily serving mixed signal and RF needs. VI or VS instruments however do <strong>NOT</strong> have PPMUs, as their main purpose already cover this basic capability.</p>
+<p>Bottom line - the <code>Pins</code> class needs to handle pins that can have a different type, and each contain one or multiple features. Depending on the test code needs, users need to be able to query for either.</p>
+<h3 id="instrument-domain">Instrument Domain</h3>
+<p>A core concept of C#RA is the language grouping into functional domains. For instance are all DC related features placed within a <code>TheLib.Setup.Dc</code> language branch. That may include PPMU, DCVI or DCVS features.</p>
+<p>The <code>Pins</code> class can provide information about supported domain(s).</p>
+<h2 id="test-method-level">Test Method Level</h2>
+<p>For an intuitive, light-weight and clear use model. all the complications are buried inside the implementation. Because test instance parameters are limited to very basic types (<code>string</code>, <code>int</code>, <code>double</code> and <code>bool</code>), the <code>Pins</code> constructor accepts a comma-separated pin list <code>string</code> or <code>PinList</code> type:</p>
+<pre><code class="lang-cs">[TestClass]
+public class PinObjectPrototype : TestCodeBase {
+
+    private Pins _pins;
+
+    [TestMethod]
+    public void TestMethod(string pinList) {
+        _pins ??= new(pinList);
+        TestLib.Setup.Dc.Connect(_pins);
+        TestLib.Setup.Dc.ForceV(_pins, 1.0 * V);
+        // more test code
+    }
+}
+</code></pre>
+<p>In combination with persistent test class objects, the <code>Pins</code> object can be created at first touch only, possibly during validation, so subsequent runs don't see an execution penalty.</p>
+<p>Test blocks need to accept the <code>Pins</code> type as input. Possibly as an overload in addition to <code>string</code> for cases where instrument independent operation isn't needed.</p>
+<h2 id="test-block-level">Test Block Level</h2>
+<p>Inside Test Blocks, <code>Pins</code> objects allow convenient querying for the different instrument types and features:</p>
+<ul>
+<li><code>ContainsType()</code>, <code>ContainsFeature()</code>, <code>ContainsDomain()</code>: does the object contain any pin with the specified type, feature or domain?</li>
+<li><code>ExtractByType()</code>, <code>ExtractByFeature()</code>, <code>ExtractByDomain()</code>: create a new <code>Pins</code> object with only pins of the specified type, feature or domain</li>
+</ul>
+<p>This API allows for a concise syntax in generic Test Blocks:</p>
+<pre><code class="lang-csharp">public static void Connect(Pins pins) {
+    if (pins.ContainsFeature(InstrumentFeature.Ppmu, out string ppmu)) {
+        TheHdw.PPMU.Pins(ppmu).Connect();
+    }
+    if (pins.ContainsFeature(InstrumentFeature.Dcvi, out string dcvi)) {
+        TheHdw.DCVI.Pins(dcvi).Connect(tlDCVIConnectWhat.HighForce | tlDCVIConnectWhat.HighSense);
+    }
+    if (pins.ContainsFeature(InstrumentFeature.Dcvs, out string dcvs)) {
+        TheHdw.DCVS.Pins(dcvs).Connect(tlDCVSConnectWhat.Force | tlDCVSConnectWhat.Sense);
+    }
+}
+</code></pre><h2 id="merging-results">Merging Results</h2>
+<p>IG-XL and C#RA heavily rely on pin and site agnostic interfaces. A <code>TheHdw.Dcvi.Pins().Meter.Read()</code> will return a single result containing data for all sites and all pins in the specified order. The test block <code>TheLib.Acquire.Dc.Measure()</code> does the same. The latter however will have to split the internal action into calls to the dedicated drivers for PPMU, DCVI or DCVS - each returning a separate object.</p>
+<p>That object needs to be merged and put into the original sequence requested. The following method allows that:</p>
+<ul>
+<li><code>ArrangePinSite&lt;T&gt;()</code></li>
+</ul>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<p>The learning cost of a use model for pins that's different from the regular IG-XL way has been carefully considered when selecting the proposed solution.</p>
+<h3 id="option-hide-the-caching-in-a-global-service">Option: &quot;Hide&quot; the Caching in a Global Service</h3>
+<p>Exposing a new use model to Test Method authors could be avoided by creating a global dictionary for all pin list strings that occur in a test program, and having their resolved resources stored in there.</p>
+<p>Test Blocks however would need to perform this lookup before processing the individual instruments. Besides the (small) overhead, there's concern about putting this information on a global scope. Rogue Test Blocks could modify this information, potentially impacting other, unrelated areas in a test program. It would be more of a procedural approach and defeat object-oriented principles.</p>
+<h3 id="option-all-in-oop-use-model">Option: &quot;All-In&quot; OOP Use model</h3>
+<p>The concept of <code>Pin</code> and <code>Pins</code> objects could be further enforced by offering methods interacting with the hardware directly on the objects. Implementing dedicated interfaces for instrument types and features could resolve accessing common as well as rather specific aspects.</p>
+<p>While appealing from a pure OOP perspective, this approach would require replacing (wrapping) the entire PublicAPI. A fundamental deviation from how things typically work (IG-XL is <strong>NOT</strong> purely OOP), could result in confusion in conjunction PublicAPI. If at all, such a use model should be offered natively by (a future version of) IG-XL.</p>
+<h2 id="implementation">Implementation</h2>
+<p>This feature is implemented with gradually added support for instruments as they become required for the respective customer activities.</p>
+<p>Currently, these instruments are supported:</p>
+<h3 id="ultraflex">UltraFLEX</h3>
+<table>
+<thead>
+<tr>
+<th>Instrument (Type)</th>
+<th>Internal Name</th>
+<th>Config Name</th>
+<th>Feature</th>
+<th>Domain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UP1600</td>
+<td>Utah</td>
+<td><code>HSD-U</code></td>
+<td>Ppmu, Digital</td>
+<td>Dc, Digital</td>
+</tr>
+<tr>
+<td>UP1600+</td>
+<td>?</td>
+<td><code>HSD-U</code> ?</td>
+<td>Ppmu, Digital</td>
+<td>Dc, Digital</td>
+</tr>
+<tr>
+<td>HexVS</td>
+<td>?</td>
+<td><code>HexVS</code></td>
+<td>Dcvs</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>VSM</td>
+<td>?</td>
+<td><code>VSM</code></td>
+<td>Dcvs</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>UVI80</td>
+<td>?</td>
+<td><code>DC-07</code></td>
+<td>Dcvi</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>SupportBoard</td>
+<td></td>
+<td><code>SupportBoard</code></td>
+<td>Utility</td>
+<td>Utility</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ultraflex-1">UltraFLEX+</h3>
+<table>
+<thead>
+<tr>
+<th>Instrument (Type)</th>
+<th>Internal Name</th>
+<th>Config Name</th>
+<th>Feature</th>
+<th>Domain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UP2200</td>
+<td>Paradise</td>
+<td><code>HSDP</code></td>
+<td>Ppmu, Digital</td>
+<td>Dc, Digital</td>
+</tr>
+<tr>
+<td>UP2200+</td>
+<td>?</td>
+<td><code>HSDP</code> ?</td>
+<td>Ppmu, Digital</td>
+<td>Dc, Digital</td>
+</tr>
+<tr>
+<td>UP5000-EM</td>
+<td>Utopia</td>
+<td><code>HSDPx</code></td>
+<td>Ppmu, Digital</td>
+<td>Dc, Digital</td>
+</tr>
+<tr>
+<td>UP5000-EMX</td>
+<td></td>
+<td><code>HSDPx</code></td>
+<td>Ppmu, Digital</td>
+<td>Dc, Digital</td>
+</tr>
+<tr>
+<td>UVS256</td>
+<td>Tesla ?</td>
+<td><code>VS-800mA</code></td>
+<td>Dcvs</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>UVI264</td>
+<td>Raiden</td>
+<td><code>DC-8p5V90V</code></td>
+<td>Dcvi</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>UVS64</td>
+<td>Tesla ?</td>
+<td><code>VS-5A</code></td>
+<td>Dcvs</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>UVS64HP</td>
+<td>Zebra</td>
+<td><code>VS-20A</code></td>
+<td>Dcvs</td>
+<td>Dc</td>
+</tr>
+<tr>
+<td>SupportBoard</td>
+<td>DSI ?</td>
+<td><code>Support</code></td>
+<td>Utility</td>
+<td>Utility</td>
+</tr>
+</tbody>
+</table>
+<h2 id="merged-resources">Merged Resources</h2>
+<p>Merged resources both using instrument internal (<code>DCVSMerged10</code> channel type) or external merging (<code>:c</code> syntax) are supported. The <code>Pins</code> class does not actually know about that, and can not be asked if a resource is merged or not. The IG-XL use model solely requires the leader resource being programmed, and both instrument (base-)type and features are correctly resolved.</p>
+<h2 id="shared-resources">Shared Resources</h2>
+<p>Shared resources both across sites (<code>siteXX</code> spec in site column) and pins (<code>S:</code> syntax) are supported. The <code>Pins</code> class does not know about this and cannot be asked if a resource is shared.</p>
+<h2 id="nc-pins">NC pins</h2>
+<p>NC return the Type <code>NC</code> and an empty list of features.</p>
+<h2 id="multiple-resources">Multiple Resources</h2>
+<p>Multiple resources connected to a pin using the <code>:M</code> syntax is not supported. That concept conflicts with the C#RA principle of instrument agnostic language. For that it is required that a pin has no features with overlapping capabilities. For instance, if a channel map pin is connected to both a Digital and a DCVI instrument, how would a <code>Setup.Dc.Connect()</code> block know which path to connect?</p>
+<p>The <code>:M</code> concept cannot be used in C#RA enabled test programs, use dedicated pins instead (like <code>RST_Dig</code> and <code>RST_Dcvi</code>).</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

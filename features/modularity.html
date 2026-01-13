@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Feature Modularity | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Feature Modularity | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/modularity.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="feature-modularity">Feature Modularity</h1>
+
+<p>In order to avoid overloaded and bulky implementations, an opt-in approach is chosen for features where possible. Have our templates in <code>Template.xla</code> already been unhandy, imagine how they would look like if all the power of .NET would also be crammed in there.</p>
+<p>To allow for low entry barrier and to let users decide which features they need and want, a modular approach is followed. The exact model varies for the different features, but in general, users should be able to mix and match.</p>
+<p>The idea is explained at the example of a simple test method, opting in to debug and argument validation functionality.</p>
+<h2 id="a-simple-test-method">A Simple Test Method</h2>
+<p>The following code shows a minimum implementation of a basic continuity test. The <a href="test-abstraction.html">test abstraction</a> methodology is used for concide code:</p>
+<pre><code class="lang-cs">using static Demo.TestLib;
+
+[TestMethod]
+public void SimpleContinuity(string digPins, string powerPins, double forceCurrent) {
+
+    // setup
+    string allPins = Utils.MergePinLists(digPins, powerPins);
+    Connect(allPins);
+    Setup.ForceV(powerPins, 0 * V);
+    Setup.ForceI(digPins, forceCurrent, Measure.Voltage, 2 * V, forceCurrent);
+    Setup.Gate(allPins, true);
+
+    // measure
+    TheHdw.Wait(1 * ms);
+    PinSite&lt;double&gt; meas = Acquire.ReadMeter(digPins);
+
+    // reset
+    Setup.Gate(allPins, false);
+    DisConnect(allPins);
+
+    // datalog
+    Datalog.TestParametric(meas, &quot;V&quot;);
+}
+</code></pre>
+<h3 id="example-add-pre---body--post-stepping-capability">Example: Add Pre- / Body / Post Stepping Capability</h3>
+<p>If desired, the concept of steppable test methods can be easily added. The code would only require slight modifications:</p>
+<pre><code class="lang-cs">[TestMethod, Steppable]
+public void SimpleContinuityWithStepping(string digPins, string powerPins, double forceCurrent) {
+
+    string allPins = Utils.MergePinLists(digPins, powerPins);
+    PinSite&lt;double&gt; meas = null;
+
+    if (ShouldRunPreBody) PreBody();
+    if (ShouldRunBody) Body();
+    if (ShouldRunPostBody) PostBody();
+
+    void PreBody() {
+        Connect(allPins);
+        Setup.ForceV(powerPins, 0 * V);
+        Setup.ForceI(digPins, forceCurrent, Measure.Voltage, 2 * V, forceCurrent);
+        Setup.Gate(allPins, true);
+    }
+
+    void Body() {
+        TheHdw.Wait(1 * ms);
+        meas = Acquire.ReadMeter(digPins);
+    }
+
+    void PostBody() {
+        Setup.Gate(allPins, false);
+        DisConnect(allPins);
+        Datalog.TestParametric(meas, &quot;V&quot;);
+    }
+}
+</code></pre>
+<p>The stepping feature allows compliant test instances to have three distinct parts, which can be individually stepped through with Flow Breakpoints. The code for Three local methods are added, with each covering the code parts specific for the individual steps. Called from the flow controller 3 consecutive times, this test method branches into the corresponding Pre / Body / Post part via a central <code>if</code> structure at the top.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions">Local functions</a> have access to the arguments and local variables of the hosting member. It's not needed to hand these through via arguments. The compiler takes care of that, resulting in a cleaner code with less errors.</p>
+</div>
+<h3 id="example-add-argument-validation-capability">Example: Add Argument Validation Capability</h3>
+<p>To offer more convenience to the users of this generic test method, it may offer argument validation. Also that functionality can be added in a modular fashion, leaving the rest of the code structure untouched.</p>
+<pre><code class="lang-cs">[TestMethod, Steppable, CustomValidation]
+public void SimpleContinuityWithValidation(string digPins, string powerPins, double forceCurrent) {
+
+    string allPins = Utils.MergePinLists(digPins, powerPins);
+    PinSite&lt;double&gt; meas = null;
+
+    if (TheExec.Flow.IsValidating) ValidateArgs();
+    if (ShouldRunPreBody()) PreBody();
+    if (ShouldRunBody()) Body();
+    if (ShouldRunPostBody()) PostBody();
+
+    void ValidateArgs() {
+        Validate.IsInRange(forceCurrent, -200 * uA, 200 * uA, $&quot;Force Currrent too large.&quot;);
+    }
+
+    void PreBody() {
+        Connect(allPins);
+        Setup.ForceV(powerPins, 0 * V);
+        Setup.ForceI(digPins, forceCurrent, Measure.Voltage, 2 * V, forceCurrent);
+        Setup.Gate(allPins, true);
+    }
+
+    void Body() {
+        TheHdw.Wait(1 * ms);
+        meas = Acquire.ReadMeter(digPins);
+    }
+
+    void PostBody() {
+        Setup.Gate(allPins, false);
+        DisConnect(allPins);
+        Datalog.TestParametric(meas, &quot;V&quot;);
+    }
+</code></pre>
+<p>The validation part is also encapsulated in a local function, called from the high-level selector part at the top.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

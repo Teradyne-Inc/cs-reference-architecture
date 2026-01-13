@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>SSN Slang Glossary | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="SSN Slang Glossary | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/ssn/ssn_glossary.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ssn-slang-glossary">SSN Slang Glossary</h1>
+
+<p>To address the traditional SCAN technology's sustainability pain points, SSN has created a lot of new concepts that does not exist before and a lot of acronyms along with them. The purpose of this cheat sheet is supposed to help users who are new to SSN to understand the slang that we speak.</p>
+<h2 id="platform-agnostic-terms">Platform agnostic terms</h2>
+<h3 id="accumulated-status">Accumulated Status</h3>
+<ul>
+<li>refer to <strong><a href="#on-chip-compare-occomp">On-Chip Compare</a></strong></li>
+<li>Per-shift pass/fail status bits accumulated​ across all <code>ssh_icl_instances</code> of the same <code>capture_global_group</code></li>
+</ul>
+<h3 id="capture_global_group">capture_global_group</h3>
+<ul>
+<li>refer to <strong><a href="#representative_ssh">representative_ssh</a></strong></li>
+<li><code>ssh_icl_instances</code> that share the same <code>capture_global_group</code> ID appear as only one <code>ssh_icl_instance</code> on the ssn bus.</li>
+</ul>
+<h3 id="contribution-bits-disable_contribution_bit">Contribution Bits (disable_contribution_bit)</h3>
+<ul>
+<li>A RW bit, if asserted (set to 1), that can prevent a <code>ssh_icl_instance</code>'s On-Chip compare logic to modify(contribute) the <code>Accumulated Status</code> slots.</li>
+<li>refer to <strong><a href="#on-chip-compare-occomp">On-Chip Compare</a></strong>.</li>
+</ul>
+<h3 id="core_instance">core_instance</h3>
+<ul>
+<li>A core is often a function IP with established <code>EDT</code> networks.</li>
+<li>It can be assigned with one ssh instance or multiple if the core is too complex.</li>
+<li>you can consider a <code>core instance</code> as a group of <code>ssh_icl_instances</code>, note that the group may only contains one <code>ssh_icl_instance</code>.</li>
+<li>when testing, core instance need to be tested as a minimum unit. which means all <code>ssh_icl_instances</code> of a given <code>core instance</code> need to be enabled.</li>
+</ul>
+<h3 id="edt">EDT</h3>
+<ul>
+<li>Embedded Deterministic Test
+<img src="media/ssn-edt.png" alt="An illustration showing what an EDT(Embedded Deterministic Test) is"></li>
+</ul>
+<h3 id="icl-icl">ICL (icl)</h3>
+<ul>
+<li>Instrument Connectivity Language</li>
+</ul>
+<h3 id="ijtag">iJTAG</h3>
+<ul>
+<li>IEEE 1687</li>
+</ul>
+<h3 id="on-chip-clock-occ">On-Chip Clock (OCC)</h3>
+<ul>
+<li>this is to highlight that <code>OCC</code> is typically referring to <strong>On Chip Clock</strong>, while <strong><a href="#on-chip-compare-occomp">On-Chip Compare</a></strong> uses <code>OCComp</code></li>
+</ul>
+<h3 id="on-chip-compare-occomp">On-Chip Compare (OCComp)</h3>
+<ul>
+<li>A ssh takes its scan in data as well as scan out data (expected and masked) from predictable preallocated <code>time slot</code> on the ssn bus and offload the mis-compares on a dedicated region on the preallocated <code>time slot</code> called <code>accumulated status</code> zone.</li>
+</ul>
+<p><img src="media/ssn-OnChip-Compare-1.png" alt="Diagram showing OnChip Compare accumulated status and sticky bit mechanisms for tracking per-shift pass/fail results as well as per SSH ICL instances pass/fail status"></p>
+<ul>
+<li>Per-shift pass/fail status bits accumulated​ across <code>ssh_icl_instances</code> (SSN stream)</li>
+<li>Sticky pass/fail status bit per <code>ssh_icl_instances</code> (IJTAG)</li>
+</ul>
+<p><img src="media/ssn-OnChip-Compare-2.png" alt="An illustration of On-Chip Compare SSN bus data stream and JTAG TDO bits"></p>
+<ul>
+<li>refer to <a href="#sticky-bits-sticky_bit">Sticky Bits</a></li>
+</ul>
+<h3 id="representative_ssh">representative_ssh</h3>
+<ul>
+<li>when multiple identical <code>ssh_icl_instances</code> are tested simultaneously as a group, they can share the same scan in data &amp; scan out expected/mask data. In that case, only one copy of the data is present on the ssn bus and one bucket of <code>time slots</code> will be allocated. Siemens use the first appeared <code>ssh_icl_instance</code> in that group as the <code>representative ssh</code>, whose name will appear in the pin/cycle-to-ssh mapping section, and for the following appeared <code>ssh_icl_instances</code> they will have an attribute that points to the first ssh, namely <code>representative ssh</code>.</li>
+<li><code>representative ssh</code> represent a group of <code>ssh_icl_instances</code> that share the same <code>capture_global_group</code> ID with it.</li>
+<li>User can't tell if a <code>ssh_icl_instance</code> from the mapping section is a <code>representative_ssh</code> or not.</li>
+<li>User need to parse the <code>Active Ssh Section</code> to get that information.</li>
+</ul>
+<h3 id="smux">SMux</h3>
+<ul>
+<li>A Multiplexer on the ssn Bus</li>
+</ul>
+<h3 id="ssh-ssh">SSH (ssh)</h3>
+<ul>
+<li>Streaming Scan Host
+<img src="media/ssn-ssh.png" alt="ssh"></li>
+</ul>
+<h3 id="ssh_icl_instance">ssh_icl_instance</h3>
+<ul>
+<li>an instance of an <strong><a href="#ssh-ssh">ssh</a></strong>, accessed via iJTAG with a unique icl address.</li>
+<li>in most cases the term <code>ssh instance</code> and <code>icl instance</code> are interchangeable, so it may be referred to as <code>ssh_icl_instance</code> in the mapping section of a pattern(stil) file.</li>
+</ul>
+<h3 id="ssn">SSN</h3>
+<ul>
+<li>Streaming Scan Network</li>
+</ul>
+<h3 id="sticky-bits-sticky_bit">Sticky Bits (sticky_bit)</h3>
+<ul>
+<li>A RO bit, if asserted (set to 1), that marks the failure status of a <code>ssh_icl_instance</code>'s On-Chip compare logic since last reset. ( a reset is typically done in <code>ssn_setup</code> or <code>ssn_end</code>)</li>
+<li>refer to <strong><a href="#on-chip-compare-occomp">On-Chip Compare</a></strong></li>
+</ul>
+<p><img src="media/ssn-OnChip-Compare-3.png" alt="On Chip Compare inside SSH"></p>
+<h3 id="tester-compare-tc">Tester Compare (TC)</h3>
+<ul>
+<li>A ssh takes its scan in data from predictable preallocated <code>time slot</code> on the ssn bus and offload the EDT's scan out data on the same <code>time slot</code>.</li>
+</ul>
+<p><img src="media/ssn-tester-compare-mapping.png" alt="Tester Compare Mapping"></p>
+<ul>
+<li>each <code>time slot</code> on the ssn bus out will map to a <code>ssh_icl_instance</code> (or a group of identical <code>ssh_icl_instance</code> that share the same <code>representative ssh</code>)</li>
+</ul>
+<p><img src="media/ssn-tester-compare-fail-identification.png" alt="Tester Compare Fail Identification"></p>
+<ul>
+<li>tester will compare the scan out against the expected and any mis-compare will map to the <code>ssh_icl_instance</code>, thus one will know which <code>ssh_icl_instance</code> failed and which <code>core instance</code> failed.</li>
+</ul>
+<h2 id="pattern-related">Pattern Related</h2>
+<h3 id="ssn_setup-pattern">ssn_setup pattern</h3>
+<ul>
+<li>the pattern for setting up the ssn bus and active ssh instances</li>
+<li>it configs all the disable_contribution_bit of active ssh instances</li>
+<li>only the JTAG port is active, the ssn bus is in idle state</li>
+</ul>
+<h3 id="ssn_payload-pattern">ssn_payload pattern</h3>
+<ul>
+<li>the pattern that contains all the streaming scan data</li>
+<li>the scan blocks are packed back-to-back without parallel vectors in between</li>
+<li>JTAG and other control pins are in idle state.</li>
+<li>this type of pattern should contain an attribute called <code>atpg_scan_network</code>, it's a reference pointing to the <a href="#_ssn_mapfilecsv">ssn_mapfile.csv</a>
+<img src="media/ssn-payload-pattern.png" alt="ssn payload pattern"></li>
+</ul>
+<h3 id="ssn_end-pattern">ssn_end pattern</h3>
+<ul>
+<li>the pattern for resetting the ssn bus and active ssh instances</li>
+<li>it also collect the status of all sticky_bits</li>
+<li>only the JTAG port is active, the ssn bus is in idle state</li>
+</ul>
+<h3 id="_ssncsv">*_ssn.csv</h3>
+<ul>
+<li>a file that is generated along with the ssn_setup pattern or the ssn_end pattern</li>
+<li>contains the extracted active ssh instances information</li>
+<li>the content is subject to change due to the evolution of ssn</li>
+<li>IG-XL currently(as of 11.0) do NOT parse the file, a code lib provided by Factory Apps will read and parse the file.
+<img src="media/ssn-ssn-csv.png" alt="ssn.csv"></li>
+</ul>
+<h3 id="_ssn_mapfilecsv">*_ssn_mapfile.csv</h3>
+<ul>
+<li>a file that is generated along with the ssn_payload pattern.</li>
+<li>contains the information of pin/cycle-to-core(ssh) mapping</li>
+<li>the content is subject to change due to the evolution of ssn</li>
+<li>IG-XL will parse and load the file while loading the payload pattern.
+<img src="media/ssn-mapfile-csv.png" alt="ssn mapfile.csv"></li>
+</ul>
+<h3 id="cycle_repetition">cycle_repetition</h3>
+<ul>
+<li>fitting a N bit streaming packet data on a M bit wide bus will result in the mapping pattern to repeat every R cycle, where R = LCM(M, N) / M
+<ul>
+<li>LCM: Least Common Multiple</li>
+</ul>
+</li>
+<li>it means every R cycles the pin/cycle-to-core(ssh) mapping relation repeats.
+<ul>
+<li>for each scan out pin, the cycle-to-core(ssh) mapping repeats every R cycles</li>
+</ul>
+</li>
+<li>we call the R cycle_repetition</li>
+<li>refer to <a href="#cycle_modulo">cycle_modulo</a>
+<img src="media/ssn-cycle-repetition.png" alt="cycle repetition"></li>
+</ul>
+<h3 id="cycle_modulo">cycle_modulo</h3>
+<ul>
+<li>refer to <a href="#cycle_repetition">cycle_repetition</a></li>
+<li>with the mapping being cycling, a given modulo number on a given pin will constantly map to a fixed core</li>
+<li>the mapping table is constructed with 4 columns being:
+<ul>
+<li>pin</li>
+<li>cycle_repetition</li>
+<li>cycle_modulo</li>
+<li>core/ssh-icl instance</li>
+</ul>
+</li>
+</ul>
+<h3 id="rotation">rotation</h3>
+<ul>
+<li>fitting a N bit streaming packet data on a M bit wide bus will result in the mapping pattern to repeat every R cycle, where R = LCM(M, N) / M
+<ul>
+<li>LCM: Least Common Multiple</li>
+</ul>
+</li>
+<li>sometimes user would patch the streaming data so that N is integer multiple of M, this is called rotation = off</li>
+<li>the most efficient way is to disable patching, which is called rotation = on</li>
+<li>refer to <a href="#cycle_repetition">cycle_repetition</a></li>
+<li>refer to <a href="#cycle_modulo">cycle_modulo</a>
+<img src="media/ssn-rotation-off.png" alt="rotation off"></li>
+</ul>
+<h3 id="prime_scan_mask-opcode">prime_scan_mask (opcode)</h3>
+<ul>
+<li>a opCode that is needed for masking core/ssh-icl instance.</li>
+<li>refer to <a href="https://myinfo-support.teradyne.com/documentation/r/SCAN-Syntax-Reference/prime_scan_mask-prime_no_scan_mask/IGXL11.00.00">prime_scan_mask, prime_no_scan_mask</a></li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

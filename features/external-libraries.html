@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>External Libraries | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="External Libraries | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/external-libraries.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="external-libraries">External Libraries</h1>
+
+<h2 id="static-dependencies">Static Dependencies</h2>
+<ul>
+<li>IG-XL (sic!)</li>
+<li>hopefully nothing else</li>
+</ul>
+<h2 id="conditional-dependencies">Conditional Dependencies</h2>
+<h3 id="conditional-project-reference">Conditional Project Reference</h3>
+<p>In scenarios where PortBridge is installed and licensed, it's dll must be referenced by the test code projects making use of it. Typically, such a reference is a hard dependency, and the project can not even build without it - even if it was not directly used.</p>
+<p>On the other hand, a configuration without PortBridge will typically not have the software installed. There is no dll that could be referenced to satisfy the compiler.</p>
+<p>To address both use cases, a conditional project reference is added:</p>
+<pre><code class="lang-xml">  &lt;PropertyGroup&gt;
+    &lt;!-- Check if external config or marker file exists --&gt;
+	&lt;HuhuExists Condition=&quot;Exists('..\huhu.txt')&quot;&gt;true&lt;/HuhuExists&gt;
+  &lt;/PropertyGroup&gt;
+</code></pre>
+<p>For this to work, new SDK project files are required. First, a custom MSBuild property <code>HuhuExists</code> is defined. It's set to true if a file <code>..\huhu.txt</code> exists. The relative path is from the location of the <code>.csproj</code> file, so in typical scenarios it would be next to the <code>.sln</code> file.</p>
+<p>Since that custom property would be undefined in case the file does not exist, it's being set to <code>false</code> in that case:</p>
+<pre><code class="lang-xml">  &lt;PropertyGroup&gt;
+	&lt;!-- Default value if the flag file doesn't exist --&gt;
+	&lt;HuhuExists Condition=&quot; '$(HuhuExists)' == '' &quot;&gt;false&lt;/HuhuExists&gt;
+  &lt;/PropertyGroup&gt;
+</code></pre>
+<p>Now, the flag can be used as a condition to establish the project reference:</p>
+<pre><code class="lang-xml">  &lt;ItemGroup Condition=&quot; '$(HuhuExists)' == 'true' &quot;&gt;
+    &lt;ProjectReference Include=&quot;..\HuhuLib\HuhuLib.csproj&quot; /&gt;
+  &lt;/ItemGroup&gt;
+</code></pre>
+<h3 id="conditional-calls-to-portbridge-api">Conditional Calls to PortBridge API</h3>
+<p>The same mechanism can be used for conditional calls to the PortBridge API. For that to work, a compiler constant is defined:</p>
+<pre><code class="lang-xml">  &lt;PropertyGroup Condition=&quot; '$(HuhuExists)' == 'true' &quot;&gt;
+	  &lt;DefineConstants&gt;$(DefineConstants);HUHU_EXISTS&lt;/DefineConstants&gt;
+  &lt;/PropertyGroup&gt;
+</code></pre>
+<p>With that, code can be conditionally enabled / disabled for the build process:</p>
+<p><img src="media/file-exists-build-flag.gif" alt="Animated GIF showing conditional compilation in action, with code being enabled/disabled based on file existence checks and build flags"></p>
+<p>Specific APIs are fully accessible including intellisense and type-ahead when that is intended, and alternative implementations are used when that isn't available.</p>
+<h2 id="risks">Risks</h2>
+<p>The potential need for substantial code sections using <code>#if</code> compiler directives, and the mechanics involved with the conditional project references will add complexity to the code base for this option. The admittedly high risk of overburdening maintenance cost will be mitigated by careful choices and close monitoring of the actual implementation.</p>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<p>The agreement on the proposed model above was the result of controversial discussions and significant design work in alternative approaches. Either model has a significant impact to the project and comes with tough implications, some of which are hard to fully foresee in the current project state. The eventual choice was made because the proposed model seemed to have the least limitations for future project enhancements. Prototyping of the alternatives could not fully confirm feasibility of either.</p>
+<p>Should these assumptions turn out incorrect, the project may switch to one of the following options, if they end up better serving the needs.</p>
+<h3 id="dedicated-extension-project">Dedicated Extension Project</h3>
+<p>The conditional project dependencies for external libraries could be handled by a a separate, project specific (like C#RA_XYZ) extension project, which statically references the library dll. In the extension project, all library specific functionalities are defined and blended into the regular C#RA use model.</p>
+<!-- This model utilizes the [user extensibility](../principles/is-reusable-and-extensible.md) requirements. -->
+<p>The user opts into Library use by explicitly setting a project reference to the C#RA Library extension project.</p>
+<p><img src="media/digital-transaction-portbridge-extension.png" alt="Project structure showing digital transaction PortBridge extension library integration with main C#RA project references"></p>
+<p>Internally, the C#RA library extension project follows the same structure as the main project, it only creates a logical separation for library specific language. It is integrated into the release package for all users. It's limited to separate language for the extension feature, possibly also substituting functionality of the base class. It wouldn't however allow seamlessly blending additional coverage into the existing use model.</p>
+<h3 id="common-interfaces--factory-pattern--dynamically-loaded-references">Common Interfaces / Factory Pattern / Dynamically Loaded References</h3>
+<p>Alternative (Library / no Library) implementations could also be achieved with a common wrapper interface class, and using a factory pattern to instantiate the relevant feature at runtime. The following downsides were captured - and led to deciding against this model:</p>
+<ul>
+<li>runtime vs. design time linking: intellisense, type-ahead of the original library implementation can't be used as the project isn't known at design time.</li>
+<li>additional abstraction layer: Library programming would have to go through a common interface, disguising the originally intended use model for the feature. Given the Library is very much in development, this additional layer was considered a big risk.</li>
+<li>common interface would be more restrictive in offering custom functionality of either option</li>
+</ul>
+<h2 id="questions">Questions</h2>
+<ul>
+<li>How to handle different versions of library dependencies?</li>
+<li>How to support multiple versions? Customer A needs 1, customer B needs 2?</li>
+<li>Does that mean we add another dimension (i.e., duplicate) to all unit and integration testing efforts for every library added? Likely yes ...</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
