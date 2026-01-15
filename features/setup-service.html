@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/blob/main/docs/features/setup-service.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/features/setup-service.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -264,7 +264,7 @@ public void SetupService5() { // Test #5 (audit mode finds such changed)
 <p>The per instrument catalog does not reflect a final state - functionality is added on a by-need basis. This is a work-in-progress area.</p>
 </div>
 <h2 id="implementation">Implementation</h2>
-<p>A conceptual description of the implemented code will follow (<a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/689">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/689</a>).</p>
+<p>A conceptual description of the implemented code will follow (<a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/689">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/689</a>).</p>
 <h2 id="unit-testing">Unit Testing</h2>
 <p>The core functionality of the SetupService has far-going unit test coverage. However - designed for an open and extensible use model - unit test coverage for those extensions is required as well. For consistent coverage, the following strategy is defined:</p>
 <ul>
@@ -321,17 +321,17 @@ public void SetupService5() { // Test #5 (audit mode finds such changed)
 <ul>
 <li>likely should integrate with the <code>Pins</code> objects. But that'll cause a dependency. Is that what we want? Implications?
 <ul>
-<li><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/189">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/189</a></li>
+<li><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/189">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/189</a></li>
 </ul>
 </li>
 <li>add validation support. Bounds checking might be possible. Should we propose defining the <strong>setups</strong> at validation? Prior to that?
 <ul>
-<li><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/190">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/190</a></li>
+<li><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/190">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/190</a></li>
 </ul>
 </li>
 <li>add site capability (different values per site for scenarios where that is needed)
 <ul>
-<li><a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/192">https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/192</a></li>
+<li><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/192">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/192</a></li>
 </ul>
 </li>
 </ul>
