@@ -1,18 +1,33 @@
-﻿
-using Csra.Interfaces;
-using Csra.TheLib.Acquire;
+﻿using Csra.Interfaces;
 
 namespace Csra.TheLib {
-    /// <exclude />
-    public class TheLibManager : ILib {
-        public ILib.IValidate Validate => new Validate();
 
-        public ILib.ISetup Setup => new Setup.SetupManager();
+    internal class TheLibManager : ILib {
 
-        public ILib.IExecute Execute => new Execute.ExecuteManager();
+        protected internal TheLibManager() {
+            Validate = new Validate();
+            Setup = new Setup.SetupManager();
+            Execute = new Execute.ExecuteManager();
+            Acquire = new Acquire.AcquireManager();
+            Datalog = new Datalog();
+        }
 
-        public ILib.IAcquire Acquire => new Acquire.AcquireManager();
+        public ILib.IValidate Validate { get; private set; }
 
-        public ILib.IDatalog Datalog => new Datalog();
+        public ILib.ISetup Setup { get; private set; }
+
+        public ILib.IExecute Execute { get; private set; }
+
+        public ILib.IAcquire Acquire { get; private set; }
+
+        public ILib.IDatalog Datalog { get; private set; }
+
+        public void Configure(ILib.IValidate validate = null, ILib.ISetup setup = null, ILib.IExecute execute = null, ILib.IAcquire acquire = null, ILib.IDatalog datalog = null) {
+            Validate = validate ?? new Validate();
+            Setup = setup ?? new Setup.SetupManager();
+            Execute = execute ?? new Execute.ExecuteManager();
+            Acquire = acquire ?? new Acquire.AcquireManager();
+            Datalog = datalog ?? new Datalog();
+        }
     }
 }

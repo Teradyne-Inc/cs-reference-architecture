@@ -1,0 +1,66 @@
+{
+  "TestProgram": ".\\Demo.igxl",
+  "TpChecksum": "6395d4c69aa5de2c4477bbb04ac359a9",
+  "Licenses": [],
+  "Configurations": [
+    {
+      "ID": "CSRAComponentManager.json",
+      "Items": [
+        {
+          "Publisher": "Teradyne",
+          "Name": "IG-XL",
+          "Comparison": "Between",
+          "Version": "11.00.00 - 11.00.04",
+          "Notes": "",
+          "Verification": "Default",
+          "Location": ""
+        },
+        {
+          "Publisher": "Teradyne",
+          "Name": "Oasis",
+          "Comparison": "Greater than or equal to",
+          "Version": "4.5.10501",
+          "Notes": "",
+          "Verification": "Default",
+          "Location": ""
+        },
+        {
+          "Publisher": "Teradyne",
+          "Name": "SSL",
+          "Comparison": "Greater than or equal to",
+          "Version": "6.9.500",
+          "Notes": "",
+          "Verification": "Default",
+          "Location": ""
+        },
+        {
+          "Publisher": "Teradyne",
+          "Name": "Version Selector Plus",
+          "Comparison": "Greater than or equal to",
+          "Version": "64.5",
+          "Notes": "",
+          "Verification": "Default",
+          "Location": ""
+        },
+        {
+          "Publisher": "Microsoft",
+          "Name": "VS2022_",
+          "Comparison": "Greater than or equal to",
+          "Version": "17.14",
+          "Notes": "",
+          "Verification": "ByRegistry",
+          "Location": "HKEY_CURRENT_USER\\Software\\Microsoft\\VisualStudio\\17.14"
+        },
+        {
+          "Publisher": "Teradyne",
+          "Name": "PortBridge ",
+          "Comparison": "Greater than or equal to",
+          "Version": "2.70.0.619",
+          "Notes": "",
+          "Verification": "ByAssembly",
+          "Location": "C:\\Program Files (x86)\\Teradyne\\Applications\\PortBridge\\Teradyne.PortBridge.dll"
+        }
+      ]
+    }
+  ]
+}

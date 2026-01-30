@@ -4,15 +4,29 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Csra.Interfaces;
+using Teradyne.Igxl.Interfaces.Public;
 
 namespace Csra.Services {
+
     /// <summary>
     /// BehaviorService - when logic gets a personality.
     /// </summary>
+    [Serializable]
     public class Behavior : IBehaviorService {
-        private readonly Type[] _supportedTypes = [typeof(int), typeof(double), typeof(bool), typeof(string)];
-        private readonly Dictionary<string, object> _behaviors = [];
-        public string FilePath { get; set; } = "";
+
+        private static IBehaviorService _instance = null;
+        private readonly Type[] _supportedTypes;
+        private readonly Dictionary<string, object> _behaviors;
+
+        protected Behavior() {
+            _supportedTypes = [typeof(int), typeof(double), typeof(bool), typeof(string)];
+            _behaviors = [];
+            FilePath = "";
+        }
+
+        public static IBehaviorService Instance => _instance ??= new Behavior();
+
+        public string FilePath { get; set; }
 
         public IEnumerable<string> Features => _behaviors.Keys;
 

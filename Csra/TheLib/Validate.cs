@@ -10,8 +10,9 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 using Csra.Interfaces;
 
 namespace Csra.TheLib {
+
     public class Validate : ILib.IValidate {
-        public void Dc(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+        public virtual void Dc(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
                     double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null,
                     Measure? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
                     double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null,
@@ -37,7 +38,7 @@ namespace Csra.TheLib {
             }
         }
 
-        public bool Enum<T>(string value, string argumentName, out T enumValue) where T : struct, Enum {
+        public virtual bool Enum<T>(string value, string argumentName, out T enumValue) where T : struct, Enum {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             enumValue = default;
             if (string.IsNullOrWhiteSpace(value)) {
@@ -56,7 +57,7 @@ namespace Csra.TheLib {
             }
         }
 
-        public void Fail(string problemReasonResolutionMessage, string argumentName) {
+        public virtual void Fail(string problemReasonResolutionMessage, string argumentName) {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (string.IsNullOrEmpty(problemReasonResolutionMessage)) {
                 Api.Services.Alert.Error($"{messagePrefix}Provided string is null.", argumentIndex);
@@ -64,7 +65,7 @@ namespace Csra.TheLib {
             Api.Services.Alert.Error($"{messagePrefix}{problemReasonResolutionMessage}", argumentIndex);
         }
 
-        public bool GreaterOrEqual<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
+        public virtual bool GreaterOrEqual<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (typeof(T) == typeof(string)) {
                 if (EqualityComparer<T>.Default.Equals(value, default)) {
@@ -82,7 +83,7 @@ namespace Csra.TheLib {
             return true;
         }
 
-        public bool GreaterThan<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
+        public virtual bool GreaterThan<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (typeof(T) == typeof(string)) {
                 if (EqualityComparer<T>.Default.Equals(value, default)) {
@@ -100,7 +101,7 @@ namespace Csra.TheLib {
             return true;
         }
 
-        public bool InRange<T>(T value, T from, T to, string argumentName) where T : IComparable<T> {
+        public virtual bool InRange<T>(T value, T from, T to, string argumentName) where T : IComparable<T> {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (from.CompareTo(to) > 0) {
                 Api.Services.Alert.Error($"{messagePrefix}Reformat the provided boundaries so that 'from' ({from}) is less than 'to' ({to}).", argumentIndex);
@@ -117,7 +118,7 @@ namespace Csra.TheLib {
             return true;
         }
 
-        public bool IsTrue(bool condition, string problemReasonResolutionMessage, string argumentName) {
+        public virtual bool IsTrue(bool condition, string problemReasonResolutionMessage, string argumentName) {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (condition == false) {
                 if (string.IsNullOrWhiteSpace(problemReasonResolutionMessage)) {
@@ -130,7 +131,7 @@ namespace Csra.TheLib {
             return true;
         }
 
-        public bool LessOrEqual<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
+        public virtual bool LessOrEqual<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (typeof(T) == typeof(string)) {
                 if (EqualityComparer<T>.Default.Equals(value, default)) {
@@ -148,7 +149,7 @@ namespace Csra.TheLib {
             return true;
         }
 
-        public bool LessThan<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
+        public virtual bool LessThan<T>(T value, T boundary, string argumentName) where T : IComparable<T> {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (typeof(T) == typeof(string)) {
                 if (EqualityComparer<T>.Default.Equals(value, default)) {
@@ -166,26 +167,30 @@ namespace Csra.TheLib {
             return true;
         }
 
-        public bool MethodHandle<T>(string fullyQualifiedName, string argumentName, out MethodHandle<T> method) where T : Delegate {
-            GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
-            if (string.IsNullOrWhiteSpace(fullyQualifiedName)) {
-                Api.Services.Alert.Error($"{messagePrefix}Provided value '{fullyQualifiedName}' is null (or empty) and cannot be matched to any existing methods.",
-                    argumentIndex);
-                method = null;
+        public virtual bool GetObjectByClassName<T>(string fullyQualifiedClassName, out T instance) where T : class {
+            if (string.IsNullOrWhiteSpace(fullyQualifiedClassName)) {
+                Api.Services.Alert.Error($"Provided value '{fullyQualifiedClassName}' is null (or empty) and cannot be matched to any existing classes.");
+                instance = null;
                 return false;
             }
+            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
             try {
-                method = new MethodHandle<T>(fullyQualifiedName);
+                Type type = null;
+                foreach (Assembly assembly in assemblies) {
+                    type = assembly.GetType(fullyQualifiedClassName, false);
+                    if (type != null) break;
+                }
+                object classInstance = Activator.CreateInstance(type);
+                instance = classInstance as T;
                 return true;
             } catch (Exception) {
-                Api.Services.Alert.Error($"{messagePrefix}Unable to match '{fullyQualifiedName}' with existing methods. Please verify the method name, output " +
-                    $"and parameters.", argumentIndex);
-                method = null;
+                Api.Services.Alert.Error($"Unable to match '{fullyQualifiedClassName}' with existing classes.");
+                instance = null;
                 return false;
             }
         }
 
-        public bool MultiCondition<T>(string csv, Func<string, T> parser, string argumentName, out T[] conditions,
+        public virtual bool MultiCondition<T>(string csv, Func<string, T> parser, string argumentName, out T[] conditions,
             int? referenceCount = null) {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (string.IsNullOrWhiteSpace(csv)) {
@@ -209,7 +214,7 @@ namespace Csra.TheLib {
             }
         }
 
-        public bool MultiCondition<TEnum>(string csv, string argumentName, out TEnum[] conditions, int? referenceCount = null) where TEnum : struct,
+        public virtual bool MultiCondition<TEnum>(string csv, string argumentName, out TEnum[] conditions, int? referenceCount = null) where TEnum : struct,
             Enum {
             return MultiCondition(csv, EnumParser, argumentName, out conditions, referenceCount);
 
@@ -225,7 +230,7 @@ namespace Csra.TheLib {
             }
         }
 
-        public bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true) {
+        public virtual bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true) {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (string.IsNullOrWhiteSpace(pattern)) {
                 Api.Services.Alert.Error($"{messagePrefix}Provided pattern is null.", argumentIndex);
@@ -243,7 +248,7 @@ namespace Csra.TheLib {
             }
         }
 
-        public bool Pins(PinList pinList, string argumentName, out Pins pins) {
+        public virtual bool Pins(PinList pinList, string argumentName, out Pins pins) {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             try {
                 pins = new Pins(pinList);
@@ -274,7 +279,7 @@ namespace Csra.TheLib {
              double? currentRange = null, Measure? meterMode = null, double? meterCurrentRange = null, double? clampHiV = null, double? clampLoV = null,
              bool? highAccuracy = null, double? settlingTime = null) {
 
-            var ppmu = TheHdw.Pins(pins).PPMU;
+            tlDriverPPMUPins ppmu = TheHdw.Pins(pins).PPMU;
             //if (gate.HasValue) // no check needed
             //if (mode.HasValue) // no check needed
             if (voltage.HasValue) {
@@ -308,7 +313,7 @@ namespace Csra.TheLib {
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, bool? bleederResistor = null,
             double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null, double? hardwareAverage = null) {
 
-            var dcvi = TheHdw.Pins(pins).DCVI;
+            DriverDCVIPins dcvi = TheHdw.Pins(pins).DCVI;
             //if (gate.HasValue) // no check needed
             //if (mode.HasValue) // no check needed
             if (voltageRange.HasValue) {
@@ -359,7 +364,7 @@ namespace Csra.TheLib {
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null,
             double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, bool? voltageAltOutput = null) {
 
-            var dcvs = TheHdw.Pins(pins).DCVS;
+            DriverDCVSPins dcvs = TheHdw.Pins(pins).DCVS;
             //if (gate.HasValue) // no check needed 
             //if (meterMode.HasValue) // no check needed
             if (meterVoltageRange.HasValue) {
@@ -411,15 +416,15 @@ namespace Csra.TheLib {
 
         private void GetArgumentContext(string argumentName, out int index, out string messagePrefix) {
             var stackTrace = new StackTrace();
-            var frames = stackTrace.GetFrames();
+            StackFrame[] frames = stackTrace.GetFrames();
             MethodBase callerMethod = null;
             if (frames != null) {
-                foreach (var frame in frames) {
-                    var method = frame.GetMethod();
+                foreach (StackFrame frame in frames) {
+                    MethodBase method = frame.GetMethod();
                     if (method?.DeclaringType == null) continue;
 
                     // Check if the method has the [TestMethod] attribute
-                    var hasTestMethodAttribute = method.GetCustomAttributes(false)
+                    bool hasTestMethodAttribute = method.GetCustomAttributes(false)
                         .Any(attr => attr.GetType().Name == "TestMethodAttribute" ||
                         attr.GetType().Name == "DataTestMethodAttribute"); // DataTestMethodAttribute for MSTest data-driven tests
 

@@ -8,11 +8,26 @@ using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using Csra.Interfaces;
 
 namespace Csra.TheLib.Execute {
-    /// <exclude />
-    public class ExecuteManager : ILib.IExecute {
-        public ILib.IExecute.IDigital Digital => new Digital();
-        public ILib.IExecute.IScanNetwork ScanNetwork => new ScanNetwork();
-        public ILib.IExecute.ISearch Search => new Search();
+
+    internal class ExecuteManager : ILib.IExecute {
+
+        protected internal ExecuteManager() {
+            Digital = new Digital();
+            ScanNetwork = new ScanNetwork();
+            Search = new Search();
+        }
+
+        public ILib.IExecute.IDigital Digital { get; private set; }
+
+        public ILib.IExecute.IScanNetwork ScanNetwork { get; private set; }
+
+        public ILib.IExecute.ISearch Search { get; private set; }
+
+        public void Configure(ILib.IExecute.IDigital digital = null, ILib.IExecute.IScanNetwork scanNetwork = null, ILib.IExecute.ISearch search = null) {
+            Digital = digital ?? new Digital();
+            ScanNetwork = scanNetwork ?? new ScanNetwork();
+            Search = search ?? new Search();
+        }
 
         /// <summary>
         /// Sets the hardware wait time, if staticWait is true will force all existing waits to complete before starting the hardware wait, otherwise the

@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("Unofficial")]
 [assembly: AssemblyCompany("Teradyne")]
 [assembly: AssemblyProduct("Csra")]
-[assembly: AssemblyCopyright("Copyright © Teradyne 2025")]
+[assembly: AssemblyCopyright("Copyright © Teradyne 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

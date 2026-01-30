@@ -10,7 +10,7 @@ using Csra.TheLib;
 
 namespace Csra.TheLib.Setup {
     public class LevelsAndTiming : ILib.ISetup.ILevelsAndTiming {
-        public void Apply(bool connectAllPins = false, bool unpowered = false, bool levelRampSequence = false) {
+        public virtual void Apply(bool connectAllPins = false, bool unpowered = false, bool levelRampSequence = false) {
             if (levelRampSequence) {
                 if (connectAllPins) {
                     if (unpowered) { TheHdw.PinLevels.PowerDown(); }
@@ -23,7 +23,7 @@ namespace Csra.TheLib.Setup {
             }
         }
         
-        public void ApplyWithPinStates(bool connectAllPins = false, bool unpowered = false, bool levelRampSequence = false, Pins initPinsHi = null,
+        public virtual void ApplyWithPinStates(bool connectAllPins = false, bool unpowered = false, bool levelRampSequence = false, Pins initPinsHi = null,
                 Pins initPinsLo = null, Pins initPinsHiZ = null) {
             if (levelRampSequence) {
                 if (connectAllPins) {

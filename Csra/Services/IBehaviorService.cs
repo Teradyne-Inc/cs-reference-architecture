@@ -2,7 +2,7 @@
 
 namespace Csra.Interfaces {
 
-    public interface IBehaviorService : IService {
+    public interface IBehaviorService : IServiceBase {
 
         /// <summary>
         /// Gets/Sets the import / export file path.

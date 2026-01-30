@@ -61,7 +61,9 @@ namespace Csra {
         /// </summary>
         /// <param name="iclInstance">The icl instance for which this result is representing.</param>
         public IclInstanceTestResult(IclInstanceInfo iclInstance) {
-            throw new NotImplementedException();
+            InstanceName = iclInstance.IclInstanceName;
+            CoreInstanceName = iclInstance.CoreInstanceName;
+            IsOnChipCompare = iclInstance.IsOnChipCompare;
         }
         #endregion
     }

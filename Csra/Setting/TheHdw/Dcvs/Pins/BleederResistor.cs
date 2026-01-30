@@ -10,6 +10,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting.TheHdw.Dcvs.Pins {
 
+    [Serializable]
     public class BleederResistor : Setting_Enum<tlDCVSOnOffAuto> {
 
         private static readonly Dictionary<string, tlDCVSOnOffAuto> _staticCache = [];
@@ -19,15 +20,15 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
         public BleederResistor(tlDCVSOnOffAuto value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(tlDCVSOnOffAuto.Auto, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, tlDCVSOnOffAuto value) {
+        protected override void SetAction(string pinList, tlDCVSOnOffAuto value) {
             TestCodeBase.TheHdw.DCVS.Pins(pinList).BleederResistor = value;
         }
 
-        private static tlDCVSOnOffAuto[] ReadFunc(string pin) {
+        protected override tlDCVSOnOffAuto[] ReadFunc(string pin) {
             tlDCVSOnOffAuto[] result = new tlDCVSOnOffAuto[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVS.Pins(pin).BleederResistor);
             return result;

@@ -5,9 +5,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
 
+    [Serializable]
     public class Timeout : Setting_double {
 
         private static readonly Dictionary<string, double> _staticCache = [];
@@ -18,7 +20,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
             SetArguments(value, pinList, true);
             double defaultTimeout = GetDefaultTimeout();
             SetBehavior(defaultTimeout, "s", InitMode.OnProgramStarted, true);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
@@ -50,11 +52,11 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
             }
         }
 
-        private static void SetAction(string pinList, double value) {
+        protected override void SetAction(string pinList, double value) {
             TestCodeBase.TheHdw.DCVI.Pins(pinList).FoldCurrentLimit.Timeout.Value = value;
         }
 
-        private static double[] ReadFunc(string pin) {
+        protected override double[] ReadFunc(string pin) {
             double[] result = new double[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).FoldCurrentLimit.Timeout.Value);
             return result;

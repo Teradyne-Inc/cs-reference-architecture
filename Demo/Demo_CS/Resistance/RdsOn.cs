@@ -138,5 +138,113 @@ namespace Demo_CS.Resistance {
               ForceResults: tlLimitForceResults.Flow);
         }
         #endregion
+
+        /// <summary>
+        /// Performs a resistance measurement by forcing a current on one pin and measuring on two other pins.
+        /// </summary>
+        /// <param name="forcePin">Pin to force.</param>
+        /// <param name="forceCurrentPin">Current to force.</param>
+        /// <param name="clampValueOfForcePin">Clamp Value of the force pin. May also set its range.</param>
+        /// <param name="measureFirstPin">First pin to measure voltage.</param>
+        /// <param name="measureSecondPin">Second pin to measure voltage.</param>
+        /// <param name="waitTime">Optional. Wait time after forcing.</param>
+        #region ThreePinsOneForceTwoMeasure
+        [TestMethod]
+        public void ThreePinsOneForceTwoMeasure(PinList forcePin, double forceCurrentPin, double clampValueOfForcePin, PinList measureFirstPin,
+             PinList measureSecondPin, double waitTime) {
+
+            PinList digPins = string.Join(", ", forcePin, measureFirstPin, measureSecondPin);
+            PinList measurePins = string.Join(", ", measureFirstPin, measureSecondPin);
+            var force = TheHdw.PPMU.Pins(forcePin);
+            var measureFirst = TheHdw.PPMU.Pins(measureFirstPin);
+            var measureSecond = TheHdw.PPMU.Pins(measureSecondPin);
+            var digitalPins = TheHdw.PPMU.Pins(digPins);
+            var measPins = TheHdw.PPMU.Pins(measurePins);
+
+            //PreBody
+            TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
+            TheHdw.Digital.Pins("TDI,TMS").InitState = ChInitState.Off;
+            TheHdw.Digital.Pins(digPins).Disconnect();
+            digitalPins.Connect();
+
+            //Body
+            measPins.ForceI(0);
+            measPins.Gate = tlOnOff.Off;
+            force.ForceI(forceCurrentPin, forceCurrentPin);
+            force.ClampVHi.Value = clampValueOfForcePin;
+            force.Gate = tlOnOff.On;
+            TheHdw.SetSettlingTimer(waitTime);
+            PinSite<double> measFirst = measureFirst.Read(tlPPMUReadWhat.Measurements, 1, tlPPMUReadingFormat.Average).ToPinSite<double>();
+            PinSite<double> measSecond = measureSecond.Read(tlPPMUReadWhat.Measurements, 1, tlPPMUReadingFormat.Average).ToPinSite<double>();
+            PinSite<double> resistance = (measFirst - measSecond) / forceCurrentPin;
+
+            //PostBody
+            digitalPins.Disconnect();
+            digitalPins.Gate = tlOnOff.Off;
+            TheHdw.Digital.Pins(digPins).Connect();
+            TheExec.Flow.TestLimit(ResultVal: resistance, ForceVal: forceCurrentPin, ForceUnit: UnitType.Custom, CustomForceunit: "",
+              ForceResults: tlLimitForceResults.Flow);
+        }
+        #endregion
+
+        /// <summary>
+        /// Performs a resistance delta measurement by forcing a current on first pin, voltage on second pin and measuring a delta voltage on two other pins.
+        /// </summary>
+        /// <param name="forceFirstPin">First pin to force Current.</param>
+        /// <param name="forceValueFirstPin">Value to force on first pin.</param>
+        /// <param name="clampValueOfForceFirstPin">Clamp Value of the first force pin. May also set its range.</param>
+        /// <param name="forceSecondPin">Second pin to force Voltage.</param>
+        /// <param name="forceValueSecondPin">Value to force on second pin.</param>
+        /// <param name="clampValueOfForceSecondPin">Clamp Value of the second force pin. May also set its range.</param>
+        /// <param name="measureFirstPin">First pin to measure Voltage.</param>
+        /// <param name="measureSecondPin">Second pin to measure Voltage.</param>
+        /// <param name="waitTime">Optional. Wait time after forcing.</param>
+        #region FourPinsTwoForceTwoMeasure
+        [TestMethod]
+        public void FourPinsTwoForceTwoMeasure(PinList forceFirstPin, double forceValueFirstPin, double clampValueOfForceFirstPin, PinList forceSecondPin,
+            double forceValueSecondPin, double clampValueOfForceSecondPin, PinList measureFirstPin, PinList measureSecondPin, double waitTime) {
+
+            PinList digPinList = string.Join(", ", forceFirstPin, measureFirstPin, measureSecondPin);
+            PinList measurePins = string.Join(", ", measureFirstPin, measureSecondPin);
+            var forceFirst = TheHdw.PPMU.Pins(forceFirstPin);
+            var forceSecond = TheHdw.DCVS.Pins(forceSecondPin);
+            var measureFirst = TheHdw.PPMU.Pins(measureFirstPin);
+            var measureSecond = TheHdw.PPMU.Pins(measureSecondPin);
+            var digitalPins = TheHdw.PPMU.Pins(digPinList);
+            var measPins = TheHdw.PPMU.Pins(measurePins);
+
+            //PreBody
+            TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
+            TheHdw.Digital.Pins("TDI,TMS").InitState = ChInitState.Off;
+            TheHdw.Digital.Pins(digPinList).Disconnect();
+            digitalPins.Connect();
+
+            //Body
+            measPins.ForceI(0);
+            measPins.Gate = tlOnOff.Off;
+            forceFirst.ForceI(forceValueFirstPin, forceValueFirstPin);
+            forceFirst.ClampVHi.Value = clampValueOfForceFirstPin;
+            forceFirst.Gate = tlOnOff.On;
+            forceSecond.Mode = tlDCVSMode.Voltage;
+            forceSecond.CurrentRange.Value = clampValueOfForceSecondPin;
+            forceSecond.VoltageRange.Value = forceValueSecondPin;
+            forceSecond.Voltage.Value = forceValueSecondPin;
+            double sinkFoldLimit = forceSecond.CurrentLimit.Sink.FoldLimit.Level.Max;
+            forceSecond.CurrentLimit.Sink.FoldLimit.Level.Value = clampValueOfForceSecondPin > sinkFoldLimit ? sinkFoldLimit : clampValueOfForceSecondPin;
+            forceSecond.CurrentLimit.Source.FoldLimit.Level.Value = clampValueOfForceSecondPin;
+            forceSecond.Gate = true;
+            TheHdw.SetSettlingTimer(waitTime);
+            PinSite<double> measFirst = measureFirst.Read(tlPPMUReadWhat.Measurements, 1, tlPPMUReadingFormat.Average).ToPinSite<double>();
+            PinSite<double> measSecond = measureSecond.Read(tlPPMUReadWhat.Measurements, 1, tlPPMUReadingFormat.Average).ToPinSite<double>();
+            PinSite<double> resistance = (measFirst - measSecond) / forceValueFirstPin;
+
+            //PostBody
+            digitalPins.Disconnect();
+            digitalPins.Gate = tlOnOff.Off;
+            TheHdw.Digital.Pins(digPinList).Connect();
+            TheExec.Flow.TestLimit(ResultVal: resistance, ForceVal: forceValueFirstPin, ForceUnit: UnitType.Custom, CustomForceunit: "",
+              ForceResults: tlLimitForceResults.Flow);
+        }
+        #endregion
     }
 }

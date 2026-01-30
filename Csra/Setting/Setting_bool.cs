@@ -8,5 +8,6 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting {
 
+    [Serializable]
     public abstract class Setting_bool : SettingBase<bool> { }
 }

@@ -56,7 +56,8 @@ namespace Csra {
         /// <param name="coreInstanceName">The core instance for which this result is representing.</param>
         /// <param name="iclInstanceNames">The names of icl instances that belongs to this core instance.</param>
         public CoreInstanceTestResult(string coreInstanceName, IEnumerable<string> iclInstanceNames) {
-            throw new NotImplementedException();
+            InstanceName = coreInstanceName;
+            _iclsInCore.AddRange(iclInstanceNames);
         }
         #endregion
 

@@ -28,3 +28,5 @@ DTChanMap,version=2.6:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1:dataforma
 	clk_src		I/O	19.g335	19.a241		
 	clk_cap		I/O	19.g337	19.a239		
 	vcc		DCVS	13.e301	13.c387		
+	TDI		I/O	19.g317	19.c362		
+	TMS		I/O	19.g315	19.c360		

@@ -64,7 +64,7 @@ namespace Csra {
         /// </summary>
         public string TimeDomain {
             get {
-                if (string.IsNullOrEmpty(_timeDomain)) _timeDomain = TheHdw.Patterns(Name).TimeDomains;
+                if (_timeDomain is null) _timeDomain = TheHdw.Patterns(Name).TimeDomains;
                 return _timeDomain;
             }
         }

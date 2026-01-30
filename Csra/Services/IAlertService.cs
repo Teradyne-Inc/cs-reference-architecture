@@ -4,7 +4,7 @@ using Teradyne.Igxl.Interfaces.Public;
 
 namespace Csra.Interfaces {
 
-    public interface IAlertService : IService {
+    public interface IAlertService : IServiceBase {
 
         /// <summary>
         /// Reads or sets the output target for Log Alerts. Defaults to OutputWindow, which cannot be disabled.

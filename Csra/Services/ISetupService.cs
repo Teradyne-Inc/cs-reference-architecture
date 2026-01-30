@@ -1,6 +1,6 @@
 ﻿namespace Csra.Interfaces {
 
-    public interface ISetupService : IService {
+    public interface ISetupService : IServiceBase {
 
         /// <summary>
         /// Reads or sets audit mode (performs hardware reads to confirm cached data is correct).

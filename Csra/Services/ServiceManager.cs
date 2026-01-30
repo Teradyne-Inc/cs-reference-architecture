@@ -1,30 +1,33 @@
-
+using System;
 using Csra.Interfaces;
 
 namespace Csra.Services {
 
     /// <exclude />
-    public class ServiceManager {
+    [Serializable]
+    public class ServiceManager : IServices {
 
-        private IAlertService _alert = null;
-        private IBehaviorService _behavior = null;
-        private ISetupService _setup = null;
-        private IStorageService _storage = null;
-        private ITransactionService _transaction = null;
-
-        internal void SetupServiceManagerMoq(IAlertService alert, IBehaviorService behavior, ISetupService setup, IStorageService storage,
-            ITransactionService transaction) {
-            _alert = alert;
-            _behavior = behavior;
-            _setup = setup;
-            _storage = storage;
-            _transaction = transaction;
+        protected internal ServiceManager() {
+            Alert = Services.Alert.Instance;
+            Behavior = Services.Behavior.Instance;
+            Setup = Services.Setup.Instance;
+            Storage = Services.Storage.Instance;
+            Transaction = Services.Transaction.Instance;
         }
 
-        public IAlertService Alert => _alert ??= new Alert();
-        public IBehaviorService Behavior => _behavior ??= new Behavior();
-        public ISetupService Setup => _setup ??= new Setup();
-        public IStorageService Storage => _storage ??= new Storage();
-        public ITransactionService Transaction => _transaction ??= new Transaction();
+        public IAlertService Alert { get; private set; }
+        public IBehaviorService Behavior { get; private set; }
+        public ISetupService Setup { get; private set; }
+        public IStorageService Storage { get; private set; }
+        public ITransactionService Transaction { get; private set; }
+
+        public void Configure(IAlertService alert = null, IBehaviorService behavior = null, ISetupService setup = null, IStorageService storage = null,
+            ITransactionService transaction = null) {
+            Alert = alert ?? Services.Alert.Instance;
+            Behavior = behavior ?? Services.Behavior.Instance;
+            Setup = setup ?? Services.Setup.Instance;
+            Storage = storage ?? Services.Storage.Instance;
+            Transaction = transaction ?? Services.Transaction.Instance;
+        }
     }
 }

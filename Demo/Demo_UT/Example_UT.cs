@@ -60,7 +60,7 @@ namespace UT {
         [MsTest.TestMethod]
         public void SetupCsraMoq_AlertService_VerifiesErrorCalled() {
             Mock<IAlertService> alertService = new Mock<IAlertService>() { DefaultValue = DefaultValue.Mock };
-            SetupCsraMoq(null, alertService.Object);
+            Services.Configure(alert: alertService.Object);
             PatternInfo patternInfo = new("TestPattern", false) {
                 ClearFlags = 1860 // Set the invalid value
             };
@@ -72,7 +72,7 @@ namespace UT {
         [MsTest.TestMethod]
         public void SetupCsraMoq_TheLib_VerifiesWaitCalled() {
             Mock<ILib> mockTheLib = new() { DefaultValue = DefaultValue.Mock };
-            SetupCsraMoq(mockTheLib.Object);
+            Configure(mockTheLib.Object);
             int waittime = 1860;
 
             TheLib.Execute.Wait(waittime);

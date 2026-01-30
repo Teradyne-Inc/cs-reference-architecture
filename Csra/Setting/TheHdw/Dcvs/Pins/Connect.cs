@@ -10,6 +10,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting.TheHdw.Dcvs.Pins {
 
+    [Serializable]
     public class Connect : Setting_Enum<tlDCVSConnectWhat> {
 
         private static readonly Dictionary<string, tlDCVSConnectWhat> _staticCache = [];
@@ -19,11 +20,11 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
         public Connect(tlDCVSConnectWhat value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(tlDCVSConnectWhat.None, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, tlDCVSConnectWhat value) {
+        protected override void SetAction(string pinList, tlDCVSConnectWhat value) {
             tlDCVSConnectWhat turnOn = tlDCVSConnectWhat.None;
             tlDCVSConnectWhat turnOff = tlDCVSConnectWhat.None;
             List<string> pins = pinList.Split(',').Select(p => p.Trim()).ToList();
@@ -35,7 +36,7 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
             if (turnOn != tlDCVSConnectWhat.None) TestCodeBase.TheHdw.DCVS.Pins(pinList).Connect(turnOn);
         }
 
-        private static tlDCVSConnectWhat[] ReadFunc(string pin) {
+        protected override tlDCVSConnectWhat[] ReadFunc(string pin) {
             tlDCVSConnectWhat[] result = new tlDCVSConnectWhat[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVS.Pins(pin).Connected);
             return result;

@@ -9,6 +9,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins {
 
+    [Serializable]
     public class Connect : Setting_Enum<tlDCVIConnectWhat> {
 
         private static readonly Dictionary<string, tlDCVIConnectWhat> _staticCache = [];
@@ -19,7 +20,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
             value = value == tlDCVIConnectWhat.Default ? GetDefaultStatusValue(pinList) : value;
             SetArguments(value, pinList, true);
             SetBehavior(tlDCVIConnectWhat.None, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
@@ -36,10 +37,10 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
             }
         }
 
-        private static void SetAction(string pinList, tlDCVIConnectWhat value) {
+        protected override void SetAction(string pinList, tlDCVIConnectWhat value) {
             tlDCVIConnectWhat turnOn = tlDCVIConnectWhat.None;
             tlDCVIConnectWhat turnOff = tlDCVIConnectWhat.None;
-            var pins = pinList.Split(',').Select(p => p.Trim());
+            IEnumerable<string> pins = pinList.Split(',').Select(p => p.Trim());
             foreach (string pin in pins) {
                 turnOn |= ~_staticCache[pin] & value;
                 turnOff |= _staticCache[pin] & ~value;
@@ -48,7 +49,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
             if (turnOn != tlDCVIConnectWhat.None) TestCodeBase.TheHdw.DCVI.Pins(pinList).Connect(turnOn);
         }
 
-        private static tlDCVIConnectWhat[] ReadFunc(string pin) {
+        protected override tlDCVIConnectWhat[] ReadFunc(string pin) {
             tlDCVIConnectWhat[] result = new tlDCVIConnectWhat[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).Connected);
             return result;

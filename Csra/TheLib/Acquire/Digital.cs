@@ -7,9 +7,9 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.TheLib.Acquire {
     public class Digital : ILib.IAcquire.IDigital {
-        public PinSite<double> MeasureFrequency(Pins pins) {
-            if (pins.ContainsFeature(InstrumentFeature.Digital, out string pinList)) {
-                var freqCtr = TheHdw.Digital.Pins(pinList).FreqCtr;
+        public virtual PinSite<double> MeasureFrequency(Pins pins) {
+            if (pins.Digital != null) {
+                DriverDigPinsFreqCtr freqCtr = pins.Digital.HardwareApi.FreqCtr;
                 freqCtr.Start();
                 return freqCtr.MeasureFrequency().ToPinSite<double>();
             }
@@ -17,12 +17,12 @@ namespace Csra.TheLib.Acquire {
             return null;
         }
 
-        public Site<bool> PatternResults() => TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite();
+        public virtual Site<bool> PatternResults() => TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite();
 
-        public PinSite<Samples<int>> Read(Pins pins, int startIndex = 0, int cycle = 0) {
-            if (pins.ContainsFeature(InstrumentFeature.Digital, out string digPins)) {
+        public virtual PinSite<Samples<int>> Read(Pins pins, int startIndex = 0, int cycle = 0) {
+            if (pins.Digital != null) {
                 int numCapturedCycles = TheHdw.Digital.HRAM.CapturedCycles;
-                PinSite<string[]> pinData = TheHdw.Digital.Pins(digPins).HRAM.PinData(startIndex, cycle, numCapturedCycles).ToPinSite<string[]>();
+                PinSite<string[]> pinData = pins.Digital.HardwareApi.HRAM.PinData(startIndex, cycle, numCapturedCycles).ToPinSite<string[]>();
                 PinSite<Samples<int>> returnValue = new PinSite<Samples<int>>();
                 foreach (Site<string[]> pin in pinData) {
                     Site<Samples<int>> siteValues = new Site<Samples<int>>();
@@ -43,8 +43,8 @@ namespace Csra.TheLib.Acquire {
             return null;
         }
         
-        public PinSite<Samples<int>> ReadWords(Pins pins, int startIndex, int length, int wordSize, tlBitOrder bitOrder) {
-            var digPins = pins.ExtractByFeature(InstrumentFeature.Digital).Select(p => p.Name).ToArray();
+        public virtual PinSite<Samples<int>> ReadWords(Pins pins, int startIndex, int length, int wordSize, tlBitOrder bitOrder) {
+            string[] digPins = pins.ExtractByFeature(InstrumentFeature.Digital).Select(p => p.Name).ToArray();
             if (digPins.Length > 0) {
                 PinSite<Samples<int>> returnValue = new PinSite<Samples<int>>();
                 foreach (string pin in digPins) {

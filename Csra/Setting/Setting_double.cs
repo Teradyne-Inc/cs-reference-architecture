@@ -8,6 +8,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting {
 
+    [Serializable]
     public abstract class Setting_double : SettingBase<double> {
 
         // TODO: improve floating point compare - https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/977

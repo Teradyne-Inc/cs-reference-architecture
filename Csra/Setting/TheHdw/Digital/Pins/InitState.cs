@@ -4,9 +4,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Digital.Pins {
 
+    [Serializable]
     public class InitState : Setting_Enum<ChInitState> {
 
         private static readonly Dictionary<string, ChInitState> _staticCache = [];
@@ -16,15 +18,15 @@ namespace Csra.Setting.TheHdw.Digital.Pins {
         public InitState(ChInitState value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(ChInitState.Lo, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, ChInitState value) {
+        protected override void SetAction(string pinList, ChInitState value) {
             TestCodeBase.TheHdw.Digital.Pins(pinList).InitState = value;
         }
 
-        private static ChInitState[] ReadFunc(string pin) {
+        protected override ChInitState[] ReadFunc(string pin) {
             ChInitState[] result = new ChInitState[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.Digital.Pins(pin).InitState);
             return result;

@@ -18,7 +18,7 @@ namespace Csra {
         public static T SingleOrAt<T>(this T[] values, int index) => values.Length == 1 ? values[0] : values[index];
 
         internal static bool IsUniform<T>(this Site<T> value, out T first) {
-            var theFirst = value[TheExec.Sites.Selected.First()];
+            T theFirst = value[TheExec.Sites.Selected.First()];
             first = theFirst; // can't use out parameter in lambda directly
             return value.All(s => s.Equals(theFirst));
         }

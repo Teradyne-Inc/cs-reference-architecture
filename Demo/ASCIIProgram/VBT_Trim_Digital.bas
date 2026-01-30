@@ -200,25 +200,27 @@ Public Function Trim_Digital_LinearFullTarget(aPattern As Pattern, aCapPins As P
     Call TheExec.Flow.TestLimit(ResultVal:=lResults, ForceResults:=tlForceFlow)
 End Function
 
-Public Function Trim_Digital_BinaryTrip(aPattern As Pattern, aFrom As Double, aTo As Double, aMinDelta As Double, aInvertedOutput As Boolean) As Long
-    Dim lResults As New SiteDouble
-    Dim lInValue As New SiteDouble
+Public Function Trim_Digital_BinaryTrip(aPattern As Pattern, aFrom As Long, aTo As Long, aMinDelta As Long, aInvertedOutput As Boolean) As Long
+    Dim lResults As New SiteLong
+    Dim lInValue As New SiteLong
     Dim lValue As New SiteBoolean
     Dim lAlwaysTripped As New SiteBoolean
     Dim lModuleCount As Long
-    Dim lDelta As Double
-    Dim lDone As Boolean
+    Dim lFromPerSite As New SiteLong
+    Dim lToPerSite As New SiteLong
+    Dim lStepSize As New SiteLong
     Dim Site As Variant
     Dim lPatSpec As New SiteVariant
     Dim lName As String
     Dim i As Long
+    Dim lNotDone As New SiteBoolean
     
     lModuleCount = 256
     lAlwaysTripped(-1) = True
     lResults(-1) = -999
-    lDone = False
-    lInValue(-1) = (aFrom + aTo) / 2
-    lDelta = (aTo - aFrom) / 2
+    lFromPerSite(-1) = aFrom
+    lToPerSite(-1) = aTo
+    lNotDone(-1) = True
     
     Call TheHdw.Digital.ApplyLevelsTiming(True, True, True, tlPowered)
     For i = 0 To lModuleCount - 1
@@ -229,23 +231,26 @@ Public Function Trim_Digital_BinaryTrip(aPattern As Pattern, aFrom As Double, aT
         
     Do
         For Each Site In TheExec.Sites
-            lPatSpec(Site) = aPattern.Value + ":mod" + CStr(Floor(lInValue(Site)))
+            lInValue(Site) = (lFromPerSite(Site) + lToPerSite(Site)) / 2
+            lPatSpec(Site) = aPattern.Value + ":mod" + CStr(lInValue(Site))
         Next Site
         Call TheHdw.PatternsPerSite(lPatSpec).Start
         Call TheHdw.PatternsPerSite(lPatSpec).HaltWait
         lValue = TheHdw.Digital.Patgen.PatternBurstPassedPerSite
-        lDone = lDelta <= aMinDelta
-        lDelta = lDelta / 2
+
         For Each Site In TheExec.Sites.Active
             If lValue Then
                 lResults = lInValue
-                lInValue = lInValue - lDelta 'follow Search.Functional.Binary, assume invertingLogic = false
+                lStepSize(Site) = lToPerSite(Site) - lInValue(Site)
+                lToPerSite(Site) = lInValue(Site)
             Else
                 lAlwaysTripped = False
-                lInValue = lInValue + lDelta
+                lStepSize(Site) = lInValue(Site) - lFromPerSite(Site)
+                lFromPerSite(Site) = lInValue(Site)
             End If
+            lNotDone(Site) = lStepSize(Site) >= aMinDelta
         Next Site
-    Loop Until lDone
+    Loop While lNotDone.Any(True)
     
     For Each Site In TheExec.Sites.Active
         If lAlwaysTripped Then lResults = -999
@@ -255,13 +260,15 @@ Public Function Trim_Digital_BinaryTrip(aPattern As Pattern, aFrom As Double, aT
     Call TheExec.Flow.TestLimit(ResultVal:=lResults, ForceResults:=tlForceFlow)
 End Function
 
-Public Function Trim_Digital_BinaryTarget(aPattern As Pattern, aCapPins As PinList, aFrom As Double, aTo As Double, aMinDelta As Double, aInvertedOutput As Boolean, aTarget As Long) As Long
-    Dim lResults As New SiteDouble
-    Dim lInValue As New SiteDouble
+Public Function Trim_Digital_BinaryTarget(aPattern As Pattern, aCapPins As PinList, aFrom As Long, aTo As Long, aMinDelta As Long, aInvertedOutput As Boolean, aTarget As Long) As Long
+    Dim lResults As New SiteLong
+    Dim lInValue As New SiteLong
     Dim lValue As New SiteLong
     Dim lModuleCount As Long
-    Dim lDelta As Double
-    Dim lDone As Boolean
+    Dim lFromPerSite As New SiteLong
+    Dim lToPerSite As New SiteLong
+    Dim lStepSize As New SiteLong
+    Dim lNotDone As New SiteBoolean
     Dim Site As Variant
     Dim lPatSpec As New SiteVariant
     Dim lName As String
@@ -272,12 +279,11 @@ Public Function Trim_Digital_BinaryTarget(aPattern As Pattern, aCapPins As PinLi
     
     lModuleCount = 256
     lResults(-1) = -999
-    lDone = False
-    lInValue(-1) = (aFrom + aTo) / 2
-    lDelta = (aTo - aFrom) / 2
     lDevAbsBest(-1) = 0
-    lDone = False
     lFirst = True
+    lFromPerSite(-1) = aFrom
+    lToPerSite(-1) = aTo
+    lNotDone(-1) = True
     
     Call TheHdw.Digital.ApplyLevelsTiming(True, True, True, tlPowered)
     
@@ -295,23 +301,31 @@ Public Function Trim_Digital_BinaryTarget(aPattern As Pattern, aCapPins As PinLi
         
     Do
         For Each Site In TheExec.Sites
-            lPatSpec(Site) = aPattern.Value + ":hram_mod" + CStr(Floor(lInValue(Site)))
+            lInValue(Site) = (lFromPerSite(Site) + lToPerSite(Site)) / 2
+            lPatSpec(Site) = aPattern.Value + ":hram_mod" + CStr(lInValue(Site))
         Next Site
         Call TheHdw.PatternsPerSite(lPatSpec).Start
         Call TheHdw.PatternsPerSite(lPatSpec).HaltWait
         lValue = OneMeasurementPatternsPerSite(lPatSpec, aCapPins, lInValue)
-        lDone = lDelta <= aMinDelta
-        lDelta = lDelta / 2
+
         For Each Site In TheExec.Sites.Active
             lDevAbs = Abs(lValue(Site) - aTarget)
             If (lDevAbs < lDevAbsBest(Site)) Or lFirst Then
                 lDevAbsBest(Site) = lDevAbs
                 lResults(Site) = lInValue(Site)
             End If
-            lInValue(Site) = lInValue(Site) + IIf(lValue(Site) > (aTarget Xor False), -1 * lDelta, lDelta) 'follow Search.Functional.Binary, assume invertingLogic = false
+            
+            If (lValue(Site) > aTarget) Then
+                lStepSize(Site) = lToPerSite(Site) - lInValue(Site)
+                lToPerSite(Site) = lInValue(Site)
+            Else
+                lStepSize(Site) = lInValue(Site) - lFromPerSite(Site)
+                lFromPerSite(Site) = lInValue(Site)
+            End If
+            lNotDone(Site) = lStepSize(Site) >= aMinDelta
         Next Site
         lFirst = False
-    Loop Until lDone
+    Loop While lNotDone.Any(True)
 
     With TheHdw.Digital.HRAM
         .SetTrigger trigNever, False, 0, True
@@ -337,7 +351,7 @@ Private Function OneMeasurement(aPattern As Pattern, aModName As String, aCapPin
     
 End Function
 
-Private Function OneMeasurementPatternsPerSite(aPatSpec As SiteVariant, aCapPins As PinList, aModIndex As SiteDouble) As SiteLong
+Private Function OneMeasurementPatternsPerSite(aPatSpec As SiteVariant, aCapPins As PinList, aModIndex As SiteLong) As SiteLong
     Set OneMeasurementPatternsPerSite = New SiteLong
     Dim lResult As New SiteLong
     Dim lHramWords() As New SiteLong
@@ -347,7 +361,7 @@ Private Function OneMeasurementPatternsPerSite(aPatSpec As SiteVariant, aCapPins
     TheHdw.PatternsPerSite(aPatSpec).HaltWait
     lHramWords = TheHdw.Digital.Pins(aCapPins).HRAM.ReadDataWord(0, 8, 8, tlBitOrderLsbFirst)
     For Each Site In TheExec.Sites
-        OneMeasurementPatternsPerSite = IIf(True, Floor(aModIndex(Site)), lHramWords(0)) 'Simulate data process
+        OneMeasurementPatternsPerSite = IIf(True, aModIndex(Site), lHramWords(0)) 'Simulate data process
     Next Site
     
 End Function

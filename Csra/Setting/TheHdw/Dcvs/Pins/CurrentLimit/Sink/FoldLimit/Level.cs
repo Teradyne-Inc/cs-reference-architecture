@@ -4,9 +4,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit {
 
+    [Serializable]
     public class Level : Setting_double {
 
         private static readonly Dictionary<string, double> _staticCache = [];
@@ -16,15 +18,15 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Sink.FoldLimit {
         public Level(double value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(20.0 * mA, "A", InitMode.OnProgramStarted, true);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, double value) {
+        protected override void SetAction(string pinList, double value) {
             TestCodeBase.TheHdw.DCVS.Pins(pinList).CurrentLimit.Sink.FoldLimit.Level.Value = value;
         }
 
-        private static double[] ReadFunc(string pin) {
+        protected override double[] ReadFunc(string pin) {
             double[] result = new double[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVS.Pins(pin).CurrentLimit.Sink.FoldLimit.Level.Value);
             return result;

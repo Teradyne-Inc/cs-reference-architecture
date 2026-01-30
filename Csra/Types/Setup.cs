@@ -65,7 +65,7 @@ namespace Csra {
         }
 
         internal void Dump() {
-            var bgr = (ColorConstants)((0x0 & 0xff0000) >> 16 | 0x0 & 0xff00 | (0x0 & 0xff) << 16);
+            ColorConstants bgr = (ColorConstants)((0x0 & 0xff0000) >> 16 | 0x0 & 0xff00 | (0x0 & 0xff) << 16);
             Api.Services.Alert.Log($"{new string(' ', 1 * 5)}{$"Setup: '{Name}'"}", bgr, 1 == 0);
             foreach (ISetting setting in _settings) setting.Dump();
         }
@@ -82,7 +82,7 @@ namespace Csra {
         }
 
         internal void Validate() {
-            foreach (var setting in _settings) {
+            foreach (ISetting setting in _settings) {
                 ((ISettingInternal)setting).Validate();
             } 
         }
