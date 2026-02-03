@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/Demo_CSRA.Parametric.SingleCondition.md/#L2">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -304,10 +300,47 @@ For all pins specified in the <code>pinList</code> it disconnects any pin electr
 <li>support for non-uniform (mixed) instrument types in pinList not yet available</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Baseline(PinList forcePinList, string forceMode, double forceValue, double clampValue, string measureWhat, double measureRange,
+    int sampleSize = 1, PinList measPinList = null, double waitTime = 0.0, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(forcePinList, nameof(forcePinList), out _pinsForce);
+        TheLib.Validate.Pins(forcePinList, nameof(forcePinList), out _pinsAll);
+        _measPinListIsNullOrEmpty = string.IsNullOrEmpty(measPinList);
+        if (_measPinListIsNullOrEmpty) {
+            _pinsMeasure = new Pins(forcePinList);
+        } else {
+            TheLib.Validate.Pins(measPinList, nameof(measPinList), out _pinsMeasure);
+            _pinsAll.Add(measPinList);
+        }
+        TheLib.Validate.Enum(forceMode, nameof(forceMode), out _outputMode);
+        TheLib.Validate.Enum(measureWhat, nameof(measureWhat), out _measureMode);
+        _outputRangeValue = (_outputMode == TLibOutputMode.ForceVoltage) ? clampValue : forceValue;
+        _containsDigitalPins = _pinsAll.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pinsAll);
+        TheLib.Setup.Dc.Connect(_pinsAll);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.Force(_pinsForce, _outputMode, forceValue, forceValue, clampValue);
+        TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue : null);
+        TheLib.Execute.Wait(waitTime);
+        _measPins = TheLib.Acquire.Dc.Measure(_pinsMeasure, sampleSize);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pinsAll);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pinsAll);
+        TheLib.Datalog.TestParametric(_measPins, forceValue);
+    }
+}
+</code></pre></div>
 
 
 
@@ -402,10 +435,53 @@ The preconditioning pattern is executed. For all pins specified in the <code>pin
 <li>support for non-uniform (mixed) instrument types in pinList not yet available</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void PreconditionPattern(PinList forcePinList, string forceMode, double forceValue, double clampValue, Pattern preconditionPat,
+    string measureWhat, double measureRange, int sampleSize = 1, PinList measPinList = null, double waitTime = 0.0, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(forcePinList, nameof(forcePinList), out _pinsForce);
+        TheLib.Validate.Pins(forcePinList, nameof(forcePinList), out _pinsAll);
+        _patternIsValid = !string.IsNullOrEmpty(preconditionPat);
+        _measPinListIsNullOrEmpty = string.IsNullOrEmpty(measPinList);
+        if (_patternIsValid) {
+            TheLib.Validate.Pattern(preconditionPat, nameof(preconditionPat), out _pattern);
+        }
+        if (_measPinListIsNullOrEmpty) {
+            _pinsMeasure = new Pins(forcePinList);
+        } else {
+            TheLib.Validate.Pins(measPinList, nameof(measPinList), out _pinsMeasure);
+            _pinsAll.Add(measPinList);
+        }
+        TheLib.Validate.Enum(forceMode, nameof(forceMode), out _outputMode);
+        TheLib.Validate.Enum(measureWhat, nameof(measureWhat), out _measureMode);
+        _outputRangeValue = _outputMode == TLibOutputMode.ForceVoltage ? clampValue : forceValue;
+        _containsDigitalPins = _pinsAll.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_patternIsValid) TheLib.Execute.Digital.RunPattern(_pattern);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pinsAll);
+        TheLib.Setup.Dc.Connect(_pinsAll);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.Force(_pinsForce, _outputMode, forceValue, forceValue, clampValue);
+        TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue
+            : null);
+        TheLib.Execute.Wait(waitTime);
+        _measPins = TheLib.Acquire.Dc.Measure(_pinsMeasure, sampleSize); 
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pinsAll);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pinsAll);
+        TheLib.Datalog.TestParametric(_measPins, forceValue);
+    }
+}
+</code></pre></div>
 
 
 
@@ -423,7 +499,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

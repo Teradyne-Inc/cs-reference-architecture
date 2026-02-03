@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/index.md/#L1">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -78,8 +74,8 @@
 <p>The <strong>C# Reference Architecture</strong> (C#RA) addresses these challenges by streamlining the creation and maintenance of test programs. It offers a robust, performance-oriented library of validated implementations that reflect recommended practice in test development.</p>
 <div style="clear:both;"></div>
 <h2 id="the-library">The Library</h2>
-<p>At the heart of C#RA is a powerful abstraction layer known as <a href="https://teradyne-inc.github.io/cs-reference-architecture/features/code-structure_test-blocks.html"><strong>Test Blocks</strong></a>, which enables the development of concise, generic, reusable, and intuitive test code. These blocks are designed to be modular, high-performing, and immediately understandable - minimizing the need to consult documentation.</p>
-<p>The provided <a href="https://teradyne-inc.github.io/cs-reference-architecture/features/code-structure_test-methods.html"><strong>Test Methods</strong></a> illustrate effective and proven solutions for common test scenarios, available in both offline and online runnable demo programs. By intentionally avoiding exhaustive coverage of every edge case, the examples remain clean and approachable - making them easy to adopt and extend.</p>
+<p>At the heart of C#RA is a powerful abstraction layer known as <a href="features/code-structure_test-blocks.html"><strong>Test Blocks</strong></a>, which enables the development of concise, generic, reusable, and intuitive test code. These blocks are designed to be modular, high-performing, and immediately understandable - minimizing the need to consult documentation.</p>
+<p>The provided <a href="features/code-structure_test-methods.html"><strong>Test Methods</strong></a> illustrate effective and proven solutions for common test scenarios, available in both offline and online runnable demo programs. By intentionally avoiding exhaustive coverage of every edge case, the examples remain clean and approachable - making them easy to adopt and extend.</p>
 <p>This balance allows teams to address more specific requirements while maintaining a consistent and scalable development approach.</p>
 <pre><code class="lang-cs">TheLib.Setup.LevelsAndTiming.Apply(true);
 Services.Setup.Apply(setup);
@@ -94,18 +90,18 @@ TheLib.Setup.Dc.Disconnect(_pins);
 if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
 TheLib.Datalog.TestParametric(_meas, current);
 </code></pre>
-<p>Comprehensive <a href="https://teradyne-inc.github.io/cs-reference-architecture/">documentation</a> complements the codebase, offering insights into the <a href="https://teradyne-inc.github.io/cs-reference-architecture/principles/index.html">requirements process</a>, <a href="https://teradyne-inc.github.io/cs-reference-architecture/features/index.html">design decisions</a> and providing <a href="https://teradyne-inc.github.io/cs-reference-architecture/api/Csra.html">API help</a> for deeper understanding where necessary.</p>
+<p>Comprehensive <a href="index.html">documentation</a> complements the codebase, offering insights into the <a href="features/index.html">design decisions</a> and providing <a class="xref" href="api/Csra.html">API help</a> for deeper understanding where necessary.</p>
 <h2 id="infrastructure">Infrastructure</h2>
 <p>C#RA is built with automation at its foundation. Automated unit and integration testing, documentation generation, and packaging workflows ensure consistent quality and reduce the risk of human error.</p>
 <p>The project follows an agile development model, allowing for rapid iteration and continuous delivery through monthly releases.</p>
 <p>These capabilities are extended to users, enabling seamless integration into their own workflows - supporting both quality assurance and timely delivery.</p>
 <h2 id="getting-started">Getting Started</h2>
 <ol>
-<li>Download and unzip the latest <a href="https://github.com/Teradyne-Inc/cs-reference-architecture/releases">release</a></li>
-<li>Review the documentation: <code>/doc/index.html</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/">online</a></li>
+<li>Download and unzip the latest <a href="https://github.com/teradyne-inc/cs-reference-architecture/releases">release</a></li>
+<li>Review the documentation: <code>/doc/index.html</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/index.html">online</a></li>
 <li>Understand the system requirements and prerequisites: <code>Documentation &gt; Getting Started</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/getting-started/index.html">online</a></li>
-<li>Explore the included demo program: <code>/Demo</code> or <a href="https://github.com/Teradyne-Inc/cs-reference-architecture/tree/main/src/Demo">online</a></li>
-<li>Integrate C#RA into your test project: <code>Documentation &gt; Getting Started &gt; Installation</code> or <a href="?https://teradyne-inc.github.io/cs-reference-architecture/getting-started/installation.html">online</a></li>
+<li>Explore the included demo program: <code>/Demo</code> or <a href="https://github.com/teradyne-inc/cs-reference-architecture/tree/main/src/Demo">online</a></li>
+<li>Integrate C#RA into your test project: <code>Documentation &gt; Getting Started &gt; Installation</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/getting-started/installation.html">online</a></li>
 <li>Start building better test programs - faster and more reliably!</li>
 </ol>
 <h2 id="releases">Releases</h2>
@@ -118,7 +114,11 @@ TheLib.Datalog.TestParametric(_meas, current);
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/releases/tag/v0.13">v0.13</a></td>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.15">v0.15</a></td>
+<td>2026-02-03</td>
+</tr>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.13">v0.13</a></td>
 <td>2025-11-14</td>
 </tr>
 </tbody>
@@ -136,7 +136,6 @@ TheLib.Datalog.TestParametric(_meas, current);
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

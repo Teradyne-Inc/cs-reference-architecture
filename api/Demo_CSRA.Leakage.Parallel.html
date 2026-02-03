@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/Demo_CSRA.Leakage.Parallel.md/#L2">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -225,7 +221,7 @@ public class Parallel : TestCodeBase</code></pre>
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra_TestMethods/Leakage/Parallel.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Measures leakage currents by applying bias voltage to all pins simultaneously, in a parallel testing process.</p>
+  <div class="markdown level1 summary"><p>Measures leakage currents by applying a voltage to all pins in parallel at the same time.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -248,10 +244,10 @@ public void Baseline(PinList pinList, double voltage, double currentRange, doubl
     <dd><p>The current range for measurement.</p>
 </dd>
     <dt><code>waitTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>The settling time before the measurement.</p>
+    <dd><p>The time for the force condition to settle before the measurement is made.</p>
 </dd>
     <dt><code>setup</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Optional. The name of the setup set to be applied through the setup service.</p>
+    <dd><p>Optional. The name of the setup to be applied via SetupService.</p>
 </dd>
   </dl>
 
@@ -266,22 +262,21 @@ public void Baseline(PinList pinList, double voltage, double currentRange, doubl
   <h4 class="section" id="Demo_CSRA_Leakage_Parallel_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_String__custom_details">Details</h4>
   <div class="markdown level1 custom_details"><h5 id="test-technique">Test Technique</h5>
 <p>This test method can be used to measure currents flowing into device inputs. One common example is the digital input leakage test to detect issues in isolation structures, possibly damaged by a manufacturing flaw or elevated test voltage levels. Even though such a device may still work according to the specification, statistical outliers can indicate early failures in the devices' target application.</p>
-<p>A typical circuitry for a leakage test showing the device and four instruments (three different types) connected to individual device pins. The instruments are ground referenced and in Force-Voltage mode to allow measuring the currents flowing into the device.</p>
 <p><img src="../overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png" alt="Schematic"></p>
-<p>The test typically applies a voltage near the VDD level to digital input pins, after the device has been brought into a static state that should not allow any current to flow. Ideally, the measured currents are very close to 0A. High sensitivity to noise, and the need to settle dynamic (charging) effects often result in significant test times, mitigated only by the fact that the measurement can usually be made on all pins in parallel.</p>
-<p>The parallel testing method stands out for its high level of efficiency, as it allows the simultaneous evaluation of multiple pins, thereby significantly reducing testing time and optimizing the use of available resources. However, a major limitation of this approach lies in its inability to detect leakage currents between input pins, since all pins are tested concurrently. In such cases, it is recommended to resort to the serial testing method, which enables a more precise and individual analysis of each pin.
-Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Serial.html#Demo_CSRA_Leakage_Serial_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Serial.Baseline</a></p>
-<p>Alternatively, the group testing method offers a balance between precision and efficiency by performing sequential testing of pins or groups of pins, according to the structure defined in the <code>pinList</code>.
-Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Groups.html#Demo_CSRA_Leakage_Groups_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Groups.Baseline</a></p>
+<p>The diagram shows a typical (simplified) schematic for a leakage test with the Device-Under-Test and four tester channels (three different types) connected to individual device pins. The instruments are ground referenced and in Force-Voltage mode to allow measuring the currents flowing into the device.</p>
+<p>The test applies a voltage (often near the VDD level) to digital input pins, after the device has been brought into a static state that should not allow any current to flow. Ideally, the measured currents are very close to 0A. High sensitivity to noise, and the need to settle dynamic (charging) effects often result in significant test times, mitigated only by the fact that the measurement can usually be made on all pins in parallel.</p>
+<p>The parallel testing method stands out for its high level of efficiency, as it allows the simultaneous evaluation of multiple pins, thereby significantly reducing testing time and optimizing the use of available resources. However, a major limitation of this approach lies in its inability to detect leakage currents between input pins, since all pins are tested concurrently. In such cases, it is recommended to resort to the serial testing method, which enables a more precise and individual analysis of each pin (see <a class="xref" href="Demo_CSRA.Leakage.Serial.html#Demo_CSRA_Leakage_Serial_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Serial.Baseline</a>).</p>
+<p>Alternatively, the group testing method offers a balance between precision and efficiency by performing sequential testing of pins or groups of pins, according to the structure defined in the <code>pinList</code> (see <a class="xref" href="Demo_CSRA.Leakage.Groups.html#Demo_CSRA_Leakage_Groups_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Groups.Baseline</a>).</p>
 <p>Special attention is required to avoid these common issues:</p>
 <ul>
-<li>An accidental disconnect in the signal path (e.g., due to an open DIB relay) may be difficult to detect, as measurements into an open line yield statistically inconspicuous results.</li>
-<li>The measurement of very small currents may be limited by the instrument's performance, so that the results rather reflect the instrument's behavior instead of the component's characteristic.</li>
+<li>An accidental omission of the signal path connection (e.g., an open DIB relay) may be difficult to detect, as measurements into an open line yield statistically inconspicuous results.</li>
+<li>The reliable measurement of very small currents may be limited by the instrument's performance, so that the results rather reflect the instrument's behavior instead of the component's characteristic.</li>
 </ul>
 <h5 id="implementation">Implementation</h5>
+<p>The <strong>Validation</strong> section verifies the input parameters for correctness and creates the <code>Pins</code> object.</p>
 <p>The <strong>PreBody</strong> section applies levels and timing from the test instance context. Optionally, applies the specified <code>setup</code>. For all pins specified in the <code>pinList</code> it disconnects any pin electronics and connects the dc path.</p>
-<p>The <strong>Body</strong> section applies a force <code>voltage</code>, turns on the gate to all pins, and performs a current measurement on all pins in parallel after the specified <code>waitTime</code>.</p>
-<p>The <strong>PostBody</strong> section establishes the pin electronics connection for digital pins after gating off and disconnecting the DC path. Finally, a parametric datalog is logged.</p>
+<p>The <strong>Body</strong> section applies a force <code>voltage</code>, turns on the gate, and performs a current measurement on all pins in parallel after the specified <code>waitTime</code>.</p>
+<p>The <strong>PostBody</strong> section re-establishes the pin electronics connection for digital pins after gating off and disconnecting the DC path. Finally, the parametric measurement results are datalogged.</p>
 <h5 id="platform-specifics">Platform Specifics</h5>
 <p>Supports stepping capability for PreBody/Body/PostBody.</p>
 <h5 id="pre-conditions">Pre Conditions</h5>
@@ -298,10 +293,35 @@ Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Groups.html#Dem
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Baseline(PinList pinList, double voltage, double currentRange, double waitTime, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(pinList, nameof(pinList), out _pins);
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+        TheLib.Setup.Dc.Connect(_pins);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.SetForceAndMeter(_pins, TLibOutputMode.ForceVoltage, voltage, voltage, currentRange, Measure.Current, currentRange);
+        TheLib.Execute.Wait(waitTime);
+        _meas = TheLib.Acquire.Dc.Measure(_pins);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pins);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        TheLib.Datalog.TestParametric(_meas, voltage);
+    }
+}
+</code></pre></div>
 
 
 
@@ -314,7 +334,7 @@ Warning
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra_TestMethods/Leakage/Parallel.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Runs a pattern and then measures leakage currents by applying bias voltage to all pins simultaneously, using a parallel testing process.</p>
+  <div class="markdown level1 summary"><p>Runs a pattern and then measures leakage currents by applying a voltage to all pins in parallel at the same time.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -340,10 +360,10 @@ public void Preconditioning(Pattern pattern, PinList pinList, double voltage, do
     <dd><p>The current range for measurement.</p>
 </dd>
     <dt><code>waitTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>The settling time before the measurement.</p>
+    <dd><p>The time for the force condition to settle before the measurement is made.</p>
 </dd>
     <dt><code>setup</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Optional. The name of the setup set to be applied through the setup service.</p>
+    <dd><p>Optional. The name of the setup to be applied via SetupService.</p>
 </dd>
   </dl>
 
@@ -357,24 +377,17 @@ public void Preconditioning(Pattern pattern, PinList pinList, double voltage, do
 
   <h4 class="section" id="Demo_CSRA_Leakage_Parallel_Preconditioning_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_String__custom_details">Details</h4>
   <div class="markdown level1 custom_details"><h5 id="test-technique">Test Technique</h5>
-<p>This test method can be used to measure currents flowing into the inputs of a device, additionally running a pattern before the measurements to precondition the device under test (DUT) and ensure that the pins or internal circuits are in the correct state for testing. One common example is the digital input leakage test to detect issues in isolation structures, possibly damaged by a manufacturing flaw or elevated test voltage levels. Even though such a device may still work according to the specification, statistical outliers can indicate early failures in the devices' target application.</p>
-<p>A typical circuitry for a leakage test showing the device and four instruments (three different types) connected to individual device pins. The instruments are ground referenced and in Force-Voltage mode to allow measuring the currents flowing into the device.</p>
-<p><img src="../overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png" alt="Schematic"></p>
-<p>The test typically applies a voltage near the VDD level to digital input pins, after the device has been brought into a static state that should not allow any current to flow. Ideally, the measured currents are very close to 0A. High sensitivity to noise, and the need to settle dynamic (charging) effects often result in significant test times, mitigated only by the fact that the measurement can usually be made on all pins in parallel.</p>
-<p>The parallel testing method stands out for its high level of efficiency, as it allows the simultaneous evaluation of multiple pins, thereby significantly reducing testing time and optimizing the use of available resources. However, a major limitation of this approach lies in its inability to detect leakage currents between input pins, since all pins are tested concurrently. In such cases, it is recommended to resort to the serial testing method, which enables a more precise and individual analysis of each pin.
-Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Serial.html#Demo_CSRA_Leakage_Serial_Preconditioning_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Serial.Preconditioning</a></p>
-<p>Alternatively, the group testing method offers a balance between precision and efficiency by performing sequential testing of pins or groups of pins, according to the structure defined in the <code>pinList</code>.
-Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Groups.html#Demo_CSRA_Leakage_Groups_Preconditioning_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Groups.Preconditioning</a></p>
-<p>Special attention is required to avoid these common issues:</p>
+<p>This test method can be used to execute a preconditioning pattern before measuring currents flowing into the inputs of a device. It follows the implementation of <a class="xref" href="Demo_CSRA.Leakage.Parallel.html#Demo_CSRA_Leakage_Parallel_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_String_">Leakage.Parallel.Baseline</a>.</p>
+<p>Alternatives for when full parallel measurements are not suitable can be found here:</p>
 <ul>
-<li>An accidental disconnect in the signal path (e.g., due to an open DIB relay) may be difficult to detect, as measurements into an open line yield statistically inconspicuous results.</li>
-<li>The measurement of very small currents may be limited by the instrument's performance, so that the results rather reflect the instrument's behavior instead of the component's characteristic.</li>
+<li><a class="xref" href="Demo_CSRA.Leakage.Serial.html#Demo_CSRA_Leakage_Serial_Preconditioning_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Serial.Preconditioning</a></li>
+<li><a class="xref" href="Demo_CSRA.Leakage.Groups.html#Demo_CSRA_Leakage_Groups_Preconditioning_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Groups.Preconditioning</a></li>
 </ul>
 <h5 id="implementation">Implementation</h5>
-<p>The <strong>Validation</strong> section instantiates the pins object and will also instantiate the pattern object if a pattern is given in the test method parameters.</p>
-<p>The <strong>PreBody</strong> section applies levels and timing from the test instance context. Optionally, applies the specified <code>setup</code>. Executes the <code>pattern</code> if passed in the test method parameters and for all pins specified in the <code>pinList</code> it disconnects any pin electronics, connects the dc path.</p>
+<p>The <strong>Validation</strong> section verifies the input parameters for correctness and creates the <code>Pins</code> and <code>PatternInfo</code> objects.</p>
+<p>The <strong>PreBody</strong> section applies levels and timing from the test instance context. Optionally, applies the specified <code>setup</code>. Executes the <code>pattern</code>, then disconnects the pin electronic of any digital pin specified in the 'pinList' and finally connects the dc path for all pins specified in the <code>pinList</code>.</p>
 <p>The <strong>Body</strong> section applies a force <code>voltage</code>, turns on the gate to all pins, and performs a current measurement on all pins in parallel after the specified <code>waitTime</code>.</p>
-<p>The <strong>PostBody</strong> section establishes the pin electronics connection for digital pins after gating off and disconnecting the DC path. Finally, a parametric datalog is logged.</p>
+<p>The <strong>PostBody</strong> section re-establishes the pin electronics connection for digital pins after gating off and disconnecting the DC path. Finally, the parametric measurement results are datalogged.</p>
 <h5 id="platform-specifics">Platform Specifics</h5>
 <p>Supports stepping capability for PreBody/Body/PostBody.</p>
 <h5 id="pre-conditions">Pre Conditions</h5>
@@ -391,10 +404,37 @@ Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Groups.html#Dem
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Preconditioning(Pattern pattern, PinList pinList, double voltage, double currentRange, double waitTime, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(pinList, nameof(pinList), out _pins);
+        TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        TheLib.Execute.Digital.RunPattern(_pattern);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+        TheLib.Setup.Dc.Connect(_pins);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.SetForceAndMeter(_pins, TLibOutputMode.ForceVoltage, voltage, voltage, currentRange, Measure.Current, currentRange);
+        TheLib.Execute.Wait(waitTime);
+        _meas = TheLib.Acquire.Dc.Measure(_pins);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pins);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        TheLib.Datalog.TestParametric(_meas, voltage);
+    }
+}
+</code></pre></div>
 
 
 
@@ -412,7 +452,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

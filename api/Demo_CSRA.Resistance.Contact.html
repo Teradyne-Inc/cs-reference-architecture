@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/new/main/apiSpec/new?filename=Demo_CSRA_Resistance_Contact.md&amp;value=---%0Auid%3A%20Demo_CSRA.Resistance.Contact%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -293,10 +289,46 @@ public void Baseline(PinList forcePin, string forceMode, double forceFirstValue,
 <li>support for non-uniform (mixed) instrument types in pinList not yet available</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Baseline(PinList forcePin, string forceMode, double forceFirstValue, double forceSecondValue, double clampValueOfForcePin,
+    double measureFirstRange, double measureSecondRange, double waitTime = 0.0, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(forcePin, nameof(forcePin), out _pinsFirst);
+        TheLib.Validate.Enum(forceMode.ToLower(), nameof(forceMode), out _outputMode);
+        _measureMode = _outputMode == TLibOutputMode.ForceVoltage ? Measure.Current : Measure.Voltage;
+        _forceFirst = new PinSite&lt;double&gt;(forcePin, forceFirstValue);
+        _forceSecond = new PinSite&lt;double&gt;(forcePin, forceSecondValue);
+        _containsDigitalPins = _pinsFirst.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pinsFirst);
+        TheLib.Setup.Dc.Connect(_pinsFirst);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.SetForceAndMeter(_pinsFirst, _outputMode, forceFirstValue, forceFirstValue, clampValueOfForcePin, _measureMode,
+            measureFirstRange);
+        TheLib.Execute.Wait(waitTime);
+        _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirst);
+        TheLib.Setup.Dc.SetForceAndMeter(_pinsFirst, _outputMode, forceSecondValue, forceSecondValue, clampValueOfForcePin, _measureMode,
+            measureSecondRange, false);
+        TheLib.Execute.Wait(waitTime);
+        _measSecond = TheLib.Acquire.Dc.Measure(_pinsFirst);
+        _resistanceValue = (_outputMode == TLibOutputMode.ForceVoltage) ? (_forceFirst - _forceSecond) / (_measFirst - _measSecond) :
+            (_measFirst - _measSecond) / (_forceFirst - _forceSecond);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pinsFirst);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pinsFirst);
+        TheLib.Datalog.TestParametric(_resistanceValue);
+    }
+}
+</code></pre></div>
 
 
 
@@ -314,7 +346,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

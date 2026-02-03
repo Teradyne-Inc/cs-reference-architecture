@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/features/setup-service.md/#L1">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -264,7 +260,7 @@ public void SetupService5() { // Test #5 (audit mode finds such changed)
 <p>The per instrument catalog does not reflect a final state - functionality is added on a by-need basis. This is a work-in-progress area.</p>
 </div>
 <h2 id="implementation">Implementation</h2>
-<p>A conceptual description of the implemented code will follow (<a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/689">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/689</a>).</p>
+<p>A conceptual description of the implemented code will follow.</p>
 <h2 id="unit-testing">Unit Testing</h2>
 <p>The core functionality of the SetupService has far-going unit test coverage. However - designed for an open and extensible use model - unit test coverage for those extensions is required as well. For consistent coverage, the following strategy is defined:</p>
 <ul>
@@ -315,26 +311,6 @@ public void SetupService5() { // Test #5 (audit mode finds such changed)
 </ul>
 </li>
 </ul>
-<h2 id="alternatives-considered">Alternatives Considered</h2>
-<p>n/a</p>
-<h2 id="open-questions">Open Questions</h2>
-<ul>
-<li>likely should integrate with the <code>Pins</code> objects. But that'll cause a dependency. Is that what we want? Implications?
-<ul>
-<li><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/189">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/189</a></li>
-</ul>
-</li>
-<li>add validation support. Bounds checking might be possible. Should we propose defining the <strong>setups</strong> at validation? Prior to that?
-<ul>
-<li><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/190">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/190</a></li>
-</ul>
-</li>
-<li>add site capability (different values per site for scenarios where that is needed)
-<ul>
-<li><a href="https://github.com/Teradyne-Inc/cs-reference-architecture/issues/192">https://github.com/Teradyne-Inc/cs-reference-architecture/issues/192</a></li>
-</ul>
-</li>
-</ul>
 
 </article>
 
@@ -348,7 +324,6 @@ public void SetupService5() { // Test #5 (audit mode finds such changed)
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

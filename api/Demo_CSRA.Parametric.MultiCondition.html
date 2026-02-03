@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/Demo_CSRA.Parametric.MultiCondition.md/#L2">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -304,10 +300,48 @@ For all pins specified in the <code>pinList</code> it disconnects any pin electr
 <li>support for non-uniform (mixed) instrument types in pinList not yet available</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Baseline(PinList forcePinList, string forceModes, string forceValues, string clampValues, string measureModes, string measureRanges,
+    string sampleSizes = &quot;1&quot;, PinList measPinList = null, double waitTime = 0, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(forcePinList, nameof(forcePinList), out _pins);
+        _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+        TheLib.Validate.MultiCondition(forcePinList, p =&gt; new Pins(p), nameof(_pinsForceGroups), out _pinsForceGroups);
+        if (string.IsNullOrEmpty(measPinList)) _pinsMeasureGroups = _pinsForceGroups;
+        else {
+            TheLib.Validate.Pins(measPinList, nameof(measPinList), out _);
+            TheLib.Validate.MultiCondition(measPinList, p =&gt; new Pins(p), nameof(_pinsMeasureGroups), out _pinsMeasureGroups);
+            _pins.Add(measPinList);
+        }
+        TheLib.Validate.MultiCondition(forceModes, nameof(forceModes), out _outputModes, _pinsForceGroups.Length);
+        TheLib.Validate.MultiCondition(forceValues, double.Parse, nameof(forceValues), out _forceValues, _pinsForceGroups.Length);
+        TheLib.Validate.MultiCondition(clampValues, double.Parse, nameof(clampValues), out _clampValues, _pinsForceGroups.Length);
+        TheLib.Validate.MultiCondition(measureModes, nameof(measureModes), out _measureModes, _pinsMeasureGroups.Length);
+        TheLib.Validate.MultiCondition(measureRanges, double.Parse, nameof(measureRanges), out _measureRanges, _pinsMeasureGroups.Length);
+        TheLib.Validate.MultiCondition(sampleSizes, int.Parse, nameof(sampleSizes), out _sampleSizes, _pinsMeasureGroups.Length);
+    }
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+        TheLib.Setup.Dc.Connect(_pins);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.Force(_pinsForceGroups, _outputModes, _forceValues, _forceValues, _clampValues, [true]);
+        TheLib.Setup.Dc.SetMeter(_pinsMeasureGroups, _measureModes, _measureRanges);
+        TheLib.Execute.Wait(waitTime);
+        _measureValues = TheLib.Acquire.Dc.Measure(_pinsMeasureGroups, _sampleSizes);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pins);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        TheLib.Datalog.TestParametric(_measureValues);
+    }
+}
+</code></pre></div>
 
 
 
@@ -402,10 +436,52 @@ The preconditioning pattern is executed.For all pins specified in the <code>pinL
 <li>support for non-uniform (mixed) instrument types in pinList not yet available</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void PreconditionPattern(PinList forcePinList, string forceModes, string forceValues, string clampValues, Pattern preconditionPat,
+    string measureModes, string measureRanges, string sampleSizes = &quot;1&quot;, PinList measPinList = null, double waitTime = 0, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(forcePinList, nameof(forcePinList), out _pins);
+        _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+        TheLib.Validate.MultiCondition(forcePinList, p =&gt; new Pins(p), nameof(forcePinList), out _pinsForceGroups);
+        if (string.IsNullOrEmpty(measPinList)) _pinsMeasureGroups = _pinsForceGroups;
+        else {
+            TheLib.Validate.Pins(measPinList, nameof(measPinList), out _);
+            TheLib.Validate.MultiCondition(measPinList, p =&gt; new Pins(p), nameof(measPinList), out _pinsMeasureGroups);
+            _pins.Add(measPinList);
+        }
+        _patternSpecified = !string.IsNullOrEmpty(preconditionPat);
+        if (_patternSpecified) TheLib.Validate.Pattern(preconditionPat, nameof(preconditionPat), out _pattern);
+        else Services.Alert.Error(&quot;Invalid Pattern. The pattern is null or empty.&quot;);
+        TheLib.Validate.MultiCondition(forceModes, nameof(forceModes), out _outputModes, _pinsForceGroups.Length);
+        TheLib.Validate.MultiCondition(forceValues, double.Parse, nameof(forceValues), out _forceValues, _pinsForceGroups.Length);
+        TheLib.Validate.MultiCondition(clampValues, double.Parse, nameof(clampValues), out _clampValues, _pinsForceGroups.Length);
+        TheLib.Validate.MultiCondition(measureModes, nameof(measureModes), out _measureModes, _pinsMeasureGroups.Length);
+        TheLib.Validate.MultiCondition(measureRanges, double.Parse, nameof(measureRanges), out _measureRanges, _pinsMeasureGroups.Length);
+        TheLib.Validate.MultiCondition(sampleSizes, int.Parse, nameof(sampleSizes), out _sampleSizes, _pinsMeasureGroups.Length);
+    }
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_patternSpecified) TheLib.Execute.Digital.RunPattern(_pattern);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+        TheLib.Setup.Dc.Connect(_pins);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Dc.Force(_pinsForceGroups, _outputModes, _forceValues, _forceValues, _clampValues, [true]);
+        TheLib.Setup.Dc.SetMeter(_pinsMeasureGroups, _measureModes, _measureRanges);
+        TheLib.Execute.Wait(waitTime);
+        _measureValues = TheLib.Acquire.Dc.Measure(_pinsMeasureGroups, _sampleSizes);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pins);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        TheLib.Datalog.TestParametric(_measureValues);
+    }
+}
+</code></pre></div>
 
 
 
@@ -423,7 +499,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

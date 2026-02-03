@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/new/main/apiSpec/new?filename=Demo_CSRA_Trim_Digital.md&amp;value=---%0Auid%3A%20Demo_CSRA.Trim.Digital%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -290,10 +286,49 @@ public void BinaryTarget(Pattern pattern, PinList capPins, int from, int to, int
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void BinaryTarget(Pattern pattern, PinList capPins, int from, int to, int minDelta, bool invertedOutput, int target, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (!string.IsNullOrEmpty(pattern)) TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.Pins(capPins, nameof(capPins), out _pins);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        for (int i = 0; i &lt; _moduleCount; i++) {
+            string name = _pattern.Name + $&quot;:hram_mod{i}&quot;;
+            PatternInfo patternTemp = new PatternInfo(name, true);
+        }
+    }
+
+    if (ShouldRunBody) {
+        var patSpec = new SiteVariant();
+        TheLib.Setup.Digital.ReadHram(8, CaptType.STV, TrigType.First, false, 0);
+        _valuesBinary = TheLib.Acquire.Search.BinarySearch(from, to, minDelta, invertedOutput, (modIndex) =&gt; {
+            Site&lt;int&gt; result = new(-1);
+            ForEachSite(site =&gt; {
+                patSpec[site] = _pattern.Name + $&quot;:hram_mod{modIndex[site]}&quot;;
+            });
+            TheHdw.PatternsPerSite(patSpec).Start();
+            TheHdw.PatternsPerSite(patSpec).HaltWait();
+            _readWords = TheLib.Acquire.Digital.ReadWords(_pins, 0, 8, 8, tlBitOrder.LsbFirst);
+            ForEachSite(site =&gt; {
+                result[site] = true ? modIndex[site] : _readWords[0][site][0]; // Simulate data process
+            });
+            return result;
+        },
+        target
+        );
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Digital.ReadHram(0, CaptType.None, TrigType.Never, false, 0);
+        TheLib.Datalog.TestParametric(_valuesBinary);
+    }
+}
+</code></pre></div>
 
 
 
@@ -371,10 +406,42 @@ public void BinaryTrip(Pattern pattern, int from, int to, int minDelta, bool inv
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void BinaryTrip(Pattern pattern, int from, int to, int minDelta, bool invertedOutput, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (!string.IsNullOrEmpty(pattern)) TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        for (int i = 0; i &lt; _moduleCount; i++) {
+            string name = _pattern.Name + $&quot;:mod{i}&quot;;
+            PatternInfo patternTemp = new PatternInfo(name, true);
+        }
+    }
+
+    if (ShouldRunBody) {
+        var patSpec = new SiteVariant();
+        _valuesBinary = TheLib.Acquire.Search.BinarySearch(from, to, minDelta, invertedOutput, (modIndex) =&gt; {
+            ForEachSite(site =&gt; {
+                patSpec[site] = _pattern.Name + $&quot;:mod{modIndex[site]}&quot;;
+            });
+            TheHdw.PatternsPerSite(patSpec).Start();
+            TheHdw.PatternsPerSite(patSpec).HaltWait();
+            return TheLib.Acquire.Digital.PatternResults();
+        },
+        patResult =&gt; patResult,
+        _notFoundResult
+        );
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Datalog.TestParametric(_valuesBinary);
+    }
+}
+</code></pre></div>
 
 
 
@@ -455,10 +522,41 @@ public void LinearFullTarget(Pattern pattern, PinList capPins, int from, int to,
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void LinearFullTarget(Pattern pattern, PinList capPins, int from, int to, int count, int target, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (!string.IsNullOrEmpty(pattern)) TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.Pins(capPins, nameof(capPins), out _pins);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+    }
+
+    if (ShouldRunBody) {
+        _measurementsTarget = [];
+        TheLib.Setup.Digital.ReadHram(8, CaptType.STV, TrigType.First, false, 0);
+        double increment = TheLib.Acquire.Search.LinearFullFromToCount(from, to, count, (modIndex) =&gt; {
+            Site&lt;int&gt; result = new Site&lt;int&gt;(-1);
+            TheHdw.Patterns(_pattern.Name + $&quot;:hram_mod{modIndex}&quot;).Start();
+            TheHdw.Digital.Patgen.HaltWait();
+            _readWords = TheLib.Acquire.Digital.ReadWords(_pins, 0, 8, 8, tlBitOrder.LsbFirst);
+            ForEachSite(site =&gt; {
+                result[site] = true ? modIndex : _readWords[0][site][0]; // Simulate data process
+            });
+            _measurementsTarget.Add(result);
+        });
+        _results = TheLib.Execute.Search.LinearFullProcess(_measurementsTarget, from, increment, 0, target);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Digital.ReadHram(0, CaptType.None, TrigType.Never, false, 0);
+        TheLib.Datalog.TestParametric(_results);
+    }
+}
+</code></pre></div>
 
 
 
@@ -533,10 +631,33 @@ public void LinearFullTrip(Pattern pattern, int from, int to, int count, string 
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void LinearFullTrip(Pattern pattern, int from, int to, int count, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (!string.IsNullOrEmpty(pattern)) TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+    }
+
+    if (ShouldRunBody) {
+        _measurementsTrip = [];
+        double increment = TheLib.Acquire.Search.LinearFullFromToCount(from, to, count, (modIndex) =&gt; {
+            TheHdw.Patterns(_pattern.Name + $&quot;:mod{modIndex}&quot;).Start();
+            TheHdw.Digital.Patgen.HaltWait();
+            _measurementsTrip.Add(TheLib.Acquire.Digital.PatternResults());
+        });
+        _results = TheLib.Execute.Search.LinearFullProcess(_measurementsTrip, from, increment, 0, _notFoundResult, condition =&gt; condition);
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Datalog.TestParametric(_results);
+    }
+}
+</code></pre></div>
 
 
 
@@ -617,10 +738,41 @@ public void LinearStopTarget(Pattern pattern, PinList capPins, int from, int to,
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void LinearStopTarget(Pattern pattern, PinList capPins, int from, int to, int count, int target, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (!string.IsNullOrEmpty(pattern)) TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.Pins(capPins, nameof(capPins), out _pins);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Setup.Digital.ReadHram(8, CaptType.STV, TrigType.First, false, 0);
+        _values = TheLib.Acquire.Search.LinearStopFromToCount(from, to, count, 0, _notFoundResult, (modIndex) =&gt; {
+            Site&lt;int&gt; result = new Site&lt;int&gt;(-1);
+            TheHdw.Patterns(_pattern.Name + $&quot;:hram_mod{modIndex}&quot;).Start();
+            TheHdw.Digital.Patgen.HaltWait();
+            _readWords = TheLib.Acquire.Digital.ReadWords(_pins, 0, 8, 8, tlBitOrder.LsbFirst);
+            ForEachSite(site =&gt; {
+                result[site] = true ? modIndex : _readWords[0][site][0]; // Simulate data process
+            });
+            return result;
+        },
+        target
+        );
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Digital.ReadHram(0, CaptType.None, TrigType.Never, false, 0);
+        TheLib.Datalog.TestParametric(_values);
+    }
+}
+</code></pre></div>
 
 
 
@@ -695,10 +847,33 @@ public void LinearStopTrip(Pattern pattern, int from, int to, int count, string 
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void LinearStopTrip(Pattern pattern, int from, int to, int count, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        if (!string.IsNullOrEmpty(pattern)) TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+    }
+
+    if (ShouldRunBody) {
+        _values = TheLib.Acquire.Search.LinearStopFromToCount(from, to, count, 0, _notFoundResult, (modIndex) =&gt; {
+            TheHdw.Patterns(_pattern.Name + $&quot;:mod{modIndex}&quot;).Start();
+            TheHdw.Digital.Patgen.HaltWait();
+            return TheLib.Acquire.Digital.PatternResults();
+        },
+        patResult =&gt; patResult
+        );
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Datalog.TestParametric(_values);
+    }
+}
+</code></pre></div>
 
 
 
@@ -716,7 +891,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

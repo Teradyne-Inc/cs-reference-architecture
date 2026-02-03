@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Test Block Design Philosophy | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Test Block Design Philosophy | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/features/test-block-philosophy.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="test-block-design-philosophy">Test Block Design Philosophy</h1>
+
+<p>Test blocks are the cornerstone of the C# Reference Architecture, providing an abstraction layer that simplifies interaction with the IG-XL tester platform. This document outlines the fundamental philosophy behind test block design, particularly regarding parameter selection and the balance between usability and flexibility.</p>
+<h2 id="core-design-principles">Core Design Principles</h2>
+<h3 id="abstraction-above-ig-xl-publicapi">Abstraction Above IG-XL PublicAPI</h3>
+<p>Test blocks combine commonly used functionality by offering an abstraction model above the IG-XL PublicAPI layer. Rather than replacing the PublicAPI, test blocks <strong>complement and augment</strong> it by providing simplified interfaces for common test scenarios.</p>
+<p>The goal is to make test code more:</p>
+<ul>
+<li><strong>Readable</strong> - Clear intent through intuitive naming and structure</li>
+<li><strong>Maintainable</strong> - Reduced code duplication and consistent patterns</li>
+<li><strong>Efficient</strong> - Pre-optimized implementations of common operations</li>
+<li><strong>Reusable</strong> - Generic implementations that work across multiple scenarios</li>
+</ul>
+<h3 id="the-usability-flexibility-tradeoff">The Usability-Flexibility Tradeoff</h3>
+<p>Test block design involves a fundamental tradeoff between usability and flexibility:</p>
+<h4 id="too-much-generality">Too Much Generality</h4>
+<ul>
+<li>Results in excessive parameter lists</li>
+<li>Creates a complicated use model</li>
+<li>Increases implementation complexity</li>
+<li>Makes the API harder to learn and use</li>
+</ul>
+<h4 id="too-much-specificity">Too Much Specificity</h4>
+<ul>
+<li>Forces the creation of many alternative implementations</li>
+<li>Misses legitimate use cases</li>
+<li>Requires users to handwrite more code</li>
+<li>Reduces the value of the abstraction</li>
+</ul>
+<h4 id="finding-the-right-balance">Finding the Right Balance</h4>
+<p>The C#RA team strives to find the optimal balance by:</p>
+<ol>
+<li><strong>Focus on Common Cases</strong> - Test blocks are designed to handle what would be the common case in most test scenarios</li>
+<li><strong>Parameter Selection</strong> - Include parameters that cover 80-90% of typical use cases</li>
+<li><strong>Accept Limitations</strong> - Acknowledge that not every edge case can or should be handled</li>
+</ol>
+<h2 id="working-with-the-ig-xl-publicapi">Working with the IG-XL PublicAPI</h2>
+<h3 id="complementary-not-exclusive">Complementary, Not Exclusive</h3>
+<p>Test blocks and the IG-XL PublicAPI are designed to work together, not in opposition:</p>
+<ul>
+<li><strong>Use test blocks</strong> where they add value and simplify your code</li>
+<li><strong>Use PublicAPI directly</strong> where test blocks don't cover your specific needs</li>
+<li><strong>Mix both approaches</strong> freely within the same test method</li>
+</ul>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>C#RA advocates <strong>against</strong> an &quot;all or nothing&quot; mandate. Users should never be forced into using only test blocks while forbidding direct PublicAPI calls. Both approaches have their place.</p>
+</div>
+<h3 id="example-instrument-specific-parameters">Example: Instrument-Specific Parameters</h3>
+<p>Consider the <code>ClampVLo</code> parameter in the <code>ForceI</code> test block. This parameter is specific to PPMU instruments and represents an uncommon configuration:</p>
+<pre><code class="lang-csharp">// Common case - using the test block
+TheLib.Setup.Dc.ForceI(pins, forceCurrent, clampHiV);
+
+// Uncommon case - using TheHdw for PPMU-specific features
+TheHdw.PPMU.Pins(pins).ForceI(forceCurrent, clampHiV, clampLoV);
+</code></pre>
+<p>For the common case, the test block provides a clean, simple interface. For the uncommon PPMU-specific case where <code>ClampVLo</code> is needed, users can access <code>TheHdw</code> directly without penalty.</p>
+<h3 id="when-to-use-each-approach">When to Use Each Approach</h3>
+<table>
+<thead>
+<tr>
+<th>Use Test Blocks When...</th>
+<th>Use PublicAPI (TheHdw) When...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The functionality is commonly needed</td>
+<td>You need instrument-specific features</td>
+</tr>
+<tr>
+<td>The test block covers your use case</td>
+<td>You need precise control over parameters</td>
+</tr>
+<tr>
+<td>You want simpler, more readable code</td>
+<td>You're implementing an edge case</td>
+</tr>
+<tr>
+<td>You benefit from the abstraction</td>
+<td>The test block doesn't support what you need</td>
+</tr>
+</tbody>
+</table>
+<h2 id="extensibility-and-customization">Extensibility and Customization</h2>
+<p>The C#RA extension model offers convenient customization when features are needed but not (yet) available in test blocks.</p>
+<h3 id="extension-methods">Extension Methods</h3>
+<p>Extension Methods allow users to add their own test blocks without modifying the C#RA codebase:</p>
+<pre><code class="lang-csharp">// In your test program project (not in C#RA)
+public static class MyCustomExtensions {
+    public static void CustomForceI(this ILib.ISetup.IDc dc, Pins pins, 
+        double current, double clampHiV, double clampLoV) {
+        // Your custom implementation with ClampVLo support
+        TheHdw.PPMU.Pins(pins).ForceI(current, clampHiV, clampLoV);
+    }
+}
+
+// Usage in your test method
+using static Csra.Api;
+...
+TheLib.Setup.Dc.CustomForceI(pins, 1.0e-3, 3.3, 0.0);
+</code></pre>
+<h3 id="benefits-of-the-extension-model">Benefits of the Extension Model</h3>
+<ol>
+<li><strong>No Code Fork</strong> - Customizations live outside the C#RA codebase</li>
+<li><strong>Easy Updates</strong> - Updating to a new C#RA version is not hindered</li>
+<li><strong>Project-Specific</strong> - Each test program can have its own extensions</li>
+<li><strong>Maintains Compatibility</strong> - Your code remains compatible with future C#RA releases</li>
+</ol>
+<p>For more details, see <a href="extensibility.html">Extensibility</a>.</p>
+<h2 id="feedback-and-evolution">Feedback and Evolution</h2>
+<h3 id="the-cra-team-wants-to-hear-from-you">The C#RA Team Wants to Hear From You</h3>
+<p>The C#RA feature set is <strong>not static</strong>. The team actively:</p>
+<ul>
+<li>Listens to gaps and needs that are not yet covered</li>
+<li>Evaluates requests for common-case functionality</li>
+<li>Integrates valuable feedback into the product</li>
+<li>Embraces new requirements and added functionality</li>
+</ul>
+<h3 id="how-to-provide-feedback">How to Provide Feedback</h3>
+<p>If you find yourself frequently needing a feature that isn't in test blocks:</p>
+<ol>
+<li><strong>Report it</strong> - Create a feature request (see <a href="../getting-started/request-feature.html">Request a Feature</a>)</li>
+<li><strong>Explain the use case</strong> - Help the team understand why it's common for your scenario</li>
+<li><strong>Share your extension</strong> - Your custom implementation might inspire a better test block design</li>
+</ol>
+<h3 id="continuous-improvement">Continuous Improvement</h3>
+<p>The monthly release cycle allows for rapid integration of valuable features. If a parameter or capability proves to be more common than initially thought, it may be promoted into the standard test block interface.</p>
+<h2 id="design-examples">Design Examples</h2>
+<h3 id="example-1-dc-force-simplification">Example 1: DC Force Simplification</h3>
+<p>The test block provides multiple overloads to support different use cases:</p>
+<pre><code class="lang-csharp">// Simple case - most common parameters only
+TheLib.Setup.Dc.ForceV(pins, voltage);
+
+// Moderate case - add clamp current
+TheLib.Setup.Dc.ForceV(pins, voltage, clampCurrent);
+
+// Complex case - add ranges
+TheLib.Setup.Dc.ForceV(pins, voltage, clampCurrent, voltageRange, currentRange);
+
+// Exceptional case - need DCVI-specific features
+TheHdw.DCVI.Pins(pins).ForceV(voltage, clampCurrent, voltageRange, 
+    currentRange, outputModeVoltage: true);
+</code></pre>
+<h3 id="example-2-mixing-test-blocks-and-publicapi">Example 2: Mixing Test Blocks and PublicAPI</h3>
+<p>Test methods commonly mix both approaches:</p>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void ParametricTest(PinList pinList, double voltage, string setup = &quot;&quot;) {
+    if (ShouldRunPreBody) {
+        // Using test blocks for common operations
+        TheLib.Setup.ApplyLevelsTiming();
+        Services.Setup.Apply(setup);
+        TheLib.Setup.Dc.Connect(pins);
+        
+        // Using PublicAPI for specific configuration
+        if (needsSpecialConfig) {
+            TheHdw.PPMU.Pins(ppmuPins).ClampVLo = specialValue;
+        }
+    }
+    
+    if (ShouldRunBody) {
+        // Back to test blocks for measurement
+        TheLib.Setup.Dc.ForceV(pins, voltage);
+        _meas = TheLib.Acquire.Dc.Measure(pins);
+    }
+    
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(pins);
+        TheLib.Datalog.TestParametric(_meas, voltage);
+    }
+}
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The C# Reference Architecture test blocks are designed to:</p>
+<ul>
+<li>✅ Handle common test scenarios with simple, intuitive interfaces</li>
+<li>✅ Complement (not replace) the IG-XL PublicAPI</li>
+<li>✅ Allow easy divergence to PublicAPI for edge cases</li>
+<li>✅ Support extension for customer-specific needs</li>
+<li>✅ Evolve based on user feedback</li>
+<li>✅ Enable smooth upgrades through careful API design</li>
+</ul>
+<p>By understanding this philosophy, you can make informed decisions about when to use test blocks, when to use the PublicAPI directly, and when to create your own extensions. The goal is to maximize your productivity while maintaining the flexibility to handle any test scenario your application requires.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="code-structure_test-blocks.html">Test Blocks</a> - Detailed technical documentation</li>
+<li><a href="extensibility.html">Extensibility</a> - How to create custom extensions</li>
+<li><a href="code-structure_test-methods.html">Test Methods</a> - Using test blocks in test methods</li>
+<li><a href="instrument-specific.html">Instrument Specific Features</a> - When and how to use instrument-specific parameters</li>
+<li><a href="../getting-started/request-feature.html">Request a Feature</a> - How to provide feedback</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

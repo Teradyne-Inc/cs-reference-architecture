@@ -3581,15 +3581,15 @@ references:
   isSpec: "True"
   fullName: Csra.Interfaces.ILib.ISetup.IDc.SetForceAndMeter
   nameWithType: ILib.ISetup.IDc.SetForceAndMeter
-- uid: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins,Csra.Measure,System.Double,System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
-  name: SetMeter(Pins, Measure, double, double?, int?, double?)
-  href: api/Csra.Interfaces.ILib.ISetup.IDc.html#Csra_Interfaces_ILib_ISetup_IDc_SetMeter_Csra_Pins_Csra_Measure_System_Double_System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
-  commentId: M:Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins,Csra.Measure,System.Double,System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
-  name.vb: SetMeter(Pins, Measure, Double, Double?, Integer?, Double?)
-  fullName: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins, Csra.Measure, double, double?, int?, double?)
-  fullName.vb: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins, Csra.Measure, Double, Double?, Integer?, Double?)
-  nameWithType: ILib.ISetup.IDc.SetMeter(Pins, Measure, double, double?, int?, double?)
-  nameWithType.vb: ILib.ISetup.IDc.SetMeter(Pins, Measure, Double, Double?, Integer?, Double?)
+- uid: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins,Csra.Measure,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name: SetMeter(Pins, Measure, double?, double?, int?, double?)
+  href: api/Csra.Interfaces.ILib.ISetup.IDc.html#Csra_Interfaces_ILib_ISetup_IDc_SetMeter_Csra_Pins_Csra_Measure_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
+  commentId: M:Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins,Csra.Measure,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name.vb: SetMeter(Pins, Measure, Double?, Double?, Integer?, Double?)
+  fullName: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins, Csra.Measure, double?, double?, int?, double?)
+  fullName.vb: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins, Csra.Measure, Double?, Double?, Integer?, Double?)
+  nameWithType: ILib.ISetup.IDc.SetMeter(Pins, Measure, double?, double?, int?, double?)
+  nameWithType.vb: ILib.ISetup.IDc.SetMeter(Pins, Measure, Double?, Double?, Integer?, Double?)
 - uid: Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins[],Csra.Measure[],System.Double[],System.Double[],System.Int32[],System.Double[])
   name: SetMeter(Pins[], Measure[], double[], double[], int[], double[])
   href: api/Csra.Interfaces.ILib.ISetup.IDc.html#Csra_Interfaces_ILib_ISetup_IDc_SetMeter_Csra_Pins___Csra_Measure___System_Double___System_Double___System_Int32___System_Double___
@@ -4923,74 +4923,6 @@ references:
   commentId: F:Csra.Measure.Voltage
   fullName: Csra.Measure.Voltage
   nameWithType: Measure.Voltage
-- uid: Csra.MethodHandleTargetAttribute
-  name: MethodHandleTargetAttribute
-  href: api/Csra.MethodHandleTargetAttribute.html
-  commentId: T:Csra.MethodHandleTargetAttribute
-  fullName: Csra.MethodHandleTargetAttribute
-  nameWithType: MethodHandleTargetAttribute
-- uid: Csra.MethodHandle`1
-  name: MethodHandle<T>
-  href: api/Csra.MethodHandle-1.html
-  commentId: T:Csra.MethodHandle`1
-  name.vb: MethodHandle(Of T)
-  fullName: Csra.MethodHandle<T>
-  fullName.vb: Csra.MethodHandle(Of T)
-  nameWithType: MethodHandle<T>
-  nameWithType.vb: MethodHandle(Of T)
-- uid: Csra.MethodHandle`1.#ctor(System.String)
-  name: MethodHandle(string)
-  href: api/Csra.MethodHandle-1.html#Csra_MethodHandle_1__ctor_System_String_
-  commentId: M:Csra.MethodHandle`1.#ctor(System.String)
-  name.vb: New(String)
-  fullName: Csra.MethodHandle<T>.MethodHandle(string)
-  fullName.vb: Csra.MethodHandle(Of T).New(String)
-  nameWithType: MethodHandle<T>.MethodHandle(string)
-  nameWithType.vb: MethodHandle(Of T).New(String)
-- uid: Csra.MethodHandle`1.#ctor*
-  name: MethodHandle
-  href: api/Csra.MethodHandle-1.html#Csra_MethodHandle_1__ctor_
-  commentId: Overload:Csra.MethodHandle`1.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: Csra.MethodHandle<T>.MethodHandle
-  fullName.vb: Csra.MethodHandle(Of T).New
-  nameWithType: MethodHandle<T>.MethodHandle
-  nameWithType.vb: MethodHandle(Of T).New
-- uid: Csra.MethodHandle`1.Execute
-  name: Execute
-  href: api/Csra.MethodHandle-1.html#Csra_MethodHandle_1_Execute
-  commentId: P:Csra.MethodHandle`1.Execute
-  fullName: Csra.MethodHandle<T>.Execute
-  fullName.vb: Csra.MethodHandle(Of T).Execute
-  nameWithType: MethodHandle<T>.Execute
-  nameWithType.vb: MethodHandle(Of T).Execute
-- uid: Csra.MethodHandle`1.Execute*
-  name: Execute
-  href: api/Csra.MethodHandle-1.html#Csra_MethodHandle_1_Execute_
-  commentId: Overload:Csra.MethodHandle`1.Execute
-  isSpec: "True"
-  fullName: Csra.MethodHandle<T>.Execute
-  fullName.vb: Csra.MethodHandle(Of T).Execute
-  nameWithType: MethodHandle<T>.Execute
-  nameWithType.vb: MethodHandle(Of T).Execute
-- uid: Csra.MethodHandle`1.FullyQualifiedName
-  name: FullyQualifiedName
-  href: api/Csra.MethodHandle-1.html#Csra_MethodHandle_1_FullyQualifiedName
-  commentId: P:Csra.MethodHandle`1.FullyQualifiedName
-  fullName: Csra.MethodHandle<T>.FullyQualifiedName
-  fullName.vb: Csra.MethodHandle(Of T).FullyQualifiedName
-  nameWithType: MethodHandle<T>.FullyQualifiedName
-  nameWithType.vb: MethodHandle(Of T).FullyQualifiedName
-- uid: Csra.MethodHandle`1.FullyQualifiedName*
-  name: FullyQualifiedName
-  href: api/Csra.MethodHandle-1.html#Csra_MethodHandle_1_FullyQualifiedName_
-  commentId: Overload:Csra.MethodHandle`1.FullyQualifiedName
-  isSpec: "True"
-  fullName: Csra.MethodHandle<T>.FullyQualifiedName
-  fullName.vb: Csra.MethodHandle(Of T).FullyQualifiedName
-  nameWithType: MethodHandle<T>.FullyQualifiedName
-  nameWithType.vb: MethodHandle(Of T).FullyQualifiedName
 - uid: Csra.PatternInfo
   name: PatternInfo
   href: api/Csra.PatternInfo.html
@@ -5210,6 +5142,15 @@ references:
   isSpec: "True"
   fullName: Csra.Pins.ArrangePinSite
   nameWithType: Pins.ArrangePinSite
+- uid: Csra.Pins.ArrangePinSite``1(System.Collections.Generic.IEnumerable{Teradyne.Igxl.Interfaces.Public.PinSite{Teradyne.Igxl.Interfaces.Public.Samples{``0}}})
+  name: ArrangePinSite<T>(IEnumerable<PinSite<Samples<T>>>)
+  href: api/Csra.Pins.html#Csra_Pins_ArrangePinSite__1_System_Collections_Generic_IEnumerable_Teradyne_Igxl_Interfaces_Public_PinSite_Teradyne_Igxl_Interfaces_Public_Samples___0____
+  commentId: M:Csra.Pins.ArrangePinSite``1(System.Collections.Generic.IEnumerable{Teradyne.Igxl.Interfaces.Public.PinSite{Teradyne.Igxl.Interfaces.Public.Samples{``0}}})
+  name.vb: ArrangePinSite(Of T)(IEnumerable(Of PinSite(Of Samples(Of T))))
+  fullName: Csra.Pins.ArrangePinSite<T>(System.Collections.Generic.IEnumerable<Teradyne.Igxl.Interfaces.Public.PinSite<Teradyne.Igxl.Interfaces.Public.Samples<T>>>)
+  fullName.vb: Csra.Pins.ArrangePinSite(Of T)(System.Collections.Generic.IEnumerable(Of Teradyne.Igxl.Interfaces.Public.PinSite(Of Teradyne.Igxl.Interfaces.Public.Samples(Of T))))
+  nameWithType: Pins.ArrangePinSite<T>(IEnumerable<PinSite<Samples<T>>>)
+  nameWithType.vb: Pins.ArrangePinSite(Of T)(IEnumerable(Of PinSite(Of Samples(Of T))))
 - uid: Csra.Pins.ArrangePinSite``1(System.Collections.Generic.IEnumerable{Teradyne.Igxl.Interfaces.Public.PinSite{``0}})
   name: ArrangePinSite<T>(IEnumerable<PinSite<T>>)
   href: api/Csra.Pins.html#Csra_Pins_ArrangePinSite__1_System_Collections_Generic_IEnumerable_Teradyne_Igxl_Interfaces_Public_PinSite___0___
@@ -5298,6 +5239,45 @@ references:
   isSpec: "True"
   fullName: Csra.Pins.Count
   nameWithType: Pins.Count
+- uid: Csra.Pins.Dcvi
+  name: Dcvi
+  href: api/Csra.Pins.html#Csra_Pins_Dcvi
+  commentId: P:Csra.Pins.Dcvi
+  fullName: Csra.Pins.Dcvi
+  nameWithType: Pins.Dcvi
+- uid: Csra.Pins.Dcvi*
+  name: Dcvi
+  href: api/Csra.Pins.html#Csra_Pins_Dcvi_
+  commentId: Overload:Csra.Pins.Dcvi
+  isSpec: "True"
+  fullName: Csra.Pins.Dcvi
+  nameWithType: Pins.Dcvi
+- uid: Csra.Pins.Dcvs
+  name: Dcvs
+  href: api/Csra.Pins.html#Csra_Pins_Dcvs
+  commentId: P:Csra.Pins.Dcvs
+  fullName: Csra.Pins.Dcvs
+  nameWithType: Pins.Dcvs
+- uid: Csra.Pins.Dcvs*
+  name: Dcvs
+  href: api/Csra.Pins.html#Csra_Pins_Dcvs_
+  commentId: Overload:Csra.Pins.Dcvs
+  isSpec: "True"
+  fullName: Csra.Pins.Dcvs
+  nameWithType: Pins.Dcvs
+- uid: Csra.Pins.Digital
+  name: Digital
+  href: api/Csra.Pins.html#Csra_Pins_Digital
+  commentId: P:Csra.Pins.Digital
+  fullName: Csra.Pins.Digital
+  nameWithType: Pins.Digital
+- uid: Csra.Pins.Digital*
+  name: Digital
+  href: api/Csra.Pins.html#Csra_Pins_Digital_
+  commentId: Overload:Csra.Pins.Digital
+  isSpec: "True"
+  fullName: Csra.Pins.Digital
+  nameWithType: Pins.Digital
 - uid: Csra.Pins.Equals(Csra.Pins)
   name: Equals(Pins)
   href: api/Csra.Pins.html#Csra_Pins_Equals_Csra_Pins_
@@ -5596,6 +5576,19 @@ references:
   fullName.vb: Csra.Pins.Pin.<>
   nameWithType: Pins.Pin.operator !=
   nameWithType.vb: Pins.Pin.<>
+- uid: Csra.Pins.Ppmu
+  name: Ppmu
+  href: api/Csra.Pins.html#Csra_Pins_Ppmu
+  commentId: P:Csra.Pins.Ppmu
+  fullName: Csra.Pins.Ppmu
+  nameWithType: Pins.Ppmu
+- uid: Csra.Pins.Ppmu*
+  name: Ppmu
+  href: api/Csra.Pins.html#Csra_Pins_Ppmu_
+  commentId: Overload:Csra.Pins.Ppmu
+  isSpec: "True"
+  fullName: Csra.Pins.Ppmu
+  nameWithType: Pins.Ppmu
 - uid: Csra.Pins.Sort
   name: Sort()
   href: api/Csra.Pins.html#Csra_Pins_Sort
@@ -12622,15 +12615,15 @@ references:
   isSpec: "True"
   fullName: Csra.TheLib.Setup.Dc.SetForceAndMeter
   nameWithType: Dc.SetForceAndMeter
-- uid: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins,Csra.Measure,System.Double,System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
-  name: SetMeter(Pins, Measure, double, double?, int?, double?)
-  href: api/Csra.TheLib.Setup.Dc.html#Csra_TheLib_Setup_Dc_SetMeter_Csra_Pins_Csra_Measure_System_Double_System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
-  commentId: M:Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins,Csra.Measure,System.Double,System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
-  name.vb: SetMeter(Pins, Measure, Double, Double?, Integer?, Double?)
-  fullName: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins, Csra.Measure, double, double?, int?, double?)
-  fullName.vb: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins, Csra.Measure, Double, Double?, Integer?, Double?)
-  nameWithType: Dc.SetMeter(Pins, Measure, double, double?, int?, double?)
-  nameWithType.vb: Dc.SetMeter(Pins, Measure, Double, Double?, Integer?, Double?)
+- uid: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins,Csra.Measure,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name: SetMeter(Pins, Measure, double?, double?, int?, double?)
+  href: api/Csra.TheLib.Setup.Dc.html#Csra_TheLib_Setup_Dc_SetMeter_Csra_Pins_Csra_Measure_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
+  commentId: M:Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins,Csra.Measure,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name.vb: SetMeter(Pins, Measure, Double?, Double?, Integer?, Double?)
+  fullName: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins, Csra.Measure, double?, double?, int?, double?)
+  fullName.vb: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins, Csra.Measure, Double?, Double?, Integer?, Double?)
+  nameWithType: Dc.SetMeter(Pins, Measure, double?, double?, int?, double?)
+  nameWithType.vb: Dc.SetMeter(Pins, Measure, Double?, Double?, Integer?, Double?)
 - uid: Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins[],Csra.Measure[],System.Double[],System.Double[],System.Int32[],System.Double[])
   name: SetMeter(Pins[], Measure[], double[], double[], int[], double[])
   href: api/Csra.TheLib.Setup.Dc.html#Csra_TheLib_Setup_Dc_SetMeter_Csra_Pins___Csra_Measure___System_Double___System_Double___System_Int32___System_Double___
@@ -13095,6 +13088,34 @@ references:
   commentId: F:Csra.TransactionType.PortBridge
   fullName: Csra.TransactionType.PortBridge
   nameWithType: TransactionType.PortBridge
+- uid: Csra.Types
+  name: Csra.Types
+  href: api/Csra.Types.html
+  commentId: N:Csra.Types
+  fullName: Csra.Types
+  nameWithType: Csra.Types
+- uid: Csra.Types.PinsFactory
+  name: PinsFactory
+  href: api/Csra.Types.PinsFactory.html
+  commentId: T:Csra.Types.PinsFactory
+  fullName: Csra.Types.PinsFactory
+  nameWithType: PinsFactory
+- uid: Csra.Types.PinsFactory.GetPins(System.String,Tol.IPpmuPins@,Tol.IDcviPins@,Tol.IDcvsPins@,Tol.IDigitalPins@)
+  name: GetPins(string, out IPpmuPins, out IDcviPins, out IDcvsPins, out IDigitalPins)
+  href: api/Csra.Types.PinsFactory.html#Csra_Types_PinsFactory_GetPins_System_String_Tol_IPpmuPins__Tol_IDcviPins__Tol_IDcvsPins__Tol_IDigitalPins__
+  commentId: M:Csra.Types.PinsFactory.GetPins(System.String,Tol.IPpmuPins@,Tol.IDcviPins@,Tol.IDcvsPins@,Tol.IDigitalPins@)
+  name.vb: GetPins(String, IPpmuPins, IDcviPins, IDcvsPins, IDigitalPins)
+  fullName: Csra.Types.PinsFactory.GetPins(string, out Tol.IPpmuPins, out Tol.IDcviPins, out Tol.IDcvsPins, out Tol.IDigitalPins)
+  fullName.vb: Csra.Types.PinsFactory.GetPins(String, Tol.IPpmuPins, Tol.IDcviPins, Tol.IDcvsPins, Tol.IDigitalPins)
+  nameWithType: PinsFactory.GetPins(string, out IPpmuPins, out IDcviPins, out IDcvsPins, out IDigitalPins)
+  nameWithType.vb: PinsFactory.GetPins(String, IPpmuPins, IDcviPins, IDcvsPins, IDigitalPins)
+- uid: Csra.Types.PinsFactory.GetPins*
+  name: GetPins
+  href: api/Csra.Types.PinsFactory.html#Csra_Types_PinsFactory_GetPins_
+  commentId: Overload:Csra.Types.PinsFactory.GetPins
+  isSpec: "True"
+  fullName: Csra.Types.PinsFactory.GetPins
+  nameWithType: PinsFactory.GetPins
 - uid: Demo_CSRA
   name: Demo_CSRA
   href: api/Demo_CSRA.html

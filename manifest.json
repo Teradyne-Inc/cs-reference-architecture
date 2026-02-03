@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/a/cs-reference-architecture/cs-reference-architecture/docs",
+  "source_base_path": "C:/jenkins/workspace/W_cs-reference-architecture_main/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -653,34 +653,6 @@
       "IsMRef": true,
       "Title": "Csra.Measure",
       "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Csra.MethodHandle-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Csra.MethodHandle-1.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Csra.MethodHandle<T>",
-      "Summary": "<p sourcefile=\"api/Csra.MethodHandle-1.yml\" sourcestartlinenumber=\"1\">Provides a flexible and type-safe mechanism for dynamically resolving and invoking delegates\nbased on the execution context (e.g., debug vs. production).</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Csra.MethodHandleTargetAttribute.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Csra.MethodHandleTargetAttribute.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Csra.MethodHandleTargetAttribute",
-      "Summary": "<p sourcefile=\"api/Csra.MethodHandleTargetAttribute.yml\" sourcestartlinenumber=\"1\">Indicates that the target method is intended to be referenced via a method handle, such as a delegate.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2137,6 +2109,34 @@
       "IsMRef": true,
       "Title": "Csra.TransactionType",
       "Summary": "<p sourcefile=\"api/Csra.TransactionType.yml\" sourcestartlinenumber=\"1\">Transaction type to use with the TransactionService.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Types.PinsFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Types.PinsFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Types.PinsFactory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Csra.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Csra.Types.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Csra.Types",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -4088,6 +4088,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "features/test-block-philosophy.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/test-block-philosophy.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "features/toc.yml",
       "output": {
@@ -4498,6 +4508,16 @@
       "output": {
         ".html": {
           "relative_path": "releases_/v0.13.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.15.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.15.html"
         }
       },
       "version": ""

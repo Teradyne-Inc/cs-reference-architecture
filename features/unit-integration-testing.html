@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/features/unit-integration-testing.md/#L1">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -183,8 +179,8 @@
 </table>
 <h2 id="alternatives-considered">Alternatives Considered</h2>
 <h3 id="autotest--autotestpro">AutoTest / AutoTestPro</h3>
-<p><a href="https://github.com/Teradyne-Inc/auto-test-igxl">AutoTest</a> is an approach, developed as a proof-of-concept where IG-XL takes the lead in executing all the tests. In this setup, IG-XL is responsible for running the test code and logging the results to a log window. This approach does not integrate with MSTest or the Test Explorer, meaning that standard .NET testing tools, such as dotnet test, are not compatible with it. While AutoTest provides a way to execute tests directly within Excel, it lacks the integration with the broader .NET testing ecosystem.</p>
-<p><a href="https://github.com/Teradyne-Inc/cs-reference-architecture">AutoTestPro</a> is a hybrid solution that combines the strengths of both the AutoTest and Test-Harness approaches. In this method, MSTest is used in conjunction with the Test Explorer to manage and display test results, while also starting and interacting with the Excel process to execute the test code.</p>
+<p><strong>AutoTest</strong> is an approach, developed as a proof-of-concept where IG-XL takes the lead in executing all the tests. In this setup, IG-XL is responsible for running the test code and logging the results to a log window. This approach does not integrate with MSTest or the Test Explorer, meaning that standard .NET testing tools, such as dotnet test, are not compatible with it. While AutoTest provides a way to execute tests directly within Excel, it lacks the integration with the broader .NET testing ecosystem.</p>
+<p><strong>AutoTestPro</strong> is a hybrid solution that combines the strengths of both the AutoTest and Test-Harness approaches. In this method, MSTest is used in conjunction with the Test Explorer to manage and display test results, while also starting and interacting with the Excel process to execute the test code.</p>
 <p>This option was selected for the C#RA in it's initial phase as it allows quick coverage ramp with foreseeable efforts, as that model had been used in other, large-scale projects before. After the IG-XL Test Harness product had further matured, the team switched over to that option. Migrating the existing tests was done in a consolidated, but not insignificant effort.</p>
 <h2 id="transition-phase">Transition phase</h2>
 <p>In the first phase of this project unit-tests were written with the <strong>AutoTestPro</strong> approach. Which was very successful to get the team going. Currently there are ~1000 unit-tests written for the <strong>C#RA</strong> project.</p>
@@ -319,7 +315,6 @@
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

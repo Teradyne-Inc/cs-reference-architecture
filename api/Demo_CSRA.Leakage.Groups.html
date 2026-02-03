@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/Demo_CSRA.Leakage.Groups.md/#L2">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -225,7 +221,9 @@ public class Groups : TestCodeBase</code></pre>
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra_TestMethods/Leakage/Groups.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Measures leakage currents by applying a voltage in a sequential process carried out on each pin or group of pins, according to the structure defined
+in the <code class="paramref">pinList</code> parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -238,17 +236,24 @@ public void Baseline(PinList pinList, double voltage, double currentRange, doubl
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>pinList</code> <span class="xref">PinList</span></dt>
-    <dd></dd>
+    <dd><p>List of pin or pin group names.</p>
+</dd>
     <dt><code>voltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The force voltage value.</p>
+</dd>
     <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The current range for measurement.</p>
+</dd>
     <dt><code>baseVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The voltage value applied to all pins other than the one currently measured in the sequence.
+Intended to prevent any cross-pin interference.</p>
+</dd>
     <dt><code>waitTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The time for the force condition to settle before the measurement is made.</p>
+</dd>
     <dt><code>setup</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Optional. The name of the setup to be applied via SetupService.</p>
+</dd>
   </dl>
 
 
@@ -294,10 +299,41 @@ Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Parallel.html#D
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Baseline(PinList pinList, double voltage, double currentRange, double baseVoltage, double waitTime, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(pinList, nameof(pinList), out _pins);
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        TheLib.Validate.MultiCondition(pinList, p =&gt; new Pins(p), nameof(_pinSteps), out _pinSteps);
+        _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+        TheLib.Setup.Dc.Connect(_pins);
+    }
+
+    if (ShouldRunBody) {
+        _meas = new();
+        TheLib.Setup.Dc.SetForceAndMeter(_pins, TLibOutputMode.ForceVoltage, baseVoltage, baseVoltage, currentRange, Measure.Current, currentRange);
+        foreach (var pin in _pinSteps) {
+            TheLib.Setup.Dc.ForceV(pin, voltage, currentRange, voltage, gateOn: false);
+            TheLib.Execute.Wait(waitTime);
+            _meas.AddRange(TheLib.Acquire.Dc.Measure(pin));
+            TheLib.Setup.Dc.ForceV(pin, baseVoltage, currentRange, baseVoltage, gateOn: false);
+        }
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pins);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        TheLib.Datalog.TestParametric(_meas, voltage);
+    }
+}
+</code></pre></div>
 
 
 
@@ -310,7 +346,9 @@ Warning
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra_TestMethods/Leakage/Groups.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Runs a pattern and then measures leakage currents by applying a voltage in a sequential process carried out on each pin or group of pins, according
+to the structure defined in the <code class="paramref">pinList</code> parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -323,19 +361,27 @@ public void Preconditioning(Pattern pattern, PinList pinList, double voltage, do
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>pattern</code> <span class="xref">Pattern</span></dt>
-    <dd></dd>
+    <dd><p>Pattern to be executed.</p>
+</dd>
     <dt><code>pinList</code> <span class="xref">PinList</span></dt>
-    <dd></dd>
+    <dd><p>List of pin or pin group names.</p>
+</dd>
     <dt><code>voltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The force voltage value.</p>
+</dd>
     <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The current range for measurement.</p>
+</dd>
     <dt><code>baseVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The voltage value applied to all pins other than the one currently measured in the sequence.
+Intended to prevent any cross-pin interference.</p>
+</dd>
     <dt><code>waitTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
+    <dd><p>The time for the force condition to settle before the measurement is made.</p>
+</dd>
     <dt><code>setup</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Optional. The name of the setup to be applied via SetupService.</p>
+</dd>
   </dl>
 
 
@@ -382,10 +428,44 @@ Details can be found in: <a class="xref" href="Demo_CSRA.Leakage.Parallel.html#D
 <li>none</li>
 </ul>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Preconditioning(Pattern pattern, PinList pinList, double voltage, double currentRange, double baseVoltage, double waitTime,
+    string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pins(pinList, nameof(pinList), out _pins);
+        TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        TheLib.Validate.MultiCondition(pinList, p =&gt; new Pins(p), nameof(_pinSteps), out _pinSteps);
+        _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        TheLib.Execute.Digital.RunPattern(_pattern);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+        TheLib.Setup.Dc.Connect(_pins);
+    }
+
+    if (ShouldRunBody) {
+        _meas = new();
+        TheLib.Setup.Dc.SetForceAndMeter(_pins, TLibOutputMode.ForceVoltage, baseVoltage, baseVoltage, currentRange, Measure.Current, currentRange);
+        foreach (var pin in _pinSteps) {
+            TheLib.Setup.Dc.ForceV(pin, voltage, currentRange, voltage, gateOn: false);
+            TheLib.Execute.Wait(waitTime);
+            _meas.AddRange(TheLib.Acquire.Dc.Measure(pin));
+            TheLib.Setup.Dc.ForceV(pin, baseVoltage, currentRange, baseVoltage, gateOn: false);
+        }
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Setup.Dc.Disconnect(_pins);
+        if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        TheLib.Datalog.TestParametric(_meas, voltage);
+    }
+}
+</code></pre></div>
 
 
 
@@ -403,7 +483,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

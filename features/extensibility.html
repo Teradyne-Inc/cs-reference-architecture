@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/features/extensibility.md/#L1">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -102,16 +98,23 @@
 </div>
 <p>Example:</p>
 <p>Adding an Extension Method to the interface <code>ILib.ISetup.IDc</code> with two arguments.</p>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp">using Csra.Interfaces;
+
+namespace Demo_CSRA {
+    public static class CustomerExtensions {
+        public static void CustomerExtension(this ILib.ISetup.IDc dc, string argument1, int argument2) {
+            // Do what you want
+        }
+    }
+}
+</code></pre>
 <p>Usage:</p>
 <p>The ExtensionMethod can be used like this.</p>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp">[TestMethod]
+public void UseExtensionMethod() {
+    TheLib.Setup.Dc.CustomerExtension(&quot;firstArgument&quot;, 2);
+}
+</code></pre>
 <p>This approach allows customers to extend the <code>TheLib</code> node with their own <code>TestBlocks</code>.</p>
 <div class="WARNING">
 <h5>Warning</h5>
@@ -125,10 +128,34 @@ Warning
 </ul>
 <h2 id="customizing-testmethods">Customizing TestMethods</h2>
 <p>For more significant changes, such as altering arguments or logic in <code>TestMethods</code>, the recommended approach is to copy the relevant code into the customer project and modify as needed.</p>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp">private Site&lt;bool&gt; _patResult;
+private PatternInfo _patternInfoA;
+private PatternInfo _patternInfoB;
+
+[TestMethod, Steppable, CustomValidation]
+public void Baseline(Pattern patternA, Pattern patternB, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        _patternInfoA = new PatternInfo(patternA, true);
+        _patternInfoB = new PatternInfo(patternB, true);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+    }
+
+    if (ShouldRunBody) {
+        TheLib.Execute.Digital.RunPattern(_patternInfoA);
+        TheLib.Execute.Digital.RunPattern(_patternInfoB);
+        _patResult = TheLib.Acquire.Digital.PatternResults();
+    }
+
+    if (ShouldRunPostBody) {
+        TheLib.Datalog.TestFunctional(_patResult, patternA);
+    }
+}
+</code></pre>
 <p>Here, for example, a second <code>Pattern</code> argument was added and executed in sequence.</p>
 <h2 id="summary">Summary</h2>
 <p>C#RA is designed to be used as-is or extended via supported .NET Extension Methods. Direct modification of the core source is discouraged to ensure upgradability. Extension Methods provide flexibility, but customers are responsible for their implementation and maintenance.</p>
@@ -145,7 +172,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

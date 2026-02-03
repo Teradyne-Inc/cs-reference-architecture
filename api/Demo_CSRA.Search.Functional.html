@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/new/main/apiSpec/new?filename=Demo_CSRA_Search_Functional.md&amp;value=---%0Auid%3A%20Demo_CSRA.Search.Functional%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -289,10 +285,56 @@ public void Binary(Pattern pattern, PinList forcePins, double from, double to, d
 <h5 id="limitations">Limitations</h5>
 <p>Pin features supporting DCVI, DCVS, PPMU, and Digital, note that PPMU must be used in combination with either DCVI or DCVS to function.</p>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void Binary(Pattern pattern, PinList forcePins, double from, double to, double minDelta, bool invertedOutput, double waitTime,
+    string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.Pins(forcePins, nameof(forcePins), out _pins);
+        TheLib.Validate.GreaterThan(minDelta, 0, nameof(minDelta));
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        _containsDcviDcvs = _pins.ContainsFeature(InstrumentFeature.Dcvi) || _pins.ContainsFeature(InstrumentFeature.Dcvs);
+        if (_containsDcviDcvs) _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDcviDcvs) {
+            if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+            TheLib.Setup.Dc.Connect(_pins);
+        }
+    }
+
+    if (ShouldRunBody) {
+        if (_containsDcviDcvs) {
+            TheLib.Setup.Dc.ForceV(_pins, (from + to) / 2);
+            TheLib.Execute.Wait(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
+        }
+        _values = TheLib.Acquire.Search.BinarySearch(from, to, minDelta, invertedOutput, (forceValue) =&gt; {
+            ForEachSite(site =&gt; {
+                if (_containsDcviDcvs) TheLib.Setup.Dc.Modify(_pins, voltage: forceValue[site]);
+                else TheLib.Setup.Digital.ModifyPinsLevels(pins: _pins, levelsType: ChPinLevel.Vih, levelsValue: forceValue[site]);
+            });
+            TheLib.Execute.Wait(waitTime);
+            TheLib.Execute.Digital.RunPattern(_pattern);
+            return TheLib.Acquire.Digital.PatternResults();
+        },
+        patResult =&gt; patResult,
+        _notFoundResult
+        );
+    }
+
+    if (ShouldRunPostBody) {
+        if (_containsDcviDcvs) {
+            TheLib.Setup.Dc.Disconnect(_pins);
+            if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        }
+        TheLib.Datalog.TestParametric(_values);
+    }
+}
+</code></pre></div>
 
 
 
@@ -372,10 +414,52 @@ public void LinearFull(Pattern pattern, PinList forcePins, double from, double t
 <h5 id="limitations">Limitations</h5>
 <p>Pin features supporting DCVI, DCVS, PPMU, and Digital, note that PPMU must be used in combination with either DCVI or DCVS to function.</p>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void LinearFull(Pattern pattern, PinList forcePins, double from, double to, int count, double waitTime, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.Pins(forcePins, nameof(forcePins), out _pins);
+        TheLib.Validate.GreaterOrEqual(count, 2, nameof(count));
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        _containsDcviDcvs = _pins.ContainsFeature(InstrumentFeature.Dcvi) || _pins.ContainsFeature(InstrumentFeature.Dcvs);
+        if (_containsDcviDcvs) _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDcviDcvs) {
+            if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+            TheLib.Setup.Dc.Connect(_pins);
+        }
+    }
+
+    if (ShouldRunBody) {
+        _measurements = [];
+        if (_containsDcviDcvs) {
+            TheLib.Setup.Dc.ForceV(_pins, from);
+            TheLib.Execute.Wait(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
+        }
+        double increment = TheLib.Acquire.Search.LinearFullFromToCount(from, to, count, (forceValue) =&gt; {
+            if (_containsDcviDcvs) TheLib.Setup.Dc.Modify(_pins, voltage: forceValue);
+            else TheLib.Setup.Digital.ModifyPinsLevels(pins: _pins, levelsType: ChPinLevel.Vih, levelsValue: forceValue);
+            TheLib.Execute.Wait(waitTime);
+            TheLib.Execute.Digital.RunPattern(_pattern);
+            _measurements.Add(TheLib.Acquire.Digital.PatternResults());
+        });
+        _results = TheLib.Execute.Search.LinearFullProcess(_measurements, from, increment, 0, _notFoundResult, condition =&gt; condition);
+    }
+
+    if (ShouldRunPostBody) {
+        if (_containsDcviDcvs) {
+            TheLib.Setup.Dc.Disconnect(_pins);
+            if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        }
+        TheLib.Datalog.TestParametric(_results);
+    }
+}
+</code></pre></div>
 
 
 
@@ -455,10 +539,52 @@ public void LinearStop(Pattern pattern, PinList forcePins, double from, double t
 <h5 id="limitations">Limitations</h5>
 <p>Pin features supporting DCVI, DCVS, PPMU, and Digital, note that PPMU must be used in combination with either DCVI or DCVS to function.</p>
 <h5 id="code-reference">Code Reference</h5>
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></div>
+<pre><code class="lang-csharp">[TestMethod, Steppable, CustomValidation]
+public void LinearStop(Pattern pattern, PinList forcePins, double from, double to, int count, double waitTime, string setup = &quot;&quot;) {
+
+    if (TheExec.Flow.IsValidating) {
+        TheLib.Validate.Pattern(pattern, nameof(pattern), out _pattern);
+        TheLib.Validate.Pins(forcePins, nameof(forcePins), out _pins);
+        TheLib.Validate.GreaterOrEqual(count, 2, nameof(count));
+        TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+        _containsDcviDcvs = _pins.ContainsFeature(InstrumentFeature.Dcvi) || _pins.ContainsFeature(InstrumentFeature.Dcvs);
+        if (_containsDcviDcvs) _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+    }
+
+    if (ShouldRunPreBody) {
+        TheLib.Setup.LevelsAndTiming.Apply(true);
+        Services.Setup.Apply(setup);
+        if (_containsDcviDcvs) {
+            if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+            TheLib.Setup.Dc.Connect(_pins);
+        }
+    }
+
+    if (ShouldRunBody) {
+        if (_containsDcviDcvs) {
+            TheLib.Setup.Dc.ForceV(_pins, from);
+            TheLib.Execute.Wait(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
+        }
+        _values = TheLib.Acquire.Search.LinearStopFromToCount(from, to, count, 0, _notFoundResult, (forceValue) =&gt; {
+            if (_containsDcviDcvs) TheLib.Setup.Dc.Modify(_pins, voltage: forceValue);
+            else TheLib.Setup.Digital.ModifyPinsLevels(pins: _pins, levelsType: ChPinLevel.Vih, levelsValue: forceValue);
+            TheLib.Execute.Wait(waitTime);
+            TheLib.Execute.Digital.RunPattern(_pattern);
+            return TheLib.Acquire.Digital.PatternResults();
+        },
+        patResult =&gt; patResult
+        );
+    }
+
+    if (ShouldRunPostBody) {
+        if (_containsDcviDcvs) {
+            TheLib.Setup.Dc.Disconnect(_pins);
+            if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+        }
+        TheLib.Datalog.TestParametric(_values);
+    }
+}
+</code></pre></div>
 
 
 
@@ -476,7 +602,6 @@ Warning
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">

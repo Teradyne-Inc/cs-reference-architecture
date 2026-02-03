@@ -13,7 +13,7 @@
       <meta name="docfx:navrel" content="../toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
-      <meta name="docfx:rel" content="../">
+      
       
       
       <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/new/main/apiSpec/new?filename=Csra_ScanNetworkPatternInfo.md&amp;value=---%0Auid%3A%20Csra.ScanNetworkPatternInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
@@ -52,10 +52,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navpanel">
             <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
-              </form>
             </div>
           </div>
         </div>
@@ -320,7 +316,7 @@ and the value is the <a class="xref" href="https://learn.microsoft.com/dotnet/ap
   </h3>
 
   <div class="markdown level1 summary"><p>[<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/readonly">readonly</a>] The dictionary that contains the information of every ICL instance that are tested in this pattern.<br>
-The key is the name of the ICL instance and the value is the associated SshIclInstanceInfo object
+The key is the name of the ICL instance and the value is the associated <a class="xref" href="Csra.IclInstanceInfo.html">IclInstanceInfo</a> object.
 that contains all the configuration and attributes of that ICL instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -594,7 +590,8 @@ public void EnableAllContribution()</code></pre>
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetworkPatternInfo.cs/#L486"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Execute a diagnosis reburst: increment reburst count; execute pattern(set); write FTR &amp; STR.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -829,7 +826,6 @@ bus output.</p>
       </div>
     </main>
 
-    <div class="container-xxl search-results" id="search-results"></div>
 
     <footer class="border-top text-secondary">
       <div class="container-xxl">
