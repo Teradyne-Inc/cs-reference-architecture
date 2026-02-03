@@ -7,14 +7,30 @@ using System.Threading.Tasks;
 using Csra.Interfaces;
 
 namespace Csra.TheLib.Acquire {
-    /// <exclude />
-    public class AcquireManager : ILib.IAcquire {
-        public ILib.IAcquire.IDigital Digital => new Digital();
 
-        public ILib.IAcquire.IDc Dc => new Dc();
+    internal class AcquireManager : ILib.IAcquire {
 
-        public ILib.IAcquire.ISearch Search => new Search();
+        protected internal AcquireManager() {
+            Digital = new Digital();
+            Dc = new Dc();
+            Search = new Search();
+            ScanNetwork = new ScanNetwork();
+        }
 
-        public ILib.IAcquire.IScanNetwork ScanNetwork => new ScanNetwork(); 
+        public ILib.IAcquire.IDigital Digital { get; private set; }
+
+        public ILib.IAcquire.IDc Dc { get; private set; }
+
+        public ILib.IAcquire.ISearch Search { get; private set; }
+
+        public ILib.IAcquire.IScanNetwork ScanNetwork { get; private set; }
+
+        public void Configure(ILib.IAcquire.IDc dc = null, ILib.IAcquire.IDigital digital = null, ILib.IAcquire.IScanNetwork scanNetwork = null,
+            ILib.IAcquire.ISearch search = null) {
+            Digital = digital ?? new Digital();
+            Dc = dc ?? new Dc();
+            Search = search ?? new Search();
+            ScanNetwork = scanNetwork ?? new ScanNetwork();
+        }
     }
 }

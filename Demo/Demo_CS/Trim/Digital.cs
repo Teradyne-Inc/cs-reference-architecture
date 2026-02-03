@@ -193,10 +193,10 @@ namespace Demo_CS.Trim {
         /// <param name="minDelta">The minimum allowable difference between successive input values, used to determine when the search should stop.</param>
         /// <param name="invertedOutput">A flag indicating whether the output is inverted, affecting the search logic.</param>
         [TestMethod]
-        public void BinaryTrip(Pattern pattern, double from, double to, double minDelta, bool invertedOutput) {
+        public void BinaryTrip(Pattern pattern, int from, int to, int minDelta, bool invertedOutput) {
 
             int moduleCount = 256;
-            Site<double> results = new(NO_FOUND_RESULT);
+            Site<int> results = new(NO_FOUND_RESULT);
             Site<bool> alwaysTripped = new(true);
 
             TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
@@ -207,31 +207,33 @@ namespace Demo_CS.Trim {
                 TheHdw.Patterns(name).ValidateThreading();
             }
 
-            string timeDomain = TheHdw.Patterns(pattern).TimeDomains;
-            Site<double> inValue = new((from + to) / 2);
-            double delta = (to - from) / 2;
-            bool done = false;
+            Site<int> inValue = new();
+            Site<int> fromPerSite = new(from);
+            Site<int> toPerSite = new(to);
+            Site<int> stepSize = new();
             Site<bool> value;
             SiteVariant patSpec = new();
             do {
                 ForEachSite(site => {
-                    patSpec[site] = pattern.Value + $":mod{(int)inValue[site]}";
+                    inValue[site] = (fromPerSite[site] + toPerSite[site]) / 2;
+                    patSpec[site] = pattern.Value + $":mod{inValue[site]}";
                 });
                 TheHdw.PatternsPerSite(patSpec).Start();
                 TheHdw.PatternsPerSite(patSpec).HaltWait();
                 value = TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite();
-                done = delta <= minDelta;
-                delta /= 2;
+
                 ForEachSite(site => {
                     if (value[site]) {
                         results[site] = inValue[site];
-                        inValue[site] -= delta; // follow Search.Functional.Binary, assume invertingLogic = false
+                        stepSize[site] = toPerSite[site] - inValue[site];
+                        toPerSite[site] = inValue[site];
                     } else {
                         alwaysTripped[site] = false;
-                        inValue[site] += delta;
+                        stepSize[site] = inValue[site] - fromPerSite[site];
+                        fromPerSite[site] = inValue[site];
                     }
                 });
-            } while (!done);
+            } while (stepSize.Any(x => x >= minDelta));
             ForEachSite(site => {
                 if (alwaysTripped[site]) results[site] = NO_FOUND_RESULT;
             });
@@ -250,10 +252,10 @@ namespace Demo_CS.Trim {
         /// <param name="invertedOutput">A flag indicating whether the output is inverted, affecting the search logic.</param>
         /// <param name="target">The (numeric) target output value for which the corresponding input condition is searched.</param>
         [TestMethod]
-        public void BinaryTarget(Pattern pattern, PinList capPins, double from, double to, double minDelta, bool invertedOutput, int target) {
+        public void BinaryTarget(Pattern pattern, PinList capPins, int from, int to, int minDelta, bool invertedOutput, int target) {
 
             int moduleCount = 256;
-            Site<double> results = new(NO_FOUND_RESULT);
+            Site<int> results = new(NO_FOUND_RESULT);
 
             TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
 
@@ -268,9 +270,10 @@ namespace Demo_CS.Trim {
             hram.CaptureType = CaptType.STV;
             hram.Size = 8;
 
-            Site<double> inValue = new((from + to) / 2);
-            double delta = (to - from) / 2;
-            bool done = false;
+            Site<int> fromPerSite = new(from);
+            Site<int> toPerSite = new(to);
+            Site<int> inValue = new();
+            Site<int> stepSize = new();
             bool first = true;
             Site<int> value;
             SiteVariant patSpec = new();
@@ -278,21 +281,28 @@ namespace Demo_CS.Trim {
             Site<int> devAbsBest = new(0);
             do {
                 ForEachSite(site => {
-                    patSpec[site] = pattern.Value + $":hram_mod{(int)inValue[site]}";
+                    inValue[site] = (fromPerSite[site] + toPerSite[site]) / 2;
+                    patSpec[site] = pattern.Value + $":hram_mod{inValue[site]}";
                 });
                 value = digital.OneMeasurementPatternsPerSite(patSpec, capPins, inValue);
-                done = delta <= minDelta;
-                delta /= 2;
+
                 ForEachSite(site => {
                     int devAbs = Math.Abs(value[site] - target);
                     if (devAbs < devAbsBest[site] || first) {
                         devAbsBest[site] = devAbs;
                         results[site] = inValue[site];
                     }
-                    inValue[site] += value[site] > target ^ false ? -delta : delta;
+
+                    if (value[site] > target) {
+                        stepSize[site] = toPerSite[site] - inValue[site];
+                        toPerSite[site] = inValue[site];
+                    } else {
+                        stepSize[site] = inValue[site] - fromPerSite[site];
+                        fromPerSite[site] = inValue[site];
+                    }
                 });
                 first = false;
-            } while (!done);
+            } while (stepSize.Any(x => x >= minDelta));
 
             hram.SetTrigger(TrigType.Never, false, 0, true);
             hram.CaptureType = CaptType.None;
@@ -324,7 +334,7 @@ namespace Demo_CS.Trim {
             return result;
         }
 
-        private Site<int> OneMeasurementPatternsPerSite(SiteVariant patSpec, PinList capPins, Site<double> modIndex) {
+        private Site<int> OneMeasurementPatternsPerSite(SiteVariant patSpec, PinList capPins, Site<int> modIndex) {
             Site<int> result = new Site<int>(-1);
             TheHdw.PatternsPerSite(patSpec).Start();
             TheHdw.PatternsPerSite(patSpec).HaltWait();
@@ -341,7 +351,7 @@ namespace Demo_CS.Trim {
                 });
                 readWords.Add(siteWords);
                 ForEachSite(site => {
-                    result[site] = true ? (int)modIndex[site] : readWords[0][site][0]; // Simulate data process
+                    result[site] = true ? modIndex[site] : readWords[0][site][0]; // Simulate data process
                 });
             }
             return result;

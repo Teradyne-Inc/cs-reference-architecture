@@ -10,10 +10,10 @@ using Csra.Interfaces;
 
 namespace Csra.TheLib.Acquire {
     public class Search : ILib.IAcquire.ISearch {
-        public Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
+        public virtual Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
             Site<Tout>> oneMeasurement, Tout outTarget) => BinarySearch(inFrom, inTo, inMinDelta, invertingLogic, oneMeasurement, outTarget, out _);
 
-        public Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
+        public virtual Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<Tout> outResult) {
             if (inFrom >= inTo) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inFrom ({inFrom}) must be less than inTo ({inTo}).");
             if (inMinDelta <= 0) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inMinDelta ({inMinDelta}) must be greater than 0.");
@@ -44,11 +44,11 @@ namespace Csra.TheLib.Acquire {
             return inBest;
         }
 
-        public Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
+        public virtual Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, double inNotFoundResult) => BinarySearch(inFrom, inTo, inMinDelta, invertingLogic,
                 oneMeasurement, outTripCriteria, inNotFoundResult, out _);
 
-        public Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
+        public virtual Site<double> BinarySearch<Tout>(double inFrom, double inTo, double inMinDelta, bool invertingLogic, Func<Site<double>,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, double inNotFoundResult, out Site<Tout> outResult) {
             if (inFrom >= inTo) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inFrom ({inFrom}) must be less than inTo ({inTo}).");
             if (inMinDelta <= 0) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inMinDelta ({inMinDelta}) must be greater than 0.");
@@ -84,10 +84,10 @@ namespace Csra.TheLib.Acquire {
             return inBest;
         }
 
-        public Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
+        public virtual Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
             Site<Tout>> oneMeasurement, Tout outTarget) => BinarySearch(inFrom, inTo, inMinDelta, invertingLogic, oneMeasurement, outTarget, out _);
 
-        public Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
+        public virtual Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<Tout> outResult) {
             if (inFrom >= inTo) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inFrom ({inFrom}) must be less than inTo ({inTo}).");
             if (inMinDelta <= 0) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inMinDelta ({inMinDelta}) must be greater than 0.");
@@ -122,11 +122,11 @@ namespace Csra.TheLib.Acquire {
             return inBest;
         }
 
-        public Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
+        public virtual Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, int inNotFoundResult) => BinarySearch(inFrom, inTo, inMinDelta, invertingLogic,
                 oneMeasurement, outTripCriteria, inNotFoundResult, out _);
 
-        public Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
+        public virtual Site<int> BinarySearch<Tout>(int inFrom, int inTo, int inMinDelta, bool invertingLogic, Func<Site<int>,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, int inNotFoundResult, out Site<Tout> outResult) {
             if (inFrom >= inTo) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inFrom ({inFrom}) must be less than inTo ({inTo}).");
             if (inMinDelta <= 0) Api.Services.Alert.Error<ArgumentException>($"BinarySearch: inMinDelta ({inMinDelta}) must be greater than 0.");
@@ -161,10 +161,10 @@ namespace Csra.TheLib.Acquire {
             return inBest;
         }
 
-        public void LinearFullFromIncCount<Tin>(Tin inFrom, Tin inIncrement, int inCount, Action<Tin> oneMeasurement) =>
+        public virtual void LinearFullFromIncCount<Tin>(Tin inFrom, Tin inIncrement, int inCount, Action<Tin> oneMeasurement) =>
             LinearFullFromToCount<Tin>(inFrom, inFrom + (dynamic)inIncrement * inCount, inCount, oneMeasurement);
 
-        public Tin LinearFullFromToCount<Tin>(Tin inFrom, Tin inTo, int inCount, Action<Tin> oneMeasurement) {
+        public virtual Tin LinearFullFromToCount<Tin>(Tin inFrom, Tin inTo, int inCount, Action<Tin> oneMeasurement) {
             dynamic inValue = inFrom;
             dynamic increment = (inTo - inValue) / (inCount - 1); // both end points included
             for (int i = 0; i < inCount; i++) {
@@ -174,43 +174,43 @@ namespace Csra.TheLib.Acquire {
             return increment;
         }
 
-        public void LinearFullFromToInc<Tin>(Tin inFrom, Tin inTo, Tin inIncrement, Action<Tin> oneMeasurement) => LinearFullFromToCount(inFrom, inTo,
+        public virtual void LinearFullFromToInc<Tin>(Tin inFrom, Tin inTo, Tin inIncrement, Action<Tin> oneMeasurement) => LinearFullFromToCount(inFrom, inTo,
             (int)Math.Ceiling((inTo - (dynamic)inFrom) / inIncrement), oneMeasurement);
 
-        public Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget) => LinearStopFromToCount(inFrom, inFrom + (dynamic)inIncrement * inCount, inCount, inOffset,
                 inNotFoundResult, oneMeasurement, outTarget, out Site<int> _, out Site<Tout> _);
 
-        public Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<int> closestIndex) => LinearStopFromToCount<Tin, Tout>(inFrom, inFrom + (dynamic)inIncrement *
                 inCount, inCount, inOffset, inNotFoundResult, oneMeasurement, outTarget, out closestIndex, out Site<Tout> _);
 
-        public Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<int> closestIndex, out Site<Tout> closestOut) => LinearStopFromToCount<Tin, Tout>(inFrom,
                 inFrom + (dynamic)inIncrement * inCount, inCount, inOffset, inNotFoundResult, oneMeasurement, outTarget, out closestIndex, out closestOut);
 
-        public Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria) => LinearStopFromToCount(inFrom, inFrom + (dynamic)inIncrement * inCount, inCount,
                 inOffset, inNotFoundResult, oneMeasurement, outTripCriteria, out Site<int> _, out Site<Tout> _);
 
-        public Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, out Site<int> tripIndex) => LinearStopFromToCount(inFrom, inFrom +
                 (dynamic)inIncrement * inCount, inCount, inOffset, inNotFoundResult, oneMeasurement, outTripCriteria, out tripIndex, out Site<Tout> _);
 
-        public Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromIncCount<Tin, Tout>(Tin inFrom, Tin inIncrement, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, out Site<int> tripIndex, out Site<Tout> tripOut) =>
                 LinearStopFromToCount<Tin, Tout>(inFrom, inFrom + (dynamic)inIncrement * inCount, inCount, inOffset, inNotFoundResult, oneMeasurement,
                     outTripCriteria, out tripIndex, out tripOut);
         
-        public Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget) => LinearStopFromToCount(inFrom, inTo, inCount, inOffset, inNotFoundResult, oneMeasurement, outTarget,
                 out _, out _);
 
-        public Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<int> closestIndex) => LinearStopFromToCount(inFrom, inTo, inCount, inOffset, inNotFoundResult,
                 oneMeasurement, outTarget, out closestIndex, out _);
 
-        public Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<int> closestIndex, out Site<Tout> closestOut) {
             dynamic inValue = inFrom;
             dynamic increment = (inTo - inValue) / (inCount - 1); // both end points included
@@ -250,15 +250,15 @@ namespace Csra.TheLib.Acquire {
             }
         }
 
-        public Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria) => LinearStopFromToCount(inFrom, inTo, inCount, inOffset, inNotFoundResult,
                 oneMeasurement, outTripCriteria, out _, out _);
 
-        public Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, out Site<int> tripIndex) => LinearStopFromToCount(inFrom, inTo, inCount, inOffset,
                 inNotFoundResult, oneMeasurement, outTripCriteria, out tripIndex, out _);
 
-        public Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToCount<Tin, Tout>(Tin inFrom, Tin inTo, int inCount, Tin inOffset, Tin inNotFoundResult, Func<Tin,
                 Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, out Site<int> tripIndex, out Site<Tout> tripOut) {
             dynamic inValue = inFrom;
             dynamic increment = (inTo - inValue) / (inCount - 1); // both end points included
@@ -286,28 +286,28 @@ namespace Csra.TheLib.Acquire {
             }
         }
         
-        public Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget) => LinearStopFromToCount(inFrom, to, (int)Math.Ceiling((to - (dynamic)inFrom) / inIncrement), inOffset,
                 inNotFoundResult, oneMeasurement, outTarget, out _, out _);
 
-        public Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<int> closestIndex) => LinearStopFromToCount(inFrom, to, (int)Math.Ceiling((to -
                 (dynamic)inFrom) / inIncrement), inOffset, inNotFoundResult, oneMeasurement, outTarget, out closestIndex, out _);
 
-        public Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Tout outTarget, out Site<int> closestIndex, out Site<Tout> closestOut) => LinearStopFromToCount(inFrom, to,
                 (int)Math.Ceiling((to - (dynamic)inFrom) / inIncrement), inOffset, inNotFoundResult, oneMeasurement, outTarget, out closestIndex,
                 out closestOut);
 
-        public Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria) => LinearStopFromToCount(inFrom, to, (int)Math.Ceiling((to - (dynamic)inFrom) /
                 inIncrement), inOffset, inNotFoundResult, oneMeasurement, outTripCriteria, out _, out _);
 
-        public Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, out Site<int> tripIndex) => LinearStopFromToCount(inFrom, to, (int)Math.Ceiling((to -
                 (dynamic)inFrom) / inIncrement), inOffset, inNotFoundResult, oneMeasurement, outTripCriteria, out tripIndex, out _);
 
-        public Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
+        public virtual Site<Tin> LinearStopFromToInc<Tin, Tout>(Tin inFrom, Tin to, Tin inIncrement, Tin inOffset, Tin inNotFoundResult, Func<Tin,
             Site<Tout>> oneMeasurement, Func<Tout, bool> outTripCriteria, out Site<int> tripIndex, out Site<Tout> tripOut) => LinearStopFromToCount(inFrom, to,
                 (int)Math.Ceiling((to - (dynamic)inFrom) / inIncrement), inOffset, inNotFoundResult, oneMeasurement, outTripCriteria, out tripIndex,
                 out tripOut);

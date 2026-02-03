@@ -9,18 +9,18 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.TheLib.Execute {
     public class Search : ILib.IExecute.ISearch {
-        public Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget) =>
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget) =>
             LinearFullProcess(outValues, inFrom, inIncrement, inOffset, outTarget, out _, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
             out Site<int> closestIndex) => LinearFullProcess(outValues, inFrom, inIncrement, inOffset, outTarget, out closestIndex, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
             out Site<int> closestIndex, out Site<Tout> closestOut) {
             Site<int> closestIndexLocal = new();// can't directly write to out parameter within lambda, so assign to local first
             Site<Tout> closestOutLocal = new();// can't directly write to out parameter within lambda, so assign to local first
             ForEachSite(site => {
-                var deltas = outValues.Select(v => Math.Abs(v[site] - (dynamic)outTarget)).ToList();
+                List<dynamic> deltas = outValues.Select(v => Math.Abs(v[site] - (dynamic)outTarget)).ToList();
                 dynamic closestDeltaSoFar = deltas[0];
                 int closestIndexSoFar = 0;
                 for (int i = 1; i < outValues.Count; i++) {
@@ -37,13 +37,13 @@ namespace Csra.TheLib.Execute {
             return closestIndex.Select(t => (Tin)(t * (dynamic)inIncrement + inFrom + inOffset));
         }
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget) =>
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget) =>
             LinearFullProcess(outValues, inFrom, inIncrement, inOffset, outTarget, out _, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
             out Site<int> closestIndex) => LinearFullProcess(outValues, inFrom, inIncrement, inOffset, outTarget, out closestIndex, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tout outTarget,
             out Site<int> closestIndex, out Site<Tout> closestOut) {
             Site<int> closestIndexLocal = new();// can't directly write to out parameter within lambda, so assign to local first
             ForEachSite(site => { // should be using DSP for this actually, but difficult with generics & delegates
@@ -56,14 +56,14 @@ namespace Csra.TheLib.Execute {
             return closestIndex.Select(t => (Tin)(t * (dynamic)inIncrement + inFrom + inOffset));
         }
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
             Func<Tout, bool> outTripCriteria) => LinearFullProcess(outValues, inFrom, inIncrement, inOffset, inNotFoundResult, outTripCriteria, out _, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
             Func<Tout, bool> outTripCriteria, out Site<int> tripIndex) => LinearFullProcess(outValues, inFrom, inIncrement, inOffset, inNotFoundResult,
                 outTripCriteria, out tripIndex, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(List<Site<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
                 Func<Tout, bool> outTripCriteria, out Site<int> tripIndex, out Site<Tout> tripOut) {
             Site<int> tripIndexLocal = new(-1); // initialize with -1 to indicate no trip found
             Site<Tout> tripOutLocal = new();// can't directly write to out parameter within lambda, so assign to local first
@@ -83,14 +83,14 @@ namespace Csra.TheLib.Execute {
             }
         }
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
             Func<Tout, bool> outTripCriteria) => LinearFullProcess(outValues, inFrom, inIncrement, inOffset, inNotFoundResult, outTripCriteria, out _, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
             Func<Tout, bool> outTripCriteria, out Site<int> tripIndex) => LinearFullProcess(outValues, inFrom, inIncrement, inOffset, inNotFoundResult,
                 outTripCriteria, out tripIndex, out _);
 
-        public Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
+        public virtual Site<Tin> LinearFullProcess<Tin, Tout>(Site<Samples<Tout>> outValues, Tin inFrom, Tin inIncrement, Tin inOffset, Tin inNotFoundResult,
                 Func<Tout, bool> outTripCriteria, out Site<int> tripIndex, out Site<Tout> tripOut) {
             Site<int> tripIndexLocal = new(-1); // initialize with -1 to indicate no trip found
             ForEachSite(site => { // should be using DSP for this actually, but difficult with generics & delegates

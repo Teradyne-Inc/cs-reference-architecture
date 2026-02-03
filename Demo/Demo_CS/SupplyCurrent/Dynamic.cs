@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Policy;
 using Teradyne.Igxl.Interfaces.Public;
 
 namespace Demo_CS.SupplyCurrent {
@@ -20,12 +21,13 @@ namespace Demo_CS.SupplyCurrent {
         [TestMethod]
         public void Baseline(PinList pinList, double forceValue, double measureRange, double clampValue, double waitTime, Pattern pattern, int stops) {
 
+            // Should Run Pre-Body
             int patternSetFlag = (int)CpuFlag.A;
-
             TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
             var dcvs = TheHdw.DCVS.Pins(pinList);
             dcvs.Connect();
 
+            // Should Run Body
             dcvs.Mode = tlDCVSMode.Voltage;
             dcvs.Voltage.Value = forceValue;
             dcvs.SetCurrentRanges(clampValue, measureRange);
@@ -44,20 +46,13 @@ namespace Demo_CS.SupplyCurrent {
             }
 
             TheHdw.Digital.Patgen.HaltWait();
-            var meas = dcvs.Meter.Read(tlStrobeOption.Strobe, SampleSize: stops, Format: tlDCVSMeterReadingFormat.Array).ToPinSite<double[]>();
+            PinSite<Samples<double>> meas = dcvs.Meter.Read(tlStrobeOption.NoStrobe, SampleSize: stops, Format: tlDCVSMeterReadingFormat.Array).ToPinSite<Samples<double>>();
+
+            // Should Run Post-Body
             dcvs.Gate = false;
             dcvs.Disconnect();
-
-            foreach(var pin in meas) {
-                for (int i = 0; i < stops; i++) {
-                    Site<double> site = new Site<double>();
-                    ForEachSite(s => {
-                        site[s] = pin[s][i];
-                    });
-                    TheExec.Flow.TestLimit(ResultVal: site, Unit: UnitType.Amp, PinName: pinList, ForceVal: forceValue, ForceUnit: UnitType.Volt,
-                    ForceResults: tlLimitForceResults.Flow);
-                }
-            }
+            TheExec.Flow.TestLimit(meas, Unit: UnitType.Amp, PinName: pinList, CompareMode: tlLimitCompareType.EachSample, ForceVal: forceValue, ForceUnit: UnitType.Volt,
+ForceResults: tlLimitForceResults.Flow);
         }
     }
 }

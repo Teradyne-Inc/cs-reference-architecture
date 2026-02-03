@@ -13,17 +13,18 @@ namespace Csra.Setting {
     /// Base class for all Services.Setup settings.
     /// </summary>
     /// <typeparam name="T">The setting's type.</typeparam>
+    [Serializable]
     public abstract class SettingBase<T> : ISettingInternal, ISetting {
 
         private T _value;
         protected List<string> _pins;
-        private Action<string, T> _setAction; // not sure what to do in this case ...
-        private Func<string, T[]> _readFunc; // ok to not have a read-back delegate, but then the tool needs to correctly handle it
+        private bool _readFuncDefined = false;
         private Dictionary<string, T> _cache;
         private bool _doubleReadCompare = false; //for the instrument features where the readback can't be directly compared to the cached (=previous set) value
         private T _initValue = default;
         protected string _unit = string.Empty; // protected required for derived classes to access in serializer
         private InitMode _initMode = InitMode.Creation;
+
         /// <summary>
         /// Hands the setting's argument parameters to the base class. Typically used for instrument-related settings with or without pin relation.
         /// </summary>
@@ -41,6 +42,10 @@ namespace Csra.Setting {
             }
             if (_pins.Count == 0 && hasPins) Api.Services.Alert.Error("Missing pins! No pins given in definition.");
         }
+
+        protected abstract void SetAction(string pinList, T value);
+
+        protected abstract T[] ReadFunc(string pin);
 
         /// <summary>
         /// Hands the setting's argument parameters to the base class. Typically used for custom settings.
@@ -71,9 +76,8 @@ namespace Csra.Setting {
         /// <param name="setAction">The action required to apply the setting to the system.</param>
         /// <param name="readFunc">The delegate to call to read back the setting's state from the system.</param>
         /// <param name="staticCache">The handle to the static cache object for the setting's type.</param>
-        protected void SetContext(Action<string, T> setAction, Func<string, T[]> readFunc, Dictionary<string, T> staticCache) {
-            _setAction = setAction;
-            _readFunc = readFunc;
+        protected void SetContext(bool readFuncDefined, Dictionary<string, T> staticCache) {
+            _readFuncDefined = readFuncDefined;
             if (staticCache is not null) {
                 _cache = staticCache;// tricky, a static cache for each derived class, handed down to the generic base class so it can centrally handle all ...
                 foreach (string pin in _pins) {
@@ -134,12 +138,12 @@ namespace Csra.Setting {
             List<string> programPins = [];
             if (_cache is null) { // for settings that don't have a cache, like TheHdw.Wait()
                 string allPins = string.Join(", ", _pins);
-                _setAction(allPins, _value);
+                SetAction(allPins, _value);
                 if (Api.Services.Setup.VerboseMode) {
                     Api.Services.Alert.Log($"          {ToString()} {(_pins.Count > 0 ? $"need to program '{allPins}'" : string.Empty)}", (ColorConstants)0x777700);
                 }
                 return;
-            } else if (_readFunc is null) { // Cache but no readFunc, like Custom()
+            } else if (!_readFuncDefined) { // Cache but no readFunc, like Custom()
                 foreach (string pin in _pins) {
                     T cachedState = _cache[pin];
                     if (!CompareValue(cachedState, _value)) {
@@ -152,9 +156,9 @@ namespace Csra.Setting {
                     T cachedState = _cache[pin];
                     if (Api.Services.Setup.AuditMode) {
                         if (_doubleReadCompare) {
-                            T[] hardwareState1 = _readFunc(pin);
-                            _setAction(pin, _value);
-                            T[] hardwareState2 = _readFunc(pin);
+                            T[] hardwareState1 = ReadFunc(pin);
+                            SetAction(pin, _value);
+                            T[] hardwareState2 = ReadFunc(pin);
                             ForEachSite(site => {
                                 if (!CompareValue(hardwareState1[site], hardwareState2[site])) {
                                     if (Api.Services.Setup.VerboseMode) Api.Services.Alert.Log($"          Hardware mismatch: pin '{pin}' @ site '{site}' reads back " +
@@ -164,7 +168,7 @@ namespace Csra.Setting {
                                 }
                             });
                         } else {
-                            T[] hardwareState = _readFunc(pin);
+                            T[] hardwareState = ReadFunc(pin);
                             ForEachSite(site => {
                                 // Note: Update cahe here since the some command need latest hardware status in _setAction()
                                 _cache[pin] = hardwareState[site];
@@ -183,7 +187,7 @@ namespace Csra.Setting {
             }
             if (programPins.Count > 0) {
                 string programPinList = string.Join(", ", programPins);
-                _setAction(programPinList, _value);
+                SetAction(programPinList, _value);
                 if (Api.Services.Setup.VerboseMode) Api.Services.Alert.Log($"          {ToString()} need to program '{programPinList}'", (ColorConstants)0x770000);
                 // Note: Cache update must happen after _setAction() to allow it to read unmodified state
                 foreach (string pin in programPins) _cache[pin] = _value;
@@ -194,10 +198,10 @@ namespace Csra.Setting {
         /// Reads the hardware state and compares it to the setting/cached value. Target and actual status are output.
         /// </summary>
         public void Diff() {
-            if (_readFunc is null || _cache is null) return;
+            if (!_readFuncDefined || _cache is null) return;
             foreach (string pin in _pins) {
                 T cachedState = _cache[pin];
-                T[] hardwareState = _readFunc(pin);
+                T[] hardwareState = ReadFunc(pin);
                 ForEachSite(site => {
                     if (!CompareValue(hardwareState[site], _value)) {
                         if (_doubleReadCompare)
@@ -228,7 +232,7 @@ namespace Csra.Setting {
         }
 
         public void Dump() {
-            var bgr = (ColorConstants)((0x0 & 0xff0000) >> 16 | 0x0 & 0xff00 | (0x0 & 0xff) << 16);
+            ColorConstants bgr = (ColorConstants)((0x0 & 0xff0000) >> 16 | 0x0 & 0xff00 | (0x0 & 0xff) << 16);
             Api.Services.Alert.Log($"{new string(' ', 2 * 5)}{ToString()}", bgr, 2 == 0);
         }
 

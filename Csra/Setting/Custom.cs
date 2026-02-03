@@ -6,14 +6,17 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting {
 
+    [Serializable]
     public class Custom<T> : SettingBase<T> {
-
+        private Action<string, T> _setAction;
+        private Func<string, T[]> _readFunc;
         public Custom(T value, Action<T> setAction) {
             if (setAction is null) Api.Services.Alert.Error("The setAction parameter was not provided.");
             Action<string, T> convAction = (s1, s2) => setAction(s2);
             SetArguments(value, null);
             SetBehavior(default, "", InitMode.Creation, false);
-            SetContext(convAction, null, null);
+            _setAction = convAction;
+            SetContext(false, null);
             if (TheExec.JobIsValid) Validate();
         }
 
@@ -25,7 +28,8 @@ namespace Csra.Setting {
             Action<string, T> convAction = (s1, s2) => setAction(s2);
             SetArguments(value, key);
             SetBehavior(initValue, "", initMode, false);
-            SetContext(convAction, null, _staticCache);
+            _setAction = convAction;
+            SetContext(false, _staticCache);
         }
 
         public Custom(string key, T value, Action<T> setAction, Func<T[]> readFunc, T initValue, InitMode initMode) {
@@ -36,8 +40,12 @@ namespace Csra.Setting {
             Func<string, T[]> convFunc = readFunc is not null ? (s1) => readFunc() : (s1) => new T[TestCodeBase.TheExec.Sites.Selected.Count];
             SetArguments(value, key);
             SetBehavior(initValue, "", initMode, false);
-            SetContext(convAction, convFunc, _staticCache);
+            _setAction = convAction;
+            _readFunc = convFunc;
+            SetContext(true, _staticCache);
         }
         public static void SetCache(T value, string key) => SetCacheInternal(value, key, _staticCache);
+        protected override void SetAction(string pinList, T value) => _setAction(pinList, value);
+        protected override T[] ReadFunc(string pin) => _readFunc(pin);
     }
 }

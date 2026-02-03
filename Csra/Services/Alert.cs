@@ -6,18 +6,24 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 using Csra.Interfaces;
 
 namespace Csra.Services {
+
     /// <summary>
     /// AlertService - centralized info / warning / error alerting.
     /// </summary>
+    [Serializable]
     public class Alert : IAlertService {
 
-        public Alert() {
-            Reset();
-        }
+        private static IAlertService _instance = null;
         private AlertOutputTarget _logTarget;
         private AlertOutputTarget _infoTarget;
         private AlertOutputTarget _warningTarget;
         private AlertOutputTarget _errorTarget;
+        
+        protected Alert() {
+            Reset();
+        }
+
+        public static IAlertService Instance => _instance ??= new Alert();
 
         public AlertOutputTarget LogTarget {
             get => _logTarget;

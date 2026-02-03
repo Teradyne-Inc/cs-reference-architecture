@@ -8,6 +8,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins {
 
+    [Serializable]
     public class Gate : Setting_Enum<tlDCVGate> {
 
         private static readonly Dictionary<string, tlDCVGate> _staticCache = [];
@@ -17,15 +18,15 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
         public Gate(tlDCVGate value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(tlDCVGate.GateOff, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, tlDCVGate value) {
+        protected override void SetAction(string pinList, tlDCVGate value) {
             TestCodeBase.TheHdw.DCVI.Pins(pinList).Gate = value;
         }
 
-        private static tlDCVGate[] ReadFunc(string pin) {
+        protected override tlDCVGate[] ReadFunc(string pin) {
             tlDCVGate[] result = new tlDCVGate[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).Gate);
             return result;

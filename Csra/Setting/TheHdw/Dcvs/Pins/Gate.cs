@@ -5,9 +5,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Dcvs.Pins {
 
+    [Serializable]
     public class Gate : Setting_bool{
         
         private static readonly Dictionary<string, bool> _staticCache = [];
@@ -17,15 +19,15 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
         public Gate(bool value, string pinList) { 
             SetArguments(value, pinList, true);
             SetBehavior(false, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, bool value) {
+        protected override void SetAction(string pinList, bool value) {
             TestCodeBase.TheHdw.DCVS.Pins(pinList).Gate = value;
         }
 
-        private static bool[] ReadFunc(string pin) {
+        protected override bool[] ReadFunc(string pin) {
             bool[] result = new bool[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVS.Pins(pin).Gate);
             return result;

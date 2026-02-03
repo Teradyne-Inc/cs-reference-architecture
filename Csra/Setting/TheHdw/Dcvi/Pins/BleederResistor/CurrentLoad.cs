@@ -5,9 +5,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
 
+    [Serializable]
     public class CurrentLoad : Setting_double {
 
         private static readonly Dictionary<string, double> _staticCache = [];
@@ -18,7 +20,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
             SetArguments(value, pinList, true);
             if (!IsSupportedPinType()) return;
             SetBehavior(10 * uA, "A", InitMode.OnProgramStarted, true);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
@@ -33,11 +35,11 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
             return true;
         }
 
-        private static void SetAction(string pinList, double value) {
+        protected override void SetAction(string pinList, double value) {
             TestCodeBase.TheHdw.DCVI.Pins(pinList).BleederResistor.CurrentLoad.Value = value;
         }
 
-        private static double[] ReadFunc(string pin) {
+        protected override double[] ReadFunc(string pin) {
             double[] result = new double[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).BleederResistor.CurrentLoad.Value);
             return result;

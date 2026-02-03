@@ -1,14 +1,25 @@
+using System;
 using System.Collections.Generic;
 using Csra.Interfaces;
+using Teradyne.Igxl.Interfaces.Public;
 
 namespace Csra.Services {
 
     /// <summary>
     /// StorageService - centralized persistent data storage.
     /// </summary>
+    [Serializable]
     public class Storage : IStorageService {
 
-        private readonly Dictionary<string, object> _storage = [];
+        private static IStorageService _instance = null;
+        private readonly Dictionary<string, object> _storage;
+
+        protected Storage() {
+            _storage = [];
+        }
+
+        public static IStorageService Instance => _instance ??= new Storage();
+
         public int Count => _storage.Count;
 
         public IEnumerable<string> Keys => _storage.Keys;

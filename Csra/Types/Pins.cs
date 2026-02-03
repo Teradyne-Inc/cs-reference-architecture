@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Csra.Types;
 using Teradyne.Igxl.Interfaces.Public;
+using Tol;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra {
@@ -16,11 +18,27 @@ namespace Csra {
 
         private List<Pin> _pins;
 
+        private IPpmuPins _ppmu;
+        private IDcviPins _dcvi;
+        private IDcvsPins _dcvs;
+        private IDigitalPins _digital;
+
         /// <summary>
         /// Construct a new <see cref=" Pins"/> object. Resolves (nested) pin groups and lists.
         /// </summary>
         /// <param name="pinList">The pin list to create the <see cref="Pins"/> object for.</param>
-        public Pins(string pinList) => _pins = ResolvePinList(pinList);
+        public Pins(string pinList) {
+            if (string.IsNullOrWhiteSpace(pinList)) _pins = [];
+            else {
+                _pins = ResolvePinList(pinList);
+                PinsFactory.GetPins(pinList, out _ppmu, out _dcvi, out _dcvs, out _digital);
+            }
+        }
+
+        public IPpmuPins Ppmu => _ppmu;
+        public IDcviPins Dcvi => _dcvi;
+        public IDcvsPins Dcvs => _dcvs;
+        public IDigitalPins Digital => _digital;
 
         private List<Pin> ResolvePinList(string pinList) {
             if (string.IsNullOrWhiteSpace(pinList)) return [];
@@ -169,7 +187,7 @@ namespace Csra {
         /// </summary>
         /// <param name="pinGroups">An array of <see cref="Pins"/> objects.</param>
         /// <returns>A new <see cref="Pins"/> object with all pins combined.</returns>
-        public static Pins Join(Pins[] pinGroups) => new(pinGroups.SelectMany(pg => pg));
+        public static Pins Join(Pins[] pinGroups) => new(ConvertToString(pinGroups.SelectMany(pg => pg)));
 
         /// <summary>
         /// Determines whether the specified <see cref="Pins"/> instance is equal to the current instance.
@@ -234,19 +252,50 @@ namespace Csra {
             return new(this.Select(s => pinSiteAll[s.Name]).ToList());
         }
 
+        public PinSite<Samples<T>> ArrangePinSite<T>(IEnumerable<PinSite<Samples<T>>> pinSite) {
+            int pinCount = Count();
+            PinSite<Samples<T>> reordered = new(pinCount);
+
+            var flat = pinSite
+                .SelectMany(site => Enumerable.Range(0, site.Count)
+                    .Select(i => site[i]))
+                .ToDictionary(s => s.PinName, s => s);
+
+            // Fill `reordered` by order of `pins`
+            for (int i = 0; i < pinCount; i++) {
+                var pinName = _pins[i].Name;
+
+                if (!flat.TryGetValue(pinName, out var samples))
+                    throw new KeyNotFoundException($"Pin '{pinName}' not found in reference.");
+
+                reordered[i].PinName = pinName;
+                reordered[pinName] = samples;
+            }
+
+            return reordered;
+
+        }
+
         /// <summary>
         /// Pin class - individual hardware pins with features.
         /// </summary>
         [Serializable]
         public class Pin : IEquatable<Pin> {
 
+            [DoNotSync]
             private static readonly BiDictionary<string, InstrumentType> _typeConversion = new() {
-                { "HSDP", InstrumentType.UP2200 },
-                { "HSDPx", InstrumentType.UPHP },
-                { "DC-8p5V90V", InstrumentType.UVI264 },
-                { "VS-5A", InstrumentType.UVS64 },
-                { "VS-800mA", InstrumentType.UVS256 },
-                { "Support", InstrumentType.SupportBoard },
+                { "HSDP", InstrumentType.UP2200 }, // UF+ Paradise
+                { "HSDPx", InstrumentType.UP5000 }, // UF+ Utopia
+                { "DC-8p5V90V", InstrumentType.UVI264 }, //  UF+ Raiden
+                { "VS-800mA", InstrumentType.UVS256 }, // UF+ ??
+                { "VS-5A", InstrumentType.UVS64 }, // UF+ Tesla
+                { "VS-20A", InstrumentType.UVS64HP }, // UF+ Zebra
+                { "Support", InstrumentType.Support }, // UF+ Support Board
+                { "HSD-U", InstrumentType.UP1600 }, // UF Utah
+                { "HexVS", InstrumentType.HexVS }, // UF ?
+                { "VSM", InstrumentType.VSM }, // UF ?
+                { "DC-07", InstrumentType.UVI80 }, // UF ?
+                { "SupportBoard", InstrumentType.SupportBoard } // UF Support Board
             };
 
             /// <summary>
@@ -280,7 +329,7 @@ namespace Csra {
                 Domains = GetInstrumentDomains(Type);
             }
 
-            private static InstrumentType GetInstrumentType(string pin) {
+            private InstrumentType GetInstrumentType(string pin) {
                 if (pin?.Length == 0) return InstrumentType.NC; // empty pin name (e.g. from pin list decomposition
                 TheExec.DataManager.GetChannelTypes(pin, out int numTypes, out string[] chanTypes);
                 switch (numTypes) {
@@ -294,28 +343,40 @@ namespace Csra {
                 }
             }
 
-            private static List<InstrumentFeature> GetInstrumentFeatures(InstrumentType type) {
+            private List<InstrumentFeature> GetInstrumentFeatures(InstrumentType type) {
 #pragma warning disable IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
                 return type switch {
+                    InstrumentType.UP1600 => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
                     InstrumentType.UP2200 => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
-                    InstrumentType.UPHP => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
+                    InstrumentType.UP5000 => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
+                    InstrumentType.UVI80 => new List<InstrumentFeature> { InstrumentFeature.Dcvi },
                     InstrumentType.UVI264 => new List<InstrumentFeature> { InstrumentFeature.Dcvi },
-                    InstrumentType.UVS64 => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
+                    InstrumentType.HexVS => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
+                    InstrumentType.VSM => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
                     InstrumentType.UVS256 => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
+                    InstrumentType.UVS64 => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
+                    InstrumentType.UVS64HP => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
+                    InstrumentType.Support => new List<InstrumentFeature> { InstrumentFeature.Utility },
                     InstrumentType.SupportBoard => new List<InstrumentFeature> { InstrumentFeature.Utility },
                     _ => new List<InstrumentFeature>() // NC case - legitimate
                 };
 #pragma warning restore IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
             }
 
-            private static List<InstrumentDomain> GetInstrumentDomains(InstrumentType type) {
+            private List<InstrumentDomain> GetInstrumentDomains(InstrumentType type) {
 #pragma warning disable IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
                 return type switch {
+                    InstrumentType.UP1600 => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
                     InstrumentType.UP2200 => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
-                    InstrumentType.UPHP => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
+                    InstrumentType.UP5000 => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
+                    InstrumentType.UVI80 => new List<InstrumentDomain> { InstrumentDomain.Dc },
                     InstrumentType.UVI264 => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.UVS64 => new List<InstrumentDomain> { InstrumentDomain.Dc },
+                    InstrumentType.HexVS => new List<InstrumentDomain> { InstrumentDomain.Dc },
+                    InstrumentType.VSM => new List<InstrumentDomain> { InstrumentDomain.Dc },
                     InstrumentType.UVS256 => new List<InstrumentDomain> { InstrumentDomain.Dc },
+                    InstrumentType.UVS64 => new List<InstrumentDomain> { InstrumentDomain.Dc },
+                    InstrumentType.UVS64HP => new List<InstrumentDomain> { InstrumentDomain.Dc },
+                    InstrumentType.Support => new List<InstrumentDomain> { InstrumentDomain.Utility },
                     InstrumentType.SupportBoard => new List<InstrumentDomain> { InstrumentDomain.Utility },
                     _ => new List<InstrumentDomain>() // NC case - legitimate
                 };
@@ -383,7 +444,6 @@ namespace Csra {
             /// <param name="right">The second <see cref="Pin"/> to compare.</param>
             /// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
             public static bool operator !=(Pin left, Pin right) => !(left == right);
-
         }
     }
 }

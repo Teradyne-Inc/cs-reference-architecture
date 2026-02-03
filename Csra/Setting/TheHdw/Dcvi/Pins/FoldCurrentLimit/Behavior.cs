@@ -8,6 +8,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
 
+    [Serializable]
     public class Behavior : Setting_Enum<tlDCVIFoldCurrentLimitBehavior> {
 
         private static readonly Dictionary<string, tlDCVIFoldCurrentLimitBehavior> _staticCache = [];
@@ -17,15 +18,15 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
         public Behavior(tlDCVIFoldCurrentLimitBehavior value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(tlDCVIFoldCurrentLimitBehavior.DoNotGateOff, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, tlDCVIFoldCurrentLimitBehavior value) {
+        protected override void SetAction(string pinList, tlDCVIFoldCurrentLimitBehavior value) {
             TestCodeBase.TheHdw.DCVI.Pins(pinList).FoldCurrentLimit.Behavior = value;
         }
 
-        private static tlDCVIFoldCurrentLimitBehavior[] ReadFunc(string pin) {
+        protected override tlDCVIFoldCurrentLimitBehavior[] ReadFunc(string pin) {
             tlDCVIFoldCurrentLimitBehavior[] result = new tlDCVIFoldCurrentLimitBehavior[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).FoldCurrentLimit.Behavior);
             return result;

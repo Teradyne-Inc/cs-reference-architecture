@@ -70,10 +70,16 @@ namespace Csra {
         /// </summary>
         public string InstanceKey { get; private set; } = "Ssh instance";
 
-        private int _keyIdx;
+        internal int KeyIdx;
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Default constructor for serialization only. It's useful for UT!
+        /// </summary>
+        internal SsnCsvFile() {
+        }
 
         /// <summary>
         /// Construct a new <see cref="SsnCsvFile"/> object and load the specified _ssn.csv file.
@@ -110,7 +116,7 @@ namespace Csra {
         /// <param name="fileName">Absolute file name with path.</param>
         /// <returns>all the lines in file if succeed.</returns>
         /// <exception cref="InvalidDataException">file contains zero lines.</exception>
-        private string[] ReadAllLines(string fileName) {
+        internal string[] ReadAllLines(string fileName) {
             string[] lines = File.ReadAllLines(fileName);
             if (lines.Length == 0) {
                 throw new InvalidDataException($"CSV file '{fileName}' is empty.");
@@ -123,7 +129,7 @@ namespace Csra {
         /// </summary>
         /// <param name="lines">File lines</param>
         /// <returns>Version string</returns>
-        private string GetVersion(string[] lines) {
+        internal string GetVersion(string[] lines) {
             string csvFileVersionMarker = "//SSN instances";
             string[] versionString = lines[0].Split([','], 2, StringSplitOptions.None);
             if (versionString[0].TrimStart().StartsWith(csvFileVersionMarker))
@@ -140,7 +146,7 @@ namespace Csra {
         /// <returns>Indices of attributes</returns>
         /// <remarks>Different versions may have different header formats.</remarks>
         /// <exception cref="InvalidDataException">The specified attribute as key for indexing instances not found in the CSV header.</exception>
-        private Dictionary<string, int> GetAttributeIndices(string[] lines, string instanceKey) {
+        internal Dictionary<string, int> GetAttributeIndices(string[] lines, string instanceKey) {
             string csvFileHeaderMarker = "//ID,";
             Dictionary<string, int> indicesOfAttributes = [];
             foreach (string line in lines) {
@@ -148,9 +154,9 @@ namespace Csra {
                     string[] header = line.Split([','], StringSplitOptions.None);
                     header[0] = header[0].Trim('/');
                     indicesOfAttributes = header.ToDictionary(attribute => attribute.Trim(), attribute => Array.IndexOf(header, attribute));
-                    if (indicesOfAttributes.TryGetValue(instanceKey, out _keyIdx)) {
+                    if (indicesOfAttributes.TryGetValue(instanceKey, out KeyIdx)) {
                         InstanceKey = instanceKey;
-                    } else if (indicesOfAttributes.TryGetValue(InstanceKey, out _keyIdx)) {
+                    } else if (indicesOfAttributes.TryGetValue(InstanceKey, out KeyIdx)) {
                         // The specified instance key attribute not found, default to "Ssh instance". This could be a typo by user, alert user with warning.
                         Api.Services.Alert.Warning($"The specified attribute '{instanceKey}' as key for indexing instances not found in the CSV header. " +
                             $"Defaulting to '{InstanceKey}' as the instance key.");
@@ -159,7 +165,7 @@ namespace Csra {
                         Api.Services.Alert.Warning($"Default instance key attribute '{InstanceKey}' not found in the CSV header either. Fall back to use " +
                             $"'{indicesOfAttributes.FirstOrDefault().Key}' instead.");
                         InstanceKey = indicesOfAttributes.FirstOrDefault().Key;
-                        _keyIdx = indicesOfAttributes.FirstOrDefault().Value;
+                        KeyIdx = indicesOfAttributes.FirstOrDefault().Value;
                     }
                     break;  // Header found, exit loop.
                 }
@@ -167,7 +173,7 @@ namespace Csra {
             return indicesOfAttributes;
         }
 
-        private Dictionary<string, Action<string>> GetPatternAttributeSetters() {
+        internal Dictionary<string, Action<string>> GetPatternAttributeSetters() {
             // value-uniformed attributes in all csv versions
             string contribLabelAttributeName = "Contrib label";
             string tckRatioAttributeName = CsvVersion == _defaultVersion ? "Num bits" : "Tck ratio";
@@ -178,7 +184,7 @@ namespace Csra {
             return patternAttributeSetters;
         }
 
-        private Dictionary<string, Action<string, string>> GetInstanceAttributeSetters() {
+        internal Dictionary<string, Action<string, string>> GetInstanceAttributeSetters() {
             string idAttributeName = "ID";
             string coreInstanceAttributeName = "Core instance";
             string sshInstanceAttributeName = "Ssh instance";
@@ -238,7 +244,7 @@ namespace Csra {
         /// <param name="indicesOfAttributes">Header of the attribute table that maps attribute names to their column indices.</param>
         /// <param name="patternAttributeSetters">Dictionary mapping pattern attribute names to their setter Actions.</param>
         /// <param name="iclInstanceAttributeSetters">Dictionary mapping instance attribute names to their setter Actions.</param>
-        private void AppendSshInstance(string instanceInfo, Dictionary<string, int> indicesOfAttributes,
+        internal void AppendSshInstance(string instanceInfo, Dictionary<string, int> indicesOfAttributes,
             Dictionary<string, Action<string>> patternAttributeSetters, Dictionary<string, Action<string, string>> iclInstanceAttributeSetters) {
             var attributes = instanceInfo.Split([','], StringSplitOptions.None);
             if (attributes.Length != indicesOfAttributes.Count) {
@@ -251,7 +257,7 @@ namespace Csra {
             SetAndCheckAttributes(patternAttributeSetters, (setter, value) => setter(value));
 
             // Apply instance-specific attribute setters.
-            string instanceID = attributes[_keyIdx].Trim();
+            string instanceID = attributes[KeyIdx].Trim();
             SetAndCheckAttributes(iclInstanceAttributeSetters, (setter, value) => setter(instanceID, value));
 
             // Local function to set and check attributes using provided setters.
@@ -272,7 +278,7 @@ namespace Csra {
         /// <param name="attributeValue">Value of the Property to update/check</param>
         /// <param name="propertyDisplayName">Display name of the Property, for reporting exceptions.</param>
         /// <exception cref="InvalidDataException">Value inconsistent, check csv file is recommended.</exception>
-        private void SetPatternAttribute(string attributePropertyName, string attributeValue, string propertyDisplayName) {
+        internal void SetPatternAttribute(string attributePropertyName, string attributeValue, string propertyDisplayName) {
             if (!string.IsNullOrEmpty(attributeValue)) {
                 var property = GetType().GetProperty(attributePropertyName, System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public |
                     System.Reflection.BindingFlags.NonPublic);
@@ -295,7 +301,7 @@ namespace Csra {
         /// <param name="attributeValue">New value of the attribute to be updated/checked</param>
         /// <param name="enforceUniqueValue">Check for duplicated values across instances.</param>
         /// <exception cref="InvalidDataException">Invalid attribute values found in the csv file.</exception>
-        private void SetInstanceAttribute(string iclInstance, string attributeName, string attributeValue, bool enforceUniqueValue) {
+        internal void SetInstanceAttribute(string iclInstance, string attributeName, string attributeValue, bool enforceUniqueValue) {
             // skipping empty values
             if (!string.IsNullOrEmpty(attributeValue)) {
                 if (!SshInstances.ContainsKey(iclInstance)) {

@@ -32,11 +32,12 @@ namespace UT {
             Api.Services.Setup.Reset();
             Api.Services.Storage.Reset();
             Api.Services.Behavior.Reset();
+            Api.Services.Transaction.Reset();
 
             TestHarness.SiteCount = 2;
             TestHarness.SetupTestHarnessMoq(_mockTheHdw, _mockTheExec, null, null, _mockTheProgram);
 
-            Api.SetupCsraMoq();
+            Api.Configure();
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace UT {
         public static void FakeDCVSType(string pinList, string dcvsType, Mock<IHdwL> mockTheExec) {
             // ToDo -> implement to be more flexible to return different types
             if (pinList == string.Empty) return;
-            var pinArray = pinList.Split(',').Select(p => p.Trim()).ToArray();
+            string[] pinArray = pinList.Split(',').Select(p => p.Trim()).ToArray();
             //var dcviTypeArray = dcviTypes.Split(',').Select(p => p.Trim()).ToArray();
             for (int i = 0; i < pinArray.Length; i++) {
                 mockTheExec.Setup(x => x.DCVS.Pins(pinArray[i]).DCVSType).Returns(dcvsType);

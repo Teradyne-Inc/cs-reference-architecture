@@ -24,6 +24,8 @@ DTPinMap,version=2.1:platform=Jaguar:toprow=-1:leftcol=-1:rightcol=-1	Pin Map
 		nOEBA	Input		
 		clk_src	I/O		
 		clk_cap	I/O		
+		TMS	I/O		
+		TDI	I/O		
 		vcc	Power		
 	ctrls	nLEAB	Input		
 	ctrls	nOEAB			

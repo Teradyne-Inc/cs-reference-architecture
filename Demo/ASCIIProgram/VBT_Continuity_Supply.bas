@@ -7,7 +7,7 @@ Public Function Continuity_Supply_Baseline(aPinList As PinList, aforceVoltage As
     Dim lSinkFoldLimit As Double
 
     Call TheHdw.Digital.ApplyLevelsTiming(True, True, True, tlPowered)
-    
+    TheHdw.Digital.Pins("TDI,TMS").InitState = ChInitState.chInitoff
     With TheHdw.DCVS.Pins(aPinList)
         Call .Connect
         .Mode = tlDCVSModeVoltage

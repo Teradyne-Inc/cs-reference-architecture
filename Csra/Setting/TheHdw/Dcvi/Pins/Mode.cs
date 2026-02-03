@@ -7,6 +7,8 @@ using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins {
+
+    [Serializable]
     public class Mode : Setting_Enum<tlDCVIMode> {
 
         private static readonly Dictionary<string, tlDCVIMode> _staticCache = [];
@@ -17,15 +19,15 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
             SetArguments(value, pinList, true);
             // tlDCVIMode.Voltage is used as a default value for HighImpedance/HighRegulation are not for all instrument
             SetBehavior(tlDCVIMode.Voltage, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
         
-        private static void SetAction(string pinList, tlDCVIMode value) {
+        protected override void SetAction(string pinList, tlDCVIMode value) {
             TestCodeBase.TheHdw.DCVI.Pins(pinList).Mode = value;
         }
 
-        private static tlDCVIMode[] ReadFunc(string pin) {
+        protected override tlDCVIMode[] ReadFunc(string pin) {
             tlDCVIMode[] result = new tlDCVIMode[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).Mode);
             return result;

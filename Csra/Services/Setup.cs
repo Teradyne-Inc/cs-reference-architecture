@@ -9,14 +9,25 @@ using Teradyne.Igxl.Interfaces.Public;
 using Csra.Interfaces;
 
 namespace Csra.Services {
+
     /// <summary>
     /// Services.Setup - centralized test configuration management.
     /// </summary>
+    [Serializable]
     public class Setup : ISetupService {
 
-        private double _settleWaitTimeOut = 1 * s;
-        private readonly Dictionary<string, Csra.Setup> _setups = [];
+        private static ISetupService _instance = null;
+        private double _settleWaitTimeOut;
+        private readonly Dictionary<string, Csra.Setup> _setups;
         private static StringBuilder _stringBuilder = new();
+
+        protected Setup() {
+            _settleWaitTimeOut = 1 * s;
+            _setups = [];
+        }
+
+        public static ISetupService Instance => _instance ??= new Setup();
+
         public bool AuditMode { get; set; }
 
         public int Count => _setups.Count;
@@ -39,15 +50,15 @@ namespace Csra.Services {
 
         public void Apply(string setupNames) {
             if (string.IsNullOrWhiteSpace(setupNames)) return;
-            var split = setupNames.Split([','], StringSplitOptions.RemoveEmptyEntries);
-            foreach (var setup in split) _setups[setup.Trim()].Apply();
+            string[] split = setupNames.Split([','], StringSplitOptions.RemoveEmptyEntries);
+            foreach (string setup in split) _setups[setup.Trim()].Apply();
             TheHdw.SettleWait(_settleWaitTimeOut); // now wait for all that (may) have accumulated
         }
 
         public void Diff(string setupNames) {
             if (string.IsNullOrWhiteSpace(setupNames)) return;
-            var split = setupNames.Split([','], StringSplitOptions.RemoveEmptyEntries);
-            foreach (var setup in split) _setups[setup.Trim()].Diff();
+            string[] split = setupNames.Split([','], StringSplitOptions.RemoveEmptyEntries);
+            foreach (string setup in split) _setups[setup.Trim()].Diff();
         }
 
         public void Init(InitMode initMode) { // this should have the exec interpose attribute, but that currently doesn't work ...
@@ -65,16 +76,16 @@ namespace Csra.Services {
             if (string.IsNullOrWhiteSpace(path)) Api.Services.Alert.Error<ArgumentException>("Argument 'path' must not be null or empty.");
             if (File.Exists(path)) File.Delete(path); // delete existing file
 
-            var setupNamesToSplit = string.IsNullOrWhiteSpace(setupNames)
+            string setupNamesToSplit = string.IsNullOrWhiteSpace(setupNames)
                 ? string.Join(",", _setups.Keys)
                 : setupNames;
 
-            var rawSplitNames = setupNamesToSplit.Split([','], StringSplitOptions.RemoveEmptyEntries);
-            var splitSetupNames = rawSplitNames.Select(s => s.Trim()).ToArray();
+            string[] rawSplitNames = setupNamesToSplit.Split([','], StringSplitOptions.RemoveEmptyEntries);
+            string[] splitSetupNames = rawSplitNames.Select(s => s.Trim()).ToArray();
 
             _stringBuilder.AppendLine("{");
             int count = 0;
-            foreach (var setup in splitSetupNames) {
+            foreach (string setup in splitSetupNames) {
                 if (_setups[setup].Count > 0) {
                     _stringBuilder.AppendLine($"  \"{_setups[setup.Trim()].Name}\":{{");
                     _setups[setup].Export(path);
@@ -107,7 +118,7 @@ namespace Csra.Services {
                 Api.Services.Alert.Error<FileNotFoundException>($"File not found: {path}");
             }
 
-            var lines = File.ReadAllLines(path);
+            string[] lines = File.ReadAllLines(path);
             int level = 0;
 
             string pendingSetupName = string.Empty;
@@ -117,7 +128,7 @@ namespace Csra.Services {
 
             Csra.Setup currentSetup = null;
 
-            foreach (var rawLine in lines.Select(l => l.Trim())) {
+            foreach (string rawLine in lines.Select(l => l.Trim())) {
                 if (string.IsNullOrWhiteSpace(rawLine)) continue;
 
                 if (rawLine == "{") {
@@ -169,11 +180,11 @@ namespace Csra.Services {
         }
 
         internal void Validate() {
-            foreach (var setup in _setups.Values) setup.Validate();
+            foreach (Csra.Setup setup in _setups.Values) setup.Validate();
         }
 
         public void Log(string message, int level, int rgb) {
-            var bgr = (ColorConstants)((rgb & 0xff0000) >> 16 | rgb & 0xff00 | (rgb & 0xff) << 16);
+            ColorConstants bgr = (ColorConstants)((rgb & 0xff0000) >> 16 | rgb & 0xff00 | (rgb & 0xff) << 16);
             Api.Services.Alert.Log($"{new string(' ', level * 5)}{message}", bgr, level == 0);
         }
         internal string RemoveSpecialCharacters(string input, bool excludeNonTrailingCommas = false) {

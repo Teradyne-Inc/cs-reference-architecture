@@ -1,7 +1,7 @@
 Attribute VB_Name = "VBT_SupplyCurrent_Dynamic"
 Option Explicit
 
-Function SupplyCurrent_Dynamic(aPinList As PinList, aForceValue As Double, aMeasureRange As Double, aClampValue As Double, aWaitTime As Double, aPattern As Pattern, stops As Integer) As Long
+Function SupplyCurrent_Dynamic_Baseline(aPinList As PinList, aForceValue As Double, aMeasureRange As Double, aClampValue As Double, aWaitTime As Double, aPattern As Pattern, stops As Integer) As Long
 
     Dim i As Integer, pin As Integer
     Dim lSinkFoldLimit As Double
@@ -34,19 +34,12 @@ Function SupplyCurrent_Dynamic(aPinList As PinList, aForceValue As Double, aMeas
             Call TheHdw.Digital.TimeDomains(lTimeDomain).Patgen.Continue(0, CpuFlag.cpuA)
         Next i
         Call TheHdw.Digital.TimeDomains(lTimeDomain).Patgen.HaltWait
-        lMeas = .Meter.Read(tlStrobe, stops, 1, tlDCVSMeterReadingFormatArray)
+        lMeas = .Meter.Read(tlNoStrobe, stops, 1, tlDCVSMeterReadingFormatArray)
         .Gate = False
         Call .Disconnect
     End With
     
-    For pin = 0 To lMeas.Pins.Count - 1
-        For i = 0 To stops - 1
-            For Each lSite In TheExec.Sites
-                lSd = lMeas.Pins(pin)(lSite)(i)
-            Next lSite
-            Call TheExec.Flow.TestLimit(ResultVal:=lSd, ForceVal:=aForceValue, Unit:=unitCustom, CustomForceUnit:="V", _
-                        ForceResults:=tlForceFlow)
-        Next i
-    Next pin
+    Call TheExec.Flow.TestLimit(ResultVal:=lMeas, Unit:=unitCustom, CustomForceUnit:="A", CompareMode:=CompareEachSample, _
+                ForceResults:=tlForceFlow)
     
 End Function

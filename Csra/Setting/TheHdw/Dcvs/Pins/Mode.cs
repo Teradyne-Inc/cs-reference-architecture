@@ -4,9 +4,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Dcvs.Pins {
 
+    [Serializable]
     public class Mode : Setting_Enum<tlDCVSMode> {
 
         private static readonly Dictionary<string, tlDCVSMode> _staticCache = [];
@@ -17,15 +19,15 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
             SetArguments(value, pinList, true);
             // tlDCVSMode.Voltage is used as a default value for HighImpedance/HighRegulation are not for all instrument
             SetBehavior(tlDCVSMode.Voltage, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private static void SetAction(string pinList, tlDCVSMode value) {
+        protected override void SetAction(string pinList, tlDCVSMode value) {
             TestCodeBase.TheHdw.DCVS.Pins(pinList).Mode = value;
         }
 
-        private static tlDCVSMode[] ReadFunc(string pin) {
+        protected override tlDCVSMode[] ReadFunc(string pin) {
             tlDCVSMode[] result = new tlDCVSMode[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVS.Pins(pin).Mode);
             return result;

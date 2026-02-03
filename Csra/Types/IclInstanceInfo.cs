@@ -95,7 +95,30 @@ namespace Csra {
         public IclInstanceInfo(string sshInstanceName, string sshIclInstanceName, string coreInstanceName, bool isOnChipCompare = false, int? tckRatio = null,
             string contribPin = null, string contribLabel = null, int? contribOffset = null, string stickyPin = null, string stickyLabel = null,
             int? stickyOffset = null, double? stickyCycle = null, string globalGroupID = null, string representativeSsh = null) {
-            throw new NotImplementedException();
+
+            SshInstanceName = sshInstanceName;
+            IclInstanceName = sshIclInstanceName;
+            CoreInstanceName = coreInstanceName;
+
+            IsOnChipCompare = isOnChipCompare;
+            ContribPin = contribPin;
+            ContribLabel = contribLabel;
+            ContribOffset = contribOffset;
+            StickyPin = stickyPin;
+            //StickyLabel = stickyLabel;    //future use
+            //StickyOffset = stickyOffset;  //future use
+            StickyCycle = stickyCycle;
+
+            GlobalGroupID = globalGroupID;
+
+            //IsRepresentative = isRepresentative;          //future use
+            //RepresentativeSshName = representativeSsh;    //future use
+
+            ModifyVectorData = new();
+
+            if (IsOnChipCompare && tckRatio.HasValue && tckRatio > 0) {
+                ForEachSite(i => ModifyVectorData[i] = new string('0', tckRatio.Value));
+            }
         }
 
         /// <summary>
@@ -104,11 +127,87 @@ namespace Csra {
         /// <param name="iclAndCoreInstanceNames">The hybrid instance name following this format: "{ssh_icl_instance}@{core_instance}".</param>
         /// <remarks>This hybrid instance name is retrieved from IGXL API: TheHdw.Digital.ScanNetworks[ScanNetworkMapping].InstanceNames.</remarks>
         public IclInstanceInfo(string iclAndCoreInstanceNames) : this(sshInstanceName: "", sshIclInstanceName: "", coreInstanceName: "") {
-            throw new NotImplementedException();
+            var _ = iclAndCoreInstanceNames.Split('@');
+            IclInstanceName = _.FirstOrDefault();
+            CoreInstanceName = _.LastOrDefault();
         }
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Updates the instance information with the provided parameters, ensuring consistency and resolving conflicts
+        /// where necessary.
+        /// </summary>
+        /// <remarks>This method ensures that the instance information is updated only when necessary,
+        /// preserving existing values unless explicitly overridden. Conflicts between the provided and existing
+        /// instance names are resolved based on specific conditions, and an exception is thrown if the conflict cannot
+        /// be resolved.</remarks>
+        /// <param name="sshInstanceName">The name of the SSH instance. This value is used to update the instance if it is not already set.</param>
+        /// <param name="sshIclInstanceName">The name of the SSH-ICL instance. This value is validated against the existing instance name to ensure
+        /// consistency.</param>
+        /// <param name="coreInstanceName">The name of the core instance. This value is validated against the existing instance name to ensure
+        /// consistency.</param>
+        /// <param name="isOnChipCompare">A value indicating whether the instance is configured for on-chip comparison. If <see langword="true"/>, the
+        /// instance is marked as such.</param>
+        /// <param name="tckRatio">The TCK ratio used for modifying vector data. Must be a positive value if provided.</param>
+        /// <param name="contribPin">The contribution pin associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="contribLabel">The contribution label associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="contribOffset">The contribution offset associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="stickyPin">The sticky pin associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="stickyLabel">The sticky label associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="stickyOffset">The sticky offset associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="stickyCycle">The sticky cycle associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="globalGroupID">The global group ID associated with the instance. This value is set only if it is not already defined.</param>
+        /// <param name="representativeSsh">The name of the representative SSH instance. This value is set only if it is not already defined.</param>
+        /// <exception cref="ArgumentException">Thrown if there is a conflict between the existing and provided instance names for SSH-ICL or core
+        /// instances.</exception>
+        internal void UpdateInstanceInfo(string sshInstanceName, string sshIclInstanceName, string coreInstanceName, bool isOnChipCompare = false, int? tckRatio = null,
+            string contribPin = null, string contribLabel = null, int? contribOffset = null, string stickyPin = null, string stickyLabel = null,
+            int? stickyOffset = null, double? stickyCycle = null, string globalGroupID = null, string representativeSsh = null) {
+            // Validate the parameters and check for conflicts.
+
+            if (IclInstanceName != sshIclInstanceName && CoreInstanceName != coreInstanceName) {
+                // neither name matches, throw an error, otherwise leave the original names unchanged
+                throw new ArgumentException($"ERROR: Conflict instance name for ssh-icl-instance '{IclInstanceName}'. " +
+                $"Existing ssh-icl-instance name: '{IclInstanceName}', \tnew ssh-icl-instance name: '{sshIclInstanceName}';" +
+                $"Existing core-instance name: '{CoreInstanceName}', \tnew core-instance name: '{coreInstanceName}'");
+            } else if (IclInstanceName != sshIclInstanceName || CoreInstanceName != coreInstanceName) {
+                if (sshIclInstanceName == coreInstanceName) {
+                    // this is the case when incoming info is from TC and it is missing the icl-instance name(or core-instance name)
+                    // nothing needs to be done.
+                } else if (IclInstanceName == CoreInstanceName) {
+                    // this is the case when original info is from TC, update with incoming:
+                    IclInstanceName = sshIclInstanceName;
+                    CoreInstanceName = coreInstanceName;
+                    SshInstanceName ??= sshInstanceName;
+                } else {
+                    // TODO: DECISION: Throw an error or just update with new object?
+                    throw new ArgumentException($"ERROR: Conflict instance name for ssh-icl-instance '{IclInstanceName}'. " +
+                   $"Existing ssh-instance name: '{SshInstanceName}', \tnew ssh-instance name: '{sshInstanceName}';" +
+                   $"Existing ssh-icl-instance name: '{IclInstanceName}', \tnew ssh-icl-instance name: '{sshIclInstanceName}';" +
+                   $"Existing core-instance name: '{CoreInstanceName}', \tnew core-instance name: '{coreInstanceName}'");
+                }
+            }
+
+            IsOnChipCompare |= isOnChipCompare;
+            GlobalGroupID ??= globalGroupID;
+            //IsRepresentative |= isRepresentative;         //future use
+            //RepresentativeSshName ??= representativeSsh;  //future use
+
+            // Update the instance information only if the value is not set yet.
+            ContribPin ??= contribPin;
+            ContribLabel ??= contribLabel;
+            ContribOffset ??= contribOffset;
+            StickyPin ??= stickyPin;
+            //StickyLabel ??= stickyLabel;              //future use
+            //StickyOffset ??= stickyOffset;            //future use
+            StickyCycle ??= stickyCycle;
+
+            if (IsOnChipCompare && tckRatio.HasValue && tckRatio > 0) {
+                ForEachSite(i => ModifyVectorData[i] = new string('0', tckRatio.Value));
+            }
+        }
 
         /// <summary>
         /// Sets or clears the disable-contribution-bit for a specified site.
@@ -116,7 +215,10 @@ namespace Csra {
         /// <param name="site">The identifier of the site for which the disable contribution bit is being modified.</param>
         /// <param name="value">The new state of the disable-contribution-bit.</param>
         public void SetDisableContributionBit(int site, char value) {
-            throw new NotImplementedException();
+            if (!string.IsNullOrEmpty(ModifyVectorData[site])) {
+                int tckRatio = ModifyVectorData[site].Length;
+                ModifyVectorData[site] = new string(value, tckRatio);
+            }
         }
 
         /// <summary>
@@ -124,7 +226,7 @@ namespace Csra {
         /// </summary>
         /// <param name="value">The new states of the disable-contribution-bit for each site.</param>
         public void SetDisableContributionBit(Site<char> value) {
-            throw new NotImplementedException();
+            ForEachSite(site => SetDisableContributionBit(site, value[site]));
         }
 
         /// <summary>
@@ -132,7 +234,7 @@ namespace Csra {
         /// </summary>
         /// <param name="value">The new state of the disable-contribution-bit that applies to all sites.</param>
         public void SetDisableContributionBit(char value) {
-            throw new NotImplementedException();
+            ForEachSite(site => SetDisableContributionBit(site, value));
         }
         #endregion
     }

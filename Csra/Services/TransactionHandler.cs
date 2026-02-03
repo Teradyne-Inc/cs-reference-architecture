@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Teradyne.Igxl.Interfaces.Public;
 using Csra.Interfaces;
+using System;
 
 namespace Csra.Services {
 
+    [Serializable]
     internal abstract class TransactionHandler {
 
         internal TransactionHandler() { }
@@ -41,5 +43,7 @@ namespace Csra.Services {
         internal abstract List<Site<T>> ExecuteRead<T>(string module, int readCount, string port = "");
 
         internal abstract void ReInitRegister(string register, string port = "");
+
+        internal abstract void ReInitAll();
     }
 }

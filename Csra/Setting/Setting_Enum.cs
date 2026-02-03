@@ -9,6 +9,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting {
 
+    [Serializable]
     public abstract class Setting_Enum<T> : SettingBase<T> where T : Enum {
 
         protected override string SerializeValue(T value) => $"{typeof(T).Name}.{value}";

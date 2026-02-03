@@ -1,7 +1,7 @@
 Attribute VB_Name = "VBT_SupplyCurrent_Static"
 Option Explicit
 
-Function SupplyCurrent_Static(aPinList As PinList, aForceValue As Double, aMeasureRange As Double, aClampValue As Double, aWaitTime As Double) As Long
+Function SupplyCurrent_Static_Baseline(aPinList As PinList, aForceValue As Double, aMeasureRange As Double, aClampValue As Double, aWaitTime As Double) As Long
 
     Dim lSinkFoldLimit As Double
     Dim lMeas As New PinListData

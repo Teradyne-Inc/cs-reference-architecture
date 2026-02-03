@@ -4,9 +4,11 @@ using Csra;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
+using System;
 
 namespace Csra.Setting.TheHdw.Digital.Pins.Levels {
 
+    [Serializable]
     public class Value_Vih : Setting_double {
 
         private static readonly Dictionary<string, double> _staticCache = [];
@@ -16,15 +18,15 @@ namespace Csra.Setting.TheHdw.Digital.Pins.Levels {
         public Value_Vih(double value, string pinList) {
             SetArguments(value, pinList, true);
             SetBehavior(0, "V", InitMode.OnProgramStarted, true);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
-        private void SetAction(string pinList, double value) {
+        protected override void SetAction(string pinList, double value) {
             TestCodeBase.TheHdw.Digital.Pins(pinList).Levels.Value[ChPinLevel.Vih] = value;
         }
 
-        private double[] ReadFunc(string pin) {
+        protected override double[] ReadFunc(string pin) {
             double[] result = new double[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.Digital.Pins(pin).Levels.Value[ChPinLevel.Vih]);
             return result;

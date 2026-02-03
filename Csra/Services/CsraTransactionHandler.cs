@@ -8,13 +8,14 @@ using Csra.Interfaces;
 
 namespace Csra.Services {
 
+    [Serializable]
     internal class CsraTransactionHandler : TransactionHandler {
 
         public CsraTransactionHandler() : base() { }
 
         internal override bool Configure(ITransactionConfig transactionConfig) {
             if (transactionConfig.GetType() != typeof(CSRATransactionConfig))
-                throw new ArgumentException($"Expected CSRATransactionConfig but received {transactionConfig.GetType().Name}", nameof(transactionConfig));
+                Api.Services.Alert.Error<ArgumentException>($"Expected CSRATransactionConfig but received {transactionConfig.GetType().Name}");
             // ToDo: Add actual configuration logic for CsraGeneric
             return transactionConfig.Valid;
         }
@@ -50,5 +51,7 @@ namespace Csra.Services {
         internal override List<Site<T>> ExecuteRead<T>(string module, int readCount, string port = "") => throw new NotImplementedException();
 
         internal override void ReInitRegister(string register, string port = "") => throw new NotImplementedException();
+
+        internal override void ReInitAll() => throw new NotImplementedException();
     }
 }

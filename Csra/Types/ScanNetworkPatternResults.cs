@@ -37,7 +37,12 @@ namespace Csra {
         /// </summary>
         /// <param name="scanNetworkPatternInfo">The <see cref="ScanNetworkPatternInfo"/> object for the ScanNetwork pattern</param>
         public ScanNetworkPatternResults(ScanNetworkPatternInfo scanNetworkPatternInfo) {
-            throw new NotImplementedException();
+            foreach (var instance in scanNetworkPatternInfo.IclInstance) {
+                IclInstance.Add(instance.Key, new IclInstanceTestResult(instance.Value));
+            }
+            foreach (var core in scanNetworkPatternInfo.CoreInstance) {
+                CoreInstance.Add(core.Key, new CoreInstanceTestResult(core.Key, core.Value));
+            }
         }
         #endregion
 
@@ -47,7 +52,18 @@ namespace Csra {
         /// Internal method called by the framework to process the core instance results based on the icl instance results.
         /// </summary>
         internal void ProcessCoreResults() {
-            throw new NotImplementedException();
+            foreach (var core in CoreInstance.Values) {
+                core.IsFailed = new Site<bool>(false);
+                core.IsResultValid = new Site<bool>(true);
+                foreach (var iclInstanceName in core) {
+                    if (IclInstance.TryGetValue(iclInstanceName, out var iclInstanceResult)) {
+                        core.IsFailed |= iclInstanceResult.IsFailed;
+                        core.IsResultValid &= iclInstanceResult.IsResultValid;
+                    } else {
+                        core.IsResultValid &= false;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -55,7 +71,11 @@ namespace Csra {
         /// </summary>
         /// <returns>Per site value is a list of failed core instance names.</returns>
         public Site<List<string>> GetFailedCoreInstanceList() {
-            throw new NotImplementedException();
+            Site<List<string>> failedCoresBySite = new();
+            ForEachSite(site => {
+                failedCoresBySite[site] = GetFailedCoreInstanceList(site);
+            });
+            return failedCoresBySite;
         }
 
         /// <summary>
@@ -64,7 +84,10 @@ namespace Csra {
         /// <param name="site">The site number.</param>
         /// <returns>A list of failed core instance names for the specified site.</returns>
         public List<string> GetFailedCoreInstanceList(int site) {
-            throw new NotImplementedException();
+            return CoreInstance.Values
+                .Where(core => core.IsFailed[site])
+                .Select(core => core.InstanceName)
+                .ToList();
         }
         #endregion
     }

@@ -21,7 +21,73 @@ namespace Csra {
     /// <summary>
     /// Physical instrument types.
     /// </summary>
-    public enum InstrumentType { NC, UP2200, UPHP, UVI264, UVS64, UVS256, SupportBoard }
+    public enum InstrumentType {
+
+        /// <summary>
+        /// Not connected - no instrument resource assigned.
+        /// </summary>
+        NC,
+
+        /// <summary>
+        /// The UP2200 (internal: Paradise) digital instrument on UltraFLEX+.
+        /// </summary>
+        UP2200,
+
+        /// <summary>
+        /// The UP5000 (internal: Utopia) digital instrument on UltraFLEX+.
+        /// </summary>
+        UP5000,
+
+        /// <summary>
+        /// The UVI264 (internal: Raiden) DCVI instrument on UltraFLEX+.
+        /// </summary>
+        UVI264,
+
+        /// <summary>
+        /// The UVS64 (internal: Tesla) DCVS instrument on UltraFLEX+.
+        /// </summary>
+        UVS64,
+
+        /// <summary>
+        /// The UVS256 (internal: ?) DCVS instrument on UltraFLEX+.
+        /// </summary>
+        UVS256,
+
+        /// <summary>
+        /// The UVS64HP (internal: Zebra) DCVS instrument on UltraFLEX+.
+        /// </summary>
+        UVS64HP,
+
+        /// <summary>
+        /// The Support Board instrument on UltraFLEX+.
+        /// </summary>
+        Support,
+
+        /// <summary>
+        /// The UP1600 (internal: Utah) digital instrument on UltraFLEX.
+        /// </summary>
+        UP1600,
+
+        /// <summary>
+        /// The VSM (internal: ?) DCVI instrument on UltraFLEX.
+        /// </summary>
+        VSM,
+
+        /// <summary>
+        /// The HexVS (internal: ?) DCVS instrument on UltraFLEX.
+        /// </summary>
+        HexVS,
+
+        /// <summary>
+        /// The UVI80 (internal: ?) DCVI instrument on UltraFLEX.
+        /// </summary>
+        UVI80,
+
+        /// <summary>
+        /// The Support Board instrument on UltraFLEX.
+        /// </summary>
+        SupportBoard // UF Support Board
+    }
 
     /// <summary>
     /// Logical features provided through the instrument driver.

@@ -8,6 +8,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.Setting {
 
+    [Serializable]
     public abstract class Setting_int : SettingBase<int> {
 
         protected override string SerializeValue(int value) => $"{value}{_unit}";

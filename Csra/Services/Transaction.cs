@@ -4,14 +4,24 @@ using Teradyne.Igxl.Interfaces.Public;
 using Csra.Interfaces;
 
 namespace Csra.Services {
+
     /// <summary>
     /// Services.Transaction.- being fluent in devices' dialects
     /// </summary>
-    internal class Transaction : ITransactionService {
+    [Serializable]
+    public class Transaction : ITransactionService {
 
-        private static TransactionHandler _transactionHandler = new CsraTransactionHandler();
-        private static Dictionary<string, TransactionHandler> _handlerMap = new Dictionary<string, TransactionHandler>();
-        private static Dictionary<string, Pins.Pin> _pins = new();
+        private static ITransactionService _instance = null;
+        private TransactionHandler _transactionHandler;
+        private Dictionary<string, TransactionHandler> _handlerMap;
+        private Dictionary<string, Pins.Pin> _pins;
+
+        protected Transaction() {
+            _handlerMap = new Dictionary<string, TransactionHandler>();
+            _pins = new();
+        }
+
+        public static ITransactionService Instance => _instance ??= new Transaction();
 
         public Site<T> GetField<T>(string register, string field, string port = "") => _transactionHandler.GetField<T>(register, field, port);
 
@@ -29,7 +39,7 @@ namespace Csra.Services {
             _transactionHandler.SetRegisterPerSite(register, data, port);
 
         public void PullRegister(string register, string port = "") => _transactionHandler.PullRegister(register, port);
-        
+
         public void PushRegister(string register, string port = "") => _transactionHandler.PushRegister(register, port);
 
         public Site<T> ReadRegister<T>(string register, string port = "") => _transactionHandler.ReadRegister<T>(register, port);
@@ -54,8 +64,12 @@ namespace Csra.Services {
         // Verify below if still required when using setupobjects
         // TODO: Implement shadow register reset logic https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/1455
 
+        public void ReInitAll() => _transactionHandler.ReInitAll();
+
         public void Reset() {
             _transactionHandler = null;
+            _handlerMap.Clear();
+            _pins.Clear();
         }
 
         public void Init(TransactionType transactionType) {
@@ -74,10 +88,17 @@ namespace Csra.Services {
                         _handlerMap.Add(transactionType.ToString(), new CsraTransactionHandler());
                     _transactionHandler = _handlerMap[transactionType.ToString()];
                     break;
+                default:
+                    throw new NotSupportedException($"Transaction type {transactionType} is not supported.");
             }
         }
 
-        public bool ConfigureHandler(ITransactionConfig transactionConfig) => _transactionHandler.Configure(transactionConfig);
+        public bool ConfigureHandler(ITransactionConfig transactionConfig) {
+            if (_transactionHandler == null) {
+                throw new InvalidOperationException("Transaction handler is not initialized. Please call Initttt() before configuring the handler.");
+            }
+            return _transactionHandler.Configure(transactionConfig);
+        }
 
         public void RemoveHandler(TransactionType transactionType) {
             if (_handlerMap.ContainsKey(transactionType.ToString())) {
@@ -86,6 +107,10 @@ namespace Csra.Services {
                 }
                 _handlerMap.Remove(transactionType.ToString());
             }
+        }
+
+        internal void SetHandlerForTest(TransactionHandler handler) {
+            _transactionHandler = handler;
         }
     }
 }

@@ -36,6 +36,21 @@ namespace Csra.Interfaces {
         /// </summary>
         public IDatalog Datalog { get; }
 
+
+        /// <summary>
+        /// Exchanges the default branch implementations with user-provided implementations.
+        /// </summary>
+        /// <param name="validate">User-provided implementation of <see cref="ILib.IValidate"/>.</param>
+        /// <param name="setup">User-provided implementation of <see cref="ILib.ISetup"/>.</param>
+        /// <param name="execute">User-provided implementation of <see cref="ILib.IExecute"/>.</param>
+        /// <param name="acquire">User-provided implementation of <see cref="ILib.IAcquire"/>.</param>
+        /// <param name="datalog">User-provided implementation of <see cref="ILib.IDatalog"/>.</param>
+        /// <remarks>
+        /// If any parameter is <c>null</c>, the method will revert to the original implementation 
+        /// provided by the csra library.
+        /// </remarks>
+        public void Configure(IValidate validate = null, ISetup setup = null, IExecute execute = null, IAcquire acquire = null, IDatalog datalog = null);
+
         public interface IValidate {
 
             /// <summary>
@@ -147,15 +162,14 @@ namespace Csra.Interfaces {
             public bool MultiCondition<TEnum>(string csv, string argumentName, out TEnum[] conditions, int? referenceCount = null) where TEnum : struct, Enum;
 
             /// <summary>
-            /// Checks for valid method handle spec and creates the object.
+            /// Creates an instance of the class passed by its fully-qualified name
             /// </summary>
-            /// <typeparam name="T">The target delegate and it's accompanying parameter types.</typeparam>
-            /// <param name="fullyQualifiedName">Fully qualified name of the method to be checked.</param>
-            /// <param name="argumentName">The argument name used to indicate to IG-XL which test instance parameter failed.</param>
-            /// <param name="method">Delegate to be created if the fullyQualifiedName is found to be a valid method handle spec.</param>
-            /// <returns><see langword="true"/> if the `fullyqualifiedName` was found to match an existing method and the new delegate was created;
+            /// <typeparam name="T">Type of the returned object.</typeparam>
+            /// <param name="fullyQualifiedClassName">Fully qualified name of the class to be instantiated.</param>
+            /// <param name="instance">Object to be created if the fullyQualifiedClassName is found to be valid.</param>
+            /// <returns><see langword="true"/> if the `fullyqualifiedClassName` was found to match an existing class and the new object was created;
             /// otherwise, <see langword="false"/>.</returns>
-            public bool MethodHandle<T>(string fullyQualifiedName, string argumentName, out MethodHandle<T> method) where T : Delegate;
+            public bool GetObjectByClassName<T>(string fullyQualifiedClassName, out T instance) where T : class;
 
             /// <summary>
             /// Checks for whether `condition` == <see langword="true"/>.
@@ -231,6 +245,18 @@ namespace Csra.Interfaces {
             /// The accessor for the LevelsAndTiming branch.
             /// </summary>
             public ILevelsAndTiming LevelsAndTiming { get; }
+
+            /// <summary>
+            /// Exchanges the default branch implementations with user-provided implementations.
+            /// </summary>
+            /// <param name="dc">User-provided implementation of <see cref="IDc"/>.</param>
+            /// <param name="digital">User-provided implementation of <see cref="IDigital"/>.</param>
+            /// <param name="levelsAndTiming">User-provided implementation of <see cref="ILevelsAndTiming"/>.</param>
+            /// <remarks>
+            /// If any parameter is <c>null</c>, the method will revert to the original implementation 
+            /// provided by the csra library.
+            /// </remarks>
+            public void Configure(IDc dc = null, IDigital digital = null, ILevelsAndTiming levelsAndTiming = null);
 
             /// <summary>
             /// The interface for the LevelsAndTiming branch.
@@ -368,12 +394,12 @@ namespace Csra.Interfaces {
                 /// </summary>
                 /// <param name="pins">The pins to set meter parameters.</param>
                 /// <param name="meterMode">Set the mode to measure Voltage or Current.</param>
-                /// <param name="rangeValue">Current or Voltage range depending on the selected mode.</param>
+                /// <param name="rangeValue">Optional. Current or Voltage range depending on the selected mode.</param>
                 /// <param name="filterValue">Optional. Sets the filter value.</param>
                 /// <param name="hardwareAverage">Optional. Sets the hardware average for the specified DCVI pins.</param>
                 /// <param name="outputRangeValue">Optional. Current range for DCVS when you want to set the current mode - for other cases, ignore
                 /// this.</param>
-                public void SetMeter(Pins pins, Measure meterMode, double rangeValue, double? filterValue = null, int? hardwareAverage = null,
+                public void SetMeter(Pins pins, Measure meterMode, double? rangeValue = null, double? filterValue = null, int? hardwareAverage = null,
                     double? outputRangeValue = null);
 
                 /// <summary>
@@ -381,13 +407,13 @@ namespace Csra.Interfaces {
                 /// </summary>
                 /// <param name="pinGroups">Array of pin or pin groups.</param>
                 /// <param name="meterModes">Array of settings measurements mode voltage and current.</param>
-                /// <param name="rangeValues">Array of current and voltage range depending on the selected modes.</param>
+                /// <param name="rangeValues">Optional. Array of current and voltage range depending on the selected modes.</param>
                 /// <param name="filterValues">Optional. Array of filter values.</param>
                 /// <param name="hardwareAverages">Optional. Array of hardware average for the specified DCVI pins.</param>
                 /// <param name="outputRangeValues">Optional. Array of current range for DCVS when you want to set the current mode - for other cases,
                 /// ignore this.
                 /// </param>
-                public void SetMeter(Pins[] pinGroups, Measure[] meterModes, double[] rangeValues, double[] filterValues = null, int[] hardwareAverages = null,
+                public void SetMeter(Pins[] pinGroups, Measure[] meterModes, double[] rangeValues = null, double[] filterValues = null, int[] hardwareAverages = null,
                     double[] outputRangeValues = null);
 
                 /// <summary>
@@ -628,6 +654,18 @@ namespace Csra.Interfaces {
             public ISearch Search { get; }
 
             /// <summary>
+            /// Exchanges the default branch implementations with user-provided implementations.
+            /// </summary>
+            /// <param name="digital">User-provided implementation of <see cref="IDigital"/>.</param>
+            /// <param name="scanNetwork">User-provided implementation of <see cref="IScanNetwork"/>.</param>
+            /// <param name="search">User-provided implementation of <see cref="ISearch"/>.</param>
+            /// <remarks>
+            /// If any parameter is <c>null</c>, the method will revert to the original implementation 
+            /// provided by the csra library.
+            /// </remarks>
+            public void Configure(IDigital digital = null, IScanNetwork scanNetwork = null, ISearch search = null);
+
+            /// <summary>
             /// Waits for the given time by updating the SettleWait timer, or - optionally - enforces a static wait.
             /// </summary>
             /// <param name="time">The wait time in seconds.</param>
@@ -684,14 +722,12 @@ namespace Csra.Interfaces {
                 public void ForcePatternHalt();
 
                 /// <summary>
-                /// Runs a pattern executing the specified func action at each conditional stop.
+                /// Clears result field of executableObject and runs a pattern executing executableObject.Execute() at each conditional stop.
                 /// </summary>                
                 /// <param name="pattern">Pattern to be executed.</param>
                 /// <param name="numberOfStops">Number of stops in the pattern.</param>
-                /// <param name="func">Func action to be called at each stop.</param>
-                /// <returns>Concatenated list of all the measurements taken at each stop.</returns>
-                public List<PinSite<double>> RunPatternConditionalStop(PatternInfo pattern, int numberOfStops, Func<PatternInfo, int,
-                    List<PinSite<double>>> func);
+                /// <param name="executableObject">Object contains Execute() to be called at each stop and Clear() to reset result field.</param>
+                public void RunPatternConditionalStop(PatternInfo pattern, int numberOfStops, IExecutable executableObject);
 
                 /// <summary>
                 /// Continues a pattern to the next conditional stop and executed the action.
@@ -721,7 +757,7 @@ namespace Csra.Interfaces {
                 /// <param name="nonDiagnosisResults">The acquired ScanNetwork pattern results which contains failed core list.</param>
                 /// <param name="concurrentDiagnosis">Optional. Whether to perform diagnosis on multiple core instances concurrently per reburst.</param>
                 public void RunDiagnosis(ScanNetworkPatternInfo scanNetworkPattern, ScanNetworkPatternResults nonDiagnosisResults,
-                    bool concurrentDiagnosis = false);
+                    int captureLimit = 3000, bool concurrentDiagnosis = false);
             }
 
             /// <summary>
@@ -961,6 +997,19 @@ namespace Csra.Interfaces {
             /// The accessor for the Search branch.
             /// </summary>
             public ISearch Search { get; }
+
+            /// <summary>
+            /// Exchanges the default branch implementations with user-provided implementations.
+            /// </summary>
+            /// <param name="dc">User-provided implementation of <see cref="IDc"/>.</param>
+            /// <param name="digital">User-provided implementation of <see cref="IDigital"/>.</param>
+            /// <param name="scanNetwork">User-provided implementation of <see cref="IScanNetwork"/>.</param>
+            /// <param name="search">User-provided implementation of <see cref="ISearch"/>.</param>
+            /// <remarks>
+            /// If any parameter is <c>null</c>, the method will revert to the original implementation 
+            /// provided by the csra library.
+            /// </remarks>
+            public void Configure(IDc dc = null, IDigital digital = null, IScanNetwork scanNetwork = null, ISearch search = null);
 
             /// <summary>
             /// The interface for the Dc branch.

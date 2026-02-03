@@ -18,6 +18,7 @@ namespace Demo_CS.Continuity {
         public void Baseline(PinList pinList, double forceVoltage, double currentRange, double waitTime) {
 
             TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
+            TheHdw.Digital.Pins("TDI,TMS").InitState = ChInitState.Off;
             var dcvs = TheHdw.DCVS.Pins(pinList);
             dcvs.Connect();
 

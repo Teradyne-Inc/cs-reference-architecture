@@ -2,7 +2,7 @@
 
 namespace Csra.Interfaces {
 
-    public interface IStorageService : IService {
+    public interface IStorageService : IServiceBase {
 
         /// <summary>
         /// Gets the number of key/value pairs contained in the storage.

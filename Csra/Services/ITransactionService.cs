@@ -3,7 +3,7 @@ using Teradyne.Igxl.Interfaces.Public;
 
 namespace Csra.Interfaces {
 
-    public interface ITransactionService : IService {
+    public interface ITransactionService : IServiceBase {
 
         /// <summary>
         /// Retrieves a field from the shadow register.
@@ -147,6 +147,13 @@ namespace Csra.Interfaces {
         /// <param name="register">The name of the register.</param>
         /// <param name="port">Optional. The name of the port to use for transaction, if empty default or first port is used.</param>
         void ReInitRegister(string register, string port = "");
+
+        /// <summary>
+        /// Sets all registers to their default / init values.
+        /// </summary>
+        /// <remarks>This method resets the state of all components, ensuring they are in their initial
+        /// configuration.</remarks>
+        void ReInitAll();
 
         /// <summary>
         /// Initializes the transaction service for a specific transaction type. This must be called before any other transaction methods are used.

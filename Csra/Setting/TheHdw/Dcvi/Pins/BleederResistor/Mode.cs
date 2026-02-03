@@ -8,6 +8,7 @@ using System;
 
 namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
 
+    [Serializable]
     public class Mode : Setting_Enum<tlDCVIBleederResistor> {
 
         private static readonly Dictionary<string, tlDCVIBleederResistor> _staticCache = [];
@@ -19,7 +20,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
             SetArguments(value, pinList, true);
             if (CheckPinType() == false) return;
             SetBehavior(tlDCVIBleederResistor.Auto, string.Empty, InitMode.OnProgramStarted, false);
-            SetContext(SetAction, ReadFunc, _staticCache);
+            SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
 
@@ -34,11 +35,11 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
             return true;
         }
 
-        private static void SetAction(string pinList, tlDCVIBleederResistor value) {
+        protected override void SetAction(string pinList, tlDCVIBleederResistor value) {
             TestCodeBase.TheHdw.DCVI.Pins(pinList).BleederResistor.Mode = value;
         }
 
-        private static tlDCVIBleederResistor[] ReadFunc(string pin) {
+        protected override tlDCVIBleederResistor[] ReadFunc(string pin) {
             tlDCVIBleederResistor[] result = new tlDCVIBleederResistor[TheExec.Sites.Existing.Count];
             ForEachSite(site => result[site] = TestCodeBase.TheHdw.DCVI.Pins(pin).BleederResistor.Mode);
             return result;
