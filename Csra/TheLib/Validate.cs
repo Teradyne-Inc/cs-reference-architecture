@@ -173,21 +173,23 @@ namespace Csra.TheLib {
                 instance = null;
                 return false;
             }
+            Type targetType = typeof(T);
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            try {
-                Type type = null;
-                foreach (Assembly assembly in assemblies) {
-                    type = assembly.GetType(fullyQualifiedClassName, false);
-                    if (type != null) break;
-                }
-                object classInstance = Activator.CreateInstance(type);
-                instance = classInstance as T;
-                return true;
-            } catch (Exception) {
-                Api.Services.Alert.Error($"Unable to match '{fullyQualifiedClassName}' with existing classes.");
+            Assembly targetAssembly = assemblies.FirstOrDefault(assembly => assembly.FullName == targetType.Assembly.FullName);
+            if (targetAssembly == null) {
+                Api.Services.Alert.Error($"Unable to locate assembly for type '{targetType.FullName}'.");
                 instance = null;
                 return false;
             }
+            Type type = targetAssembly.GetType(fullyQualifiedClassName, false);
+            if (type == null) {
+                Api.Services.Alert.Error($"Unable to locate type '{fullyQualifiedClassName}' in assembly '{targetAssembly.FullName}'.");
+                instance = null;
+                return false;
+            }
+            object classInstance = Activator.CreateInstance(type);
+            instance = classInstance as T;
+            return true;
         }
 
         public virtual bool MultiCondition<T>(string csv, Func<string, T> parser, string argumentName, out T[] conditions,

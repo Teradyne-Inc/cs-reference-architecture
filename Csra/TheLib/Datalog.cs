@@ -9,25 +9,23 @@ namespace Csra.TheLib {
 
         const string _behaviorFeatureOfflinePassResults = "Datalog.Parametric.OfflinePassResults";
 
-        //TODO: implement non-stalling datalog once IG-XL fix available (https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/538)
-
         public virtual void TestFunctional(Site<bool> result, string pattern = "") => TheExec.Flow.FunctionalTestLimit(result, pattern);
 
         public virtual void TestParametric(Site<int> result, double forceValue = 0, string forceUnit = "") {
             if (OfflinePassResults) {
                 int midWayPass = (int)MidWayBetweenLimits();
-                result = new(midWayPass, result.PinName);
+                result.Fill(midWayPass, tlSiteType.Existing);
             }
-            TheExec.Flow.TestLimit(ResultVal: result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
+            TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
                 ForceResults: tlLimitForceResults.Flow);
         }
 
         public virtual void TestParametric(Site<double> result, double forceValue = 0, string forceUnit = "") {
             if (OfflinePassResults) {
                 double midWayPass = MidWayBetweenLimits();
-                result = new(midWayPass, result.PinName);
+                result.Fill(midWayPass, tlSiteType.Existing);
             }
-            TheExec.Flow.TestLimit(ResultVal: result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
+            TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
                 ForceResults: tlLimitForceResults.Flow);
         }
 
@@ -36,7 +34,7 @@ namespace Csra.TheLib {
                 int midWayPass = (int)MidWayBetweenLimits();
                 result = result.Select2d(r => r = midWayPass);
             }
-            TheExec.Flow.TestLimit(ResultVal: result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
+            TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
                 ForceResults: tlLimitForceResults.Flow);
         }
 
@@ -45,7 +43,7 @@ namespace Csra.TheLib {
                 double midWayPass = MidWayBetweenLimits();
                 result = result.Select2d(r => r = midWayPass);
             }
-            TheExec.Flow.TestLimit(ResultVal: result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
+            TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
                 ForceResults: tlLimitForceResults.Flow);
         }
 
@@ -85,8 +83,8 @@ namespace Csra.TheLib {
         public virtual void TestScanNetwork(ScanNetworkPatternResults result, ScanNetworkDatalogOption datalogOptions) {
             if (datalogOptions.HasFlag(ScanNetworkDatalogOption.LogByIclInstance)) {
                 foreach (var instance in result.IclInstance) {
-                    TheExec.Flow.TestLimit(ResultVal: instance.Value.IsFailed, 0, 0, TName: "fail flag");
-                    TheExec.Flow.TestLimit(ResultVal: instance.Value.IsResultValid, -1, -1, TName: "tested flag");
+                    TheExec.Flow.TestLimit(instance.Value.IsFailed, 0, 0, TName: "fail flag");
+                    TheExec.Flow.TestLimit(instance.Value.IsResultValid, -1, -1, TName: "tested flag");
                     TheExec.Datalog.WriteComment($"ssh-icl-instance: \t{instance.Key}\n" +
                         $"On-Chip Compare = {(instance.Value.IsOnChipCompare ? "On" : "Off")}\n" +
                         $"core instance: \t{instance.Value.CoreInstanceName}\n" +
@@ -94,8 +92,8 @@ namespace Csra.TheLib {
                 }
             } else if (datalogOptions.HasFlag(ScanNetworkDatalogOption.LogByCoreInstance)) {
                 foreach (var instance in result.CoreInstance) {
-                    TheExec.Flow.TestLimit(ResultVal: instance.Value.IsFailed, 0, 0, TName: "fail flag");
-                    TheExec.Flow.TestLimit(ResultVal: instance.Value.IsResultValid, -1, -1, TName: "tested flag");
+                    TheExec.Flow.TestLimit(instance.Value.IsFailed, 0, 0, TName: "fail flag");
+                    TheExec.Flow.TestLimit(instance.Value.IsResultValid, -1, -1, TName: "tested flag");
                     TheExec.Datalog.WriteComment($"core instance: \t{instance.Key}\n" +
                         "list of ssh instances:\n\t" + string.Join("\n\t", instance.Value) +
                         "\n" + new string('=', 120) + "\n");
