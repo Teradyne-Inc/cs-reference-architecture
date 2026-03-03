@@ -53,6 +53,7 @@ namespace Demo_CSRA.Functional {
             }
 
             if (ShouldRunPostBody) {
+                TheLib.Setup.Digital.ReadHram(0, CaptType.None, TrigType.Never, false, 0);
                 if (testFunctional) TheLib.Datalog.TestFunctional(_patResult, pattern);
                 if (testValues) TheLib.Datalog.TestParametric(_readWords);
             }

@@ -1,99 +1,150 @@
 ﻿using MsTest = Microsoft.VisualStudio.TestTools.UnitTesting;
-using Teradyne.Igxl.Interfaces.Public;
-using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 using Moq;
+using Teradyne.Igxl.Interfaces.Public;
 using Csra;
 using Csra.Interfaces;
 using static Csra.Api;
+using System;
 
-namespace UT {
+namespace Demo_UT {
 
     [MsTest.TestClass]
     public class Example_UT : Base {
 
+        /// <summary>
+        /// Assert: "checks certain states/objects" (Assert.AreEqual, IsTrue/False)
+        /// </summary>
+        #region Process_ReturnsSum_StateAssertion
         [MsTest.TestMethod]
-        public void SiteIs_ReturnsCorrectValue() {
-            Site<int> a = new(5);
-
-            MsTest.Assert.AreEqual(5, a[0]);
-        }
-
-        [MsTest.DataTestMethod]
-        [MsTest.DataRow(5, 2, 7)]
-        [MsTest.DataRow(0, 5, 5)]
-        [MsTest.DataRow(0, 0, 0)]
-        [MsTest.DataRow(-10, 2, -8)]
-        public void DataTestMethod_AddsSiteValues(int valueA, int valueB, int expected) {
-            Site<int> a = new(valueA);
-            Site<int> b = new(valueB);
-
-            Site<int> c = a + b;
-
-            MsTest.Assert.AreEqual(expected, c[0]);
-        }
-
-        [MsTest.TestMethod]
-        public void MethodHasBeenCalled_VerifiesConnectCalled() {
-            TheHdw.Pins("hello").DCVI.Connect();
-
-            _mockTheHdw.Verify(x => x.Pins("hello").DCVI.Connect(tlDCVIConnectWhat.Default), Times.Once);
-        }
-
-        [MsTest.TestMethod]
-        public void ValueHasBeenSet_VerifiesErrorOutputModeSet() {
-            TheExec.ErrorOutputMode = tl_ErrorDest.DataTools;
-
-            _mockTheExec.VerifySet(x => x.ErrorOutputMode = tl_ErrorDest.DataTools);
-        }
-
-        [MsTest.DataTestMethod]
-        [MsTest.DataRow("hallo", "ThisString")]
-        [MsTest.DataRow("bye", "CanBeAnything")]
-        public void SetupReturnValue_ReturnsExpectedString(string pin, string returnString) {
-            _mockTheHdw.Setup(x => x.DCVI.Pins(pin).Calibration.ToString()).Returns(returnString);
-
-            string returnValue = TheHdw.DCVI.Pins(pin).Calibration.ToString();
-
-            MsTest.Assert.AreEqual(returnString, returnValue);
-        }
-
-        [MsTest.TestMethod]
-        public void SetupCsraMoq_AlertService_VerifiesErrorCalled() {
-            Mock<IAlertService> alertService = new Mock<IAlertService>() { DefaultValue = DefaultValue.Mock };
-            Services.Configure(alert: alertService.Object);
-            PatternInfo patternInfo = new("TestPattern", false) {
-                ClearFlags = 1860 // Set the invalid value
-            };
-
-            alertService.Verify(alert => alert.Error($"Value must be between 0 and '{PatternInfo.MaxFlags}' (inclusive).", 0,
-                It.IsAny<string>()), Times.Once());
-        }
-
-        [MsTest.TestMethod]
-        public void SetupCsraMoq_TheLib_VerifiesWaitCalled() {
-            Mock<ILib> mockTheLib = new() { DefaultValue = DefaultValue.Mock };
-            Configure(mockTheLib.Object);
-            int waittime = 1860;
-
-            TheLib.Execute.Wait(waittime);
-
-            mockTheLib.Verify(lib => lib.Execute.Wait(waittime, It.IsAny<bool>(), It.IsAny<double>()), Times.Once());
-        }
-
-        [MsTest.TestMethod]
-        public void FakePins_VerifiesConnectCalledForEachInstrument() {
-            // Arrange            
-            string[] pinsArray = ["dig", "dcvi", "dcvs"];
-            InstrumentType[] typesArray = [InstrumentType.UP2200, InstrumentType.UVI264, InstrumentType.UVS256];
-            Pins fakePins = CreateFakePins(pinsArray, typesArray, _mockTheHdw, _mockTheExec);
-
+        public void Process_ReturnsSum_StateAssertion() {
+            // Arrange
+            int a = 5;
+            int b = 7;
             // Act
-            TheLib.Setup.Dc.Connect(fakePins);
-
+            int c = a + b;
             // Assert
-            _mockTheHdw.Verify(hdw => hdw.PPMU.Pins(pinsArray[0]).Connect(), Times.Once);
-            _mockTheHdw.Verify(hdw => hdw.DCVI.Pins(pinsArray[1]).Connect(tlDCVIConnectWhat.Default), Times.Once);
-            _mockTheHdw.Verify(hdw => hdw.DCVS.Pins(pinsArray[2]).Connect(tlDCVSConnectWhat.Default), Times.Once);
+            MsTest.Assert.AreEqual(12, c);
+            MsTest.Assert.IsTrue(c > 0);
+            MsTest.Assert.IsFalse(c == 0);
         }
+        #endregion
+
+        /// <summary>
+        /// SiteGenerics: "checks certain states/objects" (Assert.AreEqual)
+        /// </summary>
+        #region Process_IgXlObject_StateAssertion
+        [MsTest.TestMethod]
+        public void Process_IgXlObject_StateAssertion() {
+            // Arrange
+            Site<int> a = new(5);
+            Site<int> b = new(7);
+            // Act
+            Site<int> c = a + b;
+            // Assert
+            MsTest.Assert.AreEqual(new Site<int>(12), c);
+        }
+        #endregion
+
+        /// <summary>
+        /// DataTestMethod: "parametrized test method example"
+        /// </summary>
+        /// <param name="a">First integer</param>
+        /// <param name="b">Second integer</param>
+        /// <param name="expected">Expected result</param>
+        #region Process_ReturnsSum_Parametrized
+        [MsTest.DataTestMethod]
+        [MsTest.DataRow(10, 15, 25)]
+        [MsTest.DataRow(-5, 5, 0)]
+        [MsTest.DataRow(0, 0, 0)]
+        public void Process_ReturnsSum_Parametrized(int a, int b, int expected) {
+            // Act
+            int c = a + b;
+            // Assert
+            MsTest.Assert.AreEqual(expected, c);
+        }
+        #endregion
+
+        /// <summary>
+        /// Setup: "setup return values that would have been otherwise default"
+        /// </summary>
+        #region Process_ReadFromDependency_SetupReturnValue
+        [MsTest.TestMethod]
+        public void Process_ReadFromDependency_SetupReturnValue() {
+            // Arrange
+            string pinName = "VDD";
+            CreateFakePins([pinName], [InstrumentType.UVI264], _mockTheHdw, _mockTheExec); // Create fake pins for the test
+            PinSite<double> returnValue = new(pinName, 3.3);
+            _mockTheHdw.Setup(hdw => hdw.DCVI.Pins(pinName).Meter.Read(It.IsAny<tlStrobeOption>(), It.IsAny<int>(), It.IsAny<double>(), It.IsAny<tlDCVIMeterReadingFormat>()))
+                .Returns(returnValue.ToPinListData());
+            // Act
+            PinSite<double> actualValue = TheLib.Acquire.Dc.Measure(new Pins(pinName), Measure.Voltage); // Call the method that uses the dependency
+            // Assert
+            MsTest.Assert.AreEqual(returnValue, actualValue); // Verify the result
+        }
+        #endregion
+
+        /// <summary>
+        /// Verify: "checks if specific method was called"
+        /// </summary>
+        #region Process_ForceV_VerifyMethodCall
+        [MsTest.TestMethod]
+        public void Process_ForceV_VerifyMethodCall() {
+            // Arrange
+            string pinName = "PORTB";
+            CreateFakePins([pinName], [InstrumentType.UP2200], _mockTheHdw, _mockTheExec); // Create fake pins for the test
+            double voltageToSet = 3.3;
+            // Act
+            TheLib.Setup.Dc.ForceV(new Pins(pinName), voltageToSet); // Call the method that uses the dependency
+            // Assert
+            _mockTheHdw.Verify(hdw => hdw.PPMU.Pins(pinName).ForceV(voltageToSet), Times.Once); // Verify that the method was called once with the expected parameter
+        }
+        #endregion
+
+        /// <summary>
+        /// VerifySet: "checks if specific property was set"
+        /// </summary>
+        #region Process_ForceV_PropertyWasSet
+        [MsTest.TestMethod]
+        public void Process_ForceV_PropertyWasSet() {
+            // Arrange
+            string pinName = "VDD";
+            CreateFakePins([pinName], [InstrumentType.UVI264], _mockTheHdw, _mockTheExec); // Create fake pins for the test
+            double voltageToSet = 3.3;
+            // Act
+            TheLib.Setup.Dc.ForceV(new Pins(pinName), voltageToSet); // Call the method that uses the dependency
+            // Assert
+            _mockTheHdw.VerifySet(hdw => hdw.DCVI.Pins(pinName).Voltage.Value = voltageToSet, Times.Once); // Verify that the method was called once with the expected parameter
+        }
+        #endregion
+
+        /// <summary>
+        /// Times.Never: a very important blueprint for "should NOT happen"
+        /// </summary>
+        #region Process_ValidInput_TimesNever
+        [MsTest.TestMethod]
+        public void Process_ValidInput_TimesNever() {
+            // Arrange
+            Mock<IAlertService> mockAlertService = new() { DefaultValue = DefaultValue.Mock };
+            Services.Configure(mockAlertService.Object);
+            // Act
+            TheLib.Validate.InRange(7, 5, 10, ""); // 7 is within the range of 5 to 10
+            // Assert
+            mockAlertService.Verify(alert => alert.Error(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()), Times.Never);
+        }
+        #endregion
+
+        /// <summary>
+        /// ThrowsException: "checks if specific exception has been thrown"
+        /// </summary>
+        #region Process_DivideByZero_ThrowsException
+        [MsTest.TestMethod]
+        public void Process_DivideByZero_ThrowsException() {
+            // Arrange
+            int a = 5;
+            int b = 0;
+            // Act && Assert
+            MsTest.Assert.ThrowsException<DivideByZeroException>(() => { int c = a / b; });
+        }
+        #endregion
     }
 }

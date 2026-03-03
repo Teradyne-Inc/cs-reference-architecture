@@ -119,5 +119,31 @@ namespace Tol {
         /// Sets the PPMU to high impedance mode.
         /// </summary>
         public void ForceHiZ();
+
+        /// <summary>
+        /// Configure ramp on PPMU.
+        /// </summary>
+        /// <param name="signalName">The name of the signal.</param>
+        /// <param name="startingValue">The value to start at.</param>
+        /// <param name="incrementValue">The value to increment by.</param>
+        /// <param name="incrementPeriod">The period between each increment.</param>
+        /// <param name="startDelay">The delay between the start and the first increment within the ramp.</param>
+        /// <param name="incrementCount">The number of increments within the ramp.</param>
+        public void ConfigureRamp(string signalName, double startingValue, double incrementValue, double incrementPeriod, double startDelay, int incrementCount);
+
+        /// <summary>
+        /// Run pattern asynchronous with the pre-configured ramp.
+        /// </summary>
+        /// <param name="patternName">The name of the pattern to run in sync with the ramp.</param>
+        /// <param name="signalName">The name of the signal of the ramp.</param>
+        /// <param name="timeout">The desired timeout period to wait while the PPMU sources.</param>
+        public void RunPatternSyncRamp(string patternName, string signalName, double timeout);
+
+        /// <summary>
+        /// Configure pattern to control PPMU. Functionality exclusive to the UP5000.
+        /// </summary>
+        /// <param name="numSamplesPerStrobe">The number of samples per strobe.</param>
+        /// <param name="readFormat">The read format for PPMU Capture.</param>
+        public void ConfigurePatternControl(int numSamplesPerStrobe, tlPPMUPatternControlReadFormat readFormat);
     }
 }

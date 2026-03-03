@@ -32,14 +32,14 @@ namespace Demo_CS.Search {
             dcvs.Connect();
             dcvs.Voltage.Value = from;
             dcvs.Gate = true;
-            TheHdw.Wait(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
+            TheHdw.SetSettlingTimer(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
 
             string timeDomain = TheHdw.Patterns(pattern).TimeDomains;
             double inValue = from;
             double increment = (to - from) / (count - 1);
             for (int i = 0; i < count; i++) {
                 dcvs.Voltage.Main.Value = inValue;
-                TheHdw.Wait(waitTime);
+                TheHdw.SetSettlingTimer(waitTime);
                 TheHdw.Patterns(pattern).Start();
                 TheHdw.Digital.TimeDomains(timeDomain).Patgen.HaltWait();
                 measurements.Add(TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite());
@@ -81,14 +81,14 @@ namespace Demo_CS.Search {
             dcvs.Connect();
             dcvs.Voltage.Value = from;
             dcvs.Gate = true;
-            TheHdw.Wait(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
+            TheHdw.SetSettlingTimer(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
 
             string timeDomain = TheHdw.Patterns(pattern).TimeDomains;
             double inValue = from;
             double increment = (to - from) / (count - 1);
             for (int i = 0; i < count; i++) {
                 dcvs.Voltage.Main.Value = inValue;
-                TheHdw.Wait(waitTime);
+                TheHdw.SetSettlingTimer(waitTime);
                 TheHdw.Patterns(pattern).Start();
                 TheHdw.Digital.TimeDomains(timeDomain).Patgen.HaltWait();
                 Site<bool> value = TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite();
@@ -122,7 +122,7 @@ namespace Demo_CS.Search {
             dcvs.Connect();
             dcvs.Voltage.Value = (from + to) / 2;
             dcvs.Gate = true;
-            TheHdw.Wait(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
+            TheHdw.SetSettlingTimer(waitTime); // first step may be bigger than the subsequent ones, use 2x settling
 
             Site<double> results = new Site<double>(_notFoundResult);
             Site<bool> alwaysTripped = new Site<bool>(true);
@@ -136,7 +136,7 @@ namespace Demo_CS.Search {
                 ForEachSite(site => {
                     dcvs.Voltage.Main.Value = inValue[site];
                 });
-                TheHdw.Wait(waitTime);
+                TheHdw.SetSettlingTimer(waitTime);
                 TheHdw.Patterns(pattern).Start();
                 TheHdw.Digital.TimeDomains(timeDomain).Patgen.HaltWait();
                 value = TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite();

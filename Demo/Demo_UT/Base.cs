@@ -3,25 +3,50 @@ using System.Linq;
 using System;
 using Moq;
 using Teradyne.Igxl.Interfaces.Public;
-using IGXLFakes;
 using Csra;
+using IGXLFakes;
 
-namespace UT {
+namespace Demo_UT {
 
+    /// <exclude />
     [MsTest.TestClass]
     public class Base {
 
+        /// <summary>
+        /// Represents a mock object for the <see cref="IHdwL"/> interface used in testing scenarios.
+        /// </summary>
+        /// <remarks>This protected field is intended for use in unit tests to simulate the behavior of
+        /// the <see cref="IHdwL"/> interface. It allows for the setup of expected calls and verification of
+        /// interactions with the hardware layer.</remarks>
         protected Mock<IHdwL> _mockTheHdw;
+
+        /// <summary>
+        /// Represents a mock object for the <see cref="IExecL"/> interface used in testing scenarios.
+        /// </summary>
+        /// <remarks>This field is intended for use in unit tests to simulate and verify interactions with
+        /// the <see cref="IExecL"/> interface. It allows for setting up expectations and verifying that the expected
+        /// methods are called with the correct parameters.</remarks>
         protected Mock<IExecL> _mockTheExec;
+
+        /// <summary>
+        /// Represents a mock object for the <see cref="IProgramL"/> interface.
+        /// </summary>
+        /// <remarks>This field is used to simulate the behavior of the <see cref="IProgramL"/> interface
+        /// in unit tests. It allows for the verification of interactions and the setup of expected behaviors.</remarks>
         protected Mock<IProgramL> _mockTheProgram;
 
-        // Runs once before any tests in the assembly
+        /// <summary>
+        /// Initializes the test assembly before any tests are run.
+        /// </summary>
+        /// <param name="context">The test context provided by the MSTest framework, containing information about the test environment.</param>
         [MsTest.AssemblyInitialize]
         public static void AssemblyInit(MsTest.TestContext context) {
             TestHarness.SetupTestHarnessUtilityFactory();
         }
 
-        // Runs once before each test in the test class
+        /// <summary>
+        /// Initializes the test environment by setting up mock objects and resetting services.
+        /// </summary>
         [MsTest.TestInitialize]
         public void TestInit() {
             _mockTheHdw = new Mock<IHdwL>() { DefaultValue = DefaultValue.Mock };
@@ -41,12 +66,12 @@ namespace UT {
         }
 
         /// <summary>
-        /// Setup the Mock calls for the IHdwL and IExceL interfaces to create a FakePins for testing purposes. 
+        /// Setup the Mock calls for the IHdwL and IExcecL interfaces to create a FakePins for testing purposes. 
         /// </summary>
         /// <param name="pinArray">An array of pin names.</param>
         /// <param name="types">An array of pin types corresponding to the pin names.</param>
         /// <param name="mockTheHdw">A mock object for the IHdwL interface.</param>
-        /// <param name="mockTheExec">A mock object for the IExceL interface.</param>
+        /// <param name="mockTheExec">A mock object for the IExcecL interface.</param>
         /// <returns>A comma-separated string of pin names.</returns>
         /// <exception cref="ArgumentException">Thrown when the lengths of pinArray and types do not match.</exception>
         public static Pins CreateFakePins(string[] pinArray, InstrumentType[] types, Mock<IHdwL> mockTheHdw, Mock<IExecL> mockTheExec) {
@@ -56,7 +81,6 @@ namespace UT {
             string pinList = string.Join(", ", pinArray);
             mockTheExec.Setup(x => x.DataManager.DecomposePinList(pinList, out pinArray, out count)).Returns(0);
             for (int i = 0; i < pinArray.Length; i++) {
-                string[] outPins = { pinArray[i] };
                 string[] chanTypes = { "nonsense" };
                 int countPins = pinArray[i].Split(',').Length;
                 int defaultCount = 1;

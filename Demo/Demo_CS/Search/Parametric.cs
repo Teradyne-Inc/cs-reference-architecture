@@ -47,7 +47,7 @@ namespace Demo_CS.Search {
 
             //Body
             _measuredDcValues = [];
-            _measurePin.ForceI(0);
+            _measurePin.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             _measurePin.Gate = tlOnOff.Off;
             _forcePin.ForceV(from, clampCurrent);
             _forcePin.Gate = tlOnOff.On;
@@ -106,7 +106,7 @@ namespace Demo_CS.Search {
             _allPins.Connect();
 
             //Body
-            _measurePin.ForceI(0);
+            _measurePin.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             _measurePin.Gate = tlOnOff.Off;
             _forcePin.ForceV(from, clampCurrent);
             _forcePin.Gate = tlOnOff.On;

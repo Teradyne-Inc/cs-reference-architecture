@@ -13,15 +13,23 @@ Public Function Functional_Read_Baseline(aPattern As Pattern, aPinList As PinLis
     TheHdw.Digital.Pins("porta").InitState = chInitoff
     Call TheHdw.SettleWait(1#)
     
-    Call TheHdw.Digital.HRAM.SetTrigger(trigFirst, False, 0, True)
-    TheHdw.Digital.HRAM.CaptureType = captAll
-    TheHdw.Digital.HRAM.Size = 128
+    With TheHdw.Digital.HRAM
+        .SetTrigger trigFirst, False, 0, True
+        .CaptureType = captAll
+        .Size = 128
+    End With
     
     Call TheHdw.Patterns(aPattern).Start
     Call TheHdw.Patterns(aPattern).HaltWait
     
     lResult = TheHdw.Digital.Patgen.PatternBurstPassedPerSite
     lWords = TheHdw.Digital.Pins(aPinList).HRAM.ReadDataWord(startIndex:=8, Count:=8, WordSize:=8, msbOrLsb:=tlBitOrderLsbFirst)
+    
+    With TheHdw.Digital.HRAM
+        .SetTrigger trigNever, False, 0, True
+        .CaptureType = captNone
+        .Size = 0
+    End With
     
     Call TheExec.Flow.FunctionalTestLimit(lResult, aPattern)
     For i = LBound(lWords) To UBound(lWords)

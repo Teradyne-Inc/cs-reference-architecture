@@ -304,8 +304,7 @@ Public Function Trim_Digital_BinaryTarget(aPattern As Pattern, aCapPins As PinLi
             lInValue(Site) = (lFromPerSite(Site) + lToPerSite(Site)) / 2
             lPatSpec(Site) = aPattern.Value + ":hram_mod" + CStr(lInValue(Site))
         Next Site
-        Call TheHdw.PatternsPerSite(lPatSpec).Start
-        Call TheHdw.PatternsPerSite(lPatSpec).HaltWait
+
         lValue = OneMeasurementPatternsPerSite(lPatSpec, aCapPins, lInValue)
 
         For Each Site In TheExec.Sites.Active

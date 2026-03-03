@@ -22,13 +22,13 @@ Public Function Search_Functional_LinearFull(aPattern As Pattern, aForcePins As 
         .Voltage.Value = aFrom
         .Gate = True
 '       first step may be bigger than the subsequent ones, use 2x settling
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         
         lInValue = aFrom
         lIncrement = (aTo - aFrom) / (aCount - 1)
         For i = 0 To aCount - 1
             .Voltage.Main = lInValue
-            Call TheHdw.Wait(aWaitTime)
+            Call TheHdw.SetSettlingTimer(aWaitTime)
             Call TheHdw.Patterns(aPattern).Start
             Call TheHdw.Digital.TimeDomains(lTimeDomain).Patgen.HaltWait
             lMeasurements(i) = TheHdw.Digital.Patgen.PatternBurstPassedPerSite
@@ -72,13 +72,13 @@ Public Function Search_Functional_LinearStop(aPattern As Pattern, aForcePins As 
         .Voltage.Value = aFrom
         .Gate = True
 '       first step may be bigger than the subsequent ones, use 2x settling
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         
         lInValue = aFrom
         lIncrement = (aTo - aFrom) / (aCount - 1)
         For i = 0 To aCount - 1
             .Voltage.Value = lInValue
-            Call TheHdw.Wait(aWaitTime)
+            Call TheHdw.SetSettlingTimer(aWaitTime)
             Call TheHdw.Patterns(aPattern).Start
             Call TheHdw.Digital.TimeDomains(lTimeDomain).Patgen.HaltWait
             lValue = TheHdw.Digital.Patgen.PatternBurstPassedPerSite
@@ -120,11 +120,11 @@ Public Function Search_Functional_Binary(aPattern As Pattern, aForcePins As Stri
         .Voltage.Value = (aFrom + aTo) / 2
         .Gate = True
 '       first step may be bigger than the subsequent ones, use 2x settling
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         
         Do
             .Voltage.ValuePerSite = lInValue
-            Call TheHdw.Wait(aWaitTime)
+            Call TheHdw.SetSettlingTimer(aWaitTime)
             Call TheHdw.Patterns(aPattern).Start
             Call TheHdw.Digital.TimeDomains(lTimeDomain).Patgen.HaltWait
             lValue = TheHdw.Digital.Patgen.PatternBurstPassedPerSite

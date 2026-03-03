@@ -23,7 +23,7 @@ Public Function Search_Parametric_LinearFull(aForcePins As String, aMeasurePin A
     Call TheHdw.PPMU.Pins(aForcePins & ", " & aMeasurePin).Connect
     
     With TheHdw.PPMU.Pins(aMeasurePin)
-        Call .ForceI(0)
+        Call .ForceI(0, 0.002) ' using 2mA range to avoid big settling times until changed in v11.10 and later
         .Gate = tlOff
     End With
     
@@ -75,7 +75,7 @@ Public Function Search_Parametric_LinearStop(aForcePins As String, aMeasurePin A
     Call TheHdw.PPMU.Pins(aForcePins & ", " & aMeasurePin).Connect
     
     With TheHdw.PPMU.Pins(aMeasurePin)
-        Call .ForceI(0)
+        Call .ForceI(0, 0.002) ' using 2mA range to avoid big settling times until changed in v11.10 and later
         .Gate = tlOff
     End With
     

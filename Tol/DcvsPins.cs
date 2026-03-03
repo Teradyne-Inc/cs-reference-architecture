@@ -249,6 +249,16 @@ namespace Tol {
             if (clampValue.HasValue) Voltage.Value = clampValue.Value;
         }
 
+        public void CreateCaptureSignal(string signalName, tlDCVSMeterMode mode, double range, double sampleRate, int sampleSize, bool loadSettings = true) {
+            HardwareApi.Capture.Signals.Add(signalName);
+            DriverDCVSCaptureSignal signal = HardwareApi.Capture.Signals[signalName];
+            signal.Mode.Value = mode;
+            signal.Range.Value = range;
+            signal.SampleRate.Value = sampleRate;
+            signal.SampleSize.Value = sampleSize;
+            if (loadSettings) signal.LoadSettings();
+        }
+
         public IDcvsPins[] GetIndividualPins() {
             TheExec.DataManager.DecomposePinList(Name, out string[] individualPins, out _);
             return individualPins.Select(pin => new DcvsPins(pin)).ToArray();

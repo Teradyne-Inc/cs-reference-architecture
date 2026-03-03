@@ -18,10 +18,10 @@ Public Function Resistance_Contact_Baseline(aForcePin As PinList, aForceFirst As
         .ClampVHi.Value = .ClampVHi.Max
         .ClampVLo.Value = aClampValue
         .Gate = tlOn
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         lMeasFirst = .Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
         Call .ForceI(aForceSecond, aForceSecond)
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         lMeasSecond = .Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
     End With
     

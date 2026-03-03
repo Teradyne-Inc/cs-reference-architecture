@@ -125,8 +125,30 @@ namespace Tol {
         }
 
         public void ForceHiZ() {
-            HardwareApi.ForceI(0);
+            HardwareApi.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             HardwareApi.Gate = tlOnOff.Off;
+        }
+
+        public void ConfigureRamp(string signalName, double startingValue, double incrementValue, double incrementPeriod, double startDelay, int incrementCount) {
+            HardwareApi.Source.Signals.Add(signalName);
+            DriverPPMURampGenerator functionGenerator = HardwareApi.Source.Signals[signalName].FunctionGenerator.Ramp;
+            functionGenerator.Mode = tlPPMUSourceMode.ForceV;
+            functionGenerator.StartingValue.Value = startingValue;
+            functionGenerator.IncrementValue = incrementValue;
+            functionGenerator.IncrementPeriod = incrementPeriod;
+            functionGenerator.StartDelay = startDelay;
+            functionGenerator.IncrementCount.Value = incrementCount;
+        }
+
+        public void RunPatternSyncRamp(string patternName, string signalName, double timeout) {
+            HardwareApi.Source.Signals[signalName].Start(patternName);
+            HardwareApi.Source.Signals.WaitForSourceDone(timeout);
+        }
+
+        public void ConfigurePatternControl(int numSamplesPerStrobe, tlPPMUPatternControlReadFormat readFormat) {
+            HardwareApi.ForceI(0, 0.0002); // Controlling PPMU through Pattern is exclusive to UP5000.
+            TheHdw.PPMU.PatternControl.NumberOfSamplesPerStrobe = numSamplesPerStrobe; // Missing PatternControl interface in tlDriverPPMUPins
+            TheHdw.PPMU.PatternControl.ReadFormat = tlPPMUPatternControlReadFormat.ArrayOfAllSamples; 
         }
 
         public IPpmuPins[] GetIndividualPins() {

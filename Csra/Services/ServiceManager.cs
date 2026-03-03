@@ -3,9 +3,8 @@ using Csra.Interfaces;
 
 namespace Csra.Services {
 
-    /// <exclude />
     [Serializable]
-    public class ServiceManager : IServices {
+    internal class ServiceManager : IServices {
 
         protected internal ServiceManager() {
             Alert = Services.Alert.Instance;

@@ -68,7 +68,7 @@ namespace Demo_CS.Resistance {
             measure.Connect();
 
             //Body
-            measure.ForceI(0);
+            measure.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             measure.Gate = tlOnOff.Off;
             force.ForceI(forceValue, forceValue);
             force.ClampVHi.Value = clampValueOfForcePin;
@@ -115,7 +115,7 @@ namespace Demo_CS.Resistance {
             measure.Connect();
 
             //Body
-            measure.ForceI(0);
+            measure.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             measure.Gate = tlOnOff.Off;
             force.ForceI(forceFirstValue, forceFirstValue);
             force.ClampVHi.Value = clampValueOfForcePin;
@@ -168,7 +168,7 @@ namespace Demo_CS.Resistance {
             digitalPins.Connect();
 
             //Body
-            measPins.ForceI(0);
+            measPins.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             measPins.Gate = tlOnOff.Off;
             force.ForceI(forceCurrentPin, forceCurrentPin);
             force.ClampVHi.Value = clampValueOfForcePin;
@@ -220,7 +220,7 @@ namespace Demo_CS.Resistance {
             digitalPins.Connect();
 
             //Body
-            measPins.ForceI(0);
+            measPins.ForceI(0, 0.002); // using 2mA range to avoid big settling times until changed in v11.10 and later
             measPins.Gate = tlOnOff.Off;
             forceFirst.ForceI(forceValueFirstPin, forceValueFirstPin);
             forceFirst.ClampVHi.Value = clampValueOfForceFirstPin;

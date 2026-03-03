@@ -50,6 +50,10 @@ namespace Demo_CS.Functional {
                 readWords.Add(siteWords);
             }
 
+            TheHdw.Digital.HRAM.SetTrigger(TrigType.Never, false, 0, true);
+            TheHdw.Digital.HRAM.CaptureType = CaptType.None;
+            TheHdw.Digital.HRAM.Size = 0;
+
             TheExec.Flow.FunctionalTestLimit(patResult, pattern);
             TheExec.Flow.TestLimit(readWords, ForceResults: tlLimitForceResults.Flow);
         }

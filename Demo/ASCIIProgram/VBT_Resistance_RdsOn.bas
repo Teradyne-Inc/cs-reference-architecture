@@ -14,7 +14,7 @@ Public Function Resistance_RdsOn_Baseline(aForcePin As PinList, aForceValue As D
         Call .Connect
         Call .ForceI(aForceValue, aForceValue)
         .Gate = tlOn
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         lMeas = .Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
     End With
     
@@ -48,10 +48,12 @@ Public Function Resistance_RdsOn_TwoPinsOneForceOneMeasure(aPinList As PinList, 
     
     With TheHdw.PPMU.Pins(aPinList)
         Call .Connect
+        Call .ForceI(0, 0.002) ' using 2mA range to avoid big settling times until changed in v11.10 and later
+        .Gate = tlOff
         Call .ForceI(aForceValue, aForceValue)
         .ClampVHi.Value = aClampValue
         .Gate = tlOn
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         lMeas = .Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
     End With
                 
@@ -87,13 +89,15 @@ Public Function Resistance_RdsOn_TwoPinsDeltaForceDeltaMeasure(aPinList As PinLi
     
     With TheHdw.PPMU.Pins(aPinList)
         Call .Connect
+        Call .ForceI(0, 0.002) ' using 2mA range to avoid big settling times until changed in v11.10 and later
+        .Gate = tlOff
         Call .ForceI(aForceFirst, aForceFirst)
         .ClampVHi.Value = aClampValue
         .Gate = tlOn
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         lMeasFirst = .Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
         Call .ForceI(aForceSecond, aForceSecond)
-        Call TheHdw.Wait(aWaitTime)
+        Call TheHdw.SetSettlingTimer(aWaitTime)
         lMeasSecond = .Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
     End With
                 
@@ -135,7 +139,7 @@ Public Function Resistance_RdsOn_ThreePinsOneForceTwoMeasure(aForcePin As PinLis
     Call TheHdw.PPMU.Pins(digPins).Connect
     
     With TheHdw.PPMU.Pins(measurePins)
-        Call .ForceI(0)
+        Call .ForceI(0, 0.002) ' using 2mA range to avoid big settling times until changed in v11.10 and later
         .Gate = tlOff
     End With
     With TheHdw.PPMU.Pins(aForcePin)
@@ -143,7 +147,7 @@ Public Function Resistance_RdsOn_ThreePinsOneForceTwoMeasure(aForcePin As PinLis
         .ClampVHi.Value = aClampValueOfForcePin
         .Gate = tlOn
     End With
-    Call TheHdw.Wait(aWaitTime)
+    Call TheHdw.SetSettlingTimer(aWaitTime)
     
     lMeasFirst = TheHdw.PPMU.Pins(aMeasureFirstPin).Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
     lMeasSecond = TheHdw.PPMU.Pins(aMeasureSecondPin).Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
@@ -188,7 +192,7 @@ Public Function Resistance_RdsOn_FourPinsTwoForceTwoMeasure(aForceFirstPin As Pi
     Call TheHdw.PPMU.Pins(digPins).Connect
         
     With TheHdw.PPMU.Pins(measurePins)
-        Call .ForceI(0)
+        Call .ForceI(0, 0.002) ' using 2mA range to avoid big settling times until changed in v11.10 and later
         .Gate = tlOff
     End With
     With TheHdw.PPMU.Pins(aForceFirstPin)
@@ -207,7 +211,7 @@ Public Function Resistance_RdsOn_FourPinsTwoForceTwoMeasure(aForceFirstPin As Pi
         .Gate = True
     End With
         
-    Call TheHdw.Wait(aWaitTime)
+    Call TheHdw.SetSettlingTimer(aWaitTime)
     
     lMeasFirst = TheHdw.PPMU.Pins(aMeasureFirstPin).Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)
     lMeasSecond = TheHdw.PPMU.Pins(aMeasureSecondPin).Read(tlPPMUReadMeasurements, 1, tlPPMUReadingFormatAverage)

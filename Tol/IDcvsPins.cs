@@ -191,6 +191,17 @@ namespace Tol {
         /// </summary>
         /// <param name="clampValue">Optional. The voltage to clamp.</param>
         public void ForceHiZ(double? clampValue = null);
+
+        /// <summary>
+        /// Creates a capture signal with the specified parameters.
+        /// </summary>
+        /// <param name="signalName">The signal name of the capture signal.</param>
+        /// <param name="mode">mode of the capture signal.</param>
+        /// <param name="range">The range of the capture signal.</param>
+        /// <param name="sampleRate">The sample rate of the capture signal. HSVM is enabled by setting the sampleRate > 1.2 (UVS64-HP only).</param>
+        /// <param name="sampleSize">The sample size of the capture signal.</param>
+        /// <param name="loadSettings">Optional. To load settings after configuring settings for the capture signal.</param>
+        public void CreateCaptureSignal(string signalName, tlDCVSMeterMode mode, double range, double sampleRate, int sampleSize, bool loadSettings = true);
     }
 
     public interface IDcvsMeter {
