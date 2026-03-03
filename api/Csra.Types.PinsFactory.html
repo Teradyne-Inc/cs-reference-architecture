@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Types_PinsFactory" data-uid="Csra.Types.PinsFactory" class="text-break">
-Class PinsFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/PinsFactory.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class PinsFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/Pins/PinsFactory.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -109,7 +109,7 @@ public class PinsFactory : Factory</code></pre>
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">Factory</span></div>
+      <div><a class="xref" href="Tol.Factory.html">Factory</a></div>
       <div><span class="xref">PinsFactory</span></div>
     </dd>
   </dl>
@@ -120,28 +120,28 @@ public class PinsFactory : Factory</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreatePpmuPins(string)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreatePpmuPins_System_String_">Factory.CreatePpmuPins(string)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreatePpmuPins(string, tlDriverPPMUPins)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreatePpmuPins_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverPPMUPins_">Factory.CreatePpmuPins(string, tlDriverPPMUPins)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreateDcviPins(string)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDcviPins_System_String_">Factory.CreateDcviPins(string)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreateDcviPins(string, DriverDCVIPins)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDcviPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVIPins_">Factory.CreateDcviPins(string, DriverDCVIPins)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreateDcvsPins(string)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDcvsPins_System_String_">Factory.CreateDcvsPins(string)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreateDcvsPins(string, DriverDCVSPins)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDcvsPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVSPins_">Factory.CreateDcvsPins(string, DriverDCVSPins)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreateDigitalPins(string)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_">Factory.CreateDigitalPins(string)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Factory.CreateDigitalPins(string, DriverDigitalPins)</a>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDigitalPins_">Factory.CreateDigitalPins(string, DriverDigitalPins)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
@@ -181,7 +181,7 @@ public class PinsFactory : Factory</code></pre>
 
   <h3 id="Csra_Types_PinsFactory_GetPins_System_String_Tol_IPpmuPins__Tol_IDcviPins__Tol_IDcvsPins__Tol_IDigitalPins__" data-uid="Csra.Types.PinsFactory.GetPins(System.String,Tol.IPpmuPins@,Tol.IDcviPins@,Tol.IDcvsPins@,Tol.IDigitalPins@)">
   GetPins(string, out IPpmuPins, out IDcviPins, out IDcvsPins, out IDigitalPins)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/PinsFactory.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/Pins/PinsFactory.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -195,13 +195,13 @@ public class PinsFactory : Factory</code></pre>
   <dl class="parameters">
     <dt><code>pinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
-    <dt><code>ppmuPins</code> <span class="xref">IPpmuPins</span></dt>
+    <dt><code>ppmuPins</code> <a class="xref" href="Tol.IPpmuPins.html">IPpmuPins</a></dt>
     <dd></dd>
-    <dt><code>dcviPins</code> <span class="xref">IDcviPins</span></dt>
+    <dt><code>dcviPins</code> <a class="xref" href="Tol.IDcviPins.html">IDcviPins</a></dt>
     <dd></dd>
-    <dt><code>dcvsPins</code> <span class="xref">IDcvsPins</span></dt>
+    <dt><code>dcvsPins</code> <a class="xref" href="Tol.IDcvsPins.html">IDcvsPins</a></dt>
     <dd></dd>
-    <dt><code>digitalPins</code> <span class="xref">IDigitalPins</span></dt>
+    <dt><code>digitalPins</code> <a class="xref" href="Tol.IDigitalPins.html">IDigitalPins</a></dt>
     <dd></dd>
   </dl>
 

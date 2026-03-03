@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DcvsPins | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DcvsPins | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/new/main/apiSpec/new?filename=Tol_DcvsPins.md&amp;value=---%0Auid%3A%20Tol.DcvsPins%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Tol.DcvsPins">
+
+
+
+  <h1 id="Tol_DcvsPins" data-uid="Tol.DcvsPins" class="text-break">
+Class DcvsPins  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Tol.html">Tol</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Tol.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class DcvsPins : IDcvsPins, IPins&lt;IDcvsPins&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">DcvsPins</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Tol.IDcvsPins.html">IDcvsPins</a></div>
+      <div><a class="xref" href="Tol.IPins-1.html">IPins</a>&lt;<a class="xref" href="Tol.IDcvsPins.html">IDcvsPins</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Tol_DcvsPins__ctor_" data-uid="Tol.DcvsPins.#ctor*"></a>
+
+  <h3 id="Tol_DcvsPins__ctor_System_String_" data-uid="Tol.DcvsPins.#ctor(System.String)">
+  DcvsPins(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DcvsPins(string pinList)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins__ctor_" data-uid="Tol.DcvsPins.#ctor*"></a>
+
+  <h3 id="Tol_DcvsPins__ctor_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVSPins_" data-uid="Tol.DcvsPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)">
+  DcvsPins(string, DriverDCVSPins)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DcvsPins(string pinList, DriverDCVSPins driverDCVSPins)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pinList</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>driverDCVSPins</code> <span class="xref">DriverDCVSPins</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Tol_DcvsPins_Bandwidth_" data-uid="Tol.DcvsPins.Bandwidth*"></a>
+
+  <h3 id="Tol_DcvsPins_Bandwidth" data-uid="Tol.DcvsPins.Bandwidth">
+  Bandwidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS bandwidth setting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSiteRange&lt;double&gt; Bandwidth { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSiteRange-1.html">IValuePerSiteRange</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Current_" data-uid="Tol.DcvsPins.Current*"></a>
+
+  <h3 id="Tol_DcvsPins_Current" data-uid="Tol.DcvsPins.Current">
+  Current
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS force or clamp current.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSite&lt;double&gt; Current { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSite-1.html">IValuePerSite</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_CurrentRange_" data-uid="Tol.DcvsPins.CurrentRange*"></a>
+
+  <h3 id="Tol_DcvsPins_CurrentRange" data-uid="Tol.DcvsPins.CurrentRange">
+  CurrentRange
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS current range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSiteRange&lt;double&gt; CurrentRange { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSiteRange-1.html">IValuePerSiteRange</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Gate_" data-uid="Tol.DcvsPins.Gate*"></a>
+
+  <h3 id="Tol_DcvsPins_Gate" data-uid="Tol.DcvsPins.Gate">
+  Gate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS gate state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSite&lt;bool&gt; Gate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSite-1.html">IValuePerSite</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_HardwareApi_" data-uid="Tol.DcvsPins.HardwareApi*"></a>
+
+  <h3 id="Tol_DcvsPins_HardwareApi" data-uid="Tol.DcvsPins.HardwareApi">
+  HardwareApi
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handle to legacy IG-XL object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DriverDCVSPins HardwareApi { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">DriverDCVSPins</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Meter_" data-uid="Tol.DcvsPins.Meter*"></a>
+
+  <h3 id="Tol_DcvsPins_Meter" data-uid="Tol.DcvsPins.Meter">
+  Meter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the DCVI meter properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDcvsMeter Meter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IDcvsMeter.html">IDcvsMeter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Mode_" data-uid="Tol.DcvsPins.Mode*"></a>
+
+  <h3 id="Tol_DcvsPins_Mode" data-uid="Tol.DcvsPins.Mode">
+  Mode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS force mode settings, e.g. Voltage, Current.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSite&lt;tlDCVSMode&gt; Mode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSite-1.html">IValuePerSite</a>&lt;<span class="xref">tlDCVSMode</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Name_" data-uid="Tol.DcvsPins.Name*"></a>
+
+  <h3 id="Tol_DcvsPins_Name" data-uid="Tol.DcvsPins.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the pin, pin group or comma separated pin list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Voltage_" data-uid="Tol.DcvsPins.Voltage*"></a>
+
+  <h3 id="Tol_DcvsPins_Voltage" data-uid="Tol.DcvsPins.Voltage">
+  Voltage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS force or clamp voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSiteRange&lt;double&gt; Voltage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSiteRange-1.html">IValuePerSiteRange</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_VoltageRange_" data-uid="Tol.DcvsPins.VoltageRange*"></a>
+
+  <h3 id="Tol_DcvsPins_VoltageRange" data-uid="Tol.DcvsPins.VoltageRange">
+  VoltageRange
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The DCVS voltage range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IValuePerSiteRange&lt;double&gt; VoltageRange { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSiteRange-1.html">IValuePerSiteRange</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Tol_DcvsPins_Connect_" data-uid="Tol.DcvsPins.Connect*"></a>
+
+  <h3 id="Tol_DcvsPins_Connect_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.Connect(System.Nullable{System.Boolean})">
+  Connect(bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Connects the specified DUT pins to the DCVS.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Connect(bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_CreateCaptureSignal_" data-uid="Tol.DcvsPins.CreateCaptureSignal*"></a>
+
+  <h3 id="Tol_DcvsPins_CreateCaptureSignal_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_" data-uid="Tol.DcvsPins.CreateCaptureSignal(System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)">
+  CreateCaptureSignal(string, tlDCVSMeterMode, double, double, int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a capture signal with the specified parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateCaptureSignal(string signalName, tlDCVSMeterMode mode, double range, double sampleRate, int sampleSize, bool loadSettings = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>signalName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The signal name of the capture signal.</p>
+</dd>
+    <dt><code>mode</code> <span class="xref">tlDCVSMeterMode</span></dt>
+    <dd><p>mode of the capture signal.</p>
+</dd>
+    <dt><code>range</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The range of the capture signal.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The sample rate of the capture signal. HSVM is enabled by setting the sampleRate &gt; 1.2 (UVS64-HP only).</p>
+</dd>
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The sample size of the capture signal.</p>
+</dd>
+    <dt><code>loadSettings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Optional. To load settings after configuring settings for the capture signal.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Disconnect_" data-uid="Tol.DcvsPins.Disconnect*"></a>
+
+  <h3 id="Tol_DcvsPins_Disconnect_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.Disconnect(System.Nullable{System.Boolean})">
+  Disconnect(bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disconnects the specified DUT pins from the DCVS.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Disconnect(bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceHiZ_" data-uid="Tol.DcvsPins.ForceHiZ*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceHiZ_System_Nullable_System_Double__" data-uid="Tol.DcvsPins.ForceHiZ(System.Nullable{System.Double})">
+  ForceHiZ(double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the DCVS to high impedance mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceHiZ(double? clampValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clampValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage to clamp.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceI_" data-uid="Tol.DcvsPins.ForceI*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})">
+  ForceI(double, double?, double?, double?, bool, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the force current, changing its force mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceI(double forceCurrent, double? clampVoltage = null, double? currentRange = null, double? voltageRange = null, bool setCurrentMode = true, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to force.</p>
+</dd>
+    <dt><code>clampVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage to clamp.</p>
+</dd>
+    <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The current range for measurement.</p>
+</dd>
+    <dt><code>voltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage range.</p>
+</dd>
+    <dt><code>setCurrentMode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Optional. To set the force mode to current.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceISetMeterI_" data-uid="Tol.DcvsPins.ForceISetMeterI*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceISetMeterI_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceISetMeterI(double, double, double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force current, and configures the meter to measure current.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceISetMeterI(double forceCurrent, double clampVoltage, double measureCurrentRange, double forceCurrentRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to force.</p>
+</dd>
+    <dt><code>clampVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to clamp.</p>
+</dd>
+    <dt><code>measureCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current range for measurement.</p>
+</dd>
+    <dt><code>forceCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current range for forcing.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceISetMeterV_" data-uid="Tol.DcvsPins.ForceISetMeterV*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceISetMeterV(double, double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force current, and configures the meter to measure voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceISetMeterV(double forceCurrent, double clampVoltage, double forceCurrentRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to force.</p>
+</dd>
+    <dt><code>clampVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to clamp.</p>
+</dd>
+    <dt><code>forceCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current range for forcing.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceV_" data-uid="Tol.DcvsPins.ForceV*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})">
+  ForceV(double, double?, double?, double?, bool, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the force voltage, changing its force mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceV(double forceVoltage, double? clampCurrent = null, double? voltageRange = null, double? currentRange = null, bool setVoltageMode = false, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to force.</p>
+</dd>
+    <dt><code>clampCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The current to clamp.</p>
+</dd>
+    <dt><code>voltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage range.</p>
+</dd>
+    <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The current range.</p>
+</dd>
+    <dt><code>setVoltageMode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Optional. To set the force mode to voltage.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceVSetMeterI_" data-uid="Tol.DcvsPins.ForceVSetMeterI*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceVSetMeterI(double, double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force voltage, and configures the meter to measure current.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceVSetMeterI(double forceVoltage, double clampCurrent, double measureCurrentRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to force.</p>
+</dd>
+    <dt><code>clampCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to clamp.</p>
+</dd>
+    <dt><code>measureCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current range for measurement.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ForceVSetMeterV_" data-uid="Tol.DcvsPins.ForceVSetMeterV*"></a>
+
+  <h3 id="Tol_DcvsPins_ForceVSetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.DcvsPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceVSetMeterV(double, double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force voltage, and configures the meter to measure voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ForceVSetMeterV(double forceVoltage, double clampCurrent, double measureVoltageRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to force.</p>
+</dd>
+    <dt><code>clampCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to clamp.</p>
+</dd>
+    <dt><code>measureVoltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage range for measurement.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_GetIndividualPins_" data-uid="Tol.DcvsPins.GetIndividualPins*"></a>
+
+  <h3 id="Tol_DcvsPins_GetIndividualPins" data-uid="Tol.DcvsPins.GetIndividualPins">
+  GetIndividualPins()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the individual pins (array of single pins).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDcvsPins[] GetIndividualPins()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IDcvsPins.html">IDcvsPins</a>[]</dt>
+    <dd><p>Returns an array of single pins.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_GetPinListItem_" data-uid="Tol.DcvsPins.GetPinListItem*"></a>
+
+  <h3 id="Tol_DcvsPins_GetPinListItem" data-uid="Tol.DcvsPins.GetPinListItem">
+  GetPinListItem()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the pin list item (array of pins as a single item).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDcvsPins[] GetPinListItem()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IDcvsPins.html">IDcvsPins</a>[]</dt>
+    <dd><p>Returns an array of pins as single item.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Measure_" data-uid="Tol.DcvsPins.Measure*"></a>
+
+  <h3 id="Tol_DcvsPins_Measure_System_Int32_System_Double_" data-uid="Tol.DcvsPins.Measure(System.Int32,System.Double)">
+  Measure(int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs measurement(s) on the DCVS, returning the average of measured value(s).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinSite&lt;double&gt; Measure(int sampleSize = 1, double sampleRate = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Optional. The number of samples.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>Returns the average of those measured samples.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_MeasureSamples_" data-uid="Tol.DcvsPins.MeasureSamples*"></a>
+
+  <h3 id="Tol_DcvsPins_MeasureSamples_System_Int32_System_Double_" data-uid="Tol.DcvsPins.MeasureSamples(System.Int32,System.Double)">
+  MeasureSamples(int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs measurement(s) on the DCVS, returning the measured samples.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinSite&lt;Samples&lt;double&gt;&gt; MeasureSamples(int sampleSize, double sampleRate = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of samples.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<span class="xref">Samples</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;&gt;</dt>
+    <dd><p>Returns the measured samples.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Read_" data-uid="Tol.DcvsPins.Read*"></a>
+
+  <h3 id="Tol_DcvsPins_Read_System_Int32_System_Double_" data-uid="Tol.DcvsPins.Read(System.Int32,System.Double)">
+  Read(int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads the DCVS measurement values, from previous strobes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinSite&lt;double&gt; Read(int sampleSize = 1, double sampleRate = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Optional. The number of samples to average.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>Returns the average of those measured samples.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_ReadSamples_" data-uid="Tol.DcvsPins.ReadSamples*"></a>
+
+  <h3 id="Tol_DcvsPins_ReadSamples_System_Int32_System_Double_" data-uid="Tol.DcvsPins.ReadSamples(System.Int32,System.Double)">
+  ReadSamples(int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads the DCVS measurement samples, from previous strobes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinSite&lt;Samples&lt;double&gt;&gt; ReadSamples(int sampleSize, double sampleRate = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of samples.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<span class="xref">Samples</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;&gt;</dt>
+    <dd><p>Returns the measured samples.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_SetCurrentRanges_" data-uid="Tol.DcvsPins.SetCurrentRanges*"></a>
+
+  <h3 id="Tol_DcvsPins_SetCurrentRanges_System_Double_System_Double_" data-uid="Tol.DcvsPins.SetCurrentRanges(System.Double,System.Double)">
+  SetCurrentRanges(double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the force and meter current ranges.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetCurrentRanges(double forceRange, double meterRange)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The force current range.</p>
+</dd>
+    <dt><code>meterRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The meter current range.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_SetMeterI_" data-uid="Tol.DcvsPins.SetMeterI*"></a>
+
+  <h3 id="Tol_DcvsPins_SetMeterI_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Tol.DcvsPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double})">
+  SetMeterI(double?, double?, double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Meter to current mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMeterI(double? currentRange = null, double? filter = null, double? outputRange = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The current range for measurement.</p>
+</dd>
+    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Specifies the filter bandwidth, which attenuates high-frequency noise.</p>
+</dd>
+    <dt><code>outputRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_SetMeterV_" data-uid="Tol.DcvsPins.SetMeterV*"></a>
+
+  <h3 id="Tol_DcvsPins_SetMeterV_System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Tol.DcvsPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Double})">
+  SetMeterV(double?, double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Meter to voltage mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMeterV(double? voltageRange = null, double? filter = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>voltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage range for measurement.</p>
+</dd>
+    <dt><code>filter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. Specifies the filter bandwidth, which attenuates high-frequency noise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_DcvsPins_Strobe_" data-uid="Tol.DcvsPins.Strobe*"></a>
+
+  <h3 id="Tol_DcvsPins_Strobe_System_Int32_System_Double_" data-uid="Tol.DcvsPins.Strobe(System.Int32,System.Double)">
+  Strobe(int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/DcvsPins.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs multiple measurements (strobes) on the DCVS, to read back the values later.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Strobe(int sampleSize = 1, double sampleRate = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Optional. The number of samples.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

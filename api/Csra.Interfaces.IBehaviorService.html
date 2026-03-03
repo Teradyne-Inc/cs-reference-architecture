@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Interfaces_IBehaviorService" data-uid="Csra.Interfaces.IBehaviorService" class="text-break">
-Interface IBehaviorService  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L5"><i class="bi bi-code-slash"></i></a>
+Interface IBehaviorService  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L5"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -130,7 +130,7 @@ Interface IBehaviorService  <a class="header-action link-secondary" title="View 
 
   <h3 id="Csra_Interfaces_IBehaviorService_Features" data-uid="Csra.Interfaces.IBehaviorService.Features">
   Features
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a collection containing all defined features.</p>
@@ -164,7 +164,7 @@ Interface IBehaviorService  <a class="header-action link-secondary" title="View 
 
   <h3 id="Csra_Interfaces_IBehaviorService_FilePath" data-uid="Csra.Interfaces.IBehaviorService.FilePath">
   FilePath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets/Sets the import / export file path.</p>
@@ -202,7 +202,7 @@ Interface IBehaviorService  <a class="header-action link-secondary" title="View 
 
   <h3 id="Csra_Interfaces_IBehaviorService_Export_System_String_" data-uid="Csra.Interfaces.IBehaviorService.Export(System.String)">
   Export(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Writes all features to the specified file, or a previously defined <a class="xref" href="Csra.Interfaces.IBehaviorService.html#Csra_Interfaces_IBehaviorService_FilePath">FilePath</a> if empty. Updates the <a class="xref" href="Csra.Interfaces.IBehaviorService.html#Csra_Interfaces_IBehaviorService_FilePath">FilePath</a> setting.</p>
@@ -237,7 +237,7 @@ Interface IBehaviorService  <a class="header-action link-secondary" title="View 
 
   <h3 id="Csra_Interfaces_IBehaviorService_GetFeature__1_System_String_" data-uid="Csra.Interfaces.IBehaviorService.GetFeature``1(System.String)">
   GetFeature&lt;T&gt;(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads a feature's value. Type must match the original definition, an exception is thrown otherwise.</p>
@@ -284,7 +284,7 @@ Interface IBehaviorService  <a class="header-action link-secondary" title="View 
 
   <h3 id="Csra_Interfaces_IBehaviorService_Import_System_String_" data-uid="Csra.Interfaces.IBehaviorService.Import(System.String)">
   Import(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads the specified file, or a previously defined <a class="xref" href="Csra.Interfaces.IBehaviorService.html#Csra_Interfaces_IBehaviorService_FilePath">FilePath</a> if empty. Incrementally updates features with new values.
@@ -320,7 +320,7 @@ Call <code>Services.Behavior.Reset()</code> to clear all data first. Updates the
 
   <h3 id="Csra_Interfaces_IBehaviorService_SetFeature__1_System_String___0_" data-uid="Csra.Interfaces.IBehaviorService.SetFeature``1(System.String,``0)">
   SetFeature&lt;T&gt;(string, T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/IBehaviorService.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Behavior/IBehaviorService.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Defines a feature's value. Creates a new entry, or updates an existing one if it already exists.</p>

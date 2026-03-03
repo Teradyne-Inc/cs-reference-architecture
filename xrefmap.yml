@@ -3129,6 +3129,22 @@ references:
   isSpec: "True"
   fullName: Csra.Interfaces.ILib.IExecute.IDigital.RunPatternConditionalStop
   nameWithType: ILib.IExecute.IDigital.RunPatternConditionalStop
+- uid: Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp(Csra.Pins,Csra.PatternInfo,System.String,System.Double)
+  name: RunPatternSyncRamp(Pins, PatternInfo, string, double)
+  href: api/Csra.Interfaces.ILib.IExecute.IDigital.html#Csra_Interfaces_ILib_IExecute_IDigital_RunPatternSyncRamp_Csra_Pins_Csra_PatternInfo_System_String_System_Double_
+  commentId: M:Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp(Csra.Pins,Csra.PatternInfo,System.String,System.Double)
+  name.vb: RunPatternSyncRamp(Pins, PatternInfo, String, Double)
+  fullName: Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp(Csra.Pins, Csra.PatternInfo, string, double)
+  fullName.vb: Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp(Csra.Pins, Csra.PatternInfo, String, Double)
+  nameWithType: ILib.IExecute.IDigital.RunPatternSyncRamp(Pins, PatternInfo, string, double)
+  nameWithType.vb: ILib.IExecute.IDigital.RunPatternSyncRamp(Pins, PatternInfo, String, Double)
+- uid: Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp*
+  name: RunPatternSyncRamp
+  href: api/Csra.Interfaces.ILib.IExecute.IDigital.html#Csra_Interfaces_ILib_IExecute_IDigital_RunPatternSyncRamp_
+  commentId: Overload:Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp
+  isSpec: "True"
+  fullName: Csra.Interfaces.ILib.IExecute.IDigital.RunPatternSyncRamp
+  nameWithType: ILib.IExecute.IDigital.RunPatternSyncRamp
 - uid: Csra.Interfaces.ILib.IExecute.IDigital.StartPattern(Csra.PatternInfo)
   name: StartPattern(PatternInfo)
   href: api/Csra.Interfaces.ILib.IExecute.IDigital.html#Csra_Interfaces_ILib_IExecute_IDigital_StartPattern_Csra_PatternInfo_
@@ -3439,6 +3455,22 @@ references:
   isSpec: "True"
   fullName: Csra.Interfaces.ILib.ISetup.IDc.ConnectAllPins
   nameWithType: ILib.ISetup.IDc.ConnectAllPins
+- uid: Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal(Csra.Pins,System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name: CreateCaptureSignal(Pins, string, tlDCVSMeterMode, double, double, int, bool)
+  href: api/Csra.Interfaces.ILib.ISetup.IDc.html#Csra_Interfaces_ILib_ISetup_IDc_CreateCaptureSignal_Csra_Pins_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_
+  commentId: M:Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal(Csra.Pins,System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name.vb: CreateCaptureSignal(Pins, String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  fullName: Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal(Csra.Pins, string, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, double, double, int, bool)
+  fullName.vb: Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal(Csra.Pins, String, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  nameWithType: ILib.ISetup.IDc.CreateCaptureSignal(Pins, string, tlDCVSMeterMode, double, double, int, bool)
+  nameWithType.vb: ILib.ISetup.IDc.CreateCaptureSignal(Pins, String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+- uid: Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal*
+  name: CreateCaptureSignal
+  href: api/Csra.Interfaces.ILib.ISetup.IDc.html#Csra_Interfaces_ILib_ISetup_IDc_CreateCaptureSignal_
+  commentId: Overload:Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal
+  isSpec: "True"
+  fullName: Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal
+  nameWithType: ILib.ISetup.IDc.CreateCaptureSignal
 - uid: Csra.Interfaces.ILib.ISetup.IDc.Disconnect(Csra.Pins,System.Boolean)
   name: Disconnect(Pins, bool)
   href: api/Csra.Interfaces.ILib.ISetup.IDc.html#Csra_Interfaces_ILib_ISetup_IDc_Disconnect_Csra_Pins_System_Boolean_
@@ -3612,6 +3644,38 @@ references:
   commentId: T:Csra.Interfaces.ILib.ISetup.IDigital
   fullName: Csra.Interfaces.ILib.ISetup.IDigital
   nameWithType: ILib.ISetup.IDigital
+- uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl(Csra.Pins,System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name: ConfigurePatternControl(Pins, int, tlPPMUPatternControlReadFormat)
+  href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigurePatternControl_Csra_Pins_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_
+  commentId: M:Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl(Csra.Pins,System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name.vb: ConfigurePatternControl(Pins, Integer, tlPPMUPatternControlReadFormat)
+  fullName: Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl(Csra.Pins, int, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  fullName.vb: Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl(Csra.Pins, Integer, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  nameWithType: ILib.ISetup.IDigital.ConfigurePatternControl(Pins, int, tlPPMUPatternControlReadFormat)
+  nameWithType.vb: ILib.ISetup.IDigital.ConfigurePatternControl(Pins, Integer, tlPPMUPatternControlReadFormat)
+- uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl*
+  name: ConfigurePatternControl
+  href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigurePatternControl_
+  commentId: Overload:Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl
+  isSpec: "True"
+  fullName: Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl
+  nameWithType: ILib.ISetup.IDigital.ConfigurePatternControl
+- uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp(Csra.Pins,System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name: ConfigureRamp(Pins, string, double, double, double, double, int)
+  href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigureRamp_Csra_Pins_System_String_System_Double_System_Double_System_Double_System_Double_System_Int32_
+  commentId: M:Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp(Csra.Pins,System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name.vb: ConfigureRamp(Pins, String, Double, Double, Double, Double, Integer)
+  fullName: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp(Csra.Pins, string, double, double, double, double, int)
+  fullName.vb: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp(Csra.Pins, String, Double, Double, Double, Double, Integer)
+  nameWithType: ILib.ISetup.IDigital.ConfigureRamp(Pins, string, double, double, double, double, int)
+  nameWithType.vb: ILib.ISetup.IDigital.ConfigureRamp(Pins, String, Double, Double, Double, Double, Integer)
+- uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp*
+  name: ConfigureRamp
+  href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigureRamp_
+  commentId: Overload:Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp
+  isSpec: "True"
+  fullName: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureRamp
+  nameWithType: ILib.ISetup.IDigital.ConfigureRamp
 - uid: Csra.Interfaces.ILib.ISetup.IDigital.Connect(Csra.Pins)
   name: Connect(Pins)
   href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_Connect_Csra_Pins_
@@ -3832,15 +3896,15 @@ references:
   commentId: T:Csra.Interfaces.ILib.IValidate
   fullName: Csra.Interfaces.ILib.IValidate
   nameWithType: ILib.IValidate
-- uid: Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
-  name: Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  href: api/Csra.Interfaces.ILib.IValidate.html#Csra_Interfaces_ILib_IValidate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__
-  commentId: M:Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
-  name.vb: Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
-  fullName: Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins, bool?, Csra.TLibOutputMode?, double?, double?, double?, double?, double?, double?, Csra.Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  fullName.vb: Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins, Boolean?, Csra.TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Csra.Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
-  nameWithType: ILib.IValidate.Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  nameWithType.vb: ILib.IValidate.Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
+- uid: Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
+  name: Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  href: api/Csra.Interfaces.ILib.IValidate.html#Csra_Interfaces_ILib_IValidate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__
+  commentId: M:Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
+  name.vb: Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
+  fullName: Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins, bool?, Csra.TLibOutputMode?, double?, double?, double?, double?, double?, double?, Csra.Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  fullName.vb: Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins, Boolean?, Csra.TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Csra.Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
+  nameWithType: ILib.IValidate.Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  nameWithType.vb: ILib.IValidate.Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
 - uid: Csra.Interfaces.ILib.IValidate.Dc*
   name: Dc
   href: api/Csra.Interfaces.ILib.IValidate.html#Csra_Interfaces_ILib_IValidate_Dc_
@@ -12244,6 +12308,22 @@ references:
   isSpec: "True"
   fullName: Csra.TheLib.Execute.Digital.RunPatternConditionalStop
   nameWithType: Digital.RunPatternConditionalStop
+- uid: Csra.TheLib.Execute.Digital.RunPatternSyncRamp(Csra.Pins,Csra.PatternInfo,System.String,System.Double)
+  name: RunPatternSyncRamp(Pins, PatternInfo, string, double)
+  href: api/Csra.TheLib.Execute.Digital.html#Csra_TheLib_Execute_Digital_RunPatternSyncRamp_Csra_Pins_Csra_PatternInfo_System_String_System_Double_
+  commentId: M:Csra.TheLib.Execute.Digital.RunPatternSyncRamp(Csra.Pins,Csra.PatternInfo,System.String,System.Double)
+  name.vb: RunPatternSyncRamp(Pins, PatternInfo, String, Double)
+  fullName: Csra.TheLib.Execute.Digital.RunPatternSyncRamp(Csra.Pins, Csra.PatternInfo, string, double)
+  fullName.vb: Csra.TheLib.Execute.Digital.RunPatternSyncRamp(Csra.Pins, Csra.PatternInfo, String, Double)
+  nameWithType: Digital.RunPatternSyncRamp(Pins, PatternInfo, string, double)
+  nameWithType.vb: Digital.RunPatternSyncRamp(Pins, PatternInfo, String, Double)
+- uid: Csra.TheLib.Execute.Digital.RunPatternSyncRamp*
+  name: RunPatternSyncRamp
+  href: api/Csra.TheLib.Execute.Digital.html#Csra_TheLib_Execute_Digital_RunPatternSyncRamp_
+  commentId: Overload:Csra.TheLib.Execute.Digital.RunPatternSyncRamp
+  isSpec: "True"
+  fullName: Csra.TheLib.Execute.Digital.RunPatternSyncRamp
+  nameWithType: Digital.RunPatternSyncRamp
 - uid: Csra.TheLib.Execute.Digital.StartPattern(Csra.PatternInfo)
   name: StartPattern(PatternInfo)
   href: api/Csra.TheLib.Execute.Digital.html#Csra_TheLib_Execute_Digital_StartPattern_Csra_PatternInfo_
@@ -12473,6 +12553,22 @@ references:
   isSpec: "True"
   fullName: Csra.TheLib.Setup.Dc.ConnectAllPins
   nameWithType: Dc.ConnectAllPins
+- uid: Csra.TheLib.Setup.Dc.CreateCaptureSignal(Csra.Pins,System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name: CreateCaptureSignal(Pins, string, tlDCVSMeterMode, double, double, int, bool)
+  href: api/Csra.TheLib.Setup.Dc.html#Csra_TheLib_Setup_Dc_CreateCaptureSignal_Csra_Pins_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_
+  commentId: M:Csra.TheLib.Setup.Dc.CreateCaptureSignal(Csra.Pins,System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name.vb: CreateCaptureSignal(Pins, String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  fullName: Csra.TheLib.Setup.Dc.CreateCaptureSignal(Csra.Pins, string, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, double, double, int, bool)
+  fullName.vb: Csra.TheLib.Setup.Dc.CreateCaptureSignal(Csra.Pins, String, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  nameWithType: Dc.CreateCaptureSignal(Pins, string, tlDCVSMeterMode, double, double, int, bool)
+  nameWithType.vb: Dc.CreateCaptureSignal(Pins, String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+- uid: Csra.TheLib.Setup.Dc.CreateCaptureSignal*
+  name: CreateCaptureSignal
+  href: api/Csra.TheLib.Setup.Dc.html#Csra_TheLib_Setup_Dc_CreateCaptureSignal_
+  commentId: Overload:Csra.TheLib.Setup.Dc.CreateCaptureSignal
+  isSpec: "True"
+  fullName: Csra.TheLib.Setup.Dc.CreateCaptureSignal
+  nameWithType: Dc.CreateCaptureSignal
 - uid: Csra.TheLib.Setup.Dc.Disconnect(Csra.Pins,System.Boolean)
   name: Disconnect(Pins, bool)
   href: api/Csra.TheLib.Setup.Dc.html#Csra_TheLib_Setup_Dc_Disconnect_Csra_Pins_System_Boolean_
@@ -12646,6 +12742,38 @@ references:
   commentId: T:Csra.TheLib.Setup.Digital
   fullName: Csra.TheLib.Setup.Digital
   nameWithType: Digital
+- uid: Csra.TheLib.Setup.Digital.ConfigurePatternControl(Csra.Pins,System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name: ConfigurePatternControl(Pins, int, tlPPMUPatternControlReadFormat)
+  href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigurePatternControl_Csra_Pins_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_
+  commentId: M:Csra.TheLib.Setup.Digital.ConfigurePatternControl(Csra.Pins,System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name.vb: ConfigurePatternControl(Pins, Integer, tlPPMUPatternControlReadFormat)
+  fullName: Csra.TheLib.Setup.Digital.ConfigurePatternControl(Csra.Pins, int, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  fullName.vb: Csra.TheLib.Setup.Digital.ConfigurePatternControl(Csra.Pins, Integer, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  nameWithType: Digital.ConfigurePatternControl(Pins, int, tlPPMUPatternControlReadFormat)
+  nameWithType.vb: Digital.ConfigurePatternControl(Pins, Integer, tlPPMUPatternControlReadFormat)
+- uid: Csra.TheLib.Setup.Digital.ConfigurePatternControl*
+  name: ConfigurePatternControl
+  href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigurePatternControl_
+  commentId: Overload:Csra.TheLib.Setup.Digital.ConfigurePatternControl
+  isSpec: "True"
+  fullName: Csra.TheLib.Setup.Digital.ConfigurePatternControl
+  nameWithType: Digital.ConfigurePatternControl
+- uid: Csra.TheLib.Setup.Digital.ConfigureRamp(Csra.Pins,System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name: ConfigureRamp(Pins, string, double, double, double, double, int)
+  href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigureRamp_Csra_Pins_System_String_System_Double_System_Double_System_Double_System_Double_System_Int32_
+  commentId: M:Csra.TheLib.Setup.Digital.ConfigureRamp(Csra.Pins,System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name.vb: ConfigureRamp(Pins, String, Double, Double, Double, Double, Integer)
+  fullName: Csra.TheLib.Setup.Digital.ConfigureRamp(Csra.Pins, string, double, double, double, double, int)
+  fullName.vb: Csra.TheLib.Setup.Digital.ConfigureRamp(Csra.Pins, String, Double, Double, Double, Double, Integer)
+  nameWithType: Digital.ConfigureRamp(Pins, string, double, double, double, double, int)
+  nameWithType.vb: Digital.ConfigureRamp(Pins, String, Double, Double, Double, Double, Integer)
+- uid: Csra.TheLib.Setup.Digital.ConfigureRamp*
+  name: ConfigureRamp
+  href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigureRamp_
+  commentId: Overload:Csra.TheLib.Setup.Digital.ConfigureRamp
+  isSpec: "True"
+  fullName: Csra.TheLib.Setup.Digital.ConfigureRamp
+  nameWithType: Digital.ConfigureRamp
 - uid: Csra.TheLib.Setup.Digital.Connect(Csra.Pins)
   name: Connect(Pins)
   href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_Connect_Csra_Pins_
@@ -12853,15 +12981,15 @@ references:
   commentId: T:Csra.TheLib.Validate
   fullName: Csra.TheLib.Validate
   nameWithType: Validate
-- uid: Csra.TheLib.Validate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
-  name: Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  href: api/Csra.TheLib.Validate.html#Csra_TheLib_Validate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__
-  commentId: M:Csra.TheLib.Validate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
-  name.vb: Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
-  fullName: Csra.TheLib.Validate.Dc(Csra.Pins, bool?, Csra.TLibOutputMode?, double?, double?, double?, double?, double?, double?, Csra.Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  fullName.vb: Csra.TheLib.Validate.Dc(Csra.Pins, Boolean?, Csra.TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Csra.Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
-  nameWithType: Validate.Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  nameWithType.vb: Validate.Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
+- uid: Csra.TheLib.Validate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
+  name: Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  href: api/Csra.TheLib.Validate.html#Csra_TheLib_Validate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__
+  commentId: M:Csra.TheLib.Validate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})
+  name.vb: Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
+  fullName: Csra.TheLib.Validate.Dc(Csra.Pins, bool?, Csra.TLibOutputMode?, double?, double?, double?, double?, double?, double?, Csra.Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  fullName.vb: Csra.TheLib.Validate.Dc(Csra.Pins, Boolean?, Csra.TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Csra.Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
+  nameWithType: Validate.Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  nameWithType.vb: Validate.Dc(Pins, Boolean?, TLibOutputMode?, Double?, Double?, Double?, Double?, Double?, Double?, Measure?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Double?, Boolean?, Boolean?, Double?, Double?, Double?, Double?, Double?, Boolean?, Double?, Double?)
 - uid: Csra.TheLib.Validate.Dc*
   name: Dc
   href: api/Csra.TheLib.Validate.html#Csra_TheLib_Validate_Dc_
@@ -13419,6 +13547,44 @@ references:
   commentId: N:Demo_CSRA.Functional
   fullName: Demo_CSRA.Functional
   nameWithType: Demo_CSRA.Functional
+- uid: Demo_CSRA.Functional.Ramp
+  name: Ramp
+  href: api/Demo_CSRA.Functional.Ramp.html
+  commentId: T:Demo_CSRA.Functional.Ramp
+  fullName: Demo_CSRA.Functional.Ramp
+  nameWithType: Ramp
+- uid: Demo_CSRA.Functional.Ramp.ExecuteRamp(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Int32,System.String,System.String,System.Boolean,System.Int32,System.Double,System.String)
+  name: ExecuteRamp(PinList, Pattern, string, double, double, double, int, double, int, string, string, bool, int, double, string)
+  href: api/Demo_CSRA.Functional.Ramp.html#Demo_CSRA_Functional_Ramp_ExecuteRamp_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_System_Double_System_Double_System_Double_System_Int32_System_Double_System_Int32_System_String_System_String_System_Boolean_System_Int32_System_Double_System_String_
+  commentId: M:Demo_CSRA.Functional.Ramp.ExecuteRamp(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Int32,System.String,System.String,System.Boolean,System.Int32,System.Double,System.String)
+  name.vb: ExecuteRamp(PinList, Pattern, String, Double, Double, Double, Integer, Double, Integer, String, String, Boolean, Integer, Double, String)
+  fullName: Demo_CSRA.Functional.Ramp.ExecuteRamp(Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.Pattern, string, double, double, double, int, double, int, string, string, bool, int, double, string)
+  fullName.vb: Demo_CSRA.Functional.Ramp.ExecuteRamp(Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.Pattern, String, Double, Double, Double, Integer, Double, Integer, String, String, Boolean, Integer, Double, String)
+  nameWithType: Ramp.ExecuteRamp(PinList, Pattern, string, double, double, double, int, double, int, string, string, bool, int, double, string)
+  nameWithType.vb: Ramp.ExecuteRamp(PinList, Pattern, String, Double, Double, Double, Integer, Double, Integer, String, String, Boolean, Integer, Double, String)
+- uid: Demo_CSRA.Functional.Ramp.ExecuteRamp*
+  name: ExecuteRamp
+  href: api/Demo_CSRA.Functional.Ramp.html#Demo_CSRA_Functional_Ramp_ExecuteRamp_
+  commentId: Overload:Demo_CSRA.Functional.Ramp.ExecuteRamp
+  isSpec: "True"
+  fullName: Demo_CSRA.Functional.Ramp.ExecuteRamp
+  nameWithType: Ramp.ExecuteRamp
+- uid: Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Int32,System.String,System.Double,System.String)
+  name: ExecuteRampPatternControl(PinList, PinList, Pattern, string, double, double, double, int, double, int, string, double, string)
+  href: api/Demo_CSRA.Functional.Ramp.html#Demo_CSRA_Functional_Ramp_ExecuteRampPatternControl_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_System_Double_System_Double_System_Double_System_Int32_System_Double_System_Int32_System_String_System_Double_System_String_
+  commentId: M:Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Int32,System.String,System.Double,System.String)
+  name.vb: ExecuteRampPatternControl(PinList, PinList, Pattern, String, Double, Double, Double, Integer, Double, Integer, String, Double, String)
+  fullName: Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl(Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.Pattern, string, double, double, double, int, double, int, string, double, string)
+  fullName.vb: Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl(Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.Pattern, String, Double, Double, Double, Integer, Double, Integer, String, Double, String)
+  nameWithType: Ramp.ExecuteRampPatternControl(PinList, PinList, Pattern, string, double, double, double, int, double, int, string, double, string)
+  nameWithType.vb: Ramp.ExecuteRampPatternControl(PinList, PinList, Pattern, String, Double, Double, Double, Integer, Double, Integer, String, Double, String)
+- uid: Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl*
+  name: ExecuteRampPatternControl
+  href: api/Demo_CSRA.Functional.Ramp.html#Demo_CSRA_Functional_Ramp_ExecuteRampPatternControl_
+  commentId: Overload:Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl
+  isSpec: "True"
+  fullName: Demo_CSRA.Functional.Ramp.ExecuteRampPatternControl
+  nameWithType: Ramp.ExecuteRampPatternControl
 - uid: Demo_CSRA.Functional.Read
   name: Read
   href: api/Demo_CSRA.Functional.Read.html
@@ -14180,3 +14346,3290 @@ references:
   isSpec: "True"
   fullName: Demo_CSRA.Trim.Digital.LinearStopTrip
   nameWithType: Digital.LinearStopTrip
+- uid: Demo_UT
+  name: Demo_UT
+  href: api/Demo_UT.html
+  commentId: N:Demo_UT
+  fullName: Demo_UT
+  nameWithType: Demo_UT
+- uid: Demo_UT.Example_UT
+  name: Example_UT
+  href: api/Demo_UT.Example_UT.html
+  commentId: T:Demo_UT.Example_UT
+  fullName: Demo_UT.Example_UT
+  nameWithType: Example_UT
+- uid: Demo_UT.Example_UT.Process_DivideByZero_ThrowsException
+  name: Process_DivideByZero_ThrowsException()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_DivideByZero_ThrowsException
+  commentId: M:Demo_UT.Example_UT.Process_DivideByZero_ThrowsException
+  fullName: Demo_UT.Example_UT.Process_DivideByZero_ThrowsException()
+  nameWithType: Example_UT.Process_DivideByZero_ThrowsException()
+- uid: Demo_UT.Example_UT.Process_DivideByZero_ThrowsException*
+  name: Process_DivideByZero_ThrowsException
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_DivideByZero_ThrowsException_
+  commentId: Overload:Demo_UT.Example_UT.Process_DivideByZero_ThrowsException
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_DivideByZero_ThrowsException
+  nameWithType: Example_UT.Process_DivideByZero_ThrowsException
+- uid: Demo_UT.Example_UT.Process_ForceV_PropertyWasSet
+  name: Process_ForceV_PropertyWasSet()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ForceV_PropertyWasSet
+  commentId: M:Demo_UT.Example_UT.Process_ForceV_PropertyWasSet
+  fullName: Demo_UT.Example_UT.Process_ForceV_PropertyWasSet()
+  nameWithType: Example_UT.Process_ForceV_PropertyWasSet()
+- uid: Demo_UT.Example_UT.Process_ForceV_PropertyWasSet*
+  name: Process_ForceV_PropertyWasSet
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ForceV_PropertyWasSet_
+  commentId: Overload:Demo_UT.Example_UT.Process_ForceV_PropertyWasSet
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_ForceV_PropertyWasSet
+  nameWithType: Example_UT.Process_ForceV_PropertyWasSet
+- uid: Demo_UT.Example_UT.Process_ForceV_VerifyMethodCall
+  name: Process_ForceV_VerifyMethodCall()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ForceV_VerifyMethodCall
+  commentId: M:Demo_UT.Example_UT.Process_ForceV_VerifyMethodCall
+  fullName: Demo_UT.Example_UT.Process_ForceV_VerifyMethodCall()
+  nameWithType: Example_UT.Process_ForceV_VerifyMethodCall()
+- uid: Demo_UT.Example_UT.Process_ForceV_VerifyMethodCall*
+  name: Process_ForceV_VerifyMethodCall
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ForceV_VerifyMethodCall_
+  commentId: Overload:Demo_UT.Example_UT.Process_ForceV_VerifyMethodCall
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_ForceV_VerifyMethodCall
+  nameWithType: Example_UT.Process_ForceV_VerifyMethodCall
+- uid: Demo_UT.Example_UT.Process_IgXlObject_StateAssertion
+  name: Process_IgXlObject_StateAssertion()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_IgXlObject_StateAssertion
+  commentId: M:Demo_UT.Example_UT.Process_IgXlObject_StateAssertion
+  fullName: Demo_UT.Example_UT.Process_IgXlObject_StateAssertion()
+  nameWithType: Example_UT.Process_IgXlObject_StateAssertion()
+- uid: Demo_UT.Example_UT.Process_IgXlObject_StateAssertion*
+  name: Process_IgXlObject_StateAssertion
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_IgXlObject_StateAssertion_
+  commentId: Overload:Demo_UT.Example_UT.Process_IgXlObject_StateAssertion
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_IgXlObject_StateAssertion
+  nameWithType: Example_UT.Process_IgXlObject_StateAssertion
+- uid: Demo_UT.Example_UT.Process_ReadFromDependency_SetupReturnValue
+  name: Process_ReadFromDependency_SetupReturnValue()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ReadFromDependency_SetupReturnValue
+  commentId: M:Demo_UT.Example_UT.Process_ReadFromDependency_SetupReturnValue
+  fullName: Demo_UT.Example_UT.Process_ReadFromDependency_SetupReturnValue()
+  nameWithType: Example_UT.Process_ReadFromDependency_SetupReturnValue()
+- uid: Demo_UT.Example_UT.Process_ReadFromDependency_SetupReturnValue*
+  name: Process_ReadFromDependency_SetupReturnValue
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ReadFromDependency_SetupReturnValue_
+  commentId: Overload:Demo_UT.Example_UT.Process_ReadFromDependency_SetupReturnValue
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_ReadFromDependency_SetupReturnValue
+  nameWithType: Example_UT.Process_ReadFromDependency_SetupReturnValue
+- uid: Demo_UT.Example_UT.Process_ReturnsSum_Parametrized(System.Int32,System.Int32,System.Int32)
+  name: Process_ReturnsSum_Parametrized(int, int, int)
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ReturnsSum_Parametrized_System_Int32_System_Int32_System_Int32_
+  commentId: M:Demo_UT.Example_UT.Process_ReturnsSum_Parametrized(System.Int32,System.Int32,System.Int32)
+  name.vb: Process_ReturnsSum_Parametrized(Integer, Integer, Integer)
+  fullName: Demo_UT.Example_UT.Process_ReturnsSum_Parametrized(int, int, int)
+  fullName.vb: Demo_UT.Example_UT.Process_ReturnsSum_Parametrized(Integer, Integer, Integer)
+  nameWithType: Example_UT.Process_ReturnsSum_Parametrized(int, int, int)
+  nameWithType.vb: Example_UT.Process_ReturnsSum_Parametrized(Integer, Integer, Integer)
+- uid: Demo_UT.Example_UT.Process_ReturnsSum_Parametrized*
+  name: Process_ReturnsSum_Parametrized
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ReturnsSum_Parametrized_
+  commentId: Overload:Demo_UT.Example_UT.Process_ReturnsSum_Parametrized
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_ReturnsSum_Parametrized
+  nameWithType: Example_UT.Process_ReturnsSum_Parametrized
+- uid: Demo_UT.Example_UT.Process_ReturnsSum_StateAssertion
+  name: Process_ReturnsSum_StateAssertion()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ReturnsSum_StateAssertion
+  commentId: M:Demo_UT.Example_UT.Process_ReturnsSum_StateAssertion
+  fullName: Demo_UT.Example_UT.Process_ReturnsSum_StateAssertion()
+  nameWithType: Example_UT.Process_ReturnsSum_StateAssertion()
+- uid: Demo_UT.Example_UT.Process_ReturnsSum_StateAssertion*
+  name: Process_ReturnsSum_StateAssertion
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ReturnsSum_StateAssertion_
+  commentId: Overload:Demo_UT.Example_UT.Process_ReturnsSum_StateAssertion
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_ReturnsSum_StateAssertion
+  nameWithType: Example_UT.Process_ReturnsSum_StateAssertion
+- uid: Demo_UT.Example_UT.Process_ValidInput_TimesNever
+  name: Process_ValidInput_TimesNever()
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ValidInput_TimesNever
+  commentId: M:Demo_UT.Example_UT.Process_ValidInput_TimesNever
+  fullName: Demo_UT.Example_UT.Process_ValidInput_TimesNever()
+  nameWithType: Example_UT.Process_ValidInput_TimesNever()
+- uid: Demo_UT.Example_UT.Process_ValidInput_TimesNever*
+  name: Process_ValidInput_TimesNever
+  href: api/Demo_UT.Example_UT.html#Demo_UT_Example_UT_Process_ValidInput_TimesNever_
+  commentId: Overload:Demo_UT.Example_UT.Process_ValidInput_TimesNever
+  isSpec: "True"
+  fullName: Demo_UT.Example_UT.Process_ValidInput_TimesNever
+  nameWithType: Example_UT.Process_ValidInput_TimesNever
+- uid: Tol
+  name: Tol
+  href: api/Tol.html
+  commentId: N:Tol
+  fullName: Tol
+  nameWithType: Tol
+- uid: Tol.DcviPins
+  name: DcviPins
+  href: api/Tol.DcviPins.html
+  commentId: T:Tol.DcviPins
+  fullName: Tol.DcviPins
+  nameWithType: DcviPins
+- uid: Tol.DcviPins.Bandwidth
+  name: Bandwidth
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Bandwidth
+  commentId: P:Tol.DcviPins.Bandwidth
+  fullName: Tol.DcviPins.Bandwidth
+  nameWithType: DcviPins.Bandwidth
+- uid: Tol.DcviPins.Bandwidth*
+  name: Bandwidth
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Bandwidth_
+  commentId: Overload:Tol.DcviPins.Bandwidth
+  isSpec: "True"
+  fullName: Tol.DcviPins.Bandwidth
+  nameWithType: DcviPins.Bandwidth
+- uid: Tol.DcviPins.ComplianceRangeNegative
+  name: ComplianceRangeNegative
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ComplianceRangeNegative
+  commentId: P:Tol.DcviPins.ComplianceRangeNegative
+  fullName: Tol.DcviPins.ComplianceRangeNegative
+  nameWithType: DcviPins.ComplianceRangeNegative
+- uid: Tol.DcviPins.ComplianceRangeNegative*
+  name: ComplianceRangeNegative
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ComplianceRangeNegative_
+  commentId: Overload:Tol.DcviPins.ComplianceRangeNegative
+  isSpec: "True"
+  fullName: Tol.DcviPins.ComplianceRangeNegative
+  nameWithType: DcviPins.ComplianceRangeNegative
+- uid: Tol.DcviPins.ComplianceRangePositive
+  name: ComplianceRangePositive
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ComplianceRangePositive
+  commentId: P:Tol.DcviPins.ComplianceRangePositive
+  fullName: Tol.DcviPins.ComplianceRangePositive
+  nameWithType: DcviPins.ComplianceRangePositive
+- uid: Tol.DcviPins.ComplianceRangePositive*
+  name: ComplianceRangePositive
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ComplianceRangePositive_
+  commentId: Overload:Tol.DcviPins.ComplianceRangePositive
+  isSpec: "True"
+  fullName: Tol.DcviPins.ComplianceRangePositive
+  nameWithType: DcviPins.ComplianceRangePositive
+- uid: Tol.DcviPins.Connect(System.Nullable{System.Boolean})
+  name: Connect(bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Connect_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.Connect(System.Nullable{System.Boolean})
+  name.vb: Connect(Boolean?)
+  fullName: Tol.DcviPins.Connect(bool?)
+  fullName.vb: Tol.DcviPins.Connect(Boolean?)
+  nameWithType: DcviPins.Connect(bool?)
+  nameWithType.vb: DcviPins.Connect(Boolean?)
+- uid: Tol.DcviPins.Connect*
+  name: Connect
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Connect_
+  commentId: Overload:Tol.DcviPins.Connect
+  isSpec: "True"
+  fullName: Tol.DcviPins.Connect
+  nameWithType: DcviPins.Connect
+- uid: Tol.DcviPins.Current
+  name: Current
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Current
+  commentId: P:Tol.DcviPins.Current
+  fullName: Tol.DcviPins.Current
+  nameWithType: DcviPins.Current
+- uid: Tol.DcviPins.Current*
+  name: Current
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Current_
+  commentId: Overload:Tol.DcviPins.Current
+  isSpec: "True"
+  fullName: Tol.DcviPins.Current
+  nameWithType: DcviPins.Current
+- uid: Tol.DcviPins.CurrentRange
+  name: CurrentRange
+  href: api/Tol.DcviPins.html#Tol_DcviPins_CurrentRange
+  commentId: P:Tol.DcviPins.CurrentRange
+  fullName: Tol.DcviPins.CurrentRange
+  nameWithType: DcviPins.CurrentRange
+- uid: Tol.DcviPins.CurrentRange*
+  name: CurrentRange
+  href: api/Tol.DcviPins.html#Tol_DcviPins_CurrentRange_
+  commentId: Overload:Tol.DcviPins.CurrentRange
+  isSpec: "True"
+  fullName: Tol.DcviPins.CurrentRange
+  nameWithType: DcviPins.CurrentRange
+- uid: Tol.DcviPins.Disconnect(System.Nullable{System.Boolean})
+  name: Disconnect(bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Disconnect_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.Disconnect(System.Nullable{System.Boolean})
+  name.vb: Disconnect(Boolean?)
+  fullName: Tol.DcviPins.Disconnect(bool?)
+  fullName.vb: Tol.DcviPins.Disconnect(Boolean?)
+  nameWithType: DcviPins.Disconnect(bool?)
+  nameWithType.vb: DcviPins.Disconnect(Boolean?)
+- uid: Tol.DcviPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Disconnect_
+  commentId: Overload:Tol.DcviPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.DcviPins.Disconnect
+  nameWithType: DcviPins.Disconnect
+- uid: Tol.DcviPins.ForceHiZ
+  name: ForceHiZ()
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceHiZ
+  commentId: M:Tol.DcviPins.ForceHiZ
+  fullName: Tol.DcviPins.ForceHiZ()
+  nameWithType: DcviPins.ForceHiZ()
+- uid: Tol.DcviPins.ForceHiZ*
+  name: ForceHiZ
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceHiZ_
+  commentId: Overload:Tol.DcviPins.ForceHiZ
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceHiZ
+  nameWithType: DcviPins.ForceHiZ
+- uid: Tol.DcviPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceI(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.DcviPins.ForceI(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.DcviPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: DcviPins.ForceI(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: DcviPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.DcviPins.ForceI*
+  name: ForceI
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceI_
+  commentId: Overload:Tol.DcviPins.ForceI
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceI
+  nameWithType: DcviPins.ForceI
+- uid: Tol.DcviPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterI(double, double, double, double, bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceISetMeterI_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.DcviPins.ForceISetMeterI(double, double, double, double, bool?)
+  fullName.vb: Tol.DcviPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  nameWithType: DcviPins.ForceISetMeterI(double, double, double, double, bool?)
+  nameWithType.vb: DcviPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+- uid: Tol.DcviPins.ForceISetMeterI*
+  name: ForceISetMeterI
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceISetMeterI_
+  commentId: Overload:Tol.DcviPins.ForceISetMeterI
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceISetMeterI
+  nameWithType: DcviPins.ForceISetMeterI
+- uid: Tol.DcviPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterV(double, double, double, double, bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.DcviPins.ForceISetMeterV(double, double, double, double, bool?)
+  fullName.vb: Tol.DcviPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  nameWithType: DcviPins.ForceISetMeterV(double, double, double, double, bool?)
+  nameWithType.vb: DcviPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+- uid: Tol.DcviPins.ForceISetMeterV*
+  name: ForceISetMeterV
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceISetMeterV_
+  commentId: Overload:Tol.DcviPins.ForceISetMeterV
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceISetMeterV
+  nameWithType: DcviPins.ForceISetMeterV
+- uid: Tol.DcviPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceV(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.DcviPins.ForceV(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.DcviPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: DcviPins.ForceV(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: DcviPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.DcviPins.ForceV*
+  name: ForceV
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceV_
+  commentId: Overload:Tol.DcviPins.ForceV
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceV
+  nameWithType: DcviPins.ForceV
+- uid: Tol.DcviPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, double, bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Double, Boolean?)
+  fullName: Tol.DcviPins.ForceVSetMeterI(double, double, double, bool?)
+  fullName.vb: Tol.DcviPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+  nameWithType: DcviPins.ForceVSetMeterI(double, double, double, bool?)
+  nameWithType.vb: DcviPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+- uid: Tol.DcviPins.ForceVSetMeterI*
+  name: ForceVSetMeterI
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceVSetMeterI_
+  commentId: Overload:Tol.DcviPins.ForceVSetMeterI
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceVSetMeterI
+  nameWithType: DcviPins.ForceVSetMeterI
+- uid: Tol.DcviPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterV(double, double, double, bool?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceVSetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcviPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterV(Double, Double, Double, Boolean?)
+  fullName: Tol.DcviPins.ForceVSetMeterV(double, double, double, bool?)
+  fullName.vb: Tol.DcviPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+  nameWithType: DcviPins.ForceVSetMeterV(double, double, double, bool?)
+  nameWithType.vb: DcviPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+- uid: Tol.DcviPins.ForceVSetMeterV*
+  name: ForceVSetMeterV
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ForceVSetMeterV_
+  commentId: Overload:Tol.DcviPins.ForceVSetMeterV
+  isSpec: "True"
+  fullName: Tol.DcviPins.ForceVSetMeterV
+  nameWithType: DcviPins.ForceVSetMeterV
+- uid: Tol.DcviPins.Gate
+  name: Gate
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Gate
+  commentId: P:Tol.DcviPins.Gate
+  fullName: Tol.DcviPins.Gate
+  nameWithType: DcviPins.Gate
+- uid: Tol.DcviPins.Gate*
+  name: Gate
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Gate_
+  commentId: Overload:Tol.DcviPins.Gate
+  isSpec: "True"
+  fullName: Tol.DcviPins.Gate
+  nameWithType: DcviPins.Gate
+- uid: Tol.DcviPins.GetIndividualPins
+  name: GetIndividualPins()
+  href: api/Tol.DcviPins.html#Tol_DcviPins_GetIndividualPins
+  commentId: M:Tol.DcviPins.GetIndividualPins
+  fullName: Tol.DcviPins.GetIndividualPins()
+  nameWithType: DcviPins.GetIndividualPins()
+- uid: Tol.DcviPins.GetIndividualPins*
+  name: GetIndividualPins
+  href: api/Tol.DcviPins.html#Tol_DcviPins_GetIndividualPins_
+  commentId: Overload:Tol.DcviPins.GetIndividualPins
+  isSpec: "True"
+  fullName: Tol.DcviPins.GetIndividualPins
+  nameWithType: DcviPins.GetIndividualPins
+- uid: Tol.DcviPins.GetPinListItem
+  name: GetPinListItem()
+  href: api/Tol.DcviPins.html#Tol_DcviPins_GetPinListItem
+  commentId: M:Tol.DcviPins.GetPinListItem
+  fullName: Tol.DcviPins.GetPinListItem()
+  nameWithType: DcviPins.GetPinListItem()
+- uid: Tol.DcviPins.GetPinListItem*
+  name: GetPinListItem
+  href: api/Tol.DcviPins.html#Tol_DcviPins_GetPinListItem_
+  commentId: Overload:Tol.DcviPins.GetPinListItem
+  isSpec: "True"
+  fullName: Tol.DcviPins.GetPinListItem
+  nameWithType: DcviPins.GetPinListItem
+- uid: Tol.DcviPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.DcviPins.html#Tol_DcviPins_HardwareApi
+  commentId: P:Tol.DcviPins.HardwareApi
+  fullName: Tol.DcviPins.HardwareApi
+  nameWithType: DcviPins.HardwareApi
+- uid: Tol.DcviPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.DcviPins.html#Tol_DcviPins_HardwareApi_
+  commentId: Overload:Tol.DcviPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.DcviPins.HardwareApi
+  nameWithType: DcviPins.HardwareApi
+- uid: Tol.DcviPins.Measure(System.Int32,System.Double)
+  name: Measure(int, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Measure_System_Int32_System_Double_
+  commentId: M:Tol.DcviPins.Measure(System.Int32,System.Double)
+  name.vb: Measure(Integer, Double)
+  fullName: Tol.DcviPins.Measure(int, double)
+  fullName.vb: Tol.DcviPins.Measure(Integer, Double)
+  nameWithType: DcviPins.Measure(int, double)
+  nameWithType.vb: DcviPins.Measure(Integer, Double)
+- uid: Tol.DcviPins.Measure*
+  name: Measure
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Measure_
+  commentId: Overload:Tol.DcviPins.Measure
+  isSpec: "True"
+  fullName: Tol.DcviPins.Measure
+  nameWithType: DcviPins.Measure
+- uid: Tol.DcviPins.MeasureSamples(System.Int32,System.Double)
+  name: MeasureSamples(int, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_MeasureSamples_System_Int32_System_Double_
+  commentId: M:Tol.DcviPins.MeasureSamples(System.Int32,System.Double)
+  name.vb: MeasureSamples(Integer, Double)
+  fullName: Tol.DcviPins.MeasureSamples(int, double)
+  fullName.vb: Tol.DcviPins.MeasureSamples(Integer, Double)
+  nameWithType: DcviPins.MeasureSamples(int, double)
+  nameWithType.vb: DcviPins.MeasureSamples(Integer, Double)
+- uid: Tol.DcviPins.MeasureSamples*
+  name: MeasureSamples
+  href: api/Tol.DcviPins.html#Tol_DcviPins_MeasureSamples_
+  commentId: Overload:Tol.DcviPins.MeasureSamples
+  isSpec: "True"
+  fullName: Tol.DcviPins.MeasureSamples
+  nameWithType: DcviPins.MeasureSamples
+- uid: Tol.DcviPins.Meter
+  name: Meter
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Meter
+  commentId: P:Tol.DcviPins.Meter
+  fullName: Tol.DcviPins.Meter
+  nameWithType: DcviPins.Meter
+- uid: Tol.DcviPins.Meter*
+  name: Meter
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Meter_
+  commentId: Overload:Tol.DcviPins.Meter
+  isSpec: "True"
+  fullName: Tol.DcviPins.Meter
+  nameWithType: DcviPins.Meter
+- uid: Tol.DcviPins.Mode
+  name: Mode
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Mode
+  commentId: P:Tol.DcviPins.Mode
+  fullName: Tol.DcviPins.Mode
+  nameWithType: DcviPins.Mode
+- uid: Tol.DcviPins.Mode*
+  name: Mode
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Mode_
+  commentId: Overload:Tol.DcviPins.Mode
+  isSpec: "True"
+  fullName: Tol.DcviPins.Mode
+  nameWithType: DcviPins.Mode
+- uid: Tol.DcviPins.Name
+  name: Name
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Name
+  commentId: P:Tol.DcviPins.Name
+  fullName: Tol.DcviPins.Name
+  nameWithType: DcviPins.Name
+- uid: Tol.DcviPins.Name*
+  name: Name
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Name_
+  commentId: Overload:Tol.DcviPins.Name
+  isSpec: "True"
+  fullName: Tol.DcviPins.Name
+  nameWithType: DcviPins.Name
+- uid: Tol.DcviPins.Read(System.Int32,System.Double)
+  name: Read(int, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Read_System_Int32_System_Double_
+  commentId: M:Tol.DcviPins.Read(System.Int32,System.Double)
+  name.vb: Read(Integer, Double)
+  fullName: Tol.DcviPins.Read(int, double)
+  fullName.vb: Tol.DcviPins.Read(Integer, Double)
+  nameWithType: DcviPins.Read(int, double)
+  nameWithType.vb: DcviPins.Read(Integer, Double)
+- uid: Tol.DcviPins.Read*
+  name: Read
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Read_
+  commentId: Overload:Tol.DcviPins.Read
+  isSpec: "True"
+  fullName: Tol.DcviPins.Read
+  nameWithType: DcviPins.Read
+- uid: Tol.DcviPins.ReadSamples(System.Int32,System.Double)
+  name: ReadSamples(int, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ReadSamples_System_Int32_System_Double_
+  commentId: M:Tol.DcviPins.ReadSamples(System.Int32,System.Double)
+  name.vb: ReadSamples(Integer, Double)
+  fullName: Tol.DcviPins.ReadSamples(int, double)
+  fullName.vb: Tol.DcviPins.ReadSamples(Integer, Double)
+  nameWithType: DcviPins.ReadSamples(int, double)
+  nameWithType.vb: DcviPins.ReadSamples(Integer, Double)
+- uid: Tol.DcviPins.ReadSamples*
+  name: ReadSamples
+  href: api/Tol.DcviPins.html#Tol_DcviPins_ReadSamples_
+  commentId: Overload:Tol.DcviPins.ReadSamples
+  isSpec: "True"
+  fullName: Tol.DcviPins.ReadSamples
+  nameWithType: DcviPins.ReadSamples
+- uid: Tol.DcviPins.SetCurrentAndRange(System.Double,System.Double)
+  name: SetCurrentAndRange(double, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetCurrentAndRange_System_Double_System_Double_
+  commentId: M:Tol.DcviPins.SetCurrentAndRange(System.Double,System.Double)
+  name.vb: SetCurrentAndRange(Double, Double)
+  fullName: Tol.DcviPins.SetCurrentAndRange(double, double)
+  fullName.vb: Tol.DcviPins.SetCurrentAndRange(Double, Double)
+  nameWithType: DcviPins.SetCurrentAndRange(double, double)
+  nameWithType.vb: DcviPins.SetCurrentAndRange(Double, Double)
+- uid: Tol.DcviPins.SetCurrentAndRange*
+  name: SetCurrentAndRange
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetCurrentAndRange_
+  commentId: Overload:Tol.DcviPins.SetCurrentAndRange
+  isSpec: "True"
+  fullName: Tol.DcviPins.SetCurrentAndRange
+  nameWithType: DcviPins.SetCurrentAndRange
+- uid: Tol.DcviPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name: SetMeterI(double?, int?, double?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetMeterI_System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
+  commentId: M:Tol.DcviPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name.vb: SetMeterI(Double?, Integer?, Double?)
+  fullName: Tol.DcviPins.SetMeterI(double?, int?, double?)
+  fullName.vb: Tol.DcviPins.SetMeterI(Double?, Integer?, Double?)
+  nameWithType: DcviPins.SetMeterI(double?, int?, double?)
+  nameWithType.vb: DcviPins.SetMeterI(Double?, Integer?, Double?)
+- uid: Tol.DcviPins.SetMeterI*
+  name: SetMeterI
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetMeterI_
+  commentId: Overload:Tol.DcviPins.SetMeterI
+  isSpec: "True"
+  fullName: Tol.DcviPins.SetMeterI
+  nameWithType: DcviPins.SetMeterI
+- uid: Tol.DcviPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name: SetMeterV(double?, int?, double?)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetMeterV_System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
+  commentId: M:Tol.DcviPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name.vb: SetMeterV(Double?, Integer?, Double?)
+  fullName: Tol.DcviPins.SetMeterV(double?, int?, double?)
+  fullName.vb: Tol.DcviPins.SetMeterV(Double?, Integer?, Double?)
+  nameWithType: DcviPins.SetMeterV(double?, int?, double?)
+  nameWithType.vb: DcviPins.SetMeterV(Double?, Integer?, Double?)
+- uid: Tol.DcviPins.SetMeterV*
+  name: SetMeterV
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetMeterV_
+  commentId: Overload:Tol.DcviPins.SetMeterV
+  isSpec: "True"
+  fullName: Tol.DcviPins.SetMeterV
+  nameWithType: DcviPins.SetMeterV
+- uid: Tol.DcviPins.SetVoltageAndRange(System.Double,System.Double)
+  name: SetVoltageAndRange(double, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetVoltageAndRange_System_Double_System_Double_
+  commentId: M:Tol.DcviPins.SetVoltageAndRange(System.Double,System.Double)
+  name.vb: SetVoltageAndRange(Double, Double)
+  fullName: Tol.DcviPins.SetVoltageAndRange(double, double)
+  fullName.vb: Tol.DcviPins.SetVoltageAndRange(Double, Double)
+  nameWithType: DcviPins.SetVoltageAndRange(double, double)
+  nameWithType.vb: DcviPins.SetVoltageAndRange(Double, Double)
+- uid: Tol.DcviPins.SetVoltageAndRange*
+  name: SetVoltageAndRange
+  href: api/Tol.DcviPins.html#Tol_DcviPins_SetVoltageAndRange_
+  commentId: Overload:Tol.DcviPins.SetVoltageAndRange
+  isSpec: "True"
+  fullName: Tol.DcviPins.SetVoltageAndRange
+  nameWithType: DcviPins.SetVoltageAndRange
+- uid: Tol.DcviPins.Strobe(System.Int32,System.Double)
+  name: Strobe(int, double)
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Strobe_System_Int32_System_Double_
+  commentId: M:Tol.DcviPins.Strobe(System.Int32,System.Double)
+  name.vb: Strobe(Integer, Double)
+  fullName: Tol.DcviPins.Strobe(int, double)
+  fullName.vb: Tol.DcviPins.Strobe(Integer, Double)
+  nameWithType: DcviPins.Strobe(int, double)
+  nameWithType.vb: DcviPins.Strobe(Integer, Double)
+- uid: Tol.DcviPins.Strobe*
+  name: Strobe
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Strobe_
+  commentId: Overload:Tol.DcviPins.Strobe
+  isSpec: "True"
+  fullName: Tol.DcviPins.Strobe
+  nameWithType: DcviPins.Strobe
+- uid: Tol.DcviPins.Voltage
+  name: Voltage
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Voltage
+  commentId: P:Tol.DcviPins.Voltage
+  fullName: Tol.DcviPins.Voltage
+  nameWithType: DcviPins.Voltage
+- uid: Tol.DcviPins.Voltage*
+  name: Voltage
+  href: api/Tol.DcviPins.html#Tol_DcviPins_Voltage_
+  commentId: Overload:Tol.DcviPins.Voltage
+  isSpec: "True"
+  fullName: Tol.DcviPins.Voltage
+  nameWithType: DcviPins.Voltage
+- uid: Tol.DcviPins.VoltageRange
+  name: VoltageRange
+  href: api/Tol.DcviPins.html#Tol_DcviPins_VoltageRange
+  commentId: P:Tol.DcviPins.VoltageRange
+  fullName: Tol.DcviPins.VoltageRange
+  nameWithType: DcviPins.VoltageRange
+- uid: Tol.DcviPins.VoltageRange*
+  name: VoltageRange
+  href: api/Tol.DcviPins.html#Tol_DcviPins_VoltageRange_
+  commentId: Overload:Tol.DcviPins.VoltageRange
+  isSpec: "True"
+  fullName: Tol.DcviPins.VoltageRange
+  nameWithType: DcviPins.VoltageRange
+- uid: Tol.DcvsPins
+  name: DcvsPins
+  href: api/Tol.DcvsPins.html
+  commentId: T:Tol.DcvsPins
+  fullName: Tol.DcvsPins
+  nameWithType: DcvsPins
+- uid: Tol.DcvsPins.#ctor(System.String)
+  name: DcvsPins(string)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins__ctor_System_String_
+  commentId: M:Tol.DcvsPins.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Tol.DcvsPins.DcvsPins(string)
+  fullName.vb: Tol.DcvsPins.New(String)
+  nameWithType: DcvsPins.DcvsPins(string)
+  nameWithType.vb: DcvsPins.New(String)
+- uid: Tol.DcvsPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  name: DcvsPins(string, DriverDCVSPins)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins__ctor_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVSPins_
+  commentId: M:Tol.DcvsPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  name.vb: New(String, DriverDCVSPins)
+  fullName: Tol.DcvsPins.DcvsPins(string, Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  fullName.vb: Tol.DcvsPins.New(String, Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  nameWithType: DcvsPins.DcvsPins(string, DriverDCVSPins)
+  nameWithType.vb: DcvsPins.New(String, DriverDCVSPins)
+- uid: Tol.DcvsPins.#ctor*
+  name: DcvsPins
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins__ctor_
+  commentId: Overload:Tol.DcvsPins.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.DcvsPins.DcvsPins
+  fullName.vb: Tol.DcvsPins.New
+  nameWithType: DcvsPins.DcvsPins
+  nameWithType.vb: DcvsPins.New
+- uid: Tol.DcvsPins.Bandwidth
+  name: Bandwidth
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Bandwidth
+  commentId: P:Tol.DcvsPins.Bandwidth
+  fullName: Tol.DcvsPins.Bandwidth
+  nameWithType: DcvsPins.Bandwidth
+- uid: Tol.DcvsPins.Bandwidth*
+  name: Bandwidth
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Bandwidth_
+  commentId: Overload:Tol.DcvsPins.Bandwidth
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Bandwidth
+  nameWithType: DcvsPins.Bandwidth
+- uid: Tol.DcvsPins.Connect(System.Nullable{System.Boolean})
+  name: Connect(bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Connect_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.Connect(System.Nullable{System.Boolean})
+  name.vb: Connect(Boolean?)
+  fullName: Tol.DcvsPins.Connect(bool?)
+  fullName.vb: Tol.DcvsPins.Connect(Boolean?)
+  nameWithType: DcvsPins.Connect(bool?)
+  nameWithType.vb: DcvsPins.Connect(Boolean?)
+- uid: Tol.DcvsPins.Connect*
+  name: Connect
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Connect_
+  commentId: Overload:Tol.DcvsPins.Connect
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Connect
+  nameWithType: DcvsPins.Connect
+- uid: Tol.DcvsPins.CreateCaptureSignal(System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name: CreateCaptureSignal(string, tlDCVSMeterMode, double, double, int, bool)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_CreateCaptureSignal_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_
+  commentId: M:Tol.DcvsPins.CreateCaptureSignal(System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name.vb: CreateCaptureSignal(String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  fullName: Tol.DcvsPins.CreateCaptureSignal(string, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, double, double, int, bool)
+  fullName.vb: Tol.DcvsPins.CreateCaptureSignal(String, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  nameWithType: DcvsPins.CreateCaptureSignal(string, tlDCVSMeterMode, double, double, int, bool)
+  nameWithType.vb: DcvsPins.CreateCaptureSignal(String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+- uid: Tol.DcvsPins.CreateCaptureSignal*
+  name: CreateCaptureSignal
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_CreateCaptureSignal_
+  commentId: Overload:Tol.DcvsPins.CreateCaptureSignal
+  isSpec: "True"
+  fullName: Tol.DcvsPins.CreateCaptureSignal
+  nameWithType: DcvsPins.CreateCaptureSignal
+- uid: Tol.DcvsPins.Current
+  name: Current
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Current
+  commentId: P:Tol.DcvsPins.Current
+  fullName: Tol.DcvsPins.Current
+  nameWithType: DcvsPins.Current
+- uid: Tol.DcvsPins.Current*
+  name: Current
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Current_
+  commentId: Overload:Tol.DcvsPins.Current
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Current
+  nameWithType: DcvsPins.Current
+- uid: Tol.DcvsPins.CurrentRange
+  name: CurrentRange
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_CurrentRange
+  commentId: P:Tol.DcvsPins.CurrentRange
+  fullName: Tol.DcvsPins.CurrentRange
+  nameWithType: DcvsPins.CurrentRange
+- uid: Tol.DcvsPins.CurrentRange*
+  name: CurrentRange
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_CurrentRange_
+  commentId: Overload:Tol.DcvsPins.CurrentRange
+  isSpec: "True"
+  fullName: Tol.DcvsPins.CurrentRange
+  nameWithType: DcvsPins.CurrentRange
+- uid: Tol.DcvsPins.Disconnect(System.Nullable{System.Boolean})
+  name: Disconnect(bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Disconnect_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.Disconnect(System.Nullable{System.Boolean})
+  name.vb: Disconnect(Boolean?)
+  fullName: Tol.DcvsPins.Disconnect(bool?)
+  fullName.vb: Tol.DcvsPins.Disconnect(Boolean?)
+  nameWithType: DcvsPins.Disconnect(bool?)
+  nameWithType.vb: DcvsPins.Disconnect(Boolean?)
+- uid: Tol.DcvsPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Disconnect_
+  commentId: Overload:Tol.DcvsPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Disconnect
+  nameWithType: DcvsPins.Disconnect
+- uid: Tol.DcvsPins.ForceHiZ(System.Nullable{System.Double})
+  name: ForceHiZ(double?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceHiZ_System_Nullable_System_Double__
+  commentId: M:Tol.DcvsPins.ForceHiZ(System.Nullable{System.Double})
+  name.vb: ForceHiZ(Double?)
+  fullName: Tol.DcvsPins.ForceHiZ(double?)
+  fullName.vb: Tol.DcvsPins.ForceHiZ(Double?)
+  nameWithType: DcvsPins.ForceHiZ(double?)
+  nameWithType.vb: DcvsPins.ForceHiZ(Double?)
+- uid: Tol.DcvsPins.ForceHiZ*
+  name: ForceHiZ
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceHiZ_
+  commentId: Overload:Tol.DcvsPins.ForceHiZ
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceHiZ
+  nameWithType: DcvsPins.ForceHiZ
+- uid: Tol.DcvsPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceI(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.DcvsPins.ForceI(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.DcvsPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: DcvsPins.ForceI(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: DcvsPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.DcvsPins.ForceI*
+  name: ForceI
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceI_
+  commentId: Overload:Tol.DcvsPins.ForceI
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceI
+  nameWithType: DcvsPins.ForceI
+- uid: Tol.DcvsPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterI(double, double, double, double, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceISetMeterI_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.DcvsPins.ForceISetMeterI(double, double, double, double, bool?)
+  fullName.vb: Tol.DcvsPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  nameWithType: DcvsPins.ForceISetMeterI(double, double, double, double, bool?)
+  nameWithType.vb: DcvsPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+- uid: Tol.DcvsPins.ForceISetMeterI*
+  name: ForceISetMeterI
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceISetMeterI_
+  commentId: Overload:Tol.DcvsPins.ForceISetMeterI
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceISetMeterI
+  nameWithType: DcvsPins.ForceISetMeterI
+- uid: Tol.DcvsPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterV(double, double, double, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterV(Double, Double, Double, Boolean?)
+  fullName: Tol.DcvsPins.ForceISetMeterV(double, double, double, bool?)
+  fullName.vb: Tol.DcvsPins.ForceISetMeterV(Double, Double, Double, Boolean?)
+  nameWithType: DcvsPins.ForceISetMeterV(double, double, double, bool?)
+  nameWithType.vb: DcvsPins.ForceISetMeterV(Double, Double, Double, Boolean?)
+- uid: Tol.DcvsPins.ForceISetMeterV*
+  name: ForceISetMeterV
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceISetMeterV_
+  commentId: Overload:Tol.DcvsPins.ForceISetMeterV
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceISetMeterV
+  nameWithType: DcvsPins.ForceISetMeterV
+- uid: Tol.DcvsPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceV(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.DcvsPins.ForceV(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.DcvsPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: DcvsPins.ForceV(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: DcvsPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.DcvsPins.ForceV*
+  name: ForceV
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceV_
+  commentId: Overload:Tol.DcvsPins.ForceV
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceV
+  nameWithType: DcvsPins.ForceV
+- uid: Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, double, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Double, Boolean?)
+  fullName: Tol.DcvsPins.ForceVSetMeterI(double, double, double, bool?)
+  fullName.vb: Tol.DcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+  nameWithType: DcvsPins.ForceVSetMeterI(double, double, double, bool?)
+  nameWithType.vb: DcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+- uid: Tol.DcvsPins.ForceVSetMeterI*
+  name: ForceVSetMeterI
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterI_
+  commentId: Overload:Tol.DcvsPins.ForceVSetMeterI
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceVSetMeterI
+  nameWithType: DcvsPins.ForceVSetMeterI
+- uid: Tol.DcvsPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterV(double, double, double, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterV(Double, Double, Double, Boolean?)
+  fullName: Tol.DcvsPins.ForceVSetMeterV(double, double, double, bool?)
+  fullName.vb: Tol.DcvsPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+  nameWithType: DcvsPins.ForceVSetMeterV(double, double, double, bool?)
+  nameWithType.vb: DcvsPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+- uid: Tol.DcvsPins.ForceVSetMeterV*
+  name: ForceVSetMeterV
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterV_
+  commentId: Overload:Tol.DcvsPins.ForceVSetMeterV
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ForceVSetMeterV
+  nameWithType: DcvsPins.ForceVSetMeterV
+- uid: Tol.DcvsPins.Gate
+  name: Gate
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Gate
+  commentId: P:Tol.DcvsPins.Gate
+  fullName: Tol.DcvsPins.Gate
+  nameWithType: DcvsPins.Gate
+- uid: Tol.DcvsPins.Gate*
+  name: Gate
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Gate_
+  commentId: Overload:Tol.DcvsPins.Gate
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Gate
+  nameWithType: DcvsPins.Gate
+- uid: Tol.DcvsPins.GetIndividualPins
+  name: GetIndividualPins()
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_GetIndividualPins
+  commentId: M:Tol.DcvsPins.GetIndividualPins
+  fullName: Tol.DcvsPins.GetIndividualPins()
+  nameWithType: DcvsPins.GetIndividualPins()
+- uid: Tol.DcvsPins.GetIndividualPins*
+  name: GetIndividualPins
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_GetIndividualPins_
+  commentId: Overload:Tol.DcvsPins.GetIndividualPins
+  isSpec: "True"
+  fullName: Tol.DcvsPins.GetIndividualPins
+  nameWithType: DcvsPins.GetIndividualPins
+- uid: Tol.DcvsPins.GetPinListItem
+  name: GetPinListItem()
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_GetPinListItem
+  commentId: M:Tol.DcvsPins.GetPinListItem
+  fullName: Tol.DcvsPins.GetPinListItem()
+  nameWithType: DcvsPins.GetPinListItem()
+- uid: Tol.DcvsPins.GetPinListItem*
+  name: GetPinListItem
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_GetPinListItem_
+  commentId: Overload:Tol.DcvsPins.GetPinListItem
+  isSpec: "True"
+  fullName: Tol.DcvsPins.GetPinListItem
+  nameWithType: DcvsPins.GetPinListItem
+- uid: Tol.DcvsPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_HardwareApi
+  commentId: P:Tol.DcvsPins.HardwareApi
+  fullName: Tol.DcvsPins.HardwareApi
+  nameWithType: DcvsPins.HardwareApi
+- uid: Tol.DcvsPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_HardwareApi_
+  commentId: Overload:Tol.DcvsPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.DcvsPins.HardwareApi
+  nameWithType: DcvsPins.HardwareApi
+- uid: Tol.DcvsPins.Measure(System.Int32,System.Double)
+  name: Measure(int, double)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Measure_System_Int32_System_Double_
+  commentId: M:Tol.DcvsPins.Measure(System.Int32,System.Double)
+  name.vb: Measure(Integer, Double)
+  fullName: Tol.DcvsPins.Measure(int, double)
+  fullName.vb: Tol.DcvsPins.Measure(Integer, Double)
+  nameWithType: DcvsPins.Measure(int, double)
+  nameWithType.vb: DcvsPins.Measure(Integer, Double)
+- uid: Tol.DcvsPins.Measure*
+  name: Measure
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Measure_
+  commentId: Overload:Tol.DcvsPins.Measure
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Measure
+  nameWithType: DcvsPins.Measure
+- uid: Tol.DcvsPins.MeasureSamples(System.Int32,System.Double)
+  name: MeasureSamples(int, double)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_MeasureSamples_System_Int32_System_Double_
+  commentId: M:Tol.DcvsPins.MeasureSamples(System.Int32,System.Double)
+  name.vb: MeasureSamples(Integer, Double)
+  fullName: Tol.DcvsPins.MeasureSamples(int, double)
+  fullName.vb: Tol.DcvsPins.MeasureSamples(Integer, Double)
+  nameWithType: DcvsPins.MeasureSamples(int, double)
+  nameWithType.vb: DcvsPins.MeasureSamples(Integer, Double)
+- uid: Tol.DcvsPins.MeasureSamples*
+  name: MeasureSamples
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_MeasureSamples_
+  commentId: Overload:Tol.DcvsPins.MeasureSamples
+  isSpec: "True"
+  fullName: Tol.DcvsPins.MeasureSamples
+  nameWithType: DcvsPins.MeasureSamples
+- uid: Tol.DcvsPins.Meter
+  name: Meter
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Meter
+  commentId: P:Tol.DcvsPins.Meter
+  fullName: Tol.DcvsPins.Meter
+  nameWithType: DcvsPins.Meter
+- uid: Tol.DcvsPins.Meter*
+  name: Meter
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Meter_
+  commentId: Overload:Tol.DcvsPins.Meter
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Meter
+  nameWithType: DcvsPins.Meter
+- uid: Tol.DcvsPins.Mode
+  name: Mode
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Mode
+  commentId: P:Tol.DcvsPins.Mode
+  fullName: Tol.DcvsPins.Mode
+  nameWithType: DcvsPins.Mode
+- uid: Tol.DcvsPins.Mode*
+  name: Mode
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Mode_
+  commentId: Overload:Tol.DcvsPins.Mode
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Mode
+  nameWithType: DcvsPins.Mode
+- uid: Tol.DcvsPins.Name
+  name: Name
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Name
+  commentId: P:Tol.DcvsPins.Name
+  fullName: Tol.DcvsPins.Name
+  nameWithType: DcvsPins.Name
+- uid: Tol.DcvsPins.Name*
+  name: Name
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Name_
+  commentId: Overload:Tol.DcvsPins.Name
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Name
+  nameWithType: DcvsPins.Name
+- uid: Tol.DcvsPins.Read(System.Int32,System.Double)
+  name: Read(int, double)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Read_System_Int32_System_Double_
+  commentId: M:Tol.DcvsPins.Read(System.Int32,System.Double)
+  name.vb: Read(Integer, Double)
+  fullName: Tol.DcvsPins.Read(int, double)
+  fullName.vb: Tol.DcvsPins.Read(Integer, Double)
+  nameWithType: DcvsPins.Read(int, double)
+  nameWithType.vb: DcvsPins.Read(Integer, Double)
+- uid: Tol.DcvsPins.Read*
+  name: Read
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Read_
+  commentId: Overload:Tol.DcvsPins.Read
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Read
+  nameWithType: DcvsPins.Read
+- uid: Tol.DcvsPins.ReadSamples(System.Int32,System.Double)
+  name: ReadSamples(int, double)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ReadSamples_System_Int32_System_Double_
+  commentId: M:Tol.DcvsPins.ReadSamples(System.Int32,System.Double)
+  name.vb: ReadSamples(Integer, Double)
+  fullName: Tol.DcvsPins.ReadSamples(int, double)
+  fullName.vb: Tol.DcvsPins.ReadSamples(Integer, Double)
+  nameWithType: DcvsPins.ReadSamples(int, double)
+  nameWithType.vb: DcvsPins.ReadSamples(Integer, Double)
+- uid: Tol.DcvsPins.ReadSamples*
+  name: ReadSamples
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ReadSamples_
+  commentId: Overload:Tol.DcvsPins.ReadSamples
+  isSpec: "True"
+  fullName: Tol.DcvsPins.ReadSamples
+  nameWithType: DcvsPins.ReadSamples
+- uid: Tol.DcvsPins.SetCurrentRanges(System.Double,System.Double)
+  name: SetCurrentRanges(double, double)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_SetCurrentRanges_System_Double_System_Double_
+  commentId: M:Tol.DcvsPins.SetCurrentRanges(System.Double,System.Double)
+  name.vb: SetCurrentRanges(Double, Double)
+  fullName: Tol.DcvsPins.SetCurrentRanges(double, double)
+  fullName.vb: Tol.DcvsPins.SetCurrentRanges(Double, Double)
+  nameWithType: DcvsPins.SetCurrentRanges(double, double)
+  nameWithType.vb: DcvsPins.SetCurrentRanges(Double, Double)
+- uid: Tol.DcvsPins.SetCurrentRanges*
+  name: SetCurrentRanges
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_SetCurrentRanges_
+  commentId: Overload:Tol.DcvsPins.SetCurrentRanges
+  isSpec: "True"
+  fullName: Tol.DcvsPins.SetCurrentRanges
+  nameWithType: DcvsPins.SetCurrentRanges
+- uid: Tol.DcvsPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double})
+  name: SetMeterI(double?, double?, double?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_SetMeterI_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__
+  commentId: M:Tol.DcvsPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double})
+  name.vb: SetMeterI(Double?, Double?, Double?)
+  fullName: Tol.DcvsPins.SetMeterI(double?, double?, double?)
+  fullName.vb: Tol.DcvsPins.SetMeterI(Double?, Double?, Double?)
+  nameWithType: DcvsPins.SetMeterI(double?, double?, double?)
+  nameWithType.vb: DcvsPins.SetMeterI(Double?, Double?, Double?)
+- uid: Tol.DcvsPins.SetMeterI*
+  name: SetMeterI
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_SetMeterI_
+  commentId: Overload:Tol.DcvsPins.SetMeterI
+  isSpec: "True"
+  fullName: Tol.DcvsPins.SetMeterI
+  nameWithType: DcvsPins.SetMeterI
+- uid: Tol.DcvsPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Double})
+  name: SetMeterV(double?, double?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_SetMeterV_System_Nullable_System_Double__System_Nullable_System_Double__
+  commentId: M:Tol.DcvsPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Double})
+  name.vb: SetMeterV(Double?, Double?)
+  fullName: Tol.DcvsPins.SetMeterV(double?, double?)
+  fullName.vb: Tol.DcvsPins.SetMeterV(Double?, Double?)
+  nameWithType: DcvsPins.SetMeterV(double?, double?)
+  nameWithType.vb: DcvsPins.SetMeterV(Double?, Double?)
+- uid: Tol.DcvsPins.SetMeterV*
+  name: SetMeterV
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_SetMeterV_
+  commentId: Overload:Tol.DcvsPins.SetMeterV
+  isSpec: "True"
+  fullName: Tol.DcvsPins.SetMeterV
+  nameWithType: DcvsPins.SetMeterV
+- uid: Tol.DcvsPins.Strobe(System.Int32,System.Double)
+  name: Strobe(int, double)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Strobe_System_Int32_System_Double_
+  commentId: M:Tol.DcvsPins.Strobe(System.Int32,System.Double)
+  name.vb: Strobe(Integer, Double)
+  fullName: Tol.DcvsPins.Strobe(int, double)
+  fullName.vb: Tol.DcvsPins.Strobe(Integer, Double)
+  nameWithType: DcvsPins.Strobe(int, double)
+  nameWithType.vb: DcvsPins.Strobe(Integer, Double)
+- uid: Tol.DcvsPins.Strobe*
+  name: Strobe
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Strobe_
+  commentId: Overload:Tol.DcvsPins.Strobe
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Strobe
+  nameWithType: DcvsPins.Strobe
+- uid: Tol.DcvsPins.Voltage
+  name: Voltage
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Voltage
+  commentId: P:Tol.DcvsPins.Voltage
+  fullName: Tol.DcvsPins.Voltage
+  nameWithType: DcvsPins.Voltage
+- uid: Tol.DcvsPins.Voltage*
+  name: Voltage
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_Voltage_
+  commentId: Overload:Tol.DcvsPins.Voltage
+  isSpec: "True"
+  fullName: Tol.DcvsPins.Voltage
+  nameWithType: DcvsPins.Voltage
+- uid: Tol.DcvsPins.VoltageRange
+  name: VoltageRange
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_VoltageRange
+  commentId: P:Tol.DcvsPins.VoltageRange
+  fullName: Tol.DcvsPins.VoltageRange
+  nameWithType: DcvsPins.VoltageRange
+- uid: Tol.DcvsPins.VoltageRange*
+  name: VoltageRange
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_VoltageRange_
+  commentId: Overload:Tol.DcvsPins.VoltageRange
+  isSpec: "True"
+  fullName: Tol.DcvsPins.VoltageRange
+  nameWithType: DcvsPins.VoltageRange
+- uid: Tol.DigitalPins
+  name: DigitalPins
+  href: api/Tol.DigitalPins.html
+  commentId: T:Tol.DigitalPins
+  fullName: Tol.DigitalPins
+  nameWithType: DigitalPins
+- uid: Tol.DigitalPins.Connect
+  name: Connect()
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Connect
+  commentId: M:Tol.DigitalPins.Connect
+  fullName: Tol.DigitalPins.Connect()
+  nameWithType: DigitalPins.Connect()
+- uid: Tol.DigitalPins.Connect*
+  name: Connect
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Connect_
+  commentId: Overload:Tol.DigitalPins.Connect
+  isSpec: "True"
+  fullName: Tol.DigitalPins.Connect
+  nameWithType: DigitalPins.Connect
+- uid: Tol.DigitalPins.Disconnect
+  name: Disconnect()
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Disconnect
+  commentId: M:Tol.DigitalPins.Disconnect
+  fullName: Tol.DigitalPins.Disconnect()
+  nameWithType: DigitalPins.Disconnect()
+- uid: Tol.DigitalPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Disconnect_
+  commentId: Overload:Tol.DigitalPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.DigitalPins.Disconnect
+  nameWithType: DigitalPins.Disconnect
+- uid: Tol.DigitalPins.GetIndividualPins
+  name: GetIndividualPins()
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_GetIndividualPins
+  commentId: M:Tol.DigitalPins.GetIndividualPins
+  fullName: Tol.DigitalPins.GetIndividualPins()
+  nameWithType: DigitalPins.GetIndividualPins()
+- uid: Tol.DigitalPins.GetIndividualPins*
+  name: GetIndividualPins
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_GetIndividualPins_
+  commentId: Overload:Tol.DigitalPins.GetIndividualPins
+  isSpec: "True"
+  fullName: Tol.DigitalPins.GetIndividualPins
+  nameWithType: DigitalPins.GetIndividualPins
+- uid: Tol.DigitalPins.GetPinListItem
+  name: GetPinListItem()
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_GetPinListItem
+  commentId: M:Tol.DigitalPins.GetPinListItem
+  fullName: Tol.DigitalPins.GetPinListItem()
+  nameWithType: DigitalPins.GetPinListItem()
+- uid: Tol.DigitalPins.GetPinListItem*
+  name: GetPinListItem
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_GetPinListItem_
+  commentId: Overload:Tol.DigitalPins.GetPinListItem
+  isSpec: "True"
+  fullName: Tol.DigitalPins.GetPinListItem
+  nameWithType: DigitalPins.GetPinListItem
+- uid: Tol.DigitalPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_HardwareApi
+  commentId: P:Tol.DigitalPins.HardwareApi
+  fullName: Tol.DigitalPins.HardwareApi
+  nameWithType: DigitalPins.HardwareApi
+- uid: Tol.DigitalPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_HardwareApi_
+  commentId: Overload:Tol.DigitalPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.DigitalPins.HardwareApi
+  nameWithType: DigitalPins.HardwareApi
+- uid: Tol.DigitalPins.InitState
+  name: InitState
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_InitState
+  commentId: P:Tol.DigitalPins.InitState
+  fullName: Tol.DigitalPins.InitState
+  nameWithType: DigitalPins.InitState
+- uid: Tol.DigitalPins.InitState*
+  name: InitState
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_InitState_
+  commentId: Overload:Tol.DigitalPins.InitState
+  isSpec: "True"
+  fullName: Tol.DigitalPins.InitState
+  nameWithType: DigitalPins.InitState
+- uid: Tol.DigitalPins.LockState
+  name: LockState
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_LockState
+  commentId: P:Tol.DigitalPins.LockState
+  fullName: Tol.DigitalPins.LockState
+  nameWithType: DigitalPins.LockState
+- uid: Tol.DigitalPins.LockState*
+  name: LockState
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_LockState_
+  commentId: Overload:Tol.DigitalPins.LockState
+  isSpec: "True"
+  fullName: Tol.DigitalPins.LockState
+  nameWithType: DigitalPins.LockState
+- uid: Tol.DigitalPins.Name
+  name: Name
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Name
+  commentId: P:Tol.DigitalPins.Name
+  fullName: Tol.DigitalPins.Name
+  nameWithType: DigitalPins.Name
+- uid: Tol.DigitalPins.Name*
+  name: Name
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Name_
+  commentId: Overload:Tol.DigitalPins.Name
+  isSpec: "True"
+  fullName: Tol.DigitalPins.Name
+  nameWithType: DigitalPins.Name
+- uid: Tol.DigitalPins.Ppmu
+  name: Ppmu
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Ppmu
+  commentId: P:Tol.DigitalPins.Ppmu
+  fullName: Tol.DigitalPins.Ppmu
+  nameWithType: DigitalPins.Ppmu
+- uid: Tol.DigitalPins.Ppmu*
+  name: Ppmu
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_Ppmu_
+  commentId: Overload:Tol.DigitalPins.Ppmu
+  isSpec: "True"
+  fullName: Tol.DigitalPins.Ppmu
+  nameWithType: DigitalPins.Ppmu
+- uid: Tol.DigitalPins.StartState
+  name: StartState
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_StartState
+  commentId: P:Tol.DigitalPins.StartState
+  fullName: Tol.DigitalPins.StartState
+  nameWithType: DigitalPins.StartState
+- uid: Tol.DigitalPins.StartState*
+  name: StartState
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins_StartState_
+  commentId: Overload:Tol.DigitalPins.StartState
+  isSpec: "True"
+  fullName: Tol.DigitalPins.StartState
+  nameWithType: DigitalPins.StartState
+- uid: Tol.Factory
+  name: Factory
+  href: api/Tol.Factory.html
+  commentId: T:Tol.Factory
+  fullName: Tol.Factory
+  nameWithType: Factory
+- uid: Tol.Factory.CreateDcviPins(System.String)
+  name: CreateDcviPins(string)
+  href: api/Tol.Factory.html#Tol_Factory_CreateDcviPins_System_String_
+  commentId: M:Tol.Factory.CreateDcviPins(System.String)
+  name.vb: CreateDcviPins(String)
+  fullName: Tol.Factory.CreateDcviPins(string)
+  fullName.vb: Tol.Factory.CreateDcviPins(String)
+  nameWithType: Factory.CreateDcviPins(string)
+  nameWithType.vb: Factory.CreateDcviPins(String)
+- uid: Tol.Factory.CreateDcviPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  name: CreateDcviPins(string, DriverDCVIPins)
+  href: api/Tol.Factory.html#Tol_Factory_CreateDcviPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVIPins_
+  commentId: M:Tol.Factory.CreateDcviPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  name.vb: CreateDcviPins(String, DriverDCVIPins)
+  fullName: Tol.Factory.CreateDcviPins(string, Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  fullName.vb: Tol.Factory.CreateDcviPins(String, Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  nameWithType: Factory.CreateDcviPins(string, DriverDCVIPins)
+  nameWithType.vb: Factory.CreateDcviPins(String, DriverDCVIPins)
+- uid: Tol.Factory.CreateDcviPins*
+  name: CreateDcviPins
+  href: api/Tol.Factory.html#Tol_Factory_CreateDcviPins_
+  commentId: Overload:Tol.Factory.CreateDcviPins
+  isSpec: "True"
+  fullName: Tol.Factory.CreateDcviPins
+  nameWithType: Factory.CreateDcviPins
+- uid: Tol.Factory.CreateDcvsPins(System.String)
+  name: CreateDcvsPins(string)
+  href: api/Tol.Factory.html#Tol_Factory_CreateDcvsPins_System_String_
+  commentId: M:Tol.Factory.CreateDcvsPins(System.String)
+  name.vb: CreateDcvsPins(String)
+  fullName: Tol.Factory.CreateDcvsPins(string)
+  fullName.vb: Tol.Factory.CreateDcvsPins(String)
+  nameWithType: Factory.CreateDcvsPins(string)
+  nameWithType.vb: Factory.CreateDcvsPins(String)
+- uid: Tol.Factory.CreateDcvsPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  name: CreateDcvsPins(string, DriverDCVSPins)
+  href: api/Tol.Factory.html#Tol_Factory_CreateDcvsPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVSPins_
+  commentId: M:Tol.Factory.CreateDcvsPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  name.vb: CreateDcvsPins(String, DriverDCVSPins)
+  fullName: Tol.Factory.CreateDcvsPins(string, Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  fullName.vb: Tol.Factory.CreateDcvsPins(String, Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
+  nameWithType: Factory.CreateDcvsPins(string, DriverDCVSPins)
+  nameWithType.vb: Factory.CreateDcvsPins(String, DriverDCVSPins)
+- uid: Tol.Factory.CreateDcvsPins*
+  name: CreateDcvsPins
+  href: api/Tol.Factory.html#Tol_Factory_CreateDcvsPins_
+  commentId: Overload:Tol.Factory.CreateDcvsPins
+  isSpec: "True"
+  fullName: Tol.Factory.CreateDcvsPins
+  nameWithType: Factory.CreateDcvsPins
+- uid: Tol.Factory.CreateDigitalPins(System.String)
+  name: CreateDigitalPins(string)
+  href: api/Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_
+  commentId: M:Tol.Factory.CreateDigitalPins(System.String)
+  name.vb: CreateDigitalPins(String)
+  fullName: Tol.Factory.CreateDigitalPins(string)
+  fullName.vb: Tol.Factory.CreateDigitalPins(String)
+  nameWithType: Factory.CreateDigitalPins(string)
+  nameWithType.vb: Factory.CreateDigitalPins(String)
+- uid: Tol.Factory.CreateDigitalPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
+  name: CreateDigitalPins(string, DriverDigitalPins)
+  href: api/Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDigitalPins_
+  commentId: M:Tol.Factory.CreateDigitalPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
+  name.vb: CreateDigitalPins(String, DriverDigitalPins)
+  fullName: Tol.Factory.CreateDigitalPins(string, Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
+  fullName.vb: Tol.Factory.CreateDigitalPins(String, Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
+  nameWithType: Factory.CreateDigitalPins(string, DriverDigitalPins)
+  nameWithType.vb: Factory.CreateDigitalPins(String, DriverDigitalPins)
+- uid: Tol.Factory.CreateDigitalPins*
+  name: CreateDigitalPins
+  href: api/Tol.Factory.html#Tol_Factory_CreateDigitalPins_
+  commentId: Overload:Tol.Factory.CreateDigitalPins
+  isSpec: "True"
+  fullName: Tol.Factory.CreateDigitalPins
+  nameWithType: Factory.CreateDigitalPins
+- uid: Tol.Factory.CreatePpmuPins(System.String)
+  name: CreatePpmuPins(string)
+  href: api/Tol.Factory.html#Tol_Factory_CreatePpmuPins_System_String_
+  commentId: M:Tol.Factory.CreatePpmuPins(System.String)
+  name.vb: CreatePpmuPins(String)
+  fullName: Tol.Factory.CreatePpmuPins(string)
+  fullName.vb: Tol.Factory.CreatePpmuPins(String)
+  nameWithType: Factory.CreatePpmuPins(string)
+  nameWithType.vb: Factory.CreatePpmuPins(String)
+- uid: Tol.Factory.CreatePpmuPins(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  name: CreatePpmuPins(string, tlDriverPPMUPins)
+  href: api/Tol.Factory.html#Tol_Factory_CreatePpmuPins_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverPPMUPins_
+  commentId: M:Tol.Factory.CreatePpmuPins(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  name.vb: CreatePpmuPins(String, tlDriverPPMUPins)
+  fullName: Tol.Factory.CreatePpmuPins(string, Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  fullName.vb: Tol.Factory.CreatePpmuPins(String, Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  nameWithType: Factory.CreatePpmuPins(string, tlDriverPPMUPins)
+  nameWithType.vb: Factory.CreatePpmuPins(String, tlDriverPPMUPins)
+- uid: Tol.Factory.CreatePpmuPins*
+  name: CreatePpmuPins
+  href: api/Tol.Factory.html#Tol_Factory_CreatePpmuPins_
+  commentId: Overload:Tol.Factory.CreatePpmuPins
+  isSpec: "True"
+  fullName: Tol.Factory.CreatePpmuPins
+  nameWithType: Factory.CreatePpmuPins
+- uid: Tol.IAutoValuePerSiteRange`1
+  name: IAutoValuePerSiteRange<T>
+  href: api/Tol.IAutoValuePerSiteRange-1.html
+  commentId: T:Tol.IAutoValuePerSiteRange`1
+  name.vb: IAutoValuePerSiteRange(Of T)
+  fullName: Tol.IAutoValuePerSiteRange<T>
+  fullName.vb: Tol.IAutoValuePerSiteRange(Of T)
+  nameWithType: IAutoValuePerSiteRange<T>
+  nameWithType.vb: IAutoValuePerSiteRange(Of T)
+- uid: Tol.IAutoValuePerSiteRange`1.Auto
+  name: Auto
+  href: api/Tol.IAutoValuePerSiteRange-1.html#Tol_IAutoValuePerSiteRange_1_Auto
+  commentId: P:Tol.IAutoValuePerSiteRange`1.Auto
+  fullName: Tol.IAutoValuePerSiteRange<T>.Auto
+  fullName.vb: Tol.IAutoValuePerSiteRange(Of T).Auto
+  nameWithType: IAutoValuePerSiteRange<T>.Auto
+  nameWithType.vb: IAutoValuePerSiteRange(Of T).Auto
+- uid: Tol.IAutoValuePerSiteRange`1.Auto*
+  name: Auto
+  href: api/Tol.IAutoValuePerSiteRange-1.html#Tol_IAutoValuePerSiteRange_1_Auto_
+  commentId: Overload:Tol.IAutoValuePerSiteRange`1.Auto
+  isSpec: "True"
+  fullName: Tol.IAutoValuePerSiteRange<T>.Auto
+  fullName.vb: Tol.IAutoValuePerSiteRange(Of T).Auto
+  nameWithType: IAutoValuePerSiteRange<T>.Auto
+  nameWithType.vb: IAutoValuePerSiteRange(Of T).Auto
+- uid: Tol.IAutoValuePerSiteRange`1.AutoPerSite
+  name: AutoPerSite
+  href: api/Tol.IAutoValuePerSiteRange-1.html#Tol_IAutoValuePerSiteRange_1_AutoPerSite
+  commentId: P:Tol.IAutoValuePerSiteRange`1.AutoPerSite
+  fullName: Tol.IAutoValuePerSiteRange<T>.AutoPerSite
+  fullName.vb: Tol.IAutoValuePerSiteRange(Of T).AutoPerSite
+  nameWithType: IAutoValuePerSiteRange<T>.AutoPerSite
+  nameWithType.vb: IAutoValuePerSiteRange(Of T).AutoPerSite
+- uid: Tol.IAutoValuePerSiteRange`1.AutoPerSite*
+  name: AutoPerSite
+  href: api/Tol.IAutoValuePerSiteRange-1.html#Tol_IAutoValuePerSiteRange_1_AutoPerSite_
+  commentId: Overload:Tol.IAutoValuePerSiteRange`1.AutoPerSite
+  isSpec: "True"
+  fullName: Tol.IAutoValuePerSiteRange<T>.AutoPerSite
+  fullName.vb: Tol.IAutoValuePerSiteRange(Of T).AutoPerSite
+  nameWithType: IAutoValuePerSiteRange<T>.AutoPerSite
+  nameWithType.vb: IAutoValuePerSiteRange(Of T).AutoPerSite
+- uid: Tol.IDcviMeter
+  name: IDcviMeter
+  href: api/Tol.IDcviMeter.html
+  commentId: T:Tol.IDcviMeter
+  fullName: Tol.IDcviMeter
+  nameWithType: IDcviMeter
+- uid: Tol.IDcviMeter.CurrentRange
+  name: CurrentRange
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_CurrentRange
+  commentId: P:Tol.IDcviMeter.CurrentRange
+  fullName: Tol.IDcviMeter.CurrentRange
+  nameWithType: IDcviMeter.CurrentRange
+- uid: Tol.IDcviMeter.CurrentRange*
+  name: CurrentRange
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_CurrentRange_
+  commentId: Overload:Tol.IDcviMeter.CurrentRange
+  isSpec: "True"
+  fullName: Tol.IDcviMeter.CurrentRange
+  nameWithType: IDcviMeter.CurrentRange
+- uid: Tol.IDcviMeter.Filter
+  name: Filter
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_Filter
+  commentId: P:Tol.IDcviMeter.Filter
+  fullName: Tol.IDcviMeter.Filter
+  nameWithType: IDcviMeter.Filter
+- uid: Tol.IDcviMeter.Filter*
+  name: Filter
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_Filter_
+  commentId: Overload:Tol.IDcviMeter.Filter
+  isSpec: "True"
+  fullName: Tol.IDcviMeter.Filter
+  nameWithType: IDcviMeter.Filter
+- uid: Tol.IDcviMeter.HardwareAverage
+  name: HardwareAverage
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_HardwareAverage
+  commentId: P:Tol.IDcviMeter.HardwareAverage
+  fullName: Tol.IDcviMeter.HardwareAverage
+  nameWithType: IDcviMeter.HardwareAverage
+- uid: Tol.IDcviMeter.HardwareAverage*
+  name: HardwareAverage
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_HardwareAverage_
+  commentId: Overload:Tol.IDcviMeter.HardwareAverage
+  isSpec: "True"
+  fullName: Tol.IDcviMeter.HardwareAverage
+  nameWithType: IDcviMeter.HardwareAverage
+- uid: Tol.IDcviMeter.Mode
+  name: Mode
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_Mode
+  commentId: P:Tol.IDcviMeter.Mode
+  fullName: Tol.IDcviMeter.Mode
+  nameWithType: IDcviMeter.Mode
+- uid: Tol.IDcviMeter.Mode*
+  name: Mode
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_Mode_
+  commentId: Overload:Tol.IDcviMeter.Mode
+  isSpec: "True"
+  fullName: Tol.IDcviMeter.Mode
+  nameWithType: IDcviMeter.Mode
+- uid: Tol.IDcviMeter.VoltageRange
+  name: VoltageRange
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_VoltageRange
+  commentId: P:Tol.IDcviMeter.VoltageRange
+  fullName: Tol.IDcviMeter.VoltageRange
+  nameWithType: IDcviMeter.VoltageRange
+- uid: Tol.IDcviMeter.VoltageRange*
+  name: VoltageRange
+  href: api/Tol.IDcviMeter.html#Tol_IDcviMeter_VoltageRange_
+  commentId: Overload:Tol.IDcviMeter.VoltageRange
+  isSpec: "True"
+  fullName: Tol.IDcviMeter.VoltageRange
+  nameWithType: IDcviMeter.VoltageRange
+- uid: Tol.IDcviPins
+  name: IDcviPins
+  href: api/Tol.IDcviPins.html
+  commentId: T:Tol.IDcviPins
+  fullName: Tol.IDcviPins
+  nameWithType: IDcviPins
+- uid: Tol.IDcviPins.Bandwidth
+  name: Bandwidth
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Bandwidth
+  commentId: P:Tol.IDcviPins.Bandwidth
+  fullName: Tol.IDcviPins.Bandwidth
+  nameWithType: IDcviPins.Bandwidth
+- uid: Tol.IDcviPins.Bandwidth*
+  name: Bandwidth
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Bandwidth_
+  commentId: Overload:Tol.IDcviPins.Bandwidth
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Bandwidth
+  nameWithType: IDcviPins.Bandwidth
+- uid: Tol.IDcviPins.ComplianceRangeNegative
+  name: ComplianceRangeNegative
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ComplianceRangeNegative
+  commentId: P:Tol.IDcviPins.ComplianceRangeNegative
+  fullName: Tol.IDcviPins.ComplianceRangeNegative
+  nameWithType: IDcviPins.ComplianceRangeNegative
+- uid: Tol.IDcviPins.ComplianceRangeNegative*
+  name: ComplianceRangeNegative
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ComplianceRangeNegative_
+  commentId: Overload:Tol.IDcviPins.ComplianceRangeNegative
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ComplianceRangeNegative
+  nameWithType: IDcviPins.ComplianceRangeNegative
+- uid: Tol.IDcviPins.ComplianceRangePositive
+  name: ComplianceRangePositive
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ComplianceRangePositive
+  commentId: P:Tol.IDcviPins.ComplianceRangePositive
+  fullName: Tol.IDcviPins.ComplianceRangePositive
+  nameWithType: IDcviPins.ComplianceRangePositive
+- uid: Tol.IDcviPins.ComplianceRangePositive*
+  name: ComplianceRangePositive
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ComplianceRangePositive_
+  commentId: Overload:Tol.IDcviPins.ComplianceRangePositive
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ComplianceRangePositive
+  nameWithType: IDcviPins.ComplianceRangePositive
+- uid: Tol.IDcviPins.Connect(System.Nullable{System.Boolean})
+  name: Connect(bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Connect_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.Connect(System.Nullable{System.Boolean})
+  name.vb: Connect(Boolean?)
+  fullName: Tol.IDcviPins.Connect(bool?)
+  fullName.vb: Tol.IDcviPins.Connect(Boolean?)
+  nameWithType: IDcviPins.Connect(bool?)
+  nameWithType.vb: IDcviPins.Connect(Boolean?)
+- uid: Tol.IDcviPins.Connect*
+  name: Connect
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Connect_
+  commentId: Overload:Tol.IDcviPins.Connect
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Connect
+  nameWithType: IDcviPins.Connect
+- uid: Tol.IDcviPins.Current
+  name: Current
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Current
+  commentId: P:Tol.IDcviPins.Current
+  fullName: Tol.IDcviPins.Current
+  nameWithType: IDcviPins.Current
+- uid: Tol.IDcviPins.Current*
+  name: Current
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Current_
+  commentId: Overload:Tol.IDcviPins.Current
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Current
+  nameWithType: IDcviPins.Current
+- uid: Tol.IDcviPins.CurrentRange
+  name: CurrentRange
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_CurrentRange
+  commentId: P:Tol.IDcviPins.CurrentRange
+  fullName: Tol.IDcviPins.CurrentRange
+  nameWithType: IDcviPins.CurrentRange
+- uid: Tol.IDcviPins.CurrentRange*
+  name: CurrentRange
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_CurrentRange_
+  commentId: Overload:Tol.IDcviPins.CurrentRange
+  isSpec: "True"
+  fullName: Tol.IDcviPins.CurrentRange
+  nameWithType: IDcviPins.CurrentRange
+- uid: Tol.IDcviPins.Disconnect(System.Nullable{System.Boolean})
+  name: Disconnect(bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Disconnect_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.Disconnect(System.Nullable{System.Boolean})
+  name.vb: Disconnect(Boolean?)
+  fullName: Tol.IDcviPins.Disconnect(bool?)
+  fullName.vb: Tol.IDcviPins.Disconnect(Boolean?)
+  nameWithType: IDcviPins.Disconnect(bool?)
+  nameWithType.vb: IDcviPins.Disconnect(Boolean?)
+- uid: Tol.IDcviPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Disconnect_
+  commentId: Overload:Tol.IDcviPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Disconnect
+  nameWithType: IDcviPins.Disconnect
+- uid: Tol.IDcviPins.ForceHiZ
+  name: ForceHiZ()
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceHiZ
+  commentId: M:Tol.IDcviPins.ForceHiZ
+  fullName: Tol.IDcviPins.ForceHiZ()
+  nameWithType: IDcviPins.ForceHiZ()
+- uid: Tol.IDcviPins.ForceHiZ*
+  name: ForceHiZ
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceHiZ_
+  commentId: Overload:Tol.IDcviPins.ForceHiZ
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceHiZ
+  nameWithType: IDcviPins.ForceHiZ
+- uid: Tol.IDcviPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceI(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.IDcviPins.ForceI(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.IDcviPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: IDcviPins.ForceI(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: IDcviPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.IDcviPins.ForceI*
+  name: ForceI
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceI_
+  commentId: Overload:Tol.IDcviPins.ForceI
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceI
+  nameWithType: IDcviPins.ForceI
+- uid: Tol.IDcviPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterI(double, double, double, double, bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceISetMeterI_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.IDcviPins.ForceISetMeterI(double, double, double, double, bool?)
+  fullName.vb: Tol.IDcviPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  nameWithType: IDcviPins.ForceISetMeterI(double, double, double, double, bool?)
+  nameWithType.vb: IDcviPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+- uid: Tol.IDcviPins.ForceISetMeterI*
+  name: ForceISetMeterI
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceISetMeterI_
+  commentId: Overload:Tol.IDcviPins.ForceISetMeterI
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceISetMeterI
+  nameWithType: IDcviPins.ForceISetMeterI
+- uid: Tol.IDcviPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterV(double, double, double, double, bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.IDcviPins.ForceISetMeterV(double, double, double, double, bool?)
+  fullName.vb: Tol.IDcviPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  nameWithType: IDcviPins.ForceISetMeterV(double, double, double, double, bool?)
+  nameWithType.vb: IDcviPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+- uid: Tol.IDcviPins.ForceISetMeterV*
+  name: ForceISetMeterV
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceISetMeterV_
+  commentId: Overload:Tol.IDcviPins.ForceISetMeterV
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceISetMeterV
+  nameWithType: IDcviPins.ForceISetMeterV
+- uid: Tol.IDcviPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceV(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.IDcviPins.ForceV(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.IDcviPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: IDcviPins.ForceV(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: IDcviPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.IDcviPins.ForceV*
+  name: ForceV
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceV_
+  commentId: Overload:Tol.IDcviPins.ForceV
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceV
+  nameWithType: IDcviPins.ForceV
+- uid: Tol.IDcviPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, double, bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Double, Boolean?)
+  fullName: Tol.IDcviPins.ForceVSetMeterI(double, double, double, bool?)
+  fullName.vb: Tol.IDcviPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+  nameWithType: IDcviPins.ForceVSetMeterI(double, double, double, bool?)
+  nameWithType.vb: IDcviPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+- uid: Tol.IDcviPins.ForceVSetMeterI*
+  name: ForceVSetMeterI
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceVSetMeterI_
+  commentId: Overload:Tol.IDcviPins.ForceVSetMeterI
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceVSetMeterI
+  nameWithType: IDcviPins.ForceVSetMeterI
+- uid: Tol.IDcviPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterV(double, double, double, bool?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceVSetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcviPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterV(Double, Double, Double, Boolean?)
+  fullName: Tol.IDcviPins.ForceVSetMeterV(double, double, double, bool?)
+  fullName.vb: Tol.IDcviPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+  nameWithType: IDcviPins.ForceVSetMeterV(double, double, double, bool?)
+  nameWithType.vb: IDcviPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+- uid: Tol.IDcviPins.ForceVSetMeterV*
+  name: ForceVSetMeterV
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ForceVSetMeterV_
+  commentId: Overload:Tol.IDcviPins.ForceVSetMeterV
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ForceVSetMeterV
+  nameWithType: IDcviPins.ForceVSetMeterV
+- uid: Tol.IDcviPins.Gate
+  name: Gate
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Gate
+  commentId: P:Tol.IDcviPins.Gate
+  fullName: Tol.IDcviPins.Gate
+  nameWithType: IDcviPins.Gate
+- uid: Tol.IDcviPins.Gate*
+  name: Gate
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Gate_
+  commentId: Overload:Tol.IDcviPins.Gate
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Gate
+  nameWithType: IDcviPins.Gate
+- uid: Tol.IDcviPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_HardwareApi
+  commentId: P:Tol.IDcviPins.HardwareApi
+  fullName: Tol.IDcviPins.HardwareApi
+  nameWithType: IDcviPins.HardwareApi
+- uid: Tol.IDcviPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_HardwareApi_
+  commentId: Overload:Tol.IDcviPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.IDcviPins.HardwareApi
+  nameWithType: IDcviPins.HardwareApi
+- uid: Tol.IDcviPins.Measure(System.Int32,System.Double)
+  name: Measure(int, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Measure_System_Int32_System_Double_
+  commentId: M:Tol.IDcviPins.Measure(System.Int32,System.Double)
+  name.vb: Measure(Integer, Double)
+  fullName: Tol.IDcviPins.Measure(int, double)
+  fullName.vb: Tol.IDcviPins.Measure(Integer, Double)
+  nameWithType: IDcviPins.Measure(int, double)
+  nameWithType.vb: IDcviPins.Measure(Integer, Double)
+- uid: Tol.IDcviPins.Measure*
+  name: Measure
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Measure_
+  commentId: Overload:Tol.IDcviPins.Measure
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Measure
+  nameWithType: IDcviPins.Measure
+- uid: Tol.IDcviPins.MeasureSamples(System.Int32,System.Double)
+  name: MeasureSamples(int, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_MeasureSamples_System_Int32_System_Double_
+  commentId: M:Tol.IDcviPins.MeasureSamples(System.Int32,System.Double)
+  name.vb: MeasureSamples(Integer, Double)
+  fullName: Tol.IDcviPins.MeasureSamples(int, double)
+  fullName.vb: Tol.IDcviPins.MeasureSamples(Integer, Double)
+  nameWithType: IDcviPins.MeasureSamples(int, double)
+  nameWithType.vb: IDcviPins.MeasureSamples(Integer, Double)
+- uid: Tol.IDcviPins.MeasureSamples*
+  name: MeasureSamples
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_MeasureSamples_
+  commentId: Overload:Tol.IDcviPins.MeasureSamples
+  isSpec: "True"
+  fullName: Tol.IDcviPins.MeasureSamples
+  nameWithType: IDcviPins.MeasureSamples
+- uid: Tol.IDcviPins.Meter
+  name: Meter
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Meter
+  commentId: P:Tol.IDcviPins.Meter
+  fullName: Tol.IDcviPins.Meter
+  nameWithType: IDcviPins.Meter
+- uid: Tol.IDcviPins.Meter*
+  name: Meter
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Meter_
+  commentId: Overload:Tol.IDcviPins.Meter
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Meter
+  nameWithType: IDcviPins.Meter
+- uid: Tol.IDcviPins.Mode
+  name: Mode
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Mode
+  commentId: P:Tol.IDcviPins.Mode
+  fullName: Tol.IDcviPins.Mode
+  nameWithType: IDcviPins.Mode
+- uid: Tol.IDcviPins.Mode*
+  name: Mode
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Mode_
+  commentId: Overload:Tol.IDcviPins.Mode
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Mode
+  nameWithType: IDcviPins.Mode
+- uid: Tol.IDcviPins.Read(System.Int32,System.Double)
+  name: Read(int, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Read_System_Int32_System_Double_
+  commentId: M:Tol.IDcviPins.Read(System.Int32,System.Double)
+  name.vb: Read(Integer, Double)
+  fullName: Tol.IDcviPins.Read(int, double)
+  fullName.vb: Tol.IDcviPins.Read(Integer, Double)
+  nameWithType: IDcviPins.Read(int, double)
+  nameWithType.vb: IDcviPins.Read(Integer, Double)
+- uid: Tol.IDcviPins.Read*
+  name: Read
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Read_
+  commentId: Overload:Tol.IDcviPins.Read
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Read
+  nameWithType: IDcviPins.Read
+- uid: Tol.IDcviPins.ReadSamples(System.Int32,System.Double)
+  name: ReadSamples(int, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ReadSamples_System_Int32_System_Double_
+  commentId: M:Tol.IDcviPins.ReadSamples(System.Int32,System.Double)
+  name.vb: ReadSamples(Integer, Double)
+  fullName: Tol.IDcviPins.ReadSamples(int, double)
+  fullName.vb: Tol.IDcviPins.ReadSamples(Integer, Double)
+  nameWithType: IDcviPins.ReadSamples(int, double)
+  nameWithType.vb: IDcviPins.ReadSamples(Integer, Double)
+- uid: Tol.IDcviPins.ReadSamples*
+  name: ReadSamples
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_ReadSamples_
+  commentId: Overload:Tol.IDcviPins.ReadSamples
+  isSpec: "True"
+  fullName: Tol.IDcviPins.ReadSamples
+  nameWithType: IDcviPins.ReadSamples
+- uid: Tol.IDcviPins.SetCurrentAndRange(System.Double,System.Double)
+  name: SetCurrentAndRange(double, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetCurrentAndRange_System_Double_System_Double_
+  commentId: M:Tol.IDcviPins.SetCurrentAndRange(System.Double,System.Double)
+  name.vb: SetCurrentAndRange(Double, Double)
+  fullName: Tol.IDcviPins.SetCurrentAndRange(double, double)
+  fullName.vb: Tol.IDcviPins.SetCurrentAndRange(Double, Double)
+  nameWithType: IDcviPins.SetCurrentAndRange(double, double)
+  nameWithType.vb: IDcviPins.SetCurrentAndRange(Double, Double)
+- uid: Tol.IDcviPins.SetCurrentAndRange*
+  name: SetCurrentAndRange
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetCurrentAndRange_
+  commentId: Overload:Tol.IDcviPins.SetCurrentAndRange
+  isSpec: "True"
+  fullName: Tol.IDcviPins.SetCurrentAndRange
+  nameWithType: IDcviPins.SetCurrentAndRange
+- uid: Tol.IDcviPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name: SetMeterI(double?, int?, double?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetMeterI_System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
+  commentId: M:Tol.IDcviPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name.vb: SetMeterI(Double?, Integer?, Double?)
+  fullName: Tol.IDcviPins.SetMeterI(double?, int?, double?)
+  fullName.vb: Tol.IDcviPins.SetMeterI(Double?, Integer?, Double?)
+  nameWithType: IDcviPins.SetMeterI(double?, int?, double?)
+  nameWithType.vb: IDcviPins.SetMeterI(Double?, Integer?, Double?)
+- uid: Tol.IDcviPins.SetMeterI*
+  name: SetMeterI
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetMeterI_
+  commentId: Overload:Tol.IDcviPins.SetMeterI
+  isSpec: "True"
+  fullName: Tol.IDcviPins.SetMeterI
+  nameWithType: IDcviPins.SetMeterI
+- uid: Tol.IDcviPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name: SetMeterV(double?, int?, double?)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetMeterV_System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__
+  commentId: M:Tol.IDcviPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})
+  name.vb: SetMeterV(Double?, Integer?, Double?)
+  fullName: Tol.IDcviPins.SetMeterV(double?, int?, double?)
+  fullName.vb: Tol.IDcviPins.SetMeterV(Double?, Integer?, Double?)
+  nameWithType: IDcviPins.SetMeterV(double?, int?, double?)
+  nameWithType.vb: IDcviPins.SetMeterV(Double?, Integer?, Double?)
+- uid: Tol.IDcviPins.SetMeterV*
+  name: SetMeterV
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetMeterV_
+  commentId: Overload:Tol.IDcviPins.SetMeterV
+  isSpec: "True"
+  fullName: Tol.IDcviPins.SetMeterV
+  nameWithType: IDcviPins.SetMeterV
+- uid: Tol.IDcviPins.SetVoltageAndRange(System.Double,System.Double)
+  name: SetVoltageAndRange(double, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetVoltageAndRange_System_Double_System_Double_
+  commentId: M:Tol.IDcviPins.SetVoltageAndRange(System.Double,System.Double)
+  name.vb: SetVoltageAndRange(Double, Double)
+  fullName: Tol.IDcviPins.SetVoltageAndRange(double, double)
+  fullName.vb: Tol.IDcviPins.SetVoltageAndRange(Double, Double)
+  nameWithType: IDcviPins.SetVoltageAndRange(double, double)
+  nameWithType.vb: IDcviPins.SetVoltageAndRange(Double, Double)
+- uid: Tol.IDcviPins.SetVoltageAndRange*
+  name: SetVoltageAndRange
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_SetVoltageAndRange_
+  commentId: Overload:Tol.IDcviPins.SetVoltageAndRange
+  isSpec: "True"
+  fullName: Tol.IDcviPins.SetVoltageAndRange
+  nameWithType: IDcviPins.SetVoltageAndRange
+- uid: Tol.IDcviPins.Strobe(System.Int32,System.Double)
+  name: Strobe(int, double)
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Strobe_System_Int32_System_Double_
+  commentId: M:Tol.IDcviPins.Strobe(System.Int32,System.Double)
+  name.vb: Strobe(Integer, Double)
+  fullName: Tol.IDcviPins.Strobe(int, double)
+  fullName.vb: Tol.IDcviPins.Strobe(Integer, Double)
+  nameWithType: IDcviPins.Strobe(int, double)
+  nameWithType.vb: IDcviPins.Strobe(Integer, Double)
+- uid: Tol.IDcviPins.Strobe*
+  name: Strobe
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Strobe_
+  commentId: Overload:Tol.IDcviPins.Strobe
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Strobe
+  nameWithType: IDcviPins.Strobe
+- uid: Tol.IDcviPins.Voltage
+  name: Voltage
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Voltage
+  commentId: P:Tol.IDcviPins.Voltage
+  fullName: Tol.IDcviPins.Voltage
+  nameWithType: IDcviPins.Voltage
+- uid: Tol.IDcviPins.Voltage*
+  name: Voltage
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_Voltage_
+  commentId: Overload:Tol.IDcviPins.Voltage
+  isSpec: "True"
+  fullName: Tol.IDcviPins.Voltage
+  nameWithType: IDcviPins.Voltage
+- uid: Tol.IDcviPins.VoltageRange
+  name: VoltageRange
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_VoltageRange
+  commentId: P:Tol.IDcviPins.VoltageRange
+  fullName: Tol.IDcviPins.VoltageRange
+  nameWithType: IDcviPins.VoltageRange
+- uid: Tol.IDcviPins.VoltageRange*
+  name: VoltageRange
+  href: api/Tol.IDcviPins.html#Tol_IDcviPins_VoltageRange_
+  commentId: Overload:Tol.IDcviPins.VoltageRange
+  isSpec: "True"
+  fullName: Tol.IDcviPins.VoltageRange
+  nameWithType: IDcviPins.VoltageRange
+- uid: Tol.IDcvsMeter
+  name: IDcvsMeter
+  href: api/Tol.IDcvsMeter.html
+  commentId: T:Tol.IDcvsMeter
+  fullName: Tol.IDcvsMeter
+  nameWithType: IDcvsMeter
+- uid: Tol.IDcvsMeter.CurrentRange
+  name: CurrentRange
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_CurrentRange
+  commentId: P:Tol.IDcvsMeter.CurrentRange
+  fullName: Tol.IDcvsMeter.CurrentRange
+  nameWithType: IDcvsMeter.CurrentRange
+- uid: Tol.IDcvsMeter.CurrentRange*
+  name: CurrentRange
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_CurrentRange_
+  commentId: Overload:Tol.IDcvsMeter.CurrentRange
+  isSpec: "True"
+  fullName: Tol.IDcvsMeter.CurrentRange
+  nameWithType: IDcvsMeter.CurrentRange
+- uid: Tol.IDcvsMeter.Filter
+  name: Filter
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_Filter
+  commentId: P:Tol.IDcvsMeter.Filter
+  fullName: Tol.IDcvsMeter.Filter
+  nameWithType: IDcvsMeter.Filter
+- uid: Tol.IDcvsMeter.Filter*
+  name: Filter
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_Filter_
+  commentId: Overload:Tol.IDcvsMeter.Filter
+  isSpec: "True"
+  fullName: Tol.IDcvsMeter.Filter
+  nameWithType: IDcvsMeter.Filter
+- uid: Tol.IDcvsMeter.Mode
+  name: Mode
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_Mode
+  commentId: P:Tol.IDcvsMeter.Mode
+  fullName: Tol.IDcvsMeter.Mode
+  nameWithType: IDcvsMeter.Mode
+- uid: Tol.IDcvsMeter.Mode*
+  name: Mode
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_Mode_
+  commentId: Overload:Tol.IDcvsMeter.Mode
+  isSpec: "True"
+  fullName: Tol.IDcvsMeter.Mode
+  nameWithType: IDcvsMeter.Mode
+- uid: Tol.IDcvsMeter.VoltageRange
+  name: VoltageRange
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_VoltageRange
+  commentId: P:Tol.IDcvsMeter.VoltageRange
+  fullName: Tol.IDcvsMeter.VoltageRange
+  nameWithType: IDcvsMeter.VoltageRange
+- uid: Tol.IDcvsMeter.VoltageRange*
+  name: VoltageRange
+  href: api/Tol.IDcvsMeter.html#Tol_IDcvsMeter_VoltageRange_
+  commentId: Overload:Tol.IDcvsMeter.VoltageRange
+  isSpec: "True"
+  fullName: Tol.IDcvsMeter.VoltageRange
+  nameWithType: IDcvsMeter.VoltageRange
+- uid: Tol.IDcvsPins
+  name: IDcvsPins
+  href: api/Tol.IDcvsPins.html
+  commentId: T:Tol.IDcvsPins
+  fullName: Tol.IDcvsPins
+  nameWithType: IDcvsPins
+- uid: Tol.IDcvsPins.Bandwidth
+  name: Bandwidth
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Bandwidth
+  commentId: P:Tol.IDcvsPins.Bandwidth
+  fullName: Tol.IDcvsPins.Bandwidth
+  nameWithType: IDcvsPins.Bandwidth
+- uid: Tol.IDcvsPins.Bandwidth*
+  name: Bandwidth
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Bandwidth_
+  commentId: Overload:Tol.IDcvsPins.Bandwidth
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Bandwidth
+  nameWithType: IDcvsPins.Bandwidth
+- uid: Tol.IDcvsPins.Connect(System.Nullable{System.Boolean})
+  name: Connect(bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Connect_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.Connect(System.Nullable{System.Boolean})
+  name.vb: Connect(Boolean?)
+  fullName: Tol.IDcvsPins.Connect(bool?)
+  fullName.vb: Tol.IDcvsPins.Connect(Boolean?)
+  nameWithType: IDcvsPins.Connect(bool?)
+  nameWithType.vb: IDcvsPins.Connect(Boolean?)
+- uid: Tol.IDcvsPins.Connect*
+  name: Connect
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Connect_
+  commentId: Overload:Tol.IDcvsPins.Connect
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Connect
+  nameWithType: IDcvsPins.Connect
+- uid: Tol.IDcvsPins.CreateCaptureSignal(System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name: CreateCaptureSignal(string, tlDCVSMeterMode, double, double, int, bool)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_CreateCaptureSignal_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_
+  commentId: M:Tol.IDcvsPins.CreateCaptureSignal(System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)
+  name.vb: CreateCaptureSignal(String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  fullName: Tol.IDcvsPins.CreateCaptureSignal(string, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, double, double, int, bool)
+  fullName.vb: Tol.IDcvsPins.CreateCaptureSignal(String, Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode, Double, Double, Integer, Boolean)
+  nameWithType: IDcvsPins.CreateCaptureSignal(string, tlDCVSMeterMode, double, double, int, bool)
+  nameWithType.vb: IDcvsPins.CreateCaptureSignal(String, tlDCVSMeterMode, Double, Double, Integer, Boolean)
+- uid: Tol.IDcvsPins.CreateCaptureSignal*
+  name: CreateCaptureSignal
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_CreateCaptureSignal_
+  commentId: Overload:Tol.IDcvsPins.CreateCaptureSignal
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.CreateCaptureSignal
+  nameWithType: IDcvsPins.CreateCaptureSignal
+- uid: Tol.IDcvsPins.Current
+  name: Current
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Current
+  commentId: P:Tol.IDcvsPins.Current
+  fullName: Tol.IDcvsPins.Current
+  nameWithType: IDcvsPins.Current
+- uid: Tol.IDcvsPins.Current*
+  name: Current
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Current_
+  commentId: Overload:Tol.IDcvsPins.Current
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Current
+  nameWithType: IDcvsPins.Current
+- uid: Tol.IDcvsPins.CurrentRange
+  name: CurrentRange
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_CurrentRange
+  commentId: P:Tol.IDcvsPins.CurrentRange
+  fullName: Tol.IDcvsPins.CurrentRange
+  nameWithType: IDcvsPins.CurrentRange
+- uid: Tol.IDcvsPins.CurrentRange*
+  name: CurrentRange
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_CurrentRange_
+  commentId: Overload:Tol.IDcvsPins.CurrentRange
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.CurrentRange
+  nameWithType: IDcvsPins.CurrentRange
+- uid: Tol.IDcvsPins.Disconnect(System.Nullable{System.Boolean})
+  name: Disconnect(bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Disconnect_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.Disconnect(System.Nullable{System.Boolean})
+  name.vb: Disconnect(Boolean?)
+  fullName: Tol.IDcvsPins.Disconnect(bool?)
+  fullName.vb: Tol.IDcvsPins.Disconnect(Boolean?)
+  nameWithType: IDcvsPins.Disconnect(bool?)
+  nameWithType.vb: IDcvsPins.Disconnect(Boolean?)
+- uid: Tol.IDcvsPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Disconnect_
+  commentId: Overload:Tol.IDcvsPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Disconnect
+  nameWithType: IDcvsPins.Disconnect
+- uid: Tol.IDcvsPins.ForceHiZ(System.Nullable{System.Double})
+  name: ForceHiZ(double?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceHiZ_System_Nullable_System_Double__
+  commentId: M:Tol.IDcvsPins.ForceHiZ(System.Nullable{System.Double})
+  name.vb: ForceHiZ(Double?)
+  fullName: Tol.IDcvsPins.ForceHiZ(double?)
+  fullName.vb: Tol.IDcvsPins.ForceHiZ(Double?)
+  nameWithType: IDcvsPins.ForceHiZ(double?)
+  nameWithType.vb: IDcvsPins.ForceHiZ(Double?)
+- uid: Tol.IDcvsPins.ForceHiZ*
+  name: ForceHiZ
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceHiZ_
+  commentId: Overload:Tol.IDcvsPins.ForceHiZ
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceHiZ
+  nameWithType: IDcvsPins.ForceHiZ
+- uid: Tol.IDcvsPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceI(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.IDcvsPins.ForceI(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: IDcvsPins.ForceI(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: IDcvsPins.ForceI(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.IDcvsPins.ForceI*
+  name: ForceI
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceI_
+  commentId: Overload:Tol.IDcvsPins.ForceI
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceI
+  nameWithType: IDcvsPins.ForceI
+- uid: Tol.IDcvsPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterI(double, double, double, double, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceISetMeterI_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.IDcvsPins.ForceISetMeterI(double, double, double, double, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+  nameWithType: IDcvsPins.ForceISetMeterI(double, double, double, double, bool?)
+  nameWithType.vb: IDcvsPins.ForceISetMeterI(Double, Double, Double, Double, Boolean?)
+- uid: Tol.IDcvsPins.ForceISetMeterI*
+  name: ForceISetMeterI
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceISetMeterI_
+  commentId: Overload:Tol.IDcvsPins.ForceISetMeterI
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceISetMeterI
+  nameWithType: IDcvsPins.ForceISetMeterI
+- uid: Tol.IDcvsPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterV(double, double, double, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterV(Double, Double, Double, Boolean?)
+  fullName: Tol.IDcvsPins.ForceISetMeterV(double, double, double, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceISetMeterV(Double, Double, Double, Boolean?)
+  nameWithType: IDcvsPins.ForceISetMeterV(double, double, double, bool?)
+  nameWithType.vb: IDcvsPins.ForceISetMeterV(Double, Double, Double, Boolean?)
+- uid: Tol.IDcvsPins.ForceISetMeterV*
+  name: ForceISetMeterV
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceISetMeterV_
+  commentId: Overload:Tol.IDcvsPins.ForceISetMeterV
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceISetMeterV
+  nameWithType: IDcvsPins.ForceISetMeterV
+- uid: Tol.IDcvsPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name: ForceV(double, double?, double?, double?, bool, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Nullable{System.Boolean})
+  name.vb: ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  fullName: Tol.IDcvsPins.ForceV(double, double?, double?, double?, bool, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+  nameWithType: IDcvsPins.ForceV(double, double?, double?, double?, bool, bool?)
+  nameWithType.vb: IDcvsPins.ForceV(Double, Double?, Double?, Double?, Boolean, Boolean?)
+- uid: Tol.IDcvsPins.ForceV*
+  name: ForceV
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceV_
+  commentId: Overload:Tol.IDcvsPins.ForceV
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceV
+  nameWithType: IDcvsPins.ForceV
+- uid: Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, double, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Double, Boolean?)
+  fullName: Tol.IDcvsPins.ForceVSetMeterI(double, double, double, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+  nameWithType: IDcvsPins.ForceVSetMeterI(double, double, double, bool?)
+  nameWithType.vb: IDcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+- uid: Tol.IDcvsPins.ForceVSetMeterI*
+  name: ForceVSetMeterI
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterI_
+  commentId: Overload:Tol.IDcvsPins.ForceVSetMeterI
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceVSetMeterI
+  nameWithType: IDcvsPins.ForceVSetMeterI
+- uid: Tol.IDcvsPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterV(double, double, double, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceVSetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterV(Double, Double, Double, Boolean?)
+  fullName: Tol.IDcvsPins.ForceVSetMeterV(double, double, double, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+  nameWithType: IDcvsPins.ForceVSetMeterV(double, double, double, bool?)
+  nameWithType.vb: IDcvsPins.ForceVSetMeterV(Double, Double, Double, Boolean?)
+- uid: Tol.IDcvsPins.ForceVSetMeterV*
+  name: ForceVSetMeterV
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterV_
+  commentId: Overload:Tol.IDcvsPins.ForceVSetMeterV
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ForceVSetMeterV
+  nameWithType: IDcvsPins.ForceVSetMeterV
+- uid: Tol.IDcvsPins.Gate
+  name: Gate
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Gate
+  commentId: P:Tol.IDcvsPins.Gate
+  fullName: Tol.IDcvsPins.Gate
+  nameWithType: IDcvsPins.Gate
+- uid: Tol.IDcvsPins.Gate*
+  name: Gate
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Gate_
+  commentId: Overload:Tol.IDcvsPins.Gate
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Gate
+  nameWithType: IDcvsPins.Gate
+- uid: Tol.IDcvsPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_HardwareApi
+  commentId: P:Tol.IDcvsPins.HardwareApi
+  fullName: Tol.IDcvsPins.HardwareApi
+  nameWithType: IDcvsPins.HardwareApi
+- uid: Tol.IDcvsPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_HardwareApi_
+  commentId: Overload:Tol.IDcvsPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.HardwareApi
+  nameWithType: IDcvsPins.HardwareApi
+- uid: Tol.IDcvsPins.Measure(System.Int32,System.Double)
+  name: Measure(int, double)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Measure_System_Int32_System_Double_
+  commentId: M:Tol.IDcvsPins.Measure(System.Int32,System.Double)
+  name.vb: Measure(Integer, Double)
+  fullName: Tol.IDcvsPins.Measure(int, double)
+  fullName.vb: Tol.IDcvsPins.Measure(Integer, Double)
+  nameWithType: IDcvsPins.Measure(int, double)
+  nameWithType.vb: IDcvsPins.Measure(Integer, Double)
+- uid: Tol.IDcvsPins.Measure*
+  name: Measure
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Measure_
+  commentId: Overload:Tol.IDcvsPins.Measure
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Measure
+  nameWithType: IDcvsPins.Measure
+- uid: Tol.IDcvsPins.MeasureSamples(System.Int32,System.Double)
+  name: MeasureSamples(int, double)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_MeasureSamples_System_Int32_System_Double_
+  commentId: M:Tol.IDcvsPins.MeasureSamples(System.Int32,System.Double)
+  name.vb: MeasureSamples(Integer, Double)
+  fullName: Tol.IDcvsPins.MeasureSamples(int, double)
+  fullName.vb: Tol.IDcvsPins.MeasureSamples(Integer, Double)
+  nameWithType: IDcvsPins.MeasureSamples(int, double)
+  nameWithType.vb: IDcvsPins.MeasureSamples(Integer, Double)
+- uid: Tol.IDcvsPins.MeasureSamples*
+  name: MeasureSamples
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_MeasureSamples_
+  commentId: Overload:Tol.IDcvsPins.MeasureSamples
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.MeasureSamples
+  nameWithType: IDcvsPins.MeasureSamples
+- uid: Tol.IDcvsPins.Meter
+  name: Meter
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Meter
+  commentId: P:Tol.IDcvsPins.Meter
+  fullName: Tol.IDcvsPins.Meter
+  nameWithType: IDcvsPins.Meter
+- uid: Tol.IDcvsPins.Meter*
+  name: Meter
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Meter_
+  commentId: Overload:Tol.IDcvsPins.Meter
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Meter
+  nameWithType: IDcvsPins.Meter
+- uid: Tol.IDcvsPins.Mode
+  name: Mode
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Mode
+  commentId: P:Tol.IDcvsPins.Mode
+  fullName: Tol.IDcvsPins.Mode
+  nameWithType: IDcvsPins.Mode
+- uid: Tol.IDcvsPins.Mode*
+  name: Mode
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Mode_
+  commentId: Overload:Tol.IDcvsPins.Mode
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Mode
+  nameWithType: IDcvsPins.Mode
+- uid: Tol.IDcvsPins.Read(System.Int32,System.Double)
+  name: Read(int, double)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Read_System_Int32_System_Double_
+  commentId: M:Tol.IDcvsPins.Read(System.Int32,System.Double)
+  name.vb: Read(Integer, Double)
+  fullName: Tol.IDcvsPins.Read(int, double)
+  fullName.vb: Tol.IDcvsPins.Read(Integer, Double)
+  nameWithType: IDcvsPins.Read(int, double)
+  nameWithType.vb: IDcvsPins.Read(Integer, Double)
+- uid: Tol.IDcvsPins.Read*
+  name: Read
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Read_
+  commentId: Overload:Tol.IDcvsPins.Read
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Read
+  nameWithType: IDcvsPins.Read
+- uid: Tol.IDcvsPins.ReadSamples(System.Int32,System.Double)
+  name: ReadSamples(int, double)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ReadSamples_System_Int32_System_Double_
+  commentId: M:Tol.IDcvsPins.ReadSamples(System.Int32,System.Double)
+  name.vb: ReadSamples(Integer, Double)
+  fullName: Tol.IDcvsPins.ReadSamples(int, double)
+  fullName.vb: Tol.IDcvsPins.ReadSamples(Integer, Double)
+  nameWithType: IDcvsPins.ReadSamples(int, double)
+  nameWithType.vb: IDcvsPins.ReadSamples(Integer, Double)
+- uid: Tol.IDcvsPins.ReadSamples*
+  name: ReadSamples
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ReadSamples_
+  commentId: Overload:Tol.IDcvsPins.ReadSamples
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.ReadSamples
+  nameWithType: IDcvsPins.ReadSamples
+- uid: Tol.IDcvsPins.SetCurrentRanges(System.Double,System.Double)
+  name: SetCurrentRanges(double, double)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_SetCurrentRanges_System_Double_System_Double_
+  commentId: M:Tol.IDcvsPins.SetCurrentRanges(System.Double,System.Double)
+  name.vb: SetCurrentRanges(Double, Double)
+  fullName: Tol.IDcvsPins.SetCurrentRanges(double, double)
+  fullName.vb: Tol.IDcvsPins.SetCurrentRanges(Double, Double)
+  nameWithType: IDcvsPins.SetCurrentRanges(double, double)
+  nameWithType.vb: IDcvsPins.SetCurrentRanges(Double, Double)
+- uid: Tol.IDcvsPins.SetCurrentRanges*
+  name: SetCurrentRanges
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_SetCurrentRanges_
+  commentId: Overload:Tol.IDcvsPins.SetCurrentRanges
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.SetCurrentRanges
+  nameWithType: IDcvsPins.SetCurrentRanges
+- uid: Tol.IDcvsPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double})
+  name: SetMeterI(double?, double?, double?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_SetMeterI_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__
+  commentId: M:Tol.IDcvsPins.SetMeterI(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double})
+  name.vb: SetMeterI(Double?, Double?, Double?)
+  fullName: Tol.IDcvsPins.SetMeterI(double?, double?, double?)
+  fullName.vb: Tol.IDcvsPins.SetMeterI(Double?, Double?, Double?)
+  nameWithType: IDcvsPins.SetMeterI(double?, double?, double?)
+  nameWithType.vb: IDcvsPins.SetMeterI(Double?, Double?, Double?)
+- uid: Tol.IDcvsPins.SetMeterI*
+  name: SetMeterI
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_SetMeterI_
+  commentId: Overload:Tol.IDcvsPins.SetMeterI
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.SetMeterI
+  nameWithType: IDcvsPins.SetMeterI
+- uid: Tol.IDcvsPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Double})
+  name: SetMeterV(double?, double?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_SetMeterV_System_Nullable_System_Double__System_Nullable_System_Double__
+  commentId: M:Tol.IDcvsPins.SetMeterV(System.Nullable{System.Double},System.Nullable{System.Double})
+  name.vb: SetMeterV(Double?, Double?)
+  fullName: Tol.IDcvsPins.SetMeterV(double?, double?)
+  fullName.vb: Tol.IDcvsPins.SetMeterV(Double?, Double?)
+  nameWithType: IDcvsPins.SetMeterV(double?, double?)
+  nameWithType.vb: IDcvsPins.SetMeterV(Double?, Double?)
+- uid: Tol.IDcvsPins.SetMeterV*
+  name: SetMeterV
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_SetMeterV_
+  commentId: Overload:Tol.IDcvsPins.SetMeterV
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.SetMeterV
+  nameWithType: IDcvsPins.SetMeterV
+- uid: Tol.IDcvsPins.Strobe(System.Int32,System.Double)
+  name: Strobe(int, double)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Strobe_System_Int32_System_Double_
+  commentId: M:Tol.IDcvsPins.Strobe(System.Int32,System.Double)
+  name.vb: Strobe(Integer, Double)
+  fullName: Tol.IDcvsPins.Strobe(int, double)
+  fullName.vb: Tol.IDcvsPins.Strobe(Integer, Double)
+  nameWithType: IDcvsPins.Strobe(int, double)
+  nameWithType.vb: IDcvsPins.Strobe(Integer, Double)
+- uid: Tol.IDcvsPins.Strobe*
+  name: Strobe
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Strobe_
+  commentId: Overload:Tol.IDcvsPins.Strobe
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Strobe
+  nameWithType: IDcvsPins.Strobe
+- uid: Tol.IDcvsPins.Voltage
+  name: Voltage
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Voltage
+  commentId: P:Tol.IDcvsPins.Voltage
+  fullName: Tol.IDcvsPins.Voltage
+  nameWithType: IDcvsPins.Voltage
+- uid: Tol.IDcvsPins.Voltage*
+  name: Voltage
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_Voltage_
+  commentId: Overload:Tol.IDcvsPins.Voltage
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.Voltage
+  nameWithType: IDcvsPins.Voltage
+- uid: Tol.IDcvsPins.VoltageRange
+  name: VoltageRange
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_VoltageRange
+  commentId: P:Tol.IDcvsPins.VoltageRange
+  fullName: Tol.IDcvsPins.VoltageRange
+  nameWithType: IDcvsPins.VoltageRange
+- uid: Tol.IDcvsPins.VoltageRange*
+  name: VoltageRange
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_VoltageRange_
+  commentId: Overload:Tol.IDcvsPins.VoltageRange
+  isSpec: "True"
+  fullName: Tol.IDcvsPins.VoltageRange
+  nameWithType: IDcvsPins.VoltageRange
+- uid: Tol.IDigitalPins
+  name: IDigitalPins
+  href: api/Tol.IDigitalPins.html
+  commentId: T:Tol.IDigitalPins
+  fullName: Tol.IDigitalPins
+  nameWithType: IDigitalPins
+- uid: Tol.IDigitalPins.Connect
+  name: Connect()
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_Connect
+  commentId: M:Tol.IDigitalPins.Connect
+  fullName: Tol.IDigitalPins.Connect()
+  nameWithType: IDigitalPins.Connect()
+- uid: Tol.IDigitalPins.Connect*
+  name: Connect
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_Connect_
+  commentId: Overload:Tol.IDigitalPins.Connect
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.Connect
+  nameWithType: IDigitalPins.Connect
+- uid: Tol.IDigitalPins.Disconnect
+  name: Disconnect()
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_Disconnect
+  commentId: M:Tol.IDigitalPins.Disconnect
+  fullName: Tol.IDigitalPins.Disconnect()
+  nameWithType: IDigitalPins.Disconnect()
+- uid: Tol.IDigitalPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_Disconnect_
+  commentId: Overload:Tol.IDigitalPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.Disconnect
+  nameWithType: IDigitalPins.Disconnect
+- uid: Tol.IDigitalPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_HardwareApi
+  commentId: P:Tol.IDigitalPins.HardwareApi
+  fullName: Tol.IDigitalPins.HardwareApi
+  nameWithType: IDigitalPins.HardwareApi
+- uid: Tol.IDigitalPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_HardwareApi_
+  commentId: Overload:Tol.IDigitalPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.HardwareApi
+  nameWithType: IDigitalPins.HardwareApi
+- uid: Tol.IDigitalPins.InitState
+  name: InitState
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_InitState
+  commentId: P:Tol.IDigitalPins.InitState
+  fullName: Tol.IDigitalPins.InitState
+  nameWithType: IDigitalPins.InitState
+- uid: Tol.IDigitalPins.InitState*
+  name: InitState
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_InitState_
+  commentId: Overload:Tol.IDigitalPins.InitState
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.InitState
+  nameWithType: IDigitalPins.InitState
+- uid: Tol.IDigitalPins.LockState
+  name: LockState
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_LockState
+  commentId: P:Tol.IDigitalPins.LockState
+  fullName: Tol.IDigitalPins.LockState
+  nameWithType: IDigitalPins.LockState
+- uid: Tol.IDigitalPins.LockState*
+  name: LockState
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_LockState_
+  commentId: Overload:Tol.IDigitalPins.LockState
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.LockState
+  nameWithType: IDigitalPins.LockState
+- uid: Tol.IDigitalPins.Ppmu
+  name: Ppmu
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_Ppmu
+  commentId: P:Tol.IDigitalPins.Ppmu
+  fullName: Tol.IDigitalPins.Ppmu
+  nameWithType: IDigitalPins.Ppmu
+- uid: Tol.IDigitalPins.Ppmu*
+  name: Ppmu
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_Ppmu_
+  commentId: Overload:Tol.IDigitalPins.Ppmu
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.Ppmu
+  nameWithType: IDigitalPins.Ppmu
+- uid: Tol.IDigitalPins.StartState
+  name: StartState
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_StartState
+  commentId: P:Tol.IDigitalPins.StartState
+  fullName: Tol.IDigitalPins.StartState
+  nameWithType: IDigitalPins.StartState
+- uid: Tol.IDigitalPins.StartState*
+  name: StartState
+  href: api/Tol.IDigitalPins.html#Tol_IDigitalPins_StartState_
+  commentId: Overload:Tol.IDigitalPins.StartState
+  isSpec: "True"
+  fullName: Tol.IDigitalPins.StartState
+  nameWithType: IDigitalPins.StartState
+- uid: Tol.IPins`1
+  name: IPins<TPin>
+  href: api/Tol.IPins-1.html
+  commentId: T:Tol.IPins`1
+  name.vb: IPins(Of TPin)
+  fullName: Tol.IPins<TPin>
+  fullName.vb: Tol.IPins(Of TPin)
+  nameWithType: IPins<TPin>
+  nameWithType.vb: IPins(Of TPin)
+- uid: Tol.IPins`1.GetIndividualPins
+  name: GetIndividualPins()
+  href: api/Tol.IPins-1.html#Tol_IPins_1_GetIndividualPins
+  commentId: M:Tol.IPins`1.GetIndividualPins
+  fullName: Tol.IPins<TPin>.GetIndividualPins()
+  fullName.vb: Tol.IPins(Of TPin).GetIndividualPins()
+  nameWithType: IPins<TPin>.GetIndividualPins()
+  nameWithType.vb: IPins(Of TPin).GetIndividualPins()
+- uid: Tol.IPins`1.GetIndividualPins*
+  name: GetIndividualPins
+  href: api/Tol.IPins-1.html#Tol_IPins_1_GetIndividualPins_
+  commentId: Overload:Tol.IPins`1.GetIndividualPins
+  isSpec: "True"
+  fullName: Tol.IPins<TPin>.GetIndividualPins
+  fullName.vb: Tol.IPins(Of TPin).GetIndividualPins
+  nameWithType: IPins<TPin>.GetIndividualPins
+  nameWithType.vb: IPins(Of TPin).GetIndividualPins
+- uid: Tol.IPins`1.GetPinListItem
+  name: GetPinListItem()
+  href: api/Tol.IPins-1.html#Tol_IPins_1_GetPinListItem
+  commentId: M:Tol.IPins`1.GetPinListItem
+  fullName: Tol.IPins<TPin>.GetPinListItem()
+  fullName.vb: Tol.IPins(Of TPin).GetPinListItem()
+  nameWithType: IPins<TPin>.GetPinListItem()
+  nameWithType.vb: IPins(Of TPin).GetPinListItem()
+- uid: Tol.IPins`1.GetPinListItem*
+  name: GetPinListItem
+  href: api/Tol.IPins-1.html#Tol_IPins_1_GetPinListItem_
+  commentId: Overload:Tol.IPins`1.GetPinListItem
+  isSpec: "True"
+  fullName: Tol.IPins<TPin>.GetPinListItem
+  fullName.vb: Tol.IPins(Of TPin).GetPinListItem
+  nameWithType: IPins<TPin>.GetPinListItem
+  nameWithType.vb: IPins(Of TPin).GetPinListItem
+- uid: Tol.IPins`1.Name
+  name: Name
+  href: api/Tol.IPins-1.html#Tol_IPins_1_Name
+  commentId: P:Tol.IPins`1.Name
+  fullName: Tol.IPins<TPin>.Name
+  fullName.vb: Tol.IPins(Of TPin).Name
+  nameWithType: IPins<TPin>.Name
+  nameWithType.vb: IPins(Of TPin).Name
+- uid: Tol.IPins`1.Name*
+  name: Name
+  href: api/Tol.IPins-1.html#Tol_IPins_1_Name_
+  commentId: Overload:Tol.IPins`1.Name
+  isSpec: "True"
+  fullName: Tol.IPins<TPin>.Name
+  fullName.vb: Tol.IPins(Of TPin).Name
+  nameWithType: IPins<TPin>.Name
+  nameWithType.vb: IPins(Of TPin).Name
+- uid: Tol.IPpmuPins
+  name: IPpmuPins
+  href: api/Tol.IPpmuPins.html
+  commentId: T:Tol.IPpmuPins
+  fullName: Tol.IPpmuPins
+  nameWithType: IPpmuPins
+- uid: Tol.IPpmuPins.ClampVHi
+  name: ClampVHi
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ClampVHi
+  commentId: P:Tol.IPpmuPins.ClampVHi
+  fullName: Tol.IPpmuPins.ClampVHi
+  nameWithType: IPpmuPins.ClampVHi
+- uid: Tol.IPpmuPins.ClampVHi*
+  name: ClampVHi
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ClampVHi_
+  commentId: Overload:Tol.IPpmuPins.ClampVHi
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ClampVHi
+  nameWithType: IPpmuPins.ClampVHi
+- uid: Tol.IPpmuPins.ClampVLo
+  name: ClampVLo
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ClampVLo
+  commentId: P:Tol.IPpmuPins.ClampVLo
+  fullName: Tol.IPpmuPins.ClampVLo
+  nameWithType: IPpmuPins.ClampVLo
+- uid: Tol.IPpmuPins.ClampVLo*
+  name: ClampVLo
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ClampVLo_
+  commentId: Overload:Tol.IPpmuPins.ClampVLo
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ClampVLo
+  nameWithType: IPpmuPins.ClampVLo
+- uid: Tol.IPpmuPins.ConfigurePatternControl(System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name: ConfigurePatternControl(int, tlPPMUPatternControlReadFormat)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ConfigurePatternControl_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_
+  commentId: M:Tol.IPpmuPins.ConfigurePatternControl(System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name.vb: ConfigurePatternControl(Integer, tlPPMUPatternControlReadFormat)
+  fullName: Tol.IPpmuPins.ConfigurePatternControl(int, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  fullName.vb: Tol.IPpmuPins.ConfigurePatternControl(Integer, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  nameWithType: IPpmuPins.ConfigurePatternControl(int, tlPPMUPatternControlReadFormat)
+  nameWithType.vb: IPpmuPins.ConfigurePatternControl(Integer, tlPPMUPatternControlReadFormat)
+- uid: Tol.IPpmuPins.ConfigurePatternControl*
+  name: ConfigurePatternControl
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ConfigurePatternControl_
+  commentId: Overload:Tol.IPpmuPins.ConfigurePatternControl
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ConfigurePatternControl
+  nameWithType: IPpmuPins.ConfigurePatternControl
+- uid: Tol.IPpmuPins.ConfigureRamp(System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name: ConfigureRamp(string, double, double, double, double, int)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ConfigureRamp_System_String_System_Double_System_Double_System_Double_System_Double_System_Int32_
+  commentId: M:Tol.IPpmuPins.ConfigureRamp(System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name.vb: ConfigureRamp(String, Double, Double, Double, Double, Integer)
+  fullName: Tol.IPpmuPins.ConfigureRamp(string, double, double, double, double, int)
+  fullName.vb: Tol.IPpmuPins.ConfigureRamp(String, Double, Double, Double, Double, Integer)
+  nameWithType: IPpmuPins.ConfigureRamp(string, double, double, double, double, int)
+  nameWithType.vb: IPpmuPins.ConfigureRamp(String, Double, Double, Double, Double, Integer)
+- uid: Tol.IPpmuPins.ConfigureRamp*
+  name: ConfigureRamp
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ConfigureRamp_
+  commentId: Overload:Tol.IPpmuPins.ConfigureRamp
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ConfigureRamp
+  nameWithType: IPpmuPins.ConfigureRamp
+- uid: Tol.IPpmuPins.Connect(System.Nullable{System.Boolean})
+  name: Connect(bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Connect_System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.Connect(System.Nullable{System.Boolean})
+  name.vb: Connect(Boolean?)
+  fullName: Tol.IPpmuPins.Connect(bool?)
+  fullName.vb: Tol.IPpmuPins.Connect(Boolean?)
+  nameWithType: IPpmuPins.Connect(bool?)
+  nameWithType.vb: IPpmuPins.Connect(Boolean?)
+- uid: Tol.IPpmuPins.Connect*
+  name: Connect
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Connect_
+  commentId: Overload:Tol.IPpmuPins.Connect
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Connect
+  nameWithType: IPpmuPins.Connect
+- uid: Tol.IPpmuPins.Current
+  name: Current
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Current
+  commentId: P:Tol.IPpmuPins.Current
+  fullName: Tol.IPpmuPins.Current
+  nameWithType: IPpmuPins.Current
+- uid: Tol.IPpmuPins.Current*
+  name: Current
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Current_
+  commentId: Overload:Tol.IPpmuPins.Current
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Current
+  nameWithType: IPpmuPins.Current
+- uid: Tol.IPpmuPins.Disconnect(System.Nullable{System.Boolean})
+  name: Disconnect(bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Disconnect_System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.Disconnect(System.Nullable{System.Boolean})
+  name.vb: Disconnect(Boolean?)
+  fullName: Tol.IPpmuPins.Disconnect(bool?)
+  fullName.vb: Tol.IPpmuPins.Disconnect(Boolean?)
+  nameWithType: IPpmuPins.Disconnect(bool?)
+  nameWithType.vb: IPpmuPins.Disconnect(Boolean?)
+- uid: Tol.IPpmuPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Disconnect_
+  commentId: Overload:Tol.IPpmuPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Disconnect
+  nameWithType: IPpmuPins.Disconnect
+- uid: Tol.IPpmuPins.ForceHiZ
+  name: ForceHiZ()
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceHiZ
+  commentId: M:Tol.IPpmuPins.ForceHiZ
+  fullName: Tol.IPpmuPins.ForceHiZ()
+  nameWithType: IPpmuPins.ForceHiZ()
+- uid: Tol.IPpmuPins.ForceHiZ*
+  name: ForceHiZ
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceHiZ_
+  commentId: Overload:Tol.IPpmuPins.ForceHiZ
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ForceHiZ
+  nameWithType: IPpmuPins.ForceHiZ
+- uid: Tol.IPpmuPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name: ForceI(double, double?, double?, double?, bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name.vb: ForceI(Double, Double?, Double?, Double?, Boolean?)
+  fullName: Tol.IPpmuPins.ForceI(double, double?, double?, double?, bool?)
+  fullName.vb: Tol.IPpmuPins.ForceI(Double, Double?, Double?, Double?, Boolean?)
+  nameWithType: IPpmuPins.ForceI(double, double?, double?, double?, bool?)
+  nameWithType.vb: IPpmuPins.ForceI(Double, Double?, Double?, Double?, Boolean?)
+- uid: Tol.IPpmuPins.ForceI*
+  name: ForceI
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceI_
+  commentId: Overload:Tol.IPpmuPins.ForceI
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ForceI
+  nameWithType: IPpmuPins.ForceI
+- uid: Tol.IPpmuPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterV(double, double, double, double, bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.IPpmuPins.ForceISetMeterV(double, double, double, double, bool?)
+  fullName.vb: Tol.IPpmuPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  nameWithType: IPpmuPins.ForceISetMeterV(double, double, double, double, bool?)
+  nameWithType.vb: IPpmuPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+- uid: Tol.IPpmuPins.ForceISetMeterV*
+  name: ForceISetMeterV
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceISetMeterV_
+  commentId: Overload:Tol.IPpmuPins.ForceISetMeterV
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ForceISetMeterV
+  nameWithType: IPpmuPins.ForceISetMeterV
+- uid: Tol.IPpmuPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name: ForceV(double, double?, bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name.vb: ForceV(Double, Double?, Boolean?)
+  fullName: Tol.IPpmuPins.ForceV(double, double?, bool?)
+  fullName.vb: Tol.IPpmuPins.ForceV(Double, Double?, Boolean?)
+  nameWithType: IPpmuPins.ForceV(double, double?, bool?)
+  nameWithType.vb: IPpmuPins.ForceV(Double, Double?, Boolean?)
+- uid: Tol.IPpmuPins.ForceV*
+  name: ForceV
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceV_
+  commentId: Overload:Tol.IPpmuPins.ForceV
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ForceV
+  nameWithType: IPpmuPins.ForceV
+- uid: Tol.IPpmuPins.ForceVSetMeterI(System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceVSetMeterI_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.ForceVSetMeterI(System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Boolean?)
+  fullName: Tol.IPpmuPins.ForceVSetMeterI(double, double, bool?)
+  fullName.vb: Tol.IPpmuPins.ForceVSetMeterI(Double, Double, Boolean?)
+  nameWithType: IPpmuPins.ForceVSetMeterI(double, double, bool?)
+  nameWithType.vb: IPpmuPins.ForceVSetMeterI(Double, Double, Boolean?)
+- uid: Tol.IPpmuPins.ForceVSetMeterI*
+  name: ForceVSetMeterI
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceVSetMeterI_
+  commentId: Overload:Tol.IPpmuPins.ForceVSetMeterI
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ForceVSetMeterI
+  nameWithType: IPpmuPins.ForceVSetMeterI
+- uid: Tol.IPpmuPins.ForceVSetMeterV(System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterV(double, double, bool?)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceVSetMeterV_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.IPpmuPins.ForceVSetMeterV(System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterV(Double, Double, Boolean?)
+  fullName: Tol.IPpmuPins.ForceVSetMeterV(double, double, bool?)
+  fullName.vb: Tol.IPpmuPins.ForceVSetMeterV(Double, Double, Boolean?)
+  nameWithType: IPpmuPins.ForceVSetMeterV(double, double, bool?)
+  nameWithType.vb: IPpmuPins.ForceVSetMeterV(Double, Double, Boolean?)
+- uid: Tol.IPpmuPins.ForceVSetMeterV*
+  name: ForceVSetMeterV
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_ForceVSetMeterV_
+  commentId: Overload:Tol.IPpmuPins.ForceVSetMeterV
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.ForceVSetMeterV
+  nameWithType: IPpmuPins.ForceVSetMeterV
+- uid: Tol.IPpmuPins.Gate
+  name: Gate
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Gate
+  commentId: P:Tol.IPpmuPins.Gate
+  fullName: Tol.IPpmuPins.Gate
+  nameWithType: IPpmuPins.Gate
+- uid: Tol.IPpmuPins.Gate*
+  name: Gate
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Gate_
+  commentId: Overload:Tol.IPpmuPins.Gate
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Gate
+  nameWithType: IPpmuPins.Gate
+- uid: Tol.IPpmuPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_HardwareApi
+  commentId: P:Tol.IPpmuPins.HardwareApi
+  fullName: Tol.IPpmuPins.HardwareApi
+  nameWithType: IPpmuPins.HardwareApi
+- uid: Tol.IPpmuPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_HardwareApi_
+  commentId: Overload:Tol.IPpmuPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.HardwareApi
+  nameWithType: IPpmuPins.HardwareApi
+- uid: Tol.IPpmuPins.Measure(System.Int32)
+  name: Measure(int)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Measure_System_Int32_
+  commentId: M:Tol.IPpmuPins.Measure(System.Int32)
+  name.vb: Measure(Integer)
+  fullName: Tol.IPpmuPins.Measure(int)
+  fullName.vb: Tol.IPpmuPins.Measure(Integer)
+  nameWithType: IPpmuPins.Measure(int)
+  nameWithType.vb: IPpmuPins.Measure(Integer)
+- uid: Tol.IPpmuPins.Measure*
+  name: Measure
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Measure_
+  commentId: Overload:Tol.IPpmuPins.Measure
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Measure
+  nameWithType: IPpmuPins.Measure
+- uid: Tol.IPpmuPins.MeasureSamples(System.Int32)
+  name: MeasureSamples(int)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_MeasureSamples_System_Int32_
+  commentId: M:Tol.IPpmuPins.MeasureSamples(System.Int32)
+  name.vb: MeasureSamples(Integer)
+  fullName: Tol.IPpmuPins.MeasureSamples(int)
+  fullName.vb: Tol.IPpmuPins.MeasureSamples(Integer)
+  nameWithType: IPpmuPins.MeasureSamples(int)
+  nameWithType.vb: IPpmuPins.MeasureSamples(Integer)
+- uid: Tol.IPpmuPins.MeasureSamples*
+  name: MeasureSamples
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_MeasureSamples_
+  commentId: Overload:Tol.IPpmuPins.MeasureSamples
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.MeasureSamples
+  nameWithType: IPpmuPins.MeasureSamples
+- uid: Tol.IPpmuPins.Read
+  name: Read()
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Read
+  commentId: M:Tol.IPpmuPins.Read
+  fullName: Tol.IPpmuPins.Read()
+  nameWithType: IPpmuPins.Read()
+- uid: Tol.IPpmuPins.Read*
+  name: Read
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Read_
+  commentId: Overload:Tol.IPpmuPins.Read
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Read
+  nameWithType: IPpmuPins.Read
+- uid: Tol.IPpmuPins.RunPatternSyncRamp(System.String,System.String,System.Double)
+  name: RunPatternSyncRamp(string, string, double)
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_RunPatternSyncRamp_System_String_System_String_System_Double_
+  commentId: M:Tol.IPpmuPins.RunPatternSyncRamp(System.String,System.String,System.Double)
+  name.vb: RunPatternSyncRamp(String, String, Double)
+  fullName: Tol.IPpmuPins.RunPatternSyncRamp(string, string, double)
+  fullName.vb: Tol.IPpmuPins.RunPatternSyncRamp(String, String, Double)
+  nameWithType: IPpmuPins.RunPatternSyncRamp(string, string, double)
+  nameWithType.vb: IPpmuPins.RunPatternSyncRamp(String, String, Double)
+- uid: Tol.IPpmuPins.RunPatternSyncRamp*
+  name: RunPatternSyncRamp
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_RunPatternSyncRamp_
+  commentId: Overload:Tol.IPpmuPins.RunPatternSyncRamp
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.RunPatternSyncRamp
+  nameWithType: IPpmuPins.RunPatternSyncRamp
+- uid: Tol.IPpmuPins.Strobe
+  name: Strobe()
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Strobe
+  commentId: M:Tol.IPpmuPins.Strobe
+  fullName: Tol.IPpmuPins.Strobe()
+  nameWithType: IPpmuPins.Strobe()
+- uid: Tol.IPpmuPins.Strobe*
+  name: Strobe
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Strobe_
+  commentId: Overload:Tol.IPpmuPins.Strobe
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Strobe
+  nameWithType: IPpmuPins.Strobe
+- uid: Tol.IPpmuPins.Voltage
+  name: Voltage
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Voltage
+  commentId: P:Tol.IPpmuPins.Voltage
+  fullName: Tol.IPpmuPins.Voltage
+  nameWithType: IPpmuPins.Voltage
+- uid: Tol.IPpmuPins.Voltage*
+  name: Voltage
+  href: api/Tol.IPpmuPins.html#Tol_IPpmuPins_Voltage_
+  commentId: Overload:Tol.IPpmuPins.Voltage
+  isSpec: "True"
+  fullName: Tol.IPpmuPins.Voltage
+  nameWithType: IPpmuPins.Voltage
+- uid: Tol.IRange
+  name: IRange
+  href: api/Tol.IRange.html
+  commentId: T:Tol.IRange
+  fullName: Tol.IRange
+  nameWithType: IRange
+- uid: Tol.IRange.Max
+  name: Max
+  href: api/Tol.IRange.html#Tol_IRange_Max
+  commentId: P:Tol.IRange.Max
+  fullName: Tol.IRange.Max
+  nameWithType: IRange.Max
+- uid: Tol.IRange.Max*
+  name: Max
+  href: api/Tol.IRange.html#Tol_IRange_Max_
+  commentId: Overload:Tol.IRange.Max
+  isSpec: "True"
+  fullName: Tol.IRange.Max
+  nameWithType: IRange.Max
+- uid: Tol.IRange.Min
+  name: Min
+  href: api/Tol.IRange.html#Tol_IRange_Min
+  commentId: P:Tol.IRange.Min
+  fullName: Tol.IRange.Min
+  nameWithType: IRange.Min
+- uid: Tol.IRange.Min*
+  name: Min
+  href: api/Tol.IRange.html#Tol_IRange_Min_
+  commentId: Overload:Tol.IRange.Min
+  isSpec: "True"
+  fullName: Tol.IRange.Min
+  nameWithType: IRange.Min
+- uid: Tol.IValuePerSiteRange`1
+  name: IValuePerSiteRange<T>
+  href: api/Tol.IValuePerSiteRange-1.html
+  commentId: T:Tol.IValuePerSiteRange`1
+  name.vb: IValuePerSiteRange(Of T)
+  fullName: Tol.IValuePerSiteRange<T>
+  fullName.vb: Tol.IValuePerSiteRange(Of T)
+  nameWithType: IValuePerSiteRange<T>
+  nameWithType.vb: IValuePerSiteRange(Of T)
+- uid: Tol.IValuePerSite`1
+  name: IValuePerSite<T>
+  href: api/Tol.IValuePerSite-1.html
+  commentId: T:Tol.IValuePerSite`1
+  name.vb: IValuePerSite(Of T)
+  fullName: Tol.IValuePerSite<T>
+  fullName.vb: Tol.IValuePerSite(Of T)
+  nameWithType: IValuePerSite<T>
+  nameWithType.vb: IValuePerSite(Of T)
+- uid: Tol.IValuePerSite`1.Value
+  name: Value
+  href: api/Tol.IValuePerSite-1.html#Tol_IValuePerSite_1_Value
+  commentId: P:Tol.IValuePerSite`1.Value
+  fullName: Tol.IValuePerSite<T>.Value
+  fullName.vb: Tol.IValuePerSite(Of T).Value
+  nameWithType: IValuePerSite<T>.Value
+  nameWithType.vb: IValuePerSite(Of T).Value
+- uid: Tol.IValuePerSite`1.Value*
+  name: Value
+  href: api/Tol.IValuePerSite-1.html#Tol_IValuePerSite_1_Value_
+  commentId: Overload:Tol.IValuePerSite`1.Value
+  isSpec: "True"
+  fullName: Tol.IValuePerSite<T>.Value
+  fullName.vb: Tol.IValuePerSite(Of T).Value
+  nameWithType: IValuePerSite<T>.Value
+  nameWithType.vb: IValuePerSite(Of T).Value
+- uid: Tol.IValuePerSite`1.ValuePerSite
+  name: ValuePerSite
+  href: api/Tol.IValuePerSite-1.html#Tol_IValuePerSite_1_ValuePerSite
+  commentId: P:Tol.IValuePerSite`1.ValuePerSite
+  fullName: Tol.IValuePerSite<T>.ValuePerSite
+  fullName.vb: Tol.IValuePerSite(Of T).ValuePerSite
+  nameWithType: IValuePerSite<T>.ValuePerSite
+  nameWithType.vb: IValuePerSite(Of T).ValuePerSite
+- uid: Tol.IValuePerSite`1.ValuePerSite*
+  name: ValuePerSite
+  href: api/Tol.IValuePerSite-1.html#Tol_IValuePerSite_1_ValuePerSite_
+  commentId: Overload:Tol.IValuePerSite`1.ValuePerSite
+  isSpec: "True"
+  fullName: Tol.IValuePerSite<T>.ValuePerSite
+  fullName.vb: Tol.IValuePerSite(Of T).ValuePerSite
+  nameWithType: IValuePerSite<T>.ValuePerSite
+  nameWithType.vb: IValuePerSite(Of T).ValuePerSite
+- uid: Tol.Measure
+  name: Measure
+  href: api/Tol.Measure.html
+  commentId: T:Tol.Measure
+  fullName: Tol.Measure
+  nameWithType: Measure
+- uid: Tol.Measure.Current
+  name: Current
+  href: api/Tol.Measure.html#Tol_Measure_Current
+  commentId: F:Tol.Measure.Current
+  fullName: Tol.Measure.Current
+  nameWithType: Measure.Current
+- uid: Tol.Measure.Voltage
+  name: Voltage
+  href: api/Tol.Measure.html#Tol_Measure_Voltage
+  commentId: F:Tol.Measure.Voltage
+  fullName: Tol.Measure.Voltage
+  nameWithType: Measure.Voltage
+- uid: Tol.PpmuPins
+  name: PpmuPins
+  href: api/Tol.PpmuPins.html
+  commentId: T:Tol.PpmuPins
+  fullName: Tol.PpmuPins
+  nameWithType: PpmuPins
+- uid: Tol.PpmuPins.ClampVHi
+  name: ClampVHi
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ClampVHi
+  commentId: P:Tol.PpmuPins.ClampVHi
+  fullName: Tol.PpmuPins.ClampVHi
+  nameWithType: PpmuPins.ClampVHi
+- uid: Tol.PpmuPins.ClampVHi*
+  name: ClampVHi
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ClampVHi_
+  commentId: Overload:Tol.PpmuPins.ClampVHi
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ClampVHi
+  nameWithType: PpmuPins.ClampVHi
+- uid: Tol.PpmuPins.ClampVLo
+  name: ClampVLo
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ClampVLo
+  commentId: P:Tol.PpmuPins.ClampVLo
+  fullName: Tol.PpmuPins.ClampVLo
+  nameWithType: PpmuPins.ClampVLo
+- uid: Tol.PpmuPins.ClampVLo*
+  name: ClampVLo
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ClampVLo_
+  commentId: Overload:Tol.PpmuPins.ClampVLo
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ClampVLo
+  nameWithType: PpmuPins.ClampVLo
+- uid: Tol.PpmuPins.ConfigurePatternControl(System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name: ConfigurePatternControl(int, tlPPMUPatternControlReadFormat)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ConfigurePatternControl_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_
+  commentId: M:Tol.PpmuPins.ConfigurePatternControl(System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  name.vb: ConfigurePatternControl(Integer, tlPPMUPatternControlReadFormat)
+  fullName: Tol.PpmuPins.ConfigurePatternControl(int, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  fullName.vb: Tol.PpmuPins.ConfigurePatternControl(Integer, Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
+  nameWithType: PpmuPins.ConfigurePatternControl(int, tlPPMUPatternControlReadFormat)
+  nameWithType.vb: PpmuPins.ConfigurePatternControl(Integer, tlPPMUPatternControlReadFormat)
+- uid: Tol.PpmuPins.ConfigurePatternControl*
+  name: ConfigurePatternControl
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ConfigurePatternControl_
+  commentId: Overload:Tol.PpmuPins.ConfigurePatternControl
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ConfigurePatternControl
+  nameWithType: PpmuPins.ConfigurePatternControl
+- uid: Tol.PpmuPins.ConfigureRamp(System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name: ConfigureRamp(string, double, double, double, double, int)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ConfigureRamp_System_String_System_Double_System_Double_System_Double_System_Double_System_Int32_
+  commentId: M:Tol.PpmuPins.ConfigureRamp(System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)
+  name.vb: ConfigureRamp(String, Double, Double, Double, Double, Integer)
+  fullName: Tol.PpmuPins.ConfigureRamp(string, double, double, double, double, int)
+  fullName.vb: Tol.PpmuPins.ConfigureRamp(String, Double, Double, Double, Double, Integer)
+  nameWithType: PpmuPins.ConfigureRamp(string, double, double, double, double, int)
+  nameWithType.vb: PpmuPins.ConfigureRamp(String, Double, Double, Double, Double, Integer)
+- uid: Tol.PpmuPins.ConfigureRamp*
+  name: ConfigureRamp
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ConfigureRamp_
+  commentId: Overload:Tol.PpmuPins.ConfigureRamp
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ConfigureRamp
+  nameWithType: PpmuPins.ConfigureRamp
+- uid: Tol.PpmuPins.Connect(System.Nullable{System.Boolean})
+  name: Connect(bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Connect_System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.Connect(System.Nullable{System.Boolean})
+  name.vb: Connect(Boolean?)
+  fullName: Tol.PpmuPins.Connect(bool?)
+  fullName.vb: Tol.PpmuPins.Connect(Boolean?)
+  nameWithType: PpmuPins.Connect(bool?)
+  nameWithType.vb: PpmuPins.Connect(Boolean?)
+- uid: Tol.PpmuPins.Connect*
+  name: Connect
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Connect_
+  commentId: Overload:Tol.PpmuPins.Connect
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Connect
+  nameWithType: PpmuPins.Connect
+- uid: Tol.PpmuPins.Current
+  name: Current
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Current
+  commentId: P:Tol.PpmuPins.Current
+  fullName: Tol.PpmuPins.Current
+  nameWithType: PpmuPins.Current
+- uid: Tol.PpmuPins.Current*
+  name: Current
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Current_
+  commentId: Overload:Tol.PpmuPins.Current
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Current
+  nameWithType: PpmuPins.Current
+- uid: Tol.PpmuPins.Disconnect(System.Nullable{System.Boolean})
+  name: Disconnect(bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Disconnect_System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.Disconnect(System.Nullable{System.Boolean})
+  name.vb: Disconnect(Boolean?)
+  fullName: Tol.PpmuPins.Disconnect(bool?)
+  fullName.vb: Tol.PpmuPins.Disconnect(Boolean?)
+  nameWithType: PpmuPins.Disconnect(bool?)
+  nameWithType.vb: PpmuPins.Disconnect(Boolean?)
+- uid: Tol.PpmuPins.Disconnect*
+  name: Disconnect
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Disconnect_
+  commentId: Overload:Tol.PpmuPins.Disconnect
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Disconnect
+  nameWithType: PpmuPins.Disconnect
+- uid: Tol.PpmuPins.ForceHiZ
+  name: ForceHiZ()
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceHiZ
+  commentId: M:Tol.PpmuPins.ForceHiZ
+  fullName: Tol.PpmuPins.ForceHiZ()
+  nameWithType: PpmuPins.ForceHiZ()
+- uid: Tol.PpmuPins.ForceHiZ*
+  name: ForceHiZ
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceHiZ_
+  commentId: Overload:Tol.PpmuPins.ForceHiZ
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ForceHiZ
+  nameWithType: PpmuPins.ForceHiZ
+- uid: Tol.PpmuPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name: ForceI(double, double?, double?, double?, bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name.vb: ForceI(Double, Double?, Double?, Double?, Boolean?)
+  fullName: Tol.PpmuPins.ForceI(double, double?, double?, double?, bool?)
+  fullName.vb: Tol.PpmuPins.ForceI(Double, Double?, Double?, Double?, Boolean?)
+  nameWithType: PpmuPins.ForceI(double, double?, double?, double?, bool?)
+  nameWithType.vb: PpmuPins.ForceI(Double, Double?, Double?, Double?, Boolean?)
+- uid: Tol.PpmuPins.ForceI*
+  name: ForceI
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceI_
+  commentId: Overload:Tol.PpmuPins.ForceI
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ForceI
+  nameWithType: PpmuPins.ForceI
+- uid: Tol.PpmuPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceISetMeterV(double, double, double, double, bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  fullName: Tol.PpmuPins.ForceISetMeterV(double, double, double, double, bool?)
+  fullName.vb: Tol.PpmuPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+  nameWithType: PpmuPins.ForceISetMeterV(double, double, double, double, bool?)
+  nameWithType.vb: PpmuPins.ForceISetMeterV(Double, Double, Double, Double, Boolean?)
+- uid: Tol.PpmuPins.ForceISetMeterV*
+  name: ForceISetMeterV
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceISetMeterV_
+  commentId: Overload:Tol.PpmuPins.ForceISetMeterV
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ForceISetMeterV
+  nameWithType: PpmuPins.ForceISetMeterV
+- uid: Tol.PpmuPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name: ForceV(double, double?, bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name.vb: ForceV(Double, Double?, Boolean?)
+  fullName: Tol.PpmuPins.ForceV(double, double?, bool?)
+  fullName.vb: Tol.PpmuPins.ForceV(Double, Double?, Boolean?)
+  nameWithType: PpmuPins.ForceV(double, double?, bool?)
+  nameWithType.vb: PpmuPins.ForceV(Double, Double?, Boolean?)
+- uid: Tol.PpmuPins.ForceV*
+  name: ForceV
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceV_
+  commentId: Overload:Tol.PpmuPins.ForceV
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ForceV
+  nameWithType: PpmuPins.ForceV
+- uid: Tol.PpmuPins.ForceVSetMeterI(System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceVSetMeterI_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.ForceVSetMeterI(System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Boolean?)
+  fullName: Tol.PpmuPins.ForceVSetMeterI(double, double, bool?)
+  fullName.vb: Tol.PpmuPins.ForceVSetMeterI(Double, Double, Boolean?)
+  nameWithType: PpmuPins.ForceVSetMeterI(double, double, bool?)
+  nameWithType.vb: PpmuPins.ForceVSetMeterI(Double, Double, Boolean?)
+- uid: Tol.PpmuPins.ForceVSetMeterI*
+  name: ForceVSetMeterI
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceVSetMeterI_
+  commentId: Overload:Tol.PpmuPins.ForceVSetMeterI
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ForceVSetMeterI
+  nameWithType: PpmuPins.ForceVSetMeterI
+- uid: Tol.PpmuPins.ForceVSetMeterV(System.Double,System.Double,System.Nullable{System.Boolean})
+  name: ForceVSetMeterV(double, double, bool?)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceVSetMeterV_System_Double_System_Double_System_Nullable_System_Boolean__
+  commentId: M:Tol.PpmuPins.ForceVSetMeterV(System.Double,System.Double,System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterV(Double, Double, Boolean?)
+  fullName: Tol.PpmuPins.ForceVSetMeterV(double, double, bool?)
+  fullName.vb: Tol.PpmuPins.ForceVSetMeterV(Double, Double, Boolean?)
+  nameWithType: PpmuPins.ForceVSetMeterV(double, double, bool?)
+  nameWithType.vb: PpmuPins.ForceVSetMeterV(Double, Double, Boolean?)
+- uid: Tol.PpmuPins.ForceVSetMeterV*
+  name: ForceVSetMeterV
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_ForceVSetMeterV_
+  commentId: Overload:Tol.PpmuPins.ForceVSetMeterV
+  isSpec: "True"
+  fullName: Tol.PpmuPins.ForceVSetMeterV
+  nameWithType: PpmuPins.ForceVSetMeterV
+- uid: Tol.PpmuPins.Gate
+  name: Gate
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Gate
+  commentId: P:Tol.PpmuPins.Gate
+  fullName: Tol.PpmuPins.Gate
+  nameWithType: PpmuPins.Gate
+- uid: Tol.PpmuPins.Gate*
+  name: Gate
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Gate_
+  commentId: Overload:Tol.PpmuPins.Gate
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Gate
+  nameWithType: PpmuPins.Gate
+- uid: Tol.PpmuPins.GetIndividualPins
+  name: GetIndividualPins()
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_GetIndividualPins
+  commentId: M:Tol.PpmuPins.GetIndividualPins
+  fullName: Tol.PpmuPins.GetIndividualPins()
+  nameWithType: PpmuPins.GetIndividualPins()
+- uid: Tol.PpmuPins.GetIndividualPins*
+  name: GetIndividualPins
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_GetIndividualPins_
+  commentId: Overload:Tol.PpmuPins.GetIndividualPins
+  isSpec: "True"
+  fullName: Tol.PpmuPins.GetIndividualPins
+  nameWithType: PpmuPins.GetIndividualPins
+- uid: Tol.PpmuPins.GetPinListItem
+  name: GetPinListItem()
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_GetPinListItem
+  commentId: M:Tol.PpmuPins.GetPinListItem
+  fullName: Tol.PpmuPins.GetPinListItem()
+  nameWithType: PpmuPins.GetPinListItem()
+- uid: Tol.PpmuPins.GetPinListItem*
+  name: GetPinListItem
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_GetPinListItem_
+  commentId: Overload:Tol.PpmuPins.GetPinListItem
+  isSpec: "True"
+  fullName: Tol.PpmuPins.GetPinListItem
+  nameWithType: PpmuPins.GetPinListItem
+- uid: Tol.PpmuPins.HardwareApi
+  name: HardwareApi
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_HardwareApi
+  commentId: P:Tol.PpmuPins.HardwareApi
+  fullName: Tol.PpmuPins.HardwareApi
+  nameWithType: PpmuPins.HardwareApi
+- uid: Tol.PpmuPins.HardwareApi*
+  name: HardwareApi
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_HardwareApi_
+  commentId: Overload:Tol.PpmuPins.HardwareApi
+  isSpec: "True"
+  fullName: Tol.PpmuPins.HardwareApi
+  nameWithType: PpmuPins.HardwareApi
+- uid: Tol.PpmuPins.Measure(System.Int32)
+  name: Measure(int)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Measure_System_Int32_
+  commentId: M:Tol.PpmuPins.Measure(System.Int32)
+  name.vb: Measure(Integer)
+  fullName: Tol.PpmuPins.Measure(int)
+  fullName.vb: Tol.PpmuPins.Measure(Integer)
+  nameWithType: PpmuPins.Measure(int)
+  nameWithType.vb: PpmuPins.Measure(Integer)
+- uid: Tol.PpmuPins.Measure*
+  name: Measure
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Measure_
+  commentId: Overload:Tol.PpmuPins.Measure
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Measure
+  nameWithType: PpmuPins.Measure
+- uid: Tol.PpmuPins.MeasureSamples(System.Int32)
+  name: MeasureSamples(int)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_MeasureSamples_System_Int32_
+  commentId: M:Tol.PpmuPins.MeasureSamples(System.Int32)
+  name.vb: MeasureSamples(Integer)
+  fullName: Tol.PpmuPins.MeasureSamples(int)
+  fullName.vb: Tol.PpmuPins.MeasureSamples(Integer)
+  nameWithType: PpmuPins.MeasureSamples(int)
+  nameWithType.vb: PpmuPins.MeasureSamples(Integer)
+- uid: Tol.PpmuPins.MeasureSamples*
+  name: MeasureSamples
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_MeasureSamples_
+  commentId: Overload:Tol.PpmuPins.MeasureSamples
+  isSpec: "True"
+  fullName: Tol.PpmuPins.MeasureSamples
+  nameWithType: PpmuPins.MeasureSamples
+- uid: Tol.PpmuPins.Name
+  name: Name
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Name
+  commentId: P:Tol.PpmuPins.Name
+  fullName: Tol.PpmuPins.Name
+  nameWithType: PpmuPins.Name
+- uid: Tol.PpmuPins.Name*
+  name: Name
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Name_
+  commentId: Overload:Tol.PpmuPins.Name
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Name
+  nameWithType: PpmuPins.Name
+- uid: Tol.PpmuPins.Read
+  name: Read()
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Read
+  commentId: M:Tol.PpmuPins.Read
+  fullName: Tol.PpmuPins.Read()
+  nameWithType: PpmuPins.Read()
+- uid: Tol.PpmuPins.Read*
+  name: Read
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Read_
+  commentId: Overload:Tol.PpmuPins.Read
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Read
+  nameWithType: PpmuPins.Read
+- uid: Tol.PpmuPins.RunPatternSyncRamp(System.String,System.String,System.Double)
+  name: RunPatternSyncRamp(string, string, double)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_RunPatternSyncRamp_System_String_System_String_System_Double_
+  commentId: M:Tol.PpmuPins.RunPatternSyncRamp(System.String,System.String,System.Double)
+  name.vb: RunPatternSyncRamp(String, String, Double)
+  fullName: Tol.PpmuPins.RunPatternSyncRamp(string, string, double)
+  fullName.vb: Tol.PpmuPins.RunPatternSyncRamp(String, String, Double)
+  nameWithType: PpmuPins.RunPatternSyncRamp(string, string, double)
+  nameWithType.vb: PpmuPins.RunPatternSyncRamp(String, String, Double)
+- uid: Tol.PpmuPins.RunPatternSyncRamp*
+  name: RunPatternSyncRamp
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_RunPatternSyncRamp_
+  commentId: Overload:Tol.PpmuPins.RunPatternSyncRamp
+  isSpec: "True"
+  fullName: Tol.PpmuPins.RunPatternSyncRamp
+  nameWithType: PpmuPins.RunPatternSyncRamp
+- uid: Tol.PpmuPins.Strobe
+  name: Strobe()
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Strobe
+  commentId: M:Tol.PpmuPins.Strobe
+  fullName: Tol.PpmuPins.Strobe()
+  nameWithType: PpmuPins.Strobe()
+- uid: Tol.PpmuPins.Strobe*
+  name: Strobe
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Strobe_
+  commentId: Overload:Tol.PpmuPins.Strobe
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Strobe
+  nameWithType: PpmuPins.Strobe
+- uid: Tol.PpmuPins.Voltage
+  name: Voltage
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Voltage
+  commentId: P:Tol.PpmuPins.Voltage
+  fullName: Tol.PpmuPins.Voltage
+  nameWithType: PpmuPins.Voltage
+- uid: Tol.PpmuPins.Voltage*
+  name: Voltage
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins_Voltage_
+  commentId: Overload:Tol.PpmuPins.Voltage
+  isSpec: "True"
+  fullName: Tol.PpmuPins.Voltage
+  nameWithType: PpmuPins.Voltage
+- uid: Tol.TLibOutputMode
+  name: TLibOutputMode
+  href: api/Tol.TLibOutputMode.html
+  commentId: T:Tol.TLibOutputMode
+  fullName: Tol.TLibOutputMode
+  nameWithType: TLibOutputMode
+- uid: Tol.TLibOutputMode.ForceCurrent
+  name: ForceCurrent
+  href: api/Tol.TLibOutputMode.html#Tol_TLibOutputMode_ForceCurrent
+  commentId: F:Tol.TLibOutputMode.ForceCurrent
+  fullName: Tol.TLibOutputMode.ForceCurrent
+  nameWithType: TLibOutputMode.ForceCurrent
+- uid: Tol.TLibOutputMode.ForceVoltage
+  name: ForceVoltage
+  href: api/Tol.TLibOutputMode.html#Tol_TLibOutputMode_ForceVoltage
+  commentId: F:Tol.TLibOutputMode.ForceVoltage
+  fullName: Tol.TLibOutputMode.ForceVoltage
+  nameWithType: TLibOutputMode.ForceVoltage
+- uid: Tol.TLibOutputMode.HighImpedance
+  name: HighImpedance
+  href: api/Tol.TLibOutputMode.html#Tol_TLibOutputMode_HighImpedance
+  commentId: F:Tol.TLibOutputMode.HighImpedance
+  fullName: Tol.TLibOutputMode.HighImpedance
+  nameWithType: TLibOutputMode.HighImpedance

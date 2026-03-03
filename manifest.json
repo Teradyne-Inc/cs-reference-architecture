@@ -2252,6 +2252,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Demo_CSRA.Functional.Ramp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_CSRA.Functional.Ramp.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_CSRA.Functional.Ramp",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Demo_CSRA.Functional.Read.yml",
       "output": {
         ".html": {
@@ -2654,6 +2668,300 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Demo_CSRA",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_UT.Example_UT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_UT.Example_UT.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_UT.Example_UT",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Demo_UT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Demo_UT.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Demo_UT",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.DcviPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.DcviPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.DcviPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.DcvsPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.DcvsPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.DcvsPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.DigitalPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.DigitalPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.DigitalPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.Factory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.Factory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IAutoValuePerSiteRange-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IAutoValuePerSiteRange-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IAutoValuePerSiteRange<T>",
+      "Summary": "<p sourcefile=\"api/Tol.IAutoValuePerSiteRange-1.yml\" sourcestartlinenumber=\"1\">Auto range settings interface with support for site-specific values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IDcviMeter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IDcviMeter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IDcviMeter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IDcviPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IDcviPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IDcviPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IDcvsMeter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IDcvsMeter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IDcvsMeter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IDcvsPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IDcvsPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IDcvsPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IDigitalPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IDigitalPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IDigitalPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IPins-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IPins-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IPins<TPin>",
+      "Summary": "<p sourcefile=\"api/Tol.IPins-1.yml\" sourcestartlinenumber=\"1\">The interface IPins.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IPpmuPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IPpmuPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IPpmuPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IRange",
+      "Summary": "<p sourcefile=\"api/Tol.IRange.yml\" sourcestartlinenumber=\"1\">Range interface defining minimum and maximum values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IValuePerSite-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IValuePerSite-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IValuePerSite<T>",
+      "Summary": "<p sourcefile=\"api/Tol.IValuePerSite-1.yml\" sourcestartlinenumber=\"1\">Value interface with support for site-specific values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.IValuePerSiteRange-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.IValuePerSiteRange-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.IValuePerSiteRange<T>",
+      "Summary": "<p sourcefile=\"api/Tol.IValuePerSiteRange-1.yml\" sourcestartlinenumber=\"1\">Defines settings for a value with a specified range.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.Measure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.Measure.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.Measure",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.PpmuPins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.PpmuPins.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.PpmuPins",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.TLibOutputMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.TLibOutputMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.TLibOutputMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Tol.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol",
       "Summary": null
     },
     {
@@ -4518,6 +4826,16 @@
       "output": {
         ".html": {
           "relative_path": "releases_/v0.15.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.16.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.16.html"
         }
       },
       "version": ""

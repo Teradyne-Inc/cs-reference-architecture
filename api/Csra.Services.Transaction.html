@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Services_Transaction" data-uid="Csra.Services.Transaction" class="text-break">
-Class Transaction  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class Transaction  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -164,7 +164,7 @@ public class Transaction : ITransactionService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Transaction__ctor" data-uid="Csra.Services.Transaction.#ctor">
   Transaction()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -196,7 +196,7 @@ public class Transaction : ITransactionService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Transaction_Instance" data-uid="Csra.Services.Transaction.Instance">
   Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -233,7 +233,7 @@ public class Transaction : ITransactionService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Transaction_ConfigureHandler_Csra_Interfaces_ITransactionConfig_" data-uid="Csra.Services.Transaction.ConfigureHandler(Csra.Interfaces.ITransactionConfig)">
   ConfigureHandler(ITransactionConfig)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Configures the handler for the current transaction type.</p>
@@ -272,7 +272,7 @@ public class Transaction : ITransactionService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Transaction_Execute_System_String_System_String_" data-uid="Csra.Services.Transaction.Execute(System.String,System.String)">
   Execute(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute a transaction module, pushing data from the shadow register to the DUT (without reads).</p>
@@ -310,7 +310,7 @@ public class Transaction : ITransactionService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Transaction_ExecuteRead__1_System_String_System_Int32_System_String_" data-uid="Csra.Services.Transaction.ExecuteRead``1(System.String,System.Int32,System.String)">
   ExecuteRead&lt;T&gt;(string, int, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Executes a transaction file, pushing data from the shadow register to the DUT and reading data from
@@ -364,7 +364,7 @@ the DUT to the code.</p>
 
   <h3 id="Csra_Services_Transaction_ExpectRegisterPerSite__1_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Services.Transaction.ExpectRegisterPerSite``1(System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
   ExpectRegisterPerSite&lt;T&gt;(string, Site&lt;T&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the register matches the expected data.</p>
@@ -417,7 +417,7 @@ the DUT to the code.</p>
 
   <h3 id="Csra_Services_Transaction_ExpectRegister__1_System_String___0_System_String_" data-uid="Csra.Services.Transaction.ExpectRegister``1(System.String,``0,System.String)">
   ExpectRegister&lt;T&gt;(string, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads a register from the DUT and checks if the content matches the expected data.</p>
@@ -470,7 +470,7 @@ the DUT to the code.</p>
 
   <h3 id="Csra_Services_Transaction_GetField__1_System_String_System_String_System_String_" data-uid="Csra.Services.Transaction.GetField``1(System.String,System.String,System.String)">
   GetField&lt;T&gt;(string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves a field from the shadow register.</p>
@@ -523,7 +523,7 @@ the DUT to the code.</p>
 
   <h3 id="Csra_Services_Transaction_GetRegister__1_System_String_System_String_" data-uid="Csra.Services.Transaction.GetRegister``1(System.String,System.String)">
   GetRegister&lt;T&gt;(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves a register from the shadow register.</p>
@@ -573,7 +573,7 @@ the DUT to the code.</p>
 
   <h3 id="Csra_Services_Transaction_Init_Csra_TransactionType_" data-uid="Csra.Services.Transaction.Init(Csra.TransactionType)">
   Init(TransactionType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes the transaction service for a specific transaction type. This must be called before any other transaction methods are used.
@@ -609,7 +609,7 @@ To switch the active transaction type, call Init again with the desired type.</p
 
   <h3 id="Csra_Services_Transaction_PullRegister_System_String_System_String_" data-uid="Csra.Services.Transaction.PullRegister(System.String,System.String)">
   PullRegister(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Pulls a register from the DUT to the shadow register.</p>
@@ -647,7 +647,7 @@ To switch the active transaction type, call Init again with the desired type.</p
 
   <h3 id="Csra_Services_Transaction_PushRegister_System_String_System_String_" data-uid="Csra.Services.Transaction.PushRegister(System.String,System.String)">
   PushRegister(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Pushes a register from the shadow register to the DUT.</p>
@@ -685,7 +685,7 @@ To switch the active transaction type, call Init again with the desired type.</p
 
   <h3 id="Csra_Services_Transaction_ReInitAll" data-uid="Csra.Services.Transaction.ReInitAll">
   ReInitAll()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets all registers to their default / init values.</p>
@@ -718,7 +718,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_ReInitRegister_System_String_System_String_" data-uid="Csra.Services.Transaction.ReInitRegister(System.String,System.String)">
   ReInitRegister(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a single shadow register to it's default / init value.</p>
@@ -756,7 +756,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_ReadRegister__1_System_String_System_String_" data-uid="Csra.Services.Transaction.ReadRegister``1(System.String,System.String)">
   ReadRegister&lt;T&gt;(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads a register from the DUT.</p>
@@ -806,7 +806,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_RemoveHandler_Csra_TransactionType_" data-uid="Csra.Services.Transaction.RemoveHandler(Csra.TransactionType)">
   RemoveHandler(TransactionType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Removes the handler for the specified transaction type.</p>
@@ -840,7 +840,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_Reset" data-uid="Csra.Services.Transaction.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialize the service. This is called by the API when the service is first used.</p>
@@ -869,7 +869,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_SetFieldPerSite__1_System_String_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Services.Transaction.SetFieldPerSite``1(System.String,System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
   SetFieldPerSite&lt;T&gt;(string, string, Site&lt;T&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a field in the shadow register (site-specific).</p>
@@ -919,7 +919,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_SetField__1_System_String_System_String___0_System_String_" data-uid="Csra.Services.Transaction.SetField``1(System.String,System.String,``0,System.String)">
   SetField&lt;T&gt;(string, string, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a field in the shadow register (site-uniform).</p>
@@ -969,7 +969,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_SetRegisterPerSite__1_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Services.Transaction.SetRegisterPerSite``1(System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
   SetRegisterPerSite&lt;T&gt;(string, Site&lt;T&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a register in the shadow register (site-specific).</p>
@@ -1016,7 +1016,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_SetRegister__1_System_String___0_System_String_" data-uid="Csra.Services.Transaction.SetRegister``1(System.String,``0,System.String)">
   SetRegister&lt;T&gt;(string, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a register in the shadow register (site-uniform).</p>
@@ -1063,7 +1063,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_WriteRegisterPerSite__1_System_String_Teradyne_Igxl_Interfaces_Public_Site___0__System_String_" data-uid="Csra.Services.Transaction.WriteRegisterPerSite``1(System.String,Teradyne.Igxl.Interfaces.Public.Site{``0},System.String)">
   WriteRegisterPerSite&lt;T&gt;(string, Site&lt;T&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Writes data to a register in the DUT (site-specific).</p>
@@ -1110,7 +1110,7 @@ configuration.</p>
 
   <h3 id="Csra_Services_Transaction_WriteRegister__1_System_String___0_System_String_" data-uid="Csra.Services.Transaction.WriteRegister``1(System.String,``0,System.String)">
   WriteRegister&lt;T&gt;(string, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Transaction/Transaction.cs/#L52"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Writes data to a register in the DUT (site-uniform).</p>

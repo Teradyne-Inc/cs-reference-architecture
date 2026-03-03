@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IPpmuPins | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IPpmuPins | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/new/main/apiSpec/new?filename=Tol_IPpmuPins.md&amp;value=---%0Auid%3A%20Tol.IPpmuPins%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Tol.IPpmuPins">
+
+
+
+  <h1 id="Tol_IPpmuPins" data-uid="Tol.IPpmuPins" class="text-break">
+Interface IPpmuPins  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Tol.html">Tol</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Tol.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IPpmuPins : IPins&lt;IPpmuPins&gt;</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Tol.IPins-1.html#Tol_IPins_1_Name">IPins&lt;IPpmuPins&gt;.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Tol.IPins-1.html#Tol_IPins_1_GetPinListItem">IPins&lt;IPpmuPins&gt;.GetPinListItem()</a>
+    </div>
+    <div>
+      <a class="xref" href="Tol.IPins-1.html#Tol_IPins_1_GetIndividualPins">IPins&lt;IPpmuPins&gt;.GetIndividualPins()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Tol_IPpmuPins_ClampVHi_" data-uid="Tol.IPpmuPins.ClampVHi*"></a>
+
+  <h3 id="Tol_IPpmuPins_ClampVHi" data-uid="Tol.IPpmuPins.ClampVHi">
+  ClampVHi
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The PPMU high clamp voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IValuePerSiteRange&lt;double&gt; ClampVHi { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSiteRange-1.html">IValuePerSiteRange</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ClampVLo_" data-uid="Tol.IPpmuPins.ClampVLo*"></a>
+
+  <h3 id="Tol_IPpmuPins_ClampVLo" data-uid="Tol.IPpmuPins.ClampVLo">
+  ClampVLo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The PPMU low clamp voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IValuePerSiteRange&lt;double&gt; ClampVLo { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSiteRange-1.html">IValuePerSiteRange</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Current_" data-uid="Tol.IPpmuPins.Current*"></a>
+
+  <h3 id="Tol_IPpmuPins_Current" data-uid="Tol.IPpmuPins.Current">
+  Current
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The PPMU force current.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IValuePerSite&lt;double&gt; Current { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSite-1.html">IValuePerSite</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Gate_" data-uid="Tol.IPpmuPins.Gate*"></a>
+
+  <h3 id="Tol_IPpmuPins_Gate" data-uid="Tol.IPpmuPins.Gate">
+  Gate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The PPMU gate state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IValuePerSite&lt;bool&gt; Gate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSite-1.html">IValuePerSite</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_HardwareApi_" data-uid="Tol.IPpmuPins.HardwareApi*"></a>
+
+  <h3 id="Tol_IPpmuPins_HardwareApi" data-uid="Tol.IPpmuPins.HardwareApi">
+  HardwareApi
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handle to legacy IG-XL object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">tlDriverPPMUPins HardwareApi { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">tlDriverPPMUPins</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Voltage_" data-uid="Tol.IPpmuPins.Voltage*"></a>
+
+  <h3 id="Tol_IPpmuPins_Voltage" data-uid="Tol.IPpmuPins.Voltage">
+  Voltage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The PPMU force voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IValuePerSite&lt;double&gt; Voltage { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Tol.IValuePerSite-1.html">IValuePerSite</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Tol_IPpmuPins_ConfigurePatternControl_" data-uid="Tol.IPpmuPins.ConfigurePatternControl*"></a>
+
+  <h3 id="Tol_IPpmuPins_ConfigurePatternControl_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_" data-uid="Tol.IPpmuPins.ConfigurePatternControl(System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)">
+  ConfigurePatternControl(int, tlPPMUPatternControlReadFormat)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configure pattern to control PPMU. Functionality exclusive to the UP5000.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ConfigurePatternControl(int numSamplesPerStrobe, tlPPMUPatternControlReadFormat readFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numSamplesPerStrobe</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of samples per strobe.</p>
+</dd>
+    <dt><code>readFormat</code> <span class="xref">tlPPMUPatternControlReadFormat</span></dt>
+    <dd><p>The read format for PPMU Capture.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ConfigureRamp_" data-uid="Tol.IPpmuPins.ConfigureRamp*"></a>
+
+  <h3 id="Tol_IPpmuPins_ConfigureRamp_System_String_System_Double_System_Double_System_Double_System_Double_System_Int32_" data-uid="Tol.IPpmuPins.ConfigureRamp(System.String,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+  ConfigureRamp(string, double, double, double, double, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configure ramp on PPMU.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ConfigureRamp(string signalName, double startingValue, double incrementValue, double incrementPeriod, double startDelay, int incrementCount)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>signalName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the signal.</p>
+</dd>
+    <dt><code>startingValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The value to start at.</p>
+</dd>
+    <dt><code>incrementValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The value to increment by.</p>
+</dd>
+    <dt><code>incrementPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The period between each increment.</p>
+</dd>
+    <dt><code>startDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The delay between the start and the first increment within the ramp.</p>
+</dd>
+    <dt><code>incrementCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of increments within the ramp.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Connect_" data-uid="Tol.IPpmuPins.Connect*"></a>
+
+  <h3 id="Tol_IPpmuPins_Connect_System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.Connect(System.Nullable{System.Boolean})">
+  Connect(bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Connects the specified DUT pins to the PPMU.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Connect(bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Disconnect_" data-uid="Tol.IPpmuPins.Disconnect*"></a>
+
+  <h3 id="Tol_IPpmuPins_Disconnect_System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.Disconnect(System.Nullable{System.Boolean})">
+  Disconnect(bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disconnects the specified DUT pins from the PPMU.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Disconnect(bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ForceHiZ_" data-uid="Tol.IPpmuPins.ForceHiZ*"></a>
+
+  <h3 id="Tol_IPpmuPins_ForceHiZ" data-uid="Tol.IPpmuPins.ForceHiZ">
+  ForceHiZ()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the PPMU to high impedance mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ForceHiZ()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ForceI_" data-uid="Tol.IPpmuPins.ForceI*"></a>
+
+  <h3 id="Tol_IPpmuPins_ForceI_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.ForceI(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})">
+  ForceI(double, double?, double?, double?, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force current, with voltage clamps.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ForceI(double forceCurrent, double? clampVHi = null, double? clampVLo = null, double? currentRange = null, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to force.</p>
+</dd>
+    <dt><code>clampVHi</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage for voltage clamp high.</p>
+</dd>
+    <dt><code>clampVLo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage for voltage clamp low.</p>
+</dd>
+    <dt><code>currentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The force current range.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ForceISetMeterV_" data-uid="Tol.IPpmuPins.ForceISetMeterV*"></a>
+
+  <h3 id="Tol_IPpmuPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceISetMeterV(double, double, double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force current, and configures the meter to measure voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ForceISetMeterV(double forceCurrent, double clampVHi, double clampVLo, double forceCurrentRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current to force.</p>
+</dd>
+    <dt><code>clampVHi</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage for voltage clamp high.</p>
+</dd>
+    <dt><code>clampVLo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage for voltage clamp low.</p>
+</dd>
+    <dt><code>forceCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The force current range.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ForceV_" data-uid="Tol.IPpmuPins.ForceV*"></a>
+
+  <h3 id="Tol_IPpmuPins_ForceV_System_Double_System_Nullable_System_Double__System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.ForceV(System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})">
+  ForceV(double, double?, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force voltage, with current clamp.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ForceV(double forceVoltage, double? measureCurrentRange = null, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to force.</p>
+</dd>
+    <dt><code>measureCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The current range for measurement.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ForceVSetMeterI_" data-uid="Tol.IPpmuPins.ForceVSetMeterI*"></a>
+
+  <h3 id="Tol_IPpmuPins_ForceVSetMeterI_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.ForceVSetMeterI(System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceVSetMeterI(double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force voltage, and configures the meter to measure current.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ForceVSetMeterI(double forceVoltage, double measureCurrentRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to force.</p>
+</dd>
+    <dt><code>measureCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current range for measurement.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_ForceVSetMeterV_" data-uid="Tol.IPpmuPins.ForceVSetMeterV*"></a>
+
+  <h3 id="Tol_IPpmuPins_ForceVSetMeterV_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.IPpmuPins.ForceVSetMeterV(System.Double,System.Double,System.Nullable{System.Boolean})">
+  ForceVSetMeterV(double, double, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Force voltage, and configures the meter to measure voltage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ForceVSetMeterV(double forceVoltage, double measureCurrentRange, bool? gate = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forceVoltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage to force.</p>
+</dd>
+    <dt><code>measureCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The current range for measurement.</p>
+</dd>
+    <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>Optional. The gate state after setting.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Measure_" data-uid="Tol.IPpmuPins.Measure*"></a>
+
+  <h3 id="Tol_IPpmuPins_Measure_System_Int32_" data-uid="Tol.IPpmuPins.Measure(System.Int32)">
+  Measure(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs measurement(s) on the PPMU, returning the average of measured value(s).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PinSite&lt;double&gt; Measure(int sampleSize = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Optional. The number of samples.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>Returns an average value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_MeasureSamples_" data-uid="Tol.IPpmuPins.MeasureSamples*"></a>
+
+  <h3 id="Tol_IPpmuPins_MeasureSamples_System_Int32_" data-uid="Tol.IPpmuPins.MeasureSamples(System.Int32)">
+  MeasureSamples(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs measurement(s) on the PPMU, returning the measured samples.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PinSite&lt;Samples&lt;double&gt;&gt; MeasureSamples(int sampleSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of samples.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<span class="xref">Samples</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;&gt;</dt>
+    <dd><p>Returns the measured samples.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Read_" data-uid="Tol.IPpmuPins.Read*"></a>
+
+  <h3 id="Tol_IPpmuPins_Read" data-uid="Tol.IPpmuPins.Read">
+  Read()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads the PPMU measurement value, from a previous strobe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PinSite&lt;double&gt; Read()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>Returns the measurement value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_RunPatternSyncRamp_" data-uid="Tol.IPpmuPins.RunPatternSyncRamp*"></a>
+
+  <h3 id="Tol_IPpmuPins_RunPatternSyncRamp_System_String_System_String_System_Double_" data-uid="Tol.IPpmuPins.RunPatternSyncRamp(System.String,System.String,System.Double)">
+  RunPatternSyncRamp(string, string, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Run pattern asynchronous with the pre-configured ramp.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RunPatternSyncRamp(string patternName, string signalName, double timeout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>patternName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the pattern to run in sync with the ramp.</p>
+</dd>
+    <dt><code>signalName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the signal of the ramp.</p>
+</dd>
+    <dt><code>timeout</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The desired timeout period to wait while the PPMU sources.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Tol_IPpmuPins_Strobe_" data-uid="Tol.IPpmuPins.Strobe*"></a>
+
+  <h3 id="Tol_IPpmuPins_Strobe" data-uid="Tol.IPpmuPins.Strobe">
+  Strobe()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Tol/IPpmuPins.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a single measurement (strobe) on the PPMU, to read back the value later.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Strobe()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

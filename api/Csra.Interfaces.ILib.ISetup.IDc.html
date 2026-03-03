@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Interfaces_ILib_ISetup_IDc" data-uid="Csra.Interfaces.ILib.ISetup.IDc" class="text-break">
-Interface ILib.ISetup.IDc  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L291"><i class="bi bi-code-slash"></i></a>
+Interface ILib.ISetup.IDc  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L293"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -131,7 +131,7 @@ Interface ILib.ISetup.IDc  <a class="header-action link-secondary" title="View s
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Connect_Csra_Pins_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Connect(Csra.Pins,System.Boolean)">
   Connect(Pins, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L303"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L305"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connects and optionally gates on/off the pins depending on its instrument feature (PPMU, DCVI, DCVS,...).</p>
@@ -169,7 +169,7 @@ Interface ILib.ISetup.IDc  <a class="header-action link-secondary" title="View s
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_ConnectAllPins" data-uid="Csra.Interfaces.ILib.ISetup.IDc.ConnectAllPins">
   ConnectAllPins()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L296"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L298"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Connects all power and digital pins from level context.</p>
@@ -194,11 +194,64 @@ Interface ILib.ISetup.IDc  <a class="header-action link-secondary" title="View s
 
 
 
+  <a id="Csra_Interfaces_ILib_ISetup_IDc_CreateCaptureSignal_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_ISetup_IDc_CreateCaptureSignal_Csra_Pins_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.CreateCaptureSignal(Csra.Pins,System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)">
+  CreateCaptureSignal(Pins, string, tlDCVSMeterMode, double, double, int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L431"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add capture signal to be acquired during the test execution.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CreateCaptureSignal(Pins capturePin, string signalName, tlDCVSMeterMode meterMode, double range, double sampleRate, int sampleSize, bool loadSettings = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capturePin</code> <a class="xref" href="Csra.Pins.html">Pins</a></dt>
+    <dd><p>Pin to be captured.</p>
+</dd>
+    <dt><code>signalName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of the signal.</p>
+</dd>
+    <dt><code>meterMode</code> <span class="xref">tlDCVSMeterMode</span></dt>
+    <dd><p>Meter mode to set for capture signal.</p>
+</dd>
+    <dt><code>range</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Range to set for the signal.</p>
+</dd>
+    <dt><code>sampleRate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Sample rate to capture for the signal.</p>
+</dd>
+    <dt><code>sampleSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Sample size to capture for the signal.</p>
+</dd>
+    <dt><code>loadSettings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Optional. Load settings after configuring the capture signal. True by default.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Csra_Interfaces_ILib_ISetup_IDc_Disconnect_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Disconnect*"></a>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Disconnect_Csra_Pins_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Disconnect(Csra.Pins,System.Boolean)">
   Disconnect(Pins, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L311"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L313"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disconnects and optionally gates on/off the pins depending on its instrument feature (PPMU, DCVI, DCVS,...).
@@ -237,7 +290,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Force_Csra_Pins_Csra_TLibOutputMode_System_Double_System_Double_System_Double_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Force(Csra.Pins,Csra.TLibOutputMode,System.Double,System.Double,System.Double,System.Boolean)">
   Force(Pins, TLibOutputMode, double, double, double, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L322"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L324"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the force current, force voltage or high impedance of the pins.</p>
@@ -287,7 +340,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Force_Csra_Pins___Csra_TLibOutputMode___System_Double___System_Double___System_Double___System_Boolean___" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Force(Csra.Pins[],Csra.TLibOutputMode[],System.Double[],System.Double[],System.Double[],System.Boolean[])">
   Force(Pins[], TLibOutputMode[], double[], double[], double[], bool[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L333"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L335"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the force current, force voltage or high impedance of each element in pinGroups.</p>
@@ -337,7 +390,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_ForceHiZ_Csra_Pins_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.ForceHiZ(Csra.Pins)">
   ForceHiZ(Pins)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L390"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L392"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets to High Impedance mode.</p>
@@ -372,7 +425,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_ForceI_Csra_Pins_System_Double_System_Double_System_Double_System_Nullable_System_Double__System_Boolean_System_Boolean_System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.ISetup.IDc.ForceI(Csra.Pins,System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Boolean,System.Boolean,System.Nullable{System.Double})">
   ForceI(Pins, double, double, double, double?, bool, bool, double?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L359"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L361"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the Force Current and the range of a DC instrument. Assuming that the instrument was already setup for remaining parameters.</p>
@@ -428,7 +481,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_ForceI_Csra_Pins_System_Double_System_Nullable_System_Double__System_Nullable_System_Double__System_Boolean_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.ForceI(Csra.Pins,System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Boolean,System.Boolean)">
   ForceI(Pins, double, double?, double?, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L345"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L347"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the Force current of a DC instrument. Assumes the instrument was already setup to the right modes.</p>
@@ -478,7 +531,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_ForceV_Csra_Pins_System_Double_System_Double_System_Double_System_Nullable_System_Double__System_Boolean_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.ForceV(Csra.Pins,System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Boolean,System.Boolean)">
   ForceV(Pins, double, double, double, double?, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L383"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L385"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Programs the force Voltage, measure range and many other parameters of a DC instrument - Advanced method with additional parameters.</p>
@@ -531,7 +584,7 @@ It will disconnect in HiZ mode rather then of forcing 0V or 0A on VIs.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_ForceV_Csra_Pins_System_Double_System_Nullable_System_Double__System_Boolean_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.ForceV(Csra.Pins,System.Double,System.Nullable{System.Double},System.Boolean,System.Boolean)">
   ForceV(Pins, double, double?, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L371"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L373"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Programs the force Voltage of a DC instrument. Simplest Method: It assumes the instrument is already in the right mode (FI,FV) and required
@@ -579,7 +632,7 @@ ranges.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Modify_Csra_Pins_Csra_DcParameters_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Modify(Csra.Pins,Csra.DcParameters)">
   Modify(Pins, DcParameters)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L453"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Selectively program or modify any DC instrument parameter.</p>
@@ -617,7 +670,7 @@ ranges.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Modify_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Modify(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})">
   Modify(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L471"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L485"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Selectively program or modify any DC instrument parameter.</p>
@@ -730,7 +783,7 @@ ranges.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_SetForceAndMeter_Csra_Pins_Csra_TLibOutputMode_System_Double_System_Double_System_Double_Csra_Measure_System_Double_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.SetForceAndMeter(Csra.Pins,Csra.TLibOutputMode,System.Double,System.Double,System.Double,Csra.Measure,System.Double,System.Boolean)">
   SetForceAndMeter(Pins, TLibOutputMode, double, double, double, Measure, double, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L431"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L445"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Programs the force and the meter's measure parameters interface for the dc instruments.</p>
@@ -787,7 +840,7 @@ sinking current.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_SetMeter_Csra_Pins_Csra_Measure_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins,Csra.Measure,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})">
   SetMeter(Pins, Measure, double?, double?, int?, double?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L402"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L404"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the measurement interface of the instruments DCVI and DCVS.</p>
@@ -838,7 +891,7 @@ this.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_SetMeter_Csra_Pins___Csra_Measure___System_Double___System_Double___System_Int32___System_Double___" data-uid="Csra.Interfaces.ILib.ISetup.IDc.SetMeter(Csra.Pins[],Csra.Measure[],System.Double[],System.Double[],System.Int32[],System.Double[])">
   SetMeter(Pins[], Measure[], double[], double[], int[], double[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TheLib/ILib.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L418"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the measurements interface of the instruments DCVI and DCVS.</p>
