@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Ppmu.Pins {
 
         public Gate(tlOnOff value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(tlOnOff.On, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlOnOff.On, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

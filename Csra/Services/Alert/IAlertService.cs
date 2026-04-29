@@ -55,6 +55,14 @@ namespace Csra.Interfaces {
         public void Log(string message, byte red, byte green, byte blue, bool bold = false);
 
         /// <summary>
+        /// Sends a Log message to the specified log file.
+        /// </summary>
+        /// <param name="logLabel">The label for the log file.</param>
+        /// <param name="message">The message string to be logged.</param>        
+        public void LogToFile(string logLabel, string message);
+
+
+        /// <summary>
         /// Sends an Info Alert message to the selected output target(s). Use for positive / neutral information relevant to the user.
         /// </summary>
         /// <param name="info">The Info Alert message.</param>

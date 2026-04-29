@@ -1,4 +1,4 @@
-﻿namespace Csra.Interfaces {
+namespace Csra.Interfaces {
 
     public interface ISetupService : IServiceBase {
 
@@ -70,8 +70,8 @@
         /// <summary>
         /// Performs the specified initialization to all setups in the SetupService.
         /// </summary>
-        /// <param name="initMode">The init mode.</param>
-        public void Init(InitMode initMode);
+        /// <param name="setupResetTrigger">The init mode.</param>
+        public void Init(SetupResetTrigger setupResetTrigger);
 
         /// <summary>
         /// Removes the setup with the specified setupName from the SetupService.

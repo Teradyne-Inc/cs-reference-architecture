@@ -1,4 +1,4 @@
-﻿namespace Csra.Interfaces {
+namespace Csra.Interfaces {
 
     public interface ISetting {
 
@@ -10,8 +10,8 @@
         /// <summary>
         /// Performs the specified initialization to the setting.
         /// </summary>
-        /// <param name="initMode">The init mode.</param>
-        void Init(InitMode initMode);
+        /// <param name="setupResetTrigger">The trigger event that causes this setting to reset.</param>
+        void Init(SetupResetTrigger setupResetTrigger);
 
         /// <summary>
         /// Dumps the setting to the log output target.

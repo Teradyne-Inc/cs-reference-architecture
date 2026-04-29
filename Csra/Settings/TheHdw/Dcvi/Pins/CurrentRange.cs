@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
 
         public CurrentRange(double value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(20 * mA, "A", InitMode.OnProgramStarted, true);
+            SetBehavior(20 * mA, "A", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

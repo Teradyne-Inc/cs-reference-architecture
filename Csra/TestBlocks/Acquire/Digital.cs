@@ -6,9 +6,11 @@ using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.TheLib.Acquire {
+
     public class Digital : ILib.IAcquire.IDigital {
+
         public virtual PinSite<double> MeasureFrequency(Pins pins) {
-            if (pins.Digital != null) {
+            if (pins.ContainsFeature(InstrumentFeature.Digital)) {
                 DriverDigPinsFreqCtr freqCtr = pins.Digital.HardwareApi.FreqCtr;
                 freqCtr.Start();
                 return freqCtr.MeasureFrequency().ToPinSite<double>();
@@ -20,7 +22,7 @@ namespace Csra.TheLib.Acquire {
         public virtual Site<bool> PatternResults() => TheHdw.Digital.Patgen.PatternBurstPassedPerSite.ToSite();
 
         public virtual PinSite<Samples<int>> Read(Pins pins, int startIndex = 0, int cycle = 0) {
-            if (pins.Digital != null) {
+            if (pins.ContainsFeature(InstrumentFeature.Digital)) {
                 int numCapturedCycles = TheHdw.Digital.HRAM.CapturedCycles;
                 PinSite<string[]> pinData = pins.Digital.HardwareApi.HRAM.PinData(startIndex, cycle, numCapturedCycles).ToPinSite<string[]>();
                 PinSite<Samples<int>> returnValue = new PinSite<Samples<int>>();
@@ -42,15 +44,15 @@ namespace Csra.TheLib.Acquire {
             Api.Services.Alert.Error("Digital pins are required.");
             return null;
         }
-        
+
         public virtual PinSite<Samples<int>> ReadWords(Pins pins, int startIndex, int length, int wordSize, tlBitOrder bitOrder) {
-            string[] digPins = pins.ExtractByFeature(InstrumentFeature.Digital).Select(p => p.Name).ToArray();
-            if (digPins.Length > 0) {
+            if (pins.ContainsFeature(InstrumentFeature.Digital)) {
                 PinSite<Samples<int>> returnValue = new PinSite<Samples<int>>();
-                foreach (string pin in digPins) {
-                    ISiteLong[] hramWords = (ISiteLong[])TheHdw.Digital.Pins(pin).HRAM.ReadDataWord(startIndex, length, wordSize, bitOrder);
+                var digPins = pins.Digital.GetIndividualPins();
+                foreach (Tol.DigitalPins pin in digPins) {
+                    ISiteLong[] hramWords = (ISiteLong[])TheHdw.Digital.Pins(pin.Name).HRAM.ReadDataWord(startIndex, length, wordSize, bitOrder);
                     Site<Samples<int>> siteWords = new Site<Samples<int>>();
-                    siteWords.PinName = pin;
+                    siteWords.PinName = pin.Name;
                     ForEachSite(site => {
                         int[] wordValues = hramWords.Select(word => (int)word[site]).ToArray();
                         siteWords[site] = new Samples<int>(wordValues);
@@ -61,6 +63,17 @@ namespace Csra.TheLib.Acquire {
             }
             Api.Services.Alert.Error("Digital pins are required.");
             return null;
+        }
+
+        public virtual bool TryReadCapture(Tol.IDigitalCapture digitalCapture) {
+            try {
+                digitalCapture.Read();
+                return true;
+            }
+            catch (Exception ex) {
+                Api.Services.Alert.Error($"Failed to read digital capture: {ex.Message}");
+                return false;
+            }
         }
     }
 }

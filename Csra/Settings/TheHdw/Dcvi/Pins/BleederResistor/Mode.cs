@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
         public Mode(tlDCVIBleederResistor value, string pinList) {
             SetArguments(value, pinList, true);
             if (CheckPinType() == false) return;
-            SetBehavior(tlDCVIBleederResistor.Auto, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDCVIBleederResistor.Auto, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

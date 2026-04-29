@@ -13,13 +13,15 @@ namespace Csra.Interfaces {
         /// Gets a collection containing the keys in the storage.
         /// </summary>
         public IEnumerable<string> Keys { get; }
-
+        
+        
         /// <summary>
-        /// Determines wheter the storage contains the specified key.
+        /// Determines whether the storage contains the specified key for the given type.
         /// </summary>
+        /// <typeparam name="T">The type of the value to check.</typeparam>
         /// <param name="key">The key to locate in the storage.</param>
         /// <returns><see langword="true"/> if the storage contains an element with the specified key; otherwise, <see langword="false"/>.</returns>
-        public bool ContainsKey(string key);
+        public bool ContainsKey<T>(string key); 
 
         /// <summary>
         /// Gets the type-safe value associated with the specified key.
@@ -36,13 +38,15 @@ namespace Csra.Interfaces {
         /// </summary>
         /// <param name="key">They key to be added or whose value should be updated.</param>
         /// <param name="value">The value of the element to add, or update.</param>
-        public void AddOrUpdate(string key, object value);
+        public void AddOrUpdate<T>(string key, T value);
+       
 
         /// <summary>
-        /// Removes the value with the specified key from the storage.
+        /// Removes the value with the specified key from the storage for the given type.
         /// </summary>
+        /// <typeparam name="T">The type of the value to remove.</typeparam>
         /// <param name="key">The key of the element to remove.</param>
         /// <returns><see langword="true"/> if the element is successfully found and removed; otherwise <see langword="false"/>.</returns>
-        public bool Remove(string key);
+        public bool Remove<T>(string key); 
     }
 }

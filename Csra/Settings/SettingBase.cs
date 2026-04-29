@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using Teradyne.Igxl.Interfaces.Public;
@@ -23,7 +23,7 @@ namespace Csra.Setting {
         private bool _doubleReadCompare = false; //for the instrument features where the readback can't be directly compared to the cached (=previous set) value
         private T _initValue = default;
         protected string _unit = string.Empty; // protected required for derived classes to access in serializer
-        private InitMode _initMode = InitMode.Creation;
+        private SetupResetTrigger _initMode = SetupResetTrigger.Creation;
 
         /// <summary>
         /// Hands the setting's argument parameters to the base class. Typically used for instrument-related settings with or without pin relation.
@@ -62,11 +62,11 @@ namespace Csra.Setting {
         /// </summary>
         /// <param name="initValue">The value this setting is being initialized to by the system.</param>
         /// <param name="unit">The unit string for the setting's value.</param>
-        /// <param name="initMode">The event that initialization of this setting in the system.</param>
-        protected void SetBehavior(T initValue, string unit, InitMode initMode, bool doubleReadCompare) {
+        /// <param name="setupResetTrigger">The event that initialization of this setting in the system.</param>
+        protected void SetBehavior(T initValue, string unit, SetupResetTrigger setupResetTrigger, bool doubleReadCompare) {
             _initValue = initValue;
             _unit = unit;
-            _initMode = initMode;
+            _initMode = setupResetTrigger;
             _doubleReadCompare = doubleReadCompare;
         }
 
@@ -226,9 +226,9 @@ namespace Csra.Setting {
         public override string ToString() => $"{GetType().Name}{(_pins.Count > 0 ? $" @ '{string.Join(", ", _pins)}'" : string.Empty)} --> '" +
             $"{SerializeValue(_value)}':";
 
-        public void Init(InitMode initMode) {
+        public void Init(SetupResetTrigger setupResetTrigger) {
             if (_cache is null) return;
-            if (_initMode.HasFlag(initMode)) foreach (string pin in _pins) _cache[pin] = _initValue;
+            if (_initMode.HasFlag(setupResetTrigger)) foreach (string pin in _pins) _cache[pin] = _initValue;
         }
 
         public void Dump() {

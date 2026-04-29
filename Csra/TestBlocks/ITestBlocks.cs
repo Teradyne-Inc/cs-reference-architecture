@@ -109,10 +109,10 @@ namespace Csra.Interfaces {
             /// </summary>
             /// <param name="pattern">The pattern file to check.</param>
             /// <param name="argumentName">The argument name used to indicate to IG-XL which test instance parameter failed.</param>
-            /// <param name="patternInfo">A new <see cref="PatternInfo"/> object containing the provided pattern.</param>
+            /// <param name="patternInfo">A new <see cref="PatternInfo"/> object list containing the provided patterns.</param>
             /// <param name="threading">Optional. Indicate whether threading should be used. Validation will fail if threading is not supported by the pattern.</param>
             /// <returns><see langword="true"/> if the `pattern` exists and creates the new PatternInfo() object; otherwise, <see langword="false"/>.</returns>
-            public bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true);
+            public bool Pattern(Pattern pattern, string argumentName, out List<PatternInfo> patternInfo, bool threading = true);
 
             /// <summary>
             /// Checks for C#RA supported pin spec and creates the object.
@@ -219,9 +219,9 @@ namespace Csra.Interfaces {
             /// <param name="highAccuracy">Optional. High Accuracy parameter to be validated.</param>
             /// <param name="settlingTime">Optional. Settling Time parameter to be validated.</param>
             /// <param name="hardwareAverage">Optional. Hardware Average parameter to be validated.</param>
-            public void Dc(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+            public void Dc(Pins pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
                     double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null,
-                    Measure? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
+                    DcMeterMode? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
                     double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null,
                     double? sampleRate = null, double? sampleSize = null, bool? voltageAltOutput = null, bool? bleederResistor = null, double? complianceBoth = null,
                     double? compliancePositive = null, double? complianceNegative = null, double? clampHiV = null, double? clampLoV = null, bool? highAccuracy = null,
@@ -321,7 +321,7 @@ namespace Csra.Interfaces {
                 /// <param name="forceRange">The range for force value.</param>
                 /// <param name="clampValue">When forcing Voltage it sets the current limit and when forcing Current it sets the voltage range.</param>
                 /// <param name="gateOn">Optional. Default gate on the pins after after the settings,False no gate change.</param>
-                public void Force(Pins pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue, bool gateOn = true);
+                public void Force(Pins pins, DcOutputMode mode, double forceValue, double forceRange, double clampValue, bool gateOn = true);
 
                 /// <summary>
                 /// Sets the force current, force voltage or high impedance of each element in pinGroups.
@@ -332,7 +332,7 @@ namespace Csra.Interfaces {
                 /// <param name="forceRanges">Array of force ranges for each pin or pin group.</param>
                 /// <param name="clampValues">Array of clamp values for each pin or pin group.</param>
                 /// <param name="gateOn">Optional. Array of gate state for each pin or pin group, default gate on for all pin or pin group.</param>
-                public void Force(Pins[] pinGroups, TLibOutputMode[] modes, double[] forceValues, double[] forceRanges, double[] clampValues,
+                public void Force(Pins[] pinGroups, DcOutputMode[] modes, double[] forceValues, double[] forceRanges, double[] clampValues,
                     bool[] gateOn = null);
 
                 /// <summary>
@@ -373,7 +373,7 @@ namespace Csra.Interfaces {
                 public void ForceV(Pins pins, double forceVoltage, double? clampCurrent = null, bool outputModeVoltage = false, bool gateOn = true);
 
                 /// <summary>
-                /// Programs the force Voltage, measure range and many other parameters of a DC instrument - Advanced method with additional parameters.
+                /// Programs the force Voltage, meter range and many other parameters of a DC instrument - Advanced method with additional parameters.
                 /// </summary>
                 /// <param name="pins">The pins to force the voltage.</param>
                 /// <param name="forceVoltage">The force voltage value.</param>
@@ -395,13 +395,13 @@ namespace Csra.Interfaces {
                 /// Sets the measurement interface of the instruments DCVI and DCVS.
                 /// </summary>
                 /// <param name="pins">The pins to set meter parameters.</param>
-                /// <param name="meterMode">Set the mode to measure Voltage or Current.</param>
+                /// <param name="meterMode">Set the meter mode to Voltage or Current.</param>
                 /// <param name="rangeValue">Optional. Current or Voltage range depending on the selected mode.</param>
                 /// <param name="filterValue">Optional. Sets the filter value.</param>
                 /// <param name="hardwareAverage">Optional. Sets the hardware average for the specified DCVI pins.</param>
                 /// <param name="outputRangeValue">Optional. Current range for DCVS when you want to set the current mode - for other cases, ignore
                 /// this.</param>
-                public void SetMeter(Pins pins, Measure meterMode, double? rangeValue = null, double? filterValue = null, int? hardwareAverage = null,
+                public void SetMeter(Pins pins, DcMeterMode meterMode, double? rangeValue = null, double? filterValue = null, int? hardwareAverage = null,
                     double? outputRangeValue = null);
 
                 /// <summary>
@@ -415,7 +415,7 @@ namespace Csra.Interfaces {
                 /// <param name="outputRangeValues">Optional. Array of current range for DCVS when you want to set the current mode - for other cases,
                 /// ignore this.
                 /// </param>
-                public void SetMeter(Pins[] pinGroups, Measure[] meterModes, double[] rangeValues = null, double[] filterValues = null, int[] hardwareAverages = null,
+                public void SetMeter(Pins[] pinGroups, DcMeterMode[] meterModes, double[] rangeValues = null, double[] filterValues = null, int[] hardwareAverages = null,
                     double[] outputRangeValues = null);
 
                 /// <summary>
@@ -431,18 +431,18 @@ namespace Csra.Interfaces {
                 public void CreateCaptureSignal(Pins capturePin, string signalName, tlDCVSMeterMode meterMode, double range, double sampleRate, int sampleSize, bool loadSettings = true);
 
                 /// <summary>
-                /// Programs the force and the meter's measure parameters interface for the dc instruments.
+                /// Programs the force and the meter's measurement parameters interface for the dc instruments.
                 /// </summary>
                 /// <param name="pins">The pins to set force and meter parameters.</param>
-                /// <param name="mode">Set the output mode to TlibOutputMode Voltage, Current or HiZ.</param>
+                /// <param name="mode">Set the output mode to DcOutputMode Voltage, Current or HiZ.</param>
                 /// <param name="forceValue">Force voltage or current value.</param>
                 /// <param name="forceRange">Voltage or current to set the force range.</param>
                 /// <param name="clampValue">Current or voltage clamp value. Note: For PPMU it programs either clampVHi or clampVLo depending if sourcing or
                 /// sinking current.</param>
-                /// <param name="meterMode">Set the meter's measure mode to measure voltage or current.</param>
-                /// <param name="measureRange">Set the meter's measure range to the expected current or voltage.</param>
+                /// <param name="meterMode">Set the meter mode to voltage or current.</param>
+                /// <param name="measureRange">Set the meter's range to the expected current or voltage.</param>
                 /// <param name="gateOn">Optional. Default gate on the pins after after the settings,False no gate change.</param>
-                public void SetForceAndMeter(Pins pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue, Measure meterMode,
+                public void SetForceAndMeter(Pins pins, DcOutputMode mode, double forceValue, double forceRange, double clampValue, DcMeterMode meterMode,
                     double measureRange, bool gateOn = true);
 
                 /// <summary>
@@ -479,12 +479,12 @@ namespace Csra.Interfaces {
                 /// <param name="complianceNegative">Optional. Sets the negative compliance range.</param>
                 /// <param name="clampHiV">Optional. Sets the high voltage clamp value.</param>
                 /// <param name="clampLoV">Optional. Sets the low voltage clamp value.</param>
-                /// <param name="highAccuracy">Optional. Sets the enabled state of the high accuracy measure voltage.</param>
-                /// <param name="settlingTime">Optional. Sets the required additional settling time for the high accuracy measure voltage mode.</param>
+                /// <param name="highAccuracy">Optional. Sets the enabled state of the high accuracy measurement voltage.</param>
+                /// <param name="settlingTime">Optional. Sets the required additional settling time for the high accuracy measurement voltage mode.</param>
                 /// <param name="hardwareAverage">Optional. Sets the meter hardware average value.</param>
-                public void Modify(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+                public void Modify(Pins pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
                     double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null,
-                    Measure? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
+                    DcMeterMode? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
                     double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null,
                     bool? voltageAltOutput = null, bool? bleederResistor = null, double? complianceBoth = null, double? compliancePositive = null,
                     double? complianceNegative = null, double? clampHiV = null, double? clampLoV = null, bool? highAccuracy = null, double? settlingTime = null,
@@ -608,7 +608,7 @@ namespace Csra.Interfaces {
                 /// <param name="levelsValuePerSite">Optional. Sets the value for the specified level type for the specified pins on each site</param>
                 /// <param name="levelsValues">Optional. Sets the value for the specified level value for each specified site and each specified pin</param>
                 public void ModifyPinsLevels(Pins pins, ChDiffPinLevel? differentialLevelsType = null, double? differentialLevelsValue = null,
-                    TLibDiffLvlValType[] differentialLevelsValuesType = null, double[] differentialLevelsValues = null, tlDriverMode? levelsDriverMode = null,
+                    DiffLevelValueType[] differentialLevelsValuesType = null, double[] differentialLevelsValues = null, tlDriverMode? levelsDriverMode = null,
                     ChPinLevel? levelsType = null, double? levelsValue = null, SiteDouble levelsValuePerSite = null, PinListData levelsValues = null);
 
                 /// <summary>
@@ -664,6 +664,18 @@ namespace Csra.Interfaces {
                     int? autoStrobeSamplesPerStep = null, double? autoStrobeStartTime = null, double? autoStrobeStepTime = null,
                     bool? freeRunningClockEnabled = null, double? freeRunningClockFrequency = null, FreqCtrEnableSel? freqCtrEnable = null,
                     FreqCtrEventSlopeSel? freqCtrEventSlope = null, FreqCtrEventSrcSel? freqCtrEventSource = null, double? freqCtrInterval = null);
+
+                /// <summary>
+                /// Configures capture memory.
+                /// </summary>
+                /// <param name="digitalCapture">Tol digital capture object.</param>
+                public void ConfigureCapture(Tol.IDigitalCapture digitalCapture);
+
+                /// <summary>
+                /// Resets capture memory.
+                /// </summary>
+                /// <param name="digitalCapture">Tol digital capture object.</param>
+                public void ResetCapture(Tol.IDigitalCapture digitalCapture);
             }
         }
 
@@ -1063,10 +1075,10 @@ namespace Csra.Interfaces {
                 /// Performs a single measurement for the set of pins provided.
                 /// </summary>  
                 /// <param name="pins">The pins to measure.</param>
-                /// <param name="meterMode">Optional. Set the mode to measure Voltage or Current.</param>
+                /// <param name="meterMode">Optional. Set the meter mode to Voltage or Current.</param>
                 /// <returns>Returns a value.</returns>
                 /// <exception cref="Exception">Appears when pinList contains different types of pins - temporary limitation in functionality.</exception>
-                public PinSite<double> Measure(Pins pins, Measure? meterMode = null);
+                public PinSite<double> Measure(Pins pins, DcMeterMode? meterMode = null);
 
                 /// <summary>
                 /// Performs multiple measurements for the set of pins provided.
@@ -1074,10 +1086,10 @@ namespace Csra.Interfaces {
                 /// <param name="pins">The pins to measure.</param> 
                 /// <param name="sampleSize">The number of samples.</param>
                 /// <param name="sampleRate">Optional. The sampling rate.</param>
-                /// <param name="meterMode">Optional. Set the mode to measure Voltage or Current.</param>
+                /// <param name="meterMode">Optional. Set the meter mode to Voltage or Current.</param>
                 /// <returns>Returns an average value.</returns>
                 /// <exception cref="Exception">Appears when pinList contains different types of pins - temporary limitation in functionality.</exception>
-                public PinSite<double> Measure(Pins pins, int sampleSize, double? sampleRate = null, Measure? meterMode = null);
+                public PinSite<double> Measure(Pins pins, int sampleSize, double? sampleRate = null, DcMeterMode? meterMode = null);
 
                 /// <summary>
                 /// Performs multiple measurements for the set of each element in pinGroups.
@@ -1089,7 +1101,7 @@ namespace Csra.Interfaces {
                 /// <returns>Returns a set of measurements.</returns>
                 /// <exception cref="Exception">Appears when an element of pinGroups contains different types of pins - temporary limitation in functionality.
                 /// </exception>
-                public PinSite<double> Measure(Pins[] pinGroups, int[] sampleSizes, double[] sampleRates = null, Measure[] meterModes = null);
+                public PinSite<double> Measure(Pins[] pinGroups, int[] sampleSizes, double[] sampleRates = null, DcMeterMode[] meterModes = null);
 
                 /// <summary>
                 /// Performs multiple measurements for the set of pins provided.
@@ -1097,10 +1109,10 @@ namespace Csra.Interfaces {
                 /// <param name="pins">The pins to measure.</param> 
                 /// <param name="sampleSize">The number of samples.</param> 
                 /// <param name="sampleRate">Optional. The sampling rate.</param>
-                /// <param name="meterMode">Optional. Set the mode to measure Voltage or Current.</param>
+                /// <param name="meterMode">Optional. Set the meter mode to Voltage or Current.</param>
                 /// <returns>Returns a set of measurements.</returns>
                 /// <exception cref="Exception">Appears when pinList contains different types of pins - temporary limitation in functionality.</exception>
-                public PinSite<Samples<double>> MeasureSamples(Pins pins, int sampleSize, double? sampleRate = null, Measure? meterMode = null);
+                public PinSite<Samples<double>> MeasureSamples(Pins pins, int sampleSize, double? sampleRate = null, DcMeterMode? meterMode = null);
 
                 /// <summary>
                 /// Performs multiple measurements for the set of each element in pinGroups.
@@ -1112,7 +1124,7 @@ namespace Csra.Interfaces {
                 /// <returns>Returns a set of measurements.</returns>
                 /// <exception cref="Exception">Appears when an element of pinGroups contains different types of pins - temporary limitation in functionality.
                 /// </exception>
-                public PinSite<Samples<double>> MeasureSamples(Pins[] pinGroups, int[] sampleSizes, double[] sampleRates = null, Measure[] meterModes = null);
+                public PinSite<Samples<double>> MeasureSamples(Pins[] pinGroups, int[] sampleSizes, double[] sampleRates = null, DcMeterMode[] meterModes = null);
 
                 /// <summary>
                 /// Allows configuration and control of capture parameters for the specified pins.
@@ -1204,6 +1216,13 @@ namespace Csra.Interfaces {
                 /// <returns>Word values in array of ISiteLong</returns>
                 /// <exception cref="ArgumentException"></exception>
                 public PinSite<Samples<int>> ReadWords(Pins pins, int startIndex, int length, int wordSize, tlBitOrder bitOrder);
+
+                /// <summary>
+                /// Try reads capture memory data.
+                /// </summary>
+                /// <param name="digitalCapture">Tol digital capture object.</param>
+                /// <returns>True if the capture memory data was successfully read; otherwise, false.</returns>
+                public bool TryReadCapture(Tol.IDigitalCapture digitalCapture);
             }
 
             /// <summary>
@@ -1832,7 +1851,8 @@ namespace Csra.Interfaces {
             /// <param name="result">The result object to be datalogged.</param>
             /// <param name="forceValue">Optional. The force value applied for the result.</param>
             /// <param name="forceUnit">Optional. The force value's unit.</param>
-            public void TestParametric(Site<int> result, double forceValue = 0, string forceUnit = "");
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(Site<int> result, double forceValue = 0, string forceUnit = "", string tName = "");
 
             /// <summary>
             /// Perform a parametric datalog test by using FlowLimits.
@@ -1840,7 +1860,8 @@ namespace Csra.Interfaces {
             /// <param name="result">The result object to be datalogged.</param>
             /// <param name="forceValue">Optional. The force value applied for the result.</param>
             /// <param name="forceUnit">Optional. The force value's unit.</param>
-            public void TestParametric(Site<double> result, double forceValue = 0, string forceUnit = "");
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(Site<double> result, double forceValue = 0, string forceUnit = "", string tName = "");
 
             /// <summary>
             /// Perform a parametric datalog test by using FlowLimits.
@@ -1848,7 +1869,8 @@ namespace Csra.Interfaces {
             /// <param name="result">The result object to be datalogged.</param>
             /// <param name="forceValue">Optional. The force value applied for the result.</param>
             /// <param name="forceUnit">Optional. The force value's unit.</param>
-            public void TestParametric(PinSite<int> result, double forceValue = 0, string forceUnit = "");
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(PinSite<int> result, double forceValue = 0, string forceUnit = "", string tName = "");
 
             /// <summary>
             /// Perform a parametric datalog test by using FlowLimits.
@@ -1856,7 +1878,8 @@ namespace Csra.Interfaces {
             /// <param name="result">The result object to be datalogged.</param>
             /// <param name="forceValue">Optional. The force value applied for the result.</param>
             /// <param name="forceUnit">Optional. The force value's unit.</param>
-            public void TestParametric(PinSite<double> result, double forceValue = 0, string forceUnit = "");
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(PinSite<double> result, double forceValue = 0, string forceUnit = "", string tName = "");
 
             /// <summary>
             /// Perform a parametric datalog test by using FlowLimits.
@@ -1893,6 +1916,33 @@ namespace Csra.Interfaces {
             /// <param name="forceUnit">Optional. The force value's unit.</param>
             /// <param name="sameLimitForAllSamples">Optional. Whether to use the same FlowLimit for all samples.</param>
             public void TestParametric(PinSite<Samples<double>> result, double forceValue = 0, string forceUnit = "", bool sameLimitForAllSamples = false);
+
+            /// <summary>
+            /// Perform a parametric datalog test with explicit low and high limits (not from the flow table).
+            /// </summary>
+            /// <param name="result">The result object to be datalogged.</param>
+            /// <param name="loVal">The low limit value.</param>
+            /// <param name="hiVal">The high limit value.</param>
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(Site<double> result, double loVal, double hiVal, string tName = "");
+
+            /// <summary>
+            /// Perform a parametric datalog test with explicit low and high limits (not from the flow table).
+            /// </summary>
+            /// <param name="result">The result object to be datalogged.</param>
+            /// <param name="loVal">The low limit value.</param>
+            /// <param name="hiVal">The high limit value.</param>
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(Site<Samples<int>> result, double loVal, double hiVal, string tName = "");
+
+            /// <summary>
+            /// Perform a parametric datalog test with explicit low and high limits (not from the flow table).
+            /// </summary>
+            /// <param name="result">The result object to be datalogged.</param>
+            /// <param name="loVal">The low limit value.</param>
+            /// <param name="hiVal">The high limit value.</param>
+            /// <param name="tName">Optional. The test name to use for datalogging.</param>
+            public void TestParametric(Site<Samples<double>> result, double loVal, double hiVal, string tName = "");
 
             /// <summary>
             /// Perform a flexible datalog test for ScanNetwork pattern results, with datalogging options set by <see cref="ScanNetworkDatalogOption"/>.

@@ -13,7 +13,7 @@ namespace Csra.Setting.TheHdw {
 
         public SettleWait(double value) {
             SetArguments(value, null, false);
-            SetBehavior(0, "s", InitMode.Creation, false); // no cache -- no readback
+            SetBehavior(0, "s", SetupResetTrigger.Creation, false); // no cache -- no readback
             SetContext(false, null);
             if (TheExec.JobIsValid) Validate();
         }

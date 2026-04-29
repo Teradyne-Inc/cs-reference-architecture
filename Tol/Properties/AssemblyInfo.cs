@@ -11,10 +11,10 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Tol")]
 [assembly: AssemblyDescription("Tester Object Layer")]
-[assembly: AssemblyConfiguration("Unofficial")]
+[assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("Teradyne")]
 [assembly: AssemblyProduct("Tol")]
-[assembly: AssemblyCopyright("Copyright © Teradyne 2025")]
+[assembly: AssemblyCopyright("Copyright © Teradyne 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -42,6 +42,6 @@ namespace Tol {
 
     internal static class Info {
 
-        internal const string VersionDefinition = "0.0.0.1";
+        internal const string VersionDefinition = "0.17";
     }
 }

@@ -1,4 +1,4 @@
-﻿using Teradyne.Igxl.Interfaces.Public;
+using Teradyne.Igxl.Interfaces.Public;
 
 namespace Tol {
 

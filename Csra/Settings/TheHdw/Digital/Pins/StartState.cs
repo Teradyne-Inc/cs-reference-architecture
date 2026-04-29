@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -18,7 +18,7 @@ namespace Csra.Setting.TheHdw.Digital.Pins {
         public StartState(ChStartState value, string pinList) {
             SetArguments(value, pinList, true);
             // ChStartState.None is used as a default value to keep the pins' current state
-            SetBehavior(ChStartState.None, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(ChStartState.None, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
 
         public Connect(tlDCVSConnectWhat value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(tlDCVSConnectWhat.None, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDCVSConnectWhat.None, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

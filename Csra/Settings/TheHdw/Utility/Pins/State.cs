@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Utility.Pins {
 
         public State(tlUtilBitState value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(tlUtilBitState.Off, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlUtilBitState.Off, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

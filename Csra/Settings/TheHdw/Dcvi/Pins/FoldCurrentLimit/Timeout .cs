@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Csra.Setting;
 using Csra;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
         public Timeout(double value, string pinList) {
             SetArguments(value, pinList, true);
             double defaultTimeout = GetDefaultTimeout();
-            SetBehavior(defaultTimeout, "s", InitMode.OnProgramStarted, true);
+            SetBehavior(defaultTimeout, "s", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

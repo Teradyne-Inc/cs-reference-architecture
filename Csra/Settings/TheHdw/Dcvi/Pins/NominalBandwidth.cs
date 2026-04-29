@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Csra.Setting;
 using Csra;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
         public NominalBandwidth(double value, string pinList) {
             SetArguments(value, pinList, true);
             double defaultNominalBandwidth = GetDefaultNominalBandwidth();
-            SetBehavior(defaultNominalBandwidth, string.Empty, InitMode.OnProgramStarted, true);
+            SetBehavior(defaultNominalBandwidth, string.Empty, SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

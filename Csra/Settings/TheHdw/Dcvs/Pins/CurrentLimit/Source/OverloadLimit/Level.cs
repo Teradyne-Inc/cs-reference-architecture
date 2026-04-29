@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins.CurrentLimit.Source.OverloadLimit {
 
         public Level(double value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(22.5 * mA, "A", InitMode.OnProgramStarted, true);
+            SetBehavior(22.5 * mA, "A", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

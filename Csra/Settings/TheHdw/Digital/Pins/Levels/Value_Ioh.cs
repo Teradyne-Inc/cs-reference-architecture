@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Digital.Pins.Levels {
 
         public Value_Ioh(double value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(0, "A", InitMode.OnProgramStarted, true);
+            SetBehavior(0, "A", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

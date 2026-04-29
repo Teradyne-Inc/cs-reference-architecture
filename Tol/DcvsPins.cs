@@ -28,7 +28,11 @@ namespace Tol {
         private IDcvsMeter _meter;
         private string _name;
 
-        public DcvsPins(string pinList) : this(pinList, TheHdw.DCVS.Pins(pinList)) { }
+        public DcvsPins(string pinList) : this(pinList, TheHdw.DCVS.Pins(pinList)) {
+            if(!pinList.AreAllPinsOfType<IDcvsPins>()) {
+                throw new ArgumentException("Not all pins belong to DcvsPins expected type.");
+            }
+        }
 
         public DcvsPins(string pinList, DriverDCVSPins driverDCVSPins) {
             _name = pinList;
@@ -178,9 +182,11 @@ namespace Tol {
             HardwareApi.SetCurrentRanges(forceRange, meterRange);
         }
 
-        public void SetMeterV(double? voltageRange = null, double? filter = null) {
+        public void SetMeterV(double? filter = null) {
+            // DCVS: don't set voltageRange in SetMeterV. VoltageRange is a compliance/force range set in ForceV, and Meter.VoltageRange isn't supported on all DCVS HW (e.g., VS800mA).
+            // Changing ranges inside tests can cause offline/compile/runtime errors and is intentionally avoided.
+            // The DCVS feature "Set Meter VoltageRange" is not supported by VS5A instruments. Force and meter ranges can not be programmed independently, set specific range using theHdw.DCVS.Pins().VoltageRange.
             Meter.Mode.Value = tlDCVSMeterMode.Voltage;
-            if (voltageRange.HasValue) Meter.VoltageRange.Value = voltageRange.Value;
             if (filter.HasValue) Meter.Filter.Value = filter.Value;
         }
 
@@ -194,7 +200,11 @@ namespace Tol {
 
         public PinSite<Samples<double>> ReadSamples(int sampleSize, double sampleRate = -1) {
             IPinListData data = HardwareApi.Meter.Read(tlStrobeOption.NoStrobe, sampleSize, sampleRate, tlDCVSMeterReadingFormat.Array);
-            return data.ToPinSiteSamplesDouble();
+            return data.ToPinSiteSamples<double>();
+        }
+
+        public PinSite<Samples<double>> ReadSignal(string signalName) {
+            return HardwareApi.Capture.Signals[signalName].DspWave.ToPinSiteSamples<double>();
         }
 
         public PinSite<double> Measure(int sampleSize = 1, double sampleRate = -1) {
@@ -203,7 +213,7 @@ namespace Tol {
 
         public PinSite<Samples<double>> MeasureSamples(int sampleSize, double sampleRate = -1) {
             IPinListData data = HardwareApi.Meter.Read(tlStrobeOption.Strobe, sampleSize, sampleRate, tlDCVSMeterReadingFormat.Array);
-            return data.ToPinSiteSamplesDouble();
+            return data.ToPinSiteSamples<double>();
         }
 
         public void ForceI(double forceCurrent, double? clampVoltage = null, double? currentRange = null, double? voltageRange = null, bool setCurrentMode = true, bool? gate = null) {
@@ -240,13 +250,12 @@ namespace Tol {
         }
 
         public void ForceVSetMeterV(double forceVoltage, double clampCurrent, double measureVoltageRange, bool? gate = null) {
-            SetMeterV(measureVoltageRange);
+            SetMeterV();
             ForceV(forceVoltage, clampCurrent, measureVoltageRange, clampCurrent, true, gate);
         }
 
-        public void ForceHiZ(double? clampValue = null) {
-            Mode.Value = tlDCVSMode.HighImpedance;
-            if (clampValue.HasValue) Voltage.Value = clampValue.Value;
+        public void ForceHiZ() {
+            HardwareApi.Mode = tlDCVSMode.HighImpedance;
         }
 
         public void CreateCaptureSignal(string signalName, tlDCVSMeterMode mode, double range, double sampleRate, int sampleSize, bool loadSettings = true) {

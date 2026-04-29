@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using Csra.Interfaces;
 using Csra.TheLib;
 using Teradyne.Igxl.Interfaces.Public;
+using Tol;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra.TheLib.Setup {
@@ -70,7 +72,7 @@ namespace Csra.TheLib.Setup {
             parameters.LevelsDriverMode, parameters.LevelsType, parameters.LevelsValue, parameters.LevelsValuePerSite, parameters.LevelsValues);
 
         public virtual void ModifyPinsLevels(Pins pins, ChDiffPinLevel? differentialLevelsType = null, double? differentialLevelsValue = null,
-            TLibDiffLvlValType[] differentialLevelsValuesType = null, double[] differentialLevelsValues = null, tlDriverMode? levelsDriverMode = null,
+            DiffLevelValueType[] differentialLevelsValuesType = null, double[] differentialLevelsValues = null, tlDriverMode? levelsDriverMode = null,
             ChPinLevel? levelsType = null, double? levelsValue = null, SiteDouble levelsValuePerSite = null, PinListData levelsValues = null) {
 
             if (pins.Digital != null) {
@@ -87,30 +89,30 @@ namespace Csra.TheLib.Setup {
                         Api.Services.Alert.Error("Cannot configure DifferentialLevelsValues on Digital Pins when types array length does not equal to value array " +
                             "length.");
                     }
-                    Dictionary<TLibDiffLvlValType, double> valuesDict = Enum.GetValues(typeof(TLibDiffLvlValType))
-                        .Cast<TLibDiffLvlValType>()
+                    Dictionary<DiffLevelValueType, double> valuesDict = Enum.GetValues(typeof(DiffLevelValueType))
+                        .Cast<DiffLevelValueType>()
                         .ToDictionary(p => p, p => -5.0);
 
                     for (int i = 0; i < differentialLevelsValuesType.Length; i++) {
                         valuesDict[differentialLevelsValuesType[i]] = differentialLevelsValues[i];
                     }
 
-                    pins.Digital.HardwareApi.DifferentialLevels.Values(VID: valuesDict[TLibDiffLvlValType.VID],
-                        dVID0: valuesDict[TLibDiffLvlValType.dVID0],
-                        dVID1: valuesDict[TLibDiffLvlValType.dVID1],
-                        VICM: valuesDict[TLibDiffLvlValType.VICM],
-                        dVICM0: valuesDict[TLibDiffLvlValType.dVICM0],
-                        dVICM1: valuesDict[TLibDiffLvlValType.dVICM1],
-                        VOD: valuesDict[TLibDiffLvlValType.VOD],
-                        dVOD0: valuesDict[TLibDiffLvlValType.dVOD0],
-                        dVOD1: valuesDict[TLibDiffLvlValType.dVOD1],
-                        VCL: valuesDict[TLibDiffLvlValType.VCL],
-                        VCH: valuesDict[TLibDiffLvlValType.VCH],
-                        VT: valuesDict[TLibDiffLvlValType.VT],
-                        IOL: valuesDict[TLibDiffLvlValType.IOL],
-                        IOH: valuesDict[TLibDiffLvlValType.IOH],
-                        VodTyp: valuesDict[TLibDiffLvlValType.VodTyp],
-                        VocmTyp: valuesDict[TLibDiffLvlValType.VocmTyp]
+                    pins.Digital.HardwareApi.DifferentialLevels.Values(VID: valuesDict[DiffLevelValueType.Vid],
+                        dVID0: valuesDict[DiffLevelValueType.DVid0],
+                        dVID1: valuesDict[DiffLevelValueType.DVid1],
+                        VICM: valuesDict[DiffLevelValueType.Vicm],
+                        dVICM0: valuesDict[DiffLevelValueType.DVicm0],
+                        dVICM1: valuesDict[DiffLevelValueType.DVicm1],
+                        VOD: valuesDict[DiffLevelValueType.Vod],
+                        dVOD0: valuesDict[DiffLevelValueType.DVod0],
+                        dVOD1: valuesDict[DiffLevelValueType.DVod1],
+                        VCL: valuesDict[DiffLevelValueType.Vcl],
+                        VCH: valuesDict[DiffLevelValueType.Vch],
+                        VT: valuesDict[DiffLevelValueType.Vt],
+                        IOL: valuesDict[DiffLevelValueType.Iol],
+                        IOH: valuesDict[DiffLevelValueType.Ioh],
+                        VodTyp: valuesDict[DiffLevelValueType.VodTypical],
+                        VocmTyp: valuesDict[DiffLevelValueType.VocmTypical]
                         );
                 } else if (differentialLevelsValuesType is not null && differentialLevelsValues is null) {
                     Api.Services.Alert.Error("Cannot configure DifferentialLevelsValues on Digital Pins without setting value for differentialLevelsValues.");
@@ -257,9 +259,10 @@ namespace Csra.TheLib.Setup {
         }
 
         public void ConfigurePatternControl(Pins capturePins, int numSamplesPerStrobe, tlPPMUPatternControlReadFormat readFormat) {
-            if (capturePins.ContainsType(InstrumentType.UP5000)) capturePins.Ppmu?.ConfigurePatternControl(numSamplesPerStrobe, readFormat);
-            else {
-                Api.Services.Alert.Warning("Operating PPMU through PatternControl is functionality exclusive to the UP5000.");
+            if (capturePins.Ppmu != null) {
+                capturePins.Ppmu.ConfigurePatternControl(numSamplesPerStrobe, readFormat);
+            } else {
+                Api.Services.Alert.Warning("None of the pins contain 'PPMU' features - no action performed");
             }
         }
         
@@ -268,5 +271,9 @@ namespace Csra.TheLib.Setup {
         public virtual void ReadFails() => ReadHram(TheHdw.Digital.HRAM.MaxDepth, CaptType.Fail, TrigType.First, false, 0);
 
         public virtual void ReadStoredVectors() => ReadHram(TheHdw.Digital.HRAM.MaxDepth, CaptType.STV, TrigType.First, false, 0);
+
+        public virtual void ConfigureCapture(IDigitalCapture digitalCapture) => digitalCapture.Configure();
+
+        public virtual void ResetCapture(IDigitalCapture digitalCapture) => digitalCapture.Reset();
     }
 }

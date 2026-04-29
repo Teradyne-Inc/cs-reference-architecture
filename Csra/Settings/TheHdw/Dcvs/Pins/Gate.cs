@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
@@ -18,7 +18,7 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
 
         public Gate(bool value, string pinList) { 
             SetArguments(value, pinList, true);
-            SetBehavior(false, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(false, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

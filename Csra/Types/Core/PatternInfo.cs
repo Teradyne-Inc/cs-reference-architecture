@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using Teradyne.Igxl.Interfaces.Public;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
@@ -42,6 +42,94 @@ namespace Csra {
         /// The name of the pattern setup in IGXL.
         /// </summary>
         public readonly string Name;
+
+        /// <summary>
+        /// Modifies vector block data for the specified pins in the given pattern module. The data is expected in vector-major order,
+        /// where each element represents a vector: { "P1P2P3P4", "P1P2P3P4", ... }.
+        /// </summary>
+        /// <param name="pins">The pins to modify.</param>
+        /// <param name="patternModule">The pattern module containing the vector block.</param>
+        /// <param name="label">The label identifying the vector block.</param>
+        /// <param name="offset">The offset within the vector block.</param>
+        /// <param name="pinDataArray">Vector-major data array passed by reference.</param>
+        public void ModifyVectorBlockData(Pins pins, string patternModule, string label, int offset, ref string[] pinDataArray) {
+            TheHdw.Digital.Pins(pins.ToString()).Patterns(patternModule).ModifyVectorBlockData(label, offset, ref pinDataArray);
+        }
+
+        /// <summary>
+        /// Modifies vector block data for the specified pins using a single string where each character represents one vector.
+        /// The string is split into individual characters before being sent to IGXL.
+        /// </summary>
+        /// <param name="pins">The pins to modify.</param>
+        /// <param name="patternModule">The pattern module containing the vector block.</param>
+        /// <param name="label">The label identifying the vector block.</param>
+        /// <param name="offset">The offset within the vector block.</param>
+        /// <param name="pinData">A string where each character is a vector entry.</param>
+        public void ModifyVectorBlockDataPinOrder(Pins pins, string patternModule, string label, int offset, ref string pinData) {           
+            string[] dataArray = pinData.Select(c => c.ToString()).ToArray();
+            TheHdw.Digital.Pins(pins.ToString()).Patterns(patternModule).ModifyVectorBlockData(label, offset, ref dataArray);
+        }
+
+        /// <summary>
+        /// Modifies vector block data for the specified pins using pin-major order. The data is expected as one string per pin,
+        /// where each string contains that pin's values across all vectors: { "P1P1P1P1", "P2P2P2P2", ... }.
+        /// The data is transposed to vector-major order before being sent to IGXL.
+        /// </summary>
+        /// <param name="pins">The pins to modify.</param>
+        /// <param name="patternModule">The pattern module containing the vector block.</param>
+        /// <param name="label">The label identifying the vector block.</param>
+        /// <param name="offset">The offset within the vector block.</param>
+        /// <param name="pinDataArray">Pin-major data array passed by reference.</param>
+        public void ModifyVectorBlockDataPinOrder(Pins pins, string patternModule, string label, int offset, ref string[] pinDataArray) {
+            string[] dataArray = TransposePinDataToVectorOrder(pinDataArray);
+            TheHdw.Digital.Pins(pins.ToString()).Patterns(patternModule).ModifyVectorBlockData(label, offset, ref dataArray);
+        }
+
+        /// <summary>
+        /// Transposes pin data from pin-major order to vector-major order.
+        /// Input:  { "P1P1P1P1", "P2P2P2P2", ... } (one string per pin, characters are vectors).
+        /// Output: { "P1P2...", "P1P2...", ... } (one string per vector, characters are pins).
+        /// </summary>
+        /// <param name="pinDataArray">Pin-major data where each element holds all vector values for one pin.</param>
+        /// <returns>Vector-major data where each element holds all pin values for one vector.</returns>
+        /// <exception cref="ArgumentException">Thrown when the input contains null, empty, or inconsistent-length entries.</exception>
+        private static string[] TransposePinDataToVectorOrder(string[] pinDataArray) {
+            if (pinDataArray is null || pinDataArray.Length == 0) return Array.Empty<string>();
+            if (string.IsNullOrEmpty(pinDataArray[0]))
+                throw new ArgumentException("Pin data cannot be null or empty.", nameof(pinDataArray));
+
+            int vectorCount = pinDataArray[0].Length;
+
+            for (int i = 0; i < pinDataArray.Length; i++) {
+                if (string.IsNullOrEmpty(pinDataArray[i]))
+                    throw new ArgumentException("Pin data cannot be null or empty.", nameof(pinDataArray));
+                if (pinDataArray[i].Length != vectorCount)
+                    throw new ArgumentException("All pin data strings must have the same length.", nameof(pinDataArray));
+            }
+
+            int pinCount = pinDataArray.Length;
+            string[] result = new string[vectorCount];
+
+            for (int v = 0; v < vectorCount; v++) {
+                char[] vector = new char[pinCount];
+                for (int p = 0; p < pinCount; p++) {
+                    vector[p] = pinDataArray[p][v];
+                }
+                result[v] = new string(vector);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Returns the list of labels defined in the specified pattern module. The module must exist in the pattern's
+        /// module list; otherwise, IGXL will raise an error.
+        /// </summary>        
+        /// <param name="module">The name of the pattern module for which to retrieve the defined labels.</param>
+        /// <returns>A string array of label names defined in the specified pattern module.</returns>
+        public string[] GetModuleLabelList(string module) {
+            return TheHdw.Digital.Patterns().Modules[module].DefinedLabels.List;
+        }
 
         /// <summary>
         /// Whether or not the pattern can and will use threading.

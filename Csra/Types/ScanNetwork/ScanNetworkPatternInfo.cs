@@ -66,6 +66,12 @@ namespace Csra {
         /// </summary>
         private string _endPatternModuleName = null;
 
+        private string[] _testerCompareInstances = [];
+        private string[] _onChipCompareInstances = [];
+        private string[] _representativeInstances = [];
+        private Site<string[]> _testerCompareMaskedInstances = new Site<string[]>(site => []);
+        private Site<string[]> _onChipCompareMaskedInstances = new Site<string[]>(site => []);
+
         /// <summary>
         /// [<see langword="readonly"/>] The name of the pattern(set) in IGXL.
         /// </summary>
@@ -75,7 +81,7 @@ namespace Csra {
         /// [<see langword="readonly"/>] The name of the pattern file that contains the contribution bits.
         /// This pattern will be modified during OCComp Diagnosis reburst.
         /// </summary>
-        public string SetupPatternFileName { get; private set; }
+        public string ScanNetworkSetupPatternModuleName { get; private set; }
 
         /// <summary>
         /// [<see langword="readonly"/>] The name of the ScanNetwork map file(csv).
@@ -98,6 +104,18 @@ namespace Csra {
         /// and the value is the <see cref="List{String}"/> of icl instances that belong to the core.
         /// </summary>
         public Dictionary<string, List<string>> CoreInstance { get; } = [];
+
+        /// <summary>
+        /// Gets the names of all available core instances.
+        /// </summary>
+        /// <remarks>The returned array contains the instance names for each core currently identified from the input files.</remarks>
+        public string[] CoreInstances => CoreInstance.Keys.ToArray();
+
+        /// <summary>
+        /// Gets the collection of instance names currently registered in the ICL system.
+        /// </summary>
+        /// <remarks>The returned array contains the instance names for each icl currently identified from the input files.</remarks>
+        public string[] IclInstances => IclInstance.Keys.ToArray();
         #endregion
 
         #region Constructors
@@ -139,13 +157,17 @@ namespace Csra {
             ProcessStickyBitsAndContributionBits();
 
             void LoadSsnCsv(string ssnCsvFileName) {
+
                 // Load the SSN Setup csv file.
                 var ssnCsvFile = new SsnCsvFile(ssnCsvFileName);
+
+                // retrieve the none-instance specific attributes.
                 _contribPins ??= string.IsNullOrEmpty(ssnCsvFile.ContribPin) ? null : ssnCsvFile.ContribPin.Split([','], StringSplitOptions.RemoveEmptyEntries); // will only be set once.
                 _contribLabel ??= ssnCsvFile.ContribLabel;  // will only be set once. 
                 _tckRatio ??= int.TryParse(ssnCsvFile.TckRatio, out var tckRatio) ? tckRatio : null;    // will only be set once. need to check if there is a conflict.
                 _stickyPin ??= string.IsNullOrEmpty(ssnCsvFile.StickyPin) ? null : ssnCsvFile.StickyPin;// will only be set once.
 
+                // retrieve instance specific attributes and create/update SshIclInstanceInfo objects accordingly.
                 ssnCsvFile.SshInstances.ToList().ForEach(instance => {
                     // Check if the instance already exists in the SshIclInstance dictionary.
                     if (IclInstance.ContainsKey(instance.Value["Icl instance"])) {
@@ -186,57 +208,74 @@ namespace Csra {
                             representativeSsh: instance.Value.TryGetValue("Representative ssh", out string representativeSsh) ? representativeSsh : string.Empty
                         ));
                 });
+
+                // get the list of ssh-icl-instances that are on-chip-compare from the csv file, and store them in a separate list for easy access during pattern modification in diagnosis.
+                _onChipCompareInstances = IclInstance.Values.Where(instance => instance.IsOnChipCompare).Select(instance => instance.IclInstanceName).ToArray();
             }
 
-            void LoadPatternAndTags(string patternSetName) {
+            void LoadPatternAndTags(string patternName) {
+
                 // load the pattern(set). the ScanNetwork map file will also be loaded automatically.
-                TheHdw.Patterns(patternSetName).Load();
+                TheHdw.Patterns(patternName).Load();
 
                 // Check if the pattern is a set or a file, and get the MappingFileName accordingly.
                 DriverDigPatterns loadedPatterns = TheHdw.Digital.Patterns();
+                string[] patternModules;
                 try {
-                    if (loadedPatterns.Sets.Contains(patternSetName)) {
+
+                    if (loadedPatterns.Sets.Contains(patternName)) {
                         // is pattern set
                         //IsPatternSet = true;
-                        ScanNetworkMapping = loadedPatterns.Sets[patternSetName].ScanNetworkMappingFileName;
-                        // if it is a set, then the first module in the set should be the ssn_setup pattern.
-                        SetupPatternFileName = GetFirstModuleFileName(patternSetName);
-                    } else if (loadedPatterns.Files.Contains(patternSetName)) {
+                        ScanNetworkMapping = loadedPatterns.Sets[patternName].ScanNetworkMappingFileName;
+                        // if it is a set, then return all the modules in the pattern set.
+                        // the first module in the set that contains contribution tags should be the ssn_setup pattern.
+                        patternModules = GetModuleNamesFromPatSet(patternName);
+                    } else if (loadedPatterns.Files.Contains(patternName)) {
                         // is single file
                         //IsPatternSet = false;
-                        ScanNetworkMapping = loadedPatterns.Files[patternSetName].ScanNetworkMappingFileName;
+                        ScanNetworkMapping = loadedPatterns.Files[patternName].ScanNetworkMappingFileName;
                         // if it is NOT a set, then it must be a concatenated ssn pattern file.
                         // which means it contains the contribution bits that will be patched during OCComp Diagnosis reburst.
-                        SetupPatternFileName = patternSetName;
+                        // here we also try to get the list of pattern modules in the file, and the first module that contains contribution tags should be
+                        // the ssn_setup pattern.
+                        patternModules = GetModuleNamesFromFile(patternName);
+                    } else {
+                        throw new ArgumentException($"ERROR: Pattern {patternName} not found in Loaded Pattern Sets or Files.");
                     }
                 } catch (Exception ex) {
-                    throw new ArgumentException($"ERROR: Error occurred in LoadPatternAndTags({patternSetName})", ex);
+                    throw new ArgumentException($"ERROR: Error occurred in LoadPatternAndTags({patternName})", ex);
                 }
-#if IGXL_99_99_92_uflx
-                // Load vector Tags
-                string[] patternModules = GetModuleNames(patternSetName);
-                _setupPatternModuleName = patternModules.FirstOrDefault();
-                _endPatternModuleName = patternModules.LastOrDefault();
 
-                var contribTags = TheHdw.Digital.Patterns().Modules[_setupPatternModuleName].Tags.GetTagIdsAll("disable_on_chip_compare_contribution");
-                var stickyTags = TheHdw.Digital.Patterns().Modules[_endPatternModuleName].Tags.GetTagIdsAll("sticky_status");
+                // Load vector Tags and get the ssn_setup module and ssn_end module based on the presence of contribution tags and sticky tags, respectively.
+                ScanNetworkSetupPatternModuleName = GetSsnSetupPatternModuleNameAndTags(patternModules, out IVectorTagIdsCollection contribTags);
+                if (contribTags.Count() > 0) {
+                    TheExec.AddOutput($"ScanNetworkSetup pattern module found in Pattern [{patternName}],\n\t modue name = [{ScanNetworkSetupPatternModuleName}]");
+                }
+                _setupPatternModuleName = ScanNetworkSetupPatternModuleName;
+                _endPatternModuleName = GetSsnEndPatternModuleNameAndTags(patternModules, out IVectorTagIdsCollection stickyTags);
+
                 string allVectorTags = string.Join("\n", contribTags.Union(stickyTags).Select(tag => $"{tag.VectorNumber}:\t{tag.ElementAtOrDefault(0).Value}"));
                 if (!string.IsNullOrEmpty(allVectorTags)) {
-                    TheExec.AddOutput($"Vector Tags found in pattern{patternSetName}:\n{allVectorTags}");
+                    TheExec.AddOutput($"Vector Tags for ScanNetwork:\n{allVectorTags}");
                 }
 
+#if IGXL_11_09_93_uflx
+
                 // Load module tags
-                string[] contribModuleTags = TheHdw.Digital.Patterns().Modules[_setupPatternModuleName].Tags.ModuleTags
+                if (!string.IsNullOrEmpty(_setupPatternModuleName)) {
+                    string[] contribModuleTags = TheHdw.Digital.Patterns().Modules[_setupPatternModuleName].Tags.ModuleTags
                     .SkipWhile(_ => !_.StartsWith("//SSN instances")).TakeWhile(_ => !_.StartsWith("//End_ssn_instance")).ToArray();
-                if (contribModuleTags.Length > 0) {
-                    TheExec.AddOutput($"Module Tags found in pattern{patternSetName}:");
-                    TheExec.AddOutput($"{string.Join("\n", contribModuleTags)}");
+                    if (contribModuleTags.Length > 0) {
+                        TheExec.AddOutput($"Module Tags for ScanNetwork in pattern module [{_setupPatternModuleName}]:");
+                        TheExec.AddOutput($"{string.Join("\n", contribModuleTags)}");
+                    }
                 }
-                if (_endPatternModuleName != _setupPatternModuleName) {
+
+                if (!string.IsNullOrEmpty(_endPatternModuleName) && _endPatternModuleName != _setupPatternModuleName) {
                     string[] stickyModuleTags = TheHdw.Digital.Patterns().Modules[_endPatternModuleName].Tags.ModuleTags
                         .SkipWhile(_ => !_.StartsWith("//SSN instances")).TakeWhile(_ => !_.StartsWith("//End_ssn_instance")).ToArray();
                     if (stickyModuleTags.Length > 0) {
-                        TheExec.AddOutput($"Module Tags found in pattern{patternSetName}:");
+                        TheExec.AddOutput($"Module Tags for ScanNetwork in pattern module [{_endPatternModuleName}]:");
                         TheExec.AddOutput($"{string.Join("\n", stickyModuleTags)}");
                     }
                 }
@@ -244,25 +283,53 @@ namespace Csra {
             }
 
             void LoadScanNetworkMapfile() {
+
                 // Load the mapping csv file that contains Core List information for Tester Compare.
-                // from v2025.8 onward, the ssh-icl-instance names in the mapping file can be suffixed with core-instance names. e.g. ssh-icl-instance@core-instance
+                // from v2025.8 onward, the ssh-icl-instance names in the mapping file can be suffixed with core-instance names.
+                // e.g. ssh-icl-instance@core-instance
                 if (!string.IsNullOrEmpty(ScanNetworkMapping)) {
-                    TheHdw.Digital.ScanNetworks[ScanNetworkMapping].CoreNames.ToList().ForEach(sshIclWithCoreName => {
+                    string[] igxlInstances = TheHdw.Digital.ScanNetworks[ScanNetworkMapping].CoreNames;
+                    List<string> representativeList = new List<string>();
+                    foreach (string igxlInstanceName in igxlInstances) {
                         // For each core instance, create a new SshIclInstanceInfo object with the instance name.
-                        var sshIclInstance = new IclInstanceInfo(sshIclWithCoreName);
+                        var igxlInstance = new IclInstanceInfo(igxlInstanceName);
                         // update the existing ssh instance or add a new one.
-                        if (IclInstance.ContainsKey(sshIclInstance.IclInstanceName)) {
-                            // updating existing instance.
-                            IclInstance[sshIclInstance.IclInstanceName].UpdateInstanceInfo(
-                                sshInstanceName: sshIclInstance.SshInstanceName,        // will NOT update name, only to check for conflict.
-                                sshIclInstanceName: sshIclInstance.IclInstanceName,     // will NOT update name, only to check for conflict.
-                                coreInstanceName: sshIclInstance.CoreInstanceName       // will NOT update name, only to check for conflict.
-                            );
+                        if (IclInstance.TryGetValue(igxlInstance.IclInstanceName, out IclInstanceInfo existingInstance)) {
+                            // found by the unique icl instance name, the igxlInstance must be in icl-name or icl@core-name format, either way it can update
+                            // the existing instance with igxlInstance name for TesterCompare instance masking, and determine whether it's representative for
+                            // Tester Compare.
+                            existingInstance.UpdateIgxlInstanceInfo(igxlInstanceName);
+                            if (existingInstance.IsOnChipCompare) {
+                                representativeList.Add(igxlInstanceName);
+                            }
                         } else {
-                            // Add the new SshIclInstanceInfo to the SshIclInstance dictionary.
-                            IclInstance.Add(sshIclInstance.IclInstanceName, sshIclInstance);
+                            // igxlInstance does not contain icl name, it must be core-instance name.
+                            // find all icl instances that belong to this core instance and do some smart predictions:
+                            var iclInstancesWithSameCore = IclInstance.Values.Where(instance => instance.CoreInstanceName == igxlInstance.CoreInstanceName);
+                            if (iclInstancesWithSameCore.Count() == 1) {
+                                // if this core instance contains only 1 icl instance, it is most likely that the igxlInstance represents this icl instance for
+                                // Tester Compare, Update this sole icl instance with the igxlInstance name.
+                                IclInstanceInfo soleInstance = IclInstance[iclInstancesWithSameCore.First().IclInstanceName];
+                                soleInstance.UpdateIgxlInstanceInfo(igxlInstanceName);
+                                // and add igxlInstance name to the representative instance list if it is OnChipCompare.
+                                if (soleInstance.IsOnChipCompare) {
+                                    representativeList.Add(igxlInstanceName);
+                                }
+                            } else if (iclInstancesWithSameCore.Count() > 1 && iclInstancesWithSameCore.Where(icl => !icl.IsOnChipCompare).Count() == 0) {
+                                // if there are multiple icl instances belong to the same core instance but none of them is Tester Compare, we can safely add
+                                // the igxlInstance as the representative instance for all these icl instances that are OnChipCompare, representative instances
+                                // will all be masked in none-diagnosis pattern executions.
+                                representativeList.Add(igxlInstanceName);
+                            } else {
+                                // Otherwise, we won't know which icl instances are represented by the igxlInstance when parsing the Tester Compare test result
+                                // so, we will just keep the original ssh-icl-instances, and add this igxlInstance as a separate TesterCompare icl instance that
+                                // will not be treated as OnChipCompare representatives.
+                                IclInstance.Add(igxlInstance.IclInstanceName, igxlInstance);
+                            }
                         }
-                    });
+                    }
+                    _representativeInstances = [.. representativeList];
+                    _testerCompareInstances = [.. igxlInstances.Except(representativeList)];
                 }
             }
 
@@ -280,7 +347,7 @@ namespace Csra {
             }
 
             void ProcessStickyBitsAndContributionBits() {
-                // generate dictionary for mapping sticky cycles/pin to ssh-icl-instance name.
+                // generate dictionary for mapping sticky cycles to sticky pins & icl-instance names.
                 _stickyCycles = IclInstance.Values
                     .Where(instance => instance.StickyCycle.HasValue)
                     .ToDictionary(instance => instance.StickyCycle.Value, instance => $"{instance.StickyPin}::{instance.IclInstanceName}");
@@ -297,24 +364,40 @@ namespace Csra {
                         .ToArray();
                     _contribOffsets.Add(contributionPin, perPinContribOffsets);
                     string perPinDisableContribPatternModifyAllocationName = $"{_disableContribPatternModifyAllocationName}__{contributionPin}";
-                    if (!TheHdw.Digital.Pins(contributionPin).Patterns(SetupPatternFileName).NonContiguousModify.IsAllocated(perPinDisableContribPatternModifyAllocationName))
-                        TheHdw.Digital.Pins(contributionPin).Patterns(SetupPatternFileName).NonContiguousModify
+                    if (!TheHdw.Digital.Pins(contributionPin).Patterns(ScanNetworkSetupPatternModuleName).NonContiguousModify.IsAllocated(perPinDisableContribPatternModifyAllocationName))
+                        TheHdw.Digital.Pins(contributionPin).Patterns(ScanNetworkSetupPatternModuleName).NonContiguousModify
                             .AllocateVectorOffset(perPinDisableContribPatternModifyAllocationName, _contribLabel, ref perPinContribOffsets);
                 }
             }
 
-            string GetFirstModuleFileName(string patternSetName) {
-                IDigitalPatternSetElement firstElement = TheHdw.Digital.Patterns().Sets[patternSetName].Elements[0];
-                if (firstElement.Type == tlPatternSetElementType.Set)
-                    return GetFirstModuleFileName(firstElement.Set.Name);
-                else if (firstElement.Type == tlPatternSetElementType.File)
-                    return firstElement.File.Name;
-                else
-                    return firstElement.Name;
+            string GetSsnSetupPatternModuleNameAndTags(string[] moduleList, out IVectorTagIdsCollection contribTags) {
+                contribTags = null;
+                foreach (string moduleName in moduleList) {
+                    contribTags = TheHdw.Digital.Patterns().Modules[moduleName].Tags.GetTagIdsAll("disable_on_chip_compare_contribution");
+                    if (contribTags != null && contribTags.Count() > 0) {
+                        return moduleName;
+                    }
+                }
+                return moduleList.FirstOrDefault();
             }
 
-            string[] GetModuleNames(string patternSetName) {
+            string GetSsnEndPatternModuleNameAndTags(string[] moduleList, out IVectorTagIdsCollection stickyTags) {
+                stickyTags = null;
+                foreach (string moduleName in moduleList.Reverse()) {
+                    stickyTags = TheHdw.Digital.Patterns().Modules[moduleName].Tags.GetTagIdsAll("sticky_status");
+                    if (stickyTags != null && stickyTags.Count() > 0) {
+                        return moduleName;
+                    }
+                }
+                return moduleList.LastOrDefault();
+            }
+
+            string[] GetModuleNamesFromPatSet(string patternSetName) {
                 return TheHdw.Digital.Patterns().Sets[patternSetName].Modules.List;
+            }
+
+            string[] GetModuleNamesFromFile(string patternSetName) {
+                return TheHdw.Digital.Patterns().Files[patternSetName].Modules.List;
             }
         }
 
@@ -348,25 +431,10 @@ namespace Csra {
             cmem.CentralFields = tlCMEMCaptureFields.ModCycle;
             cmem.SetCaptureConfig(-1, CmemCaptType.Fail, tlCMEMCaptureSource.PassFailData, true);
 
-            // if the pattern(set) contains TesterCompare ScanNetworkMapping
-            if (!string.IsNullOrEmpty(ScanNetworkMapping)) {
-                // mask all ssh-icl-instances that are both OCComp and have TC mapping(IsRepresentative):
-                TheHdw.Digital.ScanNetworks.ClearAllMasks();
-                DriverDigScanNetwork scanNetwork = TheHdw.Digital.ScanNetworks[ScanNetworkMapping];
-                DriverDigScanNetworkCoreMasks masks = scanNetwork.CoreMasks;
-                foreach (string igxlCoreName in scanNetwork.CoreNames) {
-                    string sshIclInstanceName = igxlCoreName.Split('@').FirstOrDefault();
-                    if (IclInstance.ContainsKey(sshIclInstanceName) &&
-                        IclInstance[sshIclInstanceName].IsOnChipCompare) {
-                        masks.Add(igxlCoreName);
-                    }
-                }
-                masks.Apply();
-            }
-
-            // enable all contribution bits
-            ClearAllDisableContributionBits();
-            PatchingDisableContributionBits(true);
+            // for TesterCompare:
+            MaskListedInstances(_testerCompareMaskedInstances, increment: false, maskRepresentatives: true, debugWriteComment: false);
+            // for OnChipCompare:
+            DisableContributionOfListedInstances(_onChipCompareMaskedInstances, increment: false, debugWriteComment: false);
         }
 
         /// <summary>
@@ -379,12 +447,13 @@ namespace Csra {
             _reburstCount = 1;
 
             // no need to reburst if the pattern(set) does not contain atpg_scannetwork metadata, i.e. ScanNetworkMapping is null or empty.
-            if (!string.IsNullOrEmpty(ScanNetworkMapping)) {                
+            if (!string.IsNullOrEmpty(ScanNetworkMapping)) {
                 IScanNetworkResults rsnr = TheHdw.Digital.Patgen.ReadScanNetworkResults();
                 _testerCompareResults = rsnr;
-                DriverDigScanNetworkCoreMasks masks = TheHdw.Digital.ScanNetworks[ScanNetworkMapping].CoreMasks;
-                // TODO: consider adding a max reburst count to avoid infinite loop in case of unexpected issue with the pattern or tester.
-                while (rsnr.ReburstNeeded.Any(true)) {
+                DriverDigScanNetwork scanNetworks = TheHdw.Digital.ScanNetworks[ScanNetworkMapping];
+                DriverDigScanNetworkCoreMasks masks = scanNetworks.CoreMasks;
+                // Utopia will never need reburst.
+                while (rsnr.ReburstNeeded.Any(true) && masks.Count.ToSite().Min() < scanNetworks.CoreNames.Count()) {
                     // mask
                     masks.AddPerSite(rsnr.FailedCores);
                     masks.Apply();
@@ -395,6 +464,10 @@ namespace Csra {
                     // get result
                     rsnr = TheHdw.Digital.Patgen.ReadScanNetworkResults();
                     _testerCompareResults.MergeWith(rsnr);
+                }
+                if (_reburstCount > 1) {
+                    // if reburst occurred, need to restore the TesterCompare mask to the original state for later diagnosis flow.
+                    MaskListedInstances(_testerCompareMaskedInstances, increment: false, maskRepresentatives: true, debugWriteComment: false);
                 }
             }
         }
@@ -407,19 +480,17 @@ namespace Csra {
 
             var results = new ScanNetworkPatternResults(this);
 
-            // get Tester Compare results if !string.IsNullOrEmpty(ScanNetworkMapping)
+            // get TesterCompare results if applicable
             if (_testerCompareResults != null) {
-                foreach (string igxlCoreName in _testerCompareResults.CoreNames) {
-                    string sshIclInstanceName = igxlCoreName.Split('@').FirstOrDefault();
-                    string coreInstanceName = igxlCoreName.Split('@').LastOrDefault();
-                    if (!IclInstance[sshIclInstanceName].IsOnChipCompare) {
-                        results.IclInstance[sshIclInstanceName].IsResultValid = !_testerCompareResults.Core(igxlCoreName).Masked.ToSite();
-                        results.IclInstance[sshIclInstanceName].IsFailed = _testerCompareResults.Core(igxlCoreName).Failed.ToSite();
+                foreach (string igxlCoreName in _testerCompareInstances) {
+                    foreach (var instance in IclInstance.Values.Where(instance => instance.IgxlInstanceName == igxlCoreName)) {
+                        results.IclInstance[instance.IclInstanceName].IsResultValid = !_testerCompareResults.Core(igxlCoreName).Masked.ToSite();
+                        results.IclInstance[instance.IclInstanceName].IsFailed = _testerCompareResults.Core(igxlCoreName).Failed.ToSite();
                     }
                 }
             }
 
-            // get On-Chip Compare results
+            // get OnChipCompare results if applicable
             if (!string.IsNullOrEmpty(_stickyPin)) {
                 ICmemModuleCycleData cmemData = TheHdw.Digital.Pins(_stickyPin).CMEM.ModuleCycleData(true, false, -1);
                 List<string> stickyPins = _stickyPin.Split([','], StringSplitOptions.None).ToList();
@@ -445,6 +516,7 @@ namespace Csra {
                     .ForEach(instance => results.IclInstance[instance].IsResultValid[site] = IclInstance[instance].ModifyVectorData[site].Contains("0"));
                 });
             }
+
             // get core level results
             results.ProcessCoreResults();
             return results;
@@ -486,16 +558,18 @@ namespace Csra {
         public void SetupDiagnosisForCore(Site<List<string>> coreList, bool debugWriteComment = false) {
 
             // generate icl list that need to be enabled
-            Site<List<string>> iclList = new();
+            Site<string[]> iclList = new();
             ForEachSite(site => {
-                iclList[site] = IclInstance.Values.Where(icl => coreList[site].Contains(icl.CoreInstanceName)).Select(icl => icl.IclInstanceName).ToList();
+                iclList[site] = [.. IclInstance.Values.Where(icl => coreList[site].Contains(icl.CoreInstanceName)).Select(icl => icl.IclInstanceName)];
             });
             // debug print
-            if (debugWriteComment)
+            if (debugWriteComment) {
                 ForEachSite(site => {
                     TheExec.Datalog.WriteComment($"[Site {site}] :: Setup Diagnosis for cores:\n\t{string.Join("\n\t", coreList[site])}\n"
                         + $"active ssh-icl instances:\n\t{string.Join("\n\t", iclList[site])}");
                 });
+            }
+
             // perform mask/disable for each icl
             MuteAllExcept(iclList, debugWriteComment);
         }
@@ -528,7 +602,6 @@ namespace Csra {
         /// bus output.
         /// </summary>
         public void SetAllDisableContributionBits() {
-
             foreach (var icl in IclInstance.Values) {
                 ForEachSite(site => icl.SetDisableContributionBit(site, '1'));
             }
@@ -540,7 +613,6 @@ namespace Csra {
         /// <remarks>This method affects the internal state by removing any flags that disable
         /// contributions. It should be used when a full reset of contribution settings is required.</remarks>
         public void ClearAllDisableContributionBits() {
-
             foreach (var icl in IclInstance.Values) {
                 ForEachSite(site => icl.SetDisableContributionBit(site, '0'));
             }
@@ -550,13 +622,15 @@ namespace Csra {
         public void EnableAllContribution() {
             ClearAllDisableContributionBits();
         }
+
         /// <summary>
         /// Sets all disable_contribution_bits except for those icl-instances specified in the contributingSshList parameter.
         /// </summary>
         /// <param name="contributingSshList">(Per site)List of ssh instances that should remain 'contributing' for diagnosis.</param>
         /// <param name="debugWriteComment">For debug use</param>
-        public void MuteAllExcept(Site<List<string>> contributingSshList, bool debugWriteComment = false) {
+        public void MuteAllExcept(Site<string[]> contributingSshList, bool debugWriteComment = false) {
 
+#if true
             // masking TC icls NOT on the list
             if (!string.IsNullOrEmpty(ScanNetworkMapping)) {
                 DriverDigScanNetwork scanNetworks = TheHdw.Digital.ScanNetworks[ScanNetworkMapping];
@@ -578,6 +652,7 @@ namespace Csra {
                 masks.AddPerSite(maskingCores.ToSiteVariant());
                 masks.Apply();
             }
+
             // disable OCComp icls not on the list
             ForEachSite(site => {
                 IclInstance.Values.Where(icl => icl.IsOnChipCompare).ToList().ForEach(icl => {
@@ -589,10 +664,143 @@ namespace Csra {
                 });
             });
             PatchingDisableContributionBits(debugWriteComment);
+#else
+            IgnoreListedInstances(contributingSshList, increment: false, maskRepresentatives: false, debugWriteComment: debugWriteComment);
+#endif
+
+        }
+
+        /// <summary>
+        /// Sets disable_contribution_bits or perform TesterCompare mask for those instances specified in the instanceList parameter.
+        /// </summary>
+        /// <param name="instanceList">(Per site)List of ssh instances that should be masked/disable_contribution for upcoming Pattern Burst.</param>
+        /// <param name="debugWriteComment">For debug use</param>
+        public void IgnoreListedInstances(Site<string[]> instanceList, bool increment, bool maskRepresentatives, bool debugWriteComment = false) {
+
+            // get the corresponding igxl instances for Tester Compare masking, it is possible that some of the instances don't have Tester Compare mapping,
+            // in that case they will just be ignored for masking but still have their disable-contribution-bit set if they are OnChipCompare instances.
+            var testerCompareInstances = GetIgxlInstancesFrom(instanceList);
+            MaskListedInstances(testerCompareInstances, increment: increment, maskRepresentatives: maskRepresentatives, debugWriteComment: debugWriteComment);
+            // get OnChipCompare icl instances that need to be disabled for contribution, it is possible that a ssh instance is enlisted but not tested
+            // in the current pattern, thus will be disregarded since there is no corresponding contribution bit or sticky bit for it in the pattern.
+            var onChipCompareInstances = GetCommonInstances(instanceList, _onChipCompareInstances);
+            DisableContributionOfListedInstances(onChipCompareInstances, increment: increment, debugWriteComment: debugWriteComment);
+
+        }
+
+        /// <summary>
+        /// Sets disable_contribution_bits or perform TesterCompare mask for those failed instances in the test results, preparing for the next pattern burst.
+        /// </summary>
+        /// <param name="results">
+        /// </param>
+        /// <param name="increment">whether to keep the original ignored instances</param>
+        /// <param name="debugWriteComment">For debug use</param>
+        public void IgnoreFailedInstances(ScanNetworkPatternResults results, bool increment, bool maskRepresentatives, bool debugWriteComment = false) {
+            Site<string[]> failedIclInstances = results.GetFailedIclInstances();
+            IgnoreListedInstances(failedIclInstances, increment, maskRepresentatives, debugWriteComment);
+        }
+
+        /// <summary>
+        /// perform TesterCompare mask for specified instances in the instanceList parameter.
+        /// </summary>
+        /// <param name="instanceList"></param>
+        /// <param name="increment">whether to keep the existing masked instances</param>
+        /// <param name="debugWriteComment">For debug use</param>
+        public void MaskListedInstances(Site<string[]> instanceList, bool increment, bool maskRepresentatives, bool debugWriteComment = false) {
+            // masking TC icls on the list
+            if (!string.IsNullOrEmpty(ScanNetworkMapping)) {
+                DriverDigScanNetwork scanNetworks = TheHdw.Digital.ScanNetworks[ScanNetworkMapping];
+                DriverDigScanNetworkCoreMasks masks = scanNetworks.CoreMasks;
+                if (!increment) masks.RemoveAll();
+                if (debugWriteComment) {
+                    string loggedText = $"[TesterCompare per-site masked instances]\n";
+                    ForEachSite(site => {
+                        loggedText += $"[Site {site}] :: {string.Join(", ", instanceList[site])}\n";
+                    });
+                    TheExec.Datalog.WriteComment(loggedText);
+                }
+                if (maskRepresentatives) {
+                    foreach (string representativeSsh in _representativeInstances) {
+                        masks.Add(representativeSsh);
+                    }
+                }
+                masks.AddPerSite(instanceList.ToSiteVariant());
+                masks.Apply();
+                if (increment) {
+                    ForEachSite(site => {
+                        _testerCompareMaskedInstances[site] = _testerCompareMaskedInstances[site].Union(instanceList[site]).Distinct().ToArray();
+                    });
+                } else {
+                    _testerCompareMaskedInstances = instanceList;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets disable_contribution_bits for OnChipCompare icl-instances specified in the instanceList parameter.
+        /// </summary>
+        /// <param name="instanceList"></param>
+        /// <param name="increment">whether to keep the existing masked instances</param>
+        /// <param name="debugWriteComment">For debug use</param>
+        public void DisableContributionOfListedInstances(Site<string[]> instanceList, bool increment, bool debugWriteComment = false) {
+            // disable OCComp ssh-icl-instances on the list
+            ForEachSite(site => {
+                foreach (string icl in _onChipCompareInstances) {
+                    if (instanceList[site].Contains(icl)) {
+                        IclInstance[icl].SetDisableContributionBit(site, '1');
+                    } else if (!increment) {
+                        IclInstance[icl].SetDisableContributionBit(site, '0');
+                    }
+                }
+            });
+            PatchingDisableContributionBits(debugWriteComment);
+            if (increment) {
+                ForEachSite(site => {
+                    _onChipCompareMaskedInstances[site] = _onChipCompareMaskedInstances[site].Union(instanceList[site]).Distinct().ToArray();
+                });
+            } else {
+                _onChipCompareMaskedInstances = instanceList;
+            }
         }
         #endregion
 
         #region Private/internal functions
+
+        internal Site<T[]> GetCommonInstances<T>(Site<T[]> list1, T[] list2) {
+            Site<T[]> commonItems = new();
+            ForEachSite(site => {
+                commonItems[site] = [.. list1[site].Intersect(list2)];
+            });
+            return commonItems;
+        }
+        internal Site<T[]> GetCommonInstances<T>(Site<List<T>> list1, T[] list2) {
+            Site<T[]> commonItems = new();
+            ForEachSite(site => {
+                commonItems[site] = [.. list1[site].Intersect(list2)];
+            });
+            return commonItems;
+        }
+
+        internal Site<string[]> GetIgxlInstancesFrom(Site<string[]> instanceList) {
+            Site<string[]> testerCompareInstances = new Site<string[]>(site => []);
+            ForEachSite(site => {
+                testerCompareInstances[site] = [..instanceList[site]
+                    .Where(icl => IclInstance.TryGetValue(icl, out IclInstanceInfo instance)
+                                  && !instance.IsOnChipCompare && !string.IsNullOrEmpty(instance.IgxlInstanceName))
+                    .Select(icl => IclInstance[icl].IgxlInstanceName).Distinct()];
+            });
+            return testerCompareInstances;
+        }
+        internal Site<string[]> GetIgxlInstancesFrom(Site<List<string>> instanceList) {
+            Site<string[]> testerCompareInstances = new Site<string[]>(site => []);
+            ForEachSite(site => {
+                testerCompareInstances[site] = [..instanceList[site]
+                    .Where(icl => IclInstance.TryGetValue(icl, out IclInstanceInfo instance)
+                                  && !instance.IsOnChipCompare && !string.IsNullOrEmpty(instance.IgxlInstanceName))
+                    .Select(icl => IclInstance[icl].IgxlInstanceName).Distinct()];
+            });
+            return testerCompareInstances;
+        }
 
         internal Site<List<string>> GetNextToBeTestedCoreFrom(Site<List<string>> waitingList) {
             Site<List<string>> resultList = new();
@@ -673,7 +881,7 @@ namespace Csra {
                 });
                 SiteVariant perPinDisableContributionBits = perPinStringArray.ToSiteVariant();
                 string allocationName = $"{_disableContribPatternModifyAllocationName}__{contributionPin}";
-                TheHdw.Digital.Pins(contributionPin).Patterns(SetupPatternFileName).NonContiguousModify.ModifyVectorData(allocationName, perPinDisableContributionBits);
+                TheHdw.Digital.Pins(contributionPin).Patterns(ScanNetworkSetupPatternModuleName).NonContiguousModify.ModifyVectorData(allocationName, perPinDisableContributionBits);
             }
         }
         #endregion

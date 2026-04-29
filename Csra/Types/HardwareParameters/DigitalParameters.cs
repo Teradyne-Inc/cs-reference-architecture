@@ -1,4 +1,4 @@
-﻿using Teradyne.Igxl.Interfaces.Public;
+using Teradyne.Igxl.Interfaces.Public;
 
 namespace Csra {
 
@@ -16,7 +16,7 @@ namespace Csra {
     public class DigitalPinsLevelsParameters {
         public ChDiffPinLevel? DifferentialLevelsType { get; set; } = null;
         public double? DifferentialLevelsValue { get; set; } = null;
-        public TLibDiffLvlValType[] DifferentialLevelsValuesType { get; set; } = null;
+        public DiffLevelValueType[] DifferentialLevelsValuesType { get; set; } = null;
         public double[] DifferentialLevelsValues { get; set; } = null;
         public tlDriverMode? LevelsDriverMode { get; set; } = null;
         public ChPinLevel? LevelsType { get; set; } = null;

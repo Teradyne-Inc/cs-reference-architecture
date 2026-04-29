@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Csra;
 using Csra.Setting;
@@ -18,7 +18,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
         public Mode(tlDCVIMode value, string pinList) {
             SetArguments(value, pinList, true);
             // tlDCVIMode.Voltage is used as a default value for HighImpedance/HighRegulation are not for all instrument
-            SetBehavior(tlDCVIMode.Voltage, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDCVIMode.Voltage, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

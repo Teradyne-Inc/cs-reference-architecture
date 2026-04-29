@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Digital.Pins.Levels {
 
         public DriverMode(tlDriverMode value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(tlDriverMode.HiZ, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDriverMode.HiZ, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

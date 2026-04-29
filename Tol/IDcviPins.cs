@@ -1,4 +1,4 @@
-﻿using Teradyne.Igxl.Interfaces.Public;
+using Teradyne.Igxl.Interfaces.Public;
 
 namespace Tol {
 
@@ -126,6 +126,13 @@ namespace Tol {
         /// <param name="sampleRate">Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</param>
         /// <returns>Returns the measured samples.</returns>
         public PinSite<Samples<double>> ReadSamples(int sampleSize, double sampleRate = -1);
+
+        /// <summary>
+        /// Read the DCVI measurement value for the specified signal.
+        /// </summary>
+        /// <param name="signal">The name of the signal to read.</param>
+        /// <returns>Returns the measured samples for the specified signal.</returns>
+        public PinSite<Samples<double>> ReadSignal(string signal);
 
         /// <summary>
         /// Performs measurement(s) on the DCVI, returning the average of measured value(s).

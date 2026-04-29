@@ -22,7 +22,11 @@ namespace Tol {
         private IValuePerSiteRange<double> _clampVHi;
         private string _name;
 
-        internal PpmuPins(string pinList) : this(pinList, TheHdw.PPMU.Pins(pinList)) { }
+        internal PpmuPins(string pinList) : this(pinList, TheHdw.PPMU.Pins(pinList)) {
+            if(!pinList.AreAllPinsOfType<IPpmuPins>()) {
+                throw new ArgumentException("Not all pins belong to PpmuPins expected type.");
+            }
+        }
 
         internal PpmuPins(string pinList, tlDriverPPMUPins tlDriverPPMUPins) {
             _name = pinList;
@@ -94,7 +98,7 @@ namespace Tol {
 
         public PinSite<Samples<double>> MeasureSamples(int sampleSize) {
             IPinListData data = HardwareApi.Read(tlPPMUReadWhat.Measurements, sampleSize, tlPPMUReadingFormat.Array);
-            return data.ToPinSiteSamplesDouble();
+            return data.ToPinSiteSamples<double>();
         }
 
         public void ForceI(double forceCurrent, double? clampVHi = null, double? clampVLo = null, double? currentRange = null, bool? gate = null) {

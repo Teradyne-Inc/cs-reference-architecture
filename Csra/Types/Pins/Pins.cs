@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using Csra.Types;
 using Teradyne.Igxl.Interfaces.Public;
 using Tol;
-using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 
 namespace Csra {
 
@@ -14,14 +12,16 @@ namespace Csra {
     /// Pins class - a collection of Pin objects.
     /// </summary>
     [Serializable]
-    public class Pins : IEnumerable<Pins.Pin>, IEquatable<Pins> {
+    public class Pins : IEnumerable<string>, IEquatable<Pins> {
 
-        private List<Pin> _pins;
+        private List<string> _pins;
+        private int _pinsCount;
 
         private IPpmuPins _ppmu;
         private IDcviPins _dcvi;
         private IDcvsPins _dcvs;
         private IDigitalPins _digital;
+        private IUtilityPins _utility;
 
         /// <summary>
         /// Construct a new <see cref=" Pins"/> object. Resolves (nested) pin groups and lists.
@@ -29,32 +29,24 @@ namespace Csra {
         /// <param name="pinList">The pin list to create the <see cref="Pins"/> object for.</param>
         public Pins(string pinList) {
             if (string.IsNullOrWhiteSpace(pinList)) _pins = [];
-            else {
-                _pins = ResolvePinList(pinList);
-                PinsFactory.GetPins(pinList, out _ppmu, out _dcvi, out _dcvs, out _digital);
-            }
+            else ResolvePinList(pinList);
         }
 
         public IPpmuPins Ppmu => _ppmu;
         public IDcviPins Dcvi => _dcvi;
         public IDcvsPins Dcvs => _dcvs;
         public IDigitalPins Digital => _digital;
+        public IUtilityPins Utility => _utility;
 
-        private List<Pin> ResolvePinList(string pinList) {
-            if (string.IsNullOrWhiteSpace(pinList)) return [];
-            int success = TheExec.DataManager.DecomposePinList(pinList, out string[] pinArray, out _);
-            if (success == 0) return pinArray.Select(pin => new Pin(pin)).ToList();
-            Api.Services.Alert.Error<ArgumentException>($"Pins: Failed to resolve pin list '{pinList}'"); // the "else" path ...
-            return []; // needed to satisfy compiler
+        private void ResolvePinList(string pinList) {
+            _pins = PinsFactory.GetPins(pinList, out _ppmu, out _dcvi, out _dcvs, out _digital, out _utility);
         }
-
-        private Pins(IEnumerable<Pin> pins) => _pins = pins.ToList();
 
         /// <summary>
         /// Get an enumerator for the <see cref="Pins"/> object to support <code>foreach</code>.
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<Pin> GetEnumerator() => _pins.GetEnumerator();
+        public IEnumerator<string> GetEnumerator() => _pins.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
@@ -62,7 +54,12 @@ namespace Csra {
         /// Add pins to the <see cref="Pins"/> object. Resolves (nested) pin groups and lists.
         /// </summary>
         /// <param name="pinList">The pin list to add to the <see cref="Pins"/> object.</param>
-        public void Add(string pinList) => _pins = _pins.Union(ResolvePinList(pinList)).ToList();
+        public void Add(string pinList) {
+            if (string.IsNullOrWhiteSpace(pinList)) return;
+            List<string> temp = new(_pins);
+            temp.Add(pinList);
+            ResolvePinList(string.Join(", ", temp));
+        }
 
         /// <summary>
         /// Return the number of pins in the <see cref="Pins"/> object.
@@ -70,109 +67,94 @@ namespace Csra {
         public int Count() => _pins.Count;
 
         /// <summary>
-        /// Extract pins by instrument type.
-        /// </summary>
-        /// <param name="type">The instrument type to look for.</param>
-        /// <returns>A new <see cref="Pins"/> object only containing pins of the specified instrument type.</returns>
-        public Pins ExtractByType(InstrumentType type) => new(_pins.Where(p => p.Type == type));
-
-        /// <summary>
         /// Extract pins by instrument feature.
         /// </summary>
         /// <param name="feature">The instrument feature to look for.</param>
         /// <returns>A new <see cref="Pins"/> object only containing pins with the specified feature.</returns>
-        public Pins ExtractByFeature(InstrumentFeature feature) => new(_pins.Where(p => p.Features.Contains(feature)));
+        public Pins ExtractByFeature(InstrumentFeature feature) {
+            if (!ContainsFeature(feature)) return new("");
+            switch (feature) {
+                case InstrumentFeature.Ppmu:
+                    return new(Ppmu.Name);
+                case InstrumentFeature.Dcvi:
+                    return new(Dcvi.Name);
+                case InstrumentFeature.Dcvs:
+                    return new(Dcvs.Name);
+                case InstrumentFeature.Digital:
+                    return new(Digital.Name);
+                case InstrumentFeature.Utility:
+                    return new(Utility.Name);
+                default:
+                    Api.Services.Alert.Error($"Unsupported instrument feature '{feature}'.");
+                    break;
+            }
+            return new("");
+        }
 
         /// <summary>
         /// Extract pins by instrument domain.
         /// </summary>
         /// <param name="domain">The instrument domain to look for.</param>
         /// <returns>A new <see cref="Pins"/> object only containing pins with the specified domain.</returns>
-        public Pins ExtractByDomain(InstrumentDomain domain) => new(_pins.Where(p => p.Domains.Contains(domain)));
-
-        /// <summary>
-        /// Extract a range of pins from the <see cref="Pins"/> object.
-        /// </summary>
-        /// <param name="start">The index of the first pin to extract.</param>
-        /// <param name="count">The total number of pins to extract.</param>
-        /// <returns>A new <see cref="Pins"/> object only containing the subset of pins.</returns>
-        public Pins ExtractRange(int start, int count) {
-            if (start < 0 || count < 0 || start + count > _pins.Count) {
-                Api.Services.Alert.Error<ArgumentOutOfRangeException>($"Pins: Invalid range specified: start={start}, count={count}, total pins={_pins.Count}");
-                return new Pins([]); // dummy - will never execute
+        public Pins ExtractByDomain(InstrumentDomain domain) {
+            if (!ContainsDomain(domain)) return new("");
+            switch (domain) {
+                case InstrumentDomain.Dc:
+                    return new(string.Join(", ", Ppmu.Name, Dcvi.Name, Dcvs.Name));
+                case InstrumentDomain.Digital:
+                    return new(Digital.Name);
+                case InstrumentDomain.Utility:
+                    return new(Utility.Name);
+                default:
+                    Api.Services.Alert.Error($"Unsupported instrument domain '{domain}'.");
+                    break;
             }
-            return new Pins(_pins.Skip(start).Take(count));
+            return new("");
         }
-
-        /// <summary>
-        /// Test if at least one pin is of the specified instrument type.
-        /// </summary>
-        /// <param name="type">The instrument type to look for.</param>
-        /// <returns>True if one or more pins have the type.</returns>
-        public bool ContainsType(InstrumentType type) => _pins.Any(p => p.Type == type);
-
-        /// <summary>
-        /// Combined test and extraction of pins by instrument type.
-        /// </summary>
-        /// <param name="instrument">The instrument type to look for.</param>
-        /// <param name="pinList">A new <see cref="Pins"/> object only containing pins of the specified instrument type.</param>
-        /// <returns>True if one or more pins have the type.</returns>
-        public bool ContainsType(InstrumentType instrument, out string pinList) => TryFilter(out pinList, _pins.Where(p => p.Type == instrument));
 
         /// <summary>
         /// Test if at least one pin has the specified feature.
         /// </summary>
         /// <param name="feature">The instrument feature to look for.</param>
         /// <returns>True if one or more pins have the feature.</returns>
-        public bool ContainsFeature(InstrumentFeature feature) => _pins.Any(p => p.Features.Contains(feature));
-
-        /// <summary>
-        /// Combined test and extraction of pins by instrument feature.
-        /// </summary>
-        /// <param name="feature">The instrument feature to look for.</param>
-        /// <param name="pinList">A new <see cref="Pins"/> object only containing pins of the specified type.</param>
-        /// <returns>True if one or more pins have the feature.</returns>
-        public bool ContainsFeature(InstrumentFeature feature, out string pinList) => TryFilter(out pinList, _pins.Where(p => p.Features.Contains(feature)));
+        public bool ContainsFeature(InstrumentFeature feature) {
+            switch (feature) {
+                case InstrumentFeature.Ppmu:
+                    return Ppmu is not null;
+                case InstrumentFeature.Dcvi:
+                    return Dcvi is not null;
+                case InstrumentFeature.Dcvs:
+                    return Dcvs is not null;
+                case InstrumentFeature.Digital:
+                    return Digital is not null;
+                case InstrumentFeature.Utility:
+                    return Utility is not null;
+                default:
+                    Api.Services.Alert.Error($"Unsupported instrument feature '{feature}'.");
+                    break;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Test if at least one pin has the specified domain.
         /// </summary>
         /// <param name="domain">The instrument domain to look for.</param>
         /// <returns>True if one or more pins have the domain.</returns>
-        public bool ContainsDomain(InstrumentDomain domain) => _pins.Any(p => p.Domains.Contains(domain));
-
-        /// <summary>
-        /// Combined test and extraction of pins by instrument domain.
-        /// </summary>
-        /// <param name="domain">The instrument domain to look for.</param>
-        /// <param name="pinList">A new <see cref="Pins"/> object only containing pins of the specified type.</param>
-        /// <returns>True if one or more pins have the domain.</returns>
-        public bool ContainsDomain(InstrumentDomain domain, out string pinList) => TryFilter(out pinList, _pins.Where(p => p.Domains.Contains(domain)));
-
-        private bool TryFilter(out string pinList, IEnumerable<Pin> filtered) {
-            if (filtered.Any()) {
-                pinList = ConvertToString(filtered);
-                return true;
+        public bool ContainsDomain(InstrumentDomain domain) {
+            switch (domain) {
+                case InstrumentDomain.Dc:
+                    return Ppmu is not null || Dcvi is not null || Dcvs is not null;
+                case InstrumentDomain.Digital:
+                    return Digital is not null;
+                case InstrumentDomain.Utility:
+                    return Utility is not null;
+                default:
+                    Api.Services.Alert.Error($"Unsupported instrument domain '{domain}'.");
+                    break;
             }
-            pinList = string.Empty;
             return false;
         }
-
-        /// <summary>
-        /// Rearranges the pins in the <see cref="Pins"/> object by name (in place).
-        /// </summary>
-#pragma warning disable IDE0305 // Simplify collection initialization... not working today as it will trip IG-XL serializer
-        public void Sort() => _pins = _pins.OrderBy(p => p.Name).ToList();
-#pragma warning restore IDE0305 // Simplify collection initialization
-
-        /// <summary>
-        /// Rearranges the pins in the <see cref="Pins"/> object by the specified key (in place).
-        /// </summary>
-        /// <typeparam name="TKey">The target kay type for the selector delegate.</typeparam>
-        /// <param name="selector">The selector delegate creating the sort key.</param>
-#pragma warning disable IDE0305 // Simplify collection initialization... not working today as it will trip IG-XL serializer
-        public void Sort<TKey>(Func<Pin, TKey> selector) => _pins = _pins.OrderBy(selector).ToList();
-#pragma warning restore IDE0305 // Simplify collection initialization
 
         /// <summary>
         /// Convert the <see cref="Pins"/> object to a comma-separated list of all pin names.
@@ -180,14 +162,14 @@ namespace Csra {
         /// <returns>A comma-separated list of all pin names.</returns>
         public override string ToString() => ConvertToString(_pins);
 
-        private static string ConvertToString(IEnumerable<Pin> pins) => string.Join(", ", pins.Select(p => p.Name));
+        private static string ConvertToString(IEnumerable<string> pins) => string.Join(", ", pins);
 
         /// <summary>
         /// Combines a collection of <see cref="Pins"/> objects into a single <see cref="Pins"/> object.
         /// </summary>
         /// <param name="pinGroups">An array of <see cref="Pins"/> objects.</param>
         /// <returns>A new <see cref="Pins"/> object with all pins combined.</returns>
-        public static Pins Join(Pins[] pinGroups) => new(ConvertToString(pinGroups.SelectMany(pg => pg)));
+        public static Pins Join(Pins[] pinGroups) => new(string.Join(", ", pinGroups.Select(pg => pg.ToString())));
 
         /// <summary>
         /// Determines whether the specified <see cref="Pins"/> instance is equal to the current instance.
@@ -205,18 +187,18 @@ namespace Csra {
         /// <param name="obj">The object to compare with the current instance.</param>
         /// <returns><c>true</c> if the specified object is a <see cref="Pins"/> and contains the same pins in the same order; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => Equals(obj as Pins);
+        public override bool Equals(object obj) => obj is Pins other && Equals(other);
 
         /// <summary>
         /// Serves as the default hash function.
         /// </summary>
         /// <returns>A hash code for the current <see cref="Pins"/>.</returns>
         public override int GetHashCode() {
-            unchecked {
-                int hash = 17;
-                foreach (Pin pin in _pins) hash = hash * 23 + (pin?.GetHashCode() ?? 0);
-                return hash;
+            int hash = 17;
+            foreach (var pin in _pins) {
+                hash = hash * 31 + pin.GetHashCode();
             }
+            return hash;
         }
 
         /// <summary>
@@ -236,7 +218,10 @@ namespace Csra {
         /// <param name="left">The first <see cref="Pins"/> to compare.</param>
         /// <param name="right">The second <see cref="Pins"/> to compare.</param>
         /// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
-        public static bool operator !=(Pins left, Pins right) => !(left == right);
+        public static bool operator !=(Pins left, Pins right) {
+            if (left is null) return right is not null;
+            return !left.Equals(right);
+        }
 
         /// <summary>
         /// Combines multiple <see cref="PinSite{T}"/> objects into a single one maintaining this <see cref="Pins"/> object's pin sequence. Excessive objects
@@ -249,201 +234,37 @@ namespace Csra {
         public PinSite<T> ArrangePinSite<T>(IEnumerable<PinSite<T>> pinSite) {
             PinSite<T> pinSiteAll = new();
             foreach (PinSite<T> ps in pinSite) pinSiteAll.AddRange(ps);
-            return new(this.Select(s => pinSiteAll[s.Name]).ToList());
+            return new(this.Select(s => pinSiteAll[s]).ToList());
         }
 
+        /// <summary>
+        /// Combines multiple <see cref="PinSite{T}"/> objects into a single one maintaining this <see cref="Pins"/> object's pin sequence. Excessive objects
+        /// are quietly ignored, a runtime exception is thrown for missing ones.
+        /// </summary>
+        /// <typeparam name="T">The type of <see cref="PinSite{T}"/> elements.</typeparam>
+        /// <param name="pinSite">A collection of <see cref="PinSite{T}"/> instances to be combined and arranged.</param>
+        /// <returns>A new <see cref="PinSite{T}"/> containing elements from all input <see cref="PinSite{T}"/> instances, arranged in the right
+        /// order.</returns> 
         public PinSite<Samples<T>> ArrangePinSite<T>(IEnumerable<PinSite<Samples<T>>> pinSite) {
             int pinCount = Count();
             PinSite<Samples<T>> reordered = new(pinCount);
 
             var flat = pinSite
                 .SelectMany(site => Enumerable.Range(0, site.Count)
-                    .Select(i => site[i]))
+                .Select(i => site[i]))
                 .ToDictionary(s => s.PinName, s => s);
 
             // Fill `reordered` by order of `pins`
             for (int i = 0; i < pinCount; i++) {
-                var pinName = _pins[i].Name;
+                string pinName = _pins[i];
 
-                if (!flat.TryGetValue(pinName, out var samples))
-                    throw new KeyNotFoundException($"Pin '{pinName}' not found in reference.");
-
+                if (!flat.TryGetValue(pinName, out var samples)) {
+                    Api.Services.Alert.Error($"Pin '{pinName}' not found in reference.");
+                }
                 reordered[i].PinName = pinName;
                 reordered[pinName] = samples;
             }
-
             return reordered;
-
-        }
-
-        /// <summary>
-        /// Pin class - individual hardware pins with features.
-        /// </summary>
-        [Serializable]
-        public class Pin : IEquatable<Pin> {
-
-            [DoNotSync]
-            private static readonly BiDictionary<string, InstrumentType> _typeConversion = new() {
-                { "HSDP", InstrumentType.UP2200 }, // UF+ Paradise
-                { "HSDPx", InstrumentType.UP5000 }, // UF+ Utopia
-                { "DC-8p5V90V", InstrumentType.UVI264 }, //  UF+ Raiden
-                { "VS-800mA", InstrumentType.UVS256 }, // UF+ ??
-                { "VS-5A", InstrumentType.UVS64 }, // UF+ Tesla
-                { "VS-20A", InstrumentType.UVS64HP }, // UF+ Zebra
-                { "Support", InstrumentType.Support }, // UF+ Support Board
-                { "HSD-U", InstrumentType.UP1600 }, // UF Utah
-                { "HexVS", InstrumentType.HexVS }, // UF ?
-                { "VSM", InstrumentType.VSM }, // UF ?
-                { "DC-07", InstrumentType.UVI80 }, // UF ?
-                { "SupportBoard", InstrumentType.SupportBoard } // UF Support Board
-            };
-
-            /// <summary>
-            /// The (resolved) pin name.
-            /// </summary>
-            public string Name { get; }
-
-            /// <summary>
-            /// The instrument type of the pin.
-            /// </summary>
-            public InstrumentType Type { get; }
-
-            /// <summary>
-            /// A collection of features this pin supports.
-            /// </summary>
-            public List<InstrumentFeature> Features { get; }
-
-            /// <summary>
-            /// A collection of functional domains this pin supports.
-            /// </summary>
-            public List<InstrumentDomain> Domains { get; }
-
-            /// <summary>
-            /// Construct a new <see cref="Pin"/> object.
-            /// </summary>
-            /// <param name="name">The pin name.</param>
-            public Pin(string name) {
-                Name = name;
-                Type = GetInstrumentType(name);
-                Features = GetInstrumentFeatures(Type);
-                Domains = GetInstrumentDomains(Type);
-            }
-
-            private InstrumentType GetInstrumentType(string pin) {
-                if (pin?.Length == 0) return InstrumentType.NC; // empty pin name (e.g. from pin list decomposition
-                TheExec.DataManager.GetChannelTypes(pin, out int numTypes, out string[] chanTypes);
-                switch (numTypes) {
-                    //case 0: return Type.NC; // actually also returned if multiple pins are thrown into GetChannelTypes
-                    case >= 1:
-                        string channel = TheHdw.ChanFromPinSite(pin, 0, chanTypes[0]); // site 0 is good enough for now, don't support different inst per site
-                        int slot = Convert.ToInt32(channel.Split('.').First());
-                        string type = TheHdw.Config.Slots[slot].Type;
-                        return GetType(type);
-                    default: return InstrumentType.NC; // actually also returned if multiple or invalid pins are thrown into GetChannelTypes
-                }
-            }
-
-            private List<InstrumentFeature> GetInstrumentFeatures(InstrumentType type) {
-#pragma warning disable IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
-                return type switch {
-                    InstrumentType.UP1600 => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
-                    InstrumentType.UP2200 => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
-                    InstrumentType.UP5000 => new List<InstrumentFeature> { InstrumentFeature.Ppmu, InstrumentFeature.Digital },
-                    InstrumentType.UVI80 => new List<InstrumentFeature> { InstrumentFeature.Dcvi },
-                    InstrumentType.UVI264 => new List<InstrumentFeature> { InstrumentFeature.Dcvi },
-                    InstrumentType.HexVS => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
-                    InstrumentType.VSM => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
-                    InstrumentType.UVS256 => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
-                    InstrumentType.UVS64 => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
-                    InstrumentType.UVS64HP => new List<InstrumentFeature> { InstrumentFeature.Dcvs },
-                    InstrumentType.Support => new List<InstrumentFeature> { InstrumentFeature.Utility },
-                    InstrumentType.SupportBoard => new List<InstrumentFeature> { InstrumentFeature.Utility },
-                    _ => new List<InstrumentFeature>() // NC case - legitimate
-                };
-#pragma warning restore IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
-            }
-
-            private List<InstrumentDomain> GetInstrumentDomains(InstrumentType type) {
-#pragma warning disable IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
-                return type switch {
-                    InstrumentType.UP1600 => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
-                    InstrumentType.UP2200 => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
-                    InstrumentType.UP5000 => new List<InstrumentDomain> { InstrumentDomain.Dc, InstrumentDomain.Digital },
-                    InstrumentType.UVI80 => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.UVI264 => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.HexVS => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.VSM => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.UVS256 => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.UVS64 => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.UVS64HP => new List<InstrumentDomain> { InstrumentDomain.Dc },
-                    InstrumentType.Support => new List<InstrumentDomain> { InstrumentDomain.Utility },
-                    InstrumentType.SupportBoard => new List<InstrumentDomain> { InstrumentDomain.Utility },
-                    _ => new List<InstrumentDomain>() // NC case - legitimate
-                };
-#pragma warning restore IDE0028 // Simplify collection initialization ... not working today as it will trip IG-XL serializer
-            }
-
-            /// <summary>
-            /// This method is public but intended for internal use only.
-            /// </summary>
-            /// <param name="typeString">The type string to convert.</param>
-            /// <returns>The corresponding Type.</returns>
-            public static InstrumentType GetType(string typeString) {
-                if (_typeConversion.TryGetValue(typeString, out InstrumentType value)) return value;
-                return InstrumentType.NC;
-            }
-
-            /// <summary>
-            /// This method is public but intended for internal use only.
-            /// </summary>
-            /// <param name="type">The Type to convert.</param>
-            /// <returns>The corresponding type string.</returns>
-            public static string GetInstrumentName(InstrumentType type) {
-                if (_typeConversion.TryGetKey(type, out string key)) return key;
-                return "N/A";
-            }
-
-            /// <summary>
-            /// Determines whether the specified <see cref="Pin"/> instance is equal to the current instance.
-            /// </summary>
-            /// <param name="other">The <see cref="Pin"/> instance to compare with the current instance.</param>
-            /// <returns><c>true</c> if the specified <see cref="Pin"/> has the same <see cref="Name"/>; otherwise, <c>false</c>.</returns>
-            public bool Equals(Pin other) {
-                if (other is null) return false;
-                return Name == other.Name;
-            }
-
-            /// <summary>
-            /// Determines whether the specified object is equal to the current <see cref="Pin"/>.
-            /// </summary>
-            /// <param name="obj">The object to compare with the current instance.</param>
-            /// <returns><c>true</c> if the specified object is a <see cref="Pin"/> and has the same <see cref="Name"/>; otherwise, <c>false</c>.</returns>
-            public override bool Equals(object obj) => Equals(obj as Pin);
-
-            /// <summary>
-            /// Serves as the default hash function.
-            /// </summary>
-            /// <returns>A hash code for the current <see cref="Pin"/>.</returns>
-            public override int GetHashCode() => Name?.GetHashCode() ?? 0;
-
-            /// <summary>
-            /// Determines whether two <see cref="Pin"/> instances are equal.
-            /// </summary>
-            /// <param name="left">The first <see cref="Pin"/> to compare.</param>
-            /// <param name="right">The second <see cref="Pin"/> to compare.</param>
-            /// <returns><c>true</c> if both instances are equal or both are <c>null</c>; otherwise, <c>false</c>.</returns>
-            public static bool operator ==(Pin left, Pin right) {
-                if (left is null) return right is null;
-                return left.Equals(right);
-            }
-
-            /// <summary>
-            /// Determines whether two <see cref="Pin"/> instances are not equal.
-            /// </summary>
-            /// <param name="left">The first <see cref="Pin"/> to compare.</param>
-            /// <param name="right">The second <see cref="Pin"/> to compare.</param>
-            /// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
-            public static bool operator !=(Pin left, Pin right) => !(left == right);
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Csra")]
 [assembly: AssemblyDescription("C# Reference Architecture")]
-[assembly: AssemblyConfiguration("Unofficial")]
+[assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("Teradyne")]
 [assembly: AssemblyProduct("Csra")]
 [assembly: AssemblyCopyright("Copyright © Teradyne 2026")]
@@ -42,6 +42,6 @@ namespace Csra {
 
     internal static class Info {
 
-        internal const string VersionDefinition = "0.0.0.1";
+        internal const string VersionDefinition = "0.17";
     }
 }

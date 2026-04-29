@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -12,38 +12,25 @@ using Csra.Interfaces;
 namespace Csra.TheLib {
 
     public class Validate : ILib.IValidate {
-        public virtual void Dc(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+        public virtual void Dc(Pins pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
                     double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null,
-                    Measure? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
+                    DcMeterMode? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null,
                     double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null,
                     double? sampleRate = null, double? sampleSize = null, bool? voltageAltOutput = null, bool? bleederResistor = null, double? complianceBoth = null,
                     double? compliancePositive = null, double? complianceNegative = null, double? clampHiV = null, double? clampLoV = null, bool? highAccuracy = null,
                     double? settlingTime = null, double? hardwareAverage = null) {
 
-            if (pins.ContainsType(InstrumentType.UP2200, out string up2200Pins)) {
-                ValidatePpmu(up2200Pins, gate, mode, voltage, current, currentRange, meterMode, meterCurrentRange, clampHiV, clampLoV, highAccuracy,
+            if (pins.ContainsFeature(InstrumentFeature.Ppmu)) {
+                ValidatePpmu(pins.Ppmu.Name, gate, mode, voltage, current, currentRange, meterMode, meterCurrentRange, clampHiV, clampLoV, highAccuracy,
                     settlingTime);
             }
-            if (pins.ContainsType(InstrumentType.UP5000, out string up5000Pins)) {
-                ValidatePpmu(up5000Pins, gate, mode, voltage, current, currentRange, meterMode, meterCurrentRange, clampHiV, clampLoV, highAccuracy,
-                    settlingTime);
-            }
-            if (pins.ContainsType(InstrumentType.UVI264, out string uvi264Pins)) {
-                ValidateDcvi(uvi264Pins, gate, mode, voltage, current, voltageRange, currentRange, forceBandwidth, meterMode, meterVoltageRange,
+            if (pins.ContainsFeature(InstrumentFeature.Dcvi)) {
+                ValidateDcvi(pins.Dcvi.Name, gate, mode, voltage, current, voltageRange, currentRange, forceBandwidth, meterMode, meterVoltageRange,
                     meterCurrentRange, meterBandwidth, bleederResistor, complianceBoth, compliancePositive, complianceNegative, hardwareAverage);
             }
-            if (pins.ContainsType(InstrumentType.UVS256, out string uvs256Pins)) {
-                ValidateDcvs(uvs256Pins, gate, mode, voltage, voltageAlt, current, voltageRange, currentRange, forceBandwidth, meterMode, meterVoltageRange,
-                    meterCurrentRange, meterBandwidth, sourceFoldLimit, sinkFoldLimit, sourceOverloadLimit, sinkOverloadLimit, voltageAltOutput);
-            }
-            if (pins.ContainsType(InstrumentType.UVS64, out string uvs64Pins)) {
-                ValidateDcvs(uvs64Pins, gate, mode, voltage, voltageAlt, current, voltageRange, currentRange, forceBandwidth, meterMode, meterVoltageRange,
-                    meterCurrentRange, meterBandwidth, sourceFoldLimit, sinkFoldLimit, sourceOverloadLimit, sinkOverloadLimit, voltageAltOutput);
-            }
-            if (pins.ContainsType(InstrumentType.UVS64HP, out string uvs64HpPins)) {
-                ValidateDcvs(uvs64HpPins, gate, mode, voltage, voltageAlt, current, voltageRange, currentRange, forceBandwidth, meterMode, meterVoltageRange,
-                    meterCurrentRange, meterBandwidth, sourceFoldLimit, sinkFoldLimit, sourceOverloadLimit, sinkOverloadLimit, voltageAltOutput,
-                    sampleSize, sampleRate);
+            if (pins.ContainsFeature(InstrumentFeature.Dcvs)) {
+                ValidateDcvs(pins.Dcvs.Name, gate, mode, voltage, voltageAlt, current, voltageRange, currentRange, forceBandwidth, meterMode, meterVoltageRange,
+                    meterCurrentRange, meterBandwidth, sourceFoldLimit, sinkFoldLimit, sourceOverloadLimit, sinkOverloadLimit, voltageAltOutput, sampleSize, sampleRate);
             }
         }
 
@@ -241,7 +228,7 @@ namespace Csra.TheLib {
             }
         }
 
-        public virtual bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true) {
+        public virtual bool Pattern(Pattern pattern, string argumentName, out List<PatternInfo> patternInfo, bool threading = true) {
             GetArgumentContext(argumentName, out int argumentIndex, out string messagePrefix);
             if (string.IsNullOrWhiteSpace(pattern)) {
                 Api.Services.Alert.Error($"{messagePrefix}Provided pattern is null.", argumentIndex);
@@ -250,7 +237,8 @@ namespace Csra.TheLib {
             }
             try {
                 TheHdw.Patterns(pattern).ValidatePatlist();
-                patternInfo = new PatternInfo(pattern, threading);
+                string[] patternList = pattern.Value.Split(',');
+                patternInfo = patternList.Select(p => new PatternInfo(p, threading)).ToList();
                 return true;
             } catch (Exception) {
                 Api.Services.Alert.Error($"{messagePrefix}Provided pattern '{nameof(pattern)}' does not exist or cannot be found.", argumentIndex);
@@ -286,8 +274,8 @@ namespace Csra.TheLib {
             }
         }
 
-        private void ValidatePpmu(string pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? current = null,
-             double? currentRange = null, Measure? meterMode = null, double? meterCurrentRange = null, double? clampHiV = null, double? clampLoV = null,
+        private void ValidatePpmu(string pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? current = null,
+             double? currentRange = null, DcMeterMode? meterMode = null, double? meterCurrentRange = null, double? clampHiV = null, double? clampLoV = null,
              bool? highAccuracy = null, double? settlingTime = null) {
 
             tlDriverPPMUPins ppmu = TheHdw.Pins(pins).PPMU;
@@ -319,8 +307,8 @@ namespace Csra.TheLib {
         }
 
 
-        private void ValidateDcvi(string pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? current = null,
-            double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null,
+        private void ValidateDcvi(string pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? current = null,
+            double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, DcMeterMode? meterMode = null,
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, bool? bleederResistor = null,
             double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null, double? hardwareAverage = null) {
 
@@ -370,8 +358,8 @@ namespace Csra.TheLib {
             }
         }
 
-        private void ValidateDcvs(string pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
-            double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null,
+        private void ValidateDcvs(string pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+            double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, DcMeterMode? meterMode = null,
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null,
             double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, bool? voltageAltOutput = null,
             double? sampleSize = null, double? sampleRate = null) {

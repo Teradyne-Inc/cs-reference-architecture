@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -15,7 +15,7 @@ namespace Csra.Setting.TheHdw.Ppmu.Pins {
 
         public ClampVLo(double value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(-1.6 * V, "V", InitMode.OnProgramStarted, true);
+            SetBehavior(-1.6 * V, "V", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

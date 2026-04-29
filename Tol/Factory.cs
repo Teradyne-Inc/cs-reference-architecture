@@ -41,19 +41,25 @@ namespace Tol {
             if (string.IsNullOrWhiteSpace(pinList)) return null;
             return new DigitalPins(pinList, driverDigitalPins);
         }
-    }
-
-    [Serializable]
-    public enum Measure {
-        Voltage,
-        Current,
-    }
-
-
-    [Serializable]
-    public enum TLibOutputMode {
-        ForceVoltage,
-        ForceCurrent,
-        HighImpedance,
+        protected static IUtilityPins CreateUtilityPins(string pinList) {
+            if (string.IsNullOrWhiteSpace(pinList)) return null;
+            return new UtilityPins(pinList);
+        }
+        protected static IUtilityPins CreateUtilityPins(string pinList, tlDriverUtilityPins driverUtilityPins) {
+            if (string.IsNullOrWhiteSpace(pinList)) return null;
+            return new UtilityPins(pinList, driverUtilityPins);
+        }
+        protected static IDigitalCapture CreateCmemCapture(string pinList) {
+            if (string.IsNullOrWhiteSpace(pinList)) return null;
+            return new CmemCapture();
+        }
+        protected static IDigitalCapture CreateHramCapture(string pinList) {
+            if (string.IsNullOrWhiteSpace(pinList)) return null;
+            return new HramCapture();
+        }
+        protected static IDigitalCapture CreateDsscCapture(string pinList) {
+            if (string.IsNullOrWhiteSpace(pinList)) return null;
+            return new DsscCapture();
+        }
     }
 }

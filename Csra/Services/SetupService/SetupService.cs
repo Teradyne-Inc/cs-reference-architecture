@@ -61,9 +61,9 @@ namespace Csra.Services {
             foreach (string setup in split) _setups[setup.Trim()].Diff();
         }
 
-        public void Init(InitMode initMode) { // this should have the exec interpose attribute, but that currently doesn't work ...
-            //TheExec.AddOutput($"Init {initMode} ...");
-            foreach (Csra.Setup setup in _setups.Values) setup.Init(initMode);
+        public void Init(SetupResetTrigger setupResetTrigger) { // this should have the exec interpose attribute, but that currently doesn't work ...
+            //TheExec.AddOutput($"Init {setupResetTrigger} ...");
+            foreach (Csra.Setup setup in _setups.Values) setup.Init(setupResetTrigger);
         }
 
         public void Dump() {

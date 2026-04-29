@@ -1,15 +1,15 @@
-﻿namespace Csra {
+namespace Csra {
     public class DcParameters {
 
         public bool? Gate { get; set; } = null;
-        public TLibOutputMode? Mode { get; set; } = null;
+        public DcOutputMode? Mode { get; set; } = null;
         public double? Voltage { get; set; } = null;
         public double? VoltageAlt { get; set; } = null;
         public double? Current { get; set; } = null;
         public double? VoltageRange { get; set; } = null;
         public double? CurrentRange { get; set; } = null;
         public double? ForceBandwidth { get; set; } = null;
-        public Measure? MeterMode { get; set; } = null;
+        public DcMeterMode? MeterMode { get; set; } = null;
         public double? MeterVoltageRange { get; set; } = null;
         public double? MeterCurrentRange { get; set; } = null;
         public double? MeterBandwidth { get; set; } = null;

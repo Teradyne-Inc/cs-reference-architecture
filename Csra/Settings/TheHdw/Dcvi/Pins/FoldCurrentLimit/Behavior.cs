@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Csra;
 using Csra.Setting;
@@ -17,7 +17,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.FoldCurrentLimit {
 
         public Behavior(tlDCVIFoldCurrentLimitBehavior value, string pinList) {
             SetArguments(value, pinList, true);
-            SetBehavior(tlDCVIFoldCurrentLimitBehavior.DoNotGateOff, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDCVIFoldCurrentLimitBehavior.DoNotGateOff, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

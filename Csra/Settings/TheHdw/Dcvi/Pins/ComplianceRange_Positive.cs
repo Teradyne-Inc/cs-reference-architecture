@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
         public ComplianceRange_Positive(double value, string pinList) {
             SetArguments(value, pinList, true);
             double defaultComplianceRange = GetDefaultComplianceRange();
-            SetBehavior(defaultComplianceRange, "V", InitMode.OnProgramStarted, true);
+            SetBehavior(defaultComplianceRange, "V", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

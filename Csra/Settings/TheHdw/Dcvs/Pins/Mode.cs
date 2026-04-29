@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Setting;
 using Csra;
 using Teradyne.Igxl.Interfaces.Public;
@@ -18,7 +18,7 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
         public Mode(tlDCVSMode value, string pinList) {
             SetArguments(value, pinList, true);
             // tlDCVSMode.Voltage is used as a default value for HighImpedance/HighRegulation are not for all instrument
-            SetBehavior(tlDCVSMode.Voltage, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDCVSMode.Voltage, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

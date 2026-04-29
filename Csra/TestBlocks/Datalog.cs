@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Csra.Interfaces;
 using Teradyne.Igxl.Interfaces.Public;
@@ -11,40 +11,40 @@ namespace Csra.TheLib {
 
         public virtual void TestFunctional(Site<bool> result, string pattern = "") => TheExec.Flow.FunctionalTestLimit(result, pattern);
 
-        public virtual void TestParametric(Site<int> result, double forceValue = 0, string forceUnit = "") {
+        public virtual void TestParametric(Site<int> result, double forceValue = 0, string forceUnit = "", string tName = "") {
             if (OfflinePassResults) {
                 int midWayPass = (int)MidWayBetweenLimits();
                 result.Fill(midWayPass, tlSiteType.Existing);
             }
             TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
-                ForceResults: tlLimitForceResults.Flow);
+                ForceResults: tlLimitForceResults.Flow, TName: tName);
         }
 
-        public virtual void TestParametric(Site<double> result, double forceValue = 0, string forceUnit = "") {
+        public virtual void TestParametric(Site<double> result, double forceValue = 0, string forceUnit = "", string tName = "") {
             if (OfflinePassResults) {
                 double midWayPass = MidWayBetweenLimits();
                 result.Fill(midWayPass, tlSiteType.Existing);
             }
             TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
-                ForceResults: tlLimitForceResults.Flow);
+                ForceResults: tlLimitForceResults.Flow, TName: tName);
         }
 
-        public virtual void TestParametric(PinSite<int> result, double forceValue = 0, string forceUnit = "") {
+        public virtual void TestParametric(PinSite<int> result, double forceValue = 0, string forceUnit = "", string tName = "") {
             if (OfflinePassResults) {
                 int midWayPass = (int)MidWayBetweenLimits();
-                result = result.Select2d(r => r = midWayPass);
+                result = result.Select2d(_ => midWayPass);
             }
             TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
-                ForceResults: tlLimitForceResults.Flow);
+                ForceResults: tlLimitForceResults.Flow, TName: tName);
         }
 
-        public virtual void TestParametric(PinSite<double> result, double forceValue = 0, string forceUnit = "") {
+        public virtual void TestParametric(PinSite<double> result, double forceValue = 0, string forceUnit = "", string tName = "") {
             if (OfflinePassResults) {
                 double midWayPass = MidWayBetweenLimits();
-                result = result.Select2d(r => r = midWayPass);
+                result = result.Select2d(_ => midWayPass);
             }
             TheExec.Flow.TestLimit(result, ForceVal: forceValue, ForceUnit: UnitType.Custom, CustomForceunit: forceUnit,
-                ForceResults: tlLimitForceResults.Flow);
+                ForceResults: tlLimitForceResults.Flow, TName: tName);
         }
 
         public virtual void TestParametric(Site<Samples<int>> result, double forceValue = 0, string forceUnit = "", bool sameLimitForAllSamples = false) {
@@ -80,8 +80,31 @@ namespace Csra.TheLib {
             ForceResults: tlLimitForceResults.Flow);
         }
 
+        public virtual void TestParametric(Site<double> result, double loVal, double hiVal, string tName = "") {
+            if (OfflinePassResults) {
+                result.Fill((loVal + hiVal) / 2.0, tlSiteType.Existing);
+            }
+            TheExec.Flow.TestLimit(result, loVal, hiVal, TName: tName, ForceResults: tlLimitForceResults.None);
+        }
+
+        public virtual void TestParametric(Site<Samples<int>> result, double loVal, double hiVal, string tName = "") {
+            if (OfflinePassResults) {
+                result.Fill(new Samples<int>(GetSampleCount(result), (int)((loVal + hiVal) / 2.0)), tlSiteType.Existing);
+            }
+            TheExec.Flow.TestLimit(new PinSite<Samples<int>>("", result), loVal, hiVal,
+                CompareMode: tlLimitCompareType.EachSample, TName: tName, ForceResults: tlLimitForceResults.None);
+        }
+
+        public virtual void TestParametric(Site<Samples<double>> result, double loVal, double hiVal, string tName = "") {
+            if (OfflinePassResults) {
+                result.Fill(new Samples<double>(GetSampleCount(result), (loVal + hiVal) / 2.0), tlSiteType.Existing);
+            }
+            TheExec.Flow.TestLimit(new PinSite<Samples<double>>("", result), loVal, hiVal,
+                CompareMode: tlLimitCompareType.EachSample, TName: tName, ForceResults: tlLimitForceResults.None);
+        }
+
         public virtual void TestScanNetwork(ScanNetworkPatternResults result, ScanNetworkDatalogOption datalogOptions) {
-            if (datalogOptions.HasFlag(ScanNetworkDatalogOption.LogByIclInstance)) {
+            if (datalogOptions.HasFlag(ScanNetworkDatalogOption.ByIclInstance)) {
                 foreach (var instance in result.IclInstance) {
                     TheExec.Flow.TestLimit(instance.Value.IsFailed, 0, 0, TName: "fail flag");
                     TheExec.Flow.TestLimit(instance.Value.IsResultValid, -1, -1, TName: "tested flag");
@@ -90,7 +113,7 @@ namespace Csra.TheLib {
                         $"core instance: \t{instance.Value.CoreInstanceName}\n" +
                         new string('=', 120) + "\n");
                 }
-            } else if (datalogOptions.HasFlag(ScanNetworkDatalogOption.LogByCoreInstance)) {
+            } else if (datalogOptions.HasFlag(ScanNetworkDatalogOption.ByCoreInstance)) {
                 foreach (var instance in result.CoreInstance) {
                     TheExec.Flow.TestLimit(instance.Value.IsFailed, 0, 0, TName: "fail flag");
                     TheExec.Flow.TestLimit(instance.Value.IsResultValid, -1, -1, TName: "tested flag");

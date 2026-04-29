@@ -31,7 +31,11 @@ namespace Tol {
         private MeterImpl _meter;
         private string _name;
 
-        internal DcviPins(string pinList) : this(pinList, TheHdw.DCVI.Pins(pinList)) { }
+        internal DcviPins(string pinList) : this(pinList, TheHdw.DCVI.Pins(pinList)) {
+            if(!pinList.AreAllPinsOfType<IDcviPins>()) {
+                throw new ArgumentException("Not all pins belong to DcviPins expected type.");
+            }
+        }
 
         internal DcviPins(string pinList, DriverDCVIPins driverDCVIPins) {
             _name = pinList;
@@ -214,7 +218,11 @@ namespace Tol {
 
         public PinSite<Samples<double>> ReadSamples(int sampleSize, double sampleRate = -1) {
             IPinListData data = HardwareApi.Meter.Read(tlStrobeOption.NoStrobe, sampleSize, sampleRate, tlDCVIMeterReadingFormat.Array);
-            return data.ToPinSiteSamplesDouble();
+            return data.ToPinSiteSamples<double>();
+        }
+
+        public PinSite<Samples<double>> ReadSignal(string signalName) {
+            return HardwareApi.Capture.Signals[signalName].DspWave.ToPinSiteSamples<double>();
         }
 
         public PinSite<double> Measure(int sampleSize = 1, double sampleRate = -1) {
@@ -223,7 +231,7 @@ namespace Tol {
 
         public PinSite<Samples<double>> MeasureSamples(int sampleSize, double sampleRate = -1) {
             IPinListData data = HardwareApi.Meter.Read(tlStrobeOption.Strobe, sampleSize, sampleRate, tlDCVIMeterReadingFormat.Array);
-            return data.ToPinSiteSamplesDouble();
+            return data.ToPinSiteSamples<double>();
         }
 
         public void ForceI(double forceCurrent, double? clampVoltage = null, double? currentRange = null, double? voltageRange = null, bool setCurrentMode = true, bool? gate = null) {

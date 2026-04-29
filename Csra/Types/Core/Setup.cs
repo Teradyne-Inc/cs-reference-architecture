@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
@@ -60,8 +60,8 @@ namespace Csra {
             foreach (ISetting setting in _settings) setting.Diff();
         }
 
-        internal void Init(InitMode initMode) {
-            foreach (ISetting setting in _settings) setting.Init(initMode);
+        internal void Init(SetupResetTrigger setupResetTrigger) {
+            foreach (ISetting setting in _settings) setting.Init(setupResetTrigger);
         }
 
         internal void Dump() {

@@ -65,6 +65,44 @@ namespace Csra {
             CoreInstanceName = iclInstance.CoreInstanceName;
             IsOnChipCompare = iclInstance.IsOnChipCompare;
         }
+
+        /// <summary>
+        /// Create a new instance of <see cref="IclInstanceTestResult"/> by copying another instance. This can be useful when you want to create a new
+        /// instance to hold updated results while keeping the original results unchanged.
+        /// </summary>
+        /// <param name="source">The source <see cref="IclInstanceTestResult"/> to copy.</param>
+        public IclInstanceTestResult(IclInstanceTestResult source) {
+            InstanceName = source.InstanceName;
+            CoreInstanceName = source.CoreInstanceName;
+            IsOnChipCompare = source.IsOnChipCompare;
+            IsFailed = new Site<bool>(source.IsFailed);
+            IsResultValid = new Site<bool>(source.IsResultValid);
+            ErrorStatus = new Site<int>(source.ErrorStatus);
+            TestNumber = source.TestNumber;
+            TestName = source.TestName;
+        }
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Merges the test result data from the other icl instance into the current icl instance, combining relevant status
+        /// flags.
+        /// </summary>
+        /// <remarks>This method updates the current instance's failure and validity status by combining
+        /// them with those from the specified instance. Only results from the same ICL instance can be
+        /// merged.</remarks>
+        /// <param name="other">The test result instance to merge with the current instance. Must represent the same ICL instance as the
+        /// current object.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="other"/> represents a different ICL instance than the current object.</exception>
+        public void MergeWith(IclInstanceTestResult other) {
+            if (other == null) throw new ArgumentNullException(nameof(other));
+            if (InstanceName != other.InstanceName) throw new ArgumentException("Cannot merge results of different icl instances.");
+
+            IsFailed |= other.IsFailed;
+            IsResultValid |= other.IsResultValid;
+        }
         #endregion
     }
 }

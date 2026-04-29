@@ -1,16 +1,16 @@
 {
   "TestProgram": ".\\Demo.igxl",
-  "TpChecksum": "6395d4c69aa5de2c4477bbb04ac359a9",
+  "TpChecksum": "227b72317e3279033f3dc06294ca7e50",
   "Licenses": [],
   "Configurations": [
     {
-      "ID": "CSRAComponentManager.json",
+      "ID": "Config1",
       "Items": [
         {
           "Publisher": "Teradyne",
           "Name": "IG-XL",
           "Comparison": "Between",
-          "Version": "11.00.00 - 11.00.04",
+          "Version": "11.00.00 - 11.10.00",
           "Notes": "",
           "Verification": "Default",
           "Location": ""
@@ -18,8 +18,8 @@
         {
           "Publisher": "Teradyne",
           "Name": "Oasis",
-          "Comparison": "Greater than or equal to",
-          "Version": "4.5.10501",
+          "Comparison": "Equal to",
+          "Version": "4.6.10801",
           "Notes": "",
           "Verification": "Default",
           "Location": ""
@@ -27,7 +27,7 @@
         {
           "Publisher": "Teradyne",
           "Name": "SSL",
-          "Comparison": "Greater than or equal to",
+          "Comparison": "Equal to",
           "Version": "6.9.500",
           "Notes": "",
           "Verification": "Default",
@@ -43,22 +43,22 @@
           "Location": ""
         },
         {
+          "Publisher": "Teradyne",
+          "Name": "PortBridge",
+          "Comparison": "Greater than or equal to",
+          "Version": "2.70.00.0619",
+          "Notes": "",
+          "Verification": "Default",
+          "Location": ""
+        },
+        {
           "Publisher": "Microsoft",
-          "Name": "VS2022_",
+          "Name": "Visual Studio",
           "Comparison": "Greater than or equal to",
           "Version": "17.14",
           "Notes": "",
-          "Verification": "ByRegistry",
-          "Location": "HKEY_CURRENT_USER\\Software\\Microsoft\\VisualStudio\\17.14"
-        },
-        {
-          "Publisher": "Teradyne",
-          "Name": "PortBridge ",
-          "Comparison": "Greater than or equal to",
-          "Version": "2.70.0.619",
-          "Notes": "",
-          "Verification": "ByAssembly",
-          "Location": "C:\\Program Files (x86)\\Teradyne\\Applications\\PortBridge\\Teradyne.PortBridge.dll"
+          "Verification": "Default",
+          "Location": ""
         }
       ]
     }

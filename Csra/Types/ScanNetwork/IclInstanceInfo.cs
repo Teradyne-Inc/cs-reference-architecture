@@ -30,6 +30,11 @@ namespace Csra {
         public string CoreInstanceName { get; private set; }
 
         /// <summary>
+        /// Gets the IG-XL mapping instance name for this icl instance (for example <c>ssh_icl@core</c>).
+        /// </summary>
+        public string IgxlInstanceName { get; private set; }
+
+        /// <summary>
         /// Gets the capture-global-group ID that this icl instance belongs to.
         /// </summary>
         public string GlobalGroupID { get; private set; }
@@ -68,6 +73,11 @@ namespace Csra {
         /// Substring of the disable-contribution-bit to be patched. Only used when OnChipCompare is true.
         /// </summary>
         public Site<string> ModifyVectorData { get; private set; }
+
+        /// <summary>
+        /// Indicates whether this instance is masked or set to disable-contribution, thus should be ignored in result processing and datalogging.
+        /// </summary>
+        public Site<bool> Ignored { get; private set; } = new(false);
         #endregion
 
         #region Constructors
@@ -122,12 +132,13 @@ namespace Csra {
         }
 
         /// <summary>
-        /// Creating a new <see cref="IclInstanceInfo"/> object from the combined instance name: $"{ssh-icl-instance}@{core-instance}".
+        /// Creating a new <see cref="IclInstanceInfo"/> object from the instance name stored in IG-XL ScanNetworkMapping.
         /// </summary>
-        /// <param name="iclAndCoreInstanceNames">The hybrid instance name following this format: "{ssh_icl_instance}@{core_instance}".</param>
-        /// <remarks>This hybrid instance name is retrieved from IGXL API: TheHdw.Digital.ScanNetworks[ScanNetworkMapping].InstanceNames.</remarks>
-        public IclInstanceInfo(string iclAndCoreInstanceNames) : this(sshInstanceName: "", sshIclInstanceName: "", coreInstanceName: "") {
-            var _ = iclAndCoreInstanceNames.Split('@');
+        /// <param name="igxlInstanceName">The hybrid instance name following this format: "{ssh_icl_instance}@{core_instance}".</param>
+        /// <remarks>This instance name is retrieved from IGXL API: TheHdw.Digital.ScanNetworks[ScanNetworkMapping].InstanceNames.</remarks>
+        public IclInstanceInfo(string igxlInstanceName) : this(sshInstanceName: "", sshIclInstanceName: "", coreInstanceName: "") {
+            IgxlInstanceName = igxlInstanceName;
+            var _ = igxlInstanceName.Split('@');
             IclInstanceName = _.FirstOrDefault();
             CoreInstanceName = _.LastOrDefault();
         }
@@ -210,6 +221,14 @@ namespace Csra {
         }
 
         /// <summary>
+        /// Updates the IGXL instance name associated with the current instance.
+        /// </summary>
+        /// <param name="igxlInstanceName">The new IGXL instance name to assign. Cannot be null.</param>
+        internal void UpdateIgxlInstanceInfo(string igxlInstanceName) {
+            IgxlInstanceName = igxlInstanceName;
+        }
+
+        /// <summary>
         /// Sets or clears the disable-contribution-bit for a specified site.
         /// </summary>
         /// <param name="site">The identifier of the site for which the disable contribution bit is being modified.</param>
@@ -218,6 +237,11 @@ namespace Csra {
             if (!string.IsNullOrEmpty(ModifyVectorData[site])) {
                 int tckRatio = ModifyVectorData[site].Length;
                 ModifyVectorData[site] = new string(value, tckRatio);
+                if (value == '1') {
+                    Ignored[site] = true;
+                } else if (value == '0') {
+                    Ignored[site] = false;
+                }
             }
         }
 

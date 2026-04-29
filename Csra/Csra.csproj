@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
@@ -20,7 +20,7 @@
     <DefineConstants>$(DefineConstants);$(SymbolName)</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
-    <PortBridgeEnabled Condition="Exists('..\PortBridgeEnabled.txt')">true</PortBridgeEnabled>
+    <PortBridgeEnabled Condition="Exists('..\..\PortBridgeEnabled.txt')">true</PortBridgeEnabled>
   </PropertyGroup>
   <PropertyGroup>
     <PortBridgeEnabled Condition=" '$(PortBridgeEnabled)' == '' ">false</PortBridgeEnabled>

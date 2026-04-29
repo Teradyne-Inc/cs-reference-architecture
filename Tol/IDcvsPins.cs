@@ -1,4 +1,4 @@
-﻿using Teradyne.Igxl.Interfaces.Public;
+using Teradyne.Igxl.Interfaces.Public;
 
 namespace Tol {
 
@@ -86,10 +86,10 @@ namespace Tol {
         /// </summary>
         /// <param name="voltageRange">Optional. The voltage range for measurement.</param>
         /// <param name="filter">Optional. Specifies the filter bandwidth, which attenuates high-frequency noise.</param>
-        public void SetMeterV(double? voltageRange = null, double? filter = null);
+        public void SetMeterV(double? filter = null);
 
         /// <summary>
-        /// Performs multiple measurements (strobes) on the DCVS, to read back the values later. 
+        /// Performs multiple measurements (strobes) on the DCVS, to read back the values later.
         /// </summary>
         /// <param name="sampleSize">Optional. The number of samples.</param>
         /// <param name="sampleRate">Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</param>
@@ -110,6 +110,13 @@ namespace Tol {
         /// <param name="sampleRate">Optional. The sample rate for the measurement, defaults to fastest sampling rate of first pin.</param>
         /// <returns>Returns the measured samples.</returns>
         public PinSite<Samples<double>> ReadSamples(int sampleSize, double sampleRate = -1);
+
+        /// <summary>
+        /// Read the DCVS measurement value for the specified signal.
+        /// </summary>
+        /// <param name="signal">The name of the signal to read.</param>
+        /// <returns>Returns the measured samples for the specified signal.</returns>
+        public PinSite<Samples<double>> ReadSignal(string signal);
 
         /// <summary>
         /// Performs measurement(s) on the DCVS, returning the average of measured value(s).
@@ -190,7 +197,7 @@ namespace Tol {
         /// Sets the DCVS to high impedance mode.
         /// </summary>
         /// <param name="clampValue">Optional. The voltage to clamp.</param>
-        public void ForceHiZ(double? clampValue = null);
+        public void ForceHiZ();
 
         /// <summary>
         /// Creates a capture signal with the specified parameters.

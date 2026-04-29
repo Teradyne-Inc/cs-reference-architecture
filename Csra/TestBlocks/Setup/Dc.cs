@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,19 +25,19 @@ namespace Csra.TheLib.Setup {
             pins.Dcvs?.Disconnect(gateOff ? false : null);
         }
 
-        public virtual void Force(Pins pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue, bool gateOn = true) {
-            if (mode == TLibOutputMode.ForceVoltage) {
+        public virtual void Force(Pins pins, DcOutputMode mode, double forceValue, double forceRange, double clampValue, bool gateOn = true) {
+            if (mode == DcOutputMode.ForceVoltage) {
                 ForceV(pins, forceValue, clampValue, forceRange, clampValue, true, gateOn);
-            } else if (mode == TLibOutputMode.ForceCurrent) {
+            } else if (mode == DcOutputMode.ForceCurrent) {
                 ForceI(pins, forceValue, clampValue, forceRange, clampValue, true, gateOn);
             } else {
                 ForceHiZ(pins);
             }
         }
 
-        public virtual void Force(Pins[] pinGroups, TLibOutputMode[] modes, double[] forceValues, double[] forceRanges, double[] clampValues,
+        public virtual void Force(Pins[] pinGroups, DcOutputMode[] modes, double[] forceValues, double[] forceRanges, double[] clampValues,
             bool[] gateOn = null) {
-            TLibOutputMode[] outputModes = modes.ToArray();
+            DcOutputMode[] outputModes = modes.ToArray();
             gateOn ??= new bool[] { true };
             bool modesUniform = outputModes.Length == 1;
             bool forceValuesUniform = forceValues.Length == 1;
@@ -95,8 +95,8 @@ namespace Csra.TheLib.Setup {
             parameters.CompliancePositive, parameters.ComplianceNegative, parameters.ClampHiV, parameters.ClampLoV, parameters.HighAccuracy,
             parameters.SettlingTime, parameters.HardwareAverage);
 
-        public virtual void Modify(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
-            double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null,
+        public virtual void Modify(Pins pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+            double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, DcMeterMode? meterMode = null,
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null,
             double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, bool? voltageAltOutput = null,
             bool? bleederResistor = null, double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null,
@@ -115,10 +115,10 @@ namespace Csra.TheLib.Setup {
             }
         }
 
-        public virtual void SetForceAndMeter(Pins pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue, Measure meterMode, double measureRange, bool gateOn = true) {
-            if (mode == TLibOutputMode.ForceCurrent) {
-                if (meterMode == Measure.Current) {
-                    if (pins.Ppmu is not null) Api.Services.Alert.Warning("ForceISetMeterI is not supported on PPMU.");
+        public virtual void SetForceAndMeter(Pins pins, DcOutputMode mode, double forceValue, double forceRange, double clampValue, DcMeterMode meterMode, double measureRange, bool gateOn = true) {
+            if (mode == DcOutputMode.ForceCurrent) {
+                if (meterMode == DcMeterMode.Current) {
+                    if (pins.ContainsFeature(InstrumentFeature.Ppmu)) Api.Services.Alert.Warning("ForceISetMeterI is not supported on PPMU.");
                     pins.Dcvi?.ForceISetMeterI(forceValue, clampValue, measureRange, forceRange, gateOn ? true : null);
                     pins.Dcvs?.ForceISetMeterI(forceValue, clampValue, measureRange, forceRange, gateOn ? true : null);
                 } else { // voltage
@@ -127,8 +127,8 @@ namespace Csra.TheLib.Setup {
                     pins.Dcvi?.ForceISetMeterV(forceValue, clampValue, measureRange, forceRange, gateOn ? true : null);
                     pins.Dcvs?.ForceISetMeterV(forceValue, clampValue, forceRange, gateOn ? true : null);
                 }
-            } else if (mode == TLibOutputMode.ForceVoltage) {
-                if (meterMode == Measure.Current) {
+            } else if (mode == DcOutputMode.ForceVoltage) {
+                if (meterMode == DcMeterMode.Current) {
                     pins.Ppmu?.ForceVSetMeterI(forceValue, measureRange, gateOn ? true : null);
                     pins.Dcvi?.ForceVSetMeterI(forceValue, clampValue, measureRange, gateOn ? true : null);
                     pins.Dcvs?.ForceVSetMeterI(forceValue, clampValue, measureRange, gateOn ? true : null);
@@ -140,8 +140,8 @@ namespace Csra.TheLib.Setup {
             } else { // HiZ
                 pins.Ppmu?.ForceHiZ();
                 pins.Dcvi?.ForceHiZ();
-                pins.Dcvs?.ForceHiZ(clampValue);
-                if (meterMode == Measure.Current) {
+                pins.Dcvs?.ForceHiZ();
+                if (meterMode == DcMeterMode.Current) {
                     pins.Dcvi?.SetMeterI(measureRange);
                     pins.Dcvs?.SetMeterI(measureRange);
                 } else { // Voltage
@@ -151,20 +151,20 @@ namespace Csra.TheLib.Setup {
             }
         }
 
-        public virtual void SetMeter(Pins pins, Measure meterMode, double? rangeValue = null, double? filterValue = null, int? hardwareAverage = null,
+        public virtual void SetMeter(Pins pins, DcMeterMode meterMode, double? rangeValue = null, double? filterValue = null, int? hardwareAverage = null,
             double? outputRangeValue = null) {
-            if (meterMode == Measure.Current) {
+            if (meterMode == DcMeterMode.Current) {
                 pins.Dcvi?.SetMeterI(rangeValue, hardwareAverage, filterValue);
                 pins.Dcvs?.SetMeterI(rangeValue, filterValue, outputRangeValue);
             } else {
                 pins.Dcvi?.SetMeterV(rangeValue, hardwareAverage, filterValue);
-                pins.Dcvs?.SetMeterV(rangeValue, filterValue);
+                pins.Dcvs?.SetMeterV(filterValue);
             }
         }
 
-        public virtual void SetMeter(Pins[] pinGroups, Measure[] meterModes, double[] rangeValues, double[] filterValues = null, int[] hardwareAverages = null,
+        public virtual void SetMeter(Pins[] pinGroups, DcMeterMode[] meterModes, double[] rangeValues, double[] filterValues = null, int[] hardwareAverages = null,
             double[] outputRangeValues = null) {
-            Measure[] measureModes = meterModes.ToArray();
+            DcMeterMode[] measureModes = meterModes.ToArray();
             bool meterModesUniform = measureModes.Length == 1;
             bool rangeValuesUniform = rangeValues.Length == 1;
             bool filterValuesUniform = filterValues is not null ? filterValues.Length == 1 : true;
@@ -185,17 +185,17 @@ namespace Csra.TheLib.Setup {
             capturePin.Dcvs.CreateCaptureSignal(signalName, meterMode, range, sampleRate, sampleSize, loadSettings);
         }
 
-        private void ModifyPpmu(Tol.IPpmuPins ppmuPins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? current = null,
-             double? currentRange = null, Measure? meterMode = null, double? meterCurrentRange = null, double? clampHiV = null, double? clampLoV = null,
+        private void ModifyPpmu(Tol.IPpmuPins ppmuPins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? current = null,
+             double? currentRange = null, DcMeterMode? meterMode = null, double? meterCurrentRange = null, double? clampHiV = null, double? clampLoV = null,
              bool? highAccuracy = null, double? settlingTime = null) {
             if (gate.HasValue) ppmuPins.Gate.Value = gate.Value;
             if (mode.HasValue) {
                 switch (mode.Value) {
-                    case TLibOutputMode.ForceVoltage: {
+                    case DcOutputMode.ForceVoltage: {
                             if (!voltage.HasValue) {
                                 Api.Services.Alert.Error("Cannot configure ForceV and MeasureV or MeasureI on PPMU without a set value for VoltageValue.");
                             } else {
-                                if (meterMode.HasValue && meterMode.Value == Measure.Voltage) {
+                                if (meterMode.HasValue && meterMode.Value == DcMeterMode.Voltage) {
                                     ppmuPins.HardwareApi.ForceVMeasureV(voltage.Value, meterCurrentRange ?? Type.Missing);
                                 } else {
                                     ppmuPins.HardwareApi.ForceV(voltage.Value, meterCurrentRange ?? Type.Missing);
@@ -203,19 +203,19 @@ namespace Csra.TheLib.Setup {
                             }
                             break;
                         }
-                    case TLibOutputMode.ForceCurrent: {
+                    case DcOutputMode.ForceCurrent: {
                             if (!current.HasValue) {
                                 Api.Services.Alert.Error("Cannot configure ForceI on PPMU without a set value for CurrentValue.");
                             } else {
                                 ppmuPins.HardwareApi.ForceI(current.Value, currentRange ?? Type.Missing);
                             }
-                            if (meterMode.HasValue && meterMode.Value == Measure.Current) {
+                            if (meterMode.HasValue && meterMode.Value == DcMeterMode.Current) {
                                 Api.Services.Alert.Warning("ForceIMeasureI cannot be configured for PPMU. PPMU has been configured to ForceIMeasureV.");
                             }
 
                             break;
                         }
-                    case TLibOutputMode.HighImpedance: {
+                    case DcOutputMode.HighImpedance: {
                             ppmuPins.ForceHiZ();
                             break;
                         }
@@ -230,15 +230,15 @@ namespace Csra.TheLib.Setup {
             if (settlingTime.HasValue) TheHdw.PPMU.HighAccuracyMeasureVoltage.SettlingTime = settlingTime.Value;
         }
 
-        private void ModifyDcvi(Tol.IDcviPins dcviPins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? current = null,
-            double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null,
+        private void ModifyDcvi(Tol.IDcviPins dcviPins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? current = null,
+            double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, DcMeterMode? meterMode = null,
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, bool? bleederResistor = null,
             double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null, double? hardwareAverage = null) {
             if (gate.HasValue) dcviPins.Gate.Value = gate.Value ? tlDCVGate.GateOn : tlDCVGate.GateOff;
             if (mode.HasValue) {
                 tlDCVIMode forceMode = mode.Value switch {
-                    TLibOutputMode.ForceCurrent => tlDCVIMode.Current,
-                    TLibOutputMode.ForceVoltage => tlDCVIMode.Voltage,
+                    DcOutputMode.ForceCurrent => tlDCVIMode.Current,
+                    DcOutputMode.ForceVoltage => tlDCVIMode.Voltage,
                     _ => tlDCVIMode.HighImpedance,
                 };
                 if (forceMode == tlDCVIMode.HighImpedance) {
@@ -261,7 +261,7 @@ namespace Csra.TheLib.Setup {
             if (forceBandwidth.HasValue) dcviPins.HardwareApi.NominalBandwidth.Value = forceBandwidth.Value;
             if (meterMode.HasValue) {
                 dcviPins.Meter.Mode.Value = meterMode.Value switch {
-                    Measure.Voltage => tlDCVIMeterMode.Voltage,
+                    DcMeterMode.Voltage => tlDCVIMeterMode.Voltage,
                     _ => tlDCVIMeterMode.Current,
                 };
             }
@@ -271,14 +271,14 @@ namespace Csra.TheLib.Setup {
             if (hardwareAverage.HasValue) dcviPins.Meter.HardwareAverage.Value = hardwareAverage.Value;
         }
 
-        private void ModifyDcvs(Tol.IDcvsPins dcvsPins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
-            double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null,
+        private void ModifyDcvs(Tol.IDcvsPins dcvsPins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null,
+            double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, DcMeterMode? meterMode = null,
             double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null,
             double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, bool? voltageAltOutput = null) {
             if (gate.HasValue) dcvsPins.Gate.Value = gate.Value;
             if (meterMode.HasValue) {
                 dcvsPins.Meter.Mode.Value = meterMode.Value switch {
-                    Measure.Voltage => tlDCVSMeterMode.Voltage,
+                    DcMeterMode.Voltage => tlDCVSMeterMode.Voltage,
                     _ => tlDCVSMeterMode.Current,
                 };
             }
@@ -287,8 +287,8 @@ namespace Csra.TheLib.Setup {
             if (meterBandwidth.HasValue) dcvsPins.Meter.Filter.Value = meterBandwidth.Value;
             if (mode.HasValue) {
                 dcvsPins.Mode.Value = mode.Value switch {
-                    TLibOutputMode.ForceCurrent => tlDCVSMode.Current,
-                    TLibOutputMode.ForceVoltage => tlDCVSMode.Voltage,
+                    DcOutputMode.ForceCurrent => tlDCVSMode.Current,
+                    DcOutputMode.ForceVoltage => tlDCVSMode.Voltage,
                     _ => tlDCVSMode.HighImpedance,
                 };
             }

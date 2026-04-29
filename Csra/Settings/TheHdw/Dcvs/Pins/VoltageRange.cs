@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Csra.Setting;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
         public VoltageRange(double value, string pinList) {
             SetArguments(value, pinList, true);
             double defaultVoltageRange = GetDefaultVoltageRange();
-            SetBehavior(defaultVoltageRange, "V", InitMode.OnProgramStarted, true);
+            SetBehavior(defaultVoltageRange, "V", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

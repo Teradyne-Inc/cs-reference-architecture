@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Csra.Services;
 using Csra.Setting;
 using Csra;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins.BleederResistor {
         public CurrentLoad(double value, string pinList) {
             SetArguments(value, pinList, true);
             if (!IsSupportedPinType()) return;
-            SetBehavior(10 * uA, "A", InitMode.OnProgramStarted, true);
+            SetBehavior(10 * uA, "A", SetupResetTrigger.OnProgramStarted, true);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }

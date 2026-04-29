@@ -66,6 +66,14 @@ namespace Csra.Services {
             LogMessage(_logTarget, message, (ColorConstants)((blue << 16) | (green << 8) | red), bold);
         }
 
+        public void LogToFile(string logLabel,string message) {
+            if (string.IsNullOrWhiteSpace(OutputFile)) {
+                Error<System.IO.FileNotFoundException>("Output file is not specified.");
+                return;
+            }
+            LogMessage(AlertOutputTarget.File, GetMessage(logLabel, message, ""), ColorConstants.Black, false);
+        }
+
         public void Info(string info, [CallerMemberName] string doNotSpecify = "") {
             LogMessage(_infoTarget, GetMessage("INFO", info, doNotSpecify), (ColorConstants)0x7f0000, false);
         }

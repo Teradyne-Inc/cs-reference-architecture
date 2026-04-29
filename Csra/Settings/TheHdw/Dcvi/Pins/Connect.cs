@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Csra.Setting;
@@ -19,7 +19,7 @@ namespace Csra.Setting.TheHdw.Dcvi.Pins {
         public Connect(tlDCVIConnectWhat value, string pinList) {
             value = value == tlDCVIConnectWhat.Default ? GetDefaultStatusValue(pinList) : value;
             SetArguments(value, pinList, true);
-            SetBehavior(tlDCVIConnectWhat.None, string.Empty, InitMode.OnProgramStarted, false);
+            SetBehavior(tlDCVIConnectWhat.None, string.Empty, SetupResetTrigger.OnProgramStarted, false);
             SetContext(true, _staticCache);
             if (TheExec.JobIsValid) Validate();
         }
