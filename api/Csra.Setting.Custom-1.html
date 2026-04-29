@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Setting_Custom_1" data-uid="Csra.Setting.Custom`1" class="text-break">
-Class Custom&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class Custom&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -143,7 +143,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
       <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_SetArguments__0_System_String_">SettingBase&lt;T&gt;.SetArguments(T, string)</a>
     </div>
     <div>
-      <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_SetBehavior__0_System_String_Csra_InitMode_System_Boolean_">SettingBase&lt;T&gt;.SetBehavior(T, string, InitMode, bool)</a>
+      <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_SetBehavior__0_System_String_Csra_SetupResetTrigger_System_Boolean_">SettingBase&lt;T&gt;.SetBehavior(T, string, SetupResetTrigger, bool)</a>
     </div>
     <div>
       <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_SetContext_System_Boolean_System_Collections_Generic_Dictionary_System_String__0__">SettingBase&lt;T&gt;.SetContext(bool, Dictionary&lt;string, T&gt;)</a>
@@ -170,7 +170,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
       <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_ToString">SettingBase&lt;T&gt;.ToString()</a>
     </div>
     <div>
-      <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_Init_Csra_InitMode_">SettingBase&lt;T&gt;.Init(InitMode)</a>
+      <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_Init_Csra_SetupResetTrigger_">SettingBase&lt;T&gt;.Init(SetupResetTrigger)</a>
     </div>
     <div>
       <a class="xref" href="Csra.Setting.SettingBase-1.html#Csra_Setting_SettingBase_1_Dump">SettingBase&lt;T&gt;.Dump()</a>
@@ -217,16 +217,16 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
 
   <a id="Csra_Setting_Custom_1__ctor_" data-uid="Csra.Setting.Custom`1.#ctor*"></a>
 
-  <h3 id="Csra_Setting_Custom_1__ctor_System_String__0_System_Action__0__System_Func__0_____0_Csra_InitMode_" data-uid="Csra.Setting.Custom`1.#ctor(System.String,`0,System.Action{`0},System.Func{`0[]},`0,Csra.InitMode)">
-  Custom(string, T, Action&lt;T&gt;, Func&lt;T[]&gt;, T, InitMode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Setting_Custom_1__ctor_System_String__0_System_Action__0__System_Func__0_____0_Csra_SetupResetTrigger_" data-uid="Csra.Setting.Custom`1.#ctor(System.String,`0,System.Action{`0},System.Func{`0[]},`0,Csra.SetupResetTrigger)">
+  Custom(string, T, Action&lt;T&gt;, Func&lt;T[]&gt;, T, SetupResetTrigger)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Custom(string key, T value, Action&lt;T&gt; setAction, Func&lt;T[]&gt; readFunc, T initValue, InitMode initMode)</code></pre>
+    <pre><code class="lang-csharp hljs">public Custom(string key, T value, Action&lt;T&gt; setAction, Func&lt;T[]&gt; readFunc, T initValue, SetupResetTrigger setupResetTrigger)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -241,7 +241,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
     <dd></dd>
     <dt><code>initValue</code> <span class="xref">T</span></dt>
     <dd></dd>
-    <dt><code>initMode</code> <a class="xref" href="Csra.InitMode.html">InitMode</a></dt>
+    <dt><code>setupResetTrigger</code> <a class="xref" href="Csra.SetupResetTrigger.html">SetupResetTrigger</a></dt>
     <dd></dd>
   </dl>
 
@@ -260,16 +260,16 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
 
   <a id="Csra_Setting_Custom_1__ctor_" data-uid="Csra.Setting.Custom`1.#ctor*"></a>
 
-  <h3 id="Csra_Setting_Custom_1__ctor_System_String__0_System_Action__0___0_Csra_InitMode_" data-uid="Csra.Setting.Custom`1.#ctor(System.String,`0,System.Action{`0},`0,Csra.InitMode)">
-  Custom(string, T, Action&lt;T&gt;, T, InitMode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Setting_Custom_1__ctor_System_String__0_System_Action__0___0_Csra_SetupResetTrigger_" data-uid="Csra.Setting.Custom`1.#ctor(System.String,`0,System.Action{`0},`0,Csra.SetupResetTrigger)">
+  Custom(string, T, Action&lt;T&gt;, T, SetupResetTrigger)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Custom(string key, T value, Action&lt;T&gt; setAction, T initValue, InitMode initMode)</code></pre>
+    <pre><code class="lang-csharp hljs">public Custom(string key, T value, Action&lt;T&gt; setAction, T initValue, SetupResetTrigger setupResetTrigger)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -282,7 +282,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
     <dd></dd>
     <dt><code>initValue</code> <span class="xref">T</span></dt>
     <dd></dd>
-    <dt><code>initMode</code> <a class="xref" href="Csra.InitMode.html">InitMode</a></dt>
+    <dt><code>setupResetTrigger</code> <a class="xref" href="Csra.SetupResetTrigger.html">SetupResetTrigger</a></dt>
     <dd></dd>
   </dl>
 
@@ -303,7 +303,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
 
   <h3 id="Csra_Setting_Custom_1__ctor__0_System_Action__0__" data-uid="Csra.Setting.Custom`1.#ctor(`0,System.Action{`0})">
   Custom(T, Action&lt;T&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -342,7 +342,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
 
   <h3 id="Csra_Setting_Custom_1_ReadFunc_System_String_" data-uid="Csra.Setting.Custom`1.ReadFunc(System.String)">
   ReadFunc(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -380,7 +380,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
 
   <h3 id="Csra_Setting_Custom_1_SetAction_System_String__0_" data-uid="Csra.Setting.Custom`1.SetAction(System.String,`0)">
   SetAction(string, T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -415,7 +415,7 @@ public class Custom&lt;T&gt; : SettingBase&lt;T&gt;, ISetting</code></pre>
 
   <h3 id="Csra_Setting_Custom_1_SetCache__0_System_String_" data-uid="Csra.Setting.Custom`1.SetCache(`0,System.String)">
   SetCache(T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/Custom.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/Custom.cs/#L47"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

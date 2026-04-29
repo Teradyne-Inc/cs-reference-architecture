@@ -154,15 +154,9 @@ public class PinObjectPrototype : TestCodeBase {
 </ul>
 <p>This API allows for a concise syntax in generic Test Blocks:</p>
 <pre><code class="lang-csharp">public static void Connect(Pins pins) {
-    if (pins.ContainsFeature(InstrumentFeature.Ppmu, out string ppmu)) {
-        TheHdw.PPMU.Pins(ppmu).Connect();
-    }
-    if (pins.ContainsFeature(InstrumentFeature.Dcvi, out string dcvi)) {
-        TheHdw.DCVI.Pins(dcvi).Connect(tlDCVIConnectWhat.HighForce | tlDCVIConnectWhat.HighSense);
-    }
-    if (pins.ContainsFeature(InstrumentFeature.Dcvs, out string dcvs)) {
-        TheHdw.DCVS.Pins(dcvs).Connect(tlDCVSConnectWhat.Force | tlDCVSConnectWhat.Sense);
-    }
+    pins.Ppmu?.Connect();
+    pins.Dcvi?.Connect();
+    pins.Dcvs?.Connect();
 }
 </code></pre><h2 id="merging-results">Merging Results</h2>
 <p>IG-XL and C#RA heavily rely on pin and site agnostic interfaces. A <code>TheHdw.Dcvi.Pins().Meter.Read()</code> will return a single result containing data for all sites and all pins in the specified order. The test block <code>TheLib.Acquire.Dc.Measure()</code> does the same. The latter however will have to split the internal action into calls to the dedicated drivers for PPMU, DCVI or DCVS - each returning a separate object.</p>

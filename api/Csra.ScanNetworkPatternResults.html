@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_ScanNetworkPatternResults" data-uid="Csra.ScanNetworkPatternResults" class="text-break">
-Class ScanNetworkPatternResults  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class ScanNetworkPatternResults  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -155,9 +155,38 @@ public class ScanNetworkPatternResults</code></pre>
 
   <a id="Csra_ScanNetworkPatternResults__ctor_" data-uid="Csra.ScanNetworkPatternResults.#ctor*"></a>
 
+  <h3 id="Csra_ScanNetworkPatternResults__ctor" data-uid="Csra.ScanNetworkPatternResults.#ctor">
+  ScanNetworkPatternResults()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new instance of <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a> with default values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanNetworkPatternResults()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternResults__ctor_" data-uid="Csra.ScanNetworkPatternResults.#ctor*"></a>
+
   <h3 id="Csra_ScanNetworkPatternResults__ctor_Csra_ScanNetworkPatternInfo_" data-uid="Csra.ScanNetworkPatternResults.#ctor(Csra.ScanNetworkPatternInfo)">
   ScanNetworkPatternResults(ScanNetworkPatternInfo)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new instance of <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a> that can hold the per icl instance test result from a ScanNetwork pattern.</p>
@@ -188,6 +217,41 @@ public class ScanNetworkPatternResults</code></pre>
 
 
 
+  <a id="Csra_ScanNetworkPatternResults__ctor_" data-uid="Csra.ScanNetworkPatternResults.#ctor*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternResults__ctor_Csra_ScanNetworkPatternResults_" data-uid="Csra.ScanNetworkPatternResults.#ctor(Csra.ScanNetworkPatternResults)">
+  ScanNetworkPatternResults(ScanNetworkPatternResults)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new instance of <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a> by copying another instance. This can be useful when you want to create a new
+instance to hold updated results while keeping the original results unchanged.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScanNetworkPatternResults(ScanNetworkPatternResults source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -196,7 +260,7 @@ public class ScanNetworkPatternResults</code></pre>
 
   <h3 id="Csra_ScanNetworkPatternResults_CoreInstance" data-uid="Csra.ScanNetworkPatternResults.CoreInstance">
   CoreInstance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the dictionary of test results for each core instances, indexed by instance name.</p>
@@ -230,7 +294,7 @@ public class ScanNetworkPatternResults</code></pre>
 
   <h3 id="Csra_ScanNetworkPatternResults_IclInstance" data-uid="Csra.ScanNetworkPatternResults.IclInstance">
   IclInstance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the dictionary of test results for each icl-instance, indexed by instance name.</p>
@@ -264,7 +328,7 @@ public class ScanNetworkPatternResults</code></pre>
 
   <h3 id="Csra_ScanNetworkPatternResults_TestConditions" data-uid="Csra.ScanNetworkPatternResults.TestConditions">
   TestConditions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>User-Defined Test Conditions, such as Voltage/Frequency/Retest#, etc.</p>
@@ -272,7 +336,7 @@ public class ScanNetworkPatternResults</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string TestConditions { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string TestConditions { get; set; }</code></pre>
   </div>
 
 
@@ -302,7 +366,7 @@ public class ScanNetworkPatternResults</code></pre>
 
   <h3 id="Csra_ScanNetworkPatternResults_GetFailedCoreInstanceList" data-uid="Csra.ScanNetworkPatternResults.GetFailedCoreInstanceList">
   GetFailedCoreInstanceList()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the list of failed core instances for each site.</p>
@@ -337,7 +401,7 @@ public class ScanNetworkPatternResults</code></pre>
 
   <h3 id="Csra_ScanNetworkPatternResults_GetFailedCoreInstanceList_System_Int32_" data-uid="Csra.ScanNetworkPatternResults.GetFailedCoreInstanceList(System.Int32)">
   GetFailedCoreInstanceList(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the list of failed core instances for a specified site.</p>
@@ -361,6 +425,125 @@ public class ScanNetworkPatternResults</code></pre>
     <dd><p>A list of failed core instance names for the specified site.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternResults_GetFailedIclInstances_" data-uid="Csra.ScanNetworkPatternResults.GetFailedIclInstances*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternResults_GetFailedIclInstances" data-uid="Csra.ScanNetworkPatternResults.GetFailedIclInstances">
+  GetFailedIclInstances()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a mapping of sites to lists of ICL instance identifiers that belong to any failed cores on that site.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Site&lt;string[]&gt; GetFailedIclInstances()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.Site&lt;T&gt;</span> containing, for each site, an array of ICL instance identifiers within any failed
+cores. If a site has no failed cores, its array will be empty.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_ScanNetworkPatternResults_GetFailedIclInstances_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method aggregates failed ICL instances across all sites. The returned mapping
+can be used to identify and process failed cores per site. The method does not modify any site or instance
+state.</p>
+</div>
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternResults_GetFailedIclInstances_" data-uid="Csra.ScanNetworkPatternResults.GetFailedIclInstances*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternResults_GetFailedIclInstances_System_Int32_" data-uid="Csra.ScanNetworkPatternResults.GetFailedIclInstances(System.Int32)">
+  GetFailedIclInstances(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of all the ICL instance identifiers that belongs to failed cores for a specified site.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GetFailedIclInstances(int site)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>site</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The site number.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>A list of ICL instance identifiers within failed cores for the specified site. If the site has no failed cores, the list will be empty.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_ScanNetworkPatternResults_MergeWith_" data-uid="Csra.ScanNetworkPatternResults.MergeWith*"></a>
+
+  <h3 id="Csra_ScanNetworkPatternResults_MergeWith_Csra_ScanNetworkPatternResults_" data-uid="Csra.ScanNetworkPatternResults.MergeWith(Csra.ScanNetworkPatternResults)">
+  MergeWith(ScanNetworkPatternResults)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/ScanNetworkPatternResults.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>merges the results from another <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a> instance into the current instance.
+This is useful when you have multiple sets of results for the same pattern and want to combine them to get an overall result.
+The merging logic will combine the test results for each core and icl instance, ensuring that if any instance is failed in any of the sets,
+it will be marked as failed in the merged results. Similarly, the validity of results will also be combined accordingly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeWith(ScanNetworkPatternResults other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Csra.ScanNetworkPatternResults.html">ScanNetworkPatternResults</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

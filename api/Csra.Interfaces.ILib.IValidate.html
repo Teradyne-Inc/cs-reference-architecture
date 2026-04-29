@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Interfaces_ILib_IValidate" data-uid="Csra.Interfaces.ILib.IValidate" class="text-break">
-Interface ILib.IValidate  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L54"><i class="bi bi-code-slash"></i></a>
+Interface ILib.IValidate  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -121,9 +121,9 @@ Interface ILib.IValidate  <a class="header-action link-secondary" title="View so
 
   <a id="Csra_Interfaces_ILib_IValidate_Dc_" data-uid="Csra.Interfaces.ILib.IValidate.Dc*"></a>
 
-  <h3 id="Csra_Interfaces_ILib_IValidate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_TLibOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_Measure__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.TLibOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.Measure},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})">
-  Dc(Pins, bool?, TLibOutputMode?, double?, double?, double?, double?, double?, double?, Measure?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ILib_IValidate_Dc_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_DcOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_DcMeterMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.IValidate.Dc(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.DcOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.DcMeterMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})">
+  Dc(Pins, bool?, DcOutputMode?, double?, double?, double?, double?, double?, double?, DcMeterMode?, double?, double?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L222"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Validate arguments within Test Method Templates.</p>
@@ -131,7 +131,7 @@ Interface ILib.IValidate  <a class="header-action link-secondary" title="View so
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Dc(Pins pins, bool? gate = null, TLibOutputMode? mode = null, double? voltage = null, double? voltageAlt = null, double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, Measure? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, double? sampleRate = null, double? sampleSize = null, bool? voltageAltOutput = null, bool? bleederResistor = null, double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null, double? clampHiV = null, double? clampLoV = null, bool? highAccuracy = null, double? settlingTime = null, double? hardwareAverage = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void Dc(Pins pins, bool? gate = null, DcOutputMode? mode = null, double? voltage = null, double? voltageAlt = null, double? current = null, double? voltageRange = null, double? currentRange = null, double? forceBandwidth = null, DcMeterMode? meterMode = null, double? meterVoltageRange = null, double? meterCurrentRange = null, double? meterBandwidth = null, double? sourceFoldLimit = null, double? sinkFoldLimit = null, double? sourceOverloadLimit = null, double? sinkOverloadLimit = null, double? sampleRate = null, double? sampleSize = null, bool? voltageAltOutput = null, bool? bleederResistor = null, double? complianceBoth = null, double? compliancePositive = null, double? complianceNegative = null, double? clampHiV = null, double? clampLoV = null, bool? highAccuracy = null, double? settlingTime = null, double? hardwareAverage = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -142,7 +142,7 @@ Interface ILib.IValidate  <a class="header-action link-secondary" title="View so
     <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd><p>Optional. Gate parameter to be validated.</p>
 </dd>
-    <dt><code>mode</code> <a class="xref" href="Csra.TLibOutputMode.html">TLibOutputMode</a>?</dt>
+    <dt><code>mode</code> <a class="xref" href="Csra.DcOutputMode.html">DcOutputMode</a>?</dt>
     <dd><p>Optional. Mode parameter to be validated.</p>
 </dd>
     <dt><code>voltage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
@@ -163,7 +163,7 @@ Interface ILib.IValidate  <a class="header-action link-secondary" title="View so
     <dt><code>forceBandwidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
     <dd><p>Optional. Force Bandwidth parameter to be validated.</p>
 </dd>
-    <dt><code>meterMode</code> <a class="xref" href="Csra.Measure.html">Measure</a>?</dt>
+    <dt><code>meterMode</code> <a class="xref" href="Csra.DcMeterMode.html">DcMeterMode</a>?</dt>
     <dd><p>Optional. Meter Mode parameter to be validated.</p>
 </dd>
     <dt><code>meterVoltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
@@ -242,7 +242,7 @@ Interface ILib.IValidate  <a class="header-action link-secondary" title="View so
 
   <h3 id="Csra_Interfaces_ILib_IValidate_Enum__1_System_String_System_String___0__" data-uid="Csra.Interfaces.ILib.IValidate.Enum``1(System.String,System.String,``0@)">
   Enum&lt;T&gt;(string, string, out T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the provided string can be parsed to the specified enum type and create the enum value.</p>
@@ -297,7 +297,7 @@ provided enumeration.</p>
 
   <h3 id="Csra_Interfaces_ILib_IValidate_Fail_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.Fail(System.String,System.String)">
   Fail(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L188"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Raises an unconditional validation error.</p>
@@ -335,7 +335,7 @@ provided enumeration.</p>
 
   <h3 id="Csra_Interfaces_ILib_IValidate_GetObjectByClassName__1_System_String___0__" data-uid="Csra.Interfaces.ILib.IValidate.GetObjectByClassName``1(System.String,``0@)">
   GetObjectByClassName&lt;T&gt;(string, out T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L172"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates an instance of the class passed by its fully-qualified name</p>
@@ -386,7 +386,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_GreaterOrEqual__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.GreaterOrEqual``1(``0,``0,System.String)">
   GreaterOrEqual&lt;T&gt;(T, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a numeric value is greater or equal to a bound.</p>
@@ -439,7 +439,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_GreaterThan__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.GreaterThan``1(``0,``0,System.String)">
   GreaterThan&lt;T&gt;(T, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a numeric value is greater than the provided boundary.</p>
@@ -492,7 +492,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_InRange__1___0___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.InRange``1(``0,``0,``0,System.String)">
   InRange&lt;T&gt;(T, T, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a numeric value is within a range (including).</p>
@@ -548,7 +548,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_IsTrue_System_Boolean_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.IsTrue(System.Boolean,System.String,System.String)">
   IsTrue(bool, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L181"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks for whether <code>condition</code> == <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.</p>
@@ -595,7 +595,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_LessOrEqual__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.LessOrEqual``1(``0,``0,System.String)">
   LessOrEqual&lt;T&gt;(T, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L95"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a numeric value is less or equal to a bound.</p>
@@ -648,7 +648,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_LessThan__1___0___0_System_String_" data-uid="Csra.Interfaces.ILib.IValidate.LessThan``1(``0,``0,System.String)">
   LessThan&lt;T&gt;(T, T, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a numeric value is less than the provided boundary.</p>
@@ -701,7 +701,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_MultiCondition__1_System_String_System_Func_System_String___0__System_String___0____System_Nullable_System_Int32__" data-uid="Csra.Interfaces.ILib.IValidate.MultiCondition``1(System.String,System.Func{System.String,``0},System.String,``0[]@,System.Nullable{System.Int32})">
   MultiCondition&lt;T&gt;(string, Func&lt;string, T&gt;, string, out T[], int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L150"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks multi-condition validity and creates the data array.</p>
@@ -761,7 +761,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_MultiCondition__1_System_String_System_String___0____System_Nullable_System_Int32__" data-uid="Csra.Interfaces.ILib.IValidate.MultiCondition``1(System.String,System.String,``0[]@,System.Nullable{System.Int32})">
   MultiCondition&lt;TEnum&gt;(string, string, out TEnum[], int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L162"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks multi-condition validity and creates the data array.</p>
@@ -815,9 +815,9 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <a id="Csra_Interfaces_ILib_IValidate_Pattern_" data-uid="Csra.Interfaces.ILib.IValidate.Pattern*"></a>
 
-  <h3 id="Csra_Interfaces_ILib_IValidate_Pattern_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_Csra_PatternInfo__System_Boolean_" data-uid="Csra.Interfaces.ILib.IValidate.Pattern(Teradyne.Igxl.Interfaces.Public.Pattern,System.String,Csra.PatternInfo@,System.Boolean)">
-  Pattern(Pattern, string, out PatternInfo, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ILib_IValidate_Pattern_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_System_Collections_Generic_List_Csra_PatternInfo___System_Boolean_" data-uid="Csra.Interfaces.ILib.IValidate.Pattern(Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.Collections.Generic.List{Csra.PatternInfo}@,System.Boolean)">
+  Pattern(Pattern, string, out List&lt;PatternInfo&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks for valid pattern spec and creates patternInfo object.</p>
@@ -825,7 +825,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true)</code></pre>
+    <pre><code class="lang-csharp hljs">bool Pattern(Pattern pattern, string argumentName, out List&lt;PatternInfo&gt; patternInfo, bool threading = true)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -836,8 +836,8 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
     <dt><code>argumentName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>The argument name used to indicate to IG-XL which test instance parameter failed.</p>
 </dd>
-    <dt><code>patternInfo</code> <a class="xref" href="Csra.PatternInfo.html">PatternInfo</a></dt>
-    <dd><p>A new <a class="xref" href="Csra.PatternInfo.html">PatternInfo</a> object containing the provided pattern.</p>
+    <dt><code>patternInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Csra.PatternInfo.html">PatternInfo</a>&gt;</dt>
+    <dd><p>A new <a class="xref" href="Csra.PatternInfo.html">PatternInfo</a> object list containing the provided patterns.</p>
 </dd>
     <dt><code>threading</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>Optional. Indicate whether threading should be used. Validation will fail if threading is not supported by the pattern.</p>
@@ -867,7 +867,7 @@ otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference
 
   <h3 id="Csra_Interfaces_ILib_IValidate_Pins_Teradyne_Igxl_Interfaces_Public_PinList_System_String_Csra_Pins__" data-uid="Csra.Interfaces.ILib.IValidate.Pins(Teradyne.Igxl.Interfaces.Public.PinList,System.String,Csra.Pins@)">
   Pins(PinList, string, out Pins)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks for C#RA supported pin spec and creates the object.</p>

@@ -156,12 +156,12 @@
 <li><code>public void ConnectAllPins()</code></li>
 <li><code>public void Connect(Pins pins, bool? gateOn = null)</code></li>
 <li><code>public void Disconnect(Pins pins, bool? gateOn = null)</code></li>
-<li><code>public void Force(string pins, TLibOutputMode mode, double forceValue, double forceRange, double clampValue)</code></li>
+<li><code>public void Force(string pins, DcOutputMode mode, double forceValue, double forceRange, double clampValue)</code></li>
 <li><code>public void ForceI(Pins pins, double forceCurrent, double? clampVoltage = null)</code></li>
-<li><code>public void ForceI(Pins pins, double forceCurrent, double clampVoltage, double currentRange, TLibOutputMode? outputMode = null, double? voltageRange = null)</code></li>
+<li><code>public void ForceI(Pins pins, double forceCurrent, double clampVoltage, double currentRange, DcOutputMode? outputMode = null, double? voltageRange = null)</code></li>
 <li><code>public void ForceV(Pins pins, double forceVoltage)</code></li>
 <li><code>public void ForceV(Pins pins, double forceVoltage, double voltageRange, double currentRange)</code></li>
-<li><code>public void ForceV(Pins pins, double forceVoltage, double voltageRange, double currentRange, double? currentClamp = null, TLibOutputMode? outputMode = null)</code></li>
+<li><code>public void ForceV(Pins pins, double forceVoltage, double voltageRange, double currentRange, double? currentClamp = null, DcOutputMode? outputMode = null)</code></li>
 <li><code>public void ForceHiZ(Pins pins, double? clampValue = null)</code></li>
 <li><code>public void SetMeter(Pins pins, Measure meterMode, double rangeValue, double? filterValue = null, double? hardwareAverage = null, double? outputRangeValue = null)</code></li>
 </ul>

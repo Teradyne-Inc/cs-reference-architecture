@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class Storage | C# Reference Architecture ">
       
-      <meta name="description" content="StorageService - centralized persistent data storage.">
+      <meta name="description" content="StorageService - centralized persistent data storage. Uses type-specific dictionaries to avoid casting. Optimized for performance with O(1) lookups.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Services_Storage" data-uid="Csra.Services.Storage" class="text-break">
-Class Storage  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class Storage  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -93,7 +93,9 @@ Class Storage  <a class="header-action link-secondary" title="View source" href=
   <dl><dt>Assembly</dt><dd>Csra.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>StorageService - centralized persistent data storage.</p>
+  <div class="markdown summary"><p>StorageService - centralized persistent data storage.
+Uses type-specific dictionaries to avoid casting.
+Optimized for performance with O(1) lookups.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -164,7 +166,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Storage__ctor" data-uid="Csra.Services.Storage.#ctor">
   Storage()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -196,7 +198,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Storage_Count" data-uid="Csra.Services.Storage.Count">
   Count
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the number of key/value pairs contained in the storage.</p>
@@ -230,7 +232,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Storage_Instance" data-uid="Csra.Services.Storage.Instance">
   Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -263,7 +265,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Storage_Keys" data-uid="Csra.Services.Storage.Keys">
   Keys
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a collection containing the keys in the storage.</p>
@@ -299,9 +301,9 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <a id="Csra_Services_Storage_AddOrUpdate_" data-uid="Csra.Services.Storage.AddOrUpdate*"></a>
 
-  <h3 id="Csra_Services_Storage_AddOrUpdate_System_String_System_Object_" data-uid="Csra.Services.Storage.AddOrUpdate(System.String,System.Object)">
-  AddOrUpdate(string, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Services_Storage_AddOrUpdate__1_System_String___0_" data-uid="Csra.Services.Storage.AddOrUpdate``1(System.String,``0)">
+  AddOrUpdate&lt;T&gt;(string, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L50"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds a key/value pair to the storage if the key does not already exist, or updates the value for an existing key.</p>
@@ -309,7 +311,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddOrUpdate(string key, object value)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddOrUpdate&lt;T&gt;(string key, T value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -317,12 +319,17 @@ public class Storage : IStorageService, IServiceBase</code></pre>
     <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>They key to be added or whose value should be updated.</p>
 </dd>
-    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dt><code>value</code> <span class="xref">T</span></dt>
     <dd><p>The value of the element to add, or update.</p>
 </dd>
   </dl>
 
 
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -337,17 +344,17 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <a id="Csra_Services_Storage_ContainsKey_" data-uid="Csra.Services.Storage.ContainsKey*"></a>
 
-  <h3 id="Csra_Services_Storage_ContainsKey_System_String_" data-uid="Csra.Services.Storage.ContainsKey(System.String)">
-  ContainsKey(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Services_Storage_ContainsKey__1_System_String_" data-uid="Csra.Services.Storage.ContainsKey``1(System.String)">
+  ContainsKey&lt;T&gt;(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Determines wheter the storage contains the specified key.</p>
+  <div class="markdown level1 summary"><p>Determines whether the storage contains the specified key for the given type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ContainsKey(string key)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool ContainsKey&lt;T&gt;(string key)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -364,6 +371,12 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 </dd>
   </dl>
 
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the value to check.</p>
+</dd>
+  </dl>
 
 
 
@@ -378,17 +391,17 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <a id="Csra_Services_Storage_Remove_" data-uid="Csra.Services.Storage.Remove*"></a>
 
-  <h3 id="Csra_Services_Storage_Remove_System_String_" data-uid="Csra.Services.Storage.Remove(System.String)">
-  Remove(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Services_Storage_Remove__1_System_String_" data-uid="Csra.Services.Storage.Remove``1(System.String)">
+  Remove&lt;T&gt;(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L71"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Removes the value with the specified key from the storage.</p>
+  <div class="markdown level1 summary"><p>Removes the value with the specified key from the storage for the given type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Remove(string key)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Remove&lt;T&gt;(string key)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -405,6 +418,12 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 </dd>
   </dl>
 
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the value to remove.</p>
+</dd>
+  </dl>
 
 
 
@@ -421,7 +440,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Storage_Reset" data-uid="Csra.Services.Storage.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initialize the service. This is called by the API when the service is first used.</p>
@@ -450,7 +469,7 @@ public class Storage : IStorageService, IServiceBase</code></pre>
 
   <h3 id="Csra_Services_Storage_TryGetValue__1_System_String___0__" data-uid="Csra.Services.Storage.TryGetValue``1(System.String,``0@)">
   TryGetValue&lt;T&gt;(string, out T)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Services/Storage/Storage.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Services/Storage/Storage.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the type-safe value associated with the specified key.</p>

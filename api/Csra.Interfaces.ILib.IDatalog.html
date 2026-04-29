@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Interfaces_ILib_IDatalog" data-uid="Csra.Interfaces.ILib.IDatalog" class="text-break">
-Interface ILib.IDatalog  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1820"><i class="bi bi-code-slash"></i></a>
+Interface ILib.IDatalog  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1839"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -124,7 +124,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Csra_Interfaces_ILib_IDatalog_TestFunctional_Teradyne_Igxl_Interfaces_Public_Site_System_Boolean__System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String)">
   TestFunctional(Site&lt;bool&gt;, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1827"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1846"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a functional datalog test.</p>
@@ -160,9 +160,9 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
 
-  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.String)">
-  TestParametric(PinSite&lt;double&gt;, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1859"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.String,System.String)">
+  TestParametric(PinSite&lt;double&gt;, double, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1882"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -170,7 +170,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void TestParametric(PinSite&lt;double&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">void TestParametric(PinSite&lt;double&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, string tName = &quot;&quot;)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -184,6 +184,9 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
     <dt><code>forceUnit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Optional. The force value's unit.</p>
 </dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
+</dd>
   </dl>
 
 
@@ -195,7 +198,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
 
 
-  <h4 class="section" id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_String__custom_examples">Examples</h4>
+  <h4 class="section" id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_String_System_String__custom_examples">Examples</h4>
   <div class="markdown level1 custom_examples">
 <p>This code performs a <code>PinSite&lt;double&gt;</code> measurement on a DC instrument and datalogs the result.</p>
 <pre><code class="lang-csharp">public void MeasureDcAndDatalog() {
@@ -203,7 +206,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
     PinSite&lt;double&gt; result = TheLib.Acquire.Dc.Measure(pins);
     TheLib.Datalog.TestParametric(result, 5 * V, &quot;V&quot;);
 }
-</code></pre><!-- public void TestParametric(PinSite<int> result, double forceValue = 0, string forceUnit = "") -->
+</code></pre><!-- public void TestParametric(PinSite<int> result, double forceValue = 0, string forceUnit = "", string tName = "") -->
 </div>
 
 
@@ -211,9 +214,9 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
 
-  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32__System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32},System.Double,System.String)">
-  TestParametric(PinSite&lt;int&gt;, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1851"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32__System_Double_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32},System.Double,System.String,System.String)">
+  TestParametric(PinSite&lt;int&gt;, double, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1873"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -221,7 +224,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void TestParametric(PinSite&lt;int&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">void TestParametric(PinSite&lt;int&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, string tName = &quot;&quot;)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -235,6 +238,9 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
     <dt><code>forceUnit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Optional. The force value's unit.</p>
 </dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
+</dd>
   </dl>
 
 
@@ -246,7 +252,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
 
 
-  <h4 class="section" id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32__System_Double_System_String__custom_examples">Examples</h4>
+  <h4 class="section" id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32__System_Double_System_String_System_String__custom_examples">Examples</h4>
   <div class="markdown level1 custom_examples">
 <p>This code performs a <code>PinSite&lt;int&gt;</code> measurement on a DC instrument and datalogs the result.</p>
 </div>
@@ -258,7 +264,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_Teradyne_Igxl_Interfaces_Public_Samples_System_Double___System_Double_System_String_System_Boolean_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{Teradyne.Igxl.Interfaces.Public.Samples{System.Double}},System.Double,System.String,System.Boolean)">
   TestParametric(PinSite&lt;Samples&lt;double&gt;&gt;, double, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1895"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1918"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -302,7 +308,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_Teradyne_Igxl_Interfaces_Public_Samples_System_Int32___System_Double_System_String_System_Boolean_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{Teradyne.Igxl.Interfaces.Public.Samples{System.Int32}},System.Double,System.String,System.Boolean)">
   TestParametric(PinSite&lt;Samples&lt;int&gt;&gt;, double, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1886"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1909"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -344,17 +350,17 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
 
-  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Double__System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Double},System.Double,System.String)">
-  TestParametric(Site&lt;double&gt;, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1843"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Double__System_Double_System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Double},System.Double,System.Double,System.String)">
+  TestParametric(Site&lt;double&gt;, double, double, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1927"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
+  <div class="markdown level1 summary"><p>Perform a parametric datalog test with explicit low and high limits (not from the flow table).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;double&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;double&gt; result, double loVal, double hiVal, string tName = &quot;&quot;)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -362,11 +368,14 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
     <dt><code>result</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
     <dd><p>The result object to be datalogged.</p>
 </dd>
-    <dt><code>forceValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Optional. The force value applied for the result.</p>
+    <dt><code>loVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The low limit value.</p>
 </dd>
-    <dt><code>forceUnit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Optional. The force value's unit.</p>
+    <dt><code>hiVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The high limit value.</p>
+</dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
 </dd>
   </dl>
 
@@ -385,9 +394,9 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
 
-  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.String)">
-  TestParametric(Site&lt;int&gt;, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1835"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Double__System_Double_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Double},System.Double,System.String,System.String)">
+  TestParametric(Site&lt;double&gt;, double, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1864"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -395,7 +404,51 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;int&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;)</code></pre>
+    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;double&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, string tName = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>result</code> <span class="xref">Site</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;</dt>
+    <dd><p>The result object to be datalogged.</p>
+</dd>
+    <dt><code>forceValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Optional. The force value applied for the result.</p>
+</dd>
+    <dt><code>forceUnit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The force value's unit.</p>
+</dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__System_Double_System_String_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.String,System.String)">
+  TestParametric(Site&lt;int&gt;, double, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1855"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;int&gt; result, double forceValue = 0, string forceUnit = &quot;&quot;, string tName = &quot;&quot;)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -408,6 +461,53 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 </dd>
     <dt><code>forceUnit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>Optional. The force value's unit.</p>
+</dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
+
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_Teradyne_Igxl_Interfaces_Public_Samples_System_Double___System_Double_System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{Teradyne.Igxl.Interfaces.Public.Samples{System.Double}},System.Double,System.Double,System.String)">
+  TestParametric(Site&lt;Samples&lt;double&gt;&gt;, double, double, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1945"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform a parametric datalog test with explicit low and high limits (not from the flow table).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;Samples&lt;double&gt;&gt; result, double loVal, double hiVal, string tName = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>result</code> <span class="xref">Site</span>&lt;<span class="xref">Samples</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>&gt;&gt;</dt>
+    <dd><p>The result object to be datalogged.</p>
+</dd>
+    <dt><code>loVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The low limit value.</p>
+</dd>
+    <dt><code>hiVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The high limit value.</p>
+</dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
 </dd>
   </dl>
 
@@ -428,7 +528,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_Teradyne_Igxl_Interfaces_Public_Samples_System_Double___System_Double_System_String_System_Boolean_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{Teradyne.Igxl.Interfaces.Public.Samples{System.Double}},System.Double,System.String,System.Boolean)">
   TestParametric(Site&lt;Samples&lt;double&gt;&gt;, double, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1877"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1900"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -470,9 +570,53 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
 
+  <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_Teradyne_Igxl_Interfaces_Public_Samples_System_Int32___System_Double_System_Double_System_String_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{Teradyne.Igxl.Interfaces.Public.Samples{System.Int32}},System.Double,System.Double,System.String)">
+  TestParametric(Site&lt;Samples&lt;int&gt;&gt;, double, double, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1936"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Perform a parametric datalog test with explicit low and high limits (not from the flow table).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TestParametric(Site&lt;Samples&lt;int&gt;&gt; result, double loVal, double hiVal, string tName = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>result</code> <span class="xref">Site</span>&lt;<span class="xref">Samples</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;&gt;</dt>
+    <dd><p>The result object to be datalogged.</p>
+</dd>
+    <dt><code>loVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The low limit value.</p>
+</dd>
+    <dt><code>hiVal</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The high limit value.</p>
+</dd>
+    <dt><code>tName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The test name to use for datalogging.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Interfaces_ILib_IDatalog_TestParametric_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric*"></a>
+
   <h3 id="Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_Teradyne_Igxl_Interfaces_Public_Samples_System_Int32___System_Double_System_String_System_Boolean_" data-uid="Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{Teradyne.Igxl.Interfaces.Public.Samples{System.Int32}},System.Double,System.String,System.Boolean)">
   TestParametric(Site&lt;Samples&lt;int&gt;&gt;, double, string, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1868"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1891"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a parametric datalog test by using FlowLimits.</p>
@@ -516,7 +660,7 @@ Interface ILib.IDatalog  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Csra_Interfaces_ILib_IDatalog_TestScanNetwork_Csra_ScanNetworkPatternResults_Csra_ScanNetworkDatalogOption_" data-uid="Csra.Interfaces.ILib.IDatalog.TestScanNetwork(Csra.ScanNetworkPatternResults,Csra.ScanNetworkDatalogOption)">
   TestScanNetwork(ScanNetworkPatternResults, ScanNetworkDatalogOption)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/TestBlocks/ITestBlocks.cs/#L1901"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L1951"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Perform a flexible datalog test for ScanNetwork pattern results, with datalogging options set by <a class="xref" href="Csra.ScanNetworkDatalogOption.html">ScanNetworkDatalogOption</a>.</p>

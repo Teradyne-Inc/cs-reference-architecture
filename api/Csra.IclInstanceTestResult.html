@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_IclInstanceTestResult" data-uid="Csra.IclInstanceTestResult" class="text-break">
-Class IclInstanceTestResult  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class IclInstanceTestResult  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult__ctor_Csra_IclInstanceInfo_" data-uid="Csra.IclInstanceTestResult.#ctor(Csra.IclInstanceInfo)">
   IclInstanceTestResult(IclInstanceInfo)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Create a new <a class="xref" href="Csra.IclInstanceTestResult.html">IclInstanceTestResult</a> for an icl instance.</p>
@@ -188,6 +188,42 @@ public class IclInstanceTestResult</code></pre>
 
 
 
+  <a id="Csra_IclInstanceTestResult__ctor_" data-uid="Csra.IclInstanceTestResult.#ctor*"></a>
+
+  <h3 id="Csra_IclInstanceTestResult__ctor_Csra_IclInstanceTestResult_" data-uid="Csra.IclInstanceTestResult.#ctor(Csra.IclInstanceTestResult)">
+  IclInstanceTestResult(IclInstanceTestResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new instance of <a class="xref" href="Csra.IclInstanceTestResult.html">IclInstanceTestResult</a> by copying another instance. This can be useful when you want to create a new
+instance to hold updated results while keeping the original results unchanged.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IclInstanceTestResult(IclInstanceTestResult source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="Csra.IclInstanceTestResult.html">IclInstanceTestResult</a></dt>
+    <dd><p>The source <a class="xref" href="Csra.IclInstanceTestResult.html">IclInstanceTestResult</a> to copy.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -196,7 +232,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_CoreInstanceName" data-uid="Csra.IclInstanceTestResult.CoreInstanceName">
   CoreInstanceName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the core instance name that this icl instance belongs to.</p>
@@ -230,7 +266,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_ErrorStatus" data-uid="Csra.IclInstanceTestResult.ErrorStatus">
   ErrorStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the per-site error status if any. 0 = no error.</p>
@@ -264,7 +300,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_InstanceName" data-uid="Csra.IclInstanceTestResult.InstanceName">
   InstanceName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the icl instance name.</p>
@@ -298,7 +334,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_IsFailed" data-uid="Csra.IclInstanceTestResult.IsFailed">
   IsFailed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the per-site test result of the icl instance. True = failed, False = passed.</p>
@@ -332,7 +368,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_IsOnChipCompare" data-uid="Csra.IclInstanceTestResult.IsOnChipCompare">
   IsOnChipCompare
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns true if this icl instance is an on-chip compare instance.</p>
@@ -366,7 +402,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_IsResultValid" data-uid="Csra.IclInstanceTestResult.IsResultValid">
   IsResultValid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Result is valid if the icl instance is tested. i.e. not masked or set to disable-contribution.</p>
@@ -400,7 +436,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_TestName" data-uid="Csra.IclInstanceTestResult.TestName">
   TestName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the test name for datalogging the result of this icl instance.</p>
@@ -434,7 +470,7 @@ public class IclInstanceTestResult</code></pre>
 
   <h3 id="Csra_IclInstanceTestResult_TestNumber" data-uid="Csra.IclInstanceTestResult.TestNumber">
   TestNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the test number for datalogging the result of this icl instance.</p>
@@ -461,6 +497,61 @@ public class IclInstanceTestResult</code></pre>
 
 
 
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Csra_IclInstanceTestResult_MergeWith_" data-uid="Csra.IclInstanceTestResult.MergeWith*"></a>
+
+  <h3 id="Csra_IclInstanceTestResult_MergeWith_Csra_IclInstanceTestResult_" data-uid="Csra.IclInstanceTestResult.MergeWith(Csra.IclInstanceTestResult)">
+  MergeWith(IclInstanceTestResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/IclInstanceTestResult.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Merges the test result data from the other icl instance into the current icl instance, combining relevant status
+flags.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeWith(IclInstanceTestResult other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Csra.IclInstanceTestResult.html">IclInstanceTestResult</a></dt>
+    <dd><p>The test result instance to merge with the current instance. Must represent the same ICL instance as the
+current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_IclInstanceTestResult_MergeWith_Csra_IclInstanceTestResult__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method updates the current instance's failure and validity status by combining
+them with those from the specified instance. Only results from the same ICL instance can be
+merged.</p>
+</div>
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">other</code> is null.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if <code class="paramref">other</code> represents a different ICL instance than the current object.</p>
+</dd>
+  </dl>
 
 
 

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.17 - 2026-04-24 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.17 - 2026-04-24 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/releases_/v0.17.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v017---2026-04-24">v0.17 - 2026-04-24</h1>
+
+<h2 id="improvements">Improvements</h2>
+<h3 id="adding-a-new-class-named-scannetworkconsole-which-is-a-control-panel-for-easy-of-toggling-scannetwork-pattern-configurable">Adding a new class named ScanNetworkConsole, which is a control panel for easy of toggling ScanNetwork pattern configurable.</h3>
+<ul>
+<li>Adding a ScanNetwork Pattern test result history Database, so result details can be retrieved and analyzed at the end of job execution</li>
+<li>Adding a summary result per core&amp; per ssh, can be easily pulled out and datalog.</li>
+<li>Adding quick way to mask failed cores/ssh_instances based on summary result.</li>
+</ul>
+<p><strong>Impact:</strong>
+New feature improves user experience. initial customer : Goose</p>
+<h3 id="add-optional-parameter-to-testparametric">Add optional parameter to TestParametric</h3>
+<p><code>TheLib.Datalog.TestParametric</code> now supports to datalog test name.</p>
+<h3 id="add-support-for-ig-xl-110007">Add support for IG-XL 11.00.07</h3>
+<p>C#RA is now also supporting IG-XL versions 11.00.00 - 11.00.07.</p>
+<h3 id="auto-detect-the-ssn-setup-pattern-module">Auto-detect the ssn-setup pattern module</h3>
+<p>by iterating through pattern modules and looking for pattern vector tags: the first pattern module that contains contribution bit tags will be recognized as the pattern that needs patching.</p>
+<pre><code class="lang-c#">string GetSsnSetupPatternModuleName(string[] moduleList, out IVectorTagIdsCollection contribTags) {
+    contribTags = null;
+    foreach (string moduleName in moduleList) {
+        contribTags = TheHdw.Digital.Patterns().Modules[moduleName].Tags.GetTagIdsAll(&quot;disable_on_chip_compare_contribution&quot;);
+        if (contribTags != null &amp;&amp; contribTags.Count &gt; 0) {
+            return moduleName;
+        }
+    }
+    return moduleList.FirstOrDefault();
+}
+</code></pre>
+<h3 id="storageservice-performance-boost">StorageService Performance Boost</h3>
+<p>Refactoring StorageService, to remove boxing/unboxing.</p>
+<h3 id="support-explicit-limits-for-testparametric">Support explicit limits for TestParametric</h3>
+<p><code>TheLib.Datalog.TestParametric</code> now supports explicit limits.</p>
+<h3 id="add-vectormodify-testblocks">Add VectorModify TestBlocks</h3>
+<ul>
+<li>Added multiple methods to <code>PatternInfo</code> for modifying vector block data:
+<ul>
+<li><code>ModifyVectorBlockData</code> for vector-major order,</li>
+<li><code>ModifyVectorBlockDataPinOrder</code> for pin-major order and single-string input,</li>
+<li>Internal utility to transpose pin-major to vector-major order,</li>
+<li><code>GetModuleLabelList</code> to retrieve defined labels from a pattern module.</li>
+</ul>
+</li>
+<li>Added a new test method <code>PatternLabelOverWrite</code> in <code>PatternHandshake.cs</code> to demonstrate and validate vector block data modification using the new <code>PatternInfo</code> APIs.</li>
+</ul>
+<h3 id="support-log-to-file">Support Log to File</h3>
+<ul>
+<li>Introduced <code>LogToFile</code> method in both <code>IAlertService</code> and its implementation, enabling logging directly to a specified log file with color and bold options. <a href="diffhunk://#diff-382a9e6372bd149c9ac8e8a954b6a7e01a457961dfd58a7408eceb2c80e8ad1dR69-R73">[1]</a> <a href="diffhunk://#diff-2a8776025cd492f9b0aaf2805cb263acbf652074758d112e2deed6de6d815804R57-R66">[2]</a></li>
+<li>Updated helper methods in <code>PatternHandshake.cs</code> to use <code>LogToFile</code> for outputting pattern vector data to a file.</li>
+</ul>
+<h3 id="removed-transactionservice-from-cra">Removed TransactionService from C#RA</h3>
+<p>The Transaction service folder contained an incomplete and unused implementation for PortBridge. PortBridge will be covered differently in the future.</p>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<p>fix bug in IGComponentManagerParser.cs. support in the new Oasis version 4.6.10801
+support in the IG-Component manager Schema that look like:
+{
+&quot;Publisher&quot;: &quot;Teradyne&quot;,
+&quot;Name&quot;: &quot;Oasis&quot;,
+&quot;Comparison&quot;: &quot;Equal to&quot;,
+&quot;Version&quot;: &quot;4.6.10801&quot;,
+&quot;Notes&quot;: &quot;&quot;,
+&quot;Verification&quot;: &quot;Default&quot;,
+&quot;Location&quot;: &quot;&quot;
+},
+This pull request introduces significant improvements to the <code>IGComponentManagerParser</code> and its related infrastructure, focusing on enhancing version verification logic, JSON schema validation, and test coverage. The changes modernize and generalize version comparison, add robust structure validation for configuration files, and expand the supported set of Teradyne components.</p>
+<p><strong>Key changes include:</strong></p>
+<h3 id="igcomponentmanagerparser-enhancements">IGComponentManagerParser enhancements</h3>
+<ul>
+<li><strong>Generalized version comparison logic:</strong><br>
+The <code>VersionCompare</code> method now supports a wider range of comparison operators (<code>Equal to</code>, <code>Greater than</code>, <code>Greater than or equal to</code>, <code>Minimum</code>, <code>Between</code>), handles version ranges, and cleans version strings more robustly. This enables more flexible and accurate validation of component versions.</li>
+<li><strong>Component-specific verification methods:</strong><br>
+Added verification support for new Teradyne components such as <code>PortBridge</code> and <code>Visual Studio</code>. Each now has a dedicated method to extract and compare their versions, using environment variables or system tools as appropriate.</li>
+<li><strong>Improved error handling and feedback:</strong><br>
+If required environment variables are missing or files are not found, explicit error messages are logged. This ensures that missing prerequisites are clearly reported.</li>
+</ul>
+<h3 id="remove-force-voltage-setting-when-setting-the-dcvs-mode-to-high-impedance">Remove force voltage setting when setting the DCVS mode to High Impedance</h3>
+<pre><code class="lang-c#">public void ForceHiZ() {
+    Mode.Value = tlDCVSMode.HighImpedance;
+}
+</code></pre>
+<h3 id="adding-exceptions-for-ppmu-pin-type">Adding exceptions for PPMU pin type</h3>
+<p>IG-XL instruments does not support having ReadSamples or StrobeSamples for PPMU pin types. These methods will now throw an exception when these methods are called for PPMU.</p>
+<p><strong>Impact:</strong> What is the impact for the user?
+User will now see the method throw an exception if trying to use ReadMeasuredSamples or StrobeSamples for PPMU pin types.</p>
+<h3 id="fix-dcvs-voltage-range-validation-when-meter-mode-is-voltage">Fix DCVS voltage range validation when meter mode is Voltage</h3>
+<p>Corrected the voltage range value handling/validation for DCVS when the meter mode is set to Voltage, preventing the UI/runtime error triggered by an invalid or mismatched range value.</p>
+<p><strong>Impact:</strong> What is the impact for the user?
+Users can set Meter Mode = Voltage on DCVS without encountering voltage range errors; voltage range values are consistently validated/mapped to supported ranges, improving reliability in configuration and execution.</p>
+<h3 id="changing-default-value">Changing default value</h3>
+<p>The Search algorithms, used the value <code>-999</code> as the return value when the search was unsuccessful. That was changed to double.IsNan or int.MinValue.</p>
+<h2 id="breaking-changes">Breaking Changes</h2>
+<h3 id="upgrading-mstest">Upgrading MSTest</h3>
+<p>Upgrading MSTest from 2.2 to 3.0.</p>
+<h3 id="list-of-patterns">List of patterns</h3>
+<p>In the TheLib.Validate.Pattern method, the output type is now a List of patternInfo's instead of a single patternInfo.</p>
+<pre><code class="lang-c#">// Previously
+public bool Pattern(Pattern pattern, string argumentName, out PatternInfo patternInfo, bool threading = true);
+
+// Currently
+public bool Pattern(Pattern pattern, string argumentName, out List&lt;PatternInfo&gt; patternInfo, bool threading = true);
+</code></pre>
+<h3 id="enum-renaming">Enum Renaming</h3>
+<p>Several enums have been renamed:</p>
+<blockquote>
+<p>TLibDiffLvlValType - DiffLevelValueType
+TLibOutputMode  - DcOutputMode
+Measure - DcMeterMode
+Kelvin - KelvinMode
+InitMode - SetupResetTrigger</p>
+</blockquote>
+<h3 id="refactored-folder-structure">Refactored folder Structure</h3>
+<p><code>Csra</code> and <code>Tol</code> projects moved in a separate folder <code>Core</code>.
+The TestMethod projects <code>CsraTestMethods</code>, <code>CsTestMethods</code>, and <code>UnitTests</code> moved to <code>ReferenceLibraries</code>.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

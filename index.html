@@ -82,7 +82,7 @@ Services.Setup.Apply(setup);
 if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
 TheLib.Setup.Dc.Connect(_pins);
 
-TheLib.Setup.Dc.SetForceAndMeter(_pins, TLibOutputMode.ForceCurrent, current, current, clampVoltage, Measure.Voltage, voltageRange);
+TheLib.Setup.Dc.SetForceAndMeter(_pins, DcOutputMode.ForceCurrent, current, current, clampVoltage, Measure.Voltage, voltageRange);
 TheLib.Execute.Wait(waitTime);
 _meas = TheLib.Acquire.Dc.Measure(_pins);
 
@@ -113,6 +113,10 @@ TheLib.Datalog.TestParametric(_meas, current);
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.17">v0.17</a></td>
+<td>2026-04-24</td>
+</tr>
 <tr>
 <td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.16">v0.16</a></td>
 <td>2026-03-02</td>

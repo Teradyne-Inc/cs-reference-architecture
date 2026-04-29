@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_CoreInstanceTestResult" data-uid="Csra.CoreInstanceTestResult" class="text-break">
-Class CoreInstanceTestResult  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L13"><i class="bi bi-code-slash"></i></a>
+Class CoreInstanceTestResult  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -162,9 +162,45 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <a id="Csra_CoreInstanceTestResult__ctor_" data-uid="Csra.CoreInstanceTestResult.#ctor*"></a>
 
+  <h3 id="Csra_CoreInstanceTestResult__ctor_Csra_CoreInstanceTestResult_" data-uid="Csra.CoreInstanceTestResult.#ctor(Csra.CoreInstanceTestResult)">
+  CoreInstanceTestResult(CoreInstanceTestResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Csra.CoreInstanceTestResult.html">CoreInstanceTestResult</a> by copying another instance. This can be useful when you want to create a new
+instance to hold updated results while keeping the original results unchanged.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CoreInstanceTestResult(CoreInstanceTestResult source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="Csra.CoreInstanceTestResult.html">CoreInstanceTestResult</a></dt>
+    <dd><p>The source <a class="xref" href="Csra.CoreInstanceTestResult.html">CoreInstanceTestResult</a> to copy.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_CoreInstanceTestResult__ctor_" data-uid="Csra.CoreInstanceTestResult.#ctor*"></a>
+
   <h3 id="Csra_CoreInstanceTestResult__ctor_System_String_System_Collections_Generic_IEnumerable_System_String__" data-uid="Csra.CoreInstanceTestResult.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
   CoreInstanceTestResult(string, IEnumerable&lt;string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Csra.CoreInstanceTestResult.html">CoreInstanceTestResult</a> object for a core instance.</p>
@@ -206,7 +242,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_ErrorStatus" data-uid="Csra.CoreInstanceTestResult.ErrorStatus">
   ErrorStatus
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the per-site error status if any. 0 = no error.</p>
@@ -240,7 +276,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_InstanceName" data-uid="Csra.CoreInstanceTestResult.InstanceName">
   InstanceName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the core instance name.</p>
@@ -274,7 +310,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_IsFailed" data-uid="Csra.CoreInstanceTestResult.IsFailed">
   IsFailed
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the per-site test result of the core instance. True = failed, False = passed.</p>
@@ -308,7 +344,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_IsResultValid" data-uid="Csra.CoreInstanceTestResult.IsResultValid">
   IsResultValid
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Result is valid if core instance is fully tested. i.e. all icl instances under this core instance are tested.</p>
@@ -342,7 +378,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_TestName" data-uid="Csra.CoreInstanceTestResult.TestName">
   TestName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L48"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the test name for datalogging the result of this core instance.</p>
@@ -376,7 +412,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_TestNumber" data-uid="Csra.CoreInstanceTestResult.TestNumber">
   TestNumber
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the test number for datalogging the result of this core instance.</p>
@@ -414,7 +450,7 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
   <h3 id="Csra_CoreInstanceTestResult_GetEnumerator" data-uid="Csra.CoreInstanceTestResult.GetEnumerator">
   GetEnumerator()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection of strings.</p>
@@ -442,6 +478,54 @@ public class CoreInstanceTestResult : IEnumerable&lt;string&gt;, IEnumerable</co
 
 
 
+
+
+
+  <a id="Csra_CoreInstanceTestResult_MergeWith_" data-uid="Csra.CoreInstanceTestResult.MergeWith*"></a>
+
+  <h3 id="Csra_CoreInstanceTestResult_MergeWith_Csra_CoreInstanceTestResult_" data-uid="Csra.CoreInstanceTestResult.MergeWith(Csra.CoreInstanceTestResult)">
+  MergeWith(CoreInstanceTestResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/ScanNetwork/CoreInstanceTestResult.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Merges the test result data from the other core instance test result into the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MergeWith(CoreInstanceTestResult other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Csra.CoreInstanceTestResult.html">CoreInstanceTestResult</a></dt>
+    <dd><p>The core instance test result to merge with the current result. Must represent the same core instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Csra_CoreInstanceTestResult_MergeWith_Csra_CoreInstanceTestResult__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>After merging, the combined result will include all unique test data from both
+instances. The failure and validity flags are updated to reflect the merged state.</p>
+</div>
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if <code class="paramref">other</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown if <code class="paramref">other</code> represents a different core instance than the current result.</p>
+</dd>
+  </dl>
 
 
 

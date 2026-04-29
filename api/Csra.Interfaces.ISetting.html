@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Interfaces_ISetting" data-uid="Csra.Interfaces.ISetting" class="text-break">
-Interface ISetting  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/ISetting.cs/#L3"><i class="bi bi-code-slash"></i></a>
+Interface ISetting  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/ISetting.cs/#L3"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -123,7 +123,7 @@ Interface ISetting  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="Csra_Interfaces_ISetting_Apply" data-uid="Csra.Interfaces.ISetting.Apply">
   Apply()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/ISetting.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/ISetting.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Applies the setting to the hardware, in case and only for those pins that need it.</p>
@@ -152,7 +152,7 @@ Interface ISetting  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="Csra_Interfaces_ISetting_Diff" data-uid="Csra.Interfaces.ISetting.Diff">
   Diff()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/ISetting.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/ISetting.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs a diff on the setting. This is used to check if the setting is already applied to the hardware.</p>
@@ -181,7 +181,7 @@ Interface ISetting  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="Csra_Interfaces_ISetting_Dump" data-uid="Csra.Interfaces.ISetting.Dump">
   Dump()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/ISetting.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/ISetting.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Dumps the setting to the log output target.</p>
@@ -210,7 +210,7 @@ Interface ISetting  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="Csra_Interfaces_ISetting_Export_System_String_" data-uid="Csra.Interfaces.ISetting.Export(System.String)">
   Export(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/ISetting.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/ISetting.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Exports the setting to a file at the specified path. The file format is implementation specific, but should be human readable.</p>
@@ -243,9 +243,9 @@ Interface ISetting  <a class="header-action link-secondary" title="View source" 
 
   <a id="Csra_Interfaces_ISetting_Init_" data-uid="Csra.Interfaces.ISetting.Init*"></a>
 
-  <h3 id="Csra_Interfaces_ISetting_Init_Csra_InitMode_" data-uid="Csra.Interfaces.ISetting.Init(Csra.InitMode)">
-  Init(InitMode)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Settings/ISetting.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Interfaces_ISetting_Init_Csra_SetupResetTrigger_" data-uid="Csra.Interfaces.ISetting.Init(Csra.SetupResetTrigger)">
+  Init(SetupResetTrigger)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Settings/ISetting.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs the specified initialization to the setting.</p>
@@ -253,13 +253,13 @@ Interface ISetting  <a class="header-action link-secondary" title="View source" 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Init(InitMode initMode)</code></pre>
+    <pre><code class="lang-csharp hljs">void Init(SetupResetTrigger setupResetTrigger)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>initMode</code> <a class="xref" href="Csra.InitMode.html">InitMode</a></dt>
-    <dd><p>The init mode.</p>
+    <dt><code>setupResetTrigger</code> <a class="xref" href="Csra.SetupResetTrigger.html">SetupResetTrigger</a></dt>
+    <dd><p>The trigger event that causes this setting to reset.</p>
 </dd>
   </dl>
 

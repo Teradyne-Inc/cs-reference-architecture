@@ -85,7 +85,7 @@
 
 
   <h1 id="Csra_Types_PinsFactory" data-uid="Csra.Types.PinsFactory" class="text-break">
-Class PinsFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/Pins/PinsFactory.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class PinsFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/Pins/PinsFactory.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -144,6 +144,21 @@ public class PinsFactory : Factory</code></pre>
       <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDigitalPins_">Factory.CreateDigitalPins(string, DriverDigitalPins)</a>
     </div>
     <div>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateUtilityPins_System_String_">Factory.CreateUtilityPins(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateUtilityPins_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverUtilityPins_">Factory.CreateUtilityPins(string, tlDriverUtilityPins)</a>
+    </div>
+    <div>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateCmemCapture_System_String_">Factory.CreateCmemCapture(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateHramCapture_System_String_">Factory.CreateHramCapture(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Tol.Factory.html#Tol_Factory_CreateDsscCapture_System_String_">Factory.CreateDsscCapture(string)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
     <div>
@@ -179,16 +194,16 @@ public class PinsFactory : Factory</code></pre>
 
   <a id="Csra_Types_PinsFactory_GetPins_" data-uid="Csra.Types.PinsFactory.GetPins*"></a>
 
-  <h3 id="Csra_Types_PinsFactory_GetPins_System_String_Tol_IPpmuPins__Tol_IDcviPins__Tol_IDcvsPins__Tol_IDigitalPins__" data-uid="Csra.Types.PinsFactory.GetPins(System.String,Tol.IPpmuPins@,Tol.IDcviPins@,Tol.IDcvsPins@,Tol.IDigitalPins@)">
-  GetPins(string, out IPpmuPins, out IDcviPins, out IDcvsPins, out IDigitalPins)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Csra/Types/Pins/PinsFactory.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Csra_Types_PinsFactory_GetPins_System_String_Tol_IPpmuPins__Tol_IDcviPins__Tol_IDcvsPins__Tol_IDigitalPins__Tol_IUtilityPins__" data-uid="Csra.Types.PinsFactory.GetPins(System.String,Tol.IPpmuPins@,Tol.IDcviPins@,Tol.IDcvsPins@,Tol.IDigitalPins@,Tol.IUtilityPins@)">
+  GetPins(string, out IPpmuPins, out IDcviPins, out IDcvsPins, out IDigitalPins, out IUtilityPins)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/Pins/PinsFactory.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void GetPins(string pinList, out IPpmuPins ppmuPins, out IDcviPins dcviPins, out IDcvsPins dcvsPins, out IDigitalPins digitalPins)</code></pre>
+    <pre><code class="lang-csharp hljs">public static List&lt;string&gt; GetPins(string pinList, out IPpmuPins ppmuPins, out IDcviPins dcviPins, out IDcvsPins dcvsPins, out IDigitalPins digitalPins, out IUtilityPins utilityPins)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -203,7 +218,42 @@ public class PinsFactory : Factory</code></pre>
     <dd></dd>
     <dt><code>digitalPins</code> <a class="xref" href="Tol.IDigitalPins.html">IDigitalPins</a></dt>
     <dd></dd>
+    <dt><code>utilityPins</code> <a class="xref" href="Tol.IUtilityPins.html">IUtilityPins</a></dt>
+    <dd></dd>
   </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_Types_PinsFactory_Reset_" data-uid="Csra.Types.PinsFactory.Reset*"></a>
+
+  <h3 id="Csra_Types_PinsFactory_Reset" data-uid="Csra.Types.PinsFactory.Reset">
+  Reset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/Types/Pins/PinsFactory.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Reset()</code></pre>
+  </div>
+
 
 
 
