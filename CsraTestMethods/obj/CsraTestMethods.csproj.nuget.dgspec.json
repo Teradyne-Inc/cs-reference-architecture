@@ -1,0 +1,148 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\ReferenceLibraries\\CsraTestMethods\\CsraTestMethods.csproj": {}
+  },
+  "projects": {
+    "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Csra\\Csra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Csra\\Csra.csproj",
+        "projectName": "Csra",
+        "projectPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Csra\\Csra.csproj",
+        "packagesPath": "C:\\Users\\tagswbuild\\.nuget\\packages\\",
+        "outputPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Csra\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\jenkins\\workspace\\W_cs-reference-architecture_main@tmp\\artifactory\\javatmpdir\\artifactory.plugin.nuget.config10963578753848624285.tmp"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://seg-artifactory.teradyne.com:443/artifactory/api/nuget/seg-nuget-repository": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {
+              "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Tol\\Tol.csproj": {
+                "projectPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Tol\\Tol.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Tol\\Tol.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Tol\\Tol.csproj",
+        "projectName": "Tol",
+        "projectPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Tol\\Tol.csproj",
+        "packagesPath": "C:\\Users\\tagswbuild\\.nuget\\packages\\",
+        "outputPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Tol\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\jenkins\\workspace\\W_cs-reference-architecture_main@tmp\\artifactory\\javatmpdir\\artifactory.plugin.nuget.config10963578753848624285.tmp"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://seg-artifactory.teradyne.com:443/artifactory/api/nuget/seg-nuget-repository": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\ReferenceLibraries\\CsraTestMethods\\CsraTestMethods.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\ReferenceLibraries\\CsraTestMethods\\CsraTestMethods.csproj",
+        "projectName": "CsraTestMethods",
+        "projectPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\ReferenceLibraries\\CsraTestMethods\\CsraTestMethods.csproj",
+        "packagesPath": "C:\\Users\\tagswbuild\\.nuget\\packages\\",
+        "outputPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\ReferenceLibraries\\CsraTestMethods\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\jenkins\\workspace\\W_cs-reference-architecture_main@tmp\\artifactory\\javatmpdir\\artifactory.plugin.nuget.config10963578753848624285.tmp"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://seg-artifactory.teradyne.com:443/artifactory/api/nuget/seg-nuget-repository": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {
+              "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Csra\\Csra.csproj": {
+                "projectPath": "C:\\jenkins\\workspace\\W_cs-reference-architecture_main\\src\\Core\\Csra\\Csra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

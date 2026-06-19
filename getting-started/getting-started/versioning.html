@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Versioning Guide for Consumers | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Versioning Guide for Consumers | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/versioning.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="versioning-guide-for-consumers">Versioning Guide for Consumers</h1>
+
+<p>This page explains the C#RA versioning model and gives you all the information you need to safely consume, update, and plan migrations for C#RA in your test programs.</p>
+<blockquote>
+<p><strong>Quick reference:</strong> See <code>VERSIONING.md</code> at the repository root for a one-page summary.<br>
+<strong>Breaking-change details:</strong> See <code>MIGRATION.md</code> at the repository root for step-by-step migration instructions.</p>
+</blockquote>
+<hr>
+<h2 id="the-golden-rules">The Golden Rules</h2>
+<p>Follow these rules to avoid version-related build failures:</p>
+<ol>
+<li><strong>Pin your C#RA copy to a named version tag</strong> — never reference <code>HEAD</code> or <code>main</code>. The tip of main is a work-in-progress, not a stable release.</li>
+<li><strong>Never ignore <code>[Obsolete]</code> compiler warnings</strong> — they are migration deadlines, not suggestions. Each warning tells you exactly which version will remove the API and what the replacement is.</li>
+<li><strong>Plan a migration sprint when a new MAJOR version is announced</strong> — do not wait until the old version reaches End-of-Life.</li>
+<li><strong>Check <code>CHANGELOG.md</code> and <code>MIGRATION.md</code> before every update</strong> — even MINOR bumps can expose new, better patterns.</li>
+<li><strong>Migrate off End-of-Life (EOL) versions promptly</strong> — EOL versions receive no patches or security fixes.</li>
+</ol>
+<hr>
+<h2 id="how-to-read-a-version-number">How to Read a Version Number</h2>
+<p>C#RA uses <strong>Semantic Versioning 2.0</strong> (<code>MAJOR.MINOR.PATCH</code>):</p>
+<pre><code>  1  .  2  .  3
+  │     │     └── PATCH — Bug fixes only. No API changes.
+  │     └──────── MINOR — New features. Existing API unchanged.
+  └────────────── MAJOR — Breaking changes. Migration required.
+</code></pre>
+<h3 id="what-each-increment-means-for-a-test-engineer">What each increment means for a Test Engineer</h3>
+<table>
+<thead>
+<tr>
+<th>Bump</th>
+<th>Meaning</th>
+<th>Action required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PATCH</strong> (x.x.N+1)</td>
+<td>A bug was fixed. No public API was added or removed.</td>
+<td>✅ Update immediately — no code changes needed.</td>
+</tr>
+<tr>
+<td><strong>MINOR</strong> (x.N+1.0)</td>
+<td>New capabilities were added. Nothing was removed.</td>
+<td>✅ Update at your next opportunity. Check <code>CHANGELOG.md</code> for new features.</td>
+</tr>
+<tr>
+<td><strong>MAJOR</strong> (N+1.0.0)</td>
+<td>At least one public API was removed or changed.</td>
+<td>⚠️ Plan a migration sprint. Read <code>MIGRATION.md</code> before updating.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="decision-tree-should-i-update-today">Decision tree: Should I update today?</h3>
+<pre><code>What kind of version bump is this?
+        │
+        ├── PATCH ──► Update now.
+        │             No code changes needed.
+        │
+        ├── MINOR ──► Update at your next opportunity.
+        │             Check CHANGELOG.md.
+        │             No code changes needed (unless you want new features).
+        │
+        └── MAJOR ──► Stop. Read MIGRATION.md first.
+                      Plan a migration sprint.
+                      Resolve all [Obsolete] compiler warnings before updating.
+</code></pre>
+<hr>
+<h2 id="support-window">Support Window</h2>
+<p>C#RA maintains a <strong>rolling two-MAJOR-version support window</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current MAJOR (N)</td>
+<td>✅ Fully supported — receives PATCH and MINOR updates</td>
+</tr>
+<tr>
+<td>Previous MAJOR (N-1)</td>
+<td>⚠️ Limited support — critical patches only</td>
+</tr>
+<tr>
+<td>N-2 and older</td>
+<td>❌ End-of-Life — no further updates of any kind</td>
+</tr>
+</tbody>
+</table>
+<p>When a new MAJOR version is released, the N-2 version is <strong>immediately EOL</strong>. Plan your migration before the next MAJOR drop so you are never left on an unsupported version.</p>
+<hr>
+<h2 id="deprecation-timeline">Deprecation Timeline</h2>
+<p>APIs are never removed without advance warning:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Version type</th>
+<th>What you see</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deprecation warning</td>
+<td>MINOR release</td>
+<td>Compiler <strong>warning</strong>: <code>[Obsolete(&quot;Use XYZ instead. Will be removed in vN+1.&quot;, error: false)]</code></td>
+<td>Migrate to the replacement at your next opportunity</td>
+</tr>
+<tr>
+<td>Deprecation error</td>
+<td>Next MAJOR release candidate (RC)</td>
+<td>Compiler <strong>error</strong>: <code>[Obsolete(&quot;...&quot;, error: true)]</code></td>
+<td>Migrate now — this MAJOR release will not compile otherwise</td>
+</tr>
+<tr>
+<td>Removal</td>
+<td>MAJOR release</td>
+<td>API no longer exists</td>
+<td>Must be migrated to the replacement</td>
+</tr>
+</tbody>
+</table>
+<p>The deprecation window is <strong>at least 2 weeks and no more than 13 weeks</strong> (one quarter) before removal.</p>
+<hr>
+<h2 id="how-to-add-cra-to-a-new-test-program">How to Add C#RA to a New Test Program</h2>
+<p>C#RA is distributed as a <strong>source code package</strong> (zip download from GitHub Releases or eKnowledge). Reference it by copying the <code>Csra</code> folder next to your solution.</p>
+<h3 id="step-by-step">Step-by-step</h3>
+<ol>
+<li><p><strong>Download the release package</strong> from <a href="https://github.com/teradyne-inc/cs-reference-architecture/releases">GitHub Releases</a> or eKnowledge. Choose a specific tagged version (e.g., <code>v1.2.3</code>).</p>
+</li>
+<li><p><strong>Extract and copy</strong> the <code>Csra</code> folder from the downloaded zip to a location next to your solution file:</p>
+<pre><code>MyTestProgram/
+├── MyTestProgram.sln
+├── MyTestProgram/
+└── Csra/          ← Place here
+</code></pre>
+</li>
+<li><p><strong>Add the project reference</strong> in Visual Studio:</p>
+<ul>
+<li>Right-click the solution → <strong>Add &gt; Existing Project...</strong></li>
+<li>Navigate to the <code>Csra</code> folder and select <code>Csra.csproj</code></li>
+<li>Click <strong>OK</strong></li>
+</ul>
+</li>
+<li><p><strong>Record the version</strong> you added. Create or update a comment in your solution's <code>README.md</code>:</p>
+<pre><code class="lang-markdown">## Dependencies
+- C#RA v1.2.3 — downloaded from GitHub Releases tag `v1.2.3`
+</code></pre>
+</li>
+<li><p><strong>Commit everything</strong>, including the <code>Csra</code> folder, to your test program's source control. This ensures your program always builds against the exact version you tested.</p>
+</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Always record the exact version tag in your solution's documentation. When you later need to update, you will know exactly what you are upgrading from.</p>
+</div>
+<hr>
+<h2 id="how-to-update-to-a-new-cra-version">How to Update to a New C#RA Version</h2>
+<h3 id="pre-update-checklist">Pre-update checklist</h3>
+<ul>
+<li>[ ] Identify the version of C#RA currently in your test program (check your <code>README.md</code> or the <code>AssemblyInfo.cs</code> in the <code>Csra</code> folder).</li>
+<li>[ ] Determine the version you want to update to.</li>
+<li>[ ] Read the <code>CHANGELOG.md</code> entries for all versions between your current version and the target version.</li>
+<li>[ ] If the target version is a <strong>MAJOR bump</strong>, read <code>MIGRATION.md</code> before proceeding.</li>
+<li>[ ] Resolve all existing <code>[Obsolete]</code> compiler warnings in your code before updating. Clearing warnings now prevents them from becoming errors after the update.</li>
+</ul>
+<h3 id="update-steps">Update steps</h3>
+<ol>
+<li><p><strong>Download the new release package</strong> from <a href="https://github.com/teradyne-inc/cs-reference-architecture/releases">GitHub Releases</a> for the target version tag.</p>
+</li>
+<li><p><strong>Replace the <code>Csra</code> folder</strong> in your test program:</p>
+<ul>
+<li>Delete the existing <code>Csra</code> folder.</li>
+<li>Copy the new <code>Csra</code> folder from the downloaded package.</li>
+</ul>
+</li>
+<li><p><strong>Rebuild</strong> your test program in Visual Studio.</p>
+</li>
+<li><p><strong>Address any compiler output</strong>:</p>
+<ul>
+<li><strong>Compiler warnings</strong> (<code>[Obsolete(error: false)]</code>): Note these for future migration but they will not block your build.</li>
+<li><strong>Compiler errors</strong> (<code>[Obsolete(error: true)]</code> or removed APIs): These must be resolved before the build succeeds. Refer to <code>MIGRATION.md</code> for the replacement code.</li>
+</ul>
+</li>
+<li><p><strong>Run your test program's validation suite</strong> to confirm correct behavior.</p>
+</li>
+<li><p><strong>Update your version record</strong> in your solution's documentation.</p>
+</li>
+<li><p><strong>Commit</strong> the updated <code>Csra</code> folder and documentation changes to your source control.</p>
+</li>
+</ol>
+<hr>
+<h2 id="version-lifecycle-communication">Version Lifecycle Communication</h2>
+<p>The C#RA team publishes announcements for each lifecycle event. Announcements appear in the Teams channel <strong>(.NET Development in IG-XL &gt; CS ReferenceArchitecture)</strong> and as GitHub Discussions.</p>
+<h3 id="new-minor-release">New MINOR release</h3>
+<pre><code>📦 C#RA vX.Y.0 Released — Safe to Update
+
+New features added; no breaking changes. Update at your next opportunity.
+
+What's new: &lt;summary of CHANGELOG.md&gt;
+
+Download: &lt;link to GitHub Release&gt;
+</code></pre>
+<h3 id="deprecation-warning">Deprecation warning</h3>
+<pre><code>⚠️ C#RA Deprecation Notice — Action Required Before vX+1.0.0
+
+The following APIs will be removed in the next MAJOR release:
+  - OldMethod() → use NewMethod() instead
+  - OldService → use NewService instead
+
+You will see [Obsolete] compiler warnings today. Migrate at your next opportunity.
+Migration guidance: MIGRATION.md
+</code></pre>
+<h3 id="new-major-release">New MAJOR release</h3>
+<pre><code>🚨 C#RA vX+1.0.0 Released — Migration Required
+
+This is a MAJOR release with breaking changes.
+
+Breaking changes: see MIGRATION.md for full details and before/after examples.
+End-of-Life notice: vX-1.x.x is now EOL — no further patches will be issued.
+Recommended migration window: next 1–2 sprints.
+
+Download: &lt;link to GitHub Release&gt;
+Migration guide: MIGRATION.md
+</code></pre>
+<h3 id="end-of-life-notice">End-of-Life notice</h3>
+<pre><code>🔴 C#RA vX-1.x.x — End of Life
+
+Version vX-1.x.x is now End-of-Life. No further patches, bug fixes, or 
+security updates will be issued for this version.
+
+If you are still on vX-1.x.x, plan your migration to vX.x.x now.
+Migration guide: MIGRATION.md
+</code></pre>
+<hr>
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+<h3 id="can-i-stay-on-my-current-version-indefinitely">Can I stay on my current version indefinitely?</h3>
+<p>No. C#RA maintains a rolling two-MAJOR-version support window. When a second new MAJOR version is released, your version becomes End-of-Life. EOL versions receive no patches, bug fixes, or security updates. If a critical issue is found in an EOL version, the fix is only available in supported versions.</p>
+<p>Plan a migration sprint before each MAJOR release to avoid being left on an unsupported version.</p>
+<h3 id="what-happens-if-i-ignore-obsolete-warnings">What happens if I ignore <code>[Obsolete]</code> warnings?</h3>
+<p>Compiler warnings are your advance notice. In the <strong>release candidate (RC)</strong> of the next MAJOR version, the deprecated API's <code>error</code> flag is set to <code>true</code>, turning warnings into <strong>build errors</strong>. If you have not migrated by then, your test program will fail to compile after updating. The safest approach is to resolve <code>[Obsolete]</code> warnings before they become errors.</p>
+<h3 id="how-much-work-is-a-major-migration-typically">How much work is a MAJOR migration typically?</h3>
+<p>It depends on the scope of the breaking changes. <code>MIGRATION.md</code> enumerates every breaking change with before/after code examples. For a well-maintained test program that has been keeping up with <code>[Obsolete]</code> warnings, a MAJOR migration is typically a few hours of search-and-replace work. For programs that have ignored multiple cycles of deprecation warnings, it can take longer. The recommended approach is to address <code>[Obsolete]</code> warnings continuously so that no MAJOR migration is a large surprise.</p>
+<h3 id="who-do-i-contact-if-the-migration-guide-doesnt-cover-my-use-case">Who do I contact if the migration guide doesn't cover my use case?</h3>
+<p>Open a GitHub Issue with the label <a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/new?labels=migration-help"><code>migration-help</code></a>. The C#RA team will respond and, if the gap is a real omission, update <code>MIGRATION.md</code> to cover the case.</p>
+<h3 id="can-i-use-two-different-versions-of-cra-in-the-same-test-program">Can I use two different versions of C#RA in the same test program?</h3>
+<p>No. C#RA is referenced as a single project within a solution. Version indirection (e.g., <code>using Csra_v1;</code> alongside <code>using Csra_v2;</code>) is not supported. Each test program uses exactly one version of C#RA. If you need new capabilities from a MINOR or MAJOR update, update the entire program to the new version.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

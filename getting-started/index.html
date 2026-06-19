@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Getting Started | C# Reference Architecture </title>
+      <title>C# Reference Architecture | C# Reference Architecture </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Getting Started | C# Reference Architecture ">
+      <meta name="title" content="C# Reference Architecture | C# Reference Architecture ">
       
       
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
       <meta name="docfx:tocrel" content="toc.html">
       
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../media/logo.png" alt="">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="media/logo.png" alt="">
             
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,46 +59,82 @@
     </header>
 
     <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
-          </div>
-        </div>
-      </div>
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
 
           <nav id="breadcrumb"></nav>
         </div>
 
         <article data-uid="">
-<h1 id="getting-started">Getting Started</h1>
+<h1 id="c-reference-architecture">C# Reference Architecture</h1>
 
-<p>Welcome to the official documentation for C#RA, a C# library designed to make the life of a test engineer easier by wrapping multiple information into simple code lines. This guide will help you get started quickly by walking you through downloading, installing, referencing, using, and debugging the library.</p>
-<h2 id="what-i-need-to-get-started">What I need to get started</h2>
-<ul>
-<li>Access to eKnowledge</li>
-<li>A working IG-XL / .NET environment - see documentation or training for details.
-<ul>
-<li>11.00.00 (Release)</li>
-<li>10.00.01 (Patch)</li>
-</ul>
-</li>
-<li>Oasis Tool
-<ul>
-<li>4.5.10501</li>
-</ul>
-</li>
-</ul>
+<img src="media/logo_150.png" alt="C#RA Logo" style="float: left; margin-right: 25px; margin-bottom: 15px;">
+<p>As device complexity continues to grow, developing test programs has become increasingly challenging. With shorter product life cycles and accelerated time-to-market demands, traditional manual coding approaches are no longer sustainable. New methodologies emphasizing reuse and automation are essential.</p>
+<p>The <strong>C# Reference Architecture</strong> (C#RA) addresses these challenges by streamlining the creation and maintenance of test programs. It offers a robust, performance-oriented library of validated implementations that reflect recommended practice in test development.</p>
+<div style="clear:both;"></div>
+<h2 id="the-library">The Library</h2>
+<p>At the heart of C#RA is a powerful abstraction layer known as <a href="features/code-structure_test-blocks.html"><strong>Test Blocks</strong></a>, which enables the development of concise, generic, reusable, and intuitive test code. These blocks are designed to be modular, high-performing, and immediately understandable - minimizing the need to consult documentation.</p>
+<p>The provided <a href="features/code-structure_test-methods.html"><strong>Test Methods</strong></a> illustrate effective and proven solutions for common test scenarios, available in both offline and online runnable demo programs. By intentionally avoiding exhaustive coverage of every edge case, the examples remain clean and approachable - making them easy to adopt and extend.</p>
+<p>This balance allows teams to address more specific requirements while maintaining a consistent and scalable development approach.</p>
+<pre><code class="lang-cs">TheLib.Setup.LevelsAndTiming.Apply(true);
+Services.Setup.Apply(setup);
+if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+TheLib.Setup.Dc.Connect(_pins);
+
+TheLib.Setup.Dc.SetForceAndMeter(_pins, DcOutputMode.ForceCurrent, current, current, clampVoltage, Measure.Voltage, voltageRange);
+TheLib.Execute.Wait(waitTime);
+_meas = TheLib.Acquire.Dc.Measure(_pins);
+
+TheLib.Setup.Dc.Disconnect(_pins);
+if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+TheLib.Datalog.TestParametric(_meas, current);
+</code></pre>
+<p>Comprehensive <a href="index.html">documentation</a> complements the codebase, offering insights into the <a href="features/index.html">design decisions</a> and providing <a class="xref" href="api/Csra.html">API help</a> for deeper understanding where necessary.</p>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>C#RA is built with automation at its foundation. Automated unit and integration testing, documentation generation, and packaging workflows ensure consistent quality and reduce the risk of human error.</p>
+<p>The project follows an agile development model, allowing for rapid iteration and continuous delivery through monthly releases.</p>
+<p>These capabilities are extended to users, enabling seamless integration into their own workflows - supporting both quality assurance and timely delivery.</p>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Download and unzip the latest <a href="https://github.com/teradyne-inc/cs-reference-architecture/releases">release</a></li>
+<li>Review the documentation: <code>/doc/index.html</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/index.html">online</a></li>
+<li>Understand the system requirements and prerequisites: <code>Documentation &gt; Getting Started</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/getting-started/index.html">online</a></li>
+<li>Explore the included demo program: <code>/Demo</code> or <a href="https://github.com/teradyne-inc/cs-reference-architecture/tree/main/src/Demo">online</a></li>
+<li>Integrate C#RA into your test project: <code>Documentation &gt; Getting Started &gt; Installation</code> or <a href="https://teradyne-inc.github.io/cs-reference-architecture/getting-started/installation.html">online</a></li>
+<li>Start building better test programs - faster and more reliably!</li>
+</ol>
+<h2 id="releases">Releases</h2>
+<table>
+<thead>
+<tr>
+<th>Release Version</th>
+<th>Publish Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.18.0">v0.18.0</a></td>
+<td>2026-06-03</td>
+</tr>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.17">v0.17</a></td>
+<td>2026-04-24</td>
+</tr>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.16">v0.16</a></td>
+<td>2026-03-02</td>
+</tr>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.15">v0.15</a></td>
+<td>2026-02-03</td>
+</tr>
+<tr>
+<td><a href="https://github.com/teradyne-inc/cs-reference-architecture/releases/tag/v0.13">v0.13</a></td>
+<td>2025-11-14</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Example_UT | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Example_UT | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_UT/UnitTestExample.Example_UT.md/#L2">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="UnitTestExample.Example_UT">
+
+
+
+  <h1 id="UnitTestExample_Example_UT" data-uid="UnitTestExample.Example_UT" class="text-break">
+Class Example_UT  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="UnitTestExample.html">UnitTestExample</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>UnitTestExample.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestClass]
+public class Example_UT : Base</code></pre>
+  </div>
+
+  <h2 id="UnitTestExample_Example_UT_custom_overview">Overview</h2>
+  <div class="markdown level0 custom_overview"><h3 id="showcase-of-unit-test-examples">Showcase of Unit-Test Examples</h3>
+<p>This class contains a variety of unit tests that demonstrate key concepts.</p>
+</div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Base</span></div>
+      <div><span class="xref">Example_UT</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="UnitTestExample_Example_UT_Process_AlertMessage_OverwrittenWithCallback_" data-uid="UnitTestExample.Example_UT.Process_AlertMessage_OverwrittenWithCallback*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_AlertMessage_OverwrittenWithCallback" data-uid="UnitTestExample.Example_UT.Process_AlertMessage_OverwrittenWithCallback">
+  Process_AlertMessage_OverwrittenWithCallback()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Callback: &quot;overwrite framework messages by routing alerts to custom handlers via Callback&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_AlertMessage_OverwrittenWithCallback()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_DivideByZero_ThrowsException_" data-uid="UnitTestExample.Example_UT.Process_DivideByZero_ThrowsException*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_DivideByZero_ThrowsException" data-uid="UnitTestExample.Example_UT.Process_DivideByZero_ThrowsException">
+  Process_DivideByZero_ThrowsException()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ThrowsException: &quot;checks if specific exception has been thrown&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_DivideByZero_ThrowsException()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_DivideByZero_ThrowsException_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This test demonstrates how to verify that a specific <strong>exception type</strong> is thrown when invalid input is provided.
+Exception‑based assertions are appropriate when failure is part of the contract of the method.
+Using <code>Assert.ThrowsException&lt;T&gt;</code> ensures that:</p>
+<ul>
+<li>the correct exception type is thrown</li>
+<li>the failure is explicit and intentional</li>
+</ul>
+<p>This pattern is commonly used for validating defensive programming and input validation rules.</p>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_DivideByZero_ThrowsException() {
+    // Arrange
+    int a = 5;
+    int b = 0;
+    // Act &amp;&amp; Assert
+    MsTest.Assert.ThrowsException&lt;DivideByZeroException&gt;(() =&gt; { int c = a / b; });
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_ForceV_PropertyWasSet_" data-uid="UnitTestExample.Example_UT.Process_ForceV_PropertyWasSet*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_ForceV_PropertyWasSet" data-uid="UnitTestExample.Example_UT.Process_ForceV_PropertyWasSet">
+  Process_ForceV_PropertyWasSet()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>VerifySet: &quot;checks if specific property was set&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_ForceV_PropertyWasSet()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_ForceV_PropertyWasSet_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This test verifies that a specific <strong>property assignment</strong> occurred on a dependency.
+Property‑based interaction tests are useful when behavior is expressed through state changes rather than method calls, such as:</p>
+<ul>
+<li>configuration objects</li>
+<li>instrument setup parameters</li>
+<li>mode or flag switches</li>
+</ul>
+<p>The test ensures that the unit under test correctly configures its dependency before further actions occur.</p>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_ForceV_PropertyWasSet() {
+    // Arrange
+    string pinName = &quot;VDD&quot;;
+    CreateFakePins([pinName], [InstrumentType.UVI264], _mockTheHdw, _mockTheExec); // Create fake pins for the test
+    double voltageToSet = 3.3;
+    // Act
+    TheLib.Setup.Dc.ForceV(new Pins(pinName), voltageToSet); // Call the method that uses the dependency
+    // Assert
+    _mockTheHdw.VerifySet(hdw =&gt; hdw.DCVI.Pins(pinName).Voltage.Value = voltageToSet, Times.Once); // Verify that the method was called once with the expected parameter
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_ForceV_VerifyMethodCall_" data-uid="UnitTestExample.Example_UT.Process_ForceV_VerifyMethodCall*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_ForceV_VerifyMethodCall" data-uid="UnitTestExample.Example_UT.Process_ForceV_VerifyMethodCall">
+  Process_ForceV_VerifyMethodCall()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Verify: &quot;checks if specific method was called&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_ForceV_VerifyMethodCall()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_ForceV_VerifyMethodCall_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This example demonstrates <strong>interaction‑based testing</strong> by verifying that a specific dependency method is invoked.
+The test does not assert on returned state but instead focuses on behavior:
+whether the correct hardware API call was made with the expected parameters.
+This pattern is particularly useful for:</p>
+<ul>
+<li>orchestrator logic</li>
+<li>command‑style APIs</li>
+<li>interactions with external systems such as hardware, databases, or services</li>
+</ul>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_ForceV_VerifyMethodCall() {
+    // Arrange
+    string pinName = &quot;PORTB&quot;;
+    CreateFakePins([pinName], [InstrumentType.UP2200], _mockTheHdw, _mockTheExec); // Create fake pins for the test
+    double voltageToSet = 3.3;
+    // Act
+    TheLib.Setup.Dc.ForceV(new Pins(pinName), voltageToSet); // Call the method that uses the dependency
+    // Assert
+    _mockTheHdw.Verify(hdw =&gt; hdw.PPMU.Pins(pinName).ForceV(voltageToSet), Times.Once); // Verify that the method was called once with the expected parameter
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_IgXlObject_StateAssertion_" data-uid="UnitTestExample.Example_UT.Process_IgXlObject_StateAssertion*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_IgXlObject_StateAssertion" data-uid="UnitTestExample.Example_UT.Process_IgXlObject_StateAssertion">
+  Process_IgXlObject_StateAssertion()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>SiteGenerics: &quot;checks certain states/objects&quot; (Assert.AreEqual)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_IgXlObject_StateAssertion()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_IgXlObject_StateAssertion_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This test demonstrates state assertion on <strong>domain‑specific value objects</strong>, rather than primitive types.
+The <code>Site&lt;T&gt;</code> type encapsulates semantic meaning and overloads operators to allow expressive arithmetic operations.
+By asserting directly on a domain object, the test verifies:</p>
+<ul>
+<li>correct operator behavior</li>
+<li>correct value propagation</li>
+<li>correctness at the domain level rather than implementation level</li>
+</ul>
+<p>This approach improves test readability and aligns tests closely with the problem domain.</p>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_IgXlObject_StateAssertion() {
+    // Arrange
+    Site&lt;int&gt; a = new(5);
+    Site&lt;int&gt; b = new(7);
+    // Act
+    Site&lt;int&gt; c = a + b;
+    // Assert
+    MsTest.Assert.AreEqual(new Site&lt;int&gt;(12), c);
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_ReadFromDependency_SetupReturnValue_" data-uid="UnitTestExample.Example_UT.Process_ReadFromDependency_SetupReturnValue*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_ReadFromDependency_SetupReturnValue" data-uid="UnitTestExample.Example_UT.Process_ReadFromDependency_SetupReturnValue">
+  Process_ReadFromDependency_SetupReturnValue()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Setup: &quot;setup return values that would have been otherwise default&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_ReadFromDependency_SetupReturnValue()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_ReadFromDependency_SetupReturnValue_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This test demonstrates how to use <strong>mock setups</strong> to control the behavior of external dependencies.
+The hardware interaction is replaced by a mock that returns a predefined measurement result.
+This allows the test to:</p>
+<ul>
+<li>execute deterministically</li>
+<li>avoid real hardware access</li>
+<li>focus on validating the consuming logic</li>
+</ul>
+<p>Using <code>Setup(...).Returns(...)</code> is the standard technique for isolating a unit under test from its dependencies while preserving realistic behavior.</p>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_ReadFromDependency_SetupReturnValue() {
+    // Arrange
+    string pinName = &quot;VDD&quot;;
+    CreateFakePins([pinName], [InstrumentType.UVI264], _mockTheHdw, _mockTheExec); // Create fake pins for the test
+    PinSite&lt;double&gt; returnValue = new(pinName, 3.3);
+    _mockTheHdw.Setup(hdw =&gt; hdw.DCVI.Pins(pinName).Meter.Read(It.IsAny&lt;tlStrobeOption&gt;(), It.IsAny&lt;int&gt;(), It.IsAny&lt;double&gt;(), It.IsAny&lt;tlDCVIMeterReadingFormat&gt;()))
+        .Returns(returnValue.ToPinListData());
+    // Act
+    PinSite&lt;double&gt; actualValue = TheLib.Acquire.Dc.Measure(new Pins(pinName), DcMeterMode.Voltage); // Call the method that uses the dependency
+    // Assert
+    MsTest.Assert.AreEqual(returnValue, actualValue); // Verify the result
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_ReturnsSum_Parametrized_" data-uid="UnitTestExample.Example_UT.Process_ReturnsSum_Parametrized*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_ReturnsSum_Parametrized_System_Int32_System_Int32_System_Int32_" data-uid="UnitTestExample.Example_UT.Process_ReturnsSum_Parametrized(System.Int32,System.Int32,System.Int32)">
+  Process_ReturnsSum_Parametrized(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>DataTestMethod: &quot;parametrized test method example&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataTestMethod]
+[DataRow(new object?[] { 10, 15, 25 })]
+[DataRow(new object?[] { -5, 5, 0 })]
+[DataRow(new object?[] { 0, 0, 0 })]
+public void Process_ReturnsSum_Parametrized(int a, int b, int expected)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>First integer</p>
+</dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Second integer</p>
+</dd>
+    <dt><code>expected</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Expected result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_ReturnsSum_Parametrized_System_Int32_System_Int32_System_Int32__custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This example demonstrates the implementation of a <strong>parameterized unit test</strong> using the <code>[DataTestMethod]</code> and <code>[DataRow]</code> attributes.
+Parameterized tests allow the same test logic to be executed against multiple input combinations without duplicating code.
+Each <code>[DataRow]</code> defines a distinct test case that is executed independently by the test runner.
+This approach:</p>
+<ul>
+<li>reduces code duplication</li>
+<li>improves coverage</li>
+<li>makes edge cases explicit</li>
+<li>keeps related scenarios grouped together</li>
+</ul>
+<p>Parameterized tests are especially useful for pure logic, validation routines, and algorithmic behavior.</p>
+<pre><code class="lang-csharp">[MsTest.DataTestMethod]
+[MsTest.DataRow(10, 15, 25)]
+[MsTest.DataRow(-5, 5, 0)]
+[MsTest.DataRow(0, 0, 0)]
+public void Process_ReturnsSum_Parametrized(int a, int b, int expected) {
+    // Act
+    int c = a + b;
+    // Assert
+    MsTest.Assert.AreEqual(expected, c);
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_ReturnsSum_StateAssertion_" data-uid="UnitTestExample.Example_UT.Process_ReturnsSum_StateAssertion*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_ReturnsSum_StateAssertion" data-uid="UnitTestExample.Example_UT.Process_ReturnsSum_StateAssertion">
+  Process_ReturnsSum_StateAssertion()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Assert: &quot;checks certain states/objects&quot; (Assert.AreEqual, IsTrue/False)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_ReturnsSum_StateAssertion()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_ReturnsSum_StateAssertion_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This example demonstrates the most fundamental form of unit testing: <strong>state verification</strong>.
+The test executes a small piece of logic and asserts the resulting value using basic assertion APIs such as <code>Assert.AreEqual</code>, <code>Assert.IsTrue</code>, and <code>Assert.IsFalse</code>.</p>
+<p>State‑based assertions are typically used when the unit under test:</p>
+<ul>
+<li>returns a value,</li>
+<li>modifies internal state,</li>
+<li>or produces a deterministic result without external side effects.</li>
+</ul>
+<p>This pattern should be preferred whenever possible, as it keeps tests simple, stable, and independent of internal implementation details.</p>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_ReturnsSum_StateAssertion() {
+    // Arrange
+    int a = 5;
+    int b = 7;
+    // Act
+    int c = a + b;
+    // Assert
+    MsTest.Assert.AreEqual(12, c);
+    MsTest.Assert.IsTrue(c &gt; 0);
+    MsTest.Assert.IsFalse(c == 0);
+}
+</code></pre></div>
+
+
+
+
+
+  <a id="UnitTestExample_Example_UT_Process_ValidInput_TimesNever_" data-uid="UnitTestExample.Example_UT.Process_ValidInput_TimesNever*"></a>
+
+  <h3 id="UnitTestExample_Example_UT_Process_ValidInput_TimesNever" data-uid="UnitTestExample.Example_UT.Process_ValidInput_TimesNever">
+  Process_ValidInput_TimesNever()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/UnitTests/Example_UT.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Times.Never: a very important blueprint for &quot;should NOT happen&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+public void Process_ValidInput_TimesNever()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="UnitTestExample_Example_UT_Process_ValidInput_TimesNever_custom_details">Details</h4>
+  <div class="markdown level1 custom_details">
+<p>This example demonstrates the use of Times.Never to verify that <strong>no side effects occurred</strong>.
+The test validates that, for valid input, the system does not raise alerts or error conditions.
+Negative‑behavior assertions are essential for ensuring that error paths are not accidentally triggered in normal operation.
+This pattern is commonly used to validate:</p>
+<ul>
+<li>validation logic</li>
+<li>safety checks</li>
+<li>guard conditions</li>
+</ul>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_ValidInput_TimesNever() {
+    // Arrange
+    Mock&lt;IAlertService&gt; mockAlertService = new() { DefaultValue = DefaultValue.Mock };
+    Services.Configure(mockAlertService.Object);
+    // Act
+    TheLib.Validate.InRange(7, 5, 10, &quot;&quot;); // 7 is within the range of 5 to 10
+    // Assert
+    mockAlertService.Verify(alert =&gt; alert.Error(It.IsAny&lt;string&gt;(), It.IsAny&lt;int&gt;(), It.IsAny&lt;string&gt;()), Times.Never);
+}
+</code></pre></div>
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
