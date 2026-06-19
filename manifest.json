@@ -2658,20 +2658,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Tol.Factory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Tol.Factory.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Tol.Factory",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Tol.HramCapture.yml",
       "output": {
         ".html": {
@@ -4535,6 +4521,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "getting-started/versioning.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/versioning.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "getting-started/write-test-block.md",
       "output": {
         ".html": {
@@ -4838,6 +4834,16 @@
       "output": {
         ".html": {
           "relative_path": "releases_/v0.17.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.18.0.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.18.0.html"
         }
       },
       "version": ""

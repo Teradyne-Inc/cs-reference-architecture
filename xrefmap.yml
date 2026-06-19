@@ -13828,6 +13828,25 @@ references:
   commentId: T:Tol.CmemCapture
   fullName: Tol.CmemCapture
   nameWithType: CmemCapture
+- uid: Tol.CmemCapture.#ctor
+  name: CmemCapture()
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture__ctor
+  commentId: M:Tol.CmemCapture.#ctor
+  name.vb: New()
+  fullName: Tol.CmemCapture.CmemCapture()
+  fullName.vb: Tol.CmemCapture.New()
+  nameWithType: CmemCapture.CmemCapture()
+  nameWithType.vb: CmemCapture.New()
+- uid: Tol.CmemCapture.#ctor*
+  name: CmemCapture
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture__ctor_
+  commentId: Overload:Tol.CmemCapture.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.CmemCapture.CmemCapture
+  fullName.vb: Tol.CmemCapture.New
+  nameWithType: CmemCapture.CmemCapture
+  nameWithType.vb: CmemCapture.New
 - uid: Tol.CmemCapture.Configure
   name: Configure()
   href: api/Tol.CmemCapture.html#Tol_CmemCapture_Configure
@@ -13912,6 +13931,34 @@ references:
   commentId: T:Tol.DcviPins
   fullName: Tol.DcviPins
   nameWithType: DcviPins
+- uid: Tol.DcviPins.#ctor(System.String)
+  name: DcviPins(string)
+  href: api/Tol.DcviPins.html#Tol_DcviPins__ctor_System_String_
+  commentId: M:Tol.DcviPins.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Tol.DcviPins.DcviPins(string)
+  fullName.vb: Tol.DcviPins.New(String)
+  nameWithType: DcviPins.DcviPins(string)
+  nameWithType.vb: DcviPins.New(String)
+- uid: Tol.DcviPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  name: DcviPins(string, DriverDCVIPins)
+  href: api/Tol.DcviPins.html#Tol_DcviPins__ctor_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVIPins_
+  commentId: M:Tol.DcviPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  name.vb: New(String, DriverDCVIPins)
+  fullName: Tol.DcviPins.DcviPins(string, Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  fullName.vb: Tol.DcviPins.New(String, Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
+  nameWithType: DcviPins.DcviPins(string, DriverDCVIPins)
+  nameWithType.vb: DcviPins.New(String, DriverDCVIPins)
+- uid: Tol.DcviPins.#ctor*
+  name: DcviPins
+  href: api/Tol.DcviPins.html#Tol_DcviPins__ctor_
+  commentId: Overload:Tol.DcviPins.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.DcviPins.DcviPins
+  fullName.vb: Tol.DcviPins.New
+  nameWithType: DcviPins.DcviPins
+  nameWithType.vb: DcviPins.New
 - uid: Tol.DcviPins.Bandwidth
   name: Bandwidth
   href: api/Tol.DcviPins.html#Tol_DcviPins_Bandwidth
@@ -14892,6 +14939,34 @@ references:
   commentId: T:Tol.DigitalPins
   fullName: Tol.DigitalPins
   nameWithType: DigitalPins
+- uid: Tol.DigitalPins.#ctor(System.String)
+  name: DigitalPins(string)
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins__ctor_System_String_
+  commentId: M:Tol.DigitalPins.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Tol.DigitalPins.DigitalPins(string)
+  fullName.vb: Tol.DigitalPins.New(String)
+  nameWithType: DigitalPins.DigitalPins(string)
+  nameWithType.vb: DigitalPins.New(String)
+- uid: Tol.DigitalPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDigitalPins,Tol.PpmuPins)
+  name: DigitalPins(string, DriverDigitalPins, PpmuPins)
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins__ctor_System_String_Teradyne_Igxl_Interfaces_Public_DriverDigitalPins_Tol_PpmuPins_
+  commentId: M:Tol.DigitalPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.DriverDigitalPins,Tol.PpmuPins)
+  name.vb: New(String, DriverDigitalPins, PpmuPins)
+  fullName: Tol.DigitalPins.DigitalPins(string, Teradyne.Igxl.Interfaces.Public.DriverDigitalPins, Tol.PpmuPins)
+  fullName.vb: Tol.DigitalPins.New(String, Teradyne.Igxl.Interfaces.Public.DriverDigitalPins, Tol.PpmuPins)
+  nameWithType: DigitalPins.DigitalPins(string, DriverDigitalPins, PpmuPins)
+  nameWithType.vb: DigitalPins.New(String, DriverDigitalPins, PpmuPins)
+- uid: Tol.DigitalPins.#ctor*
+  name: DigitalPins
+  href: api/Tol.DigitalPins.html#Tol_DigitalPins__ctor_
+  commentId: Overload:Tol.DigitalPins.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.DigitalPins.DigitalPins
+  fullName.vb: Tol.DigitalPins.New
+  nameWithType: DigitalPins.DigitalPins
+  nameWithType.vb: DigitalPins.New
 - uid: Tol.DigitalPins.Connect
   name: Connect()
   href: api/Tol.DigitalPins.html#Tol_DigitalPins_Connect
@@ -15028,6 +15103,25 @@ references:
   commentId: T:Tol.DsscCapture
   fullName: Tol.DsscCapture
   nameWithType: DsscCapture
+- uid: Tol.DsscCapture.#ctor
+  name: DsscCapture()
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture__ctor
+  commentId: M:Tol.DsscCapture.#ctor
+  name.vb: New()
+  fullName: Tol.DsscCapture.DsscCapture()
+  fullName.vb: Tol.DsscCapture.New()
+  nameWithType: DsscCapture.DsscCapture()
+  nameWithType.vb: DsscCapture.New()
+- uid: Tol.DsscCapture.#ctor*
+  name: DsscCapture
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture__ctor_
+  commentId: Overload:Tol.DsscCapture.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.DsscCapture.DsscCapture
+  fullName.vb: Tol.DsscCapture.New
+  nameWithType: DsscCapture.DsscCapture
+  nameWithType.vb: DsscCapture.New
 - uid: Tol.DsscCapture.Configure
   name: Configure()
   href: api/Tol.DsscCapture.html#Tol_DsscCapture_Configure
@@ -15106,191 +15200,31 @@ references:
   isSpec: "True"
   fullName: Tol.DsscCapture.Reset
   nameWithType: DsscCapture.Reset
-- uid: Tol.Factory
-  name: Factory
-  href: api/Tol.Factory.html
-  commentId: T:Tol.Factory
-  fullName: Tol.Factory
-  nameWithType: Factory
-- uid: Tol.Factory.CreateCmemCapture(System.String)
-  name: CreateCmemCapture(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateCmemCapture_System_String_
-  commentId: M:Tol.Factory.CreateCmemCapture(System.String)
-  name.vb: CreateCmemCapture(String)
-  fullName: Tol.Factory.CreateCmemCapture(string)
-  fullName.vb: Tol.Factory.CreateCmemCapture(String)
-  nameWithType: Factory.CreateCmemCapture(string)
-  nameWithType.vb: Factory.CreateCmemCapture(String)
-- uid: Tol.Factory.CreateCmemCapture*
-  name: CreateCmemCapture
-  href: api/Tol.Factory.html#Tol_Factory_CreateCmemCapture_
-  commentId: Overload:Tol.Factory.CreateCmemCapture
-  isSpec: "True"
-  fullName: Tol.Factory.CreateCmemCapture
-  nameWithType: Factory.CreateCmemCapture
-- uid: Tol.Factory.CreateDcviPins(System.String)
-  name: CreateDcviPins(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDcviPins_System_String_
-  commentId: M:Tol.Factory.CreateDcviPins(System.String)
-  name.vb: CreateDcviPins(String)
-  fullName: Tol.Factory.CreateDcviPins(string)
-  fullName.vb: Tol.Factory.CreateDcviPins(String)
-  nameWithType: Factory.CreateDcviPins(string)
-  nameWithType.vb: Factory.CreateDcviPins(String)
-- uid: Tol.Factory.CreateDcviPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
-  name: CreateDcviPins(string, DriverDCVIPins)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDcviPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVIPins_
-  commentId: M:Tol.Factory.CreateDcviPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
-  name.vb: CreateDcviPins(String, DriverDCVIPins)
-  fullName: Tol.Factory.CreateDcviPins(string, Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
-  fullName.vb: Tol.Factory.CreateDcviPins(String, Teradyne.Igxl.Interfaces.Public.DriverDCVIPins)
-  nameWithType: Factory.CreateDcviPins(string, DriverDCVIPins)
-  nameWithType.vb: Factory.CreateDcviPins(String, DriverDCVIPins)
-- uid: Tol.Factory.CreateDcviPins*
-  name: CreateDcviPins
-  href: api/Tol.Factory.html#Tol_Factory_CreateDcviPins_
-  commentId: Overload:Tol.Factory.CreateDcviPins
-  isSpec: "True"
-  fullName: Tol.Factory.CreateDcviPins
-  nameWithType: Factory.CreateDcviPins
-- uid: Tol.Factory.CreateDcvsPins(System.String)
-  name: CreateDcvsPins(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDcvsPins_System_String_
-  commentId: M:Tol.Factory.CreateDcvsPins(System.String)
-  name.vb: CreateDcvsPins(String)
-  fullName: Tol.Factory.CreateDcvsPins(string)
-  fullName.vb: Tol.Factory.CreateDcvsPins(String)
-  nameWithType: Factory.CreateDcvsPins(string)
-  nameWithType.vb: Factory.CreateDcvsPins(String)
-- uid: Tol.Factory.CreateDcvsPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
-  name: CreateDcvsPins(string, DriverDCVSPins)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDcvsPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDCVSPins_
-  commentId: M:Tol.Factory.CreateDcvsPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
-  name.vb: CreateDcvsPins(String, DriverDCVSPins)
-  fullName: Tol.Factory.CreateDcvsPins(string, Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
-  fullName.vb: Tol.Factory.CreateDcvsPins(String, Teradyne.Igxl.Interfaces.Public.DriverDCVSPins)
-  nameWithType: Factory.CreateDcvsPins(string, DriverDCVSPins)
-  nameWithType.vb: Factory.CreateDcvsPins(String, DriverDCVSPins)
-- uid: Tol.Factory.CreateDcvsPins*
-  name: CreateDcvsPins
-  href: api/Tol.Factory.html#Tol_Factory_CreateDcvsPins_
-  commentId: Overload:Tol.Factory.CreateDcvsPins
-  isSpec: "True"
-  fullName: Tol.Factory.CreateDcvsPins
-  nameWithType: Factory.CreateDcvsPins
-- uid: Tol.Factory.CreateDigitalPins(System.String)
-  name: CreateDigitalPins(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_
-  commentId: M:Tol.Factory.CreateDigitalPins(System.String)
-  name.vb: CreateDigitalPins(String)
-  fullName: Tol.Factory.CreateDigitalPins(string)
-  fullName.vb: Tol.Factory.CreateDigitalPins(String)
-  nameWithType: Factory.CreateDigitalPins(string)
-  nameWithType.vb: Factory.CreateDigitalPins(String)
-- uid: Tol.Factory.CreateDigitalPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
-  name: CreateDigitalPins(string, DriverDigitalPins)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDigitalPins_System_String_Teradyne_Igxl_Interfaces_Public_DriverDigitalPins_
-  commentId: M:Tol.Factory.CreateDigitalPins(System.String,Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
-  name.vb: CreateDigitalPins(String, DriverDigitalPins)
-  fullName: Tol.Factory.CreateDigitalPins(string, Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
-  fullName.vb: Tol.Factory.CreateDigitalPins(String, Teradyne.Igxl.Interfaces.Public.DriverDigitalPins)
-  nameWithType: Factory.CreateDigitalPins(string, DriverDigitalPins)
-  nameWithType.vb: Factory.CreateDigitalPins(String, DriverDigitalPins)
-- uid: Tol.Factory.CreateDigitalPins*
-  name: CreateDigitalPins
-  href: api/Tol.Factory.html#Tol_Factory_CreateDigitalPins_
-  commentId: Overload:Tol.Factory.CreateDigitalPins
-  isSpec: "True"
-  fullName: Tol.Factory.CreateDigitalPins
-  nameWithType: Factory.CreateDigitalPins
-- uid: Tol.Factory.CreateDsscCapture(System.String)
-  name: CreateDsscCapture(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateDsscCapture_System_String_
-  commentId: M:Tol.Factory.CreateDsscCapture(System.String)
-  name.vb: CreateDsscCapture(String)
-  fullName: Tol.Factory.CreateDsscCapture(string)
-  fullName.vb: Tol.Factory.CreateDsscCapture(String)
-  nameWithType: Factory.CreateDsscCapture(string)
-  nameWithType.vb: Factory.CreateDsscCapture(String)
-- uid: Tol.Factory.CreateDsscCapture*
-  name: CreateDsscCapture
-  href: api/Tol.Factory.html#Tol_Factory_CreateDsscCapture_
-  commentId: Overload:Tol.Factory.CreateDsscCapture
-  isSpec: "True"
-  fullName: Tol.Factory.CreateDsscCapture
-  nameWithType: Factory.CreateDsscCapture
-- uid: Tol.Factory.CreateHramCapture(System.String)
-  name: CreateHramCapture(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateHramCapture_System_String_
-  commentId: M:Tol.Factory.CreateHramCapture(System.String)
-  name.vb: CreateHramCapture(String)
-  fullName: Tol.Factory.CreateHramCapture(string)
-  fullName.vb: Tol.Factory.CreateHramCapture(String)
-  nameWithType: Factory.CreateHramCapture(string)
-  nameWithType.vb: Factory.CreateHramCapture(String)
-- uid: Tol.Factory.CreateHramCapture*
-  name: CreateHramCapture
-  href: api/Tol.Factory.html#Tol_Factory_CreateHramCapture_
-  commentId: Overload:Tol.Factory.CreateHramCapture
-  isSpec: "True"
-  fullName: Tol.Factory.CreateHramCapture
-  nameWithType: Factory.CreateHramCapture
-- uid: Tol.Factory.CreatePpmuPins(System.String)
-  name: CreatePpmuPins(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreatePpmuPins_System_String_
-  commentId: M:Tol.Factory.CreatePpmuPins(System.String)
-  name.vb: CreatePpmuPins(String)
-  fullName: Tol.Factory.CreatePpmuPins(string)
-  fullName.vb: Tol.Factory.CreatePpmuPins(String)
-  nameWithType: Factory.CreatePpmuPins(string)
-  nameWithType.vb: Factory.CreatePpmuPins(String)
-- uid: Tol.Factory.CreatePpmuPins(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
-  name: CreatePpmuPins(string, tlDriverPPMUPins)
-  href: api/Tol.Factory.html#Tol_Factory_CreatePpmuPins_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverPPMUPins_
-  commentId: M:Tol.Factory.CreatePpmuPins(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
-  name.vb: CreatePpmuPins(String, tlDriverPPMUPins)
-  fullName: Tol.Factory.CreatePpmuPins(string, Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
-  fullName.vb: Tol.Factory.CreatePpmuPins(String, Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
-  nameWithType: Factory.CreatePpmuPins(string, tlDriverPPMUPins)
-  nameWithType.vb: Factory.CreatePpmuPins(String, tlDriverPPMUPins)
-- uid: Tol.Factory.CreatePpmuPins*
-  name: CreatePpmuPins
-  href: api/Tol.Factory.html#Tol_Factory_CreatePpmuPins_
-  commentId: Overload:Tol.Factory.CreatePpmuPins
-  isSpec: "True"
-  fullName: Tol.Factory.CreatePpmuPins
-  nameWithType: Factory.CreatePpmuPins
-- uid: Tol.Factory.CreateUtilityPins(System.String)
-  name: CreateUtilityPins(string)
-  href: api/Tol.Factory.html#Tol_Factory_CreateUtilityPins_System_String_
-  commentId: M:Tol.Factory.CreateUtilityPins(System.String)
-  name.vb: CreateUtilityPins(String)
-  fullName: Tol.Factory.CreateUtilityPins(string)
-  fullName.vb: Tol.Factory.CreateUtilityPins(String)
-  nameWithType: Factory.CreateUtilityPins(string)
-  nameWithType.vb: Factory.CreateUtilityPins(String)
-- uid: Tol.Factory.CreateUtilityPins(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
-  name: CreateUtilityPins(string, tlDriverUtilityPins)
-  href: api/Tol.Factory.html#Tol_Factory_CreateUtilityPins_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverUtilityPins_
-  commentId: M:Tol.Factory.CreateUtilityPins(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
-  name.vb: CreateUtilityPins(String, tlDriverUtilityPins)
-  fullName: Tol.Factory.CreateUtilityPins(string, Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
-  fullName.vb: Tol.Factory.CreateUtilityPins(String, Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
-  nameWithType: Factory.CreateUtilityPins(string, tlDriverUtilityPins)
-  nameWithType.vb: Factory.CreateUtilityPins(String, tlDriverUtilityPins)
-- uid: Tol.Factory.CreateUtilityPins*
-  name: CreateUtilityPins
-  href: api/Tol.Factory.html#Tol_Factory_CreateUtilityPins_
-  commentId: Overload:Tol.Factory.CreateUtilityPins
-  isSpec: "True"
-  fullName: Tol.Factory.CreateUtilityPins
-  nameWithType: Factory.CreateUtilityPins
 - uid: Tol.HramCapture
   name: HramCapture
   href: api/Tol.HramCapture.html
   commentId: T:Tol.HramCapture
   fullName: Tol.HramCapture
   nameWithType: HramCapture
+- uid: Tol.HramCapture.#ctor
+  name: HramCapture()
+  href: api/Tol.HramCapture.html#Tol_HramCapture__ctor
+  commentId: M:Tol.HramCapture.#ctor
+  name.vb: New()
+  fullName: Tol.HramCapture.HramCapture()
+  fullName.vb: Tol.HramCapture.New()
+  nameWithType: HramCapture.HramCapture()
+  nameWithType.vb: HramCapture.New()
+- uid: Tol.HramCapture.#ctor*
+  name: HramCapture
+  href: api/Tol.HramCapture.html#Tol_HramCapture__ctor_
+  commentId: Overload:Tol.HramCapture.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.HramCapture.HramCapture
+  fullName.vb: Tol.HramCapture.New
+  nameWithType: HramCapture.HramCapture
+  nameWithType.vb: HramCapture.New
 - uid: Tol.HramCapture.Configure
   name: Configure()
   href: api/Tol.HramCapture.html#Tol_HramCapture_Configure
@@ -17093,6 +17027,34 @@ references:
   commentId: T:Tol.PpmuPins
   fullName: Tol.PpmuPins
   nameWithType: PpmuPins
+- uid: Tol.PpmuPins.#ctor(System.String)
+  name: PpmuPins(string)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins__ctor_System_String_
+  commentId: M:Tol.PpmuPins.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Tol.PpmuPins.PpmuPins(string)
+  fullName.vb: Tol.PpmuPins.New(String)
+  nameWithType: PpmuPins.PpmuPins(string)
+  nameWithType.vb: PpmuPins.New(String)
+- uid: Tol.PpmuPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  name: PpmuPins(string, tlDriverPPMUPins)
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins__ctor_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverPPMUPins_
+  commentId: M:Tol.PpmuPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  name.vb: New(String, tlDriverPPMUPins)
+  fullName: Tol.PpmuPins.PpmuPins(string, Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  fullName.vb: Tol.PpmuPins.New(String, Teradyne.Igxl.Interfaces.Public.tlDriverPPMUPins)
+  nameWithType: PpmuPins.PpmuPins(string, tlDriverPPMUPins)
+  nameWithType.vb: PpmuPins.New(String, tlDriverPPMUPins)
+- uid: Tol.PpmuPins.#ctor*
+  name: PpmuPins
+  href: api/Tol.PpmuPins.html#Tol_PpmuPins__ctor_
+  commentId: Overload:Tol.PpmuPins.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.PpmuPins.PpmuPins
+  fullName.vb: Tol.PpmuPins.New
+  nameWithType: PpmuPins.PpmuPins
+  nameWithType.vb: PpmuPins.New
 - uid: Tol.PpmuPins.ClampVHi
   name: ClampVHi
   href: api/Tol.PpmuPins.html#Tol_PpmuPins_ClampVHi
@@ -17447,6 +17409,34 @@ references:
   commentId: T:Tol.UtilityPins
   fullName: Tol.UtilityPins
   nameWithType: UtilityPins
+- uid: Tol.UtilityPins.#ctor(System.String)
+  name: UtilityPins(string)
+  href: api/Tol.UtilityPins.html#Tol_UtilityPins__ctor_System_String_
+  commentId: M:Tol.UtilityPins.#ctor(System.String)
+  name.vb: New(String)
+  fullName: Tol.UtilityPins.UtilityPins(string)
+  fullName.vb: Tol.UtilityPins.New(String)
+  nameWithType: UtilityPins.UtilityPins(string)
+  nameWithType.vb: UtilityPins.New(String)
+- uid: Tol.UtilityPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
+  name: UtilityPins(string, tlDriverUtilityPins)
+  href: api/Tol.UtilityPins.html#Tol_UtilityPins__ctor_System_String_Teradyne_Igxl_Interfaces_Public_tlDriverUtilityPins_
+  commentId: M:Tol.UtilityPins.#ctor(System.String,Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
+  name.vb: New(String, tlDriverUtilityPins)
+  fullName: Tol.UtilityPins.UtilityPins(string, Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
+  fullName.vb: Tol.UtilityPins.New(String, Teradyne.Igxl.Interfaces.Public.tlDriverUtilityPins)
+  nameWithType: UtilityPins.UtilityPins(string, tlDriverUtilityPins)
+  nameWithType.vb: UtilityPins.New(String, tlDriverUtilityPins)
+- uid: Tol.UtilityPins.#ctor*
+  name: UtilityPins
+  href: api/Tol.UtilityPins.html#Tol_UtilityPins__ctor_
+  commentId: Overload:Tol.UtilityPins.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Tol.UtilityPins.UtilityPins
+  fullName.vb: Tol.UtilityPins.New
+  nameWithType: UtilityPins.UtilityPins
+  nameWithType.vb: UtilityPins.New
 - uid: Tol.UtilityPins.GetIndividualPins
   name: GetIndividualPins()
   href: api/Tol.UtilityPins.html#Tol_UtilityPins_GetIndividualPins
