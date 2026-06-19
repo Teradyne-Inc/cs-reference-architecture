@@ -34,28 +34,10 @@
           "Location": ""
         },
         {
-          "Publisher": "Teradyne",
-          "Name": "Version Selector Plus",
-          "Comparison": "Greater than or equal to",
-          "Version": "64.5",
-          "Notes": "",
-          "Verification": "Default",
-          "Location": ""
-        },
-        {
-          "Publisher": "Teradyne",
-          "Name": "PortBridge",
-          "Comparison": "Greater than or equal to",
-          "Version": "2.70.00.0619",
-          "Notes": "",
-          "Verification": "Default",
-          "Location": ""
-        },
-        {
           "Publisher": "Microsoft",
           "Name": "Visual Studio",
           "Comparison": "Greater than or equal to",
-          "Version": "17.14",
+          "Version": "17.10",
           "Notes": "",
           "Verification": "Default",
           "Location": ""

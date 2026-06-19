@@ -8,7 +8,7 @@ namespace Tol {
 
         public IDigitalPins Pins => throw new System.NotImplementedException();
 
-        internal HramCapture() {
+        public HramCapture() {
         }
 
         public void Configure() {

@@ -21,13 +21,13 @@ namespace Tol {
         private IPpmuPins _ppmu;
         private string _name;
 
-        internal DigitalPins(string pinList) : this(pinList, TheHdw.Digital.Pins(pinList)) {
+        public DigitalPins(string pinList) : this(pinList, TheHdw.Digital.Pins(pinList)) {
             if(!pinList.AreAllPinsOfType<IDigitalPins>()) {
                 throw new ArgumentException("Not all pins belong to DigitalPins expected type.");
             }
         }
 
-        internal DigitalPins(string pinList, DriverDigitalPins digital, PpmuPins ppmu = null) {
+        public DigitalPins(string pinList, DriverDigitalPins digital, PpmuPins ppmu = null) {
             _name = pinList;
             _hardwareApi = digital;
             _ppmu = ppmu;

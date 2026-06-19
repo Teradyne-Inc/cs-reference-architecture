@@ -9,7 +9,7 @@ using static Teradyne.Igxl.Interfaces.Public.TestCodeBase;
 namespace Csra.Types {
 
     [Serializable]
-    public class PinsFactory : Factory {
+    public class PinsFactory {
 
         private static Dictionary<string, IPpmuPins> _ppmuPinsCache = new();
         private static Dictionary<string, IDcviPins> _dcviPinsCache = new();
@@ -65,11 +65,11 @@ namespace Csra.Types {
             }
 
 
-            ppmuPins = GetCachedPins(string.Join(", ", pinListOfPpmu), _ppmuPinsCache, CreatePpmuPins);
-            dcviPins = GetCachedPins(string.Join(", ", pinListOfDcvi), _dcviPinsCache, CreateDcviPins);
-            dcvsPins = GetCachedPins(string.Join(", ", pinListOfDcvs), _dcvsPinsCache, CreateDcvsPins);
-            digitalPins = GetCachedPins(string.Join(", ", pinListOfDigital), _digitalPinsCache, CreateDigitalPins);
-            utilityPins = GetCachedPins(string.Join(", ", pinListOfUtility), _utilityPinsCache, CreateUtilityPins);
+            ppmuPins = GetCachedPins(string.Join(", ", pinListOfPpmu), _ppmuPinsCache, p => new PpmuPins(p));
+            dcviPins = GetCachedPins(string.Join(", ", pinListOfDcvi), _dcviPinsCache, p => new DcviPins(p));
+            dcvsPins = GetCachedPins(string.Join(", ", pinListOfDcvs), _dcvsPinsCache, p => new DcvsPins(p));
+            digitalPins = GetCachedPins(string.Join(", ", pinListOfDigital), _digitalPinsCache, p => new DigitalPins(p));
+            utilityPins = GetCachedPins(string.Join(", ", pinListOfUtility), _utilityPinsCache, p => new UtilityPins(p));
 
             return pins;
         }

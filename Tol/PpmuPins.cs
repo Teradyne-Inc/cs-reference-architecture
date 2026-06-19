@@ -22,13 +22,13 @@ namespace Tol {
         private IValuePerSiteRange<double> _clampVHi;
         private string _name;
 
-        internal PpmuPins(string pinList) : this(pinList, TheHdw.PPMU.Pins(pinList)) {
+        public PpmuPins(string pinList) : this(pinList, TheHdw.PPMU.Pins(pinList)) {
             if(!pinList.AreAllPinsOfType<IPpmuPins>()) {
                 throw new ArgumentException("Not all pins belong to PpmuPins expected type.");
             }
         }
 
-        internal PpmuPins(string pinList, tlDriverPPMUPins tlDriverPPMUPins) {
+        public PpmuPins(string pinList, tlDriverPPMUPins tlDriverPPMUPins) {
             _name = pinList;
             _hardwareApi = tlDriverPPMUPins;
             _ = Gate; // prevent lazy loading

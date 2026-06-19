@@ -31,13 +31,13 @@ namespace Tol {
         private MeterImpl _meter;
         private string _name;
 
-        internal DcviPins(string pinList) : this(pinList, TheHdw.DCVI.Pins(pinList)) {
+        public DcviPins(string pinList) : this(pinList, TheHdw.DCVI.Pins(pinList)) {
             if(!pinList.AreAllPinsOfType<IDcviPins>()) {
                 throw new ArgumentException("Not all pins belong to DcviPins expected type.");
             }
         }
 
-        internal DcviPins(string pinList, DriverDCVIPins driverDCVIPins) {
+        public DcviPins(string pinList, DriverDCVIPins driverDCVIPins) {
             _name = pinList;
             _hardwareApi = driverDCVIPins;
             _ = Meter; // prevent lazy loading

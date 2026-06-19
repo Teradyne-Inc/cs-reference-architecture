@@ -173,8 +173,8 @@ namespace Tol {
         public void SetMeterI(double? currentRange = null, double? filter = null, double? outputRange = null) {
             Meter.Mode.Value = tlDCVSMeterMode.Current;
             if (currentRange.HasValue && outputRange.HasValue) SetCurrentRanges(outputRange.Value, currentRange.Value);
-            else if (currentRange.HasValue) Meter.CurrentRange.Value = currentRange.Value;
-            else if (outputRange.HasValue) CurrentRange.Value = outputRange.Value;
+            else if (currentRange.HasValue) SetCurrentRanges(currentRange.Value, currentRange.Value);
+            else if (outputRange.HasValue) SetCurrentRanges(outputRange.Value, outputRange.Value);
             if (filter.HasValue) Meter.Filter.Value = filter.Value;
         }
 

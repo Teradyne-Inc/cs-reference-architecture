@@ -37,6 +37,6 @@ namespace CsraTestMethods {
 
     internal static class Info {
 
-        internal const string VersionDefinition = "0.17";
+        internal const string VersionDefinition = "0.18.0";
     }
 }

@@ -16,9 +16,9 @@ namespace Tol {
         private IUtilityPins _utility;
         private string _name;
 
-        internal UtilityPins(string pinList) : this(pinList, TheHdw.Utility.Pins(pinList)) { }
+        public UtilityPins(string pinList) : this(pinList, TheHdw.Utility.Pins(pinList)) { }
 
-        internal UtilityPins(string pinList, tlDriverUtilityPins utility) {
+        public UtilityPins(string pinList, tlDriverUtilityPins utility) {
             _name = pinList;
             _hardwareApi = utility;
             _ = State; // prevent lazy loading
