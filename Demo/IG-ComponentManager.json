@@ -18,7 +18,7 @@
         {
           "Publisher": "Teradyne",
           "Name": "Oasis",
-          "Comparison": "Equal to",
+          "Comparison": "Greater than or equal to",
           "Version": "4.6.10801",
           "Notes": "",
           "Verification": "Default",
@@ -27,7 +27,7 @@
         {
           "Publisher": "Teradyne",
           "Name": "SSL",
-          "Comparison": "Equal to",
+          "Comparison": "Greater than or equal to",
           "Version": "6.9.500",
           "Notes": "",
           "Verification": "Default",
