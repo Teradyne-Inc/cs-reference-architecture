@@ -481,7 +481,7 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
 
   <h3 id="Tol_IDcvsPins_CreateCaptureSignal_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_" data-uid="Tol.IDcvsPins.CreateCaptureSignal(System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)">
   CreateCaptureSignal(string, tlDCVSMeterMode, double, double, int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a capture signal with the specified parameters.</p>
@@ -566,7 +566,7 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
 
   <h3 id="Tol_IDcvsPins_ForceHiZ" data-uid="Tol.IDcvsPins.ForceHiZ">
   ForceHiZ()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L201"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the DCVS to high impedance mode.</p>
@@ -645,7 +645,7 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
 
   <h3 id="Tol_IDcvsPins_ForceISetMeterI_System_Double_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.IDcvsPins.ForceISetMeterI(System.Double,System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
   ForceISetMeterI(double, double, double, double, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the Force current, and configures the meter to measure current.</p>
@@ -692,7 +692,7 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
 
   <h3 id="Tol_IDcvsPins_ForceISetMeterV_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.IDcvsPins.ForceISetMeterV(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
   ForceISetMeterV(double, double, double, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L195"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the Force current, and configures the meter to measure voltage.</p>
@@ -784,9 +784,9 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
 
   <a id="Tol_IDcvsPins_ForceVSetMeterI_" data-uid="Tol.IDcvsPins.ForceVSetMeterI*"></a>
 
-  <h3 id="Tol_IDcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__" data-uid="Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})">
-  ForceVSetMeterI(double, double, double, bool?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_IDcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Double__System_Nullable_System_Boolean__" data-uid="Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})">
+  ForceVSetMeterI(double, double, double, double?, bool?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDcvsPins.cs/#L176"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the Force voltage, and configures the meter to measure current.</p>
@@ -794,7 +794,7 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ForceVSetMeterI(double forceVoltage, double clampCurrent, double measureCurrentRange, bool? gate = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void ForceVSetMeterI(double forceVoltage, double clampCurrent, double measureCurrentRange, double? voltageRange = null, bool? gate = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -807,6 +807,9 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
 </dd>
     <dt><code>measureCurrentRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>The current range for measurement.</p>
+</dd>
+    <dt><code>voltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd><p>Optional. The voltage (force) range. DCVS has no independent meter voltage range, so this sets the force range used to validate the forced voltage. When null, the previously programmed range is retained.</p>
 </dd>
     <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd><p>Optional. The gate state after setting.</p>
@@ -838,7 +841,7 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ForceVSetMeterV(double forceVoltage, double clampCurrent, double measureVoltageRange, bool? gate = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void ForceVSetMeterV(double forceVoltage, double clampCurrent, double forceVoltageRange, bool? gate = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -849,8 +852,8 @@ Interface IDcvsPins  <a class="header-action link-secondary" title="View source"
     <dt><code>clampCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>The current to clamp.</p>
 </dd>
-    <dt><code>measureVoltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>The voltage range for measurement.</p>
+    <dt><code>forceVoltageRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The voltage range for forcing. On DCVS this single range also governs the voltage meter.</p>
 </dd>
     <dt><code>gate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
     <dd><p>Optional. The gate state after setting.</p>

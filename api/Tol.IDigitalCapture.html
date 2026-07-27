@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface IDigitalCapture | C# Reference Architecture ">
       
-      
+      <meta name="description" content="Represents a digital capture memory (e.g. CMEM, HRAM, DSSC) instance that records and exposes pattern execution data on a per-pin or per-site basis.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -85,7 +85,7 @@
 
 
   <h1 id="Tol_IDigitalCapture" data-uid="Tol.IDigitalCapture" class="text-break">
-Interface IDigitalCapture  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L4"><i class="bi bi-code-slash"></i></a>
+Interface IDigitalCapture  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -93,7 +93,8 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
   <dl><dt>Assembly</dt><dd>Tol.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents a digital capture memory (e.g. CMEM, HRAM, DSSC) instance that records and exposes pattern execution data on a per-pin or per-site basis.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -111,6 +112,9 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
 
 
 
+  <h2 id="Tol_IDigitalCapture_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Implementations are created via Factory methods.</p>
+</div>
 
 
 
@@ -119,82 +123,14 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
 </h2>
 
 
-  <a id="Tol_IDigitalCapture_DeviceData_" data-uid="Tol.IDigitalCapture.DeviceData*"></a>
-
-  <h3 id="Tol_IDigitalCapture_DeviceData" data-uid="Tol.IDigitalCapture.DeviceData">
-  DeviceData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Capture memory device data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">PinSite&lt;double[]&gt; DeviceData { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Tol_IDigitalCapture_FailingCycleData_" data-uid="Tol.IDigitalCapture.FailingCycleData*"></a>
-
-  <h3 id="Tol_IDigitalCapture_FailingCycleData" data-uid="Tol.IDigitalCapture.FailingCycleData">
-  FailingCycleData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L8"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Capture memory failing cycle data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">PinSite&lt;int[]&gt; FailingCycleData { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <a id="Tol_IDigitalCapture_Pins_" data-uid="Tol.IDigitalCapture.Pins*"></a>
 
   <h3 id="Tol_IDigitalCapture_Pins" data-uid="Tol.IDigitalCapture.Pins">
   Pins
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pins to capture memory from.</p>
+  <div class="markdown level1 summary"><p>The digital pins from which capture data is read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -225,22 +161,28 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
 </h2>
 
 
-  <a id="Tol_IDigitalCapture_Configure_" data-uid="Tol.IDigitalCapture.Configure*"></a>
+  <a id="Tol_IDigitalCapture_ReadFails_" data-uid="Tol.IDigitalCapture.ReadFails*"></a>
 
-  <h3 id="Tol_IDigitalCapture_Configure" data-uid="Tol.IDigitalCapture.Configure">
-  Configure()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_IDigitalCapture_ReadFails" data-uid="Tol.IDigitalCapture.ReadFails">
+  ReadFails()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Configures the hardware for capture memory.</p>
+  <div class="markdown level1 summary"><p>Reads failing cycle indices from the capture memory for each pin and site.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Configure()</code></pre>
+    <pre><code class="lang-csharp hljs">PinSite&lt;int[]&gt; ReadFails()</code></pre>
   </div>
 
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>int[]</code> where each entry contains the cycle offsets at which failures were recorded for that pin and site.</p>
+</dd>
+  </dl>
 
 
 
@@ -251,25 +193,37 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the capture is not configured for fail capture (e.g. <code>CmemCaptType.Fail</code>).</p>
+</dd>
+  </dl>
 
 
 
-  <a id="Tol_IDigitalCapture_Read_" data-uid="Tol.IDigitalCapture.Read*"></a>
+  <a id="Tol_IDigitalCapture_ReadStv_" data-uid="Tol.IDigitalCapture.ReadStv*"></a>
 
-  <h3 id="Tol_IDigitalCapture_Read" data-uid="Tol.IDigitalCapture.Read">
-  Read()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_IDigitalCapture_ReadStv" data-uid="Tol.IDigitalCapture.ReadStv">
+  ReadStv()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reads capture data.</p>
+  <div class="markdown level1 summary"><p>Reads stored-vector (STV) data from the capture memory for each pin and site.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Read()</code></pre>
+    <pre><code class="lang-csharp hljs">PinSite&lt;double[]&gt; ReadStv()</code></pre>
   </div>
 
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>double[]</code> where each entry contains the captured device data values for that pin and site.</p>
+</dd>
+  </dl>
 
 
 
@@ -280,6 +234,12 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the capture is not configured for STV capture (e.g. <code>CmemCaptType.STV</code>).</p>
+</dd>
+  </dl>
 
 
 
@@ -287,10 +247,11 @@ Interface IDigitalCapture  <a class="header-action link-secondary" title="View s
 
   <h3 id="Tol_IDigitalCapture_Reset" data-uid="Tol.IDigitalCapture.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/IDigitalCapture.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Resets capture memory.</p>
+  <div class="markdown level1 summary"><p>Clears the capture memory configuration, discarding any previously captured data and returning the hardware to an unconfigured state.
+Call this after processing captured data to free hardware resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

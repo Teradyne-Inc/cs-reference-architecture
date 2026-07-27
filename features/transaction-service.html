@@ -197,8 +197,8 @@
 <td><code>PortBridgeEnabled</code></td>
 </tr>
 <tr>
-<td>indicator file</td>
-<td><code>PortBridgeEnabled.txt</code> located in VS solution folder</td>
+<td>auto-detection condition</td>
+<td><code>Exists('$(PBROOT)\Teradyne.PortBridge.dll')</code></td>
 </tr>
 <tr>
 <td>compiler constant</td>
@@ -208,8 +208,8 @@
 </table>
 <div class="IMPORTANT">
 <h5>Important</h5>
-<p>By default, the repo does not have the <code>PortBridgeEnabled.txt</code> file in the <code>src</code> folder, thus not enabling this feature. The use model follows an opt-in approach, where users actively select additional, optional features they want to use.</p>
-<p><code>PortBridgeEnabled.txt</code> has been added to <code>.gitignore</code> so that collaborators can permanently change their local coding environment without the risk to propagate this into the repository.</p>
+<p><code>PortBridgeEnabled</code> is auto-detected from the <code>PBROOT</code> environment variable and the presence of <code>Teradyne.PortBridge.dll</code>, consistent with <code>IGComponentManagerParser.VerifyPbVersion</code> and <code>PortBridgeUtils.csproj</code>. No manual marker file is required: if PortBridge is installed and <code>PBROOT</code> is set, the feature is enabled automatically; otherwise it stays disabled.</p>
+<p>A previous version of this mechanism relied on a manual <code>PortBridgeEnabled.txt</code> marker file in the <code>src</code> folder. That approach has been replaced by the <code>PBROOT</code>-based auto-detection described above.</p>
 </div>
 <h2 id="alternatives-considered">Alternatives Considered</h2>
 <p>The following options were considered but could not prevail due to the reasons stated.</p>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.19.0 - 2026-07-24 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.19.0 - 2026-07-24 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/releases_/v0.19.0.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v0190---2026-07-24">v0.19.0 - 2026-07-24</h1>
+
+<h2 id="breaking-changes">Breaking Changes</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p><strong>Note on versioning:</strong> While C#RA is pre-1.0 (<code>0.x</code>), the SemVer 2.0 rule that reserves breaking changes for a MAJOR bump does not yet apply — any release may include breaking changes, and the two-stage <code>[Obsolete]</code> deprecation policy is waived. APIs may be removed without a prior warning release until the 1.0.0 milestone, after which the full deprecation policy takes effect.</p>
+</div>
+<h3 id="idigitalcapture-refactor-and-cmem-capture-implementation">IDigitalCapture refactor and CMEM capture implementation</h3>
+<p><code>IDigitalCapture</code> has been refactored for clarity and type safety. <code>Read()</code>, <code>FailingCycleData</code>, and <code>DeviceData</code> were removed, and configuration now happens in the constructor instead of through a public <code>Configure()</code> call. As part of the same change, <code>CmemCapture</code> is now implemented, with typed <code>ReadFails()</code> and <code>ReadStv()</code> methods plus new <code>CaptureFails</code> and <code>CaptureStv</code> reference test methods.</p>
+<pre><code class="lang-csharp">// Before
+digitalCapture.Configure();
+digitalCapture.Read();
+PinSite&lt;int[]&gt; fails = digitalCapture.FailingCycleData;
+PinSite&lt;double[]&gt; stv = digitalCapture.DeviceData;
+
+// After
+PinSite&lt;int[]&gt; fails = digitalCapture.ReadFails();
+PinSite&lt;double[]&gt; stv = digitalCapture.ReadStv();
+digitalCapture.Reset();
+</code></pre>
+<p><strong>Impact:</strong> Any code implementing or calling <code>IDigitalCapture</code> must be updated to use <code>ReadFails()</code> or <code>ReadStv()</code>, remove <code>Configure()</code> calls, and rely on constructor-time configuration.</p>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<h3 id="validation-errors-from-onvalidationstart-no-longer-trigger-the-mangled-test-instance-name-dialog">Validation errors from <code>OnValidationStart</code> no longer trigger the &quot;Mangled test instance name&quot; dialog</h3>
+<p>The IG-ComponentManager compatibility check in <code>OnValidationStart</code> no longer reports through a validation path that requires a current test instance. This prevents <code>Alert.Error</code> from surfacing the misleading <code>WriteTemplateArgumentError</code> dialog during program-level validation and preserves the real ComponentManager message instead.</p>
+<p><strong>Impact:</strong> Validation now shows the actual compatibility problem instead of the confusing &quot;Mangled test instance name&quot; dialog, and <code>Alert.Error</code> is safe to call from program-level Exec Interpose functions.</p>
+<h3 id="dcvi-now-accepts-negative-force-values-when-ranges-share-the-same-magnitude">DCVI now accepts negative force values when ranges share the same magnitude</h3>
+<p><code>Tol.DcviPins</code> now applies <code>Math.Abs()</code> to current and voltage range values before sending them to the hardware API. This fixes failures when a negative force value was reused as the range for DCVI measurements.</p>
+<p><strong>Impact:</strong> Test methods that force negative current or voltage on DCVI pins no longer fail because a signed setpoint is misinterpreted as a negative range.</p>
+<h3 id="portbridge-is-now-auto-detected-from-pbroot">PortBridge is now auto-detected from <code>PBROOT</code></h3>
+<p>PortBridge enablement no longer relies on a manual <code>PortBridgeEnabled.txt</code> marker file. Program load and build scripts, project configuration, CI, and related documentation now use <code>PBROOT</code> plus <code>Teradyne.PortBridge.dll</code> detection consistently.</p>
+<p><strong>Impact:</strong> Users no longer need to create or remove <code>PortBridgeEnabled.txt</code>; PortBridge support is enabled automatically when the installation is present.</p>
+<h3 id="overlapping-pin-groups-now-resolve-to-distinct-pins">Overlapping pin groups now resolve to distinct pins</h3>
+<p><code>PinsFactory.GetPins</code> now deduplicates the resolved individual pin list after decomposing pin groups, while preserving first-occurrence order. This fixes measurement-time failures when one pin group is a subset of another.</p>
+<pre><code class="lang-csharp">return pins.Distinct().ToList();
+</code></pre>
+<p><strong>Impact:</strong> Passing overlapping pin groups such as <code>GroupBig, GroupSmall</code> no longer produces duplicate physical pins or downstream &quot;pins are duplicated&quot; errors.</p>
+<h3 id="ppmu-voltage-metering-now-uses-the-correct-range-in-setforceandmeter">PPMU voltage metering now uses the correct range in <code>SetForceAndMeter</code></h3>
+<p><code>TheLib.Setup.Dc.SetForceAndMeter</code> previously passed <code>measureRange</code> into the PPMU <code>ForceVSetMeterV</code> path, even though that argument is a current range. The method now uses <code>clampValue</code>, which matches PPMU behavior and the existing workaround used in production.</p>
+<pre><code class="lang-csharp">pins.Ppmu?.ForceVSetMeterV(forceValue, clampValue, gateOn ? true : null);
+</code></pre>
+<p><strong>Impact:</strong> PPMU <code>ForceVoltage + MeterVoltage</code> flows now select a meaningful current range instead of corrupting the measurement with a voltage value.</p>
+<h3 id="setmeter-now-warns-when-used-with-ppmu-pins"><code>SetMeter</code> now warns when used with PPMU pins</h3>
+<p><code>TheLib.Setup.Dc.SetMeter</code> now emits an <code>Alert.Warning</code> when a pin group includes PPMU pins, because PPMU cannot configure its meter independently. The warning directs callers to <code>SetForceAndMeter</code>, which is the supported API for combined force-and-meter setup.</p>
+<p><strong>Impact:</strong> Users no longer get a silent no-op when calling <code>SetMeter</code> on PPMU pins; they receive a clear warning and an actionable alternative.</p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="reusable-dcvs-profiling-example-added">Reusable DCVS profiling example added</h3>
+<p>C#RA now includes a reusable DCVS current and voltage profiling example, plus supporting documentation, so profiling flows are easier to discover and reuse from test methods.</p>
+<pre><code class="lang-csharp">string signal = DcvsProfileTool.CreateSignalName(&quot;VDD&quot;, tlDCVSMeterMode.Current);
+DcvsProfileTool.StartProfile(pins.Dcvs, signal, tlDCVSMeterMode.Current, 1.0, 100000, 500);
+TheLib.Execute.Digital.RunPattern(patternInfo[0]);
+DSPWave wave = DcvsProfileTool.PlotProfile(pins.Dcvs, signal, plotWaveform: true, dumpToFile: true);
+</code></pre>
+<p><strong>Impact:</strong> Users now have a concrete C# pattern for DCVS profiling instead of relying on ad hoc implementations or VBA-only examples.</p>
+<h3 id="hram-capture-construction-and-reset-are-now-implemented">HRAM capture construction and reset are now implemented</h3>
+<p><code>Tol.HramCapture</code> now performs construction-time HRAM setup and supports <code>Reset()</code> for the supported <code>Fail</code> and <code>Stv</code> capture modes.</p>
+<pre><code class="lang-csharp">var captureFail = new HramCapture(CaptType.Fail, digitalPins, captureLimit: 100, timeDomain: &quot;&quot;);
+capture.Reset();
+
+var captureStv = new HramCapture(CaptType.Stv, digitalPins, captureLimit: 100, timeDomain: &quot;&quot;);
+capture.Reset();
+</code></pre>
+<p><strong>Impact:</strong> Consumers can now construct and reset <code>HramCapture</code> objects instead of hitting <code>NotImplementedException</code>.</p>
+<h3 id="dssc-capture-support-added">DSSC capture support added</h3>
+<p>Added DSSC support to the capture mechanism.</p>
+<p><strong>Impact:</strong> Users can now use DSSC as a supported capture option within the capture framework.</p>
+<h3 id="idatalog-gained-explicit-limit-overloads-and-named-functional-logging"><code>IDatalog</code> gained explicit-limit overloads and named functional logging</h3>
+<p><code>IDatalog.TestFunctional</code> now accepts an optional <code>tName</code>, and new explicit <code>lo</code> and <code>hi</code> limit overloads were added for <code>Site&lt;int&gt;</code> and <code>PinSite&lt;double&gt;</code> in <code>TestParametric</code>.</p>
+<p><strong>Impact:</strong> Users can assign explicit test names to functional datalogs and use limit-based parametric logging consistently across more result types.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -342,32 +342,79 @@ these words into an array of SiteLong objects</p>
 
 
 
-  <a id="Csra_TheLib_Acquire_Digital_TryReadCapture_" data-uid="Csra.TheLib.Acquire.Digital.TryReadCapture*"></a>
+  <a id="Csra_TheLib_Acquire_Digital_TryReadFailsCapture_" data-uid="Csra.TheLib.Acquire.Digital.TryReadFailsCapture*"></a>
 
-  <h3 id="Csra_TheLib_Acquire_Digital_TryReadCapture_Tol_IDigitalCapture_" data-uid="Csra.TheLib.Acquire.Digital.TryReadCapture(Tol.IDigitalCapture)">
-  TryReadCapture(IDigitalCapture)
+  <h3 id="Csra_TheLib_Acquire_Digital_TryReadFailsCapture_Tol_IDigitalCapture_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32_____" data-uid="Csra.TheLib.Acquire.Digital.TryReadFailsCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32[]}@)">
+  TryReadFailsCapture(IDigitalCapture, out PinSite&lt;int[]&gt;)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Acquire/Digital.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Try reads capture memory data.</p>
+  <div class="markdown level1 summary"><p>Tries to read failing cycle data from the configured capture memory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool TryReadCapture(IDigitalCapture digitalCapture)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool TryReadFailsCapture(IDigitalCapture digitalCapture, out PinSite&lt;int[]&gt; fails)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>digitalCapture</code> <a class="xref" href="Tol.IDigitalCapture.html">IDigitalCapture</a></dt>
-    <dd><p>Tol digital capture object.</p>
+    <dd><p>Tol digital capture object configured for fail capture.</p>
+</dd>
+    <dt><code>fails</code> <span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
+    <dd><p>When successful, contains the failing cycle indices per pin and site; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if the capture memory data was successfully read; otherwise, false.</p>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>If the data was successfully read; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Csra_TheLib_Acquire_Digital_TryReadStvCapture_" data-uid="Csra.TheLib.Acquire.Digital.TryReadStvCapture*"></a>
+
+  <h3 id="Csra_TheLib_Acquire_Digital_TryReadStvCapture_Tol_IDigitalCapture_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double_____" data-uid="Csra.TheLib.Acquire.Digital.TryReadStvCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Double[]}@)">
+  TryReadStvCapture(IDigitalCapture, out PinSite&lt;double[]&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Acquire/Digital.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to read STV device data from the configured capture memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryReadStvCapture(IDigitalCapture digitalCapture, out PinSite&lt;double[]&gt; stv)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>digitalCapture</code> <a class="xref" href="Tol.IDigitalCapture.html">IDigitalCapture</a></dt>
+    <dd><p>Tol digital capture object configured for STV capture.</p>
+</dd>
+    <dt><code>stv</code> <span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
+    <dd><p>When successful, contains the captured device data values per pin and site; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>If the data was successfully read; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
 </dd>
   </dl>
 

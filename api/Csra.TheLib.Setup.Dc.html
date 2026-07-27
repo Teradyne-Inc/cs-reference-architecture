@@ -235,7 +235,7 @@ Class Dc  <a class="header-action link-secondary" title="View source" href="http
 
   <h3 id="Csra_TheLib_Setup_Dc_CreateCaptureSignal_Csra_Pins_System_String_Teradyne_Igxl_Interfaces_Public_tlDCVSMeterMode_System_Double_System_Double_System_Int32_System_Boolean_" data-uid="Csra.TheLib.Setup.Dc.CreateCaptureSignal(Csra.Pins,System.String,Teradyne.Igxl.Interfaces.Public.tlDCVSMeterMode,System.Double,System.Double,System.Int32,System.Boolean)">
   CreateCaptureSignal(Pins, string, tlDCVSMeterMode, double, double, int, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Setup/Dc.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Setup/Dc.cs/#L198"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add capture signal to be acquired during the test execution.</p>
@@ -842,7 +842,8 @@ ranges.</p>
     <dd><p>Force voltage or current value.</p>
 </dd>
     <dt><code>forceRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Voltage or current to set the force range.</p>
+    <dd><p>Voltage or current to set the force range. For DCVS in ForceVoltage mode this is also the range used to validate the
+forced voltage, because DCVS has no independent meter voltage range. Set it to cover forceValue to avoid DCVS:0003.</p>
 </dd>
     <dt><code>clampValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Current or voltage clamp value. Note: For PPMU it programs either clampVHi or clampVLo depending if sourcing or
@@ -852,7 +853,9 @@ sinking current.</p>
     <dd><p>Set the meter mode to voltage or current.</p>
 </dd>
     <dt><code>measureRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Set the meter's range to the expected current or voltage.</p>
+    <dd><p>Set the meter's range to the expected current or voltage. For PPMU: used as the measure current range.
+For DCVI: used as the meter range, independent from the force range. For DCVS in MeterVoltage mode: not used as the voltage range
+(force and meter share the same range, so forceRange is applied instead).</p>
 </dd>
     <dt><code>gateOn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>Optional. Default gate on the pins after after the settings,False no gate change.</p>
@@ -876,7 +879,7 @@ sinking current.</p>
 
   <h3 id="Csra_TheLib_Setup_Dc_SetMeter_Csra_Pins_Csra_DcMeterMode_System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Int32__System_Nullable_System_Double__" data-uid="Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins,Csra.DcMeterMode,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Double})">
   SetMeter(Pins, DcMeterMode, double?, double?, int?, double?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Setup/Dc.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Setup/Dc.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the measurement interface of the instruments DCVI and DCVS.</p>
@@ -927,7 +930,7 @@ this.</p>
 
   <h3 id="Csra_TheLib_Setup_Dc_SetMeter_Csra_Pins___Csra_DcMeterMode___System_Double___System_Double___System_Int32___System_Double___" data-uid="Csra.TheLib.Setup.Dc.SetMeter(Csra.Pins[],Csra.DcMeterMode[],System.Double[],System.Double[],System.Int32[],System.Double[])">
   SetMeter(Pins[], DcMeterMode[], double[], double[], int[], double[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Setup/Dc.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/Setup/Dc.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the measurements interface of the instruments DCVI and DCVS.</p>

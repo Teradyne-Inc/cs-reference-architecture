@@ -2070,6 +2070,48 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CsraTestMethods.Capture.Cmem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CsraTestMethods.Capture.Cmem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CsraTestMethods.Capture.Cmem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CsraTestMethods.Capture.Dssc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CsraTestMethods.Capture.Dssc.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CsraTestMethods.Capture.Dssc",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CsraTestMethods.Capture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CsraTestMethods.Capture.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CsraTestMethods.Capture",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CsraTestMethods.Continuity.Parametric.yml",
       "output": {
         ".html": {
@@ -2336,6 +2378,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CsraTestMethods.Parametric.VoltageForceRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CsraTestMethods.Parametric.VoltageForceRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CsraTestMethods.Parametric.VoltageForceRange",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CsraTestMethods.Parametric.yml",
       "output": {
         ".html": {
@@ -2598,7 +2654,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Tol.CmemCapture",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Tol.CmemCapture.yml\" sourcestartlinenumber=\"1\">CMEM (Capture Memory) implementation of <xref href=\"Tol.IDigitalCapture\" data-throw-if-not-resolved=\"false\"></xref> that records digital pattern execution data, either failing cycle indices or raw STV device data.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2654,7 +2710,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Tol.DsscCapture",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Tol.DsscCapture.yml\" sourcestartlinenumber=\"1\">DSSC (Digital Sub-System Capture) implementation of <xref href=\"Tol.IDigitalCapture\" data-throw-if-not-resolved=\"false\"></xref> that records high-speed\ndigital waveform sample data via <code>TheHdw.DSSC</code> and exposes it on a per-pin, per-site basis.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -2752,7 +2808,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Tol.IDigitalCapture",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Tol.IDigitalCapture.yml\" sourcestartlinenumber=\"1\">Represents a digital capture memory (e.g. CMEM, HRAM, DSSC) instance that records and exposes pattern execution data on a per-pin or per-site basis.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -4844,6 +4900,16 @@
       "output": {
         ".html": {
           "relative_path": "releases_/v0.18.0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.19.0.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.19.0.html"
         }
       },
       "version": ""

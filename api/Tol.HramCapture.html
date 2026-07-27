@@ -161,7 +161,7 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_HramCapture__ctor" data-uid="Tol.HramCapture.#ctor">
   HramCapture()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L7"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -189,82 +189,14 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
-  <a id="Tol_HramCapture_DeviceData_" data-uid="Tol.HramCapture.DeviceData*"></a>
-
-  <h3 id="Tol_HramCapture_DeviceData" data-uid="Tol.HramCapture.DeviceData">
-  DeviceData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Capture memory device data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PinSite&lt;double[]&gt; DeviceData { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Tol_HramCapture_FailingCycleData_" data-uid="Tol.HramCapture.FailingCycleData*"></a>
-
-  <h3 id="Tol_HramCapture_FailingCycleData" data-uid="Tol.HramCapture.FailingCycleData">
-  FailingCycleData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L5"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Capture memory failing cycle data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PinSite&lt;int[]&gt; FailingCycleData { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <a id="Tol_HramCapture_Pins_" data-uid="Tol.HramCapture.Pins*"></a>
 
   <h3 id="Tol_HramCapture_Pins" data-uid="Tol.HramCapture.Pins">
   Pins
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L5"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pins to capture memory from.</p>
+  <div class="markdown level1 summary"><p>The digital pins from which capture data is read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -295,22 +227,28 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
-  <a id="Tol_HramCapture_Configure_" data-uid="Tol.HramCapture.Configure*"></a>
+  <a id="Tol_HramCapture_ReadFails_" data-uid="Tol.HramCapture.ReadFails*"></a>
 
-  <h3 id="Tol_HramCapture_Configure" data-uid="Tol.HramCapture.Configure">
-  Configure()
+  <h3 id="Tol_HramCapture_ReadFails" data-uid="Tol.HramCapture.ReadFails">
+  ReadFails()
   <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Configures the hardware for capture memory.</p>
+  <div class="markdown level1 summary"><p>Reads failing cycle indices from the capture memory for each pin and site.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Configure()</code></pre>
+    <pre><code class="lang-csharp hljs">public PinSite&lt;int[]&gt; ReadFails()</code></pre>
   </div>
 
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>int[]</code> where each entry contains the cycle offsets at which failures were recorded for that pin and site.</p>
+</dd>
+  </dl>
 
 
 
@@ -321,25 +259,37 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the capture is not configured for fail capture (e.g. <code>CmemCaptType.Fail</code>).</p>
+</dd>
+  </dl>
 
 
 
-  <a id="Tol_HramCapture_Read_" data-uid="Tol.HramCapture.Read*"></a>
+  <a id="Tol_HramCapture_ReadStv_" data-uid="Tol.HramCapture.ReadStv*"></a>
 
-  <h3 id="Tol_HramCapture_Read" data-uid="Tol.HramCapture.Read">
-  Read()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_HramCapture_ReadStv" data-uid="Tol.HramCapture.ReadStv">
+  ReadStv()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reads capture data.</p>
+  <div class="markdown level1 summary"><p>Reads stored-vector (STV) data from the capture memory for each pin and site.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Read()</code></pre>
+    <pre><code class="lang-csharp hljs">public PinSite&lt;double[]&gt; ReadStv()</code></pre>
   </div>
 
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>double[]</code> where each entry contains the captured device data values for that pin and site.</p>
+</dd>
+  </dl>
 
 
 
@@ -350,6 +300,12 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the capture is not configured for STV capture (e.g. <code>CmemCaptType.STV</code>).</p>
+</dd>
+  </dl>
 
 
 
@@ -357,10 +313,11 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_HramCapture_Reset" data-uid="Tol.HramCapture.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Resets capture memory.</p>
+  <div class="markdown level1 summary"><p>Clears the capture memory configuration, discarding any previously captured data and returning the hardware to an unconfigured state.
+Call this after processing captured data to free hardware resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

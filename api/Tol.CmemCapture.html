@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CmemCapture | C# Reference Architecture ">
       
-      
+      <meta name="description" content="CMEM (Capture Memory) implementation of  that records digital pattern execution data, either failing cycle indices or raw STV device data.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -85,7 +85,7 @@
 
 
   <h1 id="Tol_CmemCapture" data-uid="Tol.CmemCapture" class="text-break">
-Class CmemCapture  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L4"><i class="bi bi-code-slash"></i></a>
+Class CmemCapture  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -93,7 +93,8 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>Tol.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>CMEM (Capture Memory) implementation of <a class="xref" href="Tol.IDigitalCapture.html">IDigitalCapture</a> that records digital pattern execution data, either failing cycle indices or raw STV device data.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -149,6 +150,16 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h2 id="Tol_CmemCapture_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+Construct instances via Factory helpers:
+<ul><li><code>CreateCmemFailsCapture</code> — captures failing cycle indices (<span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.Fail</span>).</li><li><code>CreateCmemStvCapture</code> — captures raw device data (<span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.STV</span>).</li><li><code>CreateCmemCapture</code> — full control over all parameters.</li></ul>
+
+<p>
+Typical usage sequence:
+<ol><li>Create via a Factory helper (configures CMEM hardware immediately).</li><li>Execute a pattern burst.</li><li>Call <a class="xref" href="Tol.CmemCapture.html#Tol_CmemCapture_ReadFails">ReadFails()</a> or <a class="xref" href="Tol.CmemCapture.html#Tol_CmemCapture_ReadStv">ReadStv()</a> to retrieve captured data from hardware into FailingCycleData or DeviceData.</li><li>Call <a class="xref" href="Tol.CmemCapture.html#Tol_CmemCapture_Reset">Reset()</a> to release hardware resources after processing.</li></ol>
+
+</div>
 
 
 
@@ -159,18 +170,57 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 
   <a id="Tol_CmemCapture__ctor_" data-uid="Tol.CmemCapture.#ctor*"></a>
 
-  <h3 id="Tol_CmemCapture__ctor" data-uid="Tol.CmemCapture.#ctor">
-  CmemCapture()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_CmemCapture__ctor_Teradyne_Igxl_Interfaces_Public_CmemCaptType_Teradyne_Igxl_Interfaces_Public_tlCMEMCaptureSource_Tol_IDigitalPins_System_Int32_System_Int32_System_Int32_System_Int32_System_Boolean_System_Boolean_System_String_System_String_" data-uid="Tol.CmemCapture.#ctor(Teradyne.Igxl.Interfaces.Public.CmemCaptType,Teradyne.Igxl.Interfaces.Public.tlCMEMCaptureSource,Tol.IDigitalPins,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.String,System.String)">
+  CmemCapture(CmemCaptType, tlCMEMCaptureSource, IDigitalPins, int, int, int, int, bool, bool, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L75"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Tol.CmemCapture.html">CmemCapture</a> and configures the CMEM hardware immediately.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CmemCapture()</code></pre>
+    <pre><code class="lang-csharp hljs">public CmemCapture(CmemCaptType captureType, tlCMEMCaptureSource captureSource, IDigitalPins digitalPins = null, int returnValues = 0, int wordSize = 0, int captureSize = 4096, int captureLimit = 0, bool fullSpeed = false, bool vectorOffset = false, string pattern = &quot;&quot;, string timeDomain = &quot;&quot;)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>captureType</code> <span class="xref">CmemCaptType</span></dt>
+    <dd><p>The capture mode. Must be <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.Fail</span> or <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.STV</span>;
+<span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.None</span> and <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.All</span> are not allowed.</p>
+</dd>
+    <dt><code>captureSource</code> <span class="xref">tlCMEMCaptureSource</span></dt>
+    <dd><p>The hardware data source. Must be compatible with <code class="paramref">captureType</code>:</p>
+<ul><li><span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.Fail</span>: <code>PassFailData</code> or <code>PatPassFailData</code>.</li><li><span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.STV</span>: <code>DutData</code> or <code>PatDutData</code>.</li></ul>
+</dd>
+    <dt><code>digitalPins</code> <a class="xref" href="Tol.IDigitalPins.html">IDigitalPins</a></dt>
+    <dd><p>Pins used to retrieve data during <span class="xref">Tol.CmemCapture.Read&lt;T&gt;()</span>. Required for reading captured data.</p>
+</dd>
+    <dt><code>returnValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of expected return values per word. Used together with <code class="paramref">wordSize</code> to compute the STV capture buffer size (<code>returnValues × wordSize</code>). Ignored for <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.Fail</span>.</p>
+</dd>
+    <dt><code>wordSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Width of each word in bits. Used together with <code class="paramref">returnValues</code> to compute the STV capture buffer size. Ignored for <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.Fail</span>.</p>
+</dd>
+    <dt><code>captureSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Maximum number of cycles to store in CMEM. Defaults to 4096. Applies to <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.Fail</span> only; STV size is derived from <code class="paramref">returnValues</code> and <code class="paramref">wordSize</code>.</p>
+</dd>
+    <dt><code>captureLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Maximum number of captures before the hardware stops recording. Set to 0 (default) for unlimited captures.</p>
+</dd>
+    <dt><code>fullSpeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>When <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, captures at full pattern speed without inserting wait cycles.</p>
+</dd>
+    <dt><code>vectorOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Reserved for future use; not currently applied to <code>SetCaptureConfig</code>.</p>
+</dd>
+    <dt><code>pattern</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Pattern name to associate with this capture. Pass an empty string (default) for any pattern.</p>
+</dd>
+    <dt><code>timeDomain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Digital time domain name to configure. Pass an empty string (default) to use the default time domain.</p>
+</dd>
+  </dl>
 
 
 
@@ -182,6 +232,12 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when <code class="paramref">captureType</code> is <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.None</span> or <span class="xref">Teradyne.Igxl.Interfaces.Public.CmemCaptType.All</span>, or when <code class="paramref">captureSource</code> is incompatible with <code class="paramref">captureType</code>.</p>
+</dd>
+  </dl>
 
 
 
@@ -189,82 +245,14 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
-  <a id="Tol_CmemCapture_DeviceData_" data-uid="Tol.CmemCapture.DeviceData*"></a>
-
-  <h3 id="Tol_CmemCapture_DeviceData" data-uid="Tol.CmemCapture.DeviceData">
-  DeviceData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Capture memory device data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PinSite&lt;double[]&gt; DeviceData { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <a id="Tol_CmemCapture_FailingCycleData_" data-uid="Tol.CmemCapture.FailingCycleData*"></a>
-
-  <h3 id="Tol_CmemCapture_FailingCycleData" data-uid="Tol.CmemCapture.FailingCycleData">
-  FailingCycleData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L5"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Capture memory failing cycle data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PinSite&lt;int[]&gt; FailingCycleData { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <a id="Tol_CmemCapture_Pins_" data-uid="Tol.CmemCapture.Pins*"></a>
 
   <h3 id="Tol_CmemCapture_Pins" data-uid="Tol.CmemCapture.Pins">
   Pins
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Pins to capture memory from.</p>
+  <div class="markdown level1 summary"><p>The digital pins from which capture data is read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -295,22 +283,28 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 </h2>
 
 
-  <a id="Tol_CmemCapture_Configure_" data-uid="Tol.CmemCapture.Configure*"></a>
+  <a id="Tol_CmemCapture_ReadFails_" data-uid="Tol.CmemCapture.ReadFails*"></a>
 
-  <h3 id="Tol_CmemCapture_Configure" data-uid="Tol.CmemCapture.Configure">
-  Configure()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_CmemCapture_ReadFails" data-uid="Tol.CmemCapture.ReadFails">
+  ReadFails()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L204"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Configures the hardware for capture memory.</p>
+  <div class="markdown level1 summary"><p>Reads failing cycle indices from the capture memory for each pin and site.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Configure()</code></pre>
+    <pre><code class="lang-csharp hljs">public PinSite&lt;int[]&gt; ReadFails()</code></pre>
   </div>
 
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>int[]</code> where each entry contains the cycle offsets at which failures were recorded for that pin and site.</p>
+</dd>
+  </dl>
 
 
 
@@ -321,25 +315,37 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the capture is not configured for fail capture (e.g. <code>CmemCaptType.Fail</code>).</p>
+</dd>
+  </dl>
 
 
 
-  <a id="Tol_CmemCapture_Read_" data-uid="Tol.CmemCapture.Read*"></a>
+  <a id="Tol_CmemCapture_ReadStv_" data-uid="Tol.CmemCapture.ReadStv*"></a>
 
-  <h3 id="Tol_CmemCapture_Read" data-uid="Tol.CmemCapture.Read">
-  Read()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_CmemCapture_ReadStv" data-uid="Tol.CmemCapture.ReadStv">
+  ReadStv()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reads capture data.</p>
+  <div class="markdown level1 summary"><p>Reads stored-vector (STV) data from the capture memory for each pin and site.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Read()</code></pre>
+    <pre><code class="lang-csharp hljs">public PinSite&lt;double[]&gt; ReadStv()</code></pre>
   </div>
 
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>double[]</code> where each entry contains the captured device data values for that pin and site.</p>
+</dd>
+  </dl>
 
 
 
@@ -350,6 +356,12 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the capture is not configured for STV capture (e.g. <code>CmemCaptType.STV</code>).</p>
+</dd>
+  </dl>
 
 
 
@@ -357,10 +369,11 @@ Class CmemCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_CmemCapture_Reset" data-uid="Tol.CmemCapture.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/CmemCapture.cs/#L118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Resets capture memory.</p>
+  <div class="markdown level1 summary"><p>Clears the CMEM capture configuration and discards any previously captured data.
+Call this after processing captured data to return the hardware to an idle state.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

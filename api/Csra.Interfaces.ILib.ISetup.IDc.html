@@ -632,7 +632,7 @@ ranges.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Modify_Csra_Pins_Csra_DcParameters_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Modify(Csra.Pins,Csra.DcParameters)">
   Modify(Pins, DcParameters)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L453"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L456"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Selectively program or modify any DC instrument parameter.</p>
@@ -670,7 +670,7 @@ ranges.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_Modify_Csra_Pins_System_Nullable_System_Boolean__System_Nullable_Csra_DcOutputMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_Csra_DcMeterMode__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Double__System_Nullable_System_Boolean__System_Nullable_System_Double__System_Nullable_System_Double__" data-uid="Csra.Interfaces.ILib.ISetup.IDc.Modify(Csra.Pins,System.Nullable{System.Boolean},System.Nullable{Csra.DcOutputMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{Csra.DcMeterMode},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean},System.Nullable{System.Double},System.Nullable{System.Double})">
   Modify(Pins, bool?, DcOutputMode?, double?, double?, double?, double?, double?, double?, DcMeterMode?, double?, double?, double?, double?, double?, double?, double?, bool?, bool?, double?, double?, double?, double?, double?, bool?, double?, double?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L485"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L488"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Selectively program or modify any DC instrument parameter.</p>
@@ -783,7 +783,7 @@ ranges.</p>
 
   <h3 id="Csra_Interfaces_ILib_ISetup_IDc_SetForceAndMeter_Csra_Pins_Csra_DcOutputMode_System_Double_System_Double_System_Double_Csra_DcMeterMode_System_Double_System_Boolean_" data-uid="Csra.Interfaces.ILib.ISetup.IDc.SetForceAndMeter(Csra.Pins,Csra.DcOutputMode,System.Double,System.Double,System.Double,Csra.DcMeterMode,System.Double,System.Boolean)">
   SetForceAndMeter(Pins, DcOutputMode, double, double, double, DcMeterMode, double, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L445"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Csra/TestBlocks/ITestBlocks.cs/#L448"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Programs the force and the meter's measurement parameters interface for the dc instruments.</p>
@@ -806,7 +806,8 @@ ranges.</p>
     <dd><p>Force voltage or current value.</p>
 </dd>
     <dt><code>forceRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Voltage or current to set the force range.</p>
+    <dd><p>Voltage or current to set the force range. For DCVS in ForceVoltage mode this is also the range used to validate the
+forced voltage, because DCVS has no independent meter voltage range. Set it to cover forceValue to avoid DCVS:0003.</p>
 </dd>
     <dt><code>clampValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>Current or voltage clamp value. Note: For PPMU it programs either clampVHi or clampVLo depending if sourcing or
@@ -816,7 +817,9 @@ sinking current.</p>
     <dd><p>Set the meter mode to voltage or current.</p>
 </dd>
     <dt><code>measureRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>Set the meter's range to the expected current or voltage.</p>
+    <dd><p>Set the meter's range to the expected current or voltage. For PPMU: used as the measure current range.
+For DCVI: used as the meter range, independent from the force range. For DCVS in MeterVoltage mode: not used as the voltage range
+(force and meter share the same range, so forceRange is applied instead).</p>
 </dd>
     <dt><code>gateOn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>Optional. Default gate on the pins after after the settings,False no gate change.</p>

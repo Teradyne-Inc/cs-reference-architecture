@@ -2645,19 +2645,38 @@ references:
   isSpec: "True"
   fullName: Csra.Interfaces.ILib.IAcquire.IDigital.ReadWords
   nameWithType: ILib.IAcquire.IDigital.ReadWords
-- uid: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadCapture(Tol.IDigitalCapture)
-  name: TryReadCapture(IDigitalCapture)
-  href: api/Csra.Interfaces.ILib.IAcquire.IDigital.html#Csra_Interfaces_ILib_IAcquire_IDigital_TryReadCapture_Tol_IDigitalCapture_
-  commentId: M:Csra.Interfaces.ILib.IAcquire.IDigital.TryReadCapture(Tol.IDigitalCapture)
-  fullName: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadCapture(Tol.IDigitalCapture)
-  nameWithType: ILib.IAcquire.IDigital.TryReadCapture(IDigitalCapture)
-- uid: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadCapture*
-  name: TryReadCapture
-  href: api/Csra.Interfaces.ILib.IAcquire.IDigital.html#Csra_Interfaces_ILib_IAcquire_IDigital_TryReadCapture_
-  commentId: Overload:Csra.Interfaces.ILib.IAcquire.IDigital.TryReadCapture
+- uid: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32[]}@)
+  name: TryReadFailsCapture(IDigitalCapture, out PinSite<int[]>)
+  href: api/Csra.Interfaces.ILib.IAcquire.IDigital.html#Csra_Interfaces_ILib_IAcquire_IDigital_TryReadFailsCapture_Tol_IDigitalCapture_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32_____
+  commentId: M:Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32[]}@)
+  name.vb: TryReadFailsCapture(IDigitalCapture, PinSite(Of Integer()))
+  fullName: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture(Tol.IDigitalCapture, out Teradyne.Igxl.Interfaces.Public.PinSite<int[]>)
+  fullName.vb: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture(Tol.IDigitalCapture, Teradyne.Igxl.Interfaces.Public.PinSite(Of Integer()))
+  nameWithType: ILib.IAcquire.IDigital.TryReadFailsCapture(IDigitalCapture, out PinSite<int[]>)
+  nameWithType.vb: ILib.IAcquire.IDigital.TryReadFailsCapture(IDigitalCapture, PinSite(Of Integer()))
+- uid: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture*
+  name: TryReadFailsCapture
+  href: api/Csra.Interfaces.ILib.IAcquire.IDigital.html#Csra_Interfaces_ILib_IAcquire_IDigital_TryReadFailsCapture_
+  commentId: Overload:Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture
   isSpec: "True"
-  fullName: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadCapture
-  nameWithType: ILib.IAcquire.IDigital.TryReadCapture
+  fullName: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadFailsCapture
+  nameWithType: ILib.IAcquire.IDigital.TryReadFailsCapture
+- uid: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Double[]}@)
+  name: TryReadStvCapture(IDigitalCapture, out PinSite<double[]>)
+  href: api/Csra.Interfaces.ILib.IAcquire.IDigital.html#Csra_Interfaces_ILib_IAcquire_IDigital_TryReadStvCapture_Tol_IDigitalCapture_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double_____
+  commentId: M:Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Double[]}@)
+  name.vb: TryReadStvCapture(IDigitalCapture, PinSite(Of Double()))
+  fullName: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture(Tol.IDigitalCapture, out Teradyne.Igxl.Interfaces.Public.PinSite<double[]>)
+  fullName.vb: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture(Tol.IDigitalCapture, Teradyne.Igxl.Interfaces.Public.PinSite(Of Double()))
+  nameWithType: ILib.IAcquire.IDigital.TryReadStvCapture(IDigitalCapture, out PinSite<double[]>)
+  nameWithType.vb: ILib.IAcquire.IDigital.TryReadStvCapture(IDigitalCapture, PinSite(Of Double()))
+- uid: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture*
+  name: TryReadStvCapture
+  href: api/Csra.Interfaces.ILib.IAcquire.IDigital.html#Csra_Interfaces_ILib_IAcquire_IDigital_TryReadStvCapture_
+  commentId: Overload:Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture
+  isSpec: "True"
+  fullName: Csra.Interfaces.ILib.IAcquire.IDigital.TryReadStvCapture
+  nameWithType: ILib.IAcquire.IDigital.TryReadStvCapture
 - uid: Csra.Interfaces.ILib.IAcquire.IScanNetwork
   name: ILib.IAcquire.IScanNetwork
   href: api/Csra.Interfaces.ILib.IAcquire.IScanNetwork.html
@@ -3025,15 +3044,15 @@ references:
   commentId: T:Csra.Interfaces.ILib.IDatalog
   fullName: Csra.Interfaces.ILib.IDatalog
   nameWithType: ILib.IDatalog
-- uid: Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String)
-  name: TestFunctional(Site<bool>, string)
-  href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestFunctional_Teradyne_Igxl_Interfaces_Public_Site_System_Boolean__System_String_
-  commentId: M:Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String)
-  name.vb: TestFunctional(Site(Of Boolean), String)
-  fullName: Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site<bool>, string)
-  fullName.vb: Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site(Of Boolean), String)
-  nameWithType: ILib.IDatalog.TestFunctional(Site<bool>, string)
-  nameWithType.vb: ILib.IDatalog.TestFunctional(Site(Of Boolean), String)
+- uid: Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String,System.String)
+  name: TestFunctional(Site<bool>, string, string)
+  href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestFunctional_Teradyne_Igxl_Interfaces_Public_Site_System_Boolean__System_String_System_String_
+  commentId: M:Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String,System.String)
+  name.vb: TestFunctional(Site(Of Boolean), String, String)
+  fullName: Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site<bool>, string, string)
+  fullName.vb: Csra.Interfaces.ILib.IDatalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site(Of Boolean), String, String)
+  nameWithType: ILib.IDatalog.TestFunctional(Site<bool>, string, string)
+  nameWithType.vb: ILib.IDatalog.TestFunctional(Site(Of Boolean), String, String)
 - uid: Csra.Interfaces.ILib.IDatalog.TestFunctional*
   name: TestFunctional
   href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestFunctional_
@@ -3041,6 +3060,15 @@ references:
   isSpec: "True"
   fullName: Csra.Interfaces.ILib.IDatalog.TestFunctional
   nameWithType: ILib.IDatalog.TestFunctional
+- uid: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.Double,System.String)
+  name: TestParametric(PinSite<double>, double, double, string)
+  href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_Double_System_String_
+  commentId: M:Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.Double,System.String)
+  name.vb: TestParametric(PinSite(Of Double), Double, Double, String)
+  fullName: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite<double>, double, double, string)
+  fullName.vb: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite(Of Double), Double, Double, String)
+  nameWithType: ILib.IDatalog.TestParametric(PinSite<double>, double, double, string)
+  nameWithType.vb: ILib.IDatalog.TestParametric(PinSite(Of Double), Double, Double, String)
 - uid: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.String,System.String)
   name: TestParametric(PinSite<double>, double, string, string)
   href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_String_System_String_
@@ -3095,6 +3123,15 @@ references:
   fullName.vb: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site(Of Double), Double, String, String)
   nameWithType: ILib.IDatalog.TestParametric(Site<double>, double, string, string)
   nameWithType.vb: ILib.IDatalog.TestParametric(Site(Of Double), Double, String, String)
+- uid: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.Double,System.String)
+  name: TestParametric(Site<int>, double, double, string)
+  href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__System_Double_System_Double_System_String_
+  commentId: M:Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.Double,System.String)
+  name.vb: TestParametric(Site(Of Integer), Double, Double, String)
+  fullName: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site<int>, double, double, string)
+  fullName.vb: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site(Of Integer), Double, Double, String)
+  nameWithType: ILib.IDatalog.TestParametric(Site<int>, double, double, string)
+  nameWithType.vb: ILib.IDatalog.TestParametric(Site(Of Integer), Double, Double, String)
 - uid: Csra.Interfaces.ILib.IDatalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.String,System.String)
   name: TestParametric(Site<int>, double, string, string)
   href: api/Csra.Interfaces.ILib.IDatalog.html#Csra_Interfaces_ILib_IDatalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__System_Double_System_String_System_String_
@@ -3780,19 +3817,6 @@ references:
   commentId: T:Csra.Interfaces.ILib.ISetup.IDigital
   fullName: Csra.Interfaces.ILib.ISetup.IDigital
   nameWithType: ILib.ISetup.IDigital
-- uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureCapture(Tol.IDigitalCapture)
-  name: ConfigureCapture(IDigitalCapture)
-  href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigureCapture_Tol_IDigitalCapture_
-  commentId: M:Csra.Interfaces.ILib.ISetup.IDigital.ConfigureCapture(Tol.IDigitalCapture)
-  fullName: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureCapture(Tol.IDigitalCapture)
-  nameWithType: ILib.ISetup.IDigital.ConfigureCapture(IDigitalCapture)
-- uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureCapture*
-  name: ConfigureCapture
-  href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigureCapture_
-  commentId: Overload:Csra.Interfaces.ILib.ISetup.IDigital.ConfigureCapture
-  isSpec: "True"
-  fullName: Csra.Interfaces.ILib.ISetup.IDigital.ConfigureCapture
-  nameWithType: ILib.ISetup.IDigital.ConfigureCapture
 - uid: Csra.Interfaces.ILib.ISetup.IDigital.ConfigurePatternControl(Csra.Pins,System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
   name: ConfigurePatternControl(Pins, int, tlPPMUPatternControlReadFormat)
   href: api/Csra.Interfaces.ILib.ISetup.IDigital.html#Csra_Interfaces_ILib_ISetup_IDigital_ConfigurePatternControl_Csra_Pins_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_
@@ -11173,19 +11197,38 @@ references:
   isSpec: "True"
   fullName: Csra.TheLib.Acquire.Digital.ReadWords
   nameWithType: Digital.ReadWords
-- uid: Csra.TheLib.Acquire.Digital.TryReadCapture(Tol.IDigitalCapture)
-  name: TryReadCapture(IDigitalCapture)
-  href: api/Csra.TheLib.Acquire.Digital.html#Csra_TheLib_Acquire_Digital_TryReadCapture_Tol_IDigitalCapture_
-  commentId: M:Csra.TheLib.Acquire.Digital.TryReadCapture(Tol.IDigitalCapture)
-  fullName: Csra.TheLib.Acquire.Digital.TryReadCapture(Tol.IDigitalCapture)
-  nameWithType: Digital.TryReadCapture(IDigitalCapture)
-- uid: Csra.TheLib.Acquire.Digital.TryReadCapture*
-  name: TryReadCapture
-  href: api/Csra.TheLib.Acquire.Digital.html#Csra_TheLib_Acquire_Digital_TryReadCapture_
-  commentId: Overload:Csra.TheLib.Acquire.Digital.TryReadCapture
+- uid: Csra.TheLib.Acquire.Digital.TryReadFailsCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32[]}@)
+  name: TryReadFailsCapture(IDigitalCapture, out PinSite<int[]>)
+  href: api/Csra.TheLib.Acquire.Digital.html#Csra_TheLib_Acquire_Digital_TryReadFailsCapture_Tol_IDigitalCapture_Teradyne_Igxl_Interfaces_Public_PinSite_System_Int32_____
+  commentId: M:Csra.TheLib.Acquire.Digital.TryReadFailsCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Int32[]}@)
+  name.vb: TryReadFailsCapture(IDigitalCapture, PinSite(Of Integer()))
+  fullName: Csra.TheLib.Acquire.Digital.TryReadFailsCapture(Tol.IDigitalCapture, out Teradyne.Igxl.Interfaces.Public.PinSite<int[]>)
+  fullName.vb: Csra.TheLib.Acquire.Digital.TryReadFailsCapture(Tol.IDigitalCapture, Teradyne.Igxl.Interfaces.Public.PinSite(Of Integer()))
+  nameWithType: Digital.TryReadFailsCapture(IDigitalCapture, out PinSite<int[]>)
+  nameWithType.vb: Digital.TryReadFailsCapture(IDigitalCapture, PinSite(Of Integer()))
+- uid: Csra.TheLib.Acquire.Digital.TryReadFailsCapture*
+  name: TryReadFailsCapture
+  href: api/Csra.TheLib.Acquire.Digital.html#Csra_TheLib_Acquire_Digital_TryReadFailsCapture_
+  commentId: Overload:Csra.TheLib.Acquire.Digital.TryReadFailsCapture
   isSpec: "True"
-  fullName: Csra.TheLib.Acquire.Digital.TryReadCapture
-  nameWithType: Digital.TryReadCapture
+  fullName: Csra.TheLib.Acquire.Digital.TryReadFailsCapture
+  nameWithType: Digital.TryReadFailsCapture
+- uid: Csra.TheLib.Acquire.Digital.TryReadStvCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Double[]}@)
+  name: TryReadStvCapture(IDigitalCapture, out PinSite<double[]>)
+  href: api/Csra.TheLib.Acquire.Digital.html#Csra_TheLib_Acquire_Digital_TryReadStvCapture_Tol_IDigitalCapture_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double_____
+  commentId: M:Csra.TheLib.Acquire.Digital.TryReadStvCapture(Tol.IDigitalCapture,Teradyne.Igxl.Interfaces.Public.PinSite{System.Double[]}@)
+  name.vb: TryReadStvCapture(IDigitalCapture, PinSite(Of Double()))
+  fullName: Csra.TheLib.Acquire.Digital.TryReadStvCapture(Tol.IDigitalCapture, out Teradyne.Igxl.Interfaces.Public.PinSite<double[]>)
+  fullName.vb: Csra.TheLib.Acquire.Digital.TryReadStvCapture(Tol.IDigitalCapture, Teradyne.Igxl.Interfaces.Public.PinSite(Of Double()))
+  nameWithType: Digital.TryReadStvCapture(IDigitalCapture, out PinSite<double[]>)
+  nameWithType.vb: Digital.TryReadStvCapture(IDigitalCapture, PinSite(Of Double()))
+- uid: Csra.TheLib.Acquire.Digital.TryReadStvCapture*
+  name: TryReadStvCapture
+  href: api/Csra.TheLib.Acquire.Digital.html#Csra_TheLib_Acquire_Digital_TryReadStvCapture_
+  commentId: Overload:Csra.TheLib.Acquire.Digital.TryReadStvCapture
+  isSpec: "True"
+  fullName: Csra.TheLib.Acquire.Digital.TryReadStvCapture
+  nameWithType: Digital.TryReadStvCapture
 - uid: Csra.TheLib.Acquire.ScanNetwork
   name: ScanNetwork
   href: api/Csra.TheLib.Acquire.ScanNetwork.html
@@ -11527,15 +11570,15 @@ references:
   commentId: T:Csra.TheLib.Datalog
   fullName: Csra.TheLib.Datalog
   nameWithType: Datalog
-- uid: Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String)
-  name: TestFunctional(Site<bool>, string)
-  href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestFunctional_Teradyne_Igxl_Interfaces_Public_Site_System_Boolean__System_String_
-  commentId: M:Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String)
-  name.vb: TestFunctional(Site(Of Boolean), String)
-  fullName: Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site<bool>, string)
-  fullName.vb: Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site(Of Boolean), String)
-  nameWithType: Datalog.TestFunctional(Site<bool>, string)
-  nameWithType.vb: Datalog.TestFunctional(Site(Of Boolean), String)
+- uid: Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String,System.String)
+  name: TestFunctional(Site<bool>, string, string)
+  href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestFunctional_Teradyne_Igxl_Interfaces_Public_Site_System_Boolean__System_String_System_String_
+  commentId: M:Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site{System.Boolean},System.String,System.String)
+  name.vb: TestFunctional(Site(Of Boolean), String, String)
+  fullName: Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site<bool>, string, string)
+  fullName.vb: Csra.TheLib.Datalog.TestFunctional(Teradyne.Igxl.Interfaces.Public.Site(Of Boolean), String, String)
+  nameWithType: Datalog.TestFunctional(Site<bool>, string, string)
+  nameWithType.vb: Datalog.TestFunctional(Site(Of Boolean), String, String)
 - uid: Csra.TheLib.Datalog.TestFunctional*
   name: TestFunctional
   href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestFunctional_
@@ -11543,6 +11586,15 @@ references:
   isSpec: "True"
   fullName: Csra.TheLib.Datalog.TestFunctional
   nameWithType: Datalog.TestFunctional
+- uid: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.Double,System.String)
+  name: TestParametric(PinSite<double>, double, double, string)
+  href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_Double_System_String_
+  commentId: M:Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.Double,System.String)
+  name.vb: TestParametric(PinSite(Of Double), Double, Double, String)
+  fullName: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite<double>, double, double, string)
+  fullName.vb: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite(Of Double), Double, Double, String)
+  nameWithType: Datalog.TestParametric(PinSite<double>, double, double, string)
+  nameWithType.vb: Datalog.TestParametric(PinSite(Of Double), Double, Double, String)
 - uid: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.PinSite{System.Double},System.Double,System.String,System.String)
   name: TestParametric(PinSite<double>, double, string, string)
   href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestParametric_Teradyne_Igxl_Interfaces_Public_PinSite_System_Double__System_Double_System_String_System_String_
@@ -11597,6 +11649,15 @@ references:
   fullName.vb: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site(Of Double), Double, String, String)
   nameWithType: Datalog.TestParametric(Site<double>, double, string, string)
   nameWithType.vb: Datalog.TestParametric(Site(Of Double), Double, String, String)
+- uid: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.Double,System.String)
+  name: TestParametric(Site<int>, double, double, string)
+  href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__System_Double_System_Double_System_String_
+  commentId: M:Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.Double,System.String)
+  name.vb: TestParametric(Site(Of Integer), Double, Double, String)
+  fullName: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site<int>, double, double, string)
+  fullName.vb: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site(Of Integer), Double, Double, String)
+  nameWithType: Datalog.TestParametric(Site<int>, double, double, string)
+  nameWithType.vb: Datalog.TestParametric(Site(Of Integer), Double, Double, String)
 - uid: Csra.TheLib.Datalog.TestParametric(Teradyne.Igxl.Interfaces.Public.Site{System.Int32},System.Double,System.String,System.String)
   name: TestParametric(Site<int>, double, string, string)
   href: api/Csra.TheLib.Datalog.html#Csra_TheLib_Datalog_TestParametric_Teradyne_Igxl_Interfaces_Public_Site_System_Int32__System_Double_System_String_System_String_
@@ -12175,19 +12236,6 @@ references:
   commentId: T:Csra.TheLib.Setup.Digital
   fullName: Csra.TheLib.Setup.Digital
   nameWithType: Digital
-- uid: Csra.TheLib.Setup.Digital.ConfigureCapture(Tol.IDigitalCapture)
-  name: ConfigureCapture(IDigitalCapture)
-  href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigureCapture_Tol_IDigitalCapture_
-  commentId: M:Csra.TheLib.Setup.Digital.ConfigureCapture(Tol.IDigitalCapture)
-  fullName: Csra.TheLib.Setup.Digital.ConfigureCapture(Tol.IDigitalCapture)
-  nameWithType: Digital.ConfigureCapture(IDigitalCapture)
-- uid: Csra.TheLib.Setup.Digital.ConfigureCapture*
-  name: ConfigureCapture
-  href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigureCapture_
-  commentId: Overload:Csra.TheLib.Setup.Digital.ConfigureCapture
-  isSpec: "True"
-  fullName: Csra.TheLib.Setup.Digital.ConfigureCapture
-  nameWithType: Digital.ConfigureCapture
 - uid: Csra.TheLib.Setup.Digital.ConfigurePatternControl(Csra.Pins,System.Int32,Teradyne.Igxl.Interfaces.Public.tlPPMUPatternControlReadFormat)
   name: ConfigurePatternControl(Pins, int, tlPPMUPatternControlReadFormat)
   href: api/Csra.TheLib.Setup.Digital.html#Csra_TheLib_Setup_Digital_ConfigurePatternControl_Csra_Pins_System_Int32_Teradyne_Igxl_Interfaces_Public_tlPPMUPatternControlReadFormat_
@@ -12704,6 +12752,72 @@ references:
   commentId: N:CsraTestMethods
   fullName: CsraTestMethods
   nameWithType: CsraTestMethods
+- uid: CsraTestMethods.Capture
+  name: CsraTestMethods.Capture
+  href: api/CsraTestMethods.Capture.html
+  commentId: N:CsraTestMethods.Capture
+  fullName: CsraTestMethods.Capture
+  nameWithType: CsraTestMethods.Capture
+- uid: CsraTestMethods.Capture.Cmem
+  name: Cmem
+  href: api/CsraTestMethods.Capture.Cmem.html
+  commentId: T:CsraTestMethods.Capture.Cmem
+  fullName: CsraTestMethods.Capture.Cmem
+  nameWithType: Cmem
+- uid: CsraTestMethods.Capture.Cmem.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.String)
+  name: CaptureFails(Pattern, PinList, string, string)
+  href: api/CsraTestMethods.Capture.Cmem.html#CsraTestMethods_Capture_Cmem_CaptureFails_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_String_
+  commentId: M:CsraTestMethods.Capture.Cmem.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.String)
+  name.vb: CaptureFails(Pattern, PinList, String, String)
+  fullName: CsraTestMethods.Capture.Cmem.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, string, string)
+  fullName.vb: CsraTestMethods.Capture.Cmem.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, String, String)
+  nameWithType: Cmem.CaptureFails(Pattern, PinList, string, string)
+  nameWithType.vb: Cmem.CaptureFails(Pattern, PinList, String, String)
+- uid: CsraTestMethods.Capture.Cmem.CaptureFails*
+  name: CaptureFails
+  href: api/CsraTestMethods.Capture.Cmem.html#CsraTestMethods_Capture_Cmem_CaptureFails_
+  commentId: Overload:CsraTestMethods.Capture.Cmem.CaptureFails
+  isSpec: "True"
+  fullName: CsraTestMethods.Capture.Cmem.CaptureFails
+  nameWithType: Cmem.CaptureFails
+- uid: CsraTestMethods.Capture.Cmem.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.String)
+  name: CaptureStv(Pattern, PinList, string, string)
+  href: api/CsraTestMethods.Capture.Cmem.html#CsraTestMethods_Capture_Cmem_CaptureStv_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_String_
+  commentId: M:CsraTestMethods.Capture.Cmem.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.String)
+  name.vb: CaptureStv(Pattern, PinList, String, String)
+  fullName: CsraTestMethods.Capture.Cmem.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, string, string)
+  fullName.vb: CsraTestMethods.Capture.Cmem.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, String, String)
+  nameWithType: Cmem.CaptureStv(Pattern, PinList, string, string)
+  nameWithType.vb: Cmem.CaptureStv(Pattern, PinList, String, String)
+- uid: CsraTestMethods.Capture.Cmem.CaptureStv*
+  name: CaptureStv
+  href: api/CsraTestMethods.Capture.Cmem.html#CsraTestMethods_Capture_Cmem_CaptureStv_
+  commentId: Overload:CsraTestMethods.Capture.Cmem.CaptureStv
+  isSpec: "True"
+  fullName: CsraTestMethods.Capture.Cmem.CaptureStv
+  nameWithType: Cmem.CaptureStv
+- uid: CsraTestMethods.Capture.Dssc
+  name: Dssc
+  href: api/CsraTestMethods.Capture.Dssc.html
+  commentId: T:CsraTestMethods.Capture.Dssc
+  fullName: CsraTestMethods.Capture.Dssc
+  nameWithType: Dssc
+- uid: CsraTestMethods.Capture.Dssc.CaptureWaveform(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.Int32,System.Double,System.String)
+  name: CaptureWaveform(Pattern, PinList, string, int, double, string)
+  href: api/CsraTestMethods.Capture.Dssc.html#CsraTestMethods_Capture_Dssc_CaptureWaveform_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_Int32_System_Double_System_String_
+  commentId: M:CsraTestMethods.Capture.Dssc.CaptureWaveform(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.Int32,System.Double,System.String)
+  name.vb: CaptureWaveform(Pattern, PinList, String, Integer, Double, String)
+  fullName: CsraTestMethods.Capture.Dssc.CaptureWaveform(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, string, int, double, string)
+  fullName.vb: CsraTestMethods.Capture.Dssc.CaptureWaveform(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, String, Integer, Double, String)
+  nameWithType: Dssc.CaptureWaveform(Pattern, PinList, string, int, double, string)
+  nameWithType.vb: Dssc.CaptureWaveform(Pattern, PinList, String, Integer, Double, String)
+- uid: CsraTestMethods.Capture.Dssc.CaptureWaveform*
+  name: CaptureWaveform
+  href: api/CsraTestMethods.Capture.Dssc.html#CsraTestMethods_Capture_Dssc_CaptureWaveform_
+  commentId: Overload:CsraTestMethods.Capture.Dssc.CaptureWaveform
+  isSpec: "True"
+  fullName: CsraTestMethods.Capture.Dssc.CaptureWaveform
+  nameWithType: Dssc.CaptureWaveform
 - uid: CsraTestMethods.Continuity
   name: CsraTestMethods.Continuity
   href: api/CsraTestMethods.Continuity.html
@@ -13355,6 +13469,28 @@ references:
   isSpec: "True"
   fullName: CsraTestMethods.Parametric.SingleCondition.PreconditionPattern
   nameWithType: SingleCondition.PreconditionPattern
+- uid: CsraTestMethods.Parametric.VoltageForceRange
+  name: VoltageForceRange
+  href: api/CsraTestMethods.Parametric.VoltageForceRange.html
+  commentId: T:CsraTestMethods.Parametric.VoltageForceRange
+  fullName: CsraTestMethods.Parametric.VoltageForceRange
+  nameWithType: VoltageForceRange
+- uid: CsraTestMethods.Parametric.VoltageForceRange.Parallel(Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Double,System.Double,System.Double,System.String)
+  name: Parallel(PinList, double, double, double, double, double, string)
+  href: api/CsraTestMethods.Parametric.VoltageForceRange.html#CsraTestMethods_Parametric_VoltageForceRange_Parallel_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_Double_System_String_
+  commentId: M:CsraTestMethods.Parametric.VoltageForceRange.Parallel(Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Double,System.Double,System.Double,System.String)
+  name.vb: Parallel(PinList, Double, Double, Double, Double, Double, String)
+  fullName: CsraTestMethods.Parametric.VoltageForceRange.Parallel(Teradyne.Igxl.Interfaces.Public.PinList, double, double, double, double, double, string)
+  fullName.vb: CsraTestMethods.Parametric.VoltageForceRange.Parallel(Teradyne.Igxl.Interfaces.Public.PinList, Double, Double, Double, Double, Double, String)
+  nameWithType: VoltageForceRange.Parallel(PinList, double, double, double, double, double, string)
+  nameWithType.vb: VoltageForceRange.Parallel(PinList, Double, Double, Double, Double, Double, String)
+- uid: CsraTestMethods.Parametric.VoltageForceRange.Parallel*
+  name: Parallel
+  href: api/CsraTestMethods.Parametric.VoltageForceRange.html#CsraTestMethods_Parametric_VoltageForceRange_Parallel_
+  commentId: Overload:CsraTestMethods.Parametric.VoltageForceRange.Parallel
+  isSpec: "True"
+  fullName: CsraTestMethods.Parametric.VoltageForceRange.Parallel
+  nameWithType: VoltageForceRange.Parallel
 - uid: CsraTestMethods.Resistance
   name: CsraTestMethods.Resistance
   href: api/CsraTestMethods.Resistance.html
@@ -13828,15 +13964,15 @@ references:
   commentId: T:Tol.CmemCapture
   fullName: Tol.CmemCapture
   nameWithType: CmemCapture
-- uid: Tol.CmemCapture.#ctor
-  name: CmemCapture()
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture__ctor
-  commentId: M:Tol.CmemCapture.#ctor
-  name.vb: New()
-  fullName: Tol.CmemCapture.CmemCapture()
-  fullName.vb: Tol.CmemCapture.New()
-  nameWithType: CmemCapture.CmemCapture()
-  nameWithType.vb: CmemCapture.New()
+- uid: Tol.CmemCapture.#ctor(Teradyne.Igxl.Interfaces.Public.CmemCaptType,Teradyne.Igxl.Interfaces.Public.tlCMEMCaptureSource,Tol.IDigitalPins,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.String,System.String)
+  name: CmemCapture(CmemCaptType, tlCMEMCaptureSource, IDigitalPins, int, int, int, int, bool, bool, string, string)
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture__ctor_Teradyne_Igxl_Interfaces_Public_CmemCaptType_Teradyne_Igxl_Interfaces_Public_tlCMEMCaptureSource_Tol_IDigitalPins_System_Int32_System_Int32_System_Int32_System_Int32_System_Boolean_System_Boolean_System_String_System_String_
+  commentId: M:Tol.CmemCapture.#ctor(Teradyne.Igxl.Interfaces.Public.CmemCaptType,Teradyne.Igxl.Interfaces.Public.tlCMEMCaptureSource,Tol.IDigitalPins,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.String,System.String)
+  name.vb: New(CmemCaptType, tlCMEMCaptureSource, IDigitalPins, Integer, Integer, Integer, Integer, Boolean, Boolean, String, String)
+  fullName: Tol.CmemCapture.CmemCapture(Teradyne.Igxl.Interfaces.Public.CmemCaptType, Teradyne.Igxl.Interfaces.Public.tlCMEMCaptureSource, Tol.IDigitalPins, int, int, int, int, bool, bool, string, string)
+  fullName.vb: Tol.CmemCapture.New(Teradyne.Igxl.Interfaces.Public.CmemCaptType, Teradyne.Igxl.Interfaces.Public.tlCMEMCaptureSource, Tol.IDigitalPins, Integer, Integer, Integer, Integer, Boolean, Boolean, String, String)
+  nameWithType: CmemCapture.CmemCapture(CmemCaptType, tlCMEMCaptureSource, IDigitalPins, int, int, int, int, bool, bool, string, string)
+  nameWithType.vb: CmemCapture.New(CmemCaptType, tlCMEMCaptureSource, IDigitalPins, Integer, Integer, Integer, Integer, Boolean, Boolean, String, String)
 - uid: Tol.CmemCapture.#ctor*
   name: CmemCapture
   href: api/Tol.CmemCapture.html#Tol_CmemCapture__ctor_
@@ -13847,45 +13983,6 @@ references:
   fullName.vb: Tol.CmemCapture.New
   nameWithType: CmemCapture.CmemCapture
   nameWithType.vb: CmemCapture.New
-- uid: Tol.CmemCapture.Configure
-  name: Configure()
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_Configure
-  commentId: M:Tol.CmemCapture.Configure
-  fullName: Tol.CmemCapture.Configure()
-  nameWithType: CmemCapture.Configure()
-- uid: Tol.CmemCapture.Configure*
-  name: Configure
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_Configure_
-  commentId: Overload:Tol.CmemCapture.Configure
-  isSpec: "True"
-  fullName: Tol.CmemCapture.Configure
-  nameWithType: CmemCapture.Configure
-- uid: Tol.CmemCapture.DeviceData
-  name: DeviceData
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_DeviceData
-  commentId: P:Tol.CmemCapture.DeviceData
-  fullName: Tol.CmemCapture.DeviceData
-  nameWithType: CmemCapture.DeviceData
-- uid: Tol.CmemCapture.DeviceData*
-  name: DeviceData
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_DeviceData_
-  commentId: Overload:Tol.CmemCapture.DeviceData
-  isSpec: "True"
-  fullName: Tol.CmemCapture.DeviceData
-  nameWithType: CmemCapture.DeviceData
-- uid: Tol.CmemCapture.FailingCycleData
-  name: FailingCycleData
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_FailingCycleData
-  commentId: P:Tol.CmemCapture.FailingCycleData
-  fullName: Tol.CmemCapture.FailingCycleData
-  nameWithType: CmemCapture.FailingCycleData
-- uid: Tol.CmemCapture.FailingCycleData*
-  name: FailingCycleData
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_FailingCycleData_
-  commentId: Overload:Tol.CmemCapture.FailingCycleData
-  isSpec: "True"
-  fullName: Tol.CmemCapture.FailingCycleData
-  nameWithType: CmemCapture.FailingCycleData
 - uid: Tol.CmemCapture.Pins
   name: Pins
   href: api/Tol.CmemCapture.html#Tol_CmemCapture_Pins
@@ -13899,19 +13996,32 @@ references:
   isSpec: "True"
   fullName: Tol.CmemCapture.Pins
   nameWithType: CmemCapture.Pins
-- uid: Tol.CmemCapture.Read
-  name: Read()
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_Read
-  commentId: M:Tol.CmemCapture.Read
-  fullName: Tol.CmemCapture.Read()
-  nameWithType: CmemCapture.Read()
-- uid: Tol.CmemCapture.Read*
-  name: Read
-  href: api/Tol.CmemCapture.html#Tol_CmemCapture_Read_
-  commentId: Overload:Tol.CmemCapture.Read
+- uid: Tol.CmemCapture.ReadFails
+  name: ReadFails()
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture_ReadFails
+  commentId: M:Tol.CmemCapture.ReadFails
+  fullName: Tol.CmemCapture.ReadFails()
+  nameWithType: CmemCapture.ReadFails()
+- uid: Tol.CmemCapture.ReadFails*
+  name: ReadFails
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture_ReadFails_
+  commentId: Overload:Tol.CmemCapture.ReadFails
   isSpec: "True"
-  fullName: Tol.CmemCapture.Read
-  nameWithType: CmemCapture.Read
+  fullName: Tol.CmemCapture.ReadFails
+  nameWithType: CmemCapture.ReadFails
+- uid: Tol.CmemCapture.ReadStv
+  name: ReadStv()
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture_ReadStv
+  commentId: M:Tol.CmemCapture.ReadStv
+  fullName: Tol.CmemCapture.ReadStv()
+  nameWithType: CmemCapture.ReadStv()
+- uid: Tol.CmemCapture.ReadStv*
+  name: ReadStv
+  href: api/Tol.CmemCapture.html#Tol_CmemCapture_ReadStv_
+  commentId: Overload:Tol.CmemCapture.ReadStv
+  isSpec: "True"
+  fullName: Tol.CmemCapture.ReadStv
+  nameWithType: CmemCapture.ReadStv
 - uid: Tol.CmemCapture.Reset
   name: Reset()
   href: api/Tol.CmemCapture.html#Tol_CmemCapture_Reset
@@ -14640,15 +14750,15 @@ references:
   isSpec: "True"
   fullName: Tol.DcvsPins.ForceV
   nameWithType: DcvsPins.ForceV
-- uid: Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
-  name: ForceVSetMeterI(double, double, double, bool?)
-  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
-  commentId: M:Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
-  name.vb: ForceVSetMeterI(Double, Double, Double, Boolean?)
-  fullName: Tol.DcvsPins.ForceVSetMeterI(double, double, double, bool?)
-  fullName.vb: Tol.DcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
-  nameWithType: DcvsPins.ForceVSetMeterI(double, double, double, bool?)
-  nameWithType.vb: DcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+- uid: Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, double, double?, bool?)
+  href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Double__System_Nullable_System_Boolean__
+  commentId: M:Tol.DcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Double, Double?, Boolean?)
+  fullName: Tol.DcvsPins.ForceVSetMeterI(double, double, double, double?, bool?)
+  fullName.vb: Tol.DcvsPins.ForceVSetMeterI(Double, Double, Double, Double?, Boolean?)
+  nameWithType: DcvsPins.ForceVSetMeterI(double, double, double, double?, bool?)
+  nameWithType.vb: DcvsPins.ForceVSetMeterI(Double, Double, Double, Double?, Boolean?)
 - uid: Tol.DcvsPins.ForceVSetMeterI*
   name: ForceVSetMeterI
   href: api/Tol.DcvsPins.html#Tol_DcvsPins_ForceVSetMeterI_
@@ -15103,15 +15213,15 @@ references:
   commentId: T:Tol.DsscCapture
   fullName: Tol.DsscCapture
   nameWithType: DsscCapture
-- uid: Tol.DsscCapture.#ctor
-  name: DsscCapture()
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture__ctor
-  commentId: M:Tol.DsscCapture.#ctor
-  name.vb: New()
-  fullName: Tol.DsscCapture.DsscCapture()
-  fullName.vb: Tol.DsscCapture.New()
-  nameWithType: DsscCapture.DsscCapture()
-  nameWithType.vb: DsscCapture.New()
+- uid: Tol.DsscCapture.#ctor(Tol.IDigitalPins,System.String,System.String,System.Int32,System.Double)
+  name: DsscCapture(IDigitalPins, string, string, int, double)
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture__ctor_Tol_IDigitalPins_System_String_System_String_System_Int32_System_Double_
+  commentId: M:Tol.DsscCapture.#ctor(Tol.IDigitalPins,System.String,System.String,System.Int32,System.Double)
+  name.vb: New(IDigitalPins, String, String, Integer, Double)
+  fullName: Tol.DsscCapture.DsscCapture(Tol.IDigitalPins, string, string, int, double)
+  fullName.vb: Tol.DsscCapture.New(Tol.IDigitalPins, String, String, Integer, Double)
+  nameWithType: DsscCapture.DsscCapture(IDigitalPins, string, string, int, double)
+  nameWithType.vb: DsscCapture.New(IDigitalPins, String, String, Integer, Double)
 - uid: Tol.DsscCapture.#ctor*
   name: DsscCapture
   href: api/Tol.DsscCapture.html#Tol_DsscCapture__ctor_
@@ -15122,45 +15232,6 @@ references:
   fullName.vb: Tol.DsscCapture.New
   nameWithType: DsscCapture.DsscCapture
   nameWithType.vb: DsscCapture.New
-- uid: Tol.DsscCapture.Configure
-  name: Configure()
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_Configure
-  commentId: M:Tol.DsscCapture.Configure
-  fullName: Tol.DsscCapture.Configure()
-  nameWithType: DsscCapture.Configure()
-- uid: Tol.DsscCapture.Configure*
-  name: Configure
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_Configure_
-  commentId: Overload:Tol.DsscCapture.Configure
-  isSpec: "True"
-  fullName: Tol.DsscCapture.Configure
-  nameWithType: DsscCapture.Configure
-- uid: Tol.DsscCapture.DeviceData
-  name: DeviceData
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_DeviceData
-  commentId: P:Tol.DsscCapture.DeviceData
-  fullName: Tol.DsscCapture.DeviceData
-  nameWithType: DsscCapture.DeviceData
-- uid: Tol.DsscCapture.DeviceData*
-  name: DeviceData
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_DeviceData_
-  commentId: Overload:Tol.DsscCapture.DeviceData
-  isSpec: "True"
-  fullName: Tol.DsscCapture.DeviceData
-  nameWithType: DsscCapture.DeviceData
-- uid: Tol.DsscCapture.FailingCycleData
-  name: FailingCycleData
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_FailingCycleData
-  commentId: P:Tol.DsscCapture.FailingCycleData
-  fullName: Tol.DsscCapture.FailingCycleData
-  nameWithType: DsscCapture.FailingCycleData
-- uid: Tol.DsscCapture.FailingCycleData*
-  name: FailingCycleData
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_FailingCycleData_
-  commentId: Overload:Tol.DsscCapture.FailingCycleData
-  isSpec: "True"
-  fullName: Tol.DsscCapture.FailingCycleData
-  nameWithType: DsscCapture.FailingCycleData
 - uid: Tol.DsscCapture.Pins
   name: Pins
   href: api/Tol.DsscCapture.html#Tol_DsscCapture_Pins
@@ -15174,19 +15245,32 @@ references:
   isSpec: "True"
   fullName: Tol.DsscCapture.Pins
   nameWithType: DsscCapture.Pins
-- uid: Tol.DsscCapture.Read
-  name: Read()
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_Read
-  commentId: M:Tol.DsscCapture.Read
-  fullName: Tol.DsscCapture.Read()
-  nameWithType: DsscCapture.Read()
-- uid: Tol.DsscCapture.Read*
-  name: Read
-  href: api/Tol.DsscCapture.html#Tol_DsscCapture_Read_
-  commentId: Overload:Tol.DsscCapture.Read
+- uid: Tol.DsscCapture.ReadFails
+  name: ReadFails()
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture_ReadFails
+  commentId: M:Tol.DsscCapture.ReadFails
+  fullName: Tol.DsscCapture.ReadFails()
+  nameWithType: DsscCapture.ReadFails()
+- uid: Tol.DsscCapture.ReadFails*
+  name: ReadFails
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture_ReadFails_
+  commentId: Overload:Tol.DsscCapture.ReadFails
   isSpec: "True"
-  fullName: Tol.DsscCapture.Read
-  nameWithType: DsscCapture.Read
+  fullName: Tol.DsscCapture.ReadFails
+  nameWithType: DsscCapture.ReadFails
+- uid: Tol.DsscCapture.ReadStv
+  name: ReadStv()
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture_ReadStv
+  commentId: M:Tol.DsscCapture.ReadStv
+  fullName: Tol.DsscCapture.ReadStv()
+  nameWithType: DsscCapture.ReadStv()
+- uid: Tol.DsscCapture.ReadStv*
+  name: ReadStv
+  href: api/Tol.DsscCapture.html#Tol_DsscCapture_ReadStv_
+  commentId: Overload:Tol.DsscCapture.ReadStv
+  isSpec: "True"
+  fullName: Tol.DsscCapture.ReadStv
+  nameWithType: DsscCapture.ReadStv
 - uid: Tol.DsscCapture.Reset
   name: Reset()
   href: api/Tol.DsscCapture.html#Tol_DsscCapture_Reset
@@ -15225,45 +15309,6 @@ references:
   fullName.vb: Tol.HramCapture.New
   nameWithType: HramCapture.HramCapture
   nameWithType.vb: HramCapture.New
-- uid: Tol.HramCapture.Configure
-  name: Configure()
-  href: api/Tol.HramCapture.html#Tol_HramCapture_Configure
-  commentId: M:Tol.HramCapture.Configure
-  fullName: Tol.HramCapture.Configure()
-  nameWithType: HramCapture.Configure()
-- uid: Tol.HramCapture.Configure*
-  name: Configure
-  href: api/Tol.HramCapture.html#Tol_HramCapture_Configure_
-  commentId: Overload:Tol.HramCapture.Configure
-  isSpec: "True"
-  fullName: Tol.HramCapture.Configure
-  nameWithType: HramCapture.Configure
-- uid: Tol.HramCapture.DeviceData
-  name: DeviceData
-  href: api/Tol.HramCapture.html#Tol_HramCapture_DeviceData
-  commentId: P:Tol.HramCapture.DeviceData
-  fullName: Tol.HramCapture.DeviceData
-  nameWithType: HramCapture.DeviceData
-- uid: Tol.HramCapture.DeviceData*
-  name: DeviceData
-  href: api/Tol.HramCapture.html#Tol_HramCapture_DeviceData_
-  commentId: Overload:Tol.HramCapture.DeviceData
-  isSpec: "True"
-  fullName: Tol.HramCapture.DeviceData
-  nameWithType: HramCapture.DeviceData
-- uid: Tol.HramCapture.FailingCycleData
-  name: FailingCycleData
-  href: api/Tol.HramCapture.html#Tol_HramCapture_FailingCycleData
-  commentId: P:Tol.HramCapture.FailingCycleData
-  fullName: Tol.HramCapture.FailingCycleData
-  nameWithType: HramCapture.FailingCycleData
-- uid: Tol.HramCapture.FailingCycleData*
-  name: FailingCycleData
-  href: api/Tol.HramCapture.html#Tol_HramCapture_FailingCycleData_
-  commentId: Overload:Tol.HramCapture.FailingCycleData
-  isSpec: "True"
-  fullName: Tol.HramCapture.FailingCycleData
-  nameWithType: HramCapture.FailingCycleData
 - uid: Tol.HramCapture.Pins
   name: Pins
   href: api/Tol.HramCapture.html#Tol_HramCapture_Pins
@@ -15277,19 +15322,32 @@ references:
   isSpec: "True"
   fullName: Tol.HramCapture.Pins
   nameWithType: HramCapture.Pins
-- uid: Tol.HramCapture.Read
-  name: Read()
-  href: api/Tol.HramCapture.html#Tol_HramCapture_Read
-  commentId: M:Tol.HramCapture.Read
-  fullName: Tol.HramCapture.Read()
-  nameWithType: HramCapture.Read()
-- uid: Tol.HramCapture.Read*
-  name: Read
-  href: api/Tol.HramCapture.html#Tol_HramCapture_Read_
-  commentId: Overload:Tol.HramCapture.Read
+- uid: Tol.HramCapture.ReadFails
+  name: ReadFails()
+  href: api/Tol.HramCapture.html#Tol_HramCapture_ReadFails
+  commentId: M:Tol.HramCapture.ReadFails
+  fullName: Tol.HramCapture.ReadFails()
+  nameWithType: HramCapture.ReadFails()
+- uid: Tol.HramCapture.ReadFails*
+  name: ReadFails
+  href: api/Tol.HramCapture.html#Tol_HramCapture_ReadFails_
+  commentId: Overload:Tol.HramCapture.ReadFails
   isSpec: "True"
-  fullName: Tol.HramCapture.Read
-  nameWithType: HramCapture.Read
+  fullName: Tol.HramCapture.ReadFails
+  nameWithType: HramCapture.ReadFails
+- uid: Tol.HramCapture.ReadStv
+  name: ReadStv()
+  href: api/Tol.HramCapture.html#Tol_HramCapture_ReadStv
+  commentId: M:Tol.HramCapture.ReadStv
+  fullName: Tol.HramCapture.ReadStv()
+  nameWithType: HramCapture.ReadStv()
+- uid: Tol.HramCapture.ReadStv*
+  name: ReadStv
+  href: api/Tol.HramCapture.html#Tol_HramCapture_ReadStv_
+  commentId: Overload:Tol.HramCapture.ReadStv
+  isSpec: "True"
+  fullName: Tol.HramCapture.ReadStv
+  nameWithType: HramCapture.ReadStv
 - uid: Tol.HramCapture.Reset
   name: Reset()
   href: api/Tol.HramCapture.html#Tol_HramCapture_Reset
@@ -16095,15 +16153,15 @@ references:
   isSpec: "True"
   fullName: Tol.IDcvsPins.ForceV
   nameWithType: IDcvsPins.ForceV
-- uid: Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
-  name: ForceVSetMeterI(double, double, double, bool?)
-  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Boolean__
-  commentId: M:Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Boolean})
-  name.vb: ForceVSetMeterI(Double, Double, Double, Boolean?)
-  fullName: Tol.IDcvsPins.ForceVSetMeterI(double, double, double, bool?)
-  fullName.vb: Tol.IDcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
-  nameWithType: IDcvsPins.ForceVSetMeterI(double, double, double, bool?)
-  nameWithType.vb: IDcvsPins.ForceVSetMeterI(Double, Double, Double, Boolean?)
+- uid: Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name: ForceVSetMeterI(double, double, double, double?, bool?)
+  href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterI_System_Double_System_Double_System_Double_System_Nullable_System_Double__System_Nullable_System_Boolean__
+  commentId: M:Tol.IDcvsPins.ForceVSetMeterI(System.Double,System.Double,System.Double,System.Nullable{System.Double},System.Nullable{System.Boolean})
+  name.vb: ForceVSetMeterI(Double, Double, Double, Double?, Boolean?)
+  fullName: Tol.IDcvsPins.ForceVSetMeterI(double, double, double, double?, bool?)
+  fullName.vb: Tol.IDcvsPins.ForceVSetMeterI(Double, Double, Double, Double?, Boolean?)
+  nameWithType: IDcvsPins.ForceVSetMeterI(double, double, double, double?, bool?)
+  nameWithType.vb: IDcvsPins.ForceVSetMeterI(Double, Double, Double, Double?, Boolean?)
 - uid: Tol.IDcvsPins.ForceVSetMeterI*
   name: ForceVSetMeterI
   href: api/Tol.IDcvsPins.html#Tol_IDcvsPins_ForceVSetMeterI_
@@ -16355,45 +16413,6 @@ references:
   commentId: T:Tol.IDigitalCapture
   fullName: Tol.IDigitalCapture
   nameWithType: IDigitalCapture
-- uid: Tol.IDigitalCapture.Configure
-  name: Configure()
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_Configure
-  commentId: M:Tol.IDigitalCapture.Configure
-  fullName: Tol.IDigitalCapture.Configure()
-  nameWithType: IDigitalCapture.Configure()
-- uid: Tol.IDigitalCapture.Configure*
-  name: Configure
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_Configure_
-  commentId: Overload:Tol.IDigitalCapture.Configure
-  isSpec: "True"
-  fullName: Tol.IDigitalCapture.Configure
-  nameWithType: IDigitalCapture.Configure
-- uid: Tol.IDigitalCapture.DeviceData
-  name: DeviceData
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_DeviceData
-  commentId: P:Tol.IDigitalCapture.DeviceData
-  fullName: Tol.IDigitalCapture.DeviceData
-  nameWithType: IDigitalCapture.DeviceData
-- uid: Tol.IDigitalCapture.DeviceData*
-  name: DeviceData
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_DeviceData_
-  commentId: Overload:Tol.IDigitalCapture.DeviceData
-  isSpec: "True"
-  fullName: Tol.IDigitalCapture.DeviceData
-  nameWithType: IDigitalCapture.DeviceData
-- uid: Tol.IDigitalCapture.FailingCycleData
-  name: FailingCycleData
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_FailingCycleData
-  commentId: P:Tol.IDigitalCapture.FailingCycleData
-  fullName: Tol.IDigitalCapture.FailingCycleData
-  nameWithType: IDigitalCapture.FailingCycleData
-- uid: Tol.IDigitalCapture.FailingCycleData*
-  name: FailingCycleData
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_FailingCycleData_
-  commentId: Overload:Tol.IDigitalCapture.FailingCycleData
-  isSpec: "True"
-  fullName: Tol.IDigitalCapture.FailingCycleData
-  nameWithType: IDigitalCapture.FailingCycleData
 - uid: Tol.IDigitalCapture.Pins
   name: Pins
   href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_Pins
@@ -16407,19 +16426,32 @@ references:
   isSpec: "True"
   fullName: Tol.IDigitalCapture.Pins
   nameWithType: IDigitalCapture.Pins
-- uid: Tol.IDigitalCapture.Read
-  name: Read()
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_Read
-  commentId: M:Tol.IDigitalCapture.Read
-  fullName: Tol.IDigitalCapture.Read()
-  nameWithType: IDigitalCapture.Read()
-- uid: Tol.IDigitalCapture.Read*
-  name: Read
-  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_Read_
-  commentId: Overload:Tol.IDigitalCapture.Read
+- uid: Tol.IDigitalCapture.ReadFails
+  name: ReadFails()
+  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_ReadFails
+  commentId: M:Tol.IDigitalCapture.ReadFails
+  fullName: Tol.IDigitalCapture.ReadFails()
+  nameWithType: IDigitalCapture.ReadFails()
+- uid: Tol.IDigitalCapture.ReadFails*
+  name: ReadFails
+  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_ReadFails_
+  commentId: Overload:Tol.IDigitalCapture.ReadFails
   isSpec: "True"
-  fullName: Tol.IDigitalCapture.Read
-  nameWithType: IDigitalCapture.Read
+  fullName: Tol.IDigitalCapture.ReadFails
+  nameWithType: IDigitalCapture.ReadFails
+- uid: Tol.IDigitalCapture.ReadStv
+  name: ReadStv()
+  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_ReadStv
+  commentId: M:Tol.IDigitalCapture.ReadStv
+  fullName: Tol.IDigitalCapture.ReadStv()
+  nameWithType: IDigitalCapture.ReadStv()
+- uid: Tol.IDigitalCapture.ReadStv*
+  name: ReadStv
+  href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_ReadStv_
+  commentId: Overload:Tol.IDigitalCapture.ReadStv
+  isSpec: "True"
+  fullName: Tol.IDigitalCapture.ReadStv
+  nameWithType: IDigitalCapture.ReadStv
 - uid: Tol.IDigitalCapture.Reset
   name: Reset()
   href: api/Tol.IDigitalCapture.html#Tol_IDigitalCapture_Reset
