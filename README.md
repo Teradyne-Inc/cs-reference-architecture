@@ -11,4 +11,4 @@ Home for the C# Reference Architecture project.
 
 GitHub Repo: [https://github.com/teradyne-inc/cs-reference-architecture](https://github.com/teradyne-inc/cs-reference-architecture)
 
-User Docs: [https://solid-adventure-nv3z2qy.pages.github.io/](https://solid-adventure-nv3z2qy.pages.github.io/)
+
