@@ -84,18 +84,46 @@
 <h1 id="installation--adding-reference">Installation &amp; Adding Reference</h1>
 
 <p>Once you've downloaded and extracted the Csra package, the next step is to integrate it into your development environment. Whether you're working in Visual Studio or using IG-XL, the process is straightforward. Below are the instructions for both environments to help you get up and running quickly.</p>
+<h2 id="how-to-add-cra-to-a-new-test-program">How to Add C#RA to a New Test Program</h2>
+<p>C#RA is distributed as a <strong>source code package</strong> (zip download from GitHub Releases). Reference it by copying the <code>Core</code> folder — which holds both <code>Csra</code> and the <code>Tol</code> layer it depends on — next to your solution.</p>
+<h3 id="step-by-step">Step-by-step</h3>
+<ol>
+<li><p><strong>Download the release package</strong> from <a href="https://github.com/teradyne-inc/cs-reference-architecture/releases">GitHub Releases</a>. Choose a specific tagged version (e.g., <code>v0.19.0</code>).</p>
+</li>
+<li><p><strong>Extract and copy</strong> the <code>Core</code> folder from the downloaded zip to a location next to your solution file. Keep <code>Csra</code> and <code>Tol</code> together — <code>Csra.csproj</code> references <code>Tol.csproj</code> by relative path:</p>
+<pre><code>MyTestProgram/
+├── MyTestProgram.sln
+├── MyTestProgram/
+└── Core/          ← Place here
+    ├── Csra/
+    └── Tol/
+</code></pre>
+</li>
+<li><p><strong>Add the project reference</strong> in Visual Studio:</p>
 <ul>
-<li>Copy the <code>Csra</code> folder from the downloaded package.</li>
-<li>Paste it next to your solution file.</li>
+<li>Right-click the solution → <strong>Add &gt; Existing Project...</strong></li>
+<li>Navigate to <code>Core/Csra</code> and select <code>Csra.csproj</code></li>
+<li>Repeat for <code>Core/Tol/Tol.csproj</code></li>
+<li>Click <strong>OK</strong></li>
 </ul>
-<h2 id="visual-studio-reference">Visual Studio Reference</h2>
-<p>To include the Csra project in your Visual Studio solution:</p>
-<ul>
-<li>Open your solution in Visual Studio.</li>
-<li>Right-click the solution <strong>&gt; Add &gt; Existing Project...</strong></li>
-<li>Navigate to the Csra folder and select <code>Csra.csproj</code>.</li>
-<li>Click <strong>OK</strong>.</li>
-</ul>
+</li>
+<li><p><strong>Record the version</strong> you added. Create or update a comment in your solution's <code>README.md</code>:</p>
+<pre><code class="lang-markdown">## Dependencies
+- C#RA v0.19.0 — downloaded from GitHub Releases tag `v0.19.0`
+</code></pre>
+</li>
+<li><p><strong>Commit everything</strong>, including the <code>Core</code> folder, to your test program's source control. This ensures your program always builds against the exact version you tested.</p>
+</li>
+</ol>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>This applies to the <strong>library</strong> (<code>Core/Csra</code> and <code>Core/Tol</code>). The reference test methods in <code>CsraTestMethods</code> are meant to be <strong>copied into your own project</strong>, not referenced from C#RA. They are a starting point you are expected to adapt to your device — copying them means your edits are yours, and a later C#RA upgrade will not overwrite or conflict with them.</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Always record the exact version tag in your solution's documentation. When you later need to update, you will know exactly what you are upgrading from.</p>
+</div>
+<hr>
 <h2 id="ig-xl-reference">IG-XL Reference</h2>
 <p>To reference the compiled Csra library in IG-XL:</p>
 <ul>
@@ -107,7 +135,7 @@
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Adding a reference in IG-XL is only necessary if you plan to use <strong>TestMethods</strong> provided by the Csra project.</p>
+<p>This step registers the assembly that contains the <strong>TestMethods</strong> you want to call from the Test Instance Sheet. It is not a prerequisite for using C#RA itself — the library, <code>TheLib</code> and the services can be called from your own C# test methods without adding a <code>Csra.dll</code> reference here.</p>
 </div>
 
 </article>

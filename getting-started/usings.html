@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Required using Statements in Test Code | C# Reference Architecture </title>
+      <title>Namespaces | C# Reference Architecture </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Required using Statements in Test Code | C# Reference Architecture ">
+      <meta name="title" content="Namespaces | C# Reference Architecture ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -81,46 +81,54 @@
         </div>
 
         <article data-uid="">
-<h1 id="required-using-statements-in-test-code">Required using Statements in Test Code</h1>
+<h1 id="namespaces">Namespaces</h1>
 
 <h2 id="using-csra">using Csra;</h2>
 <p><strong>Purpose:</strong></p>
-<p>This directive is essential for accessing the core objects and functionality provided by the Csra framework.</p>
+<ul>
+<li>This directive is essential for accessing the core objects and functionality provided by the C#RA framework.</li>
+</ul>
 <p><strong>Enabled Access To:</strong></p>
 <ul>
 <li>Pins object</li>
 <li>PatternInfo object</li>
 <li>Setup object</li>
+<li>Extension methods</li>
+<li>Access to the Api object</li>
+<li>Enums</li>
 </ul>
 <p><strong>When to Use:</strong></p>
 <ul>
 <li>Required in nearly all test scenarios involving pin configurations</li>
 </ul>
-<h2 id="using-csra-1">using Csra;</h2>
+<h2 id="using-csrasetting">using Csra.Setting;</h2>
 <p><strong>Purpose:</strong></p>
-<p>Provides access to version-specific features, including settings and test block definitions.</p>
+<ul>
+<li>Provides access to the Settings object.</li>
+</ul>
 <p><strong>Enabled Access To:</strong></p>
 <ul>
 <li>Setting object</li>
-<li>Extension methods</li>
-<li>Enums for TestBlocks</li>
-<li>Access to the Api object</li>
 </ul>
 <p><strong>When to Use:</strong></p>
 <ul>
 <li>When you need to configure SetupService</li>
-<li>When working with TestBlocks</li>
 </ul>
 <h2 id="using-static-csraapi">using static Csra.Api;</h2>
 <p><strong>Purpose:</strong></p>
-<p>A convenience directive that allows direct access to static members like Services and TheLib without needing to qualify them.</p>
+<ul>
+<li>A convenience directive that allows direct access to static members like Services and TheLib without needing to qualify them.</li>
+</ul>
 <p><strong>Enables Access To:</strong></p>
 <ul>
 <li>Services</li>
 <li>TheLib</li>
 </ul>
 <p><strong>When to Use:</strong></p>
-<p>When you want cleaner syntax for accessing static members.</p>
+<ul>
+<li>When you want cleaner syntax for accessing static members.</li>
+<li>When working with TestBlocks</li>
+</ul>
 <div class="NOTE">
 <h5>Note</h5>
 <p>This is a shortcut and does not replace the need for <code>using Csra;</code>.</p>
@@ -137,18 +145,23 @@
 <tbody>
 <tr>
 <td>using Csra;</td>
-<td>Core objects like Pins, PatternInfo, Setup, Settings, enums</td>
+<td>Core objects like Pins, PatternInfo, Setup, Extension Methods, and Enums</td>
 <td>Always needed</td>
 </tr>
 <tr>
 <td>using static Csra.Api;</td>
-<td>Convenience for static access</td>
+<td>Services, TheLib, and TestBlocks</td>
+<td>Optional, but useful</td>
+</tr>
+<tr>
+<td>using Csra.Setting;</td>
+<td>Needed to reference Setting objects directly</td>
 <td>Optional, but useful</td>
 </tr>
 </tbody>
 </table>
 <h2 id="why-multiple-usings">Why Multiple Usings?</h2>
-<p>Due to <strong>versioning</strong>, <strong>interface/implementation separation</strong>, and <strong>modular design</strong>, no single <code>using</code> directive can cover all use cases. This separation ensures flexibility and maintainability across different versions and components of the Csra framework.</p>
+<p>Due to <strong>versioning</strong>, <strong>interface/implementation separation</strong>, and <strong>modular design</strong>, no single <code>using</code> directive can cover all use cases. This separation ensures flexibility and maintainability across different versions and components of the C#RA framework.</p>
 
 </article>
 

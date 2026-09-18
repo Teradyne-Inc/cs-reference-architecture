@@ -12818,6 +12818,44 @@ references:
   isSpec: "True"
   fullName: CsraTestMethods.Capture.Dssc.CaptureWaveform
   nameWithType: Dssc.CaptureWaveform
+- uid: CsraTestMethods.Capture.Hram
+  name: Hram
+  href: api/CsraTestMethods.Capture.Hram.html
+  commentId: T:CsraTestMethods.Capture.Hram
+  fullName: CsraTestMethods.Capture.Hram
+  nameWithType: Hram
+- uid: CsraTestMethods.Capture.Hram.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.Int32,System.String,System.String)
+  name: CaptureFails(Pattern, PinList, int, string, string)
+  href: api/CsraTestMethods.Capture.Hram.html#CsraTestMethods_Capture_Hram_CaptureFails_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Int32_System_String_System_String_
+  commentId: M:CsraTestMethods.Capture.Hram.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.Int32,System.String,System.String)
+  name.vb: CaptureFails(Pattern, PinList, Integer, String, String)
+  fullName: CsraTestMethods.Capture.Hram.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, int, string, string)
+  fullName.vb: CsraTestMethods.Capture.Hram.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, Integer, String, String)
+  nameWithType: Hram.CaptureFails(Pattern, PinList, int, string, string)
+  nameWithType.vb: Hram.CaptureFails(Pattern, PinList, Integer, String, String)
+- uid: CsraTestMethods.Capture.Hram.CaptureFails*
+  name: CaptureFails
+  href: api/CsraTestMethods.Capture.Hram.html#CsraTestMethods_Capture_Hram_CaptureFails_
+  commentId: Overload:CsraTestMethods.Capture.Hram.CaptureFails
+  isSpec: "True"
+  fullName: CsraTestMethods.Capture.Hram.CaptureFails
+  nameWithType: Hram.CaptureFails
+- uid: CsraTestMethods.Capture.Hram.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.Int32,System.String,System.String)
+  name: CaptureStv(Pattern, PinList, int, string, string)
+  href: api/CsraTestMethods.Capture.Hram.html#CsraTestMethods_Capture_Hram_CaptureStv_Teradyne_Igxl_Interfaces_Public_Pattern_Teradyne_Igxl_Interfaces_Public_PinList_System_Int32_System_String_System_String_
+  commentId: M:CsraTestMethods.Capture.Hram.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern,Teradyne.Igxl.Interfaces.Public.PinList,System.Int32,System.String,System.String)
+  name.vb: CaptureStv(Pattern, PinList, Integer, String, String)
+  fullName: CsraTestMethods.Capture.Hram.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, int, string, string)
+  fullName.vb: CsraTestMethods.Capture.Hram.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern, Teradyne.Igxl.Interfaces.Public.PinList, Integer, String, String)
+  nameWithType: Hram.CaptureStv(Pattern, PinList, int, string, string)
+  nameWithType.vb: Hram.CaptureStv(Pattern, PinList, Integer, String, String)
+- uid: CsraTestMethods.Capture.Hram.CaptureStv*
+  name: CaptureStv
+  href: api/CsraTestMethods.Capture.Hram.html#CsraTestMethods_Capture_Hram_CaptureStv_
+  commentId: Overload:CsraTestMethods.Capture.Hram.CaptureStv
+  isSpec: "True"
+  fullName: CsraTestMethods.Capture.Hram.CaptureStv
+  nameWithType: Hram.CaptureStv
 - uid: CsraTestMethods.Continuity
   name: CsraTestMethods.Continuity
   href: api/CsraTestMethods.Continuity.html
@@ -13715,6 +13753,22 @@ references:
   isSpec: "True"
   fullName: CsraTestMethods.Search.Parametric.LinearFull
   nameWithType: Parametric.LinearFull
+- uid: CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double,System.String)
+  name: LinearFullPpmuMeasure(PinList, PinList, double, double, int, double, double, double, string)
+  href: api/CsraTestMethods.Search.Parametric.html#CsraTestMethods_Search_Parametric_LinearFullPpmuMeasure_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Int32_System_Double_System_Double_System_Double_System_String_
+  commentId: M:CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double,System.String)
+  name.vb: LinearFullPpmuMeasure(PinList, PinList, Double, Double, Integer, Double, Double, Double, String)
+  fullName: CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure(Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.PinList, double, double, int, double, double, double, string)
+  fullName.vb: CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure(Teradyne.Igxl.Interfaces.Public.PinList, Teradyne.Igxl.Interfaces.Public.PinList, Double, Double, Integer, Double, Double, Double, String)
+  nameWithType: Parametric.LinearFullPpmuMeasure(PinList, PinList, double, double, int, double, double, double, string)
+  nameWithType.vb: Parametric.LinearFullPpmuMeasure(PinList, PinList, Double, Double, Integer, Double, Double, Double, String)
+- uid: CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure*
+  name: LinearFullPpmuMeasure
+  href: api/CsraTestMethods.Search.Parametric.html#CsraTestMethods_Search_Parametric_LinearFullPpmuMeasure_
+  commentId: Overload:CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure
+  isSpec: "True"
+  fullName: CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure
+  nameWithType: Parametric.LinearFullPpmuMeasure
 - uid: CsraTestMethods.Search.Parametric.LinearStop(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double,System.String)
   name: LinearStop(PinList, PinList, double, double, int, double, double, double, string)
   href: api/CsraTestMethods.Search.Parametric.html#CsraTestMethods_Search_Parametric_LinearStop_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Int32_System_Double_System_Double_System_Double_System_String_
@@ -15043,6 +15097,68 @@ references:
   isSpec: "True"
   fullName: Tol.DcvsPins.VoltageRange
   nameWithType: DcvsPins.VoltageRange
+- uid: Tol.DcvsSlotType
+  name: DcvsSlotType
+  href: api/Tol.DcvsSlotType.html
+  commentId: T:Tol.DcvsSlotType
+  fullName: Tol.DcvsSlotType
+  nameWithType: DcvsSlotType
+- uid: Tol.DcvsSlotType.All
+  name: All
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_All
+  commentId: P:Tol.DcvsSlotType.All
+  fullName: Tol.DcvsSlotType.All
+  nameWithType: DcvsSlotType.All
+- uid: Tol.DcvsSlotType.All*
+  name: All
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_All_
+  commentId: Overload:Tol.DcvsSlotType.All
+  isSpec: "True"
+  fullName: Tol.DcvsSlotType.All
+  nameWithType: DcvsSlotType.All
+- uid: Tol.DcvsSlotType.HexVs
+  name: HexVs
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_HexVs
+  commentId: F:Tol.DcvsSlotType.HexVs
+  fullName: Tol.DcvsSlotType.HexVs
+  nameWithType: DcvsSlotType.HexVs
+- uid: Tol.DcvsSlotType.SupportedByTol
+  name: SupportedByTol
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_SupportedByTol
+  commentId: P:Tol.DcvsSlotType.SupportedByTol
+  fullName: Tol.DcvsSlotType.SupportedByTol
+  nameWithType: DcvsSlotType.SupportedByTol
+- uid: Tol.DcvsSlotType.SupportedByTol*
+  name: SupportedByTol
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_SupportedByTol_
+  commentId: Overload:Tol.DcvsSlotType.SupportedByTol
+  isSpec: "True"
+  fullName: Tol.DcvsSlotType.SupportedByTol
+  nameWithType: DcvsSlotType.SupportedByTol
+- uid: Tol.DcvsSlotType.Uvs256Hp
+  name: Uvs256Hp
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_Uvs256Hp
+  commentId: F:Tol.DcvsSlotType.Uvs256Hp
+  fullName: Tol.DcvsSlotType.Uvs256Hp
+  nameWithType: DcvsSlotType.Uvs256Hp
+- uid: Tol.DcvsSlotType.Uvs64
+  name: Uvs64
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_Uvs64
+  commentId: F:Tol.DcvsSlotType.Uvs64
+  fullName: Tol.DcvsSlotType.Uvs64
+  nameWithType: DcvsSlotType.Uvs64
+- uid: Tol.DcvsSlotType.Uvs64Hp
+  name: Uvs64Hp
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_Uvs64Hp
+  commentId: F:Tol.DcvsSlotType.Uvs64Hp
+  fullName: Tol.DcvsSlotType.Uvs64Hp
+  nameWithType: DcvsSlotType.Uvs64Hp
+- uid: Tol.DcvsSlotType.Vsm
+  name: Vsm
+  href: api/Tol.DcvsSlotType.html#Tol_DcvsSlotType_Vsm
+  commentId: F:Tol.DcvsSlotType.Vsm
+  fullName: Tol.DcvsSlotType.Vsm
+  nameWithType: DcvsSlotType.Vsm
 - uid: Tol.DigitalPins
   name: DigitalPins
   href: api/Tol.DigitalPins.html
@@ -15290,15 +15406,15 @@ references:
   commentId: T:Tol.HramCapture
   fullName: Tol.HramCapture
   nameWithType: HramCapture
-- uid: Tol.HramCapture.#ctor
-  name: HramCapture()
-  href: api/Tol.HramCapture.html#Tol_HramCapture__ctor
-  commentId: M:Tol.HramCapture.#ctor
-  name.vb: New()
-  fullName: Tol.HramCapture.HramCapture()
-  fullName.vb: Tol.HramCapture.New()
-  nameWithType: HramCapture.HramCapture()
-  nameWithType.vb: HramCapture.New()
+- uid: Tol.HramCapture.#ctor(Teradyne.Igxl.Interfaces.Public.CaptType,Tol.IDigitalPins,System.Int32,System.String)
+  name: HramCapture(CaptType, IDigitalPins, int, string)
+  href: api/Tol.HramCapture.html#Tol_HramCapture__ctor_Teradyne_Igxl_Interfaces_Public_CaptType_Tol_IDigitalPins_System_Int32_System_String_
+  commentId: M:Tol.HramCapture.#ctor(Teradyne.Igxl.Interfaces.Public.CaptType,Tol.IDigitalPins,System.Int32,System.String)
+  name.vb: New(CaptType, IDigitalPins, Integer, String)
+  fullName: Tol.HramCapture.HramCapture(Teradyne.Igxl.Interfaces.Public.CaptType, Tol.IDigitalPins, int, string)
+  fullName.vb: Tol.HramCapture.New(Teradyne.Igxl.Interfaces.Public.CaptType, Tol.IDigitalPins, Integer, String)
+  nameWithType: HramCapture.HramCapture(CaptType, IDigitalPins, int, string)
+  nameWithType.vb: HramCapture.New(CaptType, IDigitalPins, Integer, String)
 - uid: Tol.HramCapture.#ctor*
   name: HramCapture
   href: api/Tol.HramCapture.html#Tol_HramCapture__ctor_

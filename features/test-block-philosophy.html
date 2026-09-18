@@ -95,15 +95,15 @@
 <li><strong>Reusable</strong> - Generic implementations that work across multiple scenarios</li>
 </ul>
 <h3 id="the-usability-flexibility-tradeoff">The Usability-Flexibility Tradeoff</h3>
-<p>Test block design involves a fundamental tradeoff between usability and flexibility:</p>
-<h4 id="too-much-generality">Too Much Generality</h4>
+<p>Test block design involves a fundamental tradeoff between <strong>usability</strong> — how easy a block is to call — and <strong>flexibility</strong> — how many scenarios it covers. Pushing either end too far has a cost:</p>
+<h4 id="too-much-generality-flexibility-at-the-expense-of-usability">Too Much Generality (flexibility at the expense of usability)</h4>
 <ul>
 <li>Results in excessive parameter lists</li>
 <li>Creates a complicated use model</li>
 <li>Increases implementation complexity</li>
 <li>Makes the API harder to learn and use</li>
 </ul>
-<h4 id="too-much-specificity">Too Much Specificity</h4>
+<h4 id="too-much-specificity-usability-at-the-expense-of-flexibility">Too Much Specificity (usability at the expense of flexibility)</h4>
 <ul>
 <li>Forces the creation of many alternative implementations</li>
 <li>Misses legitimate use cases</li>
@@ -137,7 +137,7 @@ TheLib.Setup.Dc.ForceI(pins, forceCurrent, clampHiV);
 // Uncommon case - using TheHdw for PPMU-specific features
 TheHdw.PPMU.Pins(pins).ForceI(forceCurrent, clampHiV, clampLoV);
 </code></pre>
-<p>For the common case, the test block provides a clean, simple interface. For the uncommon PPMU-specific case where <code>ClampVLo</code> is needed, users can access <code>TheHdw</code> directly without penalty.</p>
+<p>For the common case, the test block provides a clean, simple interface — <code>Dc</code> is the DC branch, not an instrument, and it routes to whichever instrument backs the <a href="pins-type.html"><code>pins</code></a> you pass. For the uncommon PPMU-specific case where <code>ClampVLo</code> is needed, users can access <code>TheHdw</code> directly without penalty.</p>
 <h3 id="when-to-use-each-approach">When to Use Each Approach</h3>
 <table>
 <thead>
@@ -192,7 +192,7 @@ TheLib.Setup.Dc.CustomForceI(pins, 1.0e-3, 3.3, 0.0);
 </ol>
 <p>For more details, see <a href="extensibility.html">Extensibility</a>.</p>
 <h2 id="feedback-and-evolution">Feedback and Evolution</h2>
-<h3 id="the-cra-team-wants-to-hear-from-you">The C#RA Team Wants to Hear From You</h3>
+<h3 id="if-you-are-writing-a-test-program-on-cra">If You Are Writing a Test Program on C#RA</h3>
 <p>The C#RA feature set is <strong>not static</strong>. The team actively:</p>
 <ul>
 <li>Listens to gaps and needs that are not yet covered</li>
@@ -203,7 +203,7 @@ TheLib.Setup.Dc.CustomForceI(pins, 1.0e-3, 3.3, 0.0);
 <h3 id="how-to-provide-feedback">How to Provide Feedback</h3>
 <p>If you find yourself frequently needing a feature that isn't in test blocks:</p>
 <ol>
-<li><strong>Report it</strong> - Create a feature request (see <a href="../getting-started/request-feature.html">Request a Feature</a>)</li>
+<li><strong>Report it</strong> - Raise a feature request with the C#RA team</li>
 <li><strong>Explain the use case</strong> - Help the team understand why it's common for your scenario</li>
 <li><strong>Share your extension</strong> - Your custom implementation might inspire a better test block design</li>
 </ol>
@@ -270,7 +270,6 @@ public void ParametricTest(PinList pinList, double voltage, string setup = &quot
 <li><a href="extensibility.html">Extensibility</a> - How to create custom extensions</li>
 <li><a href="code-structure_test-methods.html">Test Methods</a> - Using test blocks in test methods</li>
 <li><a href="instrument-specific.html">Instrument Specific Features</a> - When and how to use instrument-specific parameters</li>
-<li><a href="../getting-started/request-feature.html">Request a Feature</a> - How to provide feedback</li>
 </ul>
 
 </article>

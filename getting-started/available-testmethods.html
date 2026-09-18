@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Available Test Methods | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Available Test Methods | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/available-testmethods.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="available-test-methods">Available Test Methods</h1>
+
+<p>The <code>ReferenceLibraries/CsraTestMethods</code> project provides <strong>reference test methods that you can change or reuse</strong>. Each follows the four-phase pattern and can be used directly in IG-XL, copied into your own project, or adapted to your device. This is where the ~70% reusable code lives — the common measurement patterns that work across different chips and customers.</p>
+<blockquote>
+<p><strong>CsTestMethods vs CsraTestMethods — Understanding the Difference</strong></p>
+<p>The repository contains two projects with similar test categories (Continuity, Functional, Leakage, etc.):</p>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Approach</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>ReferenceLibraries/CsTestMethods/</code></strong></td>
+<td>Calls IG-XL public APIs <strong>directly</strong> in straight C#</td>
+<td>Usable, but <strong>not recommended</strong> — the code is tied to one device and has to be rewritten for the next program</td>
+</tr>
+<tr>
+<td><strong><code>ReferenceLibraries/CsraTestMethods/</code></strong></td>
+<td>Calls the <strong>C#RA library</strong> (<code>TheLib</code>, <code>Services</code>)</td>
+<td><strong>Recommended</strong> — reusable across projects, typically only ~30% customization needed</td>
+</tr>
+</tbody>
+</table>
+<p>Both projects are available to you and both produce the same end result (a working test program). The difference is what happens next: <code>CsraTestMethods</code> goes through the C#RA abstraction layer, which keeps the implementation portable and maintainable across multiple programs, while <code>CsTestMethods</code> serves as a <strong>baseline comparison</strong> showing what the raw, non-C#RA approach looks like. Start from <code>CsraTestMethods</code> unless you have a specific reason not to.</p>
+</blockquote>
+<hr>
+<h2 id="the-catalog">The Catalog</h2>
+<p>To use one of these, you type its full name into the IG-XL <strong>Test Instance Sheet</strong>, in the form <code>CsraTestMethods.&lt;Category&gt;.&lt;Class&gt;.&lt;Method&gt;</code> — for example <code>CsraTestMethods.Continuity.Parametric.Parallel</code>. Read the table as the three parts of that name: <strong>Category</strong> is the first segment, not a method in itself, and <strong>Class</strong> and <strong>Methods</strong> give you the rest.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Class</th>
+<th>Methods</th>
+<th>What It Tests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Continuity</strong></td>
+<td><code>Parametric</code></td>
+<td><code>Parallel</code>, <code>Serial</code></td>
+<td>Tester-to-DUT contact, pin shorts</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Supply</code></td>
+<td><code>Baseline</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Functional</strong></td>
+<td><code>StaticPattern</code></td>
+<td><code>Baseline</code></td>
+<td>Digital pattern execution &amp; data capture</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Read</code></td>
+<td><code>Baseline</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Ramp</code></td>
+<td><code>ExecuteRamp</code>, <code>ExecuteRampPatternControl</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Leakage</strong></td>
+<td><code>Parallel</code></td>
+<td><code>Baseline</code>, <code>Preconditioning</code></td>
+<td>Pin leakage current (force V, measure I)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Serial</code></td>
+<td><code>Baseline</code>, <code>Preconditioning</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Groups</code></td>
+<td><code>Baseline</code>, <code>Preconditioning</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Parametric</strong></td>
+<td><code>SingleCondition</code></td>
+<td><code>Baseline</code>, <code>PreconditionPattern</code></td>
+<td>General DC measurements</td>
+</tr>
+<tr>
+<td></td>
+<td><code>MultiCondition</code></td>
+<td><code>Baseline</code>, <code>PreconditionPattern</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>PatternHandshake</code></td>
+<td><code>Baseline</code>, <code>PatternLabelOverWrite</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>VoltageForceRange</code></td>
+<td><code>Parallel</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Resistance</strong></td>
+<td><code>Contact</code></td>
+<td><code>Baseline</code></td>
+<td>ΔV/ΔI resistance, drain-source on-resistance</td>
+</tr>
+<tr>
+<td></td>
+<td><code>RdsOn</code></td>
+<td><code>Baseline</code>, <code>TwoPinsOneForceOneMeasure</code>, <code>TwoPinsDeltaForceDeltaMeasure</code>, <code>ThreePinsOneForceTwoMeasure</code>, <code>FourPinsTwoForceTwoMeasure</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Capture</strong></td>
+<td><code>Cmem</code></td>
+<td><code>CaptureFails</code>, <code>CaptureStv</code></td>
+<td>Digital execution data</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Dssc</code></td>
+<td><code>CaptureWaveform</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Hram</code></td>
+<td><code>CaptureFails</code>, <code>CaptureStv</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ScanNetwork</strong></td>
+<td><code>ScanNetworkPattern</code></td>
+<td><code>Baseline</code></td>
+<td>IJTAG scan test with optional diagnosis</td>
+</tr>
+<tr>
+<td><strong>Search</strong></td>
+<td><code>Functional</code></td>
+<td><code>LinearFull</code>, <code>LinearStop</code>, <code>Binary</code></td>
+<td>Threshold search (linear/binary)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Parametric</code></td>
+<td><code>LinearFull</code>, <code>LinearStop</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SupplyCurrent</strong></td>
+<td><code>Static</code></td>
+<td><code>Baseline</code></td>
+<td>Quiescent &amp; dynamic IDD profiling</td>
+</tr>
+<tr>
+<td></td>
+<td><code>Dynamic</code></td>
+<td><code>Baseline</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Timing</strong></td>
+<td><code>Frequency</code></td>
+<td><code>Baseline</code></td>
+<td>Digital frequency measurement</td>
+</tr>
+<tr>
+<td><strong>Trim</strong></td>
+<td><code>Digital</code></td>
+<td><code>LinearStopTrip</code>, <code>LinearStopTarget</code>, <code>LinearFullTrip</code>, <code>LinearFullTarget</code>, <code>BinaryTrip</code>, <code>BinaryTarget</code></td>
+<td>Digital trim via linear search algorithms</td>
+</tr>
+<tr>
+<td><em>(no category)</em></td>
+<td><code>Showcase</code></td>
+<td><code>UseExtensionMethod</code>, <code>Baseline</code></td>
+<td>Worked examples of extension methods and test-method customization</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>CsraTestMethods/CustomCode/</code> is <strong>not</strong> in the table because it is not a test method. <code>PatternHandshakeBaselineClass</code> implements <code>IExecutable</code> with <code>Execute</code> / <code>Clear</code>, and you do not put it in the Test Instance Sheet — you pass its name to the <code>executableClass</code> parameter of <code>Parametric.PatternHandshake.Baseline</code>. It ships as the worked example of the extensibility hook.</p>
+</div>
+<hr>
+<h2 id="reference-the-library">Reference the Library</h2>
+<p>Before using a Test Method from the C#RA library, make sure you've completed the <a href="installation.html#ig-xl-reference">IG-XL Reference</a> step. This ensures that IG-XL can access the compiled Csra.dll and recognize the available TestMethods.</p>
+<ul>
+<li>Open <strong>IG-XL</strong>.</li>
+<li>Navigate to the <code>Test Instance Sheet</code>.</li>
+<li>Enter the desired Test Method name (e.g., <strong>CsraTestMethods.Continuity.Parametric.Parallel</strong>).</li>
+<li>Provide the required parameters for the selected method.</li>
+<li>Run <strong>IG-XL</strong> to execute the test.</li>
+</ul>
+<hr>
+<p><strong>Next:</strong> <a href="my-first-test-method.html">My First Test Method</a> — a side-by-side walkthrough of one of these test methods, old way vs. new way.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

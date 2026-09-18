@@ -87,18 +87,47 @@
 <h2 id="what-i-need-to-get-started">What I need to get started</h2>
 <ul>
 <li>Access to eKnowledge</li>
-<li>A working IG-XL / .NET environment - see documentation or training for details.
-<ul>
-<li>11.00.00 (Release)</li>
-<li>10.00.01 (Patch)</li>
+<li>A working IG-XL / .NET environment — see documentation or training for details.</li>
 </ul>
-</li>
-<li>Oasis Tool
-<ul>
-<li>4.5.10501</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Required version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IG-XL</td>
+<td>11.00.00 or higher</td>
+</tr>
+<tr>
+<td>Oasis</td>
+<td>4.6.10801 or higher</td>
+</tr>
+<tr>
+<td>SSL</td>
+<td>6.9.500 or higher</td>
+</tr>
+<tr>
+<td>Visual Studio</td>
+<td>17.10 or higher</td>
+</tr>
+</tbody>
+</table>
+<p>These are the versions enforced by <code>IG-ComponentManager.json</code>, which IG-Link checks when it generates or loads a C#RA project — if your environment falls outside them, that check is where you will notice. Every release is additionally built and tested in CI against IG-XL <strong>11.00.10</strong> and <strong>11.10.00</strong>.</p>
+<h2 id="recommended-path">Recommended Path</h2>
+<p>New to C#RA? The pages in this section build on each other — reading them in this order will take you from zero context to writing and testing your own test method:</p>
+<ol>
+<li><a href="what-csra-is.html">What C#RA Is</a> — the problem it solves and the reusability model</li>
+<li><a href="key-concepts.html">Key Concepts</a> — <code>Pins</code>, <code>PatternInfo</code>, <code>Setting</code>/<code>Setup</code></li>
+<li><a href="the-lib.html">The C#RA Library</a> — the full method-by-method <code>TheLib</code> reference</li>
+<li><a href="four-phase-test-method-pattern.html">The Four Phase Test Method Pattern</a> — how a test method is structured</li>
+<li><a href="available-testmethods.html">Available TestMethods</a> — what's already built for you</li>
+<li><a href="my-first-test-method.html">My First Test Method</a> — the same test, old way vs. new way</li>
+<li><a href="writing-unit-tests.html">Unit Testing Your Test Methods</a> — proving your logic without a tester attached</li>
+</ol>
+<p>After that, <a href="usings.html">Namespaces</a> and <a href="repository-layout.html">Repository Layout</a> are reference pages to bookmark rather than read straight through. <a href="download.html">Download &amp; Extract</a> through <a href="debug.html">Debugging C#RA</a> then cover environment setup, along with the <a href="versioning.html">Versioning Guide</a> you will want when upgrading between C#RA releases.</p>
 
 </article>
 

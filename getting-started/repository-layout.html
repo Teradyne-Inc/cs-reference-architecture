@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Repository Layout | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Repository Layout | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/repository-layout.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="repository-layout">Repository Layout</h1>
+
+<p>This is the layout of the C#RA source you receive — the same content you can browse at <a href="https://github.com/Teradyne-Inc/cs-reference-architecture">Teradyne-Inc/cs-reference-architecture</a> and the same structure you get after extracting the release package.</p>
+<pre><code>cs-reference-architecture/
+│
+├── Core/                         ← Core library projects
+│   ├── Csra/                     ← The core library (start here!)
+│   │   ├── Api.cs                ← Single entry point: Api.TheLib / Api.Services
+│   │   ├── Csra.csproj           ← References ..\Tol\Tol.csproj
+│   │   ├── TestBlocks/           ← All test block interfaces and implementations
+│   │   │   ├── ITestBlocks.cs      ← Interface definitions for all blocks
+│   │   │   ├── TestBlockManager.cs ← Wires up the default implementations
+│   │   │   ├── Validate.cs         ← Input validation (parameter checks)
+│   │   │   ├── Datalog.cs          ← Result logging to IG-XL flow
+│   │   │   ├── Setup/            ← Hardware configuration (Dc, Digital, LevelsAndTiming)
+│   │   │   ├── Execute/          ← Pattern execution (Digital, ScanNetwork, Search, Wait)
+│   │   │   └── Acquire/          ← Measurement capture (Dc, Digital, ScanNetwork, Search)
+│   │   ├── Services/             ← Cross-cutting infrastructure (interface + impl per subfolder)
+│   │   │   ├── Alert/            ← IAlertService.cs + Alert.cs — logging, error handling
+│   │   │   ├── Behavior/         ← IBehaviorService.cs + Behavior.cs — runtime feature flags
+│   │   │   ├── Storage/          ← IStorageService.cs + Storage.cs — persistent key-value store
+│   │   │   └── SetupService/     ← ISetupService.cs + SetupService.cs — named config management
+│   │   ├── Types/                ← Shared data types (organized into subfolders)
+│   │   │   ├── Core/             ← BiDictionary, Enums, IExecutable, PatternInfo, Setup
+│   │   │   ├── Pins/             ← Pins, PinsFactory
+│   │   │   ├── HardwareParameters/ ← DcParameters, DigitalParameters
+│   │   │   └── ScanNetwork/      ← Scan network pattern info &amp; results
+│   │   ├── Settings/             ← SettingBase + Setting_bool/_int/_double/_Enum + ISetting
+│   │   └── Extensions/           ← Helper extension methods
+│   └── Tol/                      ← Thin Object Layer (TOL) — per-instrument pin abstractions
+│                                   that Csra routes through (PPMU, DCVI, DCVS, Digital)
+│
+├── ReferenceLibraries/           ← Test method library projects
+│   ├── CsraTestMethods/          ← Reference test methods BUILT ON the C#RA library
+│   │   ├── Capture/              ← CMEM, DSSC &amp; HRAM capture
+│   │   ├── Continuity/           ← Contact &amp; short checks
+│   │   ├── Functional/           ← Digital pattern tests
+│   │   ├── Leakage/              ← Leakage current measurement
+│   │   ├── Parametric/           ← General DC parametric
+│   │   ├── Resistance/           ← Contact resistance &amp; RdsOn
+│   │   ├── ScanNetwork/          ← IJTAG scan network tests
+│   │   ├── Search/               ← Voltage/functional threshold search
+│   │   ├── SupplyCurrent/        ← Static &amp; dynamic IDD
+│   │   ├── Timing/               ← Frequency measurement
+│   │   ├── Trim/                 ← Digital trim algorithms
+│   │   ├── CustomCode/           ← Extensibility example (IExecutable)
+│   │   ├── Showcase.cs           ← Extension-method and customization examples
+│   │   └── CustomerExtensions.cs ← Where your own extension methods go
+│   ├── CsTestMethods/            ← Raw C# test methods (direct IG-XL API calls, no C#RA)
+│   ├── UnitTests/                ← Example unit test project + reusable Base class
+│   └── PortBridge/               ← PortBridge utilities and demo
+│
+├── Demo/                         ← IG-XL demo program (see Download &amp; Extract)
+├── csra_documentation.pdf        ← Offline documentation
+├── LICENSE.txt
+└── README.md
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This is what is published. The development repository additionally contains the C#RA project's own unit and system-integration tests, CI configuration and internal documentation, none of which are delivered.</p>
+</div>
+<h2 id="where-should-i-look">Where Should I Look?</h2>
+<table>
+<thead>
+<tr>
+<th>I want to…</th>
+<th>Go to…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Understand the public API</td>
+<td><code>Core/Csra/TestBlocks/ITestBlocks.cs</code> — all block interfaces in one file</td>
+</tr>
+<tr>
+<td>See how C#RA-based test methods work</td>
+<td><code>ReferenceLibraries/CsraTestMethods/</code> — reference test methods built on C#RA blocks</td>
+</tr>
+<tr>
+<td>See raw C# test methods (no C#RA)</td>
+<td><code>ReferenceLibraries/CsTestMethods/</code> — same tests, but calling IG-XL APIs directly</td>
+</tr>
+<tr>
+<td>Compare the two approaches</td>
+<td>Open the same test category (e.g., Continuity) in both projects side-by-side</td>
+</tr>
+<tr>
+<td>Understand a specific block</td>
+<td><code>Core/Csra/TestBlocks/&lt;branch&gt;/&lt;file&gt;.cs</code></td>
+</tr>
+<tr>
+<td>Understand services (alert, storage…)</td>
+<td><code>Core/Csra/Services/&lt;ServiceName&gt;/</code> (e.g., <code>Services/Alert/</code>)</td>
+</tr>
+<tr>
+<td>See how pins are resolved</td>
+<td><code>Core/Csra/Types/Pins/Pins.cs</code> and <code>Core/Tol/</code></td>
+</tr>
+<tr>
+<td>Understand the Thin Object Layer (TOL)</td>
+<td><code>Core/Tol/</code> — the per-instrument abstractions <code>Setup.Dc</code> / <code>Acquire.Dc</code> route through</td>
+</tr>
+<tr>
+<td>Understand the Settings framework</td>
+<td><code>Core/Csra/Settings/SettingBase.cs</code></td>
+</tr>
+<tr>
+<td>Write your first unit test</td>
+<td><code>ReferenceLibraries/UnitTests/</code> — see <a href="writing-unit-tests.html">Unit Testing Your Test Methods</a></td>
+</tr>
+<tr>
+<td>Add your own extension methods</td>
+<td><code>ReferenceLibraries/CsraTestMethods/CustomerExtensions.cs</code></td>
+</tr>
+<tr>
+<td>Open everything in Visual Studio</td>
+<td>Run <code>Demo/generate-subset-solution.cmd</code> — see <a href="download.html">Download &amp; Extract</a></td>
+</tr>
+<tr>
+<td>Run the demo program on IG-XL</td>
+<td>Run <code>Demo/_LoadProgram.cmd</code></td>
+</tr>
+<tr>
+<td>Read the user docs</td>
+<td><code>csra_documentation.pdf</code>, or the published GitHub Pages site</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

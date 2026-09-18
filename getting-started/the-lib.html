@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>TheLib Pipeline | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="TheLib Pipeline | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/the-lib.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="thelib-pipeline">TheLib Pipeline</h1>
+
+<p>TheLib follows a five-branch pipeline:</p>
+<pre><code class="lang-mermaid">%%{init: {'flowchart': {'rankSpacing': 20, 'subGraphTitleMargin': {'top': 8, 'bottom': 20}}}}%%
+flowchart LR
+    subgraph Validate[&quot;&lt;div style='text-align:center'&gt;VALIDATE&lt;/div&gt;&quot;]
+        direction TB
+        V1[InRange] ~~~ V2[Pins] ~~~ V3[Pattern] ~~~ V4[Enum]
+    end
+    subgraph Setup[&quot;&lt;div style='text-align:center'&gt;SETUP&lt;/div&gt;&quot;]
+        direction TB
+        S1[Dc] ~~~ S2[Digital] ~~~ S3[LevelsAndTiming]
+    end
+    subgraph Execute[&quot;&lt;div style='text-align:center'&gt;EXECUTE&lt;/div&gt;&quot;]
+        direction TB
+        E1[Digital] ~~~ E2[ScanNetwork] ~~~ E3[Search] ~~~ E4[Wait]
+    end
+    subgraph Acquire[&quot;&lt;div style='text-align:center'&gt;ACQUIRE&lt;/div&gt;&quot;]
+        direction TB
+        A1[Dc] ~~~ A2[Digital] ~~~ A3[Search] ~~~ A4[ScanNetwork]
+    end
+    subgraph Datalog[&quot;&lt;div style='text-align:center'&gt;DATALOG&lt;/div&gt;&quot;]
+        direction TB
+        D1[TestFunctional] ~~~ D2[TestParametric] ~~~ D3[TestScanNetwork]
+    end
+
+    Validate --&gt; Setup --&gt; Execute --&gt; Acquire --&gt; Datalog
+</code></pre>
+<p>Each box lists a few representative methods — the full, per-branch method tables follow below.</p>
+<hr>
+<h2 id="validate">Validate</h2>
+<p>Runs once at flow load. Checks parameter ranges, parses enums, validates pin lists and patterns. If something is wrong, IG-XL shows a red validation error <em>before</em> any silicon is touched.</p>
+<p><strong>Key methods:</strong> <code>InRange</code>, <code>GreaterOrEqual</code>, <code>LessOrEqual</code>, <code>Enum</code>, <code>IsTrue</code>, <code>Fail</code>, <code>Dc</code> (instrument-specific parameter validation), <code>Pins</code>, <code>Pattern</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InRange</code></td>
+<td>Checks a value is within [from, to]</td>
+</tr>
+<tr>
+<td><code>GreaterOrEqual</code> / <code>GreaterThan</code></td>
+<td>Lower-bound checks</td>
+</tr>
+<tr>
+<td><code>LessOrEqual</code> / <code>LessThan</code></td>
+<td>Upper-bound checks</td>
+</tr>
+<tr>
+<td><code>Enum</code></td>
+<td>Parses a string into a typed enum, lists valid options on failure</td>
+</tr>
+<tr>
+<td><code>IsTrue</code></td>
+<td>Asserts a boolean condition with a custom message</td>
+</tr>
+<tr>
+<td><code>Fail</code></td>
+<td>Unconditionally raises a validation error</td>
+</tr>
+<tr>
+<td><code>Dc</code></td>
+<td>Validates DC parameter combinations per instrument type (PPMU, DCVI, DCVS)</td>
+</tr>
+<tr>
+<td><code>GetObjectByClassName</code></td>
+<td>Resolves a class by name via reflection (for extensibility)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="setup">Setup</h2>
+<p>Prepares instruments for the measurement. Three sub-areas:</p>
+<h3 id="a-setupdc">a. Setup.Dc</h3>
+<p>Connect/disconnect relays, force voltage/current, set meter mode and ranges. Automatically routes to the correct instrument (PPMU, DCVI, DCVS).</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Connect</code> / <code>Disconnect</code></td>
+<td>Relay control for DC pins</td>
+</tr>
+<tr>
+<td><code>ConnectAllPins</code></td>
+<td>Connects all pins via levels &amp; timing</td>
+</tr>
+<tr>
+<td><code>Force</code></td>
+<td>Sets force voltage, current, or Hi-Z mode</td>
+</tr>
+<tr>
+<td><code>ForceV</code> / <code>ForceI</code> / <code>ForceHiZ</code></td>
+<td>Granular force controls with ranges and clamps</td>
+</tr>
+<tr>
+<td><code>Modify</code></td>
+<td>Updates any combination of DC parameters (gate, mode, voltage, current, ranges, meter, compliance, etc.) — instrument-aware routing to PPMU/DCVI/DCVS</td>
+</tr>
+<tr>
+<td><code>SetForceAndMeter</code></td>
+<td>Combined force + meter configuration in one call</td>
+</tr>
+<tr>
+<td><code>SetMeter</code></td>
+<td>Configures measurement mode (voltage/current), range, filter, averaging</td>
+</tr>
+<tr>
+<td><code>CreateCaptureSignal</code></td>
+<td>Sets up a DCVS capture signal for waveform acquisition</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-setupdigital">b. Setup.Digital</h3>
+<p>Configure digital pin properties (levels, timing, alarms, frequency counter).</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Connect</code> / <code>Disconnect</code></td>
+<td>Digital relay control</td>
+</tr>
+<tr>
+<td><code>FrequencyCounter</code></td>
+<td>Configures the frequency counter (event source, slope, window)</td>
+</tr>
+<tr>
+<td><code>ModifyPins</code></td>
+<td>Alarm type/behavior, compare/drive enable, init/start state, calibration</td>
+</tr>
+<tr>
+<td><code>ModifyPinsLevels</code></td>
+<td>Single-ended and differential voltage levels (VIH/VIL, VOH/VOL, VID, VICM, etc.), driver mode, per-site level overrides</td>
+</tr>
+<tr>
+<td><code>ModifyPinsTiming</code></td>
+<td>Clock period/offset, edge set timing, auto-strobe, free-running clock, source-sync data delay, timing offsets</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-setuplevelsandtiming">c. Setup.LevelsAndTiming</h3>
+<p>Apply the levels and timing sheet to hardware, optionally with power-up sequencing.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Apply</code></td>
+<td>Applies levels &amp; timing with options for connect-all-pins, unpowered mode, and level ramp sequences</td>
+</tr>
+<tr>
+<td><code>ApplyWithPinStates</code></td>
+<td>Same as <code>Apply</code> but with explicit pin init states (Hi/Lo/HiZ) for controlled power-up sequencing</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="execute">Execute</h2>
+<p>Runs the actual test stimulus:</p>
+<h3 id="a-executedigital">a. Execute.Digital</h3>
+<p>Start/run/halt digital patterns, conditional stops with <code>IExecutable</code> callbacks, pattern-synchronized ramps.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RunPattern</code></td>
+<td>Starts a pattern and waits for completion</td>
+</tr>
+<tr>
+<td><code>StartPattern</code> / <code>WaitPatternDone</code></td>
+<td>Async pattern control</td>
+</tr>
+<tr>
+<td><code>ForcePatternHalt</code></td>
+<td>Emergency pattern stop</td>
+</tr>
+<tr>
+<td><code>RunPatternConditionalStop</code></td>
+<td>Runs a pattern with N flag-based breakpoints, executing an <code>IExecutable</code> at each stop</td>
+</tr>
+<tr>
+<td><code>ContinueToConditionalStop</code></td>
+<td>Waits for a conditional stop, runs an action, then continues</td>
+</tr>
+<tr>
+<td><code>RunPatternSyncRamp</code></td>
+<td>Starts a PPMU pattern-synchronized voltage ramp</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-executescannetwork">b. Execute.ScanNetwork</h3>
+<p>Burst IJTAG scan patterns with CMEM configuration, run diagnosis on failed cores.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RunPattern</code></td>
+<td>Configures CMEM and bursts the non-diagnosis scan pattern</td>
+</tr>
+<tr>
+<td><code>RunDiagnosis</code></td>
+<td>Re-bursts failed cores with CMEM capture for diagnosis (sequential or concurrent)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-executesearch">c. Execute.Search</h3>
+<p>Post-process search sweep results (find closest-to-target or trip point from collected data).</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LinearFullProcess</code> (target-based)</td>
+<td>Finds the input value whose output is closest to a numeric target (from a <code>List&lt;Site&lt;T&gt;&gt;</code> or <code>Site&lt;Samples&lt;T&gt;&gt;</code>)</td>
+</tr>
+<tr>
+<td><code>LinearFullProcess</code> (trip-based)</td>
+<td>Finds the first input value where the output meets a trip criterion (e.g., pass→fail transition)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-wait">d. Wait</h3>
+<p>A hardware settle wait, called directly on <code>Execute</code> rather than through a sub-block.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Wait</code></td>
+<td>Hardware settle wait (static or parallel) with configurable timeout</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="acquire">Acquire</h2>
+<p>Captures measurement data from hardware. Contains four sub-blocks:</p>
+<h3 id="a-acquiredc">a. Acquire.Dc</h3>
+<p>Measure voltage/current (single, multi-sample, waveform), strobe for pattern-synchronized capture, read back previously captured data.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Measure</code></td>
+<td>Single or multi-sample voltage/current measurement (PPMU/DCVI/DCVS)</td>
+</tr>
+<tr>
+<td><code>MeasureSamples</code></td>
+<td>Returns <code>Samples&lt;double&gt;</code> arrays for waveform capture</td>
+</tr>
+<tr>
+<td><code>Strobe</code> / <code>StrobeSamples</code></td>
+<td>Triggers a measurement without immediately reading (for pattern-synchronized measurements)</td>
+</tr>
+<tr>
+<td><code>ReadMeasured</code> / <code>ReadMeasuredSamples</code></td>
+<td>Reads back previously strobed data</td>
+</tr>
+<tr>
+<td><code>ReadCaptured</code> / <code>ReadCapturedSamples</code></td>
+<td>Reads DSP waveform data from a named capture signal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-acquiredigital">b. Acquire.Digital</h3>
+<p>Pattern pass/fail, HRAM data read (pin values or assembled words), frequency counter results.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PatternResults</code></td>
+<td>Returns per-site pass/fail from the last pattern burst</td>
+</tr>
+<tr>
+<td><code>Read</code></td>
+<td>Reads HRAM captured pin data as <code>Samples&lt;int&gt;</code> (H=1, L=0)</td>
+</tr>
+<tr>
+<td><code>ReadWords</code></td>
+<td>Reads HRAM data as assembled words (configurable word size, bit order)</td>
+</tr>
+<tr>
+<td><code>MeasureFrequency</code></td>
+<td>Reads frequency counter results</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-acquiresearch">c. Acquire.Search</h3>
+<p>Iterative search algorithms (linear sweep, binary search) that call user-provided measurement lambdas.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BinarySearch</code> (double, target)</td>
+<td>Bisection search for a value closest to a numeric target</td>
+</tr>
+<tr>
+<td><code>BinarySearch</code> (double, trip)</td>
+<td>Bisection search for a pass/fail boundary</td>
+</tr>
+<tr>
+<td><code>BinarySearch</code> (int, target/trip)</td>
+<td>Integer versions of the above</td>
+</tr>
+<tr>
+<td><code>LinearFullFromToCount</code> / <code>FromToInc</code> / <code>FromIncCount</code></td>
+<td>Full linear sweep (calls <code>oneMeasurement</code> at each step)</td>
+</tr>
+<tr>
+<td><code>LinearStopFromToCount</code> / <code>FromIncCount</code> (target)</td>
+<td>Linear sweep that stops early once all sites find target</td>
+</tr>
+<tr>
+<td><code>LinearStopFromToCount</code> / <code>FromIncCount</code> (trip)</td>
+<td>Linear sweep that stops early on trip criterion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-acquirescannetwork">d. Acquire.ScanNetwork</h3>
+<p>Extract per-core pass/fail from scan network results.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PatternResults</code></td>
+<td>Extracts per-core/ICL-instance pass/fail results from a scan network pattern execution</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="datalog">Datalog</h2>
+<p>Pushes results to the IG-XL test flow for binning and data collection:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TestFunctional</code></td>
+<td>Logs a per-site boolean pass/fail</td>
+</tr>
+<tr>
+<td><code>TestParametric</code></td>
+<td>Logs int or double results against flow limits (Site or PinSite, single value or Samples). Auto-fills midway-pass values when running offline</td>
+</tr>
+<tr>
+<td><code>TestScanNetwork</code></td>
+<td>Logs scan network results with per-core or per-ICL-instance fail flags and comments</td>
+</tr>
+</tbody>
+</table>
+<p>When running <strong>offline</strong>, the Datalog block can auto-fill midway-pass values (controlled by a Behavior feature flag) so that offline flows don't fail on missing measurement data.</p>
+<hr>
+<p><strong>Next:</strong> <a href="four-phase-test-method-pattern.html">The Four Phase Test Method Pattern</a> — how Validate/Setup/Execute/Acquire/Datalog fit together inside one test method.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

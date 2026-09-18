@@ -100,7 +100,7 @@ public void Baseline(PinList pinList, double voltage, double currentRange, doubl
     ...
 }
 </code></pre>
-<h2 id="object-initialization">Object Initialization</h2>
+<h2 id="parameter-pre-processing">Parameter Pre-Processing</h2>
 <p>Test parameterization is done in IG-XL by the flow controller handing the parameters into the test method at runtime. In IG-XL, that data is cached, and locally made available within the test method that way. While this is performance optimized for the case when data is used &quot;as-is&quot;, some overhead may occur when it needs to be converted or processed before it can be used.</p>
 <p>To avoid that, such processing can be done once only during validation and preserved for subsequent use. Because the input is static (= the same in every run), pre-processing results can be stored in class using test classes persistence:</p>
 <pre><code class="lang-cs">[TestClass(Creation.TestInstance)]
@@ -115,8 +115,8 @@ public class Read : TestCodeBase {
         bool testValues, string setup = &quot;&quot;) {
 
         if (TheExec.Flow.IsValidating) {
-            _pins = new Pins(readPins);
-            _patternInfo = new(pattern, true);
+            TheLib.Validate.Pins(readPins, nameof(readPins), out _pins);
+            TheLib.Validate.Pattern(pattern, nameof(pattern), out _patternInfo);
             _bitOrder = msbFirst ? tlBitOrder.MsbFirst : tlBitOrder.LsbFirst;
         }
 
@@ -157,10 +157,6 @@ public class Read : TestCodeBase {
 <tr>
 <td><code>bool Pins(PinList pinList, string argumentName, out Pins pins)</code></td>
 <td>checks for C#RA supported pin spec and creates the object (preferred over <code>new Pins()</code>)</td>
-</tr>
-<tr>
-<td><code>bool MethodHandle&lt;T&gt;(string fullyQualifiedName, string argumentName, out MethodHandle&lt;T&gt; delegate) where T : Delegate</code></td>
-<td>checks for valid method handle spec and creates the object (used to be <code>GetDelegate</code>, preferred over <code>new MethodHandle&lt;T&gt;()</code>)</td>
 </tr>
 <tr>
 <td><code>bool MultiCondition&lt;T&gt;(string csv, Func&lt;string, T&gt; parser, string argumentName, out T[] conditions, int? referenceCount = null)</code></td>

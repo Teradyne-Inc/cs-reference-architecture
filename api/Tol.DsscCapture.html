@@ -322,7 +322,7 @@ Typical usage sequence:
 
   <h3 id="Tol_DsscCapture_ReadStv" data-uid="Tol.DsscCapture.ReadStv">
   ReadStv()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/DsscCapture.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/DsscCapture.cs/#L120"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Reads captured DSSC waveform samples for each pin and site.</p>
@@ -337,7 +337,8 @@ Typical usage sequence:
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
-    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>double[]</code> where each entry contains the captured sample values for that pin and site.</p>
+    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>double[]</code> where each entry contains the captured sample values for that pin and site.
+Pins and sites with no captured data yield an empty array.</p>
 </dd>
   </dl>
 

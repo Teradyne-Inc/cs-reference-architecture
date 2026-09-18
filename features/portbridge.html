@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>PortBridge – Enable &amp; Use | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="PortBridge – Enable &amp; Use | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/features/portbridge.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="portbridge--enable--use">PortBridge – Enable &amp; Use</h1>
+
+<p>PortBridge is a Teradyne product that provides a device-communication abstraction layer for
+IG-XL test programs. It lets a test program talk to a device through <em>named registers and
+fields</em> (with bit-bashing, ProtocolAware and PatternModify handled underneath) instead of
+hand-crafted source/capture patterns.</p>
+<p>PortBridge is an <strong>optional, separately licensed</strong> product. C#RA is built so the source tree still
+builds and runs on a machine <em>without</em> PortBridge — the PortBridge-specific projects compile to
+empty assemblies rather than failing the build. Only code that actually calls into PortBridge
+(anything referencing <code>PBLib</code>) requires the product to be installed to compile.
+PortBridge is a Teradyne product that provides a device-communication abstraction layer for
+IG-XL test programs. It lets a test program talk to a device through <em>named registers and
+fields</em> (with bit-bashing, ProtocolAware and PatternModify handled underneath) instead of
+hand-crafted source/capture patterns.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This page is the practical &quot;how to enable and use it&quot; guide. For the conditional-dependency
+mechanism in general, see <a href="external-libraries.html">External Libraries</a>.</p>
+</div>
+<h2 id="1-prerequisites">1. Prerequisites</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PortBridge installed</td>
+<td>Default location <code>C:\Program Files (x86)\Teradyne\Applications\PortBridge\</code></td>
+</tr>
+<tr>
+<td><code>Teradyne.PortBridge.dll</code> present</td>
+<td>The build references it from <code>$(PBROOT)\Teradyne.PortBridge.dll</code></td>
+</tr>
+<tr>
+<td><code>PBROOT</code> environment variable</td>
+<td>Set by the PortBridge install; must point at the folder containing the DLL</td>
+</tr>
+<tr>
+<td>Valid PortBridge license</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+<p>That's the whole &quot;enable&quot; step: <strong>install PortBridge and make sure <code>PBROOT</code> is set.</strong> There is no
+flag to flip in C#RA, no marker file, and no project setting — <code>PBROOT</code> alone decides, as
+<a href="#2-how-enabling-works-auto-detection">section 2</a> describes.</p>
+<h2 id="2-how-enabling-works-auto-detection">2. How enabling works (auto-detection)</h2>
+<p>C#RA detects PortBridge purely from <code>PBROOT</code> + the presence of the DLL. No marker file is needed.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>A previous version relied on a manual <code>PortBridgeEnabled.txt</code> marker file in <code>src</code>. That is gone —
+detection is now automatic via <code>PBROOT</code>.</p>
+</div>
+<p>There are three coordinated pieces, all keyed on <code>Exists('$(PBROOT)\Teradyne.PortBridge.dll')</code>:</p>
+<p><strong>a) Core project — <code>Core/Csra/Csra.csproj</code></strong> defines a named
+property and a compiler constant:</p>
+<pre><code class="lang-xml">&lt;PropertyGroup&gt;
+  &lt;!-- true only if the DLL is found under PBROOT --&gt;
+  &lt;PortBridgeEnabled Condition=&quot;Exists('$(PBROOT)\Teradyne.PortBridge.dll')&quot;&gt;true&lt;/PortBridgeEnabled&gt;
+&lt;/PropertyGroup&gt;
+&lt;PropertyGroup&gt;
+  &lt;PortBridgeEnabled Condition=&quot; '$(PortBridgeEnabled)' == '' &quot;&gt;false&lt;/PortBridgeEnabled&gt;
+&lt;/PropertyGroup&gt;
+&lt;PropertyGroup Condition=&quot; '$(PortBridgeEnabled)' == 'true' &quot;&gt;
+  &lt;DefineConstants&gt;$(DefineConstants);PORTBRIDGE_ENABLED&lt;/DefineConstants&gt;
+&lt;/PropertyGroup&gt;
+&lt;ItemGroup Condition=&quot; '$(PortBridgeEnabled)' == 'true' &quot;&gt;
+  &lt;Reference Include=&quot;Teradyne.PortBridge&quot;&gt;
+    &lt;HintPath&gt;$(PBROOT)\Teradyne.PortBridge.dll&lt;/HintPath&gt;
+    &lt;Private&gt;False&lt;/Private&gt;
+  &lt;/Reference&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<ul>
+<li><code>PortBridgeEnabled</code> — the MSBuild switch (auto-detected, defaults to <code>false</code>).</li>
+<li><code>PORTBRIDGE_ENABLED</code> — a compiler constant defined by the <strong>core</strong> projects that opt in
+(<code>Csra.csproj</code>, <code>Tol.csproj</code>, and the unit-test projects). It is <strong>not</strong> defined by the PortBridge
+reference projects (<code>PortBridgeUtils.csproj</code>, <code>Demo_PB.csproj</code>) — those gate their source with
+<code>&lt;Compile Include&gt;</code> conditions instead (see (b) below). No shipped <code>.cs</code> file uses an
+<code>#if PORTBRIDGE_ENABLED</code> guard today.</li>
+</ul>
+<p><strong>b) Reference libraries</strong> — the two PortBridge example projects gate <em>both</em> their compile items and
+the DLL reference directly on the same <code>Exists(...)</code> condition (see
+<code>PortBridgeUtils.csproj</code>
+and <code>Demo_PB.csproj</code>):</p>
+<pre><code class="lang-xml">&lt;ItemGroup Condition=&quot;Exists('$(PBROOT)\Teradyne.PortBridge.dll')&quot;&gt;
+  &lt;Compile Include=&quot;PBLib.cs&quot; /&gt;
+  &lt;!-- ... --&gt;
+&lt;/ItemGroup&gt;
+&lt;ItemGroup Condition=&quot;Exists('$(PBROOT)\Teradyne.PortBridge.dll')&quot;&gt;
+  &lt;Reference Include=&quot;Teradyne.PortBridge&quot;&gt;
+    &lt;HintPath&gt;$(PBROOT)\Teradyne.PortBridge.dll&lt;/HintPath&gt;
+  &lt;/Reference&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p>Because <em>every</em> <code>&lt;Compile Include&gt;</code> is gated this way — <code>Properties\AssemblyInfo.cs</code> included — a
+machine <strong>without</strong> PortBridge doesn't merely skip some files: <code>PortBridgeUtils</code> and <code>Demo_PB</code> build
+into <strong>empty assemblies</strong>, and the DLL reference isn't required, so the solution still builds. The
+practical consequence for you: <strong>any code that references <code>PBLib</code> will not compile on a machine
+without PortBridge.</strong> The failure mode to watch for is a <em>mis-pointed</em> <code>PBROOT</code> — the build then
+succeeds but produces an empty <code>PortBridgeUtils.dll</code>, so the break surfaces at runtime as a missing
+<code>PBLib</code> rather than as a build error. If that happens, check <code>PBROOT</code> first.</p>
+<p><strong>c) Runtime version check</strong> — <code>IGComponentManagerParser.VerifyPbVersion</code>
+reads <code>PBROOT</code>, finds <code>Teradyne.PortBridge.dll</code>, and compares its file version against the required
+version declared for the program. This is only exercised when <code>PBROOT</code> is set.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The <strong>CI pipeline builds and tests the subset solution both <em>with and without</em> PortBridge</strong>, per
+IG-XL version. The non-PortBridge leg validates that the PortBridge-<em>independent</em> projects (Csra,
+Tol, CsTestMethods, CsraTestMethods, UnitTestExample) can't silently regress; it does <strong>not</strong>
+validate PortBridge-free variants of the PortBridge projects themselves (see
+<a href="unit-integration-testing.html">Unit &amp; Integration Testing</a>).</p>
+</div>
+<h3 id="ascii--ig-xl-program-side">ASCII / IG-XL program side</h3>
+<p>The IG-XL program that exercises PortBridge references the product through its DT References sheet.
+In the demo, <code>spPortBridge/ReferencesPB.txt</code>
+lists:</p>
+<pre><code class="lang-text">%PBRoot%\Teradyne.PortBridge.tlb
+C:\Program Files (x86)\Teradyne\Applications\PortBridge\Teradyne.PortBridge.dll
+</code></pre>
+<h2 id="3-the-example-cra-provides">3. The example C#RA provides</h2>
+<p>Everything lives under <code>ReferenceLibraries/PortBridge/</code>
+and is split into a reusable helper library and a demo test project:</p>
+<pre><code class="lang-text">ReferenceLibraries/PortBridge/
+├─ PortBridgeUtils/            ← reusable helper library (&quot;PBLib&quot;)
+│  ├─ PBLib.cs                 ← the simplified C# register/field API
+│  └─ SiteReg32.cs            ← 32-bit per-site register helper type
+└─ Demo_PB/                    ← the runnable example
+   ├─ Initialize.cs            ← PortBridge init + register-map load/setup
+   ├─ PB_Tests.cs             ← the actual TestMethods
+   ├─ ExecInterposeClass.cs    ← wires init into the program lifecycle
+   └─ Portbridge_Files/
+      └─ demo.svd              ← CMSIS-SVD register map for the demo device
+</code></pre>
+<p>Plus the matching IG-XL program fragment in
+<code>Demo/ASCIIProgram/spPortBridge/</code> (references sheet +
+<code>TS_SPI</code> timeset).</p>
+<h3 id="portbridgeutils--pblib--the-wrapper-api"><code>PortBridgeUtils</code> / <code>PBLib</code> — the wrapper API</h3>
+<p><code>PBLib</code> wraps the raw PortBridge language into a small, C#RA-flavored API. It hides the
+<code>RegisterMaps[…].Blocks[…].SubBlocks[…].Registers[…].Fields[…].Value</code> navigation behind flat method
+calls and speaks C#RA's <code>Site&lt;T&gt;</code> / <code>SiteLong</code> types. It supports <strong>hierarchical register paths</strong>:</p>
+<ul>
+<li><code>&quot;CFG0&quot;</code> — flat register</li>
+<li><code>&quot;PERIPH_A.CFG0&quot;</code> — block . register</li>
+<li><code>&quot;PERIPH_A.SUBBLOCK_A.CFG0&quot;</code> — block . sub-block . register</li>
+</ul>
+<p>Key members:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PBLib.Initialize(registerMapName)</code></td>
+<td>Sets the active register-map name (e.g. <code>&quot;Demo&quot;</code>)</td>
+</tr>
+<tr>
+<td><code>GetRegValue(reg)</code> / <code>SetRegValue(reg, Site&lt;int&gt;)</code></td>
+<td>Read/write a whole register (site-uniform or per-site)</td>
+</tr>
+<tr>
+<td><code>GetRegValuePerSite</code> / <code>SetRegValuePerSite</code></td>
+<td>Same, using <code>SiteLong</code></td>
+</tr>
+<tr>
+<td><code>GetFldValue(reg, fld)</code> / <code>SetFldValue(reg, fld, val)</code></td>
+<td>Read/write a named field</td>
+</tr>
+<tr>
+<td><code>GetFldValuePerSite</code> / <code>SetFldValuePerSite</code></td>
+<td>Field access with <code>SiteLong</code></td>
+</tr>
+<tr>
+<td><code>ResetRegisterAll()</code> / <code>ResetRegister(reg)</code></td>
+<td>Restore default (reset) values</td>
+</tr>
+<tr>
+<td><code>CheckLabel(reg)</code> / <code>CheckFieldLabel(reg, fld)</code></td>
+<td>Validate a register/field exists in the map</td>
+</tr>
+<tr>
+<td><code>GetFieldMask(reg, fld)</code></td>
+<td>Get a field's bit mask</td>
+</tr>
+<tr>
+<td><code>OpenInDebugTool(module)</code></td>
+<td>Open a module in the PortBridge Debug Tool</td>
+</tr>
+</tbody>
+</table>
+<p>The static PortBridge handle it uses:</p>
+<pre><code class="lang-cs">public static IPortBridgeLanguage PortBridge = new PortBridgeLanguage_Remote(&quot;IG.NET&quot;);
+</code></pre>
+<h3 id="demo_pb--how-its-put-together"><code>Demo_PB</code> — how it's put together</h3>
+<p><strong>Lifecycle wiring — <code>ExecInterposeClass.cs</code>.</strong>
+PortBridge is initialized when the program loads, via an Exec Interpose:</p>
+<pre><code class="lang-cs">[ExecInterpose_OnProgramLoaded(255)]
+public static void OnProgramLoaded() {
+    Initialize.PortBridgeInit();
+    Services.Alert.Log(&quot;PB initialized successfully&quot;);
+}
+</code></pre>
+<p><strong>Init &amp; register-map load — <code>Initialize.cs</code>.</strong></p>
+<pre><code class="lang-cs">// Called once at program load
+public static void PortBridgeInit() {
+    PortBridgeLanguage portBridge = new PortBridgeLanguage();
+    portBridge.Initialize(TheHdw.Tester.Type);
+    portBridge.Utilities.Logger.ShowInformationEntries = true;
+    portBridge.Utilities.ShowStatusMonitor();          // real-time monitor
+}
+
+// Called from the first test to load the map and build a test configuration
+public static void PortBridgeSetup() {
+    PBLib.Initialize(&quot;Demo&quot;);                          // active register-map name
+    PBLib.PortBridge.RegisterMaps.Unload(REGISTER_MAP);
+    if (!PBLib.PortBridge.RegisterMaps.Contains(REGISTER_MAP)) {
+        PBLib.PortBridge.RegisterMaps.Load(
+            REGISTER_MAP,                              // &quot;Demo&quot;
+            &quot;.\\Portbridge_Files\\demo.svd&quot;,          // the SVD map
+            PortBridgeRegisterMapFormat.SVD,
+            string.Empty, false, false, string.Empty, false);
+        IPortBridgeTestConfiguration pb = PBLib.PortBridge.Tests.Configurations[&quot;RM1&quot;];
+        pb.RegisterMap.Add(REGISTER_MAP);              // bind map ↔ config &quot;RM1&quot;
+    }
+}
+</code></pre>
+<p><strong>The demo device — <code>Portbridge_Files/demo.svd</code>.</strong> A generic CMSIS-SVD file (<code>RegMap_Demo</code>) with a
+<code>PERIPH_A</code> peripheral, <code>SUBBLOCK_A</code> cluster, <code>CFG0</code> register and a <code>SEL</code> field — i.e. the
+<code>PERIPH_A.SUBBLOCK_A.CFG0</code> path the tests use.</p>
+<p><strong>The TestMethods — <code>PB_Tests.cs</code>.</strong>
+All are <code>[TestMethod, Steppable, CustomValidation]</code>:</p>
+<table>
+<thead>
+<tr>
+<th>TestMethod</th>
+<th>Demonstrates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InitialSetup()</code></td>
+<td>Calls <code>PortBridgeSetup()</code>, resets registers, confirms the map loaded and the hierarchical path resolves (<code>CheckLabel</code>)</td>
+</tr>
+<tr>
+<td><code>ReadAndLogRegister(regLimit, fldLimit)</code></td>
+<td>Reads register + field, tests them against limits with <code>TheExec.Flow.TestLimit</code></td>
+</tr>
+<tr>
+<td><code>Check_SiteGenerics()</code></td>
+<td><code>Site&lt;int&gt;</code> ↔ <code>SiteLong</code> conversions with register/field set/get, per-site values</td>
+</tr>
+<tr>
+<td><code>VerifyRegisterReadWrite()</code></td>
+<td>Full reset → read → write pattern → read-back → verify → restore, per site, at register and field level</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-using-it-in-your-own-program">4. Using it in your own program</h2>
+<ol>
+<li><p><strong>Install PortBridge and confirm <code>PBROOT</code></strong> points at the folder holding
+<code>Teradyne.PortBridge.dll</code>. Rebuild — the PortBridge code now compiles in and
+<code>PORTBRIDGE_ENABLED</code> is defined.</p>
+</li>
+<li><p><strong>Provide your register map</strong> as an SVD (or another format PortBridge supports) and load it the
+way <code>PortBridgeSetup()</code> does — change the map name, file path and test-configuration name to yours.</p>
+</li>
+<li><p><strong>Initialize once</strong> from an <code>OnProgramLoaded</code> Exec Interpose (as <code>ExecInterposeClass</code> does).</p>
+</li>
+<li><p><strong>Call <code>PBLib</code></strong> from your TestMethods using named registers/fields:</p>
+<pre><code class="lang-cs">PBLib.ResetRegisterAll();
+PBLib.SetFldValue(&quot;PERIPH_A.SUBBLOCK_A.CFG0&quot;, &quot;SEL&quot;, myTrim);   // myTrim is Site&lt;int&gt;
+Site&lt;int&gt; readback = PBLib.GetRegValue(&quot;PERIPH_A.SUBBLOCK_A.CFG0&quot;);
+TheExec.Flow.TestLimit(readback, lo, hi, FormatStr: &quot;%x&quot;, TName: &quot;CFG0&quot;);
+</code></pre>
+</li>
+<li><p><strong>Keep PortBridge-only source out of non-PortBridge builds the way the shipped projects do</strong> —
+gate each <code>&lt;Compile Include&gt;</code> in the <code>.csproj</code> on <code>Exists('$(PBROOT)\Teradyne.PortBridge.dll')</code>
+(see §2 (b)), rather than reaching for <code>#if PORTBRIDGE_ENABLED</code>. That constant is defined only by
+the core projects (<code>Csra</code>/<code>Tol</code>/UT), <strong>not</strong> by the PortBridge reference projects — so a
+<code>#if PORTBRIDGE_ENABLED</code> added to a copied PortBridge project evaluates false and silently compiles
+nothing, a build that &quot;passes&quot; while covering zero code. If you do want <code>#if</code> guards, add
+<code>PORTBRIDGE_ENABLED</code> to that project's <code>&lt;DefineConstants&gt;</code> first.</p>
+</li>
+</ol>
+<h2 id="5-building">5. Building</h2>
+<p>The trimmed solution (SOC124) is generated on the fly and can be built either way. Run
+<code>Demo/generate-subset-solution.cmd</code>, which adds <code>PortBridgeUtils.csproj</code> and <code>Demo_PB.csproj</code> to a
+classic-format <code>.sln</code> (forced, because these are non-SDK .NET Framework 4.8 projects), then build it
+in Visual Studio.</p>
+<p>Which way it builds is decided entirely by <code>PBROOT</code>, as described in
+<a href="#2-how-enabling-works-auto-detection">section 2</a>:</p>
+<ul>
+<li><strong><code>PBROOT</code> set and <code>Teradyne.PortBridge.dll</code> present</strong> — the PortBridge projects compile against the
+kit and <code>PBLib</code> is available.</li>
+<li><strong><code>PBROOT</code> unset or empty</strong> — the same projects compile to empty assemblies and the build still
+succeeds. This is deliberate: a program that does not use PortBridge must not need the kit.</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If a build appears to succeed but <code>PBLib</code> is missing at runtime, check <code>PBROOT</code> first. A
+mis-pointed <code>PBROOT</code> is the usual cause — it produces an empty <code>PortBridgeUtils.dll</code> rather than a
+build error.</p>
+</div>
+<p>Every C#RA release is validated both ways, with and without the kit, plus a negative case that
+confirms a missing kit fails the build rather than passing silently.</p>
+<p>To run the full demo program, generate/load the IG-XL project with
+<code>Demo/_GenerateProgram.cmd</code> / <code>_LoadProgram.cmd</code>; the
+<code>PortBridge</code> subprogram and <code>Demo_PortBridge</code> job in <code>Demo.igxlProj</code> exercise the flow, and
+<code>OnProgramLoaded</code> runs <code>PortBridgeInit()</code> automatically.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In the demo, <code>PBLib.PortBridge</code> is a <code>PortBridgeLanguage_Remote(&quot;IG.NET&quot;)</code> instance, while
+<code>Initialize.PortBridgeInit()</code> constructs a separate local <code>new PortBridgeLanguage()</code> for the
+logger/status-monitor bring-up — they are two distinct PortBridge objects.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>PBLib</code> is a <strong>reference</strong> helper, not a fixed API. Extend or replace it for your device — it
+exists to show the pattern (hierarchical paths, <code>Site&lt;T&gt;</code>/<code>SiteLong</code> bridging, reset/verify flows)
+rather than to be an exhaustive transaction layer.</p>
+</div>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

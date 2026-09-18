@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/CsraTestMethods.Parametric.MultiCondition.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/CsraTestMethods/CsraTestMethods.Parametric.MultiCondition.md/#L2">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,7 +85,7 @@
 
 
   <h1 id="CsraTestMethods_Parametric_MultiCondition" data-uid="CsraTestMethods.Parametric.MultiCondition" class="text-break">
-Class MultiCondition  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/MultiCondition.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Class MultiCondition  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/MultiCondition.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -218,7 +218,7 @@ public class MultiCondition : TestCodeBase</code></pre>
 
   <h3 id="CsraTestMethods_Parametric_MultiCondition_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_String_System_String_System_String_System_String_System_String_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_String_" data-uid="CsraTestMethods.Parametric.MultiCondition.Baseline(Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.String,System.String,System.String,System.String,System.String,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.String)">
   Baseline(PinList, string, string, string, string, string, string, PinList, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/MultiCondition.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/MultiCondition.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parametric measurement by setting up all force Pins, then measuring all force or optionally different measurement Pins.</p>
@@ -329,8 +329,16 @@ public void Baseline(PinList forcePinList, string forceModes, string forceValues
     }
 
     if (ShouldRunBody) {
+        List&lt;Pins&gt; filteredMeasureGroups = new();
+        foreach (Pins measureGroup in _pinsMeasureGroups) {
+            if (measureGroup.ContainsFeature(InstrumentFeature.Ppmu)) {
+                TheLib.Setup.Dc.ForceHiZ(measureGroup);
+            } else {
+                filteredMeasureGroups.Add(measureGroup);
+            }
+        }
         TheLib.Setup.Dc.Force(_pinsForceGroups, _outputModes, _forceValues, _forceValues, _clampValues, [true]);
-        TheLib.Setup.Dc.SetMeter(_pinsMeasureGroups, _measureModes, _measureRanges);
+        TheLib.Setup.Dc.SetMeter(filteredMeasureGroups.ToArray(), _measureModes, _measureRanges);
         TheLib.Execute.Wait(waitTime);
         _measureValues = TheLib.Acquire.Dc.Measure(_pinsMeasureGroups, _sampleSizes);
     }
@@ -351,7 +359,7 @@ public void Baseline(PinList forcePinList, string forceModes, string forceValues
 
   <h3 id="CsraTestMethods_Parametric_MultiCondition_PreconditionPattern_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_String_System_String_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_System_String_System_String_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_String_" data-uid="CsraTestMethods.Parametric.MultiCondition.PreconditionPattern(Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.String,System.String,Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.String,System.String,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.String)">
   PreconditionPattern(PinList, string, string, string, Pattern, string, string, string, PinList, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/MultiCondition.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/MultiCondition.cs/#L106"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parametric measurement by running preconditioning pattern, setting up force Pins and then measuring all force or optionally different measurement Pins.</p>
@@ -469,8 +477,17 @@ public void PreconditionPattern(PinList forcePinList, string forceModes, string 
     }
 
     if (ShouldRunBody) {
+        List&lt;Pins&gt; filteredMeasureGroups = new();
+        foreach (Pins measureGroup in _pinsMeasureGroups) {
+            if (measureGroup.ContainsFeature(InstrumentFeature.Ppmu)) {
+                TheLib.Setup.Dc.ForceHiZ(measureGroup);
+            }
+            else {
+                filteredMeasureGroups.Add(measureGroup);
+            }
+        }
         TheLib.Setup.Dc.Force(_pinsForceGroups, _outputModes, _forceValues, _forceValues, _clampValues, [true]);
-        TheLib.Setup.Dc.SetMeter(_pinsMeasureGroups, _measureModes, _measureRanges);
+        TheLib.Setup.Dc.SetMeter(filteredMeasureGroups.ToArray(), _measureModes, _measureRanges);
         TheLib.Execute.Wait(waitTime);
         _measureValues = TheLib.Acquire.Dc.Measure(_pinsMeasureGroups, _sampleSizes);
     }

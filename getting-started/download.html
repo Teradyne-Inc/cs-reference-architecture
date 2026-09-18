@@ -90,27 +90,54 @@
 <li>Unzip the contents to a location of your choice.</li>
 </ul>
 <h2 id="content-of-the-zip">Content of the ZIP:</h2>
-<pre><code>└── 📁Csra # Source code of the library
-└── 📁Demo # Sample project demonstrating usage
-└── 📁docs # Offline HTML documentation
+<pre><code>├── 📁Core
+│   ├── 📁Csra                    # Source code of the library
+│   └── 📁Tol                     # Thin Object Layer (per-instrument pin abstractions)
+├── 📁ReferenceLibraries
+│   ├── 📁CsraTestMethods         # Reference test methods built on C#RA
+│   ├── 📁CsTestMethods           # Same tests written against the raw IG-XL API
+│   ├── 📁UnitTests               # Example unit test project + reusable base class
+│   └── 📁PortBridge              # PortBridge utilities and demo
+├── 📁Demo                        # Sample IG-XL program demonstrating usage
+├── csra_documentation.pdf        # Offline documentation
+├── LICENSE.txt
+└── README.md
 </code></pre>
+<p>This is the same content you can browse in the public repository at <a href="https://github.com/Teradyne-Inc/cs-reference-architecture">Teradyne-Inc/cs-reference-architecture</a>. The hierarchy matches the development repository with the <code>src/</code> prefix removed, so the relative <code>ProjectReference</code> paths inside the <code>.csproj</code> files keep resolving. Offline HTML documentation is delivered as a separate archive.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The package does <strong>not</strong> ship a solution file, but it can build you one. Run <code>Demo/generate-subset-solution.cmd</code> and you get <code>SOC124.sln</code> with every shipped project already added and grouped:</p>
+<ul>
+<li><strong>Core</strong> — <code>Csra</code>, <code>Tol</code>, <code>PortBridgeUtils</code></li>
+<li><strong>Examples</strong> — <code>CsTestMethods</code>, <code>CsraTestMethods</code>, <code>UnitTestExample</code>, <code>Demo_PB</code></li>
+</ul>
+<p>That is the quickest way to open the whole thing in Visual Studio and read or build it. Treat the script as a <strong>template</strong>: it is a short list of <code>dotnet sln add</code> lines, so edit it to assemble whatever subset your program actually needs — drop the examples you won't use, add your own projects, rename the solution. To use C#RA in a program of your own instead, add the projects to your existing solution — see <a href="installation.html">Installation &amp; Adding Reference</a>.</p>
+</div>
 <div class="TIP">
 <h5>Tip</h5>
-<p>You can create a Git repository for the <code>Csra</code> folder and link it as a submodule in your main project repository.</p>
+<p>You can create a Git repository for the <code>Core/Csra</code> folder and link it as a submodule in your main project repository.</p>
 </div>
 <h2 id="demo-project">Demo Project</h2>
 <p>For reference purpose a demo project is part of the release package. It shows how to use a <code>TestMethod</code> or a <code>TestBlock</code> from a 3rd party project.</p>
 <pre><code>└── 📁Demo
-   └── 📁ASCIIProgram # IG-XL files
-   └── 📁Demo_CS # Sample project demonstrating c# usage without C#RA
-   └── 📁Demo_CS_DSP # Sample project demonstrating c# dsp usage without C#RA
-   └── 📁Demo_CSRA # Sample project demonstrating c# usage with C#RA
-   └── 📁Patterns # Pattern files
-   ├── _LoadDemoProgram.cmd # Generate Visual Studio Solution and loads IG-XL via IGLinkCL
-   ├── Demo.igxlProj # IG-XL project
-   └── SimulatedConfig.txt # For simulating purposes
+    ├── 📁ASCIIProgram             # IG-XL ASCII program files (flow, levels, timing, pins)
+    │                                common, spCS, spCSRA, spPortBridge, spVBT
+    ├── 📁Patterns                 # Digital test patterns
+    ├── Demo.igxlProj              # IG-XL project
+    ├── IG-ComponentManager.json   # Required IG-XL / Oasis / SSL / Visual Studio versions
+    ├── SimulatedConfig.txt        # For simulating purposes
+    ├── _LoadProgram.cmd           # Generates the program and loads IG-XL via IGLinkCL
+    ├── _GenerateProgram.cmd       # Generates the program without loading IG-XL
+    ├── generate-subset-solution.cmd # Template — edit it to assemble the subset solution you
+    │                                  want; this specific one creates SOC124.sln
+    └── README.md
 </code></pre>
-<p>To start IG-XL, just click on the <code>_LoadDemoProgram.cmd</code> file. Once IG-XL is started, open <code>Datalog</code> window and hit <code>Validate Job</code> and <code>Run</code> at the <code>IG-XL Main</code> tab.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>There is no <code>.igxl</code> workbook in the package. The program is <strong>generated</strong> from <code>Demo.igxlProj</code> and the ASCII files when you run <code>_LoadProgram.cmd</code> or <code>_GenerateProgram.cmd</code> — which is why the ASCII program, not a binary workbook, is the thing under version control.</p>
+</div>
+<p>The C# test methods themselves are <strong>not</strong> inside <code>Demo</code> — they live in <code>ReferenceLibraries/CsraTestMethods</code> (built on C#RA) and <code>ReferenceLibraries/CsTestMethods</code> (raw IG-XL API), and the demo program references them from there. The <code>spCS</code> and <code>spCSRA</code> ASCII sub-programs are what wire each of the two into the IG-XL flow.</p>
+<p>To start IG-XL, just click on the <code>_LoadProgram.cmd</code> file. Both <code>.cmd</code> files detect PortBridge automatically through <code>PBROOT</code> and pass the matching IG-Link selector. Once IG-XL is started, open the <code>Datalog</code> window and hit <code>Validate Job</code> and <code>Run</code> at the <code>IG-XL Main</code> tab.</p>
 <p>To debug the Test Program, click <code>Visual Studio</code> (Connected Mode) at the <code>IG-XL Tools</code> tab. Once Visual Studio is up, add breakpoints and hit <code>Run</code> again.</p>
 
 </article>

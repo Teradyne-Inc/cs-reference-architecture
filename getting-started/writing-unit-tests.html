@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Unit Testing Your Test Methods | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Unit Testing Your Test Methods | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/writing-unit-tests.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="unit-testing-your-test-methods">Unit Testing Your Test Methods</h1>
+
+<p>Not the device tests that screen silicon — this page is about proving the C# logic inside your test methods is correct before it ever reaches hardware. Unit tests are the first of three tiers (unit, offline integration, online integration) and the cheapest place to catch a defect; see <a href="../features/unit-integration-testing.html">Unit &amp; Integration Testing</a> for how the three fit together.</p>
+<p>C#RA test methods run through the <strong>.NET Test Harness for IG-XL</strong>, which mocks <code>TheHdw</code> and <code>TheExec</code> so your tests run without a physical tester or IG-XL installed. Instead of measuring real hardware, a unit test verifies that your test method <em>made the right calls with the right arguments</em> — connect the right pins, force the right value, log the right result.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>From <strong>IG-XL 11.00.08</strong> onwards the .NET Test Harness is delivered as part of IG-XL itself, so no separate installation is required.</p>
+</div>
+<h2 id="what-you-get">What You Get</h2>
+<p>The release package ships a ready-to-use example project:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Path in the package</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UnitTestExample</code> project</td>
+<td><code>ReferenceLibraries/UnitTests/UnitTestExample.csproj</code></td>
+<td>A working MSTest project you can copy into your own solution as a starting point</td>
+</tr>
+<tr>
+<td><code>Base</code></td>
+<td><code>ReferenceLibraries/UnitTests/Base.cs</code></td>
+<td>The base class you inherit. Sets up the mocks and gives you the pin/pattern faking helpers</td>
+</tr>
+<tr>
+<td><code>Example_UT</code></td>
+<td><code>ReferenceLibraries/UnitTests/Example_UT.cs</code></td>
+<td>Nine worked examples, one per testing technique — copy the shape you need</td>
+</tr>
+</tbody>
+</table>
+<p>Copy this project, point it at your own test methods, and inherit <code>Base</code>. You do not need to reproduce any of the harness plumbing yourself.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>UnitTestExample.csproj</code> references <code>..\..\Core\Csra\Csra.csproj</code>, so keep the <code>Core</code> and <code>ReferenceLibraries</code> folders in the same relative arrangement they have in the package.</p>
+</div>
+<h2 id="anatomy-of-a-test-class">Anatomy of a Test Class</h2>
+<p>Inherit <code>Base</code> and you get three mocks, already wired up and reset before every test:</p>
+<pre><code class="lang-csharp">[MsTest.TestClass]
+public class MyTests_UT : Base {
+    // _mockTheHdw, _mockTheExec and _mockTheProgram are ready to use
+}
+</code></pre>
+<p><code>Base</code> handles the setup for you — for reference, this is what it does in <code>[TestInitialize]</code>:</p>
+<pre><code class="lang-csharp">protected Mock&lt;IHdwL&gt; _mockTheHdw;
+protected Mock&lt;IExecL&gt; _mockTheExec;
+protected Mock&lt;IProgramL&gt; _mockTheProgram;
+
+[MsTest.TestInitialize]
+public void TestInit() {
+    _mockTheHdw = new Mock&lt;IHdwL&gt;() { DefaultValue = DefaultValue.Mock };
+    _mockTheExec = new Mock&lt;IExecL&gt;() { DefaultValue = DefaultValue.Mock };
+    _mockTheProgram = new Mock&lt;IProgramL&gt;() { DefaultValue = DefaultValue.Mock };
+
+    Api.Services.Alert.Reset();
+    Api.Services.Setup.Reset();
+    Api.Services.Storage.Reset();
+    Api.Services.Behavior.Reset();
+    PinsFactory.Reset();
+
+    TestHarness.SiteCount = 2;
+    TestHarness.SetupTestHarnessMoq(_mockTheHdw, _mockTheExec, null, null, _mockTheProgram);
+
+    Api.Configure();
+}
+</code></pre>
+<p>Every service is reset between tests, so state left behind by one test cannot leak into the next.</p>
+<h2 id="writing-your-first-test">Writing Your First Test</h2>
+<p>The common patterns, all taken from <code>Example_UT.cs</code>:</p>
+<p><strong>1. Verify a hardware method was called</strong> (<code>Process_ForceV_VerifyMethodCall</code>):</p>
+<pre><code class="lang-csharp">[MsTest.TestMethod]
+public void Process_ForceV_VerifyMethodCall() {
+    // Arrange
+    string pinName = &quot;PORTB&quot;;
+    CreateFakePins([pinName], [InstrumentType.UP2200], _mockTheHdw, _mockTheExec);
+    double voltageToSet = 3.3;
+    // Act
+    TheLib.Setup.Dc.ForceV(new Pins(pinName), voltageToSet);
+    // Assert
+    _mockTheHdw.Verify(hdw =&gt; hdw.PPMU.Pins(pinName).ForceV(voltageToSet), Times.Once);
+}
+</code></pre>
+<p><strong>2. Verify a property was set</strong> (<code>Process_ForceV_PropertyWasSet</code>) — note the same <code>ForceV</code> call routes to DCVI instead of PPMU purely because the fake pin is a <code>UVI264</code>:</p>
+<pre><code class="lang-csharp">CreateFakePins([pinName], [InstrumentType.UVI264], _mockTheHdw, _mockTheExec);
+TheLib.Setup.Dc.ForceV(new Pins(pinName), voltageToSet);
+
+_mockTheHdw.VerifySet(hdw =&gt; hdw.DCVI.Pins(pinName).Voltage.Value = voltageToSet, Times.Once);
+</code></pre>
+<p><strong>3. Set up a return value</strong> (<code>Process_ReadFromDependency_SetupReturnValue</code>):</p>
+<pre><code class="lang-csharp">PinSite&lt;double&gt; returnValue = new(pinName, 3.3);
+_mockTheHdw.Setup(hdw =&gt; hdw.DCVI.Pins(pinName).Meter.Read(
+        It.IsAny&lt;tlStrobeOption&gt;(), It.IsAny&lt;int&gt;(), It.IsAny&lt;double&gt;(), It.IsAny&lt;tlDCVIMeterReadingFormat&gt;()))
+    .Returns(returnValue.ToPinListData());
+
+PinSite&lt;double&gt; actualValue = TheLib.Acquire.Dc.Measure(new Pins(pinName), DcMeterMode.Voltage);
+
+MsTest.Assert.AreEqual(returnValue, actualValue);
+</code></pre>
+<p><strong>4. Assert something did <em>not</em> happen</strong> (<code>Process_ValidInput_TimesNever</code>) — the blueprint for &quot;no error was raised&quot;:</p>
+<pre><code class="lang-csharp">Mock&lt;IAlertService&gt; mockAlertService = new() { DefaultValue = DefaultValue.Mock };
+Services.Configure(mockAlertService.Object);
+
+TheLib.Validate.InRange(7, 5, 10, &quot;&quot;);   // in range, so no error expected
+
+mockAlertService.Verify(alert =&gt; alert.Error(
+    It.IsAny&lt;string&gt;(), It.IsAny&lt;int&gt;(), It.IsAny&lt;string&gt;()), Times.Never);
+</code></pre>
+<p><code>Example_UT.cs</code> also covers parametrized tests (<code>[DataTestMethod]</code> / <code>[DataRow]</code>), expected exceptions, site-generic types (<code>Site&lt;int&gt;</code>), and routing alert messages to <code>Trace</code> with a Moq <code>Callback</code>.</p>
+<h2 id="faking-pins-and-patterns">Faking Pins and Patterns</h2>
+<p>Testing a test method almost always needs a <code>Pins</code> object backed by a specific instrument type. <code>CreateFakePins</code> — on <code>Base</code> — wires the mocks so a real <code>Pins</code> resolves against a fake instrument:</p>
+<pre><code class="lang-csharp">// Explicit arrays
+var pins = CreateFakePins([&quot;pinA&quot;, &quot;pinDig&quot;], [InstrumentType.UVS256, InstrumentType.UP2200], _mockTheHdw, _mockTheExec);
+
+// Or the comma-separated string form
+var pins = CreateFakePins(&quot;pinA, pinDig&quot;, &quot;UVS256, UP2200&quot;, _mockTheHdw, _mockTheExec);
+</code></pre>
+<p><code>Base</code> also provides <code>CreateFakePatternInfo</code>, <code>FakeDecomposePinList</code>, <code>FakeDCVIType</code> and <code>FakeDCVSType</code> for the same purpose on patterns and DC instrument types.</p>
+<h2 id="mocking-services-and-thelib-itself">Mocking Services and <code>TheLib</code> Itself</h2>
+<p>Two more mocking points exist beyond <code>TheHdw</code>/<code>TheExec</code>:</p>
+<pre><code class="lang-csharp">// Mock a Service
+Mock&lt;IAlertService&gt; alertService = new Mock&lt;IAlertService&gt;() { DefaultValue = DefaultValue.Mock };
+Services.Configure(alert: alertService.Object);
+
+// Mock TheLib itself
+Mock&lt;ILib&gt; mockTheLib = new Mock&lt;ILib&gt;() { DefaultValue = DefaultValue.Mock };
+Configure(mockTheLib.Object);
+</code></pre>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Mocking <code>ILib</code> replaces every <code>TheLib</code> branch with a fake — nothing your test method calls through <code>TheLib</code> actually executes. That's the right tool for asserting <em>&quot;my test method called <code>TheLib.Execute.Wait</code> with the right timeout&quot;</em>, but it's the wrong tool for asserting the test method's math or measurement logic is correct, because none of that logic runs. When you need to verify real behavior — not just that a call happened — let the real <code>TheLib</code> execute against the mocked <code>TheHdw</code>/<code>TheExec</code> instead of swapping <code>TheLib</code> out.</p>
+</div>
+<h2 id="running-tests-and-coverage">Running Tests and Coverage</h2>
+<p>Your copied project runs like any other MSTest project — from the Visual Studio Test Explorer, or with <code>dotnet test</code> / <code>vstest.console</code>. That is all you need for your own tests.</p>
+<p>Alongside line coverage, two metrics are worth watching in your own test methods:</p>
+<ul>
+<li><strong>Cyclomatic complexity</strong> — the number of independent paths through a method. Above ~10, consider splitting it up; it's a sign the method is getting harder to test and maintain.</li>
+<li><strong>CRAP score</strong> (&quot;Change Risk Anti-Patterns&quot;) — combines coverage and complexity to flag code that's risky to change. High CRAP means &quot;complex and undertested&quot; — either add tests or simplify.</li>
+</ul>
+<h2 id="hit-a-test-harness-limitation">Hit a Test Harness Limitation?</h2>
+<p>The Test Harness is still under active development, and you may find a hardware call it does not support yet. When that happens, leave a <code>TODO</code> comment in your test so the next person knows why something is skipped or commented out:</p>
+<pre><code class="lang-csharp">//_mockTheHdw.VerifySet(hdw =&gt; hdw.DCVI.Pins(pinsArray[1]).Gate = tlDCVGate.GateOn, Times.Once); // TODO Test Harness gap
+</code></pre>
+<p>Then raise it with the C#RA team so the gap can be tracked and closed.</p>
+<hr>
+<p>That covers the core tutorial path. From here, <a href="usings.html">Namespaces</a> and <a href="repository-layout.html">Repository Layout</a> are reference pages worth keeping bookmarked rather than reading end-to-end.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

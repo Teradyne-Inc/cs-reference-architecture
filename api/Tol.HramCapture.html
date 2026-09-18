@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class HramCapture | C# Reference Architecture ">
       
-      
+      <meta name="description" content="HRAM (Hardware RAM) implementation of  that records digital pattern execution data, either failing cycle indices or raw STV device data.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -85,7 +85,7 @@
 
 
   <h1 id="Tol_HramCapture" data-uid="Tol.HramCapture" class="text-break">
-Class HramCapture  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L4"><i class="bi bi-code-slash"></i></a>
+Class HramCapture  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -93,7 +93,8 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
   <dl><dt>Assembly</dt><dd>Tol.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>HRAM (Hardware RAM) implementation of <a class="xref" href="Tol.IDigitalCapture.html">IDigitalCapture</a> that records digital pattern execution data, either failing cycle indices or raw STV device data.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -159,18 +160,34 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <a id="Tol_HramCapture__ctor_" data-uid="Tol.HramCapture.#ctor*"></a>
 
-  <h3 id="Tol_HramCapture__ctor" data-uid="Tol.HramCapture.#ctor">
-  HramCapture()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Tol_HramCapture__ctor_Teradyne_Igxl_Interfaces_Public_CaptType_Tol_IDigitalPins_System_Int32_System_String_" data-uid="Tol.HramCapture.#ctor(Teradyne.Igxl.Interfaces.Public.CaptType,Tol.IDigitalPins,System.Int32,System.String)">
+  HramCapture(CaptType, IDigitalPins, int, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Tol.HramCapture.html">HramCapture</a> and configures the HRAM hardware immediately.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HramCapture()</code></pre>
+    <pre><code class="lang-csharp hljs">public HramCapture(CaptType captureType, IDigitalPins digitalPins, int captureLimit, string timeDomain = &quot;&quot;)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>captureType</code> <span class="xref">CaptType</span></dt>
+    <dd><p>The capture mode. Must be <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.Fail</span> or <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.STV</span> — all other <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType</span> values are rejected.</p>
+</dd>
+    <dt><code>digitalPins</code> <a class="xref" href="Tol.IDigitalPins.html">IDigitalPins</a></dt>
+    <dd><p>Pins used to retrieve data during <a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_ReadFails">ReadFails()</a>/<a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_ReadStv">ReadStv()</a>. Required for reading captured data.</p>
+</dd>
+    <dt><code>captureLimit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Maximum number of cycles to store in HRAM.</p>
+</dd>
+    <dt><code>timeDomain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional parameter. Digital time domain name to configure. Default value is an empty string.</p>
+</dd>
+  </dl>
 
 
 
@@ -179,9 +196,38 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section" id="Tol_HramCapture__ctor_Teradyne_Igxl_Interfaces_Public_CaptType_Tol_IDigitalPins_System_Int32_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+Passing an empty string for <code class="paramref">timeDomain</code> explicitly targets the <b>System</b> time domain (the domain comprised of all pins defined in the test program) via <code>TheHdw.Digital.TimeDomains("")</code>.
+Always go through <code>TimeDomains(...)</code>, even with an empty string, to guarantee reads/writes are scoped to a single, well-defined domain.
+</p>
+<p>
+Value for <code class="paramref">captureLimit</code> must be <code>-1</code> (max depth), <code>0</code> (hardware default), or a positive value not exceeding the hardware's <code>MaxDepth</code> for the active PatGen mode.
+</p>
+<p>
+HRAM is a single hardware resource per time domain — <code>CaptureType</code>, <code>Size</code>, and the trigger arm/disarm state
+configured here are not scoped to this <a class="xref" href="Tol.HramCapture.html">HramCapture</a> instance. Constructing a second <a class="xref" href="Tol.HramCapture.html">HramCapture</a>
+against the same <code class="paramref">timeDomain</code> reconfigures the hardware out from under the first instance, and calling
+<a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_Reset">Reset()</a> on either instance disarms the trigger for both. Do not construct multiple concurrent
+<a class="xref" href="Tol.HramCapture.html">HramCapture</a> instances on the same time domain; finish reading one capture (<a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_ReadFails">ReadFails()</a>/<a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_ReadStv">ReadStv()</a>)
+and call <a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_Reset">Reset()</a> before constructing the next.
+</p>
+</div>
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown when <code class="paramref">digitalPins</code> is null.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when <code class="paramref">captureType</code> is not <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.Fail</span> or <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.STV</span>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when <code class="paramref">captureLimit</code> is less than <code>-1</code></p>
+</dd>
+  </dl>
 
 
 
@@ -193,7 +239,7 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_HramCapture_Pins" data-uid="Tol.HramCapture.Pins">
   Pins
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The digital pins from which capture data is read.</p>
@@ -231,10 +277,10 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_HramCapture_ReadFails" data-uid="Tol.HramCapture.ReadFails">
   ReadFails()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L141"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reads failing cycle indices from the capture memory for each pin and site.</p>
+  <div class="markdown level1 summary"><p>Reads the cycle offsets of failing captures recorded in HRAM.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -246,7 +292,8 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]&gt;</dt>
-    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>int[]</code> where each entry contains the cycle offsets at which failures were recorded for that pin and site.</p>
+    <dd><p>Failing cycle offsets per pin/site. Pins/sites without failures are omitted, including when HRAM captured no
+cycles at all (e.g. no trigger occurred) or when the hardware returns no cycle data for the read.</p>
 </dd>
   </dl>
 
@@ -256,13 +303,37 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section" id="Tol_HramCapture_ReadFails_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+<code>CapturedCycles</code> is a scalar whose derivation across multiple sites with differing capture depths is undocumented,
+so the maximum captured-cycle count across active sites (via <code>CapturedCyclesPerSite</code>) is used instead; when that
+maximum is <code>0</code> or less, an empty result is returned without issuing a read. As a further guard,
+a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> <code>captureCycleData</code> from the hardware also short-circuits to an empty result rather than throwing.
+</p>
+<p>
+Reads are issued via <code>TheHdw.Digital.Pins(...)</code> rather than through <code>TheHdw.Digital.TimeDomains(_timeDomain)</code>,
+because <span class="xref">Teradyne.Igxl.Interfaces.Public.DriverDigitalDomain</span> does not expose a pin-scoped read API. In test programs that use multiple
+time domains over the same pins, this can resolve against the <b>System</b> time domain instead of <code>_timeDomain</code>.
+</p>
+<p>
+Only <code>WhichDataCycle 0</code> is read from each captured cycle. This is the only result for 1X pins, but for 2X/4X pins
+a failure that only shows up on DUT cycle 1..N-1 of a captured cycle is never reported — a silent false negative.
+Handling the pin multiplier is a known limitation of this implementation.
+</p>
+<p>
+<code>-1</code> reads all cycles captured in HRAM; <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> restricts the result to failing pins only (passing
+pins are stripped by the hardware). With <code>captureLimit -1</code> (max depth) this marshals the entire HRAM contents
+across all pins/sites in a single call — be mindful of the cost for large captures.
+</p>
+</div>
 
 
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
-    <dd><p>Thrown when the capture is not configured for fail capture (e.g. <code>CmemCaptType.Fail</code>).</p>
+    <dd><p>Thrown when the current capture type is not <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.Fail</span>, or when the hardware returns <code>PinResults</code>
+and <code>CycleOffsets</code> arrays of different lengths for a site.</p>
 </dd>
   </dl>
 
@@ -272,10 +343,10 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_HramCapture_ReadStv" data-uid="Tol.HramCapture.ReadStv">
   ReadStv()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L234"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reads stored-vector (STV) data from the capture memory for each pin and site.</p>
+  <div class="markdown level1 summary"><p>Reads the raw digitized bit values captured in HRAM.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -287,7 +358,8 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><span class="xref">PinSite</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]&gt;</dt>
-    <dd><p>A <span class="xref">Teradyne.Igxl.Interfaces.Public.PinSite&lt;T&gt;</span> of <code>double[]</code> where each entry contains the captured device data values for that pin and site.</p>
+    <dd><p>Raw captured bit values per pin/site. Values are <code>0</code> (below VOL), <code>1</code> (above VOH), or <code>255</code> (midband/undefined).
+Pins/sites with no captured data are omitted, including when HRAM captured no cycles at all (e.g. no trigger occurred).</p>
 </dd>
   </dl>
 
@@ -297,13 +369,36 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
 
 
+  <h4 class="section" id="Tol_HramCapture_ReadStv_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+<code>CapturedCycles</code> is a scalar whose derivation across multiple sites with differing capture depths is undocumented,
+so the maximum captured-cycle count across active sites (via <code>CapturedCyclesPerSite</code>) is used to drive how many
+cycles are requested from <code>ReadDataBits</code>, avoiding truncation of sites captured with more cycles than others.
+Sites that captured fewer cycles than this maximum may be over-read as a result — a deliberate tradeoff, since
+truncating a site's real data is worse than reading a few extra (likely stale/undefined) cycles for it.
+When <code>Size</code> is positive it also bounds what's visible on readback, but IG-XL does not document what
+<code>ReadDataBits</code> does when the requested cycle count exceeds <code>Size</code> (unlike <code>ReadCapturedCycleData</code>, which
+is documented to clamp) — so the requested count is defensively clamped to <code>Size</code> here when <code>Size</code> is positive.
+<code>Size &lt;= 0</code> (hardware default depth, or max depth via <code>-1</code>) means no such limit applies.
+</p>
+<p>
+Reads are issued via <code>TheHdw.Digital.Pins(...)</code> rather than through <code>TheHdw.Digital.TimeDomains(_timeDomain)</code>,
+because <span class="xref">Teradyne.Igxl.Interfaces.Public.DriverDigitalDomain</span> does not expose a pin-scoped read API. In test programs that use multiple
+time domains over the same pins, this can resolve against the <b>System</b> time domain instead of <code>_timeDomain</code>.
+</p>
+<p>
+Only <code>DutCycleOffset 0</code> is read for every captured cycle. This is the only sub-cycle for 1X pins, but for
+2X/4X pins the other 1-3 DUT sub-cycles per minor cycle are silently dropped. Handling the pin multiplier is a
+known limitation of this implementation.
+</p>
+</div>
 
 
 
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
-    <dd><p>Thrown when the capture is not configured for STV capture (e.g. <code>CmemCaptType.STV</code>).</p>
+    <dd><p>Thrown when the current capture type is not <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.STV</span>.</p>
 </dd>
   </dl>
 
@@ -313,11 +408,10 @@ Class HramCapture  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Tol_HramCapture_Reset" data-uid="Tol.HramCapture.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/Core/Tol/HramCapture.cs/#L96"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Clears the capture memory configuration, discarding any previously captured data and returning the hardware to an unconfigured state.
-Call this after processing captured data to free hardware resources.</p>
+  <div class="markdown level1 summary"><p>Clears the HRAM capture configuration. Call this after processing captured data to return the hardware to an idle state.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -333,6 +427,16 @@ Call this after processing captured data to free hardware resources.</p>
 
 
 
+  <h4 class="section" id="Tol_HramCapture_Reset_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+<code>Size</code> is intentionally not reset — it is inert once <code>CaptureType</code> is <span class="xref">Teradyne.Igxl.Interfaces.Public.CaptType.None</span>, and every new capture object sets its own <code>Size</code> before use.
+</p>
+<p>
+HRAM's <code>CaptureType</code> and trigger arm state are shared per time domain, not scoped to this instance (see the
+constructor's remarks). Calling <a class="xref" href="Tol.HramCapture.html#Tol_HramCapture_Reset">Reset()</a> disarms the trigger for <b>any</b> <a class="xref" href="Tol.HramCapture.html">HramCapture</a>
+instance currently configured against the same time domain, not just this one.
+</p>
+</div>
 
 
 

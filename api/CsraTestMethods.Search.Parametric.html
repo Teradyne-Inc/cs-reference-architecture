@@ -316,7 +316,9 @@ public void LinearFull(PinList forcePins, PinList measurePin, double from, doubl
         _measuredDcValues = [];
         TheLib.Setup.Dc.ForceHiZ(_measurePin);
         TheLib.Setup.Dc.ForceV(_forcePin, from, clampCurrent, _voltageRange, clampCurrent, true);
-        TheLib.Setup.Dc.SetMeter(_measurePin, DcMeterMode.Voltage, _voltageRange);
+        if (!_measurePin.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_measurePin, DcMeterMode.Voltage, _voltageRange);
+        }
         double increment = TheLib.Acquire.Search.LinearFullFromToCount(from, to, count, (forceValue) =&gt; {
             TheLib.Setup.Dc.ForceV(_forcePin, forceValue, gateOn: false);
             TheLib.Execute.Wait(waitTime);
@@ -337,11 +339,74 @@ public void LinearFull(PinList forcePins, PinList measurePin, double from, doubl
 
 
 
+  <a id="CsraTestMethods_Search_Parametric_LinearFullPpmuMeasure_" data-uid="CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure*"></a>
+
+  <h3 id="CsraTestMethods_Search_Parametric_LinearFullPpmuMeasure_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Int32_System_Double_System_Double_System_Double_System_String_" data-uid="CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double,System.String)">
+  LinearFullPpmuMeasure(PinList, PinList, double, double, int, double, double, double, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Search/Parametric.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Voltage values across the entire range are traversed without being evaluated during the linear search.
+Subsequently, the device input condition for which the output pin voltage exceeds the threshold is determined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TestMethod]
+[Steppable]
+[CustomValidation]
+public void LinearFullPpmuMeasure(PinList forcePins, PinList measurePin, double from, double to, int count, double threshold, double clampCurrent, double waitTime, string setup = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forcePins</code> <span class="xref">PinList</span></dt>
+    <dd><p>The pins that are being forced.</p>
+</dd>
+    <dt><code>measurePin</code> <span class="xref">PinList</span></dt>
+    <dd><p>The ppmu pin that is being measured. The measurement is performed for a single pin.</p>
+</dd>
+    <dt><code>from</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The starting value of the linear input ramp.</p>
+</dd>
+    <dt><code>to</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The stopping value of the linear input ramp.</p>
+</dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of input points for which the search is performed.</p>
+</dd>
+    <dt><code>threshold</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The value for which the output meets the required condition for the searched input value.</p>
+</dd>
+    <dt><code>clampCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The value to clamp for force pin.</p>
+</dd>
+    <dt><code>waitTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The wait time per step during ramp execution, used to delay measurement after each force transition.</p>
+</dd>
+    <dt><code>setup</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional. The name of the setup set to be applied through the setup service.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="CsraTestMethods_Search_Parametric_LinearStop_" data-uid="CsraTestMethods.Search.Parametric.LinearStop*"></a>
 
   <h3 id="CsraTestMethods_Search_Parametric_LinearStop_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Int32_System_Double_System_Double_System_Double_System_String_" data-uid="CsraTestMethods.Search.Parametric.LinearStop(Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double,System.String)">
   LinearStop(PinList, PinList, double, double, int, double, double, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Search/Parametric.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Search/Parametric.cs/#L151"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Voltage values across the range are traversed with an evaluation performed at each iteration, and the search is terminated once the objective has
@@ -444,7 +509,9 @@ public void LinearStop(PinList forcePins, PinList measurePin, double from, doubl
     if (ShouldRunBody) {
         TheLib.Setup.Dc.ForceHiZ(_measurePin);
         TheLib.Setup.Dc.ForceV(_forcePin, from, clampCurrent, _voltageRange, clampCurrent, true);
-        TheLib.Setup.Dc.SetMeter(_measurePin, DcMeterMode.Voltage, _voltageRange);
+        if (!_measurePin.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_measurePin, DcMeterMode.Voltage, _voltageRange);
+        }
         _results = TheLib.Acquire.Search.LinearStopFromToCount(from, to, count, 0, _notFoundResult, (forceValue) =&gt; {
             TheLib.Setup.Dc.ForceV(_forcePin, forceValue, gateOn: false);
             TheLib.Execute.Wait(waitTime);

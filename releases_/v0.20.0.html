@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>v0.20.0 - 2026-09-15 | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="v0.20.0 - 2026-09-15 | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/releases_/v0.20.0.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="v0200---2026-09-15">v0.20.0 - 2026-09-15</h1>
+
+<h2 id="breaking-changes">Breaking Changes</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p><strong>Note on versioning:</strong> While C#RA is pre-1.0 (<code>0.x</code>), the SemVer 2.0 rule that reserves breaking changes for a MAJOR bump does not yet apply — any release may include breaking changes, and the two-stage <code>[Obsolete]</code> deprecation policy is waived. APIs may be removed without a prior warning release until the 1.0.0 milestone, after which the full deprecation policy takes effect.</p>
+</div>
+<h3 id="binary-dependencies-are-no-longer-checked-into-the-repository">Binary dependencies are no longer checked into the repository</h3>
+<p>The <code>src/dep</code> folder has been removed. It held the IG-XL test-harness assemblies for 11.00.00, 11.00.01 and 11.00.07, the PortBridge 2.70.00.0728 kit, and the <code>Csra_Analyzer</code> package feed. Unit test projects resolved <code>IGXLFakes</code> through a <code>TestHarnessPath</code> property that fell back to <code>src\dep</code>; they now resolve it from the installed kit through <code>$(IGXLROOT)</code>, the same way the product projects always have. The <code>Csra_Analyzer</code> package reference, which was conditional on the in-repo feed, has been dropped. The public release package no longer ships binary dependencies.</p>
+<pre><code class="lang-xml">&lt;!-- Before --&gt;
+&lt;TestHarnessPath Condition=&quot;'$(TestHarnessPath)' == ''&quot;&gt;..\..\..\src\dep\$(LastSegment)&lt;/TestHarnessPath&gt;
+&lt;HintPath&gt;$(TestHarnessPath)\bin\IGXLFakes.dll&lt;/HintPath&gt;
+
+&lt;!-- After --&gt;
+&lt;HintPath&gt;$(IGXLROOT)\bin\IGXLFakes.dll&lt;/HintPath&gt;
+</code></pre>
+<p><strong>Impact:</strong> Building or unit-testing C#RA now requires a matching IG-XL kit installed locally with <code>$(IGXLROOT)</code> resolving to it — there is no in-repo fallback. A machine without a kit fails immediately rather than silently building against a bundled harness (11.00.00 in CI). The <code>Csra_Analyzer</code> analyzer no longer runs as part of the build.</p>
+<h3 id="subset-solution-generation-now-requires-net-sdk-90200-or-later">Subset solution generation now requires .NET SDK 9.0.200 or later</h3>
+<p><code>generate-subset-solution.cmd</code> now passes <code>--format sln</code> to <code>dotnet new sln</code>, because .NET 10 defaults to the <code>.slnx</code> format, which Visual Studio 2022 before 17.12 cannot open or build (<code>MSB4068</code>). The script also deletes any stale <code>SOC124.sln</code> and <code>SOC124.slnx</code> before regenerating, so a leftover file from a previous run cannot be picked up.</p>
+<pre><code class="lang-bat">:: Before
+dotnet new sln -n SOC124 -o &quot;.&quot; --force
+
+:: After
+dotnet new sln -n SOC124 -o &quot;.&quot; --force --format sln
+</code></pre>
+<p><strong>Impact:</strong> Machines that generate the subset solution need .NET SDK 9.0.200 or later; earlier SDKs do not accept <code>--format</code> and the command fails. No change is needed for anyone who does not run subset solution generation.</p>
+<h3 id="portbridge-detection-no-longer-uses-the-portbridgeenabledtxt-marker-file">PortBridge detection no longer uses the <code>PortBridgeEnabled.txt</code> marker file</h3>
+<p>PortBridge is now detected uniformly through <code>Exists('$(PBROOT)\Teradyne.PortBridge.dll')</code> across all seven PortBridge-capable projects. v0.19.0 converted the build scripts and CI; this release converts the four projects that were still on the marker — <code>Tol</code>, <code>TestMethods_UT</code>, <code>V1_UT</code> and <code>VersionAgnostic_UT</code>. <code>Tol</code> had looked for the marker at <code>src/Core/PortBridgeEnabled.txt</code> while CI wrote <code>src/PortBridgeEnabled.txt</code>, so PortBridge had never actually been enabled for <code>Tol</code> under either scheme.</p>
+<p><strong>Impact:</strong> Creating or removing <code>PortBridgeEnabled.txt</code> no longer has any effect — set <code>PBROOT</code> instead. <code>Tol</code> now genuinely compiles with PortBridge support when the kit is installed, so PortBridge code paths that were silently disabled in that project become active for the first time.</p>
+<h3 id="metervoltagerange-is-now-rejected-on-every-dcvs-type"><code>meterVoltageRange</code> is now rejected on every DCVS type</h3>
+<p>No DCVS instrument has a meter voltage range independent of its force range, so <code>TheLib.Setup.Dc.Modify</code> no longer writes <code>Meter.VoltageRange</code> on any DCVS type, and no longer writes <code>Meter.CurrentRange</code> on <code>VS-20A</code>, where meter and force share a single register. Both now emit a warning instead of taking the write. <code>Validate.Dc</code> reports the same restriction at validation time. Previously <code>VS-5A</code> and <code>VS-800mA</code> accepted the meter voltage range write.</p>
+<p>Nothing was renamed and no signature changed: <code>meterVoltageRange</code> and <code>voltageRange</code> are two separate optional parameters that both already existed. <code>meterVoltageRange</code> is simply no longer honored, so callers should set the force range instead.</p>
+<pre><code class="lang-csharp">// Before — meterVoltageRange programmed the meter range on VS-5A and VS-800mA
+TheLib.Setup.Dc.Modify(pins, meterVoltageRange: 6.0);
+
+// After — meterVoltageRange still compiles, but warns and is ignored.
+// Set voltageRange (the force range) instead; the meter follows it.
+TheLib.Setup.Dc.Modify(pins, voltageRange: 6.0);
+</code></pre>
+<p><strong>Impact:</strong> Test programs that pass <code>meterVoltageRange</code> for a <code>VS-5A</code> or <code>VS-800mA</code> pin now get a warning where the setting previously took effect, and the meter range follows the force range instead. Review any code that relied on an independent meter range — the measurement range may differ from what it was on v0.19.0. See <code>MIGRATION.md</code> for the migration note.</p>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<h3 id="dcvi-now-accepts-negative-force-values-when-the-setpoint-is-reused-as-the-range">DCVI now accepts negative force values when the setpoint is reused as the range</h3>
+<p><code>Tol.DcviPins.ForceI</code> and <code>Tol.DcviPins.ForceV</code> now apply <code>Math.Abs()</code> to range values before passing them to the hardware API. Callers commonly supply the same signed value as both the force value and the range; a negative range resolved to the wrong hardware bucket and the run failed with <code>ERROR DCVI:0132</code>. All four paths are covered — <code>SetCurrentAndRange</code>, <code>SetVoltageAndRange</code>, and the direct <code>CurrentRange.Value</code> and <code>VoltageRange.Value</code> assignments. DCVS is unaffected and out of scope.</p>
+<pre><code class="lang-csharp">// Forcing -100 uA with the same signed value used as the range
+// Before: ERROR DCVI:0132
+// After:  range resolves from the magnitude and the force succeeds
+TheLib.Setup.Dc.SetForceAndMeter(pins, DcOutputMode.Current, -100e-6, -100e-6, ...);
+</code></pre>
+<p><strong>Impact:</strong> Test methods that force negative current or voltage on DCVI pins no longer fail because a signed setpoint is misinterpreted as a negative range. This fix was announced in the v0.19.0 notes but merged after the v0.19.0 tag was cut, so it ships for the first time in v0.20.0 — if you are on v0.19.0, you do not have it.</p>
+<h3 id="uvs64hp-dcvs-pins-no-longer-fail-when-a-voltage-range-is-constructed">UVS64HP DCVS pins no longer fail when a voltage range is constructed</h3>
+<p><code>Csra.Setting.TheHdw.Dcvs.Pins.VoltageRange</code> resolved defaults for <code>VS-800mA</code> and <code>VS-5A</code> only. A UVS64HP (<code>VS-20A</code>) pin fell through to the default branch, raised <code>Wrong DCVS pin type! Only support UVS64 &amp; UVS256HP currently.</code> and took a 0.0 V default. Because the default is resolved in the constructor, every <code>VoltageRange</code> on a UVS64HP pin failed at construction. <code>VS-20A</code> now defaults to 6.0 V.</p>
+<pre><code class="lang-csharp">// Before: Alert.Error(&quot;Wrong DCVS pin type!&quot;) and a 0.0 V default
+// After:  constructs normally, 6.0 V default
+var range = new Csra.Setting.TheHdw.Dcvs.Pins.VoltageRange(3.0, &quot;vcc_hp&quot;);
+</code></pre>
+<p><strong>Impact:</strong> UVS64HP pins can now be used from any test method that sets a DCVS voltage range. Previously the instrument was unusable through C#RA.</p>
+<h3 id="ppmu-pins-no-longer-datalog-undefined-measurements-after-an-ignored-setmeter-call">PPMU pins no longer datalog undefined measurements after an ignored <code>SetMeter</code> call</h3>
+<p><code>TheLib.Setup.Dc.SetMeter</code> configures <code>pins.Dcvi</code> and <code>pins.Dcvs</code> only. On a PPMU pin it emitted a warning and did nothing, and the measurement that followed returned whatever the pin's residual mode produced — an undefined value datalogged against limits. The affected reference test methods now skip the call for PPMU pins and establish the measured pin's mode with <code>ForceHiZ</code> instead: <code>Search.Parametric.LinearFull</code>, <code>Search.Parametric.LinearStop</code>, <code>Parametric.SingleCondition.Baseline</code>, <code>Parametric.SingleCondition.PreconditionPattern</code>, and four of the five <code>Resistance.RdsOn</code> methods — <code>TwoPinsOneForceOneMeasure</code>, <code>TwoPinsDeltaForceDeltaMeasure</code>, <code>ThreePinsOneForceTwoMeasure</code> and <code>FourPinsTwoForceTwoMeasure</code>. <code>Resistance.RdsOn.Baseline</code> was already correct; it uses <code>SetForceAndMeter</code>. <code>Parametric.MultiCondition.Baseline</code> and <code>Parametric.MultiCondition.PreconditionPattern</code> take the same approach through the array overload, filtering PPMU groups out so the call still dispatches for the DCVI and DCVS groups.</p>
+<pre><code class="lang-csharp">// Before — warned, did nothing, and the measurement that followed was undefined
+TheLib.Setup.Dc.SetMeter(_measurePin, DcMeterMode.Voltage, _voltageRange);
+
+// After — the mode is established by ForceHiZ; SetMeter is skipped for PPMU
+TheLib.Setup.Dc.ForceHiZ(_measurePin);
+if (!_measurePin.ContainsFeature(InstrumentFeature.Ppmu)) {
+    TheLib.Setup.Dc.SetMeter(_measurePin, DcMeterMode.Voltage, _voltageRange);
+}
+</code></pre>
+<p><strong>Impact:</strong> Test methods measuring on PPMU pins now datalog a defined measurement instead of a residual-mode value judged against limits. The <code>SetMeter does not support PPMU</code> warnings that the demo program emitted are gone because the unsupported call was removed, not silenced — if you see that warning in your own code, the measurement after it is not trustworthy.</p>
+<h3 id="dcvs-and-dcvi-capture-signal-reads-no-longer-throw-invalidcastexception">DCVS and DCVI capture signal reads no longer throw <code>InvalidCastException</code></h3>
+<p>Reading a capture signal from a DCVS or DCVI pin failed every time. The conversion assumed IG-XL returns a flat array — true for a meter array read, but for a capture signal IG-XL hands back an <code>IDspWave</code> COM proxy, which can only be cast to an interface. The conversion now unwraps <code>IDspWave.Data</code>, falls back to element-wise conversion under <code>CultureInfo.InvariantCulture</code> when the shape is neither, and otherwise throws naming the actual runtime type along with the pin and site. This affects <code>Tol.DcvsPins.ReadSignal</code>, <code>ReadSamples</code> and <code>MeasureSamples</code>, the same three methods on <code>Tol.DcviPins</code>, the <code>Tol.PpmuPins</code> sampled-measure path, and <code>TheLib.Acquire.Dc.ReadCapturedSamples</code>.</p>
+<pre><code class="lang-csharp">// Before — on every DCVS/DCVI capture signal read:
+// System.InvalidCastException: Unable to cast object of type
+// '...ComplexClientViewProxyForIDspWaveAndIDspWave...' to type 'System.Double[]'
+PinSite&lt;double[]&gt; samples = TheLib.Acquire.Dc.ReadCapturedSamples(pins, signalName);
+</code></pre>
+<p><strong>Impact:</strong> DCVS and DCVI capture signal reads return data for the first time — the path had never worked. The explicit invariant culture also matters on a tester configured with a comma decimal separator, where the previous ambient-culture conversion would have read <code>1.5</code> as <code>15</code> and datalogged it without complaint.</p>
+<h3 id="capture-pin-lookup-no-longer-fails-on-ig-xls-lower-cased-pin-names">Capture pin lookup no longer fails on IG-XL's lower-cased pin names</h3>
+<p><code>Csra.Pins.ArrangePinSite</code> indexed capture results in a case-sensitive dictionary, but IG-XL returns capture pin names lower-cased, so every lookup missed and the run failed with <code>Pin 'V_VIKING0' not found in reference.</code> — a message that sent users to the pin map when the real problem was a string comparison. Lookups now use <code>StringComparer.OrdinalIgnoreCase</code>, and each result entry is rewritten with the caller's pin-map casing. Both overloads were fixed, so this covers every <code>TheLib.Acquire.Dc</code> read path: <code>Measure</code>, <code>MeasureSamples</code>, <code>ReadCaptured</code>, <code>ReadCapturedSamples</code>, <code>ReadMeasured</code> and <code>ReadMeasuredSamples</code>.</p>
+<p><strong>Impact:</strong> Captures on pins whose pin-map casing differs from IG-XL's no longer fail with a misleading pin-map error. Two side effects worth knowing: <code>PinName</code> on <code>Acquire.Dc</code> results now consistently carries your pin-map casing rather than whatever IG-XL returned, so any code comparing <code>PinName</code> with an ordinal string comparison may see different values; and overlapping pin groups now resolve first-occurrence-wins instead of colliding. Together with the <code>IDspWave</code> fix above, this is what makes <code>ReadCapturedSamples</code> work — neither fix alone delivers a working capture read.</p>
+<h3 id="dssccapturereadstv-no-longer-returns-elements-that-throw-on-access"><code>DsscCapture.ReadStv</code> no longer returns elements that throw on access</h3>
+<p><code>Tol.DsscCapture.ReadStv()</code> returned a <code>PinSite&lt;double[]&gt;</code> that looked correct — right pin and site counts, no exception at the call. <code>ToPinSite&lt;double[]&gt;</code> converts lazily, so the bad <code>IDspWave</code> cast surfaced only when an element was read, as a <code>SiteInternalException</code> whose stack pointed at the caller rather than at <code>ReadStv</code>. The conversion is now eager.</p>
+<pre><code class="lang-csharp">// Before — threw at element access, far from the cause
+return CaptureSignals[_signalName].DspWave.ToPinSite&lt;double[]&gt;();
+
+// After — unwraps immediately, so failures surface at the read
+return CaptureSignals[_signalName].DspWave.ToPinSiteArray&lt;double&gt;();
+</code></pre>
+<p><strong>Impact:</strong> DSSC STV captures return usable data instead of a structure that throws when touched, and any remaining conversion failure is reported at <code>ReadStv</code> with the runtime type and the pin and site named. Pins and sites with no captured data now yield an empty array rather than throwing.</p>
+<h3 id="documentation-site-builds-and-publishes-again">Documentation site builds and publishes again</h3>
+<p>The docfx agent declared no tester software, so D4T installed no IG-XL kit, <code>IGXLROOT</code> was unset, and <code>Igxl.Interfaces.Public</code> resolved through a <code>HintPath</code> of <code>null\bin\...</code> — one <code>MSB3245</code> warning followed by roughly 500 <code>CS0246</code> errors. The agent now installs IG-XL 11.00.10, and <code>resolveIgxlRoot()</code> fails fast naming the agent and the missing kit rather than emitting a null path.</p>
+<p><strong>Impact:</strong> The documentation site and <code>Docs_v&lt;version&gt;.zip</code> are published again. No C#RA source changed, so consumers upgrading for this fix alone receive identical binaries.</p>
+<h2 id="improvements">Improvements</h2>
+<h3 id="hram-capture-is-now-fully-implemented-behind-idigitalcapture">HRAM capture is now fully implemented behind <code>IDigitalCapture</code></h3>
+<p><code>Tol.HramCapture</code> was a stub in v0.19.0 — a parameterless constructor, with <code>Pins</code>, <code>Reset()</code>, <code>ReadFails()</code> and <code>ReadStv()</code> all throwing <code>NotImplementedException</code>. It is now fully implemented. The constructor takes the capture type, pins, capture limit and time domain, validates that the capture type is <code>Fail</code> or <code>STV</code>, and configures the capture type, size and trigger at construction time. <code>ReadFails()</code> returns the failing cycles per pin and site, omitting pins and sites with no failures; <code>ReadStv()</code> returns the captured bits. HRAM and CMEM now present the same <code>IDigitalCapture</code> surface, so a caller can switch capture technology without changing test method code. New reference test methods <code>CsraTestMethods.Capture.Hram.CaptureFails</code> and <code>CsraTestMethods.Capture.Hram.CaptureStv</code> demonstrate both modes, and the demo rows reuse the CMEM patterns so the two technologies can be cross-validated against each other.</p>
+<pre><code class="lang-csharp">HramCapture capture = new(CaptType.Fail, pins.Digital, captureLimit: -1, timeDomain);
+TheLib.Execute.Digital.RunPattern(pattern);
+PinSite&lt;int[]&gt; failCycles = capture.ReadFails();
+capture.Reset();
+</code></pre>
+<p><strong>Impact:</strong> HRAM is now a usable capture option rather than a stub. Code written against <code>IDigitalCapture</code> runs unchanged on either <code>HramCapture</code> or <code>CmemCapture</code>. The parameterless <code>new HramCapture()</code> no longer exists — use the four-argument constructor. Nothing could have depended on the old form, since every member of the stub threw.</p>
+<h3 id="new-toldcvsslottype-names-the-dcvs-slot-type-strings">New <code>Tol.DcvsSlotType</code> names the DCVS slot-type strings</h3>
+<p>DCVS slot-type literals were duplicated across five places. <code>Tol.DcvsSlotType</code> now holds them as constants — <code>Uvs64</code> (<code>VS-5A</code>), <code>Uvs256Hp</code> (<code>VS-800mA</code>), <code>Uvs64Hp</code> (<code>VS-20A</code>), <code>HexVs</code> and <code>Vsm</code> — alongside <code>All</code> and <code>SupportedByTol</code>.</p>
+<pre><code class="lang-csharp">// Before
+if (slotType == &quot;VS-20A&quot;) { ... }
+
+// After
+if (slotType == Tol.DcvsSlotType.Uvs64Hp) { ... }
+</code></pre>
+<p><strong>Impact:</strong> Slot-type comparisons can be written against a named constant instead of a string literal, and <code>SupportedByTol</code> gives a single place to ask which DCVS instruments Tol currently supports.</p>
+<h3 id="new-linearfullppmumeasure-reference-test-method">New <code>LinearFullPpmuMeasure</code> reference test method</h3>
+<p><code>CsraTestMethods.Search.Parametric.LinearFullPpmuMeasure</code> performs a linear search that forces on one pin list and measures on another using PPMU, as a worked example of the supported PPMU force-and-meter pattern.</p>
+<pre><code class="lang-csharp">public void LinearFullPpmuMeasure(PinList forcePins, PinList measurePin, double from, double to,
+    int count, double threshold, double clampCurrent, double waitTime, string setup = &quot;&quot;)
+</code></pre>
+<p><strong>Impact:</strong> There is now a reference implementation to copy for PPMU-based linear search, instead of adapting a DCVI-shaped test method and hitting the unsupported <code>SetMeter</code> path.</p>
+<h3 id="offline-demo-suite-now-runs-against-uvs64hp-through-a-second-channel-map">Offline demo suite now runs against UVS64HP through a second channel map</h3>
+<p>A second channel map, <code>Channel Map_Offline_Uvs64Hp</code>, resolves <code>vcc</code> to a different DCVS type — slot 13 (<code>VS-5A</code>) under <code>Channel Map</code>, slot 9 (<code>VS-20A</code>, UVS64HP) under the new one — so the same <code>Job_CSRA</code> exercises the whole flow against both instruments with no test edits. A <code>vref</code> pin was added to <code>Pinmap</code> and declared <code>N/C</code> in <code>Channel Map</code>, and a new <code>Continuity_Parametric_Parallel_Dcvi</code> test instance was added to <code>Subflow_CSRA</code> behind the <code>RequiresDcvi</code> enable word — the first use of enable words in the demo program.</p>
+<p><strong>Impact:</strong> The demo now covers two DCVS instrument types from one job, and the parallel DCVI continuity test runs in CI for the first time. The UVS64HP session runs on IG-XL 11.10.00 only — UVS64HP is absent from 11.00.10, where that channel map fails with <code>PININFO0011</code>, so a green 11.00.10 build does not imply UVS64HP coverage.</p>
+<h3 id="validation-matrix-moved-to-ig-xl-110010-and-111000">Validation matrix moved to IG-XL 11.00.10 and 11.10.00</h3>
+<p>CI now builds and tests against IG-XL 11.00.10 and 11.10.00, and the <code>IGXL_11_10_00_uflx</code> preprocessor symbol is registered. IG-XL 11.00.00, 11.00.07 and 11.00.08 have been removed from the matrix.</p>
+<p><strong>Impact:</strong> 11.10.00 is supported and validated. C#RA is no longer verified against 11.00.00, 11.00.07 or 11.00.08 — move to a covered version before upgrading.</p>
+<h3 id="getting-started-documentation-rewritten-and-expanded">Getting-started documentation rewritten and expanded</h3>
+<p>The getting-started section has been substantially reworked, with new pages covering key concepts, what C#RA is, a first test method, the four-phase test method pattern, writing unit tests, repository layout, <code>TheLib</code>, and the available test methods. Content that previously lived only in the internal newcomer guide is now in the public documentation, and the <code>CsraTestMethods</code> reference pages gained per-method documentation.</p>
+<p><strong>Impact:</strong> A new user can follow a guided path from installation to a working test method without needing the internal guide.</p>
+<h3 id="portbridge-enable-and-use-guide-added">PortBridge enable-and-use guide added</h3>
+<p><code>docs/features/portbridge.md</code> documents enabling PortBridge (install the kit, set <code>PBROOT</code>), the auto-detection mechanism and the <code>PORTBRIDGE_ENABLED</code> constant, the runtime <code>VerifyPbVersion</code> check, the shipped <code>Demo_PB</code> example, and hierarchical register and field paths.</p>
+<pre><code class="lang-csharp">PBLib.ResetRegisterAll();
+PBLib.SetFldValue(&quot;PERIPH_A.SUBBLOCK_A.CFG0&quot;, &quot;SEL&quot;, myTrim);
+Site&lt;int&gt; readback = PBLib.GetRegValue(&quot;PERIPH_A.SUBBLOCK_A.CFG0&quot;);
+</code></pre>
+<p><strong>Impact:</strong> PortBridge setup and usage are documented in one place instead of being spread across CI scripts and project files.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

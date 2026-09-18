@@ -2098,6 +2098,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CsraTestMethods.Capture.Hram.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CsraTestMethods.Capture.Hram.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CsraTestMethods.Capture.Hram",
+      "Summary": "<p sourcefile=\"api/CsraTestMethods.Capture.Hram.yml\" sourcestartlinenumber=\"1\">Test methods that capture digital pattern execution data using HRAM (Hardware RAM), either failing cycle indices\n(<xref href=\"CsraTestMethods.Capture.Hram.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern%2cTeradyne.Igxl.Interfaces.Public.PinList%2cSystem.Int32%2cSystem.String%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref>) or raw digitized device data (<xref href=\"CsraTestMethods.Capture.Hram.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern%2cTeradyne.Igxl.Interfaces.Public.PinList%2cSystem.Int32%2cSystem.String%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref>). Both methods run the configured\npattern once, read the requested data back via <xref href=\"Tol.HramCapture\" data-throw-if-not-resolved=\"false\"></xref>, and datalog per-pin/per-site counts of the\ndata captured (failing cycles for <xref href=\"CsraTestMethods.Capture.Hram.CaptureFails(Teradyne.Igxl.Interfaces.Public.Pattern%2cTeradyne.Igxl.Interfaces.Public.PinList%2cSystem.Int32%2cSystem.String%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref>, samples read for <xref href=\"CsraTestMethods.Capture.Hram.CaptureStv(Teradyne.Igxl.Interfaces.Public.Pattern%2cTeradyne.Igxl.Interfaces.Public.PinList%2cSystem.Int32%2cSystem.String%2cSystem.String)\" data-throw-if-not-resolved=\"false\"></xref>).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CsraTestMethods.Capture.yml",
       "output": {
         ".html": {
@@ -2686,6 +2700,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Tol.DcvsSlotType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Tol.DcvsSlotType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Tol.DcvsSlotType",
+      "Summary": "<p sourcefile=\"api/Tol.DcvsSlotType.yml\" sourcestartlinenumber=\"1\">The IG-XL slot type strings reported by <code>TheHdw.Config.Slots[].Type</code> and\n<code>TheHdw.DCVS.Pins().DCVSType</code> for the DCVS instrument family.</p>\n<p>\nSingle source of truth for these literals. Adding a DCVS instrument should mean adding one member\nhere and handling it where the type is switched on, not repeating the string per call site.\n</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Tol.DigitalPins.yml",
       "output": {
         ".html": {
@@ -2724,7 +2752,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Tol.HramCapture",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Tol.HramCapture.yml\" sourcestartlinenumber=\"1\">HRAM (Hardware RAM) implementation of <xref href=\"Tol.IDigitalCapture\" data-throw-if-not-resolved=\"false\"></xref> that records digital pattern execution data, either failing cycle indices or raw STV device data.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -3076,33 +3104,33 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "features/code-structure_Demo_CSRA.md",
+      "source_relative_path": "features/code-structure_CsraTestMethods.md",
       "output": {
         ".html": {
-          "relative_path": "features/code-structure_Demo_CSRA.html"
+          "relative_path": "features/code-structure_CsraTestMethods.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "features/code-structure_Demo_CSRA/code-structure_Demo_CSRA-test-list.md",
+      "source_relative_path": "features/code-structure_CsraTestMethods/code-structure_CsraTestMethods-test-list.md",
       "output": {
         ".html": {
-          "relative_path": "features/code-structure_Demo_CSRA/code-structure_Demo_CSRA-test-list.html"
+          "relative_path": "features/code-structure_CsraTestMethods/code-structure_CsraTestMethods-test-list.html"
         }
       },
       "version": ""
     },
     {
       "type": "Toc",
-      "source_relative_path": "features/code-structure_Demo_CSRA/toc.yml",
+      "source_relative_path": "features/code-structure_CsraTestMethods/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "features/code-structure_Demo_CSRA/toc.html"
+          "relative_path": "features/code-structure_CsraTestMethods/toc.html"
         },
         ".json": {
-          "relative_path": "features/code-structure_Demo_CSRA/toc.json"
+          "relative_path": "features/code-structure_CsraTestMethods/toc.json"
         }
       },
       "version": ""
@@ -4045,16 +4073,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "features/methodhandle-type.md",
-      "output": {
-        ".html": {
-          "relative_path": "features/methodhandle-type.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "features/modularity.md",
       "output": {
         ".html": {
@@ -4119,6 +4137,16 @@
       "output": {
         ".html": {
           "relative_path": "features/platform-independence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "features/portbridge.md",
+      "output": {
+        ".html": {
+          "relative_path": "features/portbridge.html"
         }
       },
       "version": ""
@@ -4454,16 +4482,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "features/transaction-service.md",
-      "output": {
-        ".html": {
-          "relative_path": "features/transaction-service.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "features/unit-integration-testing.md",
       "output": {
         ".html": {
@@ -4484,6 +4502,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "getting-started/available-testmethods.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/available-testmethods.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "getting-started/debug.md",
       "output": {
         ".html": {
@@ -4494,20 +4522,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "getting-started/doc-contribution.md",
+      "source_relative_path": "getting-started/download.md",
       "output": {
         ".html": {
-          "relative_path": "getting-started/doc-contribution.html"
+          "relative_path": "getting-started/download.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "getting-started/download.md",
+      "source_relative_path": "getting-started/four-phase-test-method-pattern.md",
       "output": {
         ".html": {
-          "relative_path": "getting-started/download.html"
+          "relative_path": "getting-started/four-phase-test-method-pattern.html"
         }
       },
       "version": ""
@@ -4534,10 +4562,40 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "getting-started/request-feature.md",
+      "source_relative_path": "getting-started/key-concepts.md",
       "output": {
         ".html": {
-          "relative_path": "getting-started/request-feature.html"
+          "relative_path": "getting-started/key-concepts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/my-first-test-method.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/my-first-test-method.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/repository-layout.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/repository-layout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started/the-lib.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started/the-lib.html"
         }
       },
       "version": ""
@@ -4551,16 +4609,6 @@
         },
         ".json": {
           "relative_path": "getting-started/toc.json"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "getting-started/use-test-method.md",
-      "output": {
-        ".html": {
-          "relative_path": "getting-started/use-test-method.html"
         }
       },
       "version": ""
@@ -4587,20 +4635,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "getting-started/write-test-block.md",
+      "source_relative_path": "getting-started/what-csra-is.md",
       "output": {
         ".html": {
-          "relative_path": "getting-started/write-test-block.html"
+          "relative_path": "getting-started/what-csra-is.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "getting-started/write-test-method.md",
+      "source_relative_path": "getting-started/writing-unit-tests.md",
       "output": {
         ".html": {
-          "relative_path": "getting-started/write-test-method.html"
+          "relative_path": "getting-started/writing-unit-tests.html"
         }
       },
       "version": ""
@@ -4777,10 +4825,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png",
+      "source_relative_path": "overwrite/CsraTestMethods/media/leakage-parallel-baseline-schematic.png",
       "output": {
         "resource": {
-          "relative_path": "overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png"
+          "relative_path": "overwrite/CsraTestMethods/media/leakage-parallel-baseline-schematic.png"
         }
       },
       "version": ""
@@ -4910,6 +4958,16 @@
       "output": {
         ".html": {
           "relative_path": "releases_/v0.19.0.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "releases_/v0.20.0.md",
+      "output": {
+        ".html": {
+          "relative_path": "releases_/v0.20.0.html"
         }
       },
       "version": ""

@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/CsraTestMethods.Leakage.Parallel.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/CsraTestMethods/CsraTestMethods.Leakage.Parallel.md/#L2">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -262,7 +262,7 @@ public void Baseline(PinList pinList, double voltage, double currentRange, doubl
   <h4 class="section" id="CsraTestMethods_Leakage_Parallel_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_String__custom_details">Details</h4>
   <div class="markdown level1 custom_details"><h5 id="test-technique">Test Technique</h5>
 <p>This test method can be used to measure currents flowing into device inputs. One common example is the digital input leakage test to detect issues in isolation structures, possibly damaged by a manufacturing flaw or elevated test voltage levels. Even though such a device may still work according to the specification, statistical outliers can indicate early failures in the devices' target application.</p>
-<p><img src="../overwrite/Demo_CSRA/media/leakage-parallel-baseline-schematic.png" alt="Schematic"></p>
+<p><img src="../overwrite/CsraTestMethods/media/leakage-parallel-baseline-schematic.png" alt="Schematic"></p>
 <p>The diagram shows a typical (simplified) schematic for a leakage test with the Device-Under-Test and four tester channels (three different types) connected to individual device pins. The instruments are ground referenced and in Force-Voltage mode to allow measuring the currents flowing into the device.</p>
 <p>The test applies a voltage (often near the VDD level) to digital input pins, after the device has been brought into a static state that should not allow any current to flow. Ideally, the measured currents are very close to 0A. High sensitivity to noise, and the need to settle dynamic (charging) effects often result in significant test times, mitigated only by the fact that the measurement can usually be made on all pins in parallel.</p>
 <p>The parallel testing method stands out for its high level of efficiency, as it allows the simultaneous evaluation of multiple pins, thereby significantly reducing testing time and optimizing the use of available resources. However, a major limitation of this approach lies in its inability to detect leakage currents between input pins, since all pins are tested concurrently. In such cases, it is recommended to resort to the serial testing method, which enables a more precise and individual analysis of each pin (see <a class="xref" href="CsraTestMethods.Leakage.Serial.html#CsraTestMethods_Leakage_Serial_Baseline_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_String_">Leakage.Serial.Baseline</a>).</p>

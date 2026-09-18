@@ -212,7 +212,7 @@ public class VoltageForceRange : TestCodeBase</code></pre>
 
   <h3 id="CsraTestMethods_Parametric_VoltageForceRange_Parallel_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_Double_System_Double_System_String_" data-uid="CsraTestMethods.Parametric.VoltageForceRange.Parallel(Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Double,System.Double,System.Double,System.String)">
   Parallel(PinList, double, double, double, double, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/VoltageForceRange.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/VoltageForceRange.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Regression test for the DCVS <code>SetForceAndMeter</code> force-range defect.</p>
@@ -227,13 +227,15 @@ present, <code class="paramref">measureRange</code> is wrongly used as the DCVS 
 Reproduce the failure (on a build without the fix) by choosing
 <code class="paramref">forceVoltage</code> &gt; the hardware range that <code class="paramref">measureRange</code> snaps to, while
 keeping <code class="paramref">forceVoltage</code> &lt;= <code class="paramref">forceRange</code>.
-Tester-validated values: <code>forceVoltage = 5</code>, <code>forceRange = 5.5</code>, <code>clampCurrent = 0.1</code>, <code>measureRange = 1.5</code>.
+Tester-validated values on <code>VS-5A</code>: <code>forceVoltage = 5</code>, <code>forceRange = 5.5</code>, <code>clampCurrent = 0.1</code>, <code>measureRange = 1.5</code>.
 </p>
 <p>
-Note two hardware constraints observed during bring-up: <code class="paramref">forceRange</code> must be a <b>supported</b>
-DCVS voltage range (an unsupported value such as 6 V raises <code>DCVS:0004</code>, since some DCVS variants only
-support e.g. 3 V and 5.5 V), and <code class="paramref">clampCurrent</code> must cover the load current at
-<code class="paramref">forceVoltage</code> (too low raises the <code>DCVS:9024</code> source fold current-limit alarm).
+Note two hardware constraints observed during bring-up. First, <code class="paramref">forceRange</code> must be a
+<b>supported</b> DCVS voltage range <b>for the instrument under test</b>, and the supported set differs per
+DCVS type: the driver reports <code>3, 5.5</code> for <code>VS-5A</code> (UVS64) and <code>3, 6, 16</code> for <code>VS-20A</code>
+(UVS64HP), so a 6 V range raises <code>DCVS:0004</code> on <code>VS-5A</code> but is valid on <code>VS-20A</code>. Second,
+<code class="paramref">clampCurrent</code> must cover the load current at <code class="paramref">forceVoltage</code> (too low
+raises the <code>DCVS:9024</code> source fold current-limit alarm).
 </p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -254,7 +256,9 @@ public void Parallel(PinList pinList, double forceVoltage, double forceRange, do
     <dd><p>The voltage to force. Choose a value larger than <code class="paramref">measureRange</code> to exercise the defect (e.g. 5 V).</p>
 </dd>
     <dt><code>forceRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd><p>The DCVS voltage (force) range. Must cover <code class="paramref">forceVoltage</code> and be a supported DCVS hardware range (e.g. 5.5 V; an unsupported value such as 6 V raises <code>DCVS:0004</code>).</p>
+    <dd><p>The DCVS voltage (force) range. Must cover <code class="paramref">forceVoltage</code> and be a
+supported range for that instrument - e.g. 5.5 V on <code>VS-5A</code>, 6 V on <code>VS-20A</code>. An unsupported value
+raises <code>DCVS:0004</code>.</p>
 </dd>
     <dt><code>clampCurrent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd><p>The current clamp for the force pin. Size it to cover the load current at <code class="paramref">forceVoltage</code> (e.g. 0.1 A); too low raises the <code>DCVS:9024</code> source foldback alarm.</p>

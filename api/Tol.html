@@ -105,6 +105,16 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Tol.DcvsSlotType.html">DcvsSlotType</a></dt>
+      <dd><p>The IG-XL slot type strings reported by <code>TheHdw.Config.Slots[].Type</code> and
+<code>TheHdw.DCVS.Pins().DCVSType</code> for the DCVS instrument family.</p>
+<p>
+Single source of truth for these literals. Adding a DCVS instrument should mean adding one member
+here and handling it where the type is switched on, not repeating the string per call site.
+</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Tol.DigitalPins.html">DigitalPins</a></dt>
       <dd></dd>
     </dl>
@@ -116,7 +126,8 @@ digital waveform sample data via <code>TheHdw.DSSC</code> and exposes it on a pe
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Tol.HramCapture.html">HramCapture</a></dt>
-      <dd></dd>
+      <dd><p>HRAM (Hardware RAM) implementation of <a class="xref" href="Tol.IDigitalCapture.html">IDigitalCapture</a> that records digital pattern execution data, either failing cycle indices or raw STV device data.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Tol.PpmuPins.html">PpmuPins</a></dt>

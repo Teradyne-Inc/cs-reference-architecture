@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>My First Test Method | C# Reference Architecture </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="My First Test Method | C# Reference Architecture ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/getting-started/my-first-test-method.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../media/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="my-first-test-method">My First Test Method</h1>
+
+<p>The fastest way to understand what C#RA actually buys you is to look at the <strong>same test</strong>, written twice: once the old way, calling the IG-XL API directly, and once the new way, built on <code>TheLib</code>.</p>
+<p>Both versions below are real, shipped code — <code>Continuity.Parallel</code>, a continuity/short check that forces current on a pin list and checks the resulting voltage. You have both files, at <code>ReferenceLibraries/CsTestMethods/Continuity/Parametric.cs</code> and <code>ReferenceLibraries/CsraTestMethods/Continuity/Parametric.cs</code>.</p>
+<h2 id="the-old-way--cstestmethods">The Old Way — <code>CsTestMethods</code></h2>
+<p>This is a raw C# test method. Every hardware action is a direct call into the IG-XL object model (<code>TheHdw</code>), and there's no separation between validation, setup, measurement, and cleanup — it's all one block.</p>
+<pre><code class="lang-csharp">using Teradyne.Igxl.Interfaces.Public;
+using static Teradyne.Igxl.Interfaces.Public.Constants.Global_Units;
+
+namespace CsTestMethods.Continuity {
+
+    [TestClass]
+    public class Parametric : TestCodeBase {
+
+        [TestMethod]
+        public void Parallel(PinList pinList, double current, double clampVoltage, double waitTime) {
+
+            TheHdw.Digital.ApplyLevelsTiming(true, true, true, tlRelayMode.Powered);
+            TheHdw.Digital.Pins(pinList).Disconnect();
+            var ppmu = TheHdw.PPMU.Pins(pinList);
+            ppmu.Connect();
+
+            ppmu.ForceI(current, current);
+            if (current &gt;= 0) {
+                ppmu.ClampVHi.Value = clampVoltage &gt; ppmu.ClampVHi.Max ? ppmu.ClampVHi.Max : clampVoltage;
+                ppmu.ClampVLo.Value = ppmu.ClampVLo.Min;
+            } else {
+                ppmu.ClampVHi.Value = ppmu.ClampVHi.Max;
+                ppmu.ClampVLo.Value = clampVoltage &lt; ppmu.ClampVLo.Min ? ppmu.ClampVLo.Min : clampVoltage;
+            }
+            ppmu.Gate = tlOnOff.On;
+            TheHdw.SetSettlingTimer(waitTime);
+            var meas = ppmu.Read(tlPPMUReadWhat.Measurements, 1, tlPPMUReadingFormat.Average).ToPinSite&lt;double&gt;();
+
+            ppmu.Gate = tlOnOff.Off;
+            ppmu.Disconnect();
+            TheHdw.Digital.Pins(pinList).Connect();
+            TheExec.Flow.TestLimit(ResultVal: meas, ForceVal: current, ForceUnit: UnitType.Custom, CustomForceunit: &quot;A&quot;,
+                ForceResults: tlLimitForceResults.Flow);
+        }
+    }
+}
+</code></pre>
+<p>A few things to notice, because they're the pain points C#RA was built to remove:</p>
+<ul>
+<li>Everything runs in a single pass. There's no validation step — a bad pin name or an out-of-range wait time only surfaces when the flow actually tries to run on the tester.</li>
+<li>Clamp logic is hand-rolled inline (<code>current &gt;= 0 ? ... : ...</code>), and this exact block is duplicated wherever a similar test is written — see <code>Serial</code> right below it in the same file.</li>
+<li>The pass/fail decision is pushed all the way down to a raw <code>TheExec.Flow.TestLimit(...)</code> call with a hardcoded <code>&quot;A&quot;</code> unit string.</li>
+<li>Nothing here is reusable across instrument types. If this pin list happened to be DCVI or DCVS pins instead of PPMU, this code would need a different implementation.</li>
+</ul>
+<h2 id="the-new-way--csratestmethods">The New Way — <code>CsraTestMethods</code></h2>
+<p>Same test, same behavior, built on <code>TheLib</code> and following the <a href="four-phase-test-method-pattern.html">four-phase pattern</a>.</p>
+<pre><code class="lang-csharp">using System;
+using Csra;
+using Teradyne.Igxl.Interfaces.Public;
+using static Csra.Api;
+
+namespace CsraTestMethods.Continuity {
+
+    [TestClass(Creation.TestInstance), Serializable]
+    public class Parametric : TestCodeBase {
+
+        private Pins _pins;
+        private PinSite&lt;double&gt; _meas;
+        private bool _containsDigitalPins = false;
+
+        [TestMethod, Steppable, CustomValidation]
+        public void Parallel(PinList pinList, double current, double clampVoltage, double voltageRange, double waitTime, string setup = &quot;&quot;) {
+
+            if (TheExec.Flow.IsValidating) {
+                TheLib.Validate.Pins(pinList, nameof(pinList), out _pins);
+                TheLib.Validate.InRange(waitTime, 0, 600, nameof(waitTime));
+                _containsDigitalPins = _pins.ContainsFeature(InstrumentFeature.Digital);
+            }
+
+            if (ShouldRunPreBody) {
+                TheLib.Setup.LevelsAndTiming.Apply(true);
+                Services.Setup.Apply(setup);
+                if (_containsDigitalPins) TheLib.Setup.Digital.Disconnect(_pins);
+                TheLib.Setup.Dc.Connect(_pins);
+            }
+
+            if (ShouldRunBody) {
+                TheLib.Setup.Dc.SetForceAndMeter(_pins, DcOutputMode.ForceCurrent, current, current, clampVoltage, DcMeterMode.Voltage, voltageRange);
+                TheLib.Execute.Wait(waitTime);
+                _meas = TheLib.Acquire.Dc.Measure(_pins);
+            }
+
+            if (ShouldRunPostBody) {
+                TheLib.Setup.Dc.Disconnect(_pins);
+                if (_containsDigitalPins) TheLib.Setup.Digital.Connect(_pins);
+                TheLib.Datalog.TestParametric(_meas, current, &quot;A&quot;);
+            }
+        }
+    }
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Before reading the comparison: the <strong>attributes</strong> are not the difference. <code>[TestClass(Creation.TestInstance)]</code>, <code>[Serializable]</code>, <code>[TestMethod]</code> and <code>[Steppable]</code> are all IG-XL attributes, available to either style — the old-way sample above simply doesn't use them. The only C#RA addition is <code>[CustomValidation]</code>. What actually changes is the body of the method.</p>
+</div>
+<h2 id="what-changed-and-why">What Changed, and Why</h2>
+<table>
+<thead>
+<tr>
+<th>Old (<code>CsTestMethods</code>)</th>
+<th>New (<code>CsraTestMethods</code>)</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No validation phase</td>
+<td><code>if (TheExec.Flow.IsValidating)</code> calls <code>TheLib.Validate.Pins</code> / <code>InRange</code></td>
+<td>Bad pin names or out-of-range arguments are caught at flow load, before any silicon is touched</td>
+</tr>
+<tr>
+<td>Hand-rolled clamp logic per test</td>
+<td><code>TheLib.Setup.Dc.SetForceAndMeter(...)</code></td>
+<td>Clamp/force/meter setup is centralized in one block, so it's fixed once for every test that uses it, not once per copy-paste</td>
+</tr>
+<tr>
+<td>Direct <code>TheHdw.PPMU</code> / <code>TheHdw.Digital</code> calls</td>
+<td><code>TheLib.Setup.Dc</code> / <code>TheLib.Setup.Digital</code></td>
+<td><code>TheLib</code> routes to the correct instrument type (PPMU, DCVI, DCVS) automatically — the test method doesn't need to know which hardware is behind the pin</td>
+</tr>
+<tr>
+<td>Raw <code>TheExec.Flow.TestLimit(...)</code> with a literal unit string</td>
+<td><code>TheLib.Datalog.TestParametric(_meas, current, &quot;A&quot;)</code></td>
+<td>One consistent datalog call shape across all test methods, including automatic offline midway-pass handling</td>
+</tr>
+<tr>
+<td>One undivided method body</td>
+<td>Validate → PreBody → Body → PostBody</td>
+<td>Each phase has a single responsibility, and <code>ShouldRunPreBody</code> / <code>ShouldRunBody</code> / <code>ShouldRunPostBody</code> let IG-XL's stepping/debug tools run just one phase at a time</td>
+</tr>
+<tr>
+<td>Everything inline, nothing survives between phases</td>
+<td>State (<code>_pins</code>, <code>_meas</code>, <code>_containsDigitalPins</code>) held in private fields</td>
+<td>Work done once in Validate (like checking pin type) doesn't need to be redone in every phase</td>
+</tr>
+</tbody>
+</table>
+<p>Note the new version takes two more parameters than the old one: a required <code>voltageRange</code> and an optional <code>setup</code>.</p>
+<p><code>voltageRange</code> is not a rewrite artifact — <code>TheLib.Setup.Dc.SetForceAndMeter</code> needs an explicit meter range, where the old code left the PPMU's range at whatever it was last configured to. It's a small example of a pattern you'll see elsewhere in C#RA: the framework version is sometimes slightly more explicit about hardware state than the raw API version, because it's designed to be correct by default rather than correct by convention.</p>
+<p><code>setup</code> is the hook into the <a href="../features/setup-service.html">Setup Service</a> — pass the name of a named setup and it is applied during PreBody, so hardware configuration can be declared once and reused across test methods instead of being hard-coded here. Leaving it empty skips that step.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>[CustomValidation]</code> is what enables the <code>TheExec.Flow.IsValidating</code> block to run at flow load time. The other attributes are IG-XL's, as noted above.</p>
+</div>
+<h2 id="try-it-yourself">Try It Yourself</h2>
+<ol>
+<li>Run <code>Demo/generate-subset-solution.cmd</code> to produce <code>SOC124.sln</code>, which contains every shipped project. Open it and you have both test method libraries in one place.</li>
+<li>Open the two <code>Parametric.cs</code> files side by side, from <code>ReferenceLibraries/CsTestMethods/Continuity/</code> and <code>ReferenceLibraries/CsraTestMethods/Continuity/</code>.</li>
+<li>Find the <code>Serial</code> method in each file — it's the same comparison, one level up in complexity (it loops per-pin instead of measuring all pins at once).</li>
+<li>Run the demo. <code>Demo/_LoadProgram.cmd</code> starts IG-XL against the sample program, so you can step through a C#RA test method end to end — see <a href="download.html">Download &amp; Extract</a>.</li>
+<li>Skim <a href="the-lib.html"><code>TheLib</code> Pipeline</a> to see the full set of <code>Setup</code> / <code>Execute</code> / <code>Acquire</code> / <code>Datalog</code> methods available beyond what this one test method uses.</li>
+</ol>
+<hr>
+<p><strong>Next:</strong> <a href="writing-unit-tests.html">Unit Testing Your Test Methods</a> — how to test a method like this one without a tester attached.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>© 2024 - <span id='currentYear'></span> Teradyne - Generated by <a href="https://dotnet.github.io/docfx">DocFx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

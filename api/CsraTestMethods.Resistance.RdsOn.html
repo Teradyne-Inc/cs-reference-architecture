@@ -329,7 +329,7 @@ public void Baseline(PinList forcePin, string forceMode, double forceValue, doub
 
   <h3 id="CsraTestMethods_Resistance_RdsOn_FourPinsTwoForceTwoMeasure_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_Teradyne_Igxl_Interfaces_Public_PinList_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_String_" data-uid="CsraTestMethods.Resistance.RdsOn.FourPinsTwoForceTwoMeasure(Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,Teradyne.Igxl.Interfaces.Public.PinList,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Double,System.String)">
   FourPinsTwoForceTwoMeasure(PinList, double, double, PinList, double, double, PinList, PinList, double, double, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Resistance/RdsOn.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Resistance/RdsOn.cs/#L273"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs a resistance delta measurement by forcing a current on first pin, voltage on second pin and measuring a delta voltage on two other pins.</p>
@@ -442,8 +442,12 @@ public void FourPinsTwoForceTwoMeasure(PinList forceFirstPin, double forceValueF
         TheLib.Setup.Dc.ForceHiZ(_allMeasPins);
         TheLib.Setup.Dc.Force(_pinsFirst, DcOutputMode.ForceCurrent, forceValueFirstPin, forceValueFirstPin, clampValueOfForceFirstPin);
         TheLib.Setup.Dc.Force(_pinsSecond, DcOutputMode.ForceVoltage, forceValueSecondPin, forceValueSecondPin, clampValueOfForceSecondPin);
-        TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
-        TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+        if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
+        }
+        if (!_pinsSecondMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+        }
         TheLib.Execute.Wait(waitTime);
         _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
         _measSecond = TheLib.Acquire.Dc.Measure(_pinsSecondMeas);
@@ -466,10 +470,10 @@ public void FourPinsTwoForceTwoMeasure(PinList forceFirstPin, double forceValueF
 
   <h3 id="CsraTestMethods_Resistance_RdsOn_ThreePinsOneForceTwoMeasure_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_String_" data-uid="CsraTestMethods.Resistance.RdsOn.ThreePinsOneForceTwoMeasure(Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.String)">
   ThreePinsOneForceTwoMeasure(PinList, double, double, PinList, double, PinList, double, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Resistance/RdsOn.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Resistance/RdsOn.cs/#L213"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Performs a resistance measurement by forcing a current on one pin and measuring on two other pins.</p>
+  <div class="markdown level1 summary"><p>Performs a resistance measurement by forcing a current on one pin and measuring voltage on two other pins.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -567,8 +571,12 @@ public void ThreePinsOneForceTwoMeasure(PinList forcePin, double forceCurrentPin
     if (ShouldRunBody) {
         TheLib.Setup.Dc.ForceHiZ(_allMeasPins);
         TheLib.Setup.Dc.Force(_pinsFirst, DcOutputMode.ForceCurrent, forceCurrentPin, forceCurrentPin, clampValueOfForcePin);
-        TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
-        TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+        if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
+        }
+        if (!_pinsSecondMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+        }
         TheLib.Execute.Wait(waitTime);
         _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
         _measSecond = TheLib.Acquire.Dc.Measure(_pinsSecondMeas);
@@ -591,7 +599,7 @@ public void ThreePinsOneForceTwoMeasure(PinList forcePin, double forceCurrentPin
 
   <h3 id="CsraTestMethods_Resistance_RdsOn_TwoPinsDeltaForceDeltaMeasure_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_Double_System_Double_System_Double_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_Double_System_Double_System_String_" data-uid="CsraTestMethods.Resistance.RdsOn.TwoPinsDeltaForceDeltaMeasure(Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.Double,System.Double,System.Double,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.Double,System.Double,System.String)">
   TwoPinsDeltaForceDeltaMeasure(PinList, string, double, double, double, PinList, double, double, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Resistance/RdsOn.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Resistance/RdsOn.cs/#L149"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs a resistance delta measurement by forcing two force values on one pin and measuring with a second pin.</p>
@@ -697,12 +705,16 @@ public void TwoPinsDeltaForceDeltaMeasure(PinList forcePin, string forceMode, do
     if (ShouldRunBody) {
         TheLib.Setup.Dc.ForceHiZ(_pinsFirstMeas);
         TheLib.Setup.Dc.Force(_pinsFirst, _outputMode, forceFirstValue, forceFirstValue, clampValueOfForcePin);
-        TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureFirstRange);
+        if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureFirstRange);
+        }
         TheLib.Execute.Wait(waitTime);
         _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
 
         TheLib.Setup.Dc.Force(_pinsFirst, _outputMode, forceSecondValue, forceSecondValue, clampValueOfForcePin);
-        TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureSecondRange);
+        if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureSecondRange);
+        }
         TheLib.Execute.Wait(waitTime);
         _measSecond = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
 
@@ -831,7 +843,10 @@ public void TwoPinsOneForceOneMeasure(PinList forcePin, string forceMode, double
     if (ShouldRunBody) {
         TheLib.Setup.Dc.ForceHiZ(_pinsFirstMeas);
         TheLib.Setup.Dc.Force(_pinsFirst, _outputMode, forceValue, forceValue, clampValueOfForcePin);
-        TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureRange);
+        if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureRange);
+        }
+
         TheLib.Execute.Wait(waitTime);
         _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
         _resistanceValue = (_outputMode == DcOutputMode.ForceVoltage) ? (_forceFirst - _labelVoltage) / _measFirst :

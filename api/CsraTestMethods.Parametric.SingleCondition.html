@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/Demo_CSRA/CsraTestMethods.Parametric.SingleCondition.md/#L2">
+      <meta name="docfx:docurl" content="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/docs/overwrite/CsraTestMethods/CsraTestMethods.Parametric.SingleCondition.md/#L2">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -328,8 +328,13 @@ public void Baseline(PinList forcePinList, string forceMode, double forceValue, 
     }
 
     if (ShouldRunBody) {
+        if (_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.ForceHiZ(_pinsMeasure);
+        }
         TheLib.Setup.Dc.Force(_pinsForce, _outputMode, forceValue, forceValue, clampValue);
-        TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue : null);
+        if (!_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue : null);
+        }
         TheLib.Execute.Wait(waitTime);
         _measPins = TheLib.Acquire.Dc.Measure(_pinsMeasure, sampleSize);
     }
@@ -350,7 +355,7 @@ public void Baseline(PinList forcePinList, string forceMode, double forceValue, 
 
   <h3 id="CsraTestMethods_Parametric_SingleCondition_PreconditionPattern_Teradyne_Igxl_Interfaces_Public_PinList_System_String_System_Double_System_Double_Teradyne_Igxl_Interfaces_Public_Pattern_System_String_System_Double_System_Int32_Teradyne_Igxl_Interfaces_Public_PinList_System_Double_System_String_" data-uid="CsraTestMethods.Parametric.SingleCondition.PreconditionPattern(Teradyne.Igxl.Interfaces.Public.PinList,System.String,System.Double,System.Double,Teradyne.Igxl.Interfaces.Public.Pattern,System.String,System.Double,System.Int32,Teradyne.Igxl.Interfaces.Public.PinList,System.Double,System.String)">
   PreconditionPattern(PinList, string, double, double, Pattern, string, double, int, PinList, double, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/SingleCondition.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Teradyne-Inc/cs-reference-architecture/blob/main/src/ReferenceLibraries/CsraTestMethods/Parametric/SingleCondition.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Parametric measurement by running preconditioning pattern, setting up force Pins and then measuring all force or optionally different measurement Pins.</p>
@@ -468,9 +473,14 @@ public void PreconditionPattern(PinList forcePinList, string forceMode, double f
     }
 
     if (ShouldRunBody) {
+        if (_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.ForceHiZ(_pinsMeasure);
+        }
         TheLib.Setup.Dc.Force(_pinsForce, _outputMode, forceValue, forceValue, clampValue);
-        TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue
-            : null);
+        if (!_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+            TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue
+                : null);
+        }
         TheLib.Execute.Wait(waitTime);
         _measPins = TheLib.Acquire.Dc.Measure(_pinsMeasure, sampleSize); 
     }

@@ -208,39 +208,6 @@
 </table>
 <p>The deprecation window is <strong>at least 2 weeks and no more than 13 weeks</strong> (one quarter) before removal.</p>
 <hr>
-<h2 id="how-to-add-cra-to-a-new-test-program">How to Add C#RA to a New Test Program</h2>
-<p>C#RA is distributed as a <strong>source code package</strong> (zip download from GitHub Releases or eKnowledge). Reference it by copying the <code>Csra</code> folder next to your solution.</p>
-<h3 id="step-by-step">Step-by-step</h3>
-<ol>
-<li><p><strong>Download the release package</strong> from <a href="https://github.com/teradyne-inc/cs-reference-architecture/releases">GitHub Releases</a> or eKnowledge. Choose a specific tagged version (e.g., <code>v1.2.3</code>).</p>
-</li>
-<li><p><strong>Extract and copy</strong> the <code>Csra</code> folder from the downloaded zip to a location next to your solution file:</p>
-<pre><code>MyTestProgram/
-├── MyTestProgram.sln
-├── MyTestProgram/
-└── Csra/          ← Place here
-</code></pre>
-</li>
-<li><p><strong>Add the project reference</strong> in Visual Studio:</p>
-<ul>
-<li>Right-click the solution → <strong>Add &gt; Existing Project...</strong></li>
-<li>Navigate to the <code>Csra</code> folder and select <code>Csra.csproj</code></li>
-<li>Click <strong>OK</strong></li>
-</ul>
-</li>
-<li><p><strong>Record the version</strong> you added. Create or update a comment in your solution's <code>README.md</code>:</p>
-<pre><code class="lang-markdown">## Dependencies
-- C#RA v1.2.3 — downloaded from GitHub Releases tag `v1.2.3`
-</code></pre>
-</li>
-<li><p><strong>Commit everything</strong>, including the <code>Csra</code> folder, to your test program's source control. This ensures your program always builds against the exact version you tested.</p>
-</li>
-</ol>
-<div class="TIP">
-<h5>Tip</h5>
-<p>Always record the exact version tag in your solution's documentation. When you later need to update, you will know exactly what you are upgrading from.</p>
-</div>
-<hr>
 <h2 id="how-to-update-to-a-new-cra-version">How to Update to a New C#RA Version</h2>
 <h3 id="pre-update-checklist">Pre-update checklist</h3>
 <ul>
@@ -327,8 +294,6 @@ Migration guide: MIGRATION.md
 <p>Compiler warnings are your advance notice. In the <strong>release candidate (RC)</strong> of the next MAJOR version, the deprecated API's <code>error</code> flag is set to <code>true</code>, turning warnings into <strong>build errors</strong>. If you have not migrated by then, your test program will fail to compile after updating. The safest approach is to resolve <code>[Obsolete]</code> warnings before they become errors.</p>
 <h3 id="how-much-work-is-a-major-migration-typically">How much work is a MAJOR migration typically?</h3>
 <p>It depends on the scope of the breaking changes. <code>MIGRATION.md</code> enumerates every breaking change with before/after code examples. For a well-maintained test program that has been keeping up with <code>[Obsolete]</code> warnings, a MAJOR migration is typically a few hours of search-and-replace work. For programs that have ignored multiple cycles of deprecation warnings, it can take longer. The recommended approach is to address <code>[Obsolete]</code> warnings continuously so that no MAJOR migration is a large surprise.</p>
-<h3 id="who-do-i-contact-if-the-migration-guide-doesnt-cover-my-use-case">Who do I contact if the migration guide doesn't cover my use case?</h3>
-<p>Open a GitHub Issue with the label <a href="https://github.com/TER-SEMITEST-InnerSource/cs-reference-architecture/issues/new?labels=migration-help"><code>migration-help</code></a>. The C#RA team will respond and, if the gap is a real omission, update <code>MIGRATION.md</code> to cover the case.</p>
 <h3 id="can-i-use-two-different-versions-of-cra-in-the-same-test-program">Can I use two different versions of C#RA in the same test program?</h3>
 <p>No. C#RA is referenced as a single project within a solution. Version indirection (e.g., <code>using Csra_v1;</code> alongside <code>using Csra_v2;</code>) is not supported. Each test program uses exactly one version of C#RA. If you need new capabilities from a MINOR or MAJOR update, update the entire program to the new version.</p>
 
