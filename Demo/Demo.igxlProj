@@ -335,6 +335,13 @@
               <OverrideName />
               <LoadAsProgramSheet>false</LoadAsProgramSheet>
             </Sheet>
+            <Sheet>
+              <DatalogProtection>false</DatalogProtection>
+              <Source>ASCIIProgram\common\Channel Map_Offline_Uvs64Hp.txt</Source>
+              <Selectors />
+              <OverrideName />
+              <LoadAsProgramSheet>false</LoadAsProgramSheet>
+            </Sheet>
           </_sheets>
         </sheets>
         <refs>
@@ -880,7 +887,7 @@
         <GenerateSimulatedConfig>false</GenerateSimulatedConfig>
         <IsUltraFLEXplus>false</IsUltraFLEXplus>
         <RefConfigPath />
-        <PinMap>Not Specified</PinMap>
+        <PinMap>CommonCodeAndSheets: Pinmap</PinMap>
         <FlowGenMode>GenerateFlowFromSubPrograms</FlowGenMode>
         <MergeFlowsMode>IncludeAllSubflows</MergeFlowsMode>
         <GenerateEnableWordsMode>DoNotGenerate</GenerateEnableWordsMode>
@@ -907,7 +914,7 @@
         </SubProgramToFlowEntry>
         <SelectedWords />
         <DefaultJob />
-        <DefaultChannelMap>Not Specified</DefaultChannelMap>
+        <DefaultChannelMap>CommonCodeAndSheets: Channel Map</DefaultChannelMap>
         <ChannelMapDisplayMode>Signal</ChannelMapDisplayMode>
         <Env />
         <Part />
@@ -935,7 +942,7 @@
         <GenerateSimulatedConfig>false</GenerateSimulatedConfig>
         <IsUltraFLEXplus>false</IsUltraFLEXplus>
         <RefConfigPath />
-        <PinMap>Not Specified</PinMap>
+        <PinMap>CommonCodeAndSheets: Pinmap</PinMap>
         <FlowGenMode>GenerateFlowFromSubPrograms</FlowGenMode>
         <MergeFlowsMode>IncludeAllSubflows</MergeFlowsMode>
         <GenerateEnableWordsMode>DoNotGenerate</GenerateEnableWordsMode>
@@ -971,7 +978,7 @@
         </SubProgramToFlowEntry>
         <SelectedWords />
         <DefaultJob />
-        <DefaultChannelMap>Not Specified</DefaultChannelMap>
+        <DefaultChannelMap>CommonCodeAndSheets: Channel Map</DefaultChannelMap>
         <ChannelMapDisplayMode>Signal</ChannelMapDisplayMode>
         <Env />
         <Part />
@@ -999,7 +1006,7 @@
         <GenerateSimulatedConfig>false</GenerateSimulatedConfig>
         <IsUltraFLEXplus>false</IsUltraFLEXplus>
         <RefConfigPath />
-        <PinMap>Not Specified</PinMap>
+        <PinMap>CommonCodeAndSheets: Pinmap</PinMap>
         <FlowGenMode>GenerateFlowFromSubPrograms</FlowGenMode>
         <MergeFlowsMode>IncludeAllSubflows</MergeFlowsMode>
         <GenerateEnableWordsMode>DoNotGenerate</GenerateEnableWordsMode>
@@ -1044,7 +1051,7 @@
         </SubProgramToFlowEntry>
         <SelectedWords />
         <DefaultJob />
-        <DefaultChannelMap>Not Specified</DefaultChannelMap>
+        <DefaultChannelMap>CommonCodeAndSheets: Channel Map</DefaultChannelMap>
         <ChannelMapDisplayMode>Signal</ChannelMapDisplayMode>
         <Env />
         <Part />
@@ -1072,7 +1079,7 @@
         <GenerateSimulatedConfig>false</GenerateSimulatedConfig>
         <IsUltraFLEXplus>false</IsUltraFLEXplus>
         <RefConfigPath />
-        <PinMap>Not Specified</PinMap>
+        <PinMap>CommonCodeAndSheets: Pinmap</PinMap>
         <FlowGenMode>GenerateFlowFromSubPrograms</FlowGenMode>
         <MergeFlowsMode>IncludeAllSubflows</MergeFlowsMode>
         <GenerateEnableWordsMode>DoNotGenerate</GenerateEnableWordsMode>
@@ -1099,7 +1106,7 @@
         </SubProgramToFlowEntry>
         <SelectedWords />
         <DefaultJob />
-        <DefaultChannelMap>Not Specified</DefaultChannelMap>
+        <DefaultChannelMap>CommonCodeAndSheets: Channel Map</DefaultChannelMap>
         <ChannelMapDisplayMode>Signal</ChannelMapDisplayMode>
         <Env />
         <Part />

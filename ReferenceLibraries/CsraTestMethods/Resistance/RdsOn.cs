@@ -114,7 +114,10 @@ namespace CsraTestMethods.Resistance {
             if (ShouldRunBody) {
                 TheLib.Setup.Dc.ForceHiZ(_pinsFirstMeas);
                 TheLib.Setup.Dc.Force(_pinsFirst, _outputMode, forceValue, forceValue, clampValueOfForcePin);
-                TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureRange);
+                if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureRange);
+                }
+
                 TheLib.Execute.Wait(waitTime);
                 _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
                 _resistanceValue = (_outputMode == DcOutputMode.ForceVoltage) ? (_forceFirst - _labelVoltage) / _measFirst :
@@ -169,12 +172,16 @@ namespace CsraTestMethods.Resistance {
             if (ShouldRunBody) {
                 TheLib.Setup.Dc.ForceHiZ(_pinsFirstMeas);
                 TheLib.Setup.Dc.Force(_pinsFirst, _outputMode, forceFirstValue, forceFirstValue, clampValueOfForcePin);
-                TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureFirstRange);
+                if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureFirstRange);
+                }
                 TheLib.Execute.Wait(waitTime);
                 _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
 
                 TheLib.Setup.Dc.Force(_pinsFirst, _outputMode, forceSecondValue, forceSecondValue, clampValueOfForcePin);
-                TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureSecondRange);
+                if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, _measureMode, measureSecondRange);
+                }
                 TheLib.Execute.Wait(waitTime);
                 _measSecond = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
 
@@ -191,7 +198,7 @@ namespace CsraTestMethods.Resistance {
         #endregion
 
         /// <summary>
-        /// Performs a resistance measurement by forcing a current on one pin and measuring on two other pins.
+        /// Performs a resistance measurement by forcing a current on one pin and measuring voltage on two other pins.
         /// </summary>
         /// <param name="forcePin">Pin to force.</param>
         /// <param name="forceCurrentPin">Current to force.</param>
@@ -227,8 +234,12 @@ namespace CsraTestMethods.Resistance {
             if (ShouldRunBody) {
                 TheLib.Setup.Dc.ForceHiZ(_allMeasPins);
                 TheLib.Setup.Dc.Force(_pinsFirst, DcOutputMode.ForceCurrent, forceCurrentPin, forceCurrentPin, clampValueOfForcePin);
-                TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
-                TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+                if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
+                }
+                if (!_pinsSecondMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+                }
                 TheLib.Execute.Wait(waitTime);
                 _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
                 _measSecond = TheLib.Acquire.Dc.Measure(_pinsSecondMeas);
@@ -286,8 +297,12 @@ namespace CsraTestMethods.Resistance {
                 TheLib.Setup.Dc.ForceHiZ(_allMeasPins);
                 TheLib.Setup.Dc.Force(_pinsFirst, DcOutputMode.ForceCurrent, forceValueFirstPin, forceValueFirstPin, clampValueOfForceFirstPin);
                 TheLib.Setup.Dc.Force(_pinsSecond, DcOutputMode.ForceVoltage, forceValueSecondPin, forceValueSecondPin, clampValueOfForceSecondPin);
-                TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
-                TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+                if (!_pinsFirstMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsFirstMeas, DcMeterMode.Voltage, measureRangeFirstPin);
+                }
+                if (!_pinsSecondMeas.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsSecondMeas, DcMeterMode.Voltage, measureRangeSecondPin);
+                }
                 TheLib.Execute.Wait(waitTime);
                 _measFirst = TheLib.Acquire.Dc.Measure(_pinsFirstMeas);
                 _measSecond = TheLib.Acquire.Dc.Measure(_pinsSecondMeas);

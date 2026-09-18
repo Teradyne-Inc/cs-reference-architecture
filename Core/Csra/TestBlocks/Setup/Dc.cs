@@ -160,12 +160,11 @@ namespace Csra.TheLib.Setup {
 
         public virtual void SetMeter(Pins pins, DcMeterMode meterMode, double? rangeValue = null, double? filterValue = null, int? hardwareAverage = null,
             double? outputRangeValue = null) {
-            // PPMU cannot configure its meter independently: the meter mode is a side effect of the force mode
-            // (ForceI measures V, ForceV measures I, ForceVMeasureV measures V; ForceIMeasureI is not supported by the instrument).
+            // PPMU cannot configure its meter independently: the meter mode is a side effect of the force mode.
+            // (<ForceI> measures V; <ForceV> measures I; <ForceVMeasureV> measures V; <ForceIMeasureI> is not supported by the instrument).
             // Silently skipping PPMU here would leave results dependent on residual instrument state, so fail loudly instead.
             if (pins.ContainsFeature(InstrumentFeature.Ppmu)) {
-                Api.Services.Alert.Warning("SetMeter does not support PPMU: PPMU meter mode is derived from the force mode and cannot be configured " +
-                    "independently. Use SetForceAndMeter to configure force and meter together.");
+                Api.Services.Alert.Warning("SetMeter does not support PPMU: PPMU meter mode is derived from the force mode and cannot be configured independently. Use SetForceAndMeter to configure force and meter together.");
             }
             if (meterMode == DcMeterMode.Current) {
                 pins.Dcvi?.SetMeterI(rangeValue, hardwareAverage, filterValue);
@@ -296,8 +295,41 @@ namespace Csra.TheLib.Setup {
                     _ => tlDCVSMeterMode.Current,
                 };
             }
-            if (meterVoltageRange.HasValue) dcvsPins.Meter.VoltageRange.Value = meterVoltageRange.Value;
-            if (meterCurrentRange.HasValue) dcvsPins.Meter.CurrentRange.Value = meterCurrentRange.Value;
+            // The two meter ranges are not symmetric, so they are guarded differently.
+            //
+            // meterVoltageRange: no DCVS instrument exposes an independent meter voltage range - VoltageRange is the
+            // force/compliance range. DcvsPins.SetMeterV records this for VS-5A and VS-800mA, and VS-20A raises
+            // DCVS:0048 for the same feature, so it is never programmed on any DCVS type.
+            //
+            // meterCurrentRange: programmable on VS-5A and VS-800mA, but NOT on UVS64HP. That restriction is new with
+            // UVS64HP: the meter and force ranges share one register, and because UVS64HP lets follower channels meter
+            // independently, ranging the meter separately would put leader and followers out of sync. Confirmed by the
+            // Zebra team on PR #3328, and asserted as DCVS:0048 in their own regression suite at
+            // ATFunctionalR/VS20A/Bench_SmokeTest/VBT_VS20A_Follower.bas:123-128. It may become the model for future
+            // DC instruments that support simultaneous measurement, but it is UVS64HP-only today.
+            //
+            // Both guards live here rather than in Tol because Tol has no access to the alert service.
+            if (meterVoltageRange.HasValue) {
+                Api.Services.Alert.Warning("Modify: 'meterVoltageRange' is not supported on DCVS pins. The meter voltage " +
+                    "range is read-only and follows the force range; set 'voltageRange' instead.");
+            }
+            if (meterCurrentRange.HasValue) {
+                TheExec.DataManager.DecomposePinList(dcvsPins.Name, out string[] individualPins, out _);
+                string[] dcvsTypes = individualPins.Select(pin => TheHdw.DCVS.Pins(pin).DCVSType).Distinct().ToArray();
+                if (dcvsTypes.Length != 1) {
+                    // No single group-level write can be right for a mixed list, so program none of them. Length 0 is
+                    // not reachable today, but it lands here with a diagnosable alert rather than an index error.
+                    Api.Services.Alert.Warning("Modify: 'meterCurrentRange' cannot be applied to this pin list because it " +
+                        $"does not resolve to a single DCVS type (found: {string.Join(", ", dcvsTypes)}). Split the pin " +
+                        "list by instrument type and set the meter range per group.");
+                } else if (dcvsTypes[0] == Tol.DcvsSlotType.Uvs64Hp) {
+                    Api.Services.Alert.Warning("Modify: 'meterCurrentRange' is not supported on DCVS type " +
+                        $"'{Tol.DcvsSlotType.Uvs64Hp}' (UVS64HP), where the meter and force current ranges share one " +
+                        "register; set 'currentRange' to range both together.");
+                } else {
+                    dcvsPins.Meter.CurrentRange.Value = meterCurrentRange.Value;
+                }
+            }
             if (meterBandwidth.HasValue) dcvsPins.Meter.Filter.Value = meterBandwidth.Value;
             if (mode.HasValue) {
                 dcvsPins.Mode.Value = mode.Value switch {

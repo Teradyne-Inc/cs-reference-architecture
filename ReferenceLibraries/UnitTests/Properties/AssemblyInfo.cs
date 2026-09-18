@@ -23,6 +23,6 @@ namespace UnitTestExample {
 
     internal static class Info {
 
-        internal const string VersionDefinition = "0.19.0";
+        internal const string VersionDefinition = "0.20.0";
     }
 }

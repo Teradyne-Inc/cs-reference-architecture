@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Teradyne.Igxl.Interfaces.Public;
 using Csra;
 using static Csra.Api;
@@ -67,8 +66,16 @@ namespace CsraTestMethods.Parametric {
             }
 
             if (ShouldRunBody) {
+                List<Pins> filteredMeasureGroups = new();
+                foreach (Pins measureGroup in _pinsMeasureGroups) {
+                    if (measureGroup.ContainsFeature(InstrumentFeature.Ppmu)) {
+                        TheLib.Setup.Dc.ForceHiZ(measureGroup);
+                    } else {
+                        filteredMeasureGroups.Add(measureGroup);
+                    }
+                }
                 TheLib.Setup.Dc.Force(_pinsForceGroups, _outputModes, _forceValues, _forceValues, _clampValues, [true]);
-                TheLib.Setup.Dc.SetMeter(_pinsMeasureGroups, _measureModes, _measureRanges);
+                TheLib.Setup.Dc.SetMeter(filteredMeasureGroups.ToArray(), _measureModes, _measureRanges);
                 TheLib.Execute.Wait(waitTime);
                 _measureValues = TheLib.Acquire.Dc.Measure(_pinsMeasureGroups, _sampleSizes);
             }
@@ -129,8 +136,17 @@ namespace CsraTestMethods.Parametric {
             }
 
             if (ShouldRunBody) {
+                List<Pins> filteredMeasureGroups = new();
+                foreach (Pins measureGroup in _pinsMeasureGroups) {
+                    if (measureGroup.ContainsFeature(InstrumentFeature.Ppmu)) {
+                        TheLib.Setup.Dc.ForceHiZ(measureGroup);
+                    }
+                    else {
+                        filteredMeasureGroups.Add(measureGroup);
+                    }
+                }
                 TheLib.Setup.Dc.Force(_pinsForceGroups, _outputModes, _forceValues, _forceValues, _clampValues, [true]);
-                TheLib.Setup.Dc.SetMeter(_pinsMeasureGroups, _measureModes, _measureRanges);
+                TheLib.Setup.Dc.SetMeter(filteredMeasureGroups.ToArray(), _measureModes, _measureRanges);
                 TheLib.Execute.Wait(waitTime);
                 _measureValues = TheLib.Acquire.Dc.Measure(_pinsMeasureGroups, _sampleSizes);
             }

@@ -115,9 +115,12 @@ namespace Tol {
         /// </summary>
         /// <returns>
         /// A <see cref="PinSite{T}"/> of <c>double[]</c> where each entry contains the captured sample values for that pin and site.
+        /// Pins and sites with no captured data yield an empty array.
         /// </returns>
         public PinSite<double[]> ReadStv() {
-            return CaptureSignals[_signalName].DspWave.ToPinSite<double[]>();
+            // IG-XL returns an IDspWave per site, not a double[]. ToPinSite<double[]> converts lazily,
+            // which defers that bad cast to element access, so unwrap eagerly via ToPinSiteArray.
+            return CaptureSignals[_signalName].DspWave.ToPinSiteArray<double>();
         }
 
         // Applies the DSSC capture configuration to the hardware: adds the signal to the capture chain (only if it is

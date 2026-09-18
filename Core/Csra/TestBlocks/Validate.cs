@@ -367,8 +367,16 @@ namespace Csra.TheLib {
             DriverDCVSPins dcvs = TheHdw.Pins(pins).DCVS;
             //if (gate.HasValue) // no check needed 
             //if (meterMode.HasValue) // no check needed
+            // No DCVS instrument exposes an independent meter voltage range, so Setup.Dc.Modify refuses this argument
+            // for every DCVS type. Report it at validation time too, otherwise a job validates clean and the problem
+            // only surfaces at first execution. No InRange check: range-checking a value that is documented as
+            // discarded serves no purpose, and reading Min/Max probes the same node the driver reports as
+            // unsupported (DCVS:0048), which could turn a warning into a hard validation failure.
+            // meterCurrentRange is not reported here: it is only refused on UVS64HP, and establishing the slot
+            // type would add a driver read to the validation path for every DCVS pin.
             if (meterVoltageRange.HasValue) {
-                InRange(meterVoltageRange.Value, dcvs.Meter.VoltageRange.Min, dcvs.Meter.VoltageRange.Max, "");
+                Api.Services.Alert.Warning("'meterVoltageRange' is not supported on DCVS pins and will be ignored. The " +
+                    "meter voltage range is read-only and follows the force range; set 'voltageRange' instead.");
             }
             if (meterCurrentRange.HasValue) {
                 InRange(meterCurrentRange.Value, dcvs.Meter.CurrentRange.Min, dcvs.Meter.CurrentRange.Max, "");

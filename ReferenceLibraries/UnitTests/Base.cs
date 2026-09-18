@@ -70,13 +70,15 @@ namespace UnitTestExample {
                 { "HSDP", InstrumentType.UP2200 }, // UF+ Paradise
                 { "HSDPx", InstrumentType.UP5000 }, // UF+ Utopia
                 { "DC-8p5V90V", InstrumentType.UVI264 }, //  UF+ Raiden
-                { "VS-800mA", InstrumentType.UVS256 }, // UF+ ??
-                { "VS-5A", InstrumentType.UVS64 }, // UF+ Tesla
-                { "VS-20A", InstrumentType.UVS64HP }, // UF+ Zebra
+                // Slot-type strings come from Tol.DcvsSlotType so a new DCVS instrument is registered once.
+                // The Uvs256Hp / UVS256 mismatch is real: the enum member name omits the HP. Tracked in #3289.
+                { Tol.DcvsSlotType.Uvs256Hp, InstrumentType.UVS256 },
+                { Tol.DcvsSlotType.Uvs64, InstrumentType.UVS64 },
+                { Tol.DcvsSlotType.Uvs64Hp, InstrumentType.UVS64HP },
                 { "Support", InstrumentType.Support }, // UF+ Support Board
                 { "HSD-U", InstrumentType.UP1600 }, // UF Utah
-                { "HexVS", InstrumentType.HexVS }, // UF ?
-                { "VSM", InstrumentType.VSM }, // UF ?
+                { Tol.DcvsSlotType.HexVs, InstrumentType.HexVS },
+                { Tol.DcvsSlotType.Vsm, InstrumentType.VSM },
                 { "DC-07", InstrumentType.UVI80 }, // UF ?
                 { "SupportBoard", InstrumentType.SupportBoard } // UF Support Board
             };

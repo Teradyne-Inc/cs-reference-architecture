@@ -232,9 +232,22 @@ namespace Csra {
         /// <returns>A new <see cref="PinSite{T}"/> containing elements from all input <see cref="PinSite{T}"/> instances, arranged in the right
         /// order.</returns> 
         public PinSite<T> ArrangePinSite<T>(IEnumerable<PinSite<T>> pinSite) {
-            PinSite<T> pinSiteAll = new();
-            foreach (PinSite<T> ps in pinSite) pinSiteAll.AddRange(ps);
-            return new(this.Select(s => pinSiteAll[s]).ToList());
+            Dictionary<string, Site<T>> flat = BuildPinLookup(pinSite);
+            int pinCount = Count();
+            PinSite<T> reordered = new(pinCount);
+
+            for (int i = 0; i < pinCount; i++) {
+                string pinName = _pins[i];
+
+                if (!flat.TryGetValue(pinName, out var value)) {
+                    Api.Services.Alert.Error($"Pin '{pinName}' not found in reference.");
+                }
+                reordered[i] = value;
+
+                // Assignment carries the source element's name over, so restore the pin-map casing.
+                reordered[i].PinName = pinName;
+            }
+            return reordered;
         }
 
         /// <summary>
@@ -246,13 +259,9 @@ namespace Csra {
         /// <returns>A new <see cref="PinSite{T}"/> containing elements from all input <see cref="PinSite{T}"/> instances, arranged in the right
         /// order.</returns> 
         public PinSite<Samples<T>> ArrangePinSite<T>(IEnumerable<PinSite<Samples<T>>> pinSite) {
+            Dictionary<string, Site<Samples<T>>> flat = BuildPinLookup(pinSite);
             int pinCount = Count();
             PinSite<Samples<T>> reordered = new(pinCount);
-
-            var flat = pinSite
-                .SelectMany(site => Enumerable.Range(0, site.Count)
-                .Select(i => site[i]))
-                .ToDictionary(s => s.PinName, s => s);
 
             // Fill `reordered` by order of `pins`
             for (int i = 0; i < pinCount; i++) {
@@ -261,10 +270,32 @@ namespace Csra {
                 if (!flat.TryGetValue(pinName, out var samples)) {
                     Api.Services.Alert.Error($"Pin '{pinName}' not found in reference.");
                 }
+                reordered[i] = samples;
+
+                // Assignment carries the source element's name over, and IG-XL returns that name
+                // lower-cased, so restore the pin-map casing callers look the pin up by.
                 reordered[i].PinName = pinName;
-                reordered[pinName] = samples;
             }
             return reordered;
+        }
+
+        /// <summary>
+        /// Indexes the pins of several <see cref="PinSite{U}"/> objects by name, case-insensitively because a captured signal's names come back
+        /// lower-cased. The first occurrence of a pin wins, so overlapping pin groups resolve rather than colliding.
+        /// </summary>
+        private static Dictionary<string, Site<U>> BuildPinLookup<U>(IEnumerable<PinSite<U>> pinSite) {
+            Dictionary<string, Site<U>> flat = new(StringComparer.OrdinalIgnoreCase);
+
+            foreach (PinSite<U> site in pinSite) {
+                for (int i = 0; i < site.Count; i++) {
+                    Site<U> entry = site[i];
+
+                    if (!flat.ContainsKey(entry.PinName)) {
+                        flat[entry.PinName] = entry;
+                    }
+                }
+            }
+            return flat;
         }
     }
 }

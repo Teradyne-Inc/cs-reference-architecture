@@ -44,12 +44,14 @@ namespace Csra.Setting.TheHdw.Dcvs.Pins {
             // UFLEX DCVS DO NOT support .DCVS.Pins().VoltageRange()
             string dcvsType = TestCodeBase.TheHdw.DCVS.Pins(pinName).DCVSType;
             switch (dcvsType) {
-                case "VS-800mA": // UVS256HP
+                case Tol.DcvsSlotType.Uvs256Hp: // UVS256HP
                     return 18.0;
-                case "VS-5A": // UVS64
+                case Tol.DcvsSlotType.Uvs64: // UVS64
                     return 5.5;
+                case Tol.DcvsSlotType.Uvs64Hp: // UVS64HP
+                    return 6.0;
                 default:
-                    Api.Services.Alert.Error("Wrong DCVS pin type! Only support UVS64 & UVS256HP currently.");
+                    Api.Services.Alert.Error("Wrong DCVS pin type! Only support UVS64, UVS256HP & UVS64HP currently.");
                     return 0.0; // return 0 when not DCVS pin type not list here 
             }
         }

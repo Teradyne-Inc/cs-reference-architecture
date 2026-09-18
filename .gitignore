@@ -381,26 +381,28 @@ LicenseRequirements.txt
 RunDsp.*
 runDspGeneratorErrors.txt
 
-# Include all files in the dep directory
-!dep/**
 src/Demo/*.dat
 
 # Generated solutions
 *Generated.sln
 *Demo_Generated_DoNotUse.sln
+# Produced by src/Demo/generate-subset-solution.cmd. Untracked and easy to commit by
+# accident; it also reached a release package once, before PackageScript excluded it.
+src/Demo/SOC124.sln
+src/Demo/SOC124.slnx
 
 # Benchmark files 
 src/benchmark/*.zip 
+
+# d4tCLI output. Written to a directory named after the host (Settings.OutputDir), so running
+# iglink/igbenchmark locally to reproduce the pipeline would otherwise stage build artifacts.
+.devops/output/
 
 # Playground
 playground/jeremy/
 
 # Local coverage report files
 src/UT/.coverage-report-merged/
-src/*PortBridgeEnabled.txt
 src/SIT/results.txt
-
-# Ignore dep/**/bin folders to git
-!src/dep/**/bin/
 
 src/Demo/*.std

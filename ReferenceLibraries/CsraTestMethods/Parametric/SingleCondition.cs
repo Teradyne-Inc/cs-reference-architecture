@@ -64,8 +64,13 @@ namespace CsraTestMethods.Parametric {
             }
 
             if (ShouldRunBody) {
+                if (_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.ForceHiZ(_pinsMeasure);
+                }
                 TheLib.Setup.Dc.Force(_pinsForce, _outputMode, forceValue, forceValue, clampValue);
-                TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue : null);
+                if (!_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue : null);
+                }
                 TheLib.Execute.Wait(waitTime);
                 _measPins = TheLib.Acquire.Dc.Measure(_pinsMeasure, sampleSize);
             }
@@ -126,9 +131,14 @@ namespace CsraTestMethods.Parametric {
             }
 
             if (ShouldRunBody) {
+                if (_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.ForceHiZ(_pinsMeasure);
+                }
                 TheLib.Setup.Dc.Force(_pinsForce, _outputMode, forceValue, forceValue, clampValue);
-                TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue
-                    : null);
+                if (!_pinsMeasure.ContainsFeature(InstrumentFeature.Ppmu)) {
+                    TheLib.Setup.Dc.SetMeter(_pinsMeasure, _measureMode, measureRange, outputRangeValue: (!_measPinListIsNullOrEmpty) ? _outputRangeValue
+                        : null);
+                }
                 TheLib.Execute.Wait(waitTime);
                 _measPins = TheLib.Acquire.Dc.Measure(_pinsMeasure, sampleSize); 
             }

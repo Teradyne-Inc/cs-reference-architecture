@@ -40,7 +40,7 @@ namespace Csra.Types {
             List<string> pinListOfUtility = new List<string>();
             string[] returnTypeNamesPpmu = ["HSDP", "HSDPx", "HSD-U"];
             string[] returnTypeNamesDcvi = ["DC-8p5V90V", "DC-07"];
-            string[] returnTypeNamesDcvs = ["VS-5A", "VS-800mA", "VS-20A", "HexVS", "VSM"];
+            string[] returnTypeNamesDcvs = Tol.DcvsSlotType.All;
             string[] returnTypeNamesDigital = returnTypeNamesPpmu;
             string[] returnTypeNamesUtility = ["Support", "SupportBoard"];
             List<string> pins = new();

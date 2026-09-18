@@ -25,18 +25,22 @@ namespace CsraTestMethods.Parametric {
         /// Reproduce the failure (on a build without the fix) by choosing
         /// <paramref name="forceVoltage"/> &gt; the hardware range that <paramref name="measureRange"/> snaps to, while
         /// keeping <paramref name="forceVoltage"/> &lt;= <paramref name="forceRange"/>.
-        /// Tester-validated values: <c>forceVoltage = 5</c>, <c>forceRange = 5.5</c>, <c>clampCurrent = 0.1</c>, <c>measureRange = 1.5</c>.
+        /// Tester-validated values on <c>VS-5A</c>: <c>forceVoltage = 5</c>, <c>forceRange = 5.5</c>, <c>clampCurrent = 0.1</c>, <c>measureRange = 1.5</c>.
         /// </para>
         /// <para>
-        /// Note two hardware constraints observed during bring-up: <paramref name="forceRange"/> must be a <b>supported</b>
-        /// DCVS voltage range (an unsupported value such as 6 V raises <c>DCVS:0004</c>, since some DCVS variants only
-        /// support e.g. 3 V and 5.5 V), and <paramref name="clampCurrent"/> must cover the load current at
-        /// <paramref name="forceVoltage"/> (too low raises the <c>DCVS:9024</c> source fold current-limit alarm).
+        /// Note two hardware constraints observed during bring-up. First, <paramref name="forceRange"/> must be a
+        /// <b>supported</b> DCVS voltage range <b>for the instrument under test</b>, and the supported set differs per
+        /// DCVS type: the driver reports <c>3, 5.5</c> for <c>VS-5A</c> (UVS64) and <c>3, 6, 16</c> for <c>VS-20A</c>
+        /// (UVS64HP), so a 6 V range raises <c>DCVS:0004</c> on <c>VS-5A</c> but is valid on <c>VS-20A</c>. Second,
+        /// <paramref name="clampCurrent"/> must cover the load current at <paramref name="forceVoltage"/> (too low
+        /// raises the <c>DCVS:9024</c> source fold current-limit alarm).
         /// </para>
         /// </summary>
         /// <param name="pinList">List of DCVS pin or pin group names.</param>
         /// <param name="forceVoltage">The voltage to force. Choose a value larger than <paramref name="measureRange"/> to exercise the defect (e.g. 5 V).</param>
-        /// <param name="forceRange">The DCVS voltage (force) range. Must cover <paramref name="forceVoltage"/> and be a supported DCVS hardware range (e.g. 5.5 V; an unsupported value such as 6 V raises <c>DCVS:0004</c>).</param>
+        /// <param name="forceRange">The DCVS voltage (force) range. Must cover <paramref name="forceVoltage"/> and be a
+        /// supported range for that instrument - e.g. 5.5 V on <c>VS-5A</c>, 6 V on <c>VS-20A</c>. An unsupported value
+        /// raises <c>DCVS:0004</c>.</param>
         /// <param name="clampCurrent">The current clamp for the force pin. Size it to cover the load current at <paramref name="forceVoltage"/> (e.g. 0.1 A); too low raises the <c>DCVS:9024</c> source foldback alarm.</param>
         /// <param name="measureRange">The meter voltage range. Choose a value smaller than <paramref name="forceVoltage"/> to exercise the defect (e.g. 1.5 V).</param>
         /// <param name="waitTime">The wait time after forcing.</param>

@@ -14,7 +14,7 @@ namespace Csra.TheLib.Acquire {
 
         public virtual PinSite<double> Measure(Pins pins, int sampleSize, double? sampleRate = null, DcMeterMode? meterMode = null) {
             List<PinSite<double>> resultPin = new();
-            if (meterMode.HasValue) {
+            if (meterMode.HasValue && !pins.ContainsFeature(InstrumentFeature.Ppmu)) {
                 Api.TheLib.Setup.Dc.SetMeter(pins, meterMode.Value);
             }
             if (pins.ContainsFeature(InstrumentFeature.Ppmu)) resultPin.Add(pins.Ppmu.Measure(sampleSize));

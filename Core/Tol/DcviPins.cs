@@ -52,6 +52,12 @@ namespace Tol {
             _ = Bandwidth;
         }
 
+        // ================ Force and Clamp Methods =====================
+        // The following list of methods apply Math.Abs to the range values to ensure they are positive, as ranges should not be negative.
+        // This is because the underlying hardware API expects positive range values, and using negative values could lead to unexpected behavior or errors.
+        // ForceI / ForceV / SetCurrentAndRange / SetVoltageAndRange / SetMeterI / SetMeterV / ForceISetMeterI / ForceISetMeterV / ForceVSetMeterV / ForceVSetMeterI
+        // ==============================================================
+
         public DriverDCVIPins HardwareApi => _hardwareApi ??= TheHdw.DCVI.Pins(Name);
 
         public IValuePerSite<tlDCVIMode> Mode => _mode ??= new ValuePerSiteType<tlDCVIMode>(
@@ -196,14 +202,14 @@ namespace Tol {
 
         public void SetMeterI(double? currentRange = null, int? hardwareAverage = null, double? filter = null) {
             Meter.Mode.Value = tlDCVIMeterMode.Current;
-            if (currentRange.HasValue) Meter.CurrentRange.Value = currentRange.Value;
+            if (currentRange.HasValue) Meter.CurrentRange.Value = Math.Abs(currentRange.Value);
             if (hardwareAverage.HasValue) Meter.HardwareAverage.Value = hardwareAverage.Value;
             if (filter.HasValue) Meter.Filter.Value = filter.Value;
         }
 
         public void SetMeterV(double? voltageRange = null, int? hardwareAverage = null, double? filter = null) {
             Meter.Mode.Value = tlDCVIMeterMode.Voltage;
-            if (voltageRange.HasValue) Meter.VoltageRange.Value = voltageRange.Value;
+            if (voltageRange.HasValue) Meter.VoltageRange.Value = Math.Abs(voltageRange.Value);
             if (hardwareAverage.HasValue) Meter.HardwareAverage.Value = hardwareAverage.Value;
             if (filter.HasValue) Meter.Filter.Value = filter.Value;
         }
@@ -239,16 +245,16 @@ namespace Tol {
                 Gate.Value = tlDCVGate.GateOff; // to avoid glitches while changing the mode
                 Mode.Value = tlDCVIMode.Current;
             }
-            if (clampVoltage.HasValue && voltageRange.HasValue) SetVoltageAndRange(clampVoltage.Value, voltageRange.Value);
+            if (clampVoltage.HasValue && voltageRange.HasValue) SetVoltageAndRange(clampVoltage.Value, Math.Abs(voltageRange.Value));
             else if (clampVoltage.HasValue) Voltage.Value = clampVoltage.Value;
-            else if (voltageRange.HasValue) VoltageRange.Value = voltageRange.Value;
-            if (currentRange.HasValue) SetCurrentAndRange(forceCurrent, currentRange.Value);
+            else if (voltageRange.HasValue) VoltageRange.Value = Math.Abs(voltageRange.Value);
+            if (currentRange.HasValue) SetCurrentAndRange(forceCurrent, Math.Abs(currentRange.Value));
             else Current.Value = forceCurrent;
             if (gate.HasValue) Gate.Value = gate.Value ? tlDCVGate.GateOn : tlDCVGate.GateOff;
         }
 
         public void SetCurrentAndRange(double current, double currentRange) {
-            HardwareApi.SetCurrentAndRange(current, currentRange);
+            HardwareApi.SetCurrentAndRange(current, Math.Abs(currentRange));
         }
 
         public void ForceV(double forceVoltage, double? clampCurrent = null, double? voltageRange = null, double? currentRange = null, bool setVoltageMode = true, bool? gate = null) {
@@ -256,16 +262,16 @@ namespace Tol {
                 Gate.Value = tlDCVGate.GateOff; // to avoid glitches while changing the mode
                 Mode.Value = tlDCVIMode.Voltage;
             }
-            if (clampCurrent.HasValue && currentRange.HasValue) SetCurrentAndRange(clampCurrent.Value, currentRange.Value);
+            if (clampCurrent.HasValue && currentRange.HasValue) SetCurrentAndRange(clampCurrent.Value, Math.Abs(currentRange.Value));
             else if (clampCurrent.HasValue) Current.Value = clampCurrent.Value;
-            else if (currentRange.HasValue) CurrentRange.Value = currentRange.Value;
-            if (voltageRange.HasValue) SetVoltageAndRange(forceVoltage, voltageRange.Value);
+            else if (currentRange.HasValue) CurrentRange.Value = Math.Abs(currentRange.Value);
+            if (voltageRange.HasValue) SetVoltageAndRange(forceVoltage, Math.Abs(voltageRange.Value));
             else Voltage.Value = forceVoltage;
             if (gate.HasValue) Gate.Value = gate.Value ? tlDCVGate.GateOn : tlDCVGate.GateOff;
         }
 
         public void SetVoltageAndRange(double voltage, double voltageRange) {
-            HardwareApi.SetVoltageAndRange(voltage, voltageRange);
+            HardwareApi.SetVoltageAndRange(voltage, Math.Abs(voltageRange));
         }
 
         public void ForceISetMeterI(double forceCurrent, double clampVoltage, double measureCurrentRange, double forceCurrentRange, bool? gate = null) {
