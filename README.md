@@ -4,7 +4,7 @@ Home for the C# Reference Architecture project.
 
 ## Release Notes
 
-See what's new in each release: [Release Notes](https://teradyne-inc.github.io/cs-reference-architecture/releases_/v0.20.0.html) (latest: v0.20.0, 2026-09-15)
+To access the latest release notes: [Release Notes](https://teradyne-inc.github.io/cs-reference-architecture/releases_/v0.20.0.html)
 
 
 ## User Documentation ...
